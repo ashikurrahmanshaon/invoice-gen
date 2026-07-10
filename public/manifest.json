@@ -1,0 +1,16 @@
+{
+  "short_name": "Invoice-Gen",
+  "name": "Free Invoice Generator | Invoice-Gen",
+  "description": "Create, customize, and download professional PDF invoices in seconds. Completely free invoice generator.",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#f9fafb"
+}

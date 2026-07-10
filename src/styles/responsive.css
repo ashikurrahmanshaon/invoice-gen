@@ -1,0 +1,89 @@
+/* Mobile Flow Only (<768px) */
+@media (max-width: 767px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+    background-color: #F5F7FA !important;
+  }
+
+  * {
+    box-sizing: border-box !important;
+  }
+  
+  .app-header {
+    height: 60px !important;
+  }
+  
+  .workspace-layout {
+    display: block !important; /* Override desktop grid layout on mobile */
+    padding: 0 !important;
+    gap: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+  
+  .workspace-main {
+    display: none !important; /* Hide desktop generator main block */
+  }
+  
+  .workspace-sidebar {
+    display: none !important; /* Hide desktop sidebar on mobile */
+  }
+  
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .mobile-only {
+    display: block !important;
+  }
+  
+  .mobile-flex {
+    display: flex !important;
+  }
+  
+  .container {
+    padding: 0 16px !important; /* 16px horizontal padding */
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+  
+  .mobile-step-container {
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding-bottom: 140px !important; /* Space for sticky action bar */
+  }
+  
+  /* Reset all flex grids inside sections to stack vertically on mobile */
+  .flex {
+    flex-direction: column !important;
+    gap: var(--space-3) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Desktop Flow Only (>= 768px) */
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none !important;
+  }
+  
+  .mobile-flex {
+    display: none !important;
+  }
+}

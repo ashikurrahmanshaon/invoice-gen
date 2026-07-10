@@ -1,0 +1,167 @@
+import type { InvoiceData, InvoiceDraftData, ProfileData, SavedClient } from '../types/invoice';
+import { STORAGE_KEY_CLIENTS } from '../types/invoice';
+
+const STORAGE_KEY_DRAFT = 'invoice_gen_data';
+const STORAGE_KEY_PROFILE = 'invoice_gen_profile';
+export const STORAGE_KEY_HISTORY = 'invoice_gen_history';
+
+export const loadProfile = (): ProfileData | null => {
+  try {
+    const serializedData = localStorage.getItem(STORAGE_KEY_PROFILE);
+    if (serializedData) {
+      return JSON.parse(serializedData) as ProfileData;
+    }
+  } catch (error) {
+    console.error('Failed to load profile from local storage', error);
+  }
+  return null;
+};
+
+export const loadDraft = (): InvoiceDraftData | null => {
+  try {
+    const serializedData = localStorage.getItem(STORAGE_KEY_DRAFT);
+    if (serializedData) {
+      return JSON.parse(serializedData) as InvoiceDraftData;
+    }
+  } catch (error) {
+    console.error('Failed to load draft from local storage', error);
+  }
+  return null;
+};
+
+export const loadClients = (): SavedClient[] => {
+  try {
+    const serializedData = localStorage.getItem(STORAGE_KEY_CLIENTS);
+    if (serializedData) {
+      const parsed = JSON.parse(serializedData);
+      if (Array.isArray(parsed)) {
+        return parsed as SavedClient[];
+      }
+    }
+  } catch (error) {
+    console.error('Failed to load clients from local storage', error);
+  }
+  return [];
+};
+
+export const saveClients = (clients: SavedClient[]): { success: boolean; status: string } => {
+  try {
+    localStorage.setItem(STORAGE_KEY_CLIENTS, JSON.stringify(clients));
+    return { success: true, status: 'success' };
+  } catch (error) {
+    console.error('Failed to save clients to local storage', error);
+    return { success: false, status: 'error_clients' };
+  }
+};
+
+const isProfileEqual = (p1: ProfileData, p2: ProfileData | null) => {
+  if (!p2) return false;
+  return JSON.stringify(p1) === JSON.stringify(p2);
+};
+
+export const saveToStorage = (data: InvoiceData): { draftSuccess: boolean; profileSuccess: boolean } => {
+  const { business, ...draftData } = data;
+  const newProfile: ProfileData = {
+    business,
+    currency: data.details.currency
+  };
+
+  let draftSuccess = false;
+  let profileSuccess = false;
+
+  // Save Draft
+  try {
+    localStorage.setItem(STORAGE_KEY_DRAFT, JSON.stringify(draftData));
+    draftSuccess = true;
+  } catch (error) {
+    console.error('Failed to save draft to local storage', error);
+  }
+
+  // Save Profile (only if changed or if profile doesn't exist)
+  try {
+    const currentProfile = loadProfile();
+    if (!isProfileEqual(newProfile, currentProfile)) {
+      localStorage.setItem(STORAGE_KEY_PROFILE, JSON.stringify(newProfile));
+    }
+    profileSuccess = true; // Still counts as success if we skipped unnecessary save
+  } catch (error) {
+    console.error('Failed to save profile to local storage', error);
+  }
+
+  return { draftSuccess, profileSuccess };
+};
+
+export const clearDraftStorage = (): void => {
+  try {
+    localStorage.removeItem(STORAGE_KEY_DRAFT);
+  } catch (error) {
+    console.error('Failed to clear draft storage', error);
+  }
+};
+
+export const clearAllStorage = (): void => {
+  try {
+    localStorage.removeItem(STORAGE_KEY_DRAFT);
+    localStorage.removeItem(STORAGE_KEY_PROFILE);
+    localStorage.removeItem(STORAGE_KEY_CLIENTS);
+  } catch (error) {
+    console.error('Failed to clear all storage', error);
+  }
+};
+
+export const loadHydratedData = (defaultInvoice: InvoiceData): InvoiceData => {
+  const profile = loadProfile();
+  
+  let draft: any = null;
+  try {
+    const serializedData = localStorage.getItem(STORAGE_KEY_DRAFT);
+    if (serializedData) {
+      draft = JSON.parse(serializedData);
+    }
+  } catch (e) {
+    console.error('Failed to load draft', e);
+  }
+
+  let finalProfile = profile;
+
+  // 1. Migration: Legacy draft with valid business data, but no profile yet
+  if (!profile && draft && draft.business) {
+    finalProfile = {
+      business: draft.business,
+      currency: draft.details?.currency || 'USD'
+    };
+    try {
+      localStorage.setItem(STORAGE_KEY_PROFILE, JSON.stringify(finalProfile));
+    } catch (e) {
+      console.error('Migration profile save failed', e);
+    }
+  }
+
+  // 2. Hydration
+  if (draft) {
+    return {
+      ...defaultInvoice,
+      ...draft,
+      details: {
+        ...defaultInvoice.details,
+        ...(draft.details || {}),
+      },
+      business: finalProfile?.business || defaultInvoice.business
+    };
+  }
+
+  // 3. No active draft. Create a new one using profile defaults.
+  if (finalProfile) {
+    return {
+      ...defaultInvoice,
+      business: finalProfile.business,
+      details: {
+        ...defaultInvoice.details,
+        currency: finalProfile.currency || 'USD'
+      }
+    };
+  }
+
+  // 4. Pure default
+  return defaultInvoice;
+};
