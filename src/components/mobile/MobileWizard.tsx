@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import type { InvoiceData, LineItem } from '../../types/invoice';
 import { formatCurrency } from '../../utils/currency';
-import { Trash2, Copy, Plus, ChevronUp } from 'lucide-react';
+import { Trash2, Copy, Plus, ChevronUp, ArrowLeft, ArrowRight } from 'lucide-react';
 import { processImageFile } from '../../utils/image';
 import { isValidDecimalInput, calculateLineAmount } from '../../utils/calculations';
 import { ClientPicker } from '../invoice/ClientPicker';
@@ -954,59 +954,47 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
 
       {/* MOBILE BOTTOM ACTION BAR (Portaled to body for guaranteed stickiness) */}
       {mounted && createPortal(
-        <div className="mobile-only sticky-bottom-bar" style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          background: 'rgba(255, 255, 255, 0.85)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          borderTop: '1px solid var(--color-border)',
-          padding: '16px 20px calc(16px + env(safe-area-inset-bottom)) 20px',
-          display: 'flex',
-          gap: '16px',
-          boxShadow: '0 -4px 24px rgba(0,0,0,0.06)',
-          zIndex: 9999
-        }}>
+        <div className="mobile-only premium-bottom-bar">
           {currentStage === 1 && (
-            <button className="btn btn-primary" style={{ width: '100%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={() => setStage(2)}>
-              Continue to Client
-            </button>
+            <div style={{ display: 'flex', gap: '20px', width: '100%' }}>
+              <button className="premium-btn-primary full-width" onClick={() => setStage(2)}>
+                Continue to Client <ArrowRight size={18} />
+              </button>
+            </div>
           )}
           {currentStage === 2 && (
-            <>
-              <button className="btn btn-outline" style={{ flex: '0 0 40%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={() => setStage(1)}>
-                Back
+            <div style={{ display: 'flex', gap: '20px', width: '100%' }}>
+              <button className="premium-btn-back" onClick={() => setStage(1)}>
+                <ArrowLeft size={18} /> Back
               </button>
-              <button className="btn btn-primary" style={{ flex: '0 0 60%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={() => setStage(3)}>
-                Continue to Items
+              <button className="premium-btn-primary" onClick={() => setStage(3)}>
+                Continue to Items <ArrowRight size={18} />
               </button>
-            </>
+            </div>
           )}
           {currentStage === 3 && (
-            <>
-              <button className="btn btn-outline" style={{ flex: '0 0 40%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={() => setStage(2)}>
-                Back
+            <div style={{ display: 'flex', gap: '20px', width: '100%' }}>
+              <button className="premium-btn-back" onClick={() => setStage(2)}>
+                <ArrowLeft size={18} /> Back
               </button>
-              <button className="btn btn-primary" style={{ flex: '0 0 60%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={() => setStage(4)}>
-                Review Invoice
+              <button className="premium-btn-primary" onClick={() => setStage(4)}>
+                Review Invoice <ArrowRight size={18} />
               </button>
-            </>
+            </div>
           )}
           {currentStage === 4 && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
-              <button className="btn btn-primary" style={{ width: '100%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={onDownloadPDF}>
-                Download PDF
-              </button>
-              <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
-                <button className="btn btn-outline" style={{ flex: '0 0 40%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={() => setStage(3)}>
-                  Back
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%' }}>
+              <div style={{ display: 'flex', gap: '20px', width: '100%' }}>
+                <button className="premium-btn-back" onClick={() => setStage(3)}>
+                  <ArrowLeft size={18} /> Back
                 </button>
-                <button className="btn btn-outline" style={{ flex: '0 0 60%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={onOpenFullPreview}>
+                <button className="premium-btn-back" style={{ flex: '58 1 0%' }} onClick={onOpenFullPreview}>
                   Preview
                 </button>
               </div>
+              <button className="premium-btn-primary full-width" onClick={onDownloadPDF}>
+                Download PDF
+              </button>
             </div>
           )}
         </div>,
@@ -1014,6 +1002,78 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       )}
 
       <style>{`
+        .premium-bottom-bar {
+          position: fixed;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100%;
+          max-width: 640px;
+          background: rgba(255, 255, 255, 0.92);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-top: 1px solid rgba(0, 0, 0, 0.04);
+          border-top-left-radius: 24px;
+          border-top-right-radius: 24px;
+          padding: 18px 24px calc(20px + env(safe-area-inset-bottom)) 24px;
+          box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.08);
+          z-index: 9999;
+          animation: slideUpBottom 0.2s ease-out forwards;
+        }
+        @keyframes slideUpBottom {
+          from { opacity: 0; transform: translate(-50%, 20px); }
+          to { opacity: 1; transform: translate(-50%, 0); }
+        }
+        .premium-btn-back {
+          flex: 42 1 0%;
+          height: 56px;
+          border-radius: 16px;
+          background: #FFFFFF;
+          border: 1px solid #E4E7EC;
+          color: var(--color-text-main);
+          font-weight: 600;
+          font-size: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          transition: all 0.2s ease;
+          cursor: pointer;
+        }
+        .premium-btn-back:hover {
+          background: #F9FAFB;
+        }
+        .premium-btn-back:active {
+          transform: scale(0.97);
+        }
+        .premium-btn-primary {
+          flex: 58 1 0%;
+          height: 56px;
+          border-radius: 16px;
+          background: linear-gradient(180deg, #2E72FF 0%, #155EEF 100%);
+          color: #FFFFFF;
+          font-weight: 600;
+          font-size: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          border: none;
+          box-shadow: 0 4px 12px rgba(21, 94, 239, 0.25);
+          transition: all 0.2s ease;
+          cursor: pointer;
+        }
+        .premium-btn-primary.full-width {
+          flex: 1 1 100%;
+        }
+        .premium-btn-primary:hover {
+          box-shadow: 0 6px 16px rgba(21, 94, 239, 0.3);
+          transform: translateY(-1px);
+        }
+        .premium-btn-primary:active {
+          transform: scale(0.97) translateY(0);
+          box-shadow: 0 2px 8px rgba(21, 94, 239, 0.2);
+        }
         .hover-text-error:hover { color: var(--color-error) !important; }
         .mobile-item-card .btn-action-dup:hover { background-color: #F2F4F7; color: #344054 !important; }
         .mobile-item-card .btn-action-del:hover { background-color: #FEF3F2; color: #D92D20 !important; }
