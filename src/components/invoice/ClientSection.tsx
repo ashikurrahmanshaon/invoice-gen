@@ -52,7 +52,7 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
   };
 
   return (
-    <div className="flex-col gap-5" style={{ width: '100%', borderBottom: '1px solid #EAECF0', paddingBottom: '28px' }}>
+    <div className="flex-col gap-6" style={{ width: '100%', borderBottom: '1px solid var(--color-border)', paddingBottom: 'var(--space-6)' }}>
       {/* Section Header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-2)' }}>
         <span className="step-badge">02</span>
@@ -70,7 +70,7 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
         />
         
         <div className="flex-col gap-4">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+          <div className="grid-2">
             <div>
               <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Client Name *</label>
               <input 
@@ -93,7 +93,7 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
 
           {showOptional ? (
             <div className="flex-col gap-3" style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-3)', marginTop: 'var(--space-1)' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
+              <div className="grid-2">
                 <div>
                   <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Phone</label>
                   <input 

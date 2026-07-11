@@ -53,7 +53,9 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header style={{ 
-      background: 'var(--color-surface)',
+      background: 'rgba(255, 255, 255, 0.85)',
+      backdropFilter: 'blur(12px)',
+      WebkitBackdropFilter: 'blur(12px)',
       borderBottom: '1px solid var(--color-border)',
       height: '60px',
       display: 'flex',
@@ -70,18 +72,18 @@ export const Header: React.FC<HeaderProps> = ({
           <span className="font-bold text-base desktop-only" style={{ color: 'var(--color-text-main)', lineHeight: 1, letterSpacing: '-0.5px' }}>Invoice-Gen</span>
           
           {/* Navigation Tabs */}
-          <div style={{ display: 'flex', gap: '4px', marginLeft: '24px', backgroundColor: 'var(--surface-100)', padding: '4px', borderRadius: '8px' }}>
+          <div style={{ display: 'flex', gap: '4px', marginLeft: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '4px', borderRadius: '8px' }}>
             <button 
               onClick={() => onViewChange('editor')}
               style={{
                 padding: '6px 12px',
                 fontSize: '13px',
                 fontWeight: activeView === 'editor' ? 600 : 500,
-                color: activeView === 'editor' ? 'var(--primary)' : 'var(--text-secondary)',
-                backgroundColor: activeView === 'editor' ? 'white' : 'transparent',
+                color: activeView === 'editor' ? 'var(--color-text-main)' : 'var(--color-text-secondary)',
+                backgroundColor: activeView === 'editor' ? 'var(--color-surface)' : 'transparent',
                 border: 'none',
                 borderRadius: '6px',
-                boxShadow: activeView === 'editor' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none',
+                boxShadow: activeView === 'editor' ? 'var(--shadow-sm)' : 'none',
                 cursor: 'pointer',
                 transition: 'all 0.2s'
               }}
@@ -94,11 +96,11 @@ export const Header: React.FC<HeaderProps> = ({
                 padding: '6px 12px',
                 fontSize: '13px',
                 fontWeight: activeView === 'history' ? 600 : 500,
-                color: activeView === 'history' ? 'var(--primary)' : 'var(--text-secondary)',
-                backgroundColor: activeView === 'history' ? 'white' : 'transparent',
+                color: activeView === 'history' ? 'var(--color-text-main)' : 'var(--color-text-secondary)',
+                backgroundColor: activeView === 'history' ? 'var(--color-surface)' : 'transparent',
                 border: 'none',
                 borderRadius: '6px',
-                boxShadow: activeView === 'history' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none',
+                boxShadow: activeView === 'history' ? 'var(--shadow-sm)' : 'none',
                 cursor: 'pointer',
                 transition: 'all 0.2s'
               }}

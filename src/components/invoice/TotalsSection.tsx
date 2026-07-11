@@ -39,7 +39,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
   const symbol = getCurrencySymbol(currency);
 
   return (
-    <div className="flex-col gap-5" style={{ width: '100%' }}>
+    <div className="flex-col gap-6" style={{ width: '100%' }}>
       {/* Section Header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-2)' }}>
         <span className="step-badge">04</span>
@@ -49,13 +49,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
         </div>
       </div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'minmax(0, 1fr) 360px',
-        gap: '48px',
-        width: '100%',
-        alignItems: 'start'
-      }}>
+      <div className="business-grid">
         {/* Left Side: Notes & Conditions */}
         <div className="flex-col gap-4">
           <div>

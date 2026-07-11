@@ -30,7 +30,7 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
       gap: '16px',
       alignItems: 'center',
       minHeight: '64px',
-      borderBottom: '1px solid #EAECF0',
+      borderBottom: '1px solid var(--color-border)',
       padding: '12px 0',
       transition: 'background-color var(--transition-fast)'
     }}>
@@ -146,7 +146,7 @@ export const ItemsSection: React.FC<ItemsSectionProps> = ({
   const symbol = getCurrencySymbol(currency);
 
   return (
-    <div data-testid="items-section" className="flex-col gap-5" style={{ width: '100%', borderBottom: '1px solid #EAECF0', paddingBottom: '28px' }}>
+    <div data-testid="items-section" className="flex-col gap-6" style={{ width: '100%', borderBottom: '1px solid var(--color-border)', paddingBottom: 'var(--space-6)' }}>
       {/* Section Header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-2)' }}>
         <span className="step-badge">03</span>
@@ -164,7 +164,7 @@ export const ItemsSection: React.FC<ItemsSectionProps> = ({
             display: 'grid',
             gridTemplateColumns: 'minmax(200px, 1.6fr) minmax(190px, 1.5fr) 110px 80px 110px 72px',
             gap: '16px',
-            borderBottom: '1px solid #EAECF0',
+            borderBottom: '1px solid var(--color-border)',
             padding: '12px 0',
             fontSize: 'var(--text-xs)',
             color: 'var(--color-text-secondary)',

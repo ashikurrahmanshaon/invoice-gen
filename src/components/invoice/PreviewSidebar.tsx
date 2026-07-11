@@ -13,7 +13,7 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
   const clientAddressLines = formatAddress(data.client);
 
   return (
-    <div className="workspace-sidebar desktop-only" style={{ position: 'sticky', top: '88px', alignSelf: 'flex-start', width: '380px' }}>
+    <div className="workspace-sidebar desktop-only" style={{ position: 'sticky', top: '84px', alignSelf: 'flex-start', width: '380px' }}>
       <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span className="font-bold text-xs uppercase tracking-wider" style={{ color: 'var(--color-text-secondary)' }}>Live Preview</span>
@@ -28,7 +28,7 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
         {/* Miniature Cropped Invoice Paper (Clean white sheet aesthetics) */}
         <div style={{
           background: '#FFFFFF',
-          border: '1px solid #EAECF0',
+          border: '1px solid var(--color-border)',
           borderRadius: '6px',
           padding: '28px 24px',
           minHeight: '340px',
@@ -36,7 +36,7 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
-          boxShadow: '0 4px 12px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.02)',
+          boxShadow: 'var(--shadow-sm)',
           lineHeight: 1.4
         }}>
           {/* Header */}
@@ -95,7 +95,7 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
           </div>
 
           {/* Simple Items List in Cropped Preview */}
-          <div style={{ fontSize: '11px', borderTop: '1px solid #EAECF0', borderBottom: '1px solid #EAECF0', padding: '10px 0', marginBottom: '20px' }}>
+          <div style={{ fontSize: '11px', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', padding: '10px 0', marginBottom: '20px' }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1.2fr', fontWeight: 'bold', color: 'var(--color-text-main)', marginBottom: '6px' }}>
               <span>Item</span>
               <span className="text-right">Qty</span>
@@ -154,7 +154,7 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
         
         <button 
           className="btn btn-outline text-xs" 
-          style={{ width: '100%', minHeight: '44px' }}
+          style={{ width: '100%' }}
           onClick={onOpenFullPreview}
         >
           Preview full invoice

@@ -162,6 +162,20 @@
   .grid-2 {
     grid-template-columns: 1fr !important;
   }
+  
+  .business-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-6) !important;
+  }
+  
+  /* Enforce touch targets on mobile */
+  input, select, textarea {
+    min-height: 48px;
+  }
+  
+  .btn, .btn-primary, .btn-outline, .btn-ghost {
+    min-height: 48px;
+  }
 }
 
 /* Desktop Flow Only (>= 768px) */
