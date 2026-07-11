@@ -191,7 +191,7 @@ function App() {
       <Header 
         onNewInvoice={handleNewInvoice}
         onResetEverything={() => setShowResetModal(true)}
-        onDownloadPDF={() => generateInvoicePDF(data)} 
+        onDownloadPDF={() => setIsPreviewOpen(true)} 
         saveStatus={saveStatus}
         showNewInvoiceToast={showNewInvoiceToast}
         activeView={activeView}
