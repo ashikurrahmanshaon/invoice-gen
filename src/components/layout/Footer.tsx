@@ -15,11 +15,11 @@ export const Footer: React.FC = () => {
 
   return (
     <footer style={{ 
-      background: '#0B0F19',
+      background: '#0F172A',
       color: '#94A3B8', 
       padding: '24px 0 16px 0',
       fontSize: '13px',
-      borderTop: '1px solid #1E293B'
+      borderTop: '1px solid rgba(255, 255, 255, 0.05)'
     }}>
       <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         {/* Top Section: Compact branding header */}
@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
           display: 'flex', 
           justifyContent: 'space-between',
           alignItems: 'center',
-          borderBottom: '1px solid #1E293B',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
           paddingBottom: '12px',
           flexWrap: 'wrap',
           gap: '12px'
@@ -50,12 +50,11 @@ export const Footer: React.FC = () => {
           </span>
         </div>
 
-        {/* Middle Section: Exactly 4 Columns */}
+        {/* Middle Section: Exactly 4 Columns using Grid */}
         <div style={{ 
-          display: 'flex', 
-          flexDirection: isDesktop ? 'row' : 'column', 
+          display: 'grid', 
+          gridTemplateColumns: isDesktop ? 'repeat(4, 1fr)' : '1fr', 
           gap: isDesktop ? '32px' : '8px',
-          justifyContent: 'space-between'
         }}>
           {/* Column 1: Product */}
           <details open={isDesktop} className="footer-col">
@@ -133,7 +132,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Section: Copyright */}
         <div style={{ 
-          borderTop: '1px solid #1E293B', 
+          borderTop: '1px solid rgba(255, 255, 255, 0.05)', 
           paddingTop: '8px', 
           display: 'flex', 
           justifyContent: 'space-between',
@@ -149,7 +148,7 @@ export const Footer: React.FC = () => {
 
       <style>{`
         .footer-col {
-          flex: 1;
+          width: 100%;
         }
         .footer-summary {
           color: #FFFFFF;
@@ -174,7 +173,7 @@ export const Footer: React.FC = () => {
           gap: 6px;
         }
         .footer-links a {
-          color: #64748B;
+          color: #94A3B8;
           text-decoration: none;
           transition: color 0.15s ease;
           font-size: 12.5px;
@@ -217,14 +216,14 @@ export const Footer: React.FC = () => {
           flex-direction: column;
           gap: 6px;
           padding: 4px 0 0 8px;
-          border-left: 1px solid #1E293B;
+          border-left: 1px solid rgba(255, 255, 255, 0.05);
           margin-top: 4px;
         }
         
         @media (max-width: 768px) {
           .footer-summary {
             padding: 6px 0;
-            border-bottom: 1px solid #1E293B;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             margin-bottom: 4px;
           }
           .footer-summary::after {
