@@ -6,7 +6,7 @@
   --color-primary-hover: #4338CA;
   --color-text-main: #0F172A;
   --color-text-secondary: #334155; /* Enhanced contrast for accessibility (Slate-700 instead of Slate-600) */
-  --color-text-tertiary: #64748B;  /* Enhanced contrast for subtext/labels (Slate-500 instead of Slate-400) */
+  --color-text-tertiary: #475569;  /* Enhanced contrast for subtext/labels (Slate-600 instead of Slate-500 for WCAG AA compliance) */
   --color-border: #E2E8F0;
   --color-border-hover: #CBD5E1;
   --color-error: #EF4444;
