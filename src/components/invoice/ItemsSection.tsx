@@ -39,6 +39,7 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
         <input 
           type="text" 
           placeholder="Item or service name"
+          aria-label="Item or service name"
           value={item.name}
           onChange={(e) => updateItem(item.id, { name: e.target.value })}
         />
@@ -49,6 +50,7 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
         <input 
           type="text" 
           placeholder="Description (optional)"
+          aria-label="Description"
           value={item.description}
           onChange={(e) => updateItem(item.id, { description: e.target.value })}
         />
@@ -71,6 +73,7 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
             type="text"
             inputMode="decimal"
             placeholder="0.00"
+            aria-label="Rate"
             value={item.rate}
             onChange={(e) => {
               const val = e.target.value;
@@ -89,6 +92,7 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
           type="text"
           inputMode="decimal"
           placeholder="1"
+          aria-label="Quantity"
           value={item.quantity}
           onChange={(e) => {
             const val = e.target.value;
@@ -153,10 +157,10 @@ export const ItemsSection: React.FC<ItemsSectionProps> = ({
       </div>
 
       {/* Grid Table Container */}
-      <div style={{ overflowX: 'auto', width: '100%', marginTop: 'var(--space-2)' }}>
-        <div style={{ minWidth: '800px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ width: '100%', marginTop: 'var(--space-2)' }} className="items-section-wrapper">
+        <div className="items-table-container" style={{ display: 'flex', flexDirection: 'column' }}>
           {/* Header Row */}
-          <div style={{
+          <div className="items-header-row" style={{
             display: 'grid',
             gridTemplateColumns: 'minmax(200px, 1.6fr) minmax(190px, 1.5fr) 110px 80px 110px 72px',
             gap: '16px',
@@ -191,10 +195,6 @@ export const ItemsSection: React.FC<ItemsSectionProps> = ({
             ))}
           </div>
         </div>
-        <style>{`
-          .item-row-grid:hover { background-color: #F8FAFC; }
-          .btn-action-dup:hover { background-color: #F2F4F7; color: #344054 !important; }
-        `}</style>
       </div>
       
       {/* Add Line Item Button */}

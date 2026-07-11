@@ -12,8 +12,10 @@ import { useInvoice } from './hooks/useInvoice';
 import { useAutoSave } from './hooks/useAutoSave';
 import { useClients } from './hooks/useClients';
 import { useHistory } from './hooks/useHistory';
+import { lazy, Suspense } from 'react';
 import { HistoryDashboard } from './components/history/HistoryDashboard';
-import { FullPreviewModal } from './components/invoice/FullPreviewModal';
+
+const FullPreviewModal = lazy(() => import('./components/invoice/FullPreviewModal').then(module => ({ default: module.FullPreviewModal })));
 import { Modal } from './components/ui/Modal';
 import { generateInvoicePDF } from './utils/pdfGenerator';
 import { generateInvoiceNumber } from './utils/invoiceNumber';
@@ -301,12 +303,16 @@ function App() {
         )}
       </main>
 
-      <FullPreviewModal 
-        isOpen={isPreviewOpen} 
-        onClose={() => setIsPreviewOpen(false)} 
-        data={data} 
-        onDownloadPDF={() => generateInvoicePDF(data)} 
-      />
+      <Suspense fallback={null}>
+        {isPreviewOpen && (
+          <FullPreviewModal 
+            isOpen={isPreviewOpen} 
+            onClose={() => setIsPreviewOpen(false)} 
+            data={data} 
+            onDownloadPDF={() => generateInvoicePDF(data)} 
+          />
+        )}
+      </Suspense>
 
       <Modal 
         isOpen={showUnsavedModal}

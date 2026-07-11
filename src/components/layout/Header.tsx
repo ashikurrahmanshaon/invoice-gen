@@ -58,8 +58,10 @@ export const Header: React.FC<HeaderProps> = ({
       height: '60px',
       display: 'flex',
       alignItems: 'center',
-      position: 'relative',
-      zIndex: 100
+      position: 'sticky',
+      top: 0,
+      zIndex: 1000,
+      transition: 'box-shadow var(--transition-fast)'
     }} className="app-header">
       <div className="container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', height: '100%', minWidth: 0, padding: '0 16px' }}>
         {/* Left: Logo */}

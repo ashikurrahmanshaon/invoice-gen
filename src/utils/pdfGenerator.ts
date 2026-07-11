@@ -1,5 +1,4 @@
-import { jsPDF } from 'jspdf';
-import autoTable from 'jspdf-autotable';
+import type { jsPDF } from 'jspdf';
 import type { InvoiceData } from '../types/invoice';
 import { formatCurrency } from './currency';
 import { formatAddress } from './addressFormatter';
@@ -38,7 +37,11 @@ const safeSplitTextToSize = (doc: jsPDF, text: string, maxWidth: number) => {
 };
 
 
-export const buildInvoicePDF = (data: InvoiceData): jsPDF => {
+export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
+  const { jsPDF } = await import('jspdf');
+  const autoTableModule = await import('jspdf-autotable');
+  const autoTable = autoTableModule.default;
+
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -66,8 +69,15 @@ export const buildInvoicePDF = (data: InvoiceData): jsPDF => {
         format = 'WEBP';
       }
       
-      doc.addImage(data.business.logoUrl, format, 20, currentY, 32, 24);
-      currentY += 28;
+      const props = doc.getImageProperties(data.business.logoUrl);
+      const maxWidth = 40;
+      const maxHeight = 28;
+      const ratio = Math.min(maxWidth / props.width, maxHeight / props.height);
+      const imgWidth = props.width * ratio;
+      const imgHeight = props.height * ratio;
+      
+      doc.addImage(data.business.logoUrl, format, 20, currentY, imgWidth, imgHeight);
+      currentY += imgHeight + 6; // slightly more breathing room
     } catch (e) {
       console.error('Failed to add logo to PDF', e);
       // Fallback: don't render logo but continue
@@ -246,9 +256,9 @@ export const buildInvoicePDF = (data: InvoiceData): jsPDF => {
     },
     columnStyles: {
       0: { cellWidth: 50 },
-      1: { cellWidth: 65 },
+      1: { cellWidth: 'auto' },
       2: { cellWidth: 25, halign: 'right' },
-      3: { cellWidth: 20, halign: 'center' },
+      3: { cellWidth: 15, halign: 'center' },
       4: { cellWidth: 25, halign: 'right' }
     },
     margin: { left: 20, right: 20 }
@@ -385,10 +395,22 @@ export const buildInvoicePDF = (data: InvoiceData): jsPDF => {
   return doc;
 };
 
-export const generateInvoicePDF = (data: InvoiceData) => {
-  const doc = buildInvoicePDF(data);
-  // Save the PDF
-  doc.save(`Invoice-${data.details.invoiceNumber || 'draft'}.pdf`);
+export const generateInvoicePDF = async (data: InvoiceData) => {
+  const filename = `Invoice-${data.details.invoiceNumber || 'draft'}.pdf`;
+
+  // Browser detection
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  
+  let newWindow: Window | null = null;
+  if (isIOS) {
+    // Open synchronously to avoid Safari popup blocker
+    newWindow = window.open('', '_blank');
+    if (newWindow) {
+      newWindow.document.write('<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#667085;">Generating PDF...</div>');
+    }
+  }
+
+  const doc = await buildInvoicePDF(data);
 
   // For automated subagent testing and screenshots
   const blobUrl = doc.output('bloburl').toString();
@@ -397,5 +419,43 @@ export const generateInvoicePDF = (data: InvoiceData) => {
 
   if (window.location.search.includes('preview=true') || (window as any).__TESTING_PREVIEW__) {
     window.location.href = blobUrl;
+    if (newWindow) newWindow.close();
+    return;
+  }
+
+  if (isIOS) {
+    try {
+      const blob = doc.output('blob');
+      const url = URL.createObjectURL(blob);
+      if (newWindow) {
+        newWindow.location.href = url;
+      } else {
+        // Fallback if popup blocker still caught it
+        window.location.href = url;
+      }
+      return;
+    } catch (e) {
+      console.warn("iOS PDF display failed:", e);
+      if (newWindow) newWindow.close();
+    }
+  }
+
+  // Mobile-friendly progressive enhancement for Android and Desktop
+  try {
+    const blob = doc.output('blob');
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 200);
+  } catch (e) {
+    console.warn("Fallback to jsPDF save due to:", e);
+    doc.save(filename);
   }
 };

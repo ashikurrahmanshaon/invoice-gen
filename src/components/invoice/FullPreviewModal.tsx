@@ -5,8 +5,9 @@ import type { InvoiceData } from '../../types/invoice';
 import { buildInvoicePDF } from '../../utils/pdfGenerator';
 import { Document, Page, pdfjs } from 'react-pdf';
 
-// Initialize PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+// Initialize PDF.js worker locally
+import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
+pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 interface FullPreviewModalProps {
   isOpen: boolean;
@@ -47,23 +48,31 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
 
     setHasError(false);
     setIsLoading(true);
+    let active = true;
     
     // Generate new PDF blob
-    try {
-      const doc = buildInvoicePDF(data);
-      const blob = doc.output('blob');
-      const newUrl = URL.createObjectURL(blob);
-      setPdfUrl(newUrl);
+    const generatePdf = async () => {
+      try {
+        const doc = await buildInvoicePDF(data);
+        if (!active) return;
+        const blob = doc.output('blob');
+        const newUrl = URL.createObjectURL(blob);
+        setPdfUrl(newUrl);
+      } catch (err) {
+        if (!active) return;
+        console.error('Failed to generate PDF preview:', err);
+        setHasError(true);
+        setIsLoading(false);
+      }
+    };
+    
+    generatePdf();
 
-      // Cleanup on data change or unmount
-      return () => {
-        URL.revokeObjectURL(newUrl);
-      };
-    } catch (err) {
-      console.error('Failed to generate PDF preview:', err);
-      setHasError(true);
-      setIsLoading(false);
-    }
+    // Cleanup on data change or unmount
+    return () => {
+      active = false;
+      if (pdfUrl) URL.revokeObjectURL(pdfUrl);
+    };
   }, [isOpen, data]);
 
   // Handle ESC and Scroll lock
@@ -224,8 +233,34 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
                         setHasError(true);
                       }}
                       loading={
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '40px', color: 'var(--color-text-secondary)' }}>
-                          <Loader2 className="animate-spin" size={24} /> Generating preview...
+                        <div style={{ padding: '24px', display: 'flex', justifyContent: 'center' }}>
+                          <div style={{ 
+                            width: pageWidth, 
+                            height: pageWidth * 1.414, // A4 aspect ratio 
+                            backgroundColor: 'var(--color-surface)', 
+                            boxShadow: 'var(--shadow-md)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            padding: '40px',
+                            gap: '24px',
+                            animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                          }}>
+                            {/* Header Skeleton */}
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+                              <div style={{ width: '40%', height: '40px', backgroundColor: '#F1F5F9', borderRadius: '4px' }} />
+                              <div style={{ width: '25%', height: '40px', backgroundColor: '#F1F5F9', borderRadius: '4px' }} />
+                            </div>
+                            {/* Lines Skeleton */}
+                            <div style={{ width: '60%', height: '16px', backgroundColor: '#F1F5F9', borderRadius: '4px' }} />
+                            <div style={{ width: '80%', height: '16px', backgroundColor: '#F1F5F9', borderRadius: '4px' }} />
+                            <div style={{ width: '50%', height: '16px', backgroundColor: '#F1F5F9', borderRadius: '4px' }} />
+                            {/* Table Skeleton */}
+                            <div style={{ marginTop: '40px', width: '100%', height: '200px', backgroundColor: '#F1F5F9', borderRadius: '8px' }} />
+                          </div>
+                          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', background: 'rgba(255,255,255,0.9)', padding: '16px 24px', borderRadius: '12px', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
+                            <Loader2 className="animate-spin" size={32} style={{ color: 'var(--color-primary)' }} />
+                            <span style={{ fontWeight: 600, color: 'var(--color-text-main)' }}>Rendering PDF...</span>
+                          </div>
                         </div>
                       }
                     >
@@ -268,7 +303,7 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
                     <ZoomIn size={18} className="text-secondary" />
                   </button>
                   <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--color-border)', margin: '0 4px' }} />
-                  <button onClick={handleFit} className={`btn ${scale === 1 ? 'btn-secondary' : 'btn-ghost'}`} style={{ padding: '0 16px', height: '36px', borderRadius: '999px', fontSize: '14px', fontWeight: '500', display: 'flex', alignItems: 'center', backgroundColor: scale === 1 ? 'var(--color-border)' : 'transparent' }}>
+                  <button onClick={handleFit} className={`btn ${scale === 1 ? 'btn-secondary' : 'btn-ghost'}`} style={{ padding: '0 16px', height: '36px', borderRadius: '999px', fontSize: '14px', fontWeight: '500', display: 'flex', alignItems: 'center', backgroundColor: scale === 1 ? 'var(--color-border)' : 'transparent' }} aria-label="Fit to screen">
                     <Maximize size={16} className={scale === 1 ? '' : 'text-secondary'} style={{ marginRight: '6px' }} />
                     Fit
                   </button>

@@ -6,10 +6,15 @@
     overflow-x: hidden !important;
     box-sizing: border-box !important;
     background-color: #F5F7FA !important;
+    scroll-behavior: smooth !important;
   }
 
   * {
     box-sizing: border-box !important;
+  }
+  
+  input, textarea, select {
+    font-size: 16px !important; /* Prevent iOS Safari Zoom on Focus */
   }
   
   .app-header {
@@ -39,9 +44,58 @@
   }
   
   .mobile-only {
-    display: block !important;
+    display: inherit !important;
+  }
+
+  /* Items Section Mobile Card Layout */
+  .items-header-row {
+    display: none !important;
   }
   
+  .items-section-wrapper {
+    overflow-x: hidden !important;
+  }
+  
+  .items-table-container {
+    min-width: 0 !important;
+  }
+
+  .item-row-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 20px !important;
+    margin-bottom: 16px !important;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .item-row-grid > div {
+    width: 100% !important;
+  }
+
+  .item-row-grid > div:nth-child(5) {
+    /* Amount */
+    text-align: left !important;
+    font-size: 16px !important;
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--color-border);
+  }
+  
+  .item-row-grid > div:last-child {
+    /* Actions */
+    justify-content: flex-start !important;
+    margin-top: 8px;
+  }
+}
+
+.item-row-grid:hover { background-color: #F8FAFC; }
+.btn-action-dup:hover { background-color: #F2F4F7; color: #344054 !important; }
+
+@media (max-width: 767px) {
   .mobile-flex {
     display: flex !important;
   }
@@ -61,7 +115,39 @@
     max-width: 100% !important;
     min-width: 0 !important;
     box-sizing: border-box !important;
-    padding-bottom: 140px !important; /* Space for sticky action bar */
+    padding-bottom: calc(100px + env(safe-area-inset-bottom)) !important;
+  }
+  
+  .sticky-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding: 16px;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+    display: flex;
+    gap: 12px;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+    z-index: 100;
+    animation: slideUp 0.2s ease-out forwards;
+  }
+  
+  .mobile-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    padding: 24px !important;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 20px !important;
+  }
+  
+  .mobile-card label {
+    margin-bottom: 8px !important;
+    font-size: 13px !important;
   }
   
   /* Reset all flex grids inside sections to stack vertically on mobile */

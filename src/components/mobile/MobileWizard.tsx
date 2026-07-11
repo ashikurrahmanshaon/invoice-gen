@@ -91,7 +91,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
         const logoUrl = await processImageFile(file);
         updateBusiness({ logoUrl });
       } catch (error) {
-        console.error('Error processing logo:', error);
+        console.error('Image processing failed:', error);
       }
     }
   };
@@ -117,7 +117,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             <p className="text-xs text-secondary" style={{ margin: 0 }}>Add the information shown on your invoice.</p>
           </div>
           
-          <div className="card animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div className="mobile-card animate-fade-in">
             {/* Business Name */}
             <div>
               <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Business Name *</label>
@@ -147,22 +147,22 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
               <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Business Logo</label>
               {data.business.logoUrl ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <img src={data.business.logoUrl} alt="Logo" style={{ width: '120px', height: '96px', objectFit: 'contain', border: '1px solid #EAECF0', borderRadius: '8px' }} />
+                  <img src={data.business.logoUrl} alt="Logo" style={{ width: '120px', height: '96px', objectFit: 'contain', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)' }} />
                   <button className="btn btn-outline text-xs" style={{ minHeight: '36px', height: '36px', padding: '0 12px' }} onClick={() => updateBusiness({ logoUrl: null })}>Remove</button>
                 </div>
               ) : (
                 <label style={{
                   width: '100%',
                   height: '96px',
-                  border: '1px dashed #D0D5DD',
-                  borderRadius: '8px',
+                  border: '1px dashed var(--color-border)',
+                  borderRadius: 'var(--radius-md)',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '4px',
                   cursor: 'pointer',
-                  background: '#FFFFFF',
+                  background: 'var(--color-surface)',
                   color: 'var(--color-text-secondary)'
                 }}>
                   <Plus size={20} className="text-secondary" />
@@ -345,7 +345,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             <p className="text-xs text-secondary" style={{ margin: 0 }}>Who should receive this invoice?</p>
           </div>
           
-          <div className="card animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div className="mobile-card animate-fade-in">
             <ClientPicker 
               clients={clientHook.clients} 
               onSelect={handleSelectSavedClient} 
@@ -511,34 +511,26 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           
           <div className="flex-col gap-4" style={{ width: '100%' }}>
             {data.items.map((item, index) => (
-              <div key={item.id} style={{
-                background: '#FFFFFF',
-                border: '1px solid #EAECF0',
-                borderRadius: '12px',
-                padding: '16px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px',
-                width: '100%',
-                boxSizing: 'border-box'
-              }} className="mobile-item-card">
+              <div key={item.id} className="mobile-card mobile-item-card">
                 {/* Top Row: Item Label + Actions */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontWeight: 700, fontSize: '14px', color: 'var(--color-text-main)' }}>Item {index + 1}</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <button 
                       onClick={() => duplicateItem(item.id)}
-                      style={{ width: '44px', height: '44px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#667085', background: 'none', border: 'none', padding: 0 }}
-                      className="btn-action-dup"
+                      className="btn-ghost"
+                      style={{ width: '44px', height: '44px', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-text-secondary)', background: 'none', border: 'none', padding: 0 }}
+                      aria-label="Duplicate item"
                     >
                       <Copy size={16} />
                     </button>
                     <button 
                       onClick={() => removeItem(item.id)}
-                      style={{ width: '44px', height: '44px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#D92D20', background: 'none', border: 'none', padding: 0 }}
-                      className="btn-action-del"
+                      className="btn-ghost"
+                      style={{ width: '44px', height: '44px', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-error)', background: 'none', border: 'none', padding: 0 }}
+                      aria-label="Remove item"
                     >
-                      <Trash2 size={16} />
+                      <Trash2 size={18} />
                     </button>
                   </div>
                 </div>
@@ -623,8 +615,8 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           </button>
 
           {/* Compact Running Subtotal */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#F8FAFC', border: '1px solid #E4E7EC', borderRadius: '8px', padding: '12px 16px', marginTop: '4px', marginBottom: '80px' }}>
-            <span style={{ fontSize: '13px', fontWeight: 500, color: 'var(--color-text-secondary)' }}>Running Subtotal</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--color-background)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '12px 16px', marginTop: '4px', marginBottom: '80px' }}>
+            <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-main)' }}>Subtotal</span>
             <span style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-main)' }}>
               {formatCurrency(data.totals.subtotal, data.details.currency)}
             </span>
@@ -641,17 +633,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           </div>
 
           {/* Summary Card */}
-          <div style={{
-            background: '#FFFFFF',
-            border: '1px solid #EAECF0',
-            borderRadius: '12px',
-            padding: '16px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '12px',
-            width: '100%',
-            boxSizing: 'border-box'
-          }}>
+          <div className="mobile-card">
             <span style={{ fontSize: '11px', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Summary</span>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -750,37 +732,15 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           {/* Secondary Toggles Row */}
           <div style={{ display: 'flex', gap: '12px' }}>
             {!showTerms && (
-              <button 
-                className="btn btn-outline text-xs" 
-                style={{ minHeight: '36px', height: '36px', padding: '0 12px', fontWeight: 500 }}
-                onClick={() => setShowTerms(true)}
-              >
-                {data.terms ? 'Edit terms' : '+ Add terms'}
-              </button>
+              <button onClick={() => setShowTerms(true)} className="btn btn-outline" style={{ height: '44px' }}>+ Add terms</button>
             )}
             {!showInstructions && (
-              <button 
-                className="btn btn-outline text-xs" 
-                style={{ minHeight: '36px', height: '36px', padding: '0 12px', fontWeight: 500 }}
-                onClick={() => setShowInstructions(true)}
-              >
-                {data.paymentInstructions ? 'Edit instructions' : '+ Payment instructions'}
-              </button>
+              <button onClick={() => setShowInstructions(true)} className="btn btn-outline" style={{ height: '44px' }}>+ Payment instructions</button>
             )}
           </div>
 
           {/* Mobile Totals Card (Same Grid Alignment as Desktop) */}
-          <div style={{
-            background: '#F8FAFC',
-            border: '1px solid #E4E7EC',
-            borderRadius: '12px',
-            padding: '20px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '16px',
-            width: '100%',
-            boxSizing: 'border-box'
-          }}>
+          <div className="mobile-card" style={{ background: '#F8FAFC' }}>
             {/* Subtotal Row */}
             <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '8px', alignItems: 'center', fontSize: '14px', color: 'var(--color-text-main)', fontWeight: 500 }}>
               <span>Subtotal</span>
@@ -791,26 +751,25 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
 
             {/* Discount Row */}
             {enableDiscount ? (
-              <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '8px', alignItems: 'center', fontSize: '14px' }}>
-                <span className="text-secondary">Discount</span>
-                <div style={{ justifySelf: 'start', display: 'flex', border: '1px solid var(--color-border)', borderRadius: '6px', background: 'white', overflow: 'hidden', height: '32px', width: '92px' }}>
+              <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', minHeight: '32px' }}>
+                <span className="text-sm font-medium" style={{ color: 'var(--color-text-main)' }}>Discount</span>
+                <div style={{ justifySelf: 'start', display: 'flex', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', background: 'var(--color-surface)', overflow: 'hidden', height: '32px', width: '92px' }}>
                   <input 
                     type="text" 
-                    value={totals.discountValue !== undefined ? totals.discountValue : ''}
-                    onChange={(e) => {
-                      if (isValidDecimalInput(e.target.value)) setDiscount(e.target.value, totals.discountType);
-                    }}
-                    style={{ border: 'none', padding: '0 6px', width: '100%', minWidth: 0, textAlign: 'right', minHeight: 'auto', height: '100%', fontSize: '12px', background: 'none', outline: 'none' }}
+                    value={Number(totals.discountValue) > 0 ? totals.discountValue : ''}
                     placeholder="0"
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (isValidDecimalInput(val)) setDiscount(val, totals.discountType);
+                    }}
+                    style={{ border: 'none', padding: '0 6px', width: '100%', minHeight: 'auto', height: '100%', fontSize: '12px', textAlign: 'right', outline: 'none' }}
                   />
-                  <select 
-                    value={totals.discountType}
-                    onChange={(e) => setDiscount(totals.discountValue, e.target.value as 'percent' | 'flat')}
-                    style={{ border: 'none', borderLeft: '1px solid var(--color-border)', background: '#F8FAFC', fontSize: '11px', height: '100%', padding: '0 4px', width: '38px', minHeight: 'auto', borderRadius: 0, flexShrink: 0 }}
+                  <button 
+                    onClick={() => setDiscount(totals.discountValue, totals.discountType === 'percent' ? 'flat' : 'percent')}
+                    style={{ border: 'none', borderLeft: '1px solid var(--color-border)', background: 'var(--color-background)', fontSize: '11px', height: '100%', padding: '0 4px', width: '38px', minHeight: 'auto', borderRadius: 0, flexShrink: 0 }}
                   >
-                    <option value="percent">%</option>
-                    <option value="flat">{symbol}</option>
-                  </select>
+                    {totals.discountType === 'percent' ? '%' : symbol}
+                  </button>
                 </div>
                 <button 
                   onClick={() => { setEnableDiscount(false); setDiscount(0, 'percent'); }} 
@@ -855,17 +814,18 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                   placeholder="Tax"
                   style={{ border: '1px solid transparent', background: 'transparent', outline: 'none', padding: 0, margin: 0, width: '100%', fontSize: '14px' }}
                 />
-                <div style={{ justifySelf: 'start', display: 'flex', alignItems: 'center', border: '1px solid var(--color-border)', borderRadius: '6px', background: 'white', overflow: 'hidden', height: '32px', width: '92px' }}>
+                <div style={{ justifySelf: 'start', display: 'flex', alignItems: 'center', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', background: 'var(--color-surface)', overflow: 'hidden', height: '32px', width: '92px' }}>
                   <input 
                     type="text" 
-                    value={totals.taxRate !== undefined ? totals.taxRate : ''}
-                    onChange={(e) => {
-                      if (isValidDecimalInput(e.target.value)) setTaxRate(e.target.value);
-                    }}
-                    style={{ border: 'none', padding: '0 6px', width: '100%', minWidth: 0, textAlign: 'right', minHeight: 'auto', height: '100%', fontSize: '12px', background: 'none', outline: 'none' }}
+                    value={Number(totals.taxRate) > 0 ? totals.taxRate : ''}
                     placeholder="0"
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (isValidDecimalInput(val)) setTaxRate(val);
+                    }}
+                    style={{ border: 'none', padding: '0 4px 0 6px', width: '100%', minHeight: 'auto', height: '100%', fontSize: '12px', textAlign: 'right', outline: 'none' }}
                   />
-                  <span style={{ fontSize: '11px', color: 'var(--color-text-tertiary)', paddingRight: '8px', background: 'white', userSelect: 'none' }}>%</span>
+                  <span style={{ fontSize: '11px', color: 'var(--color-text-tertiary)', paddingRight: '8px', background: 'var(--color-surface)', userSelect: 'none' }}>%</span>
                 </div>
                 <button 
                   onClick={() => { setEnableTax(false); setTaxRate(0); }} 
@@ -901,12 +861,13 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                   <span style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', fontSize: '11px', color: 'var(--color-text-tertiary)', pointerEvents: 'none' }}>{symbol}</span>
                   <input 
                     type="text" 
-                    value={totals.shipping !== undefined ? totals.shipping : ''}
-                    onChange={(e) => {
-                      if (isValidDecimalInput(e.target.value)) setShipping(e.target.value);
-                    }}
-                    style={{ border: '1px solid var(--color-border)', padding: '0 6px 0 16px', width: '100%', minHeight: 'auto', height: '100%', fontSize: '12px', borderRadius: '6px', textAlign: 'right', outline: 'none' }}
+                    value={Number(totals.shipping) > 0 ? totals.shipping : ''}
                     placeholder="0.00"
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (isValidDecimalInput(val)) setShipping(val);
+                    }}
+                    style={{ border: '1px solid var(--color-border)', padding: '0 6px 0 16px', width: '100%', minHeight: 'auto', height: '100%', fontSize: '12px', borderRadius: 'var(--radius-sm)', textAlign: 'right', outline: 'none' }}
                   />
                 </div>
                 <button 
@@ -986,18 +947,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       )}
 
       {/* MOBILE BOTTOM ACTION BAR */}
-      <div style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        background: '#FFFFFF',
-        borderTop: '1px solid #EAECF0',
-        padding: '12px 16px calc(12px + env(safe-area-inset-bottom))',
-        display: 'flex',
-        gap: '12px',
-        zIndex: 1000
-      }} className="mobile-only">
+      <div className="mobile-only sticky-bottom-bar">
         {currentStage === 1 && (
           <button className="btn btn-primary" style={{ width: '100%' }} onClick={() => setStage(2)}>
             Continue to Client

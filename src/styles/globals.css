@@ -32,7 +32,7 @@ input, select {
   border-radius: var(--radius-md);
   padding: 0 16px;
   width: 100%;
-  background: #FFFFFF;
+  background: var(--color-surface);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
   height: 48px;
   min-height: 48px;
@@ -50,13 +50,18 @@ textarea {
   border-radius: var(--radius-md);
   padding: 12px 16px;
   width: 100%;
-  background: #FFFFFF;
+  background: var(--color-surface);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+button:focus-visible {
+  outline: none;
   box-shadow: var(--shadow-focus);
 }
 
@@ -311,3 +316,8 @@ a {
     transition-duration: 0.01ms !important;
   }
 }
+
+@keyframes pulse {
+  50% { opacity: 0.5; }
+}
+

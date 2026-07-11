@@ -93,9 +93,36 @@ export function HistoryDashboard({
       </div>
 
       {filteredHistory.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '64px 0', color: 'var(--text-secondary)' }}>
-          <FileText size={48} style={{ opacity: 0.2, margin: '0 auto 16px' }} />
-          <p>No invoices found in history.</p>
+        <div style={{ 
+          textAlign: 'center', 
+          padding: '80px 24px', 
+          backgroundColor: 'var(--color-surface)',
+          borderRadius: 'var(--radius-xl)',
+          border: '1px dashed var(--color-border)',
+          marginTop: '24px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '16px'
+        }}>
+          <div style={{
+            width: '80px',
+            height: '80px',
+            backgroundColor: 'var(--color-background)',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '8px'
+          }}>
+            <FileText size={40} style={{ color: 'var(--color-primary)' }} />
+          </div>
+          <div>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text-main)', marginBottom: '8px', marginTop: 0 }}>No invoices found</h3>
+            <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.9375rem', maxWidth: '320px', margin: '0 auto' }}>
+              Create your first invoice to see it appear here. Keep track of what you've sent and what's been paid.
+            </p>
+          </div>
         </div>
       ) : (
         <div className="history-list" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
