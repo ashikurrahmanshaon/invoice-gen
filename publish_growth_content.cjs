@@ -1,6 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
+function cleanText(str) {
+  const clean = str.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  if (clean.length > 155) {
+    return clean.substring(0, 152) + '...';
+  }
+  return clean;
+}
+
 // 20 High-Value Templates
 const templates = [
   {
@@ -781,14 +789,14 @@ templates.forEach(t => {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${t.title} | Invoice-Gen</title>
-  <meta name="description" content="${t.subtitle}" />
+  <meta name="description" content="${cleanText(t.subtitle)}" />
   <link rel="canonical" href="https://invoice-gen.net/templates/${t.slug}/" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta property="og:title" content="${t.title} | Invoice-Gen" />
-  <meta property="og:description" content="${t.subtitle}" />
+  <meta property="og:description" content="${cleanText(t.subtitle)}" />
   <meta property="og:url" content="https://invoice-gen.net/templates/${t.slug}/" />
   <meta property="og:type" content="website" />
   <style>
@@ -1045,14 +1053,14 @@ blogs.forEach(b => {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${b.title} | Invoice-Gen</title>
-  <meta name="description" content="${b.sections[0].p}" />
+  <meta name="description" content="${cleanText(b.sections[0].p)}" />
   <link rel="canonical" href="https://invoice-gen.net/blog/${b.slug}/" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta property="og:title" content="${b.title} | Invoice-Gen" />
-  <meta property="og:description" content="${b.sections[0].p}" />
+  <meta property="og:description" content="${cleanText(b.sections[0].p)}" />
   <meta property="og:url" content="https://invoice-gen.net/blog/${b.slug}/" />
   <meta property="og:type" content="article" />
   <style>
