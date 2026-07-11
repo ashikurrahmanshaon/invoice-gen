@@ -2,3 +2,13 @@
   AddType text/javascript .js
   AddType text/javascript .mjs
 </IfModule>
+
+RewriteEngine On
+
+# Redirect WWW to Non-WWW
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Invoice-Gen</title>
+  <meta name="description" content="Read the Invoice-Gen Privacy Policy. Learn how our browser-native architecture guarantees your billing data never leaves your device." />
+  <link rel="canonical" href="https://invoice-gen.net/privacy/" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --color-primary: #155EEF;
+      --color-primary-hover: #2E72FF;
+      --color-text-main: #0F172A;
+      --color-text-secondary: #475569;
+      --color-border: #E2E8F0;
+      --color-bg: #FAFCFF;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text-main);
+      background-color: var(--color-bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header Nav */
+    header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 72px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--color-text-main);
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #2E72FF 0%, #155EEF 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    .btn-cta {
+      background-color: var(--color-primary);
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 180ms ease;
+      box-shadow: 0 4px 12px rgba(21, 94, 239, 0.15);
+    }
+
+    .btn-cta:hover {
+      background-color: var(--color-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Main Content container */
+    main {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--color-text-secondary);
+      margin-bottom: 48px;
+    }
+
+    /* Content Styling */
+    .content-section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-top: 32px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 8px;
+    }
+
+    p {
+      color: var(--color-text-secondary);
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      margin-left: 24px;
+      margin-bottom: 20px;
+      color: var(--color-text-secondary);
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .highlight-card {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .highlight-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--color-primary);
+    }
+
+    /* Footer */
+    footer {
+      background: white;
+      border-top: 1px solid var(--color-border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="/" class="logo-link">
+        <div class="logo-icon"></div>
+        <span>Invoice-Gen</span>
+      </a>
+      <a href="/" class="btn-cta">Create Invoice</a>
+    </div>
+  </header>
+
+  <main>
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">Effective Date: July 11, 2026</p>
+
+    <div class="content-section">
+      <p>At Invoice-Gen, we believe that your financial details, billing records, and client relationships are strictly your business. This Privacy Policy details how our browser-native application handles information.</p>
+    </div>
+
+    <div class="content-section">
+      <h2>1. Information We Do Not Collect</h2>
+      <p>Invoice-Gen operates under a zero-storage server architecture. When you create an invoice, enter item quantities, input business profiles, or define client names:</p>
+      <ul>
+        <li>No data is transmitted to or stored on any external databases or cloud servers.</li>
+        <li>No account creation is required to use our application.</li>
+        <li>Your financial data is processed in real-time solely within your local browser sandbox.</li>
+      </ul>
+    </div>
+
+    <div class="content-section">
+      <h2>2. Local Storage</h2>
+      <p>To help you manage invoice history, client defaults, and business settings, Invoice-Gen stores configurations locally on your physical device using your web browser's <code>localStorage</code> sandbox.</p>
+      <p>This data remains in your control at all times. You can permanently erase all stored settings at any time by clearing your browser's site cookies and local storage data, or by using the "Reset" options inside the application.</p>
+    </div>
+
+    <div class="content-section">
+      <h2>3. Analytics & UX Metrics</h2>
+      <p>To improve user experience and monitor performance, we utilize Google Analytics 4 (GA4) and Microsoft Clarity. These platforms capture generalized telemetry (e.g., page views, button click actions, device types).</p>
+      <p><strong>Strict Privacy Guardrails:</strong> Microsoft Clarity is programmatically set to mask all input fields globally. No actual text entered into form inputs (such as business names, client emails, tax rates, or totals) is ever captured or sent to Microsoft Clarity.</p>
+    </div>
+
+    <div class="highlight-card">
+      <h3>Your Data Belongs to You</h3>
+      <p>Because PDF compilation and rendering happen fully in client-side memory, Invoice-Gen guarantees complete offline-ready privacy. Your business parameters never cross the internet network boundary.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms of Service</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <p>&copy; 2026 Invoice-Gen. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
