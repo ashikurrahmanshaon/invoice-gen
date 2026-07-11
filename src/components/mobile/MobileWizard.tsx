@@ -956,14 +956,14 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       {mounted && createPortal(
         <div className="mobile-only premium-bottom-bar">
           {currentStage === 1 && (
-            <div style={{ display: 'flex', gap: '20px', width: '100%' }}>
+            <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
               <button className="premium-btn-primary full-width" onClick={() => setStage(2)}>
                 Continue to Client <ArrowRight size={18} />
               </button>
             </div>
           )}
           {currentStage === 2 && (
-            <div style={{ display: 'flex', gap: '20px', width: '100%' }}>
+            <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
               <button className="premium-btn-back" onClick={() => setStage(1)}>
                 <ArrowLeft size={18} /> Back
               </button>
@@ -973,7 +973,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             </div>
           )}
           {currentStage === 3 && (
-            <div style={{ display: 'flex', gap: '20px', width: '100%' }}>
+            <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
               <button className="premium-btn-back" onClick={() => setStage(2)}>
                 <ArrowLeft size={18} /> Back
               </button>
@@ -983,12 +983,12 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             </div>
           )}
           {currentStage === 4 && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%' }}>
-              <div style={{ display: 'flex', gap: '20px', width: '100%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
+              <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
                 <button className="premium-btn-back" onClick={() => setStage(3)}>
                   <ArrowLeft size={18} /> Back
                 </button>
-                <button className="premium-btn-back" style={{ flex: '58 1 0%' }} onClick={onOpenFullPreview}>
+                <button className="premium-btn-back" style={{ flex: '60 1 0%' }} onClick={onOpenFullPreview}>
                   Preview
                 </button>
               </div>
@@ -1004,28 +1004,27 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       <style>{`
         .premium-bottom-bar {
           position: fixed;
-          bottom: 0;
+          bottom: calc(20px + env(safe-area-inset-bottom));
           left: 50%;
           transform: translateX(-50%);
-          width: 100%;
+          width: calc(100% - 48px);
           max-width: 640px;
           background: rgba(255, 255, 255, 0.92);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border-top: 1px solid rgba(0, 0, 0, 0.04);
-          border-top-left-radius: 24px;
-          border-top-right-radius: 24px;
-          padding: 18px 24px calc(20px + env(safe-area-inset-bottom)) 24px;
-          box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          border-radius: 24px;
+          padding: 12px;
+          box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.12), 0 6px 16px rgba(0, 0, 0, 0.06);
           z-index: 9999;
-          animation: slideUpBottom 0.2s ease-out forwards;
+          animation: slideUpFloating 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        @keyframes slideUpBottom {
-          from { opacity: 0; transform: translate(-50%, 20px); }
-          to { opacity: 1; transform: translate(-50%, 0); }
+        @keyframes slideUpFloating {
+          from { opacity: 0; transform: translate(-50%, 30px) scale(0.95); }
+          to { opacity: 1; transform: translate(-50%, 0) scale(1); }
         }
         .premium-btn-back {
-          flex: 42 1 0%;
+          flex: 40 1 0%;
           height: 56px;
           border-radius: 16px;
           background: #FFFFFF;
@@ -1037,20 +1036,23 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           align-items: center;
           justify-content: center;
           gap: 8px;
-          transition: all 0.2s ease;
+          transition: all 180ms ease;
           cursor: pointer;
         }
         .premium-btn-back:hover {
           background: #F9FAFB;
+          transform: translateY(-1px);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
         .premium-btn-back:active {
-          transform: scale(0.97);
+          transform: scale(0.98);
+          box-shadow: none;
         }
         .premium-btn-primary {
-          flex: 58 1 0%;
+          flex: 60 1 0%;
           height: 56px;
           border-radius: 16px;
-          background: linear-gradient(180deg, #2E72FF 0%, #155EEF 100%);
+          background: linear-gradient(180deg, #3B82F6 0%, #2563EB 100%);
           color: #FFFFFF;
           font-weight: 600;
           font-size: 16px;
@@ -1059,20 +1061,20 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           justify-content: center;
           gap: 8px;
           border: none;
-          box-shadow: 0 4px 12px rgba(21, 94, 239, 0.25);
-          transition: all 0.2s ease;
+          box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+          transition: all 180ms ease;
           cursor: pointer;
         }
         .premium-btn-primary.full-width {
           flex: 1 1 100%;
         }
         .premium-btn-primary:hover {
-          box-shadow: 0 6px 16px rgba(21, 94, 239, 0.3);
+          box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
           transform: translateY(-1px);
         }
         .premium-btn-primary:active {
-          transform: scale(0.97) translateY(0);
-          box-shadow: 0 2px 8px rgba(21, 94, 239, 0.2);
+          transform: scale(0.98);
+          box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
         }
         .hover-text-error:hover { color: var(--color-error) !important; }
         .mobile-item-card .btn-action-dup:hover { background-color: #F2F4F7; color: #344054 !important; }
