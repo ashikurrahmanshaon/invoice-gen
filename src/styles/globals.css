@@ -10,7 +10,8 @@
 
 body {
   font-family: var(--font-family);
-  background-color: var(--color-background);
+  background: radial-gradient(circle at 50% 0%, #FFFFFF 0%, #F8FAFC 50%, #F1F5F9 100%);
+  background-attachment: fixed;
   color: var(--color-text-main);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -256,16 +257,16 @@ a {
 /* Cards */
 .card {
   background: var(--color-surface);
-  border-radius: var(--radius-xl); /* Standardize card radius to radius-xl */
+  border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
-  padding: var(--space-6);
+  padding: var(--space-5);
   transition: box-shadow var(--transition-normal), transform var(--transition-normal);
 }
 
 .card:hover {
   box-shadow: var(--shadow-md);
-  transform: translateY(-1px); /* Subtle premium translate (1px instead of 2px) */
+  transform: translateY(-0.5px);
 }
 
 .step-badge {
@@ -287,7 +288,7 @@ a {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 380px;
   gap: 24px;
-  padding: var(--space-6) 0;
+  padding: 12px 0 24px 0;
   align-items: flex-start;
 }
 

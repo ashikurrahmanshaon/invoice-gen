@@ -74,15 +74,17 @@ export const Header: React.FC<HeaderProps> = ({
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '6px',
-        fontSize: '11px',
+        gap: '4px',
+        fontSize: '10.5px',
         fontWeight: 600,
         color: color,
         backgroundColor: bg,
-        padding: '2px 8px',
+        padding: '2px 6px',
         borderRadius: '999px',
         border: border,
-        transition: 'all 0.2s ease'
+        transition: 'all 0.2s ease',
+        height: '18px',
+        lineHeight: 1
       }}>
         <span className="status-dot-pulse" style={{ color: dotColor }}></span>
         <span>{text}</span>
@@ -107,8 +109,8 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Style block for Header self-contained classes */}
         <style>{`
           .status-dot-pulse {
-            width: 5px;
-            height: 5px;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
             background-color: currentColor;
             display: inline-block;
@@ -119,7 +121,7 @@ export const Header: React.FC<HeaderProps> = ({
             position: absolute;
             inset: -2px;
             border-radius: 50%;
-            border: 2px solid currentColor;
+            border: 1.5px solid currentColor;
             opacity: 0;
             animation: pulse-ring 2.2s infinite ease-out;
           }
@@ -261,8 +263,8 @@ export const Header: React.FC<HeaderProps> = ({
             {getStatusPill()}
           </div>
 
-          {/* Desktop Actions */}
-          <div className="desktop-only" style={{ display: 'flex', gap: '8px' }}>
+          {/* Action Buttons (Unified Responsive Design) */}
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
             {activeView === 'editor' && (
               <button 
                 className="btn btn-sm header-save-btn" 
@@ -280,16 +282,6 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             )}
           </div>
-
-          {/* Mobile PDF Action */}
-          {activeView === 'editor' && onDownloadPDF && (
-            <button 
-              className="btn btn-sm mobile-only header-pdf-btn" 
-              onClick={onDownloadPDF}
-            >
-              <Download size={12} /> PDF
-            </button>
-          )}
 
           {/* Meatball Menu (Both Desktop & Mobile for Reset) */}
           <div style={{ position: 'relative' }} ref={menuRef}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, ChevronRight } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 interface StageIndicatorProps {
   currentStage: number;
@@ -62,8 +62,8 @@ export const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, on
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'flex-start',
-      gap: '16px',
-      padding: '0 0 24px 0',
+      gap: '12px',
+      padding: '0 0 20px 0',
       borderBottom: '1px solid var(--color-border)',
       width: '100%'
     }}>
@@ -73,16 +73,16 @@ export const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, on
         const isLast = idx === stages.length - 1;
 
         let circleBg = 'transparent';
-        let circleBorder = '2px solid #E4E7EC';
-        let circleColor = '#98A2B3';
+        let circleBorder = '1px solid var(--color-border)';
+        let circleColor = '#94A3B8';
 
         if (isActive) {
           circleBg = 'var(--color-primary)';
-          circleBorder = '2px solid var(--color-primary)';
+          circleBorder = '1px solid var(--color-primary)';
           circleColor = '#FFFFFF';
         } else if (isPast) {
           circleBg = 'transparent';
-          circleBorder = '2px solid var(--color-primary)';
+          circleBorder = '1px solid var(--color-primary)';
           circleColor = 'var(--color-primary)';
         }
 
@@ -92,16 +92,17 @@ export const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, on
               style={{ 
                 display: 'flex', 
                 alignItems: 'center', 
-                gap: '12px', 
+                gap: '8px', 
                 cursor: onStageChange ? 'pointer' : 'default',
-                opacity: (isActive || isPast) ? 1 : 0.6
+                opacity: (isActive || isPast) ? 1 : 0.6,
+                transition: 'opacity 0.2s ease'
               }} 
               onClick={() => onStageChange?.(stage.num)}
             >
               <div 
                 style={{
-                  width: '28px',
-                  height: '28px',
+                  width: '24px',
+                  height: '24px',
                   borderRadius: '50%',
                   background: circleBg,
                   border: circleBorder,
@@ -109,18 +110,18 @@ export const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, on
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '13px',
+                  fontSize: '11px',
                   fontWeight: 600,
                   transition: 'all 0.2s ease'
                 }}
               >
-                {isPast ? <Check size={14} strokeWidth={3} /> : stage.num}
+                {isPast ? <Check size={11} strokeWidth={3} /> : stage.num}
               </div>
               <span 
                 style={{ 
-                  fontSize: '14px',
+                  fontSize: '13px',
                   fontWeight: isActive ? 600 : 500,
-                  color: (isActive || isPast) ? 'var(--color-text-main)' : 'var(--color-text-secondary)',
+                  color: (isActive || isPast) ? 'var(--color-text-main)' : 'var(--color-text-tertiary)',
                   transition: 'all 0.2s ease'
                 }}
               >
@@ -129,7 +130,7 @@ export const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, on
             </div>
             
             {!isLast && (
-              <ChevronRight size={16} color="#D0D5DD" strokeWidth={2.5} />
+              <div style={{ width: '16px', height: '1px', backgroundColor: 'var(--color-border)', margin: '0 4px' }} />
             )}
           </React.Fragment>
         );
