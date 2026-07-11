@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trust Center | Invoice-Gen</title>
+  <meta name="description" content="Welcome to the Invoice-Gen Trust Center. Read about our privacy-first browser architecture, local sandbox security, and data transparency commitments." />
+  <link rel="canonical" href="https://invoice-gen.net/trust/" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --color-primary: #155EEF;
+      --color-primary-hover: #2E72FF;
+      --color-text-main: #0F172A;
+      --color-text-secondary: #475569;
+      --color-border: #E2E8F0;
+      --color-bg: #FAFCFF;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text-main);
+      background-color: var(--color-bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header Nav */
+    header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 72px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--color-text-main);
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #2E72FF 0%, #155EEF 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    .btn-cta {
+      background-color: var(--color-primary);
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 180ms ease;
+      box-shadow: 0 4px 12px rgba(21, 94, 239, 0.15);
+    }
+
+    .btn-cta:hover {
+      background-color: var(--color-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Main Container */
+    main {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    h1 {
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Grid for Features */
+    .feature-section {
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 8px;
+    }
+
+    p {
+      color: var(--color-text-secondary);
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      margin-left: 24px;
+      margin-bottom: 20px;
+      color: var(--color-text-secondary);
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .highlight-card {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .highlight-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--color-primary);
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      margin-top: 64px;
+    }
+
+    .faq-item {
+      margin-bottom: 24px;
+    }
+
+    .faq-item h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+    }
+
+    /* Footer */
+    footer {
+      background: white;
+      border-top: 1px solid var(--color-border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="/" class="logo-link">
+        <div class="logo-icon"></div>
+        <span>Invoice-Gen</span>
+      </a>
+      <a href="/" class="btn-cta">Create Invoice</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Trust Center</h1>
+      <p class="subtitle">Our commitments to user privacy, data security, and service transparency.</p>
+    </div>
+
+    <div class="feature-section">
+      <h2>1. Privacy-First Browser Architecture</h2>
+      <p>Invoice-Gen operates differently than traditional software platforms. Because your data is highly sensitive, we chose a decentralized, browser-native approach to computing:</p>
+      <ul>
+        <li><strong>Client-Side Engine:</strong> All PDF compilation, page rendering, and arithmetic math occur entirely inside your browser's virtual memory sandbox.</li>
+        <li><strong>Zero Database Footprint:</strong> We do not provision backend SQL databases to store your business details, client logs, or past transactions.</li>
+        <li><strong>Offline Safety:</strong> The application can compile and render invoices without sending a single network request containing your invoice content.</li>
+      </ul>
+    </div>
+
+    <div class="feature-section">
+      <h2>2. Local Sandbox Security</h2>
+      <p>Rather than managing cloud login profiles, Invoice-Gen secures your work locally:</p>
+      <ul>
+        <li><strong>Browser Local Storage:</strong> Business profiles, client data, and invoice history records are stored directly inside your device's browser sandbox using <code>localStorage</code>.</li>
+        <li><strong>HTTPS Protocols:</strong> The site enforces secure TLS/HTTPS encryption globally, ensuring all assets and scripts are served securely from our content servers.</li>
+        <li><strong>No Personal Data Harvesting:</strong> We do not collect names, email addresses, or tax IDs. You are never forced to register a user profile.</li>
+      </ul>
+    </div>
+
+    <div class="feature-section">
+      <h2>3. Data Collection Transparency</h2>
+      <p>We believe in absolute transparency about what we measure. To monitor performance and keep the tool stable, we gather non-identifying telemetry:</p>
+      <ul>
+        <li><strong>What We Collect:</strong> Page views, button clicks (e.g. downloads, stage completions), and basic hardware parameters (browser version, screen dimensions).</li>
+        <li><strong>What We NEVER Collect:</strong> Financial totals, rates, customer data, business registration numbers, or bank routing values.</li>
+        <li><strong>Microsoft Clarity Input Masking:</strong> Microsoft Clarity is explicitly configured with global input masking enabled. Even in session recordings, form fields appear permanently hidden to guarantee privacy.</li>
+      </ul>
+    </div>
+
+    <div class="feature-section">
+      <h2>4. Reliability & Maintenance</h2>
+      <p>We deploy continuous, test-verified updates to keep the invoice generator robust across platforms:</p>
+      <ul>
+        <li><strong>Browser Compatibility:</strong> Extensively audited on Chrome, Safari, Edge, Android Chrome, and iOS Safari.</li>
+        <li><strong>Production Builds:</strong> Deployed via automated pipelines verifying TypeScript validation and bundle optimizations.</li>
+        <li><strong>Zero External Ads:</strong> A clean interface free of resource-heavy tracking ads.</li>
+      </ul>
+    </div>
+
+    <div class="faq-section">
+      <h2>Trust FAQ</h2>
+      
+      <div class="faq-item">
+        <h3>Is my invoice uploaded to a server?</h3>
+        <p>No. Your invoice is generated entirely in the client-side JavaScript engine in your browser. The PDF is created locally using <code>jsPDF</code> and downloaded directly to your device.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can Invoice-Gen employees view my invoices?</h3>
+        <p>No. Because we have no central database or file storage servers for invoice records, it is physically impossible for our team to inspect or access your invoices.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Do I need an account to use the application?</h3>
+        <p>No. You can begin generating professional invoices immediately upon loading the site. We do not require registration or sign-ups.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I use Invoice-Gen for free?</h3>
+        <p>Yes. Invoice-Gen is a 100% free utility with no premium restrictions, paywalls, or limits on the volume of invoices generated.</p>
+      </div>
+    </div>
+
+    <div class="highlight-card">
+      <h3>Securing Your Trust Every Day</h3>
+      <p>Our commitment is simple: to provide a professional, SaaS-quality tool that respects your privacy. If you have questions about our data sandbox parameters, please visit our <a href="/privacy/">Privacy Policy</a> or get in touch via the <a href="/contact/">Contact Page</a>.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms of Service</a>
+      <a href="/contact/">Contact</a>
+      <a href="/trust/">Trust Center</a>
+    </div>
+    <p>&copy; 2026 Invoice-Gen. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

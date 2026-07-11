@@ -30,10 +30,21 @@ export const Footer: React.FC = () => {
           {/* Navigation Columns */}
           <div style={{ display: 'flex', gap: 'var(--space-12)', flexWrap: 'wrap' }}>
             <div className="flex-col gap-2">
-              <span style={{ color: 'white', fontWeight: 600, fontSize: 'var(--text-xs)', textTransform: 'uppercase', letterSpacing: '1px' }}>Links</span>
-              <a href="#root" style={{ color: '#98A2B3' }} className="hover:text-white">Invoice Generator</a>
+              <span style={{ color: 'white', fontWeight: 600, fontSize: 'var(--text-xs)', textTransform: 'uppercase', letterSpacing: '1px' }}>Product</span>
+              <a href="/" style={{ color: '#98A2B3' }} className="hover:text-white">Invoice Generator</a>
               <a href="#how-it-works" style={{ color: '#98A2B3' }} className="hover:text-white">How It Works</a>
               <a href="#faq" style={{ color: '#98A2B3' }} className="hover:text-white">FAQ</a>
+            </div>
+            <div className="flex-col gap-2">
+              <span style={{ color: 'white', fontWeight: 600, fontSize: 'var(--text-xs)', textTransform: 'uppercase', letterSpacing: '1px' }}>Company</span>
+              <a href="/about/" style={{ color: '#98A2B3' }} className="hover:text-white">About Us</a>
+              <a href="/contact/" style={{ color: '#98A2B3' }} className="hover:text-white">Contact</a>
+              <a href="/trust/" style={{ color: '#98A2B3' }} className="hover:text-white">Trust Center</a>
+            </div>
+            <div className="flex-col gap-2">
+              <span style={{ color: 'white', fontWeight: 600, fontSize: 'var(--text-xs)', textTransform: 'uppercase', letterSpacing: '1px' }}>Legal</span>
+              <a href="/privacy/" style={{ color: '#98A2B3' }} className="hover:text-white">Privacy Policy</a>
+              <a href="/terms/" style={{ color: '#98A2B3' }} className="hover:text-white">Terms of Service</a>
             </div>
           </div>
         </div>
