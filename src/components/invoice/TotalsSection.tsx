@@ -44,8 +44,9 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
         {/* Left Side: Notes & Conditions */}
         <div className="flex-col gap-4">
           <div>
-            <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Notes</label>
+            <label htmlFor="invoice-notes-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Notes</label>
             <textarea 
+              id="invoice-notes-input"
               placeholder="Add a special note or thank you message for your client..."
               value={data.notes}
               onChange={(e) => updateOtherFields({ notes: e.target.value })}
@@ -56,7 +57,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
           {showTerms && (
             <div className="animate-fade-in">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <label className="text-xs font-semibold text-secondary">Terms & Conditions</label>
+                <label htmlFor="invoice-terms-input" className="text-xs font-semibold text-secondary">Terms & Conditions</label>
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <button 
                     onClick={() => setShowTerms(false)}
@@ -76,6 +77,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
                 </div>
               </div>
               <textarea 
+                id="invoice-terms-input"
                 placeholder="e.g. Payment is due within 14 days"
                 value={data.terms || ''}
                 onChange={(e) => updateOtherFields({ terms: e.target.value })}
@@ -87,7 +89,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
           {showInstructions && (
             <div className="animate-fade-in">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <label className="text-xs font-semibold text-secondary">Payment Instructions</label>
+                <label htmlFor="invoice-payment-instructions-input" className="text-xs font-semibold text-secondary">Payment Instructions</label>
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <button 
                     onClick={() => setShowInstructions(false)}
@@ -107,6 +109,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
                 </div>
               </div>
               <textarea 
+                id="invoice-payment-instructions-input"
                 placeholder="e.g. Bank transfer details, PayPal email"
                 value={data.paymentInstructions || ''}
                 onChange={(e) => updateOtherFields({ paymentInstructions: e.target.value })}
@@ -161,9 +164,10 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
           {/* Discount Row */}
           {enableDiscount ? (
             <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px' }}>
-              <span className="text-secondary">Discount</span>
+              <label htmlFor="discount-input" className="text-secondary">Discount</label>
               <div style={{ justifySelf: 'start', display: 'flex', border: '1px solid var(--color-border)', borderRadius: '6px', background: 'white', overflow: 'hidden', height: '32px', width: '92px' }}>
                 <input 
+                  id="discount-input"
                   type="text" 
                   value={totals.discountValue !== undefined ? totals.discountValue : ''}
                   onChange={(e) => {
@@ -173,6 +177,8 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
                   placeholder="0"
                 />
                 <select 
+                  id="discount-type-select"
+                  aria-label="Discount Type"
                   value={totals.discountType}
                   onChange={(e) => setDiscount(totals.discountValue, e.target.value as 'percent' | 'flat')}
                   style={{ border: 'none', borderLeft: '1px solid var(--color-border)', background: '#F8FAFC', fontSize: '11px', height: '100%', padding: '0 4px', width: '38px', minHeight: 'auto', borderRadius: 0, flexShrink: 0 }}
@@ -211,6 +217,8 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
           {enableTax ? (
             <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px' }}>
               <input 
+                id="tax-label-input"
+                aria-label="Tax Label"
                 type="text" 
                 className="text-secondary font-medium"
                 value={totals.taxLabel || ''}
@@ -226,6 +234,8 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
               />
               <div style={{ justifySelf: 'start', display: 'flex', alignItems: 'center', border: '1px solid var(--color-border)', borderRadius: '6px', background: 'white', overflow: 'hidden', height: '32px', width: '92px' }}>
                 <input 
+                  id="tax-rate-input"
+                  aria-label="Tax Rate Percentage"
                   type="text" 
                   value={totals.taxRate !== undefined ? totals.taxRate : ''}
                   onChange={(e) => {
@@ -265,10 +275,11 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
           {/* Shipping Row */}
           {enableShipping ? (
             <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px' }}>
-              <span className="text-secondary">Shipping</span>
+              <label htmlFor="shipping-input" className="text-secondary">Shipping</label>
               <div style={{ justifySelf: 'start', position: 'relative', width: '92px', height: '32px' }}>
                 <span style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', fontSize: '11px', color: 'var(--color-text-tertiary)', pointerEvents: 'none' }}>{symbol}</span>
                 <input 
+                  id="shipping-input"
                   type="text" 
                   value={totals.shipping !== undefined ? totals.shipping : ''}
                   onChange={(e) => {
@@ -316,12 +327,13 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
 
           {/* Amount Paid Row */}
           <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '13px' }}>
-            <span className="text-secondary">Amount Paid</span>
+            <label htmlFor="amount-paid-input" className="text-secondary">Amount Paid</label>
             <div></div>
             <div></div>
             <div style={{ justifySelf: 'end', position: 'relative', width: '92px', height: '32px' }}>
               <span style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', fontSize: '11px', color: 'var(--color-text-tertiary)', pointerEvents: 'none' }}>{symbol}</span>
               <input 
+                id="amount-paid-input"
                 type="text" 
                 value={totals.amountPaid !== undefined ? totals.amountPaid : ''}
                 onChange={(e) => {

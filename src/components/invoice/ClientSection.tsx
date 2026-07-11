@@ -65,8 +65,9 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
         <div className="flex-col gap-4">
           <div className="grid-2">
             <div>
-              <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Client Name *</label>
+              <label htmlFor="client-name-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Client Name *</label>
               <input 
+                id="client-name-input"
                 type="text" 
                 placeholder="Client or Company Name"
                 value={data.client.name}
@@ -74,8 +75,9 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
               />
             </div>
             <div>
-              <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Email *</label>
+              <label htmlFor="client-email-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Email *</label>
               <input 
+                id="client-email-input"
                 type="email" 
                 placeholder="client@example.com"
                 value={data.client.email}
@@ -88,8 +90,9 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
             <div className="flex-col gap-4" style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-2)' }}>
               <div className="grid-2">
                 <div>
-                  <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Phone</label>
+                  <label htmlFor="client-phone-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Phone</label>
                   <input 
+                    id="client-phone-input"
                     type="tel" 
                     placeholder="Client phone number"
                     value={data.client.phone || ''}
@@ -97,8 +100,9 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Tax ID / VAT Number</label>
+                  <label htmlFor="client-taxid-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Tax ID / VAT Number</label>
                   <input 
+                    id="client-taxid-input"
                     type="text" 
                     placeholder="e.g. VAT / GST ID"
                     value={data.client.taxId || ''}
@@ -108,8 +112,9 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Address Line 1</label>
+                <label htmlFor="client-address1-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Address Line 1</label>
                 <input 
+                  id="client-address1-input"
                   type="text" 
                   placeholder="Street address"
                   value={data.client.address1 || ''}
@@ -118,8 +123,9 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
               </div>
               
               <div>
-                <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Address Line 2</label>
+                <label htmlFor="client-address2-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Address Line 2</label>
                 <input 
+                  id="client-address2-input"
                   type="text" 
                   placeholder="Apt, suite, etc. (optional)"
                   value={data.client.address2 || ''}
@@ -129,8 +135,9 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
 
               <div className="grid-2">
                 <div>
-                  <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>City</label>
+                  <label htmlFor="client-city-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>City</label>
                   <input 
+                    id="client-city-input"
                     type="text" 
                     placeholder="City"
                     value={data.client.city || ''}
@@ -138,8 +145,9 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>State / Province</label>
+                  <label htmlFor="client-state-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>State / Province</label>
                   <input 
+                    id="client-state-input"
                     type="text" 
                     placeholder="State or Region"
                     value={data.client.state || ''}
@@ -150,8 +158,9 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
                 <div>
-                  <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Postal / ZIP Code</label>
+                  <label htmlFor="client-postal-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Postal / ZIP Code</label>
                   <input 
+                    id="client-postal-input"
                     type="text" 
                     placeholder="Postal code"
                     value={data.client.postalCode || ''}
@@ -159,8 +168,9 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Country</label>
+                  <label htmlFor="client-country-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Country</label>
                   <input 
+                    id="client-country-input"
                     type="text" 
                     placeholder="Country"
                     value={data.client.country || ''}

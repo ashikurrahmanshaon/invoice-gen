@@ -60,18 +60,18 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
                     justifyContent: 'center',
                     gap: '8px'
                   }} className="logo-hover-overlay">
-                    <label style={{ cursor: 'pointer' }}>
+                    <label htmlFor="business-logo-edit-input" style={{ cursor: 'pointer' }}>
                       <Edit2 size={14} color="white" />
-                      <input type="file" accept="image/*" onChange={handleLogoUpload} style={{ display: 'none' }} />
+                      <input id="business-logo-edit-input" aria-label="Change business logo" type="file" accept="image/*" onChange={handleLogoUpload} style={{ display: 'none' }} />
                     </label>
-                    <button onClick={() => updateBusiness({ logoUrl: null })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                    <button aria-label="Delete logo" onClick={() => updateBusiness({ logoUrl: null })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
                       <Trash2 size={14} color="white" />
                     </button>
                   </div>
                   <style>{`.logo-hover-overlay:hover { opacity: 1 !important; }`}</style>
                 </div>
               ) : (
-                <label style={{
+                <label htmlFor="business-logo-upload-input" style={{
                   width: '120px',
                   height: '96px',
                   border: '1px dashed var(--color-border)',
@@ -88,15 +88,16 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
                 }}>
                   <UploadCloud size={20} className="text-secondary" />
                   <span style={{ fontSize: '11px', fontWeight: 500 }}>Add logo</span>
-                  <input type="file" accept="image/*" onChange={handleLogoUpload} style={{ display: 'none' }} />
+                  <input id="business-logo-upload-input" aria-label="Upload business logo" type="file" accept="image/*" onChange={handleLogoUpload} style={{ display: 'none' }} />
                 </label>
               )}
             </div>
 
             {/* Business Name Field (fills remaining width) */}
             <div style={{ flex: 1 }}>
-              <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Business Name *</label>
+              <label htmlFor="business-name-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Business Name *</label>
               <input 
+                id="business-name-input"
                 type="text" 
                 placeholder="Your Business Name"
                 value={data.business.name}
@@ -107,8 +108,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
 
           {/* Email Field stacked below (full width across left column) */}
           <div style={{ width: '100%' }}>
-            <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Email *</label>
+            <label htmlFor="business-email-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Email *</label>
             <input 
+              id="business-email-input"
               type="email" 
               placeholder="you@example.com"
               value={data.business.email}
@@ -122,8 +124,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
               <div className="flex-col gap-4" style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-2)' }}>
                 <div className="grid-2">
                   <div>
-                    <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Phone</label>
+                    <label htmlFor="business-phone-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Phone</label>
                     <input 
+                      id="business-phone-input"
                       type="tel" 
                       placeholder="Phone number"
                       value={data.business.phone || ''}
@@ -131,8 +134,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Website</label>
+                    <label htmlFor="business-website-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Website</label>
                     <input 
+                      id="business-website-input"
                       type="url" 
                       placeholder="e.g. www.website.com"
                       value={data.business.website || ''}
@@ -142,8 +146,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
                 </div>
                 
                 <div>
-                  <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Address Line 1</label>
+                  <label htmlFor="business-address1-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Address Line 1</label>
                   <input 
+                    id="business-address1-input"
                     type="text" 
                     placeholder="Street address"
                     value={data.business.address1 || ''}
@@ -152,8 +157,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
                 </div>
                 
                 <div>
-                  <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Address Line 2</label>
+                  <label htmlFor="business-address2-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Address Line 2</label>
                   <input 
+                    id="business-address2-input"
                     type="text" 
                     placeholder="Apt, suite, etc. (optional)"
                     value={data.business.address2 || ''}
@@ -163,8 +169,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
 
                 <div className="grid-2">
                   <div>
-                    <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>City</label>
+                    <label htmlFor="business-city-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>City</label>
                     <input 
+                      id="business-city-input"
                       type="text" 
                       placeholder="City"
                       value={data.business.city || ''}
@@ -172,8 +179,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>State / Province</label>
+                    <label htmlFor="business-state-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>State / Province</label>
                     <input 
+                      id="business-state-input"
                       type="text" 
                       placeholder="State or Region"
                       value={data.business.state || ''}
@@ -184,8 +192,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
 
                 <div className="grid-2">
                   <div>
-                    <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Postal / ZIP Code</label>
+                    <label htmlFor="business-postal-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Postal / ZIP Code</label>
                     <input 
+                      id="business-postal-input"
                       type="text" 
                       placeholder="Postal code"
                       value={data.business.postalCode || ''}
@@ -193,8 +202,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Country</label>
+                    <label htmlFor="business-country-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Country</label>
                     <input 
+                      id="business-country-input"
                       type="text" 
                       placeholder="Country"
                       value={data.business.country || ''}
@@ -204,8 +214,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Tax ID / VAT Number</label>
+                  <label htmlFor="business-taxid-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Tax ID / VAT Number</label>
                   <input 
+                    id="business-taxid-input"
                     type="text" 
                     placeholder="e.g. VAT / GST ID"
                     value={data.business.taxId || ''}
@@ -236,8 +247,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
         {/* Right Column: Invoice Details */}
         <div className="flex-col gap-4">
           <div className="flex items-center justify-between gap-3">
-            <span className="text-xs font-semibold text-secondary" style={{ width: '110px' }}>Invoice Number</span>
+            <label htmlFor="invoice-number-input" className="text-xs font-semibold text-secondary" style={{ width: '110px' }}>Invoice Number</label>
             <input 
+              id="invoice-number-input"
               type="text" 
               value={data.details.invoiceNumber}
               onChange={(e) => updateDetails({ invoiceNumber: e.target.value })}
@@ -245,8 +257,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
             />
           </div>
           <div className="flex items-center justify-between gap-3">
-            <span className="text-xs font-semibold text-secondary" style={{ width: '110px' }}>Issue Date</span>
+            <label htmlFor="invoice-issue-date-input" className="text-xs font-semibold text-secondary" style={{ width: '110px' }}>Issue Date</label>
             <input 
+              id="invoice-issue-date-input"
               type="date" 
               value={data.details.issueDate}
               onChange={(e) => updateDetails({ issueDate: e.target.value })}
@@ -254,8 +267,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
             />
           </div>
           <div className="flex items-center justify-between gap-3">
-            <span className="text-xs font-semibold text-secondary" style={{ width: '110px' }}>Due Date</span>
+            <label htmlFor="invoice-due-date-input" className="text-xs font-semibold text-secondary" style={{ width: '110px' }}>Due Date</label>
             <input 
+              id="invoice-due-date-input"
               type="date" 
               value={data.details.dueDate}
               onChange={(e) => updateDetails({ dueDate: e.target.value })}
@@ -263,8 +277,9 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
             />
           </div>
           <div className="flex items-center justify-between gap-3">
-            <span className="text-xs font-semibold text-secondary" style={{ width: '110px' }}>Currency</span>
+            <label htmlFor="invoice-currency-select" className="text-xs font-semibold text-secondary" style={{ width: '110px' }}>Currency</label>
             <select 
+              id="invoice-currency-select"
               value={data.details.currency}
               onChange={(e) => updateDetails({ currency: e.target.value })}
               style={{ flex: 1 }}
