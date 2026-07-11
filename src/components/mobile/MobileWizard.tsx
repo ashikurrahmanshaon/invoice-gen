@@ -949,40 +949,40 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       {/* MOBILE BOTTOM ACTION BAR */}
       <div className="mobile-only sticky-bottom-bar">
         {currentStage === 1 && (
-          <button className="btn btn-primary" style={{ width: '100%' }} onClick={() => setStage(2)}>
+          <button className="btn btn-primary" style={{ width: '100%', height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={() => setStage(2)}>
             Continue to Client
           </button>
         )}
         {currentStage === 2 && (
           <>
-            <button className="btn btn-outline" style={{ flex: 1, height: '48px', fontWeight: 600 }} onClick={() => setStage(1)}>
+            <button className="btn btn-outline" style={{ flex: 3.5, height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={() => setStage(1)}>
               Back
             </button>
-            <button className="btn btn-primary" style={{ flex: 2, height: '48px', fontWeight: 600 }} onClick={() => setStage(3)}>
+            <button className="btn btn-primary" style={{ flex: 6.5, height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={() => setStage(3)}>
               Continue to Items
             </button>
           </>
         )}
         {currentStage === 3 && (
           <>
-            <button className="btn btn-outline" style={{ flex: 1, height: '48px', fontWeight: 600 }} onClick={() => setStage(2)}>
+            <button className="btn btn-outline" style={{ flex: 3.5, height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={() => setStage(2)}>
               Back
             </button>
-            <button className="btn btn-primary" style={{ flex: 2, height: '48px', fontWeight: 600 }} onClick={() => setStage(4)}>
+            <button className="btn btn-primary" style={{ flex: 6.5, height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={() => setStage(4)}>
               Review Invoice
             </button>
           </>
         )}
         {currentStage === 4 && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
-            <button className="btn btn-primary" style={{ width: '100%', height: '48px', fontWeight: 600 }} onClick={onDownloadPDF}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
+            <button className="btn btn-primary" style={{ width: '100%', height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={onDownloadPDF}>
               Download PDF
             </button>
-            <div style={{ display: 'flex', gap: '12px', width: '100%' }}>
-              <button className="btn btn-outline" style={{ flex: 1, height: '48px', fontWeight: 600 }} onClick={() => setStage(3)}>
+            <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
+              <button className="btn btn-outline" style={{ flex: 3.5, height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={() => setStage(3)}>
                 Back
               </button>
-              <button className="btn btn-outline" style={{ flex: 1, height: '48px', fontWeight: 600 }} onClick={onOpenFullPreview}>
+              <button className="btn btn-outline" style={{ flex: 6.5, height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={onOpenFullPreview}>
                 Preview
               </button>
             </div>
