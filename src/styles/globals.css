@@ -59,6 +59,7 @@ textarea {
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: var(--color-primary);
+  background-color: #F8FAFF;
   box-shadow: var(--shadow-focus);
 }
 
@@ -123,7 +124,7 @@ a {
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-6);
+  gap: var(--space-4); /* Standardized to 16px instead of 24px for tighter form grouping */
 }
 
 /* Typography Utilities */

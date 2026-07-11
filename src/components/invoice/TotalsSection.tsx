@@ -40,20 +40,11 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
 
   return (
     <div className="flex-col gap-6" style={{ width: '100%' }}>
-      {/* Section Header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-2)' }}>
-        <span className="step-badge">04</span>
-        <div className="flex-col">
-          <h3 className="font-bold text-base" style={{ lineHeight: 1.2, margin: 0, color: 'var(--color-text-main)' }}>Review & finish</h3>
-          <span className="text-xs text-secondary">Add notes and check the final amount.</span>
-        </div>
-      </div>
-
       <div className="business-grid">
         {/* Left Side: Notes & Conditions */}
         <div className="flex-col gap-4">
           <div>
-            <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '8px' }}>Notes</label>
+            <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Notes</label>
             <textarea 
               placeholder="Thank you for your business."
               value={data.notes}

@@ -225,35 +225,78 @@ function App() {
           <>
             <PageIntro />
             <div className="workspace-layout">
-              {/* Main Desktop Workspace */}
+              {/* Main Desktop Workspace (Wizard) */}
               <div className="workspace-main">
-                <div className="card animate-fade-in">
-                  <div className="flex-col" style={{ gap: '40px' }}>
-                    <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} />
-                    <ClientSection 
-                      data={data} 
-                      updateClient={updateClient} 
-                      clientHook={clientHook}
-                      selectedSavedClientId={selectedSavedClientId}
-                      setSelectedSavedClientId={setSelectedSavedClientId}
-                    />
-                    <ItemsSection 
-                      items={data.items} 
-                      currency={data.details.currency} 
-                      addItem={addItem} 
-                      duplicateItem={duplicateItem} 
-                      removeItem={removeItem} 
-                      updateItem={updateItem} 
-                    />
-                    <TotalsSection 
-                      data={data}
-                      updateOtherFields={updateOtherFields}
-                      setDiscount={setDiscount}
-                      setTaxRate={setTaxRate}
-                      setTaxLabel={setTaxLabel}
-                      setShipping={setShipping}
-                      setAmountPaid={setAmountPaid}
-                    />
+                <div className="card animate-fade-in" style={{ padding: '0' }}>
+                  <div style={{ padding: '32px 40px' }}>
+                    <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} isMobile={false} />
+                    
+                    <div className="flex-col" style={{ gap: '40px', marginTop: '32px' }}>
+                      {currentStage === 1 && (
+                        <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} />
+                      )}
+                      {currentStage === 2 && (
+                        <ClientSection 
+                          data={data} 
+                          updateClient={updateClient} 
+                          clientHook={clientHook}
+                          selectedSavedClientId={selectedSavedClientId}
+                          setSelectedSavedClientId={setSelectedSavedClientId}
+                        />
+                      )}
+                      {currentStage === 3 && (
+                        <ItemsSection 
+                          items={data.items} 
+                          currency={data.details.currency} 
+                          addItem={addItem} 
+                          duplicateItem={duplicateItem} 
+                          removeItem={removeItem} 
+                          updateItem={updateItem} 
+                        />
+                      )}
+                      {currentStage === 4 && (
+                        <TotalsSection 
+                          data={data}
+                          updateOtherFields={updateOtherFields}
+                          setDiscount={setDiscount}
+                          setTaxRate={setTaxRate}
+                          setTaxLabel={setTaxLabel}
+                          setShipping={setShipping}
+                          setAmountPaid={setAmountPaid}
+                        />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Desktop Bottom Action Bar */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '24px 40px',
+                    borderTop: '1px solid var(--color-border)',
+                    background: '#F9FAFB',
+                    borderBottomLeftRadius: 'var(--radius-xl)',
+                    borderBottomRightRadius: 'var(--radius-xl)'
+                  }}>
+                    <div>
+                      {currentStage > 1 && (
+                        <button className="btn btn-outline" onClick={() => setCurrentStage(s => Math.max(1, s - 1))} style={{ padding: '0 24px', height: '44px', fontWeight: 600 }}>
+                          Back
+                        </button>
+                      )}
+                    </div>
+                    <div>
+                      {currentStage < 4 ? (
+                        <button className="btn btn-primary" onClick={() => setCurrentStage(s => Math.min(4, s + 1))} style={{ padding: '0 32px', height: '44px', fontWeight: 600 }}>
+                          Continue
+                        </button>
+                      ) : (
+                        <button className="btn btn-primary" onClick={() => setIsPreviewOpen(true)} style={{ padding: '0 32px', height: '44px', fontWeight: 600 }}>
+                          Review Full Invoice
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

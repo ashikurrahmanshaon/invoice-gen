@@ -53,14 +53,7 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
 
   return (
     <div className="flex-col gap-6" style={{ width: '100%', borderBottom: '1px solid var(--color-border)', paddingBottom: 'var(--space-6)' }}>
-      {/* Section Header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-2)' }}>
-        <span className="step-badge">02</span>
-        <div className="flex-col">
-          <h3 className="font-bold text-base" style={{ lineHeight: 1.2, margin: 0, color: 'var(--color-text-main)' }}>Client details</h3>
-          <span className="text-xs text-secondary">Who should receive this invoice?</span>
-        </div>
-      </div>
+      {/* Section Header removed in favor of global wizard step indicator */}
 
       <div style={{ width: '100%' }}>
         <ClientPicker 
@@ -92,7 +85,7 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
           </div>
 
           {showOptional ? (
-            <div className="flex-col gap-3" style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-3)', marginTop: 'var(--space-1)' }}>
+            <div className="flex-col gap-4" style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-2)' }}>
               <div className="grid-2">
                 <div>
                   <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Phone</label>
@@ -134,7 +127,7 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
                 />
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
+              <div className="grid-2">
                 <div>
                   <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>City</label>
                   <input 

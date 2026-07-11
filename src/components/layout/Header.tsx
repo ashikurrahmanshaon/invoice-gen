@@ -52,12 +52,12 @@ export const Header: React.FC<HeaderProps> = ({
   const status = getStatusDisplay();
 
   return (
-    <header style={{ 
-      background: 'rgba(255, 255, 255, 0.85)',
-      backdropFilter: 'blur(12px)',
-      WebkitBackdropFilter: 'blur(12px)',
-      borderBottom: '1px solid var(--color-border)',
-      height: '60px',
+      <header style={{ 
+        background: 'rgba(255, 255, 255, 0.7)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
+        height: '60px',
       display: 'flex',
       alignItems: 'center',
       position: 'sticky',
@@ -131,35 +131,34 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Right: Actions */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          {/* Status Indicator */}
+          {/* Status Indicator Badge */}
           {saveStatus !== 'idle' && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: status.color, fontWeight: 500 }}>
+            <div className="desktop-only" style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '6px', 
+              fontSize: '12px', 
+              color: status.color, 
+              fontWeight: 600,
+              padding: '4px 10px',
+              backgroundColor: saveStatus === 'success' ? '#ECFDF3' : '#F9FAFB',
+              borderRadius: '999px',
+              border: saveStatus === 'success' ? '1px solid #D1FADF' : '1px solid #E4E7EC'
+            }}>
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: status.dot, display: 'inline-block' }}></span>
-              <span className="desktop-only">{status.text}</span>
+              <span>{status.text}</span>
             </div>
           )}
 
           {/* Desktop Actions */}
           <div className="desktop-only" style={{ display: 'flex', gap: '8px' }}>
             {activeView === 'editor' && (
-              <>
-                <button className="btn btn-outline btn-sm" onClick={onSave}>
-                  Save
-                </button>
-                {hasLoadedHistory && onSaveAsNew && (
-                  <button className="btn btn-outline btn-sm" onClick={onSaveAsNew}>
-                    Save As New
-                  </button>
-                )}
-              </>
-            )}
-            {onNewInvoice && (
-              <button className="btn btn-outline btn-sm" onClick={onNewInvoice}>
-                New Invoice
+              <button className="btn btn-outline btn-sm" onClick={onSave} style={{ fontWeight: 600 }}>
+                Save
               </button>
             )}
             {activeView === 'editor' && onDownloadPDF && (
-              <button className="btn btn-primary btn-sm" onClick={onDownloadPDF}>
+              <button className="btn btn-primary btn-sm" onClick={onDownloadPDF} style={{ fontWeight: 600 }}>
                 <Download size={14} /> PDF
               </button>
             )}
@@ -219,9 +218,8 @@ export const Header: React.FC<HeaderProps> = ({
                     <FilePlus size={14} /> Save
                   </button>
                 )}
-                {activeView === 'editor' && hasLoadedHistory && (
+                {hasLoadedHistory && onSaveAsNew && (
                   <button 
-                    className="mobile-only"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -238,35 +236,36 @@ export const Header: React.FC<HeaderProps> = ({
                     }}
                     onClick={() => {
                       setMenuOpen(false);
-                      onSaveAsNew?.();
+                      onSaveAsNew();
                     }}
                   >
                     <FilePlus size={14} /> Save As New
                   </button>
                 )}
-                <button 
-                  className="mobile-only"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    width: '100%',
-                    padding: '8px 12px',
-                    border: 'none',
-                    background: 'transparent',
-                    textAlign: 'left',
-                    fontSize: '13px',
-                    cursor: 'pointer',
-                    borderRadius: '4px',
-                    color: 'var(--color-text-main)'
-                  }}
-                  onClick={() => {
-                    setMenuOpen(false);
-                    onNewInvoice?.();
-                  }}
-                >
-                  <FilePlus size={14} /> New Invoice
-                </button>
+                {onNewInvoice && (
+                  <button 
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      width: '100%',
+                      padding: '8px 12px',
+                      border: 'none',
+                      background: 'transparent',
+                      textAlign: 'left',
+                      fontSize: '13px',
+                      cursor: 'pointer',
+                      borderRadius: '4px',
+                      color: 'var(--color-text-main)'
+                    }}
+                    onClick={() => {
+                      setMenuOpen(false);
+                      onNewInvoice();
+                    }}
+                  >
+                    <FilePlus size={14} /> New Invoice
+                  </button>
+                )}
                 <button 
                   style={{
                     display: 'flex',

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import type { InvoiceData, LineItem } from '../../types/invoice';
 import { formatCurrency } from '../../utils/currency';
 import { Trash2, Copy, Plus, ChevronUp } from 'lucide-react';
@@ -42,6 +43,11 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
   const [showOptionalBusiness, setShowOptionalBusiness] = useState(false);
   const [showOptionalClient, setShowOptionalClient] = useState(false);
   const [clientToDelete, setClientToDelete] = useState<SavedClient | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleLoadClient = (client: ClientDetails) => {
     updateClient({
@@ -946,49 +952,66 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
         </div>
       )}
 
-      {/* MOBILE BOTTOM ACTION BAR */}
-      <div className="mobile-only sticky-bottom-bar">
-        {currentStage === 1 && (
-          <button className="btn btn-primary" style={{ width: '100%', height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={() => setStage(2)}>
-            Continue to Client
-          </button>
-        )}
-        {currentStage === 2 && (
-          <>
-            <button className="btn btn-outline" style={{ flex: 3.5, height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={() => setStage(1)}>
-              Back
+      {/* MOBILE BOTTOM ACTION BAR (Portaled to body for guaranteed stickiness) */}
+      {mounted && createPortal(
+        <div className="mobile-only sticky-bottom-bar" style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          background: 'rgba(255, 255, 255, 0.85)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          borderTop: '1px solid var(--color-border)',
+          padding: '16px 20px calc(16px + env(safe-area-inset-bottom)) 20px',
+          display: 'flex',
+          gap: '16px',
+          boxShadow: '0 -4px 24px rgba(0,0,0,0.06)',
+          zIndex: 9999
+        }}>
+          {currentStage === 1 && (
+            <button className="btn btn-primary" style={{ width: '100%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={() => setStage(2)}>
+              Continue to Client
             </button>
-            <button className="btn btn-primary" style={{ flex: 6.5, height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={() => setStage(3)}>
-              Continue to Items
-            </button>
-          </>
-        )}
-        {currentStage === 3 && (
-          <>
-            <button className="btn btn-outline" style={{ flex: 3.5, height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={() => setStage(2)}>
-              Back
-            </button>
-            <button className="btn btn-primary" style={{ flex: 6.5, height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={() => setStage(4)}>
-              Review Invoice
-            </button>
-          </>
-        )}
-        {currentStage === 4 && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
-            <button className="btn btn-primary" style={{ width: '100%', height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={onDownloadPDF}>
-              Download PDF
-            </button>
-            <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
-              <button className="btn btn-outline" style={{ flex: 3.5, height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={() => setStage(3)}>
+          )}
+          {currentStage === 2 && (
+            <>
+              <button className="btn btn-outline" style={{ flex: '0 0 40%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={() => setStage(1)}>
                 Back
               </button>
-              <button className="btn btn-outline" style={{ flex: 6.5, height: '54px', fontWeight: 600, fontSize: '16px' }} onClick={onOpenFullPreview}>
-                Preview
+              <button className="btn btn-primary" style={{ flex: '0 0 60%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={() => setStage(3)}>
+                Continue to Items
               </button>
+            </>
+          )}
+          {currentStage === 3 && (
+            <>
+              <button className="btn btn-outline" style={{ flex: '0 0 40%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={() => setStage(2)}>
+                Back
+              </button>
+              <button className="btn btn-primary" style={{ flex: '0 0 60%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={() => setStage(4)}>
+                Review Invoice
+              </button>
+            </>
+          )}
+          {currentStage === 4 && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
+              <button className="btn btn-primary" style={{ width: '100%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={onDownloadPDF}>
+                Download PDF
+              </button>
+              <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
+                <button className="btn btn-outline" style={{ flex: '0 0 40%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={() => setStage(3)}>
+                  Back
+                </button>
+                <button className="btn btn-outline" style={{ flex: '0 0 60%', height: '54px', fontWeight: 600, fontSize: '16px', borderRadius: '14px' }} onClick={onOpenFullPreview}>
+                  Preview
+                </button>
+              </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>,
+        document.body
+      )}
 
       <style>{`
         .hover-text-error:hover { color: var(--color-error) !important; }

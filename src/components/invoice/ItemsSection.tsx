@@ -147,14 +147,7 @@ export const ItemsSection: React.FC<ItemsSectionProps> = ({
 
   return (
     <div data-testid="items-section" className="flex-col gap-6" style={{ width: '100%', borderBottom: '1px solid var(--color-border)', paddingBottom: 'var(--space-6)' }}>
-      {/* Section Header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-2)' }}>
-        <span className="step-badge">03</span>
-        <div className="flex-col">
-          <h3 className="font-bold text-base" style={{ lineHeight: 1.2, margin: 0, color: 'var(--color-text-main)' }}>Items</h3>
-          <span className="text-xs text-secondary">Add products or services.</span>
-        </div>
-      </div>
+      {/* Section Header removed in favor of global wizard step indicator */}
 
       {/* Grid Table Container */}
       <div style={{ width: '100%', marginTop: 'var(--space-2)' }} className="items-section-wrapper">

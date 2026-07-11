@@ -48,10 +48,10 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
                 </div>
               )}
               <div style={{ fontWeight: 'bold', color: 'var(--color-text-main)', fontSize: '14px', marginBottom: '2px' }}>
-                {data.business.name || 'Your Business Name'}
+                {data.business.name ? data.business.name : <span style={{ color: 'var(--color-text-tertiary)' }}>Business Name</span>}
               </div>
               <div style={{ color: 'var(--color-text-secondary)', fontSize: '11px' }}>
-                {data.business.email || 'you@example.com'}
+                {data.business.email ? data.business.email : <span style={{ color: 'var(--color-text-tertiary)' }}>Email</span>}
               </div>
               {data.business.phone && (
                 <div style={{ color: 'var(--color-text-secondary)', fontSize: '11px' }}>{data.business.phone}</div>
@@ -75,8 +75,12 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
           <div style={{ fontSize: '12px', display: 'flex', justifyContent: 'space-between', marginBottom: '24px' }}>
             <div style={{ flex: 1, paddingRight: '12px' }}>
               <div style={{ color: 'var(--color-primary)', fontWeight: 'bold', fontSize: '11px', textTransform: 'uppercase', marginBottom: '4px' }}>Bill To</div>
-              <div style={{ fontWeight: 'bold', color: 'var(--color-text-main)' }}>{data.client.name || 'Client Name'}</div>
-              <div style={{ color: 'var(--color-text-secondary)', fontSize: '11px', wordBreak: 'break-all' }}>{data.client.email || 'client@example.com'}</div>
+              <div style={{ fontWeight: 'bold', color: 'var(--color-text-main)' }}>
+                {data.client.name ? data.client.name : <span style={{ color: 'var(--color-text-tertiary)' }}>Client Name</span>}
+              </div>
+              <div style={{ color: 'var(--color-text-secondary)', fontSize: '11px', wordBreak: 'break-all' }}>
+                {data.client.email ? data.client.email : <span style={{ color: 'var(--color-text-tertiary)' }}>Client Email</span>}
+              </div>
               {data.client.phone && (
                 <div style={{ color: 'var(--color-text-secondary)', fontSize: '11px', wordBreak: 'break-word' }}>{data.client.phone}</div>
               )}
@@ -137,7 +141,7 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
           <div className="flex justify-between">
             <span className="text-secondary">Client:</span>
             <span className="font-semibold text-main" style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap', maxWidth: '200px' }}>
-              {data.client.name || 'Not added'}
+              {data.client.name ? data.client.name : <span style={{ color: 'var(--color-text-tertiary)' }}>Not added</span>}
             </span>
           </div>
           <div className="flex justify-between">
