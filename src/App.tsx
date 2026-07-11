@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Header } from './components/layout/Header';
+import { Footer } from './components/layout/Footer';
 import { PageIntro } from './components/layout/PageIntro';
 import { StageIndicator } from './components/layout/StageIndicator';
 import { BusinessSection } from './components/invoice/BusinessSection';
@@ -410,6 +411,7 @@ function App() {
           }
         }}
       />
+      <Footer />
     </>
   );
 }
