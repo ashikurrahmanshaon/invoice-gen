@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import type { InvoiceData, LineItem } from '../types/invoice';
 import { calculateTotals } from '../utils/calculations';
 import { loadHydratedData, clearDraftStorage, clearAllStorage } from '../utils/storage';
@@ -149,9 +149,11 @@ export const useInvoice = () => {
   // If not, we are a new invoice. A new invoice is dirty if it differs from default values.
   // Actually, we can just initialize originalSnapshot on first load if null.
   
-  // To avoid constant JSON.stringify, we do it inline.
-  const currentSnapshot = JSON.stringify(data);
-  const isDirty = originalSnapshot !== null ? currentSnapshot !== originalSnapshot : true;
+  // To avoid constant JSON.stringify, we do it in a memoized callback.
+  const isDirty = useMemo(() => {
+    if (originalSnapshot === null) return true;
+    return JSON.stringify(data) !== originalSnapshot;
+  }, [data, originalSnapshot]);
 
   const setOriginalSnapshotForCurrentData = useCallback((newData: InvoiceData, newHistoryId: string | null) => {
     const snapshot = JSON.stringify(newData);

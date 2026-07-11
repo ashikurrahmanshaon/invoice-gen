@@ -7,7 +7,7 @@ interface StageIndicatorProps {
   isMobile?: boolean;
 }
 
-export const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, onStageChange, isMobile = false }) => {
+export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, onStageChange, isMobile = false }) => {
   const stages = [
     { num: 1, label: 'Business' },
     { num: 2, label: 'Client' },
@@ -137,4 +137,4 @@ export const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, on
       })}
     </div>
   );
-};
+});

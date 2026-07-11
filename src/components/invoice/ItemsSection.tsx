@@ -132,7 +132,7 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
   );
 });
 
-export const ItemsSection: React.FC<ItemsSectionProps> = ({ 
+const ItemsSectionComponent: React.FC<ItemsSectionProps> = ({ 
   items, currency, addItem, duplicateItem, removeItem, updateItem 
 }) => {
   const getCurrencySymbol = (code: string) => {
@@ -202,3 +202,11 @@ export const ItemsSection: React.FC<ItemsSectionProps> = ({
     </div>
   );
 };
+
+export const ItemsSection = React.memo(
+  ItemsSectionComponent,
+  (prevProps, nextProps) => {
+    return prevProps.items === nextProps.items &&
+           prevProps.currency === nextProps.currency;
+  }
+);

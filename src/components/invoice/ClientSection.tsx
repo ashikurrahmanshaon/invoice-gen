@@ -13,7 +13,7 @@ interface ClientSectionProps {
   setSelectedSavedClientId: (id: string | null) => void;
 }
 
-export const ClientSection: React.FC<ClientSectionProps> = ({ 
+const ClientSectionComponent: React.FC<ClientSectionProps> = ({ 
   data, updateClient, clientHook, selectedSavedClientId, setSelectedSavedClientId 
 }) => {
   const [showOptional, setShowOptional] = useState(false);
@@ -220,3 +220,12 @@ export const ClientSection: React.FC<ClientSectionProps> = ({
     </div>
   );
 };
+
+export const ClientSection = React.memo(
+  ClientSectionComponent,
+  (prevProps, nextProps) => {
+    return prevProps.data.client === nextProps.data.client &&
+           prevProps.selectedSavedClientId === nextProps.selectedSavedClientId &&
+           prevProps.clientHook.clients === nextProps.clientHook.clients;
+  }
+);

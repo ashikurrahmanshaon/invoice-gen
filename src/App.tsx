@@ -1,15 +1,16 @@
-import { useState, lazy, Suspense } from 'react';
+import { useState, lazy, Suspense, useEffect } from 'react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { StageIndicator } from './components/layout/StageIndicator';
 
 import { BusinessSection } from './components/invoice/BusinessSection';
-import { ClientSection } from './components/invoice/ClientSection';
-import { ItemsSection } from './components/invoice/ItemsSection';
-import { TotalsSection } from './components/invoice/TotalsSection';
+
+const ClientSection = lazy(() => import('./components/invoice/ClientSection').then(module => ({ default: module.ClientSection })));
+const ItemsSection = lazy(() => import('./components/invoice/ItemsSection').then(module => ({ default: module.ItemsSection })));
+const TotalsSection = lazy(() => import('./components/invoice/TotalsSection').then(module => ({ default: module.TotalsSection })));
 
 const PreviewSidebar = lazy(() => import('./components/invoice/PreviewSidebar').then(module => ({ default: module.PreviewSidebar })));
-import { MobileWizard } from './components/mobile/MobileWizard';
+const MobileWizard = lazy(() => import('./components/mobile/MobileWizard').then(module => ({ default: module.MobileWizard })));
 const HistoryDashboard = lazy(() => import('./components/history/HistoryDashboard').then(module => ({ default: module.HistoryDashboard })));
 
 import { useInvoice } from './hooks/useInvoice';
@@ -22,6 +23,25 @@ import { Modal } from './components/ui/Modal';
 import { generateInvoicePDF } from './utils/pdfGenerator';
 import { generateInvoiceNumber } from './utils/invoiceNumber';
 import type { SavedInvoice } from './types/invoice';
+
+const MobileWizardFallback = () => (
+  <div style={{ paddingBottom: '140px', display: 'flex', flexDirection: 'column', gap: '20px', width: '100%', marginTop: '20px' }}>
+    <div>
+      <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0F172A', margin: '0 0 4px 0' }}>Business details</h2>
+      <p style={{ fontSize: '12px', color: '#475569', margin: '0 0 24px 0' }}>Add the information shown on your invoice.</p>
+    </div>
+    <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div>
+        <div style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#475569', marginBottom: '6px' }}>Business Name *</div>
+        <div style={{ width: '100%', height: '40px', border: '1px solid #D1D5DB', borderRadius: '6px', background: '#FFFFFF' }} />
+      </div>
+      <div>
+        <div style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#475569', marginBottom: '6px' }}>Email *</div>
+        <div style={{ width: '100%', height: '40px', border: '1px solid #D1D5DB', borderRadius: '6px', background: '#FFFFFF' }} />
+      </div>
+    </div>
+  </div>
+);
 
 function App() {
   const [currentStage, setCurrentStage] = useState(1);
@@ -37,6 +57,18 @@ function App() {
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
   const [resetHistoryAlso, setResetHistoryAlso] = useState(false);
   const [historyRecordToDelete, setHistoryRecordToDelete] = useState<string | null>(null);
+
+  const [isMobileView, setIsMobileView] = useState(() => typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const handleResize = () => {
+        setIsMobileView(window.innerWidth <= 768);
+      };
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
 
   const {
     data,
@@ -295,91 +327,11 @@ function App() {
       <main className="container" id="generator" style={{ minWidth: 0 }}>
         {activeView === 'editor' ? (
           <div className="workspace-layout">
-              {/* Main Desktop Workspace (Wizard) */}
-              <div className="workspace-main">
-                <div className="card" style={{ padding: '0' }}>
-                  <div style={{ padding: '24px 32px' }}>
-                    <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} isMobile={false} />
-                    
-                    <div className="flex-col" style={{ gap: '40px', marginTop: '32px' }}>
-                      {currentStage === 1 && (
-                        <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} />
-                      )}
-                      {currentStage === 2 && (
-                        <ClientSection 
-                          data={data} 
-                          updateClient={updateClient} 
-                          clientHook={clientHook}
-                          selectedSavedClientId={selectedSavedClientId}
-                          setSelectedSavedClientId={setSelectedSavedClientId}
-                        />
-                      )}
-                      {currentStage === 3 && (
-                        <ItemsSection 
-                          items={data.items} 
-                          currency={data.details.currency} 
-                          addItem={addItem} 
-                          duplicateItem={duplicateItem} 
-                          removeItem={removeItem} 
-                          updateItem={updateItem} 
-                        />
-                      )}
-                      {currentStage === 4 && (
-                        <TotalsSection 
-                          data={data}
-                          updateOtherFields={updateOtherFields}
-                          setDiscount={setDiscount}
-                          setTaxRate={setTaxRate}
-                          setTaxLabel={setTaxLabel}
-                          setShipping={setShipping}
-                          setAmountPaid={setAmountPaid}
-                        />
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Desktop Bottom Action Bar */}
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '24px 40px',
-                    borderTop: '1px solid var(--color-border)',
-                    background: '#F9FAFB',
-                    borderBottomLeftRadius: 'var(--radius-xl)',
-                    borderBottomRightRadius: 'var(--radius-xl)'
-                  }}>
-                    <div>
-                      {currentStage > 1 && (
-                        <button className="btn btn-outline" onClick={() => setCurrentStage(s => Math.max(1, s - 1))} style={{ padding: '0 24px', height: '44px', fontWeight: 600 }}>
-                          Back
-                        </button>
-                      )}
-                    </div>
-                    <div>
-                      {currentStage < 4 ? (
-                        <button className="btn btn-primary" onClick={() => setCurrentStage(s => Math.min(4, s + 1))} style={{ padding: '0 32px', height: '44px', fontWeight: 600 }}>
-                          Continue
-                        </button>
-                      ) : (
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                          <button className="btn btn-primary" onClick={() => setIsPreviewOpen(true)} style={{ padding: '0 32px', height: '44px', fontWeight: 600 }}>
-                            Review Full Invoice
-                          </button>
-                          <div style={{ fontSize: '11px', color: 'var(--color-text-tertiary)', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '6px' }}>
-                            🔒 100% secure & local sandbox
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Mobile Step-by-Step Flow */}
+            {isMobileView ? (
+              /* Mobile Step-by-Step Flow */
               <div className="mobile-only" style={{ width: '100%', minWidth: 0 }}>
-                <Suspense fallback={null}>
-                  <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} isMobile={true} />
+                <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} isMobile={true} />
+                <Suspense fallback={<MobileWizardFallback />}>
                   <MobileWizard 
                     currentStage={currentStage}
                     setStage={setCurrentStage}
@@ -405,12 +357,98 @@ function App() {
                   />
                 </Suspense>
               </div>
+            ) : (
+              <>
+                {/* Main Desktop Workspace (Wizard) */}
+                <div className="workspace-main">
+                  <div className="card" style={{ padding: '0' }}>
+                    <div style={{ padding: '24px 32px' }}>
+                      <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} isMobile={false} />
+                      
+                      <div className="flex-col" style={{ gap: '40px', marginTop: '32px' }}>
+                        {currentStage === 1 && (
+                          <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} />
+                        )}
+                        <Suspense fallback={null}>
+                          {currentStage === 2 && (
+                            <ClientSection 
+                              data={data} 
+                              updateClient={updateClient} 
+                              clientHook={clientHook}
+                              selectedSavedClientId={selectedSavedClientId}
+                              setSelectedSavedClientId={setSelectedSavedClientId}
+                            />
+                          )}
+                          {currentStage === 3 && (
+                            <ItemsSection 
+                              items={data.items} 
+                              currency={data.details.currency} 
+                              addItem={addItem} 
+                              duplicateItem={duplicateItem} 
+                              removeItem={removeItem} 
+                              updateItem={updateItem} 
+                            />
+                          )}
+                          {currentStage === 4 && (
+                            <TotalsSection 
+                              data={data}
+                              updateOtherFields={updateOtherFields}
+                              setDiscount={setDiscount}
+                              setTaxRate={setTaxRate}
+                              setTaxLabel={setTaxLabel}
+                              setShipping={setShipping}
+                              setAmountPaid={setAmountPaid}
+                            />
+                          )}
+                        </Suspense>
+                      </div>
+                    </div>
 
-              {/* Right Utility Sidebar (Desktop) */}
-              <Suspense fallback={null}>
-                <PreviewSidebar data={data} onOpenFullPreview={() => setIsPreviewOpen(true)} />
-              </Suspense>
-            </div>
+                    {/* Desktop Bottom Action Bar */}
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '24px 40px',
+                      borderTop: '1px solid var(--color-border)',
+                      background: '#F9FAFB',
+                      borderBottomLeftRadius: 'var(--radius-xl)',
+                      borderBottomRightRadius: 'var(--radius-xl)'
+                    }}>
+                      <div>
+                        {currentStage > 1 && (
+                          <button className="btn btn-outline" onClick={() => setCurrentStage(s => Math.max(1, s - 1))} style={{ padding: '0 24px', height: '44px', fontWeight: 600 }}>
+                            Back
+                          </button>
+                        )}
+                      </div>
+                      <div>
+                        {currentStage < 4 ? (
+                          <button className="btn btn-primary" onClick={() => setCurrentStage(s => Math.min(4, s + 1))} style={{ padding: '0 32px', height: '44px', fontWeight: 600 }}>
+                            Continue
+                          </button>
+                        ) : (
+                          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                            <button className="btn btn-primary" onClick={() => setIsPreviewOpen(true)} style={{ padding: '0 32px', height: '44px', fontWeight: 600 }}>
+                              Review Full Invoice
+                            </button>
+                            <div style={{ fontSize: '11px', color: 'var(--color-text-tertiary)', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '6px' }}>
+                              🔒 100% secure & local sandbox
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Utility Sidebar (Desktop) */}
+                <Suspense fallback={null}>
+                  <PreviewSidebar data={data} onOpenFullPreview={() => setIsPreviewOpen(true)} />
+                </Suspense>
+              </>
+            )}
+          </div>
         ) : (
           <div style={{ marginTop: '24px' }}>
             <Suspense fallback={null}>

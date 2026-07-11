@@ -14,7 +14,7 @@ interface TotalsSectionProps {
   setAmountPaid: (amount: number | string) => void;
 }
 
-export const TotalsSection: React.FC<TotalsSectionProps> = ({ 
+const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({ 
   data, updateOtherFields, setDiscount, setTaxRate, setTaxLabel, setShipping, setAmountPaid 
 }) => {
   const { currency } = data.details;
@@ -370,3 +370,15 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
     </div>
   );
 };
+
+export const TotalsSection = React.memo(
+  TotalsSectionComponent,
+  (prevProps, nextProps) => {
+    return prevProps.data.totals === nextProps.data.totals &&
+           prevProps.data.details.currency === nextProps.data.details.currency &&
+           prevProps.data.notes === nextProps.data.notes &&
+           prevProps.data.terms === nextProps.data.terms &&
+           prevProps.data.paymentInstructions === nextProps.data.paymentInstructions &&
+           prevProps.data.signatureUrl === nextProps.data.signatureUrl;
+  }
+);

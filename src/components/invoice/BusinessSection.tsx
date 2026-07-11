@@ -9,7 +9,7 @@ interface BusinessSectionProps {
   updateDetails: (updates: Partial<InvoiceData['details']>) => void;
 }
 
-export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBusiness, updateDetails }) => {
+const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, updateBusiness, updateDetails }) => {
   const [showOptional, setShowOptional] = useState(false);
 
   const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -294,3 +294,11 @@ export const BusinessSection: React.FC<BusinessSectionProps> = ({ data, updateBu
     </div>
   );
 };
+
+export const BusinessSection = React.memo(
+  BusinessSectionComponent,
+  (prevProps, nextProps) => {
+    return prevProps.data.business === nextProps.data.business &&
+           prevProps.data.details === nextProps.data.details;
+  }
+);
