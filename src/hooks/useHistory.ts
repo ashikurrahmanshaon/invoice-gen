@@ -13,12 +13,30 @@ export const useHistory = () => {
       if (serialized) {
         const parsed = JSON.parse(serialized);
         if (Array.isArray(parsed)) {
+          // Filter out any corrupted or incomplete items
+          const validInvoices = parsed.filter(item => {
+            return (
+              item &&
+              typeof item === 'object' &&
+              typeof item.id === 'string' &&
+              item.data &&
+              typeof item.data === 'object' &&
+              item.data.details &&
+              typeof item.data.details === 'object' &&
+              item.data.client &&
+              typeof item.data.client === 'object' &&
+              item.data.totals &&
+              typeof item.data.totals === 'object'
+            );
+          });
           // Sort by issueDate descending, then createdAt descending
-          const sorted = parsed.sort((a, b) => {
-            const dateA = new Date(a.data.details.issueDate).getTime();
-            const dateB = new Date(b.data.details.issueDate).getTime();
+          const sorted = validInvoices.sort((a, b) => {
+            const dateAStr = a?.data?.details?.issueDate || '';
+            const dateBStr = b?.data?.details?.issueDate || '';
+            const dateA = dateAStr ? new Date(dateAStr).getTime() : 0;
+            const dateB = dateBStr ? new Date(dateBStr).getTime() : 0;
             if (dateA !== dateB) return dateB - dateA;
-            return b.createdAt - a.createdAt;
+            return (b?.createdAt || 0) - (a?.createdAt || 0);
           });
           setHistory(sorted);
           return;
@@ -36,7 +54,7 @@ export const useHistory = () => {
 
   const checkDuplicateNumber = (invoiceNumber: string, excludeId: string | null): boolean => {
     return history.some(
-      (inv) => inv.data.details.invoiceNumber === invoiceNumber && inv.id !== excludeId
+      (inv) => inv?.data?.details?.invoiceNumber === invoiceNumber && inv?.id !== excludeId
     );
   };
 

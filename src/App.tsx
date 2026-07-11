@@ -173,16 +173,17 @@ function App() {
 
   const handleDuplicateHistoryRecord = (invoice: SavedInvoice) => {
     attemptAction(() => {
+      const details = invoice?.data?.details || {};
       const duplicatedData = {
-        ...invoice.data,
+        ...invoice?.data,
         details: {
-          ...invoice.data.details,
-          invoiceNumber: generateInvoiceNumber(invoice.data.details.invoiceNumber),
+          ...details,
+          invoiceNumber: generateInvoiceNumber(details.invoiceNumber || ''),
           issueDate: new Date().toISOString().split('T')[0],
           dueDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
         }
       };
-      loadInvoiceFromHistory(null as any, duplicatedData); // Pass null to detach from history
+      loadInvoiceFromHistory(null as any, duplicatedData as any); // Pass null to detach from history
       setCurrentStage(1);
       setActiveView('editor');
     });

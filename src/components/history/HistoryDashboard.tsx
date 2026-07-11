@@ -22,12 +22,16 @@ export function HistoryDashboard({
   const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
 
   const filteredHistory = history.filter(inv => {
+    const invoiceNumber = inv?.data?.details?.invoiceNumber || '';
+    const clientName = inv?.data?.client?.name || '';
+    const clientEmail = inv?.data?.client?.email || '';
+
     const matchesSearch = 
-      inv.data.details.invoiceNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      inv.data.client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      inv.data.client.email.toLowerCase().includes(searchTerm.toLowerCase());
+      invoiceNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      clientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      clientEmail.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesStatus = statusFilter === 'All' || inv.status === statusFilter;
+    const matchesStatus = statusFilter === 'All' || inv?.status === statusFilter;
     
     return matchesSearch && matchesStatus;
   });
@@ -136,20 +140,20 @@ export function HistoryDashboard({
               <div className="flex-row" style={{ gap: '24px', flex: 1 }}>
                 <div style={{ width: '120px' }}>
                   <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '4px' }}>Date</div>
-                  <div style={{ fontWeight: 500, color: 'var(--text)' }}>{inv.data.details.issueDate}</div>
+                  <div style={{ fontWeight: 500, color: 'var(--text)' }}>{inv?.data?.details?.issueDate || ''}</div>
                 </div>
                 <div style={{ width: '140px' }}>
                   <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '4px' }}>Invoice</div>
-                  <div style={{ fontWeight: 600, color: 'var(--primary)' }}>{inv.data.details.invoiceNumber}</div>
+                  <div style={{ fontWeight: 600, color: 'var(--primary)' }}>{inv?.data?.details?.invoiceNumber || ''}</div>
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '4px' }}>Client</div>
-                  <div style={{ fontWeight: 500, color: 'var(--text)' }}>{inv.data.client.name || 'Unnamed Client'}</div>
+                  <div style={{ fontWeight: 500, color: 'var(--text)' }}>{inv?.data?.client?.name || 'Unnamed Client'}</div>
                 </div>
                 <div style={{ width: '120px', textAlign: 'right' }}>
                   <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '4px' }}>Total</div>
                   <div style={{ fontWeight: 600, color: 'var(--text)' }}>
-                    {formatCurrency(inv.data.totals.total, inv.data.details.currency)}
+                    {formatCurrency(inv?.data?.totals?.total || 0, inv?.data?.details?.currency || 'USD')}
                   </div>
                 </div>
                 <div style={{ width: '100px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
