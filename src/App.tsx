@@ -1,19 +1,21 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { StageIndicator } from './components/layout/StageIndicator';
+
 import { BusinessSection } from './components/invoice/BusinessSection';
 import { ClientSection } from './components/invoice/ClientSection';
 import { ItemsSection } from './components/invoice/ItemsSection';
 import { TotalsSection } from './components/invoice/TotalsSection';
-import { PreviewSidebar } from './components/invoice/PreviewSidebar';
-import { MobileWizard } from './components/mobile/MobileWizard';
+
+const PreviewSidebar = lazy(() => import('./components/invoice/PreviewSidebar').then(module => ({ default: module.PreviewSidebar })));
+const MobileWizard = lazy(() => import('./components/mobile/MobileWizard').then(module => ({ default: module.MobileWizard })));
+const HistoryDashboard = lazy(() => import('./components/history/HistoryDashboard').then(module => ({ default: module.HistoryDashboard })));
+
 import { useInvoice } from './hooks/useInvoice';
 import { useAutoSave } from './hooks/useAutoSave';
 import { useClients } from './hooks/useClients';
 import { useHistory } from './hooks/useHistory';
-import { lazy, Suspense } from 'react';
-import { HistoryDashboard } from './components/history/HistoryDashboard';
 
 const FullPreviewModal = lazy(() => import('./components/invoice/FullPreviewModal').then(module => ({ default: module.FullPreviewModal })));
 import { Modal } from './components/ui/Modal';
@@ -375,44 +377,50 @@ function App() {
               
               {/* Mobile Step-by-Step Flow */}
               <div className="mobile-only" style={{ width: '100%', minWidth: 0 }}>
-                <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} isMobile={true} />
-                <MobileWizard 
-                  currentStage={currentStage}
-                  setStage={setCurrentStage}
-                  data={data}
-                  updateBusiness={updateBusiness}
-                  updateClient={updateClient}
-                  clientHook={clientHook}
-                  selectedSavedClientId={selectedSavedClientId}
-                  setSelectedSavedClientId={setSelectedSavedClientId}
-                  updateDetails={updateDetails}
-                  updateOtherFields={updateOtherFields}
-                  addItem={addItem}
-                  duplicateItem={duplicateItem}
-                  removeItem={removeItem}
-                  updateItem={updateItem}
-                  setDiscount={setDiscount}
-                  setTaxRate={setTaxRate}
-                  setTaxLabel={setTaxLabel}
-                  setShipping={setShipping}
-                  setAmountPaid={setAmountPaid}
-                  onDownloadPDF={() => generateInvoicePDF(data)}
-                  onOpenFullPreview={() => setIsPreviewOpen(true)}
-                />
+                <Suspense fallback={null}>
+                  <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} isMobile={true} />
+                  <MobileWizard 
+                    currentStage={currentStage}
+                    setStage={setCurrentStage}
+                    data={data}
+                    updateBusiness={updateBusiness}
+                    updateClient={updateClient}
+                    clientHook={clientHook}
+                    selectedSavedClientId={selectedSavedClientId}
+                    setSelectedSavedClientId={setSelectedSavedClientId}
+                    updateDetails={updateDetails}
+                    updateOtherFields={updateOtherFields}
+                    addItem={addItem}
+                    duplicateItem={duplicateItem}
+                    removeItem={removeItem}
+                    updateItem={updateItem}
+                    setDiscount={setDiscount}
+                    setTaxRate={setTaxRate}
+                    setTaxLabel={setTaxLabel}
+                    setShipping={setShipping}
+                    setAmountPaid={setAmountPaid}
+                    onDownloadPDF={() => generateInvoicePDF(data)}
+                    onOpenFullPreview={() => setIsPreviewOpen(true)}
+                  />
+                </Suspense>
               </div>
 
               {/* Right Utility Sidebar (Desktop) */}
-              <PreviewSidebar data={data} onOpenFullPreview={() => setIsPreviewOpen(true)} />
+              <Suspense fallback={null}>
+                <PreviewSidebar data={data} onOpenFullPreview={() => setIsPreviewOpen(true)} />
+              </Suspense>
             </div>
         ) : (
           <div style={{ marginTop: '24px' }}>
-            <HistoryDashboard 
-              history={historyHook.history}
-              onEdit={handleEditHistoryRecord}
-              onDuplicate={handleDuplicateHistoryRecord}
-              onDelete={(id) => setHistoryRecordToDelete(id)}
-              onUpdateStatus={historyHook.updateStatus}
-            />
+            <Suspense fallback={null}>
+              <HistoryDashboard 
+                history={historyHook.history}
+                onEdit={handleEditHistoryRecord}
+                onDuplicate={handleDuplicateHistoryRecord}
+                onDelete={(id) => setHistoryRecordToDelete(id)}
+                onUpdateStatus={historyHook.updateStatus}
+              />
+            </Suspense>
           </div>
         )}
       </main>
