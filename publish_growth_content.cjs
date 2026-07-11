@@ -1222,10 +1222,10 @@ blogs.forEach(b => {
     "mainEntity": [
       ${b.faq.map(f => `{
         "@type": "Question",
-        "name": "${f.q}",
+        "name": ${JSON.stringify(f.q)},
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "${f.a}"
+          "text": ${JSON.stringify(f.a)}
         }
       }`).join(',\n')}
     ]
