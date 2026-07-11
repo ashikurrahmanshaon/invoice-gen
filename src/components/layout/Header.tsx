@@ -68,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', height: '100%', minWidth: 0, padding: '0 16px' }}>
         {/* Left: Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Logo size={28} color="var(--color-primary)" />
+          <Logo size={28} />
           <span className="font-bold text-base desktop-only" style={{ color: 'var(--color-text-main)', lineHeight: 1, letterSpacing: '-0.5px' }}>Invoice-Gen</span>
           
           {/* Navigation Tabs */}

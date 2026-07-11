@@ -59,7 +59,7 @@ textarea {
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: var(--color-primary);
-  background-color: #F8FAFF;
+  background-color: #F5F3FF;
   box-shadow: var(--shadow-focus);
 }
 
@@ -232,7 +232,7 @@ a {
 }
 
 .btn-ghost:hover:not(:disabled) {
-  background-color: rgba(21, 94, 239, 0.05);
+  background-color: rgba(79, 70, 229, 0.05);
 }
 
 .btn-ghost.text-secondary {

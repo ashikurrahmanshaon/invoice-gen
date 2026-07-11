@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
           {/* Left: Branding */}
           <div style={{ flex: '1 1 300px' }}>
             <div className="flex items-center gap-2" style={{ marginBottom: 'var(--space-3)' }}>
-              <Logo size={24} color="#155EEF" />
+              <Logo size={24} />
               <span className="font-bold text-lg" style={{ color: 'white' }}>Invoice-Gen</span>
             </div>
             <p style={{ maxWidth: '260px', color: '#667085', lineHeight: 1.5 }}>

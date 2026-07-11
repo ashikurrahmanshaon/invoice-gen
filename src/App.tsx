@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { PageIntro } from './components/layout/PageIntro';
+import { HeroSection } from './components/layout/HeroSection';
 import { StageIndicator } from './components/layout/StageIndicator';
 import { BusinessSection } from './components/invoice/BusinessSection';
 import { ClientSection } from './components/invoice/ClientSection';
@@ -187,6 +188,74 @@ function App() {
     });
   };
 
+  const loadDemoData = () => {
+    const demoData = {
+      business: {
+        name: 'DesignCraft Studio LLC',
+        email: 'billing@designcraft.co',
+        logoUrl: null,
+        phone: '+1 (555) 019-2834',
+        website: 'designcraft.co',
+        taxId: 'US-99882211',
+        address: '100 Pine Street',
+        address1: '100 Pine Street',
+        address2: 'Suite 2400',
+        city: 'San Francisco',
+        state: 'CA',
+        postalCode: '94111',
+        country: 'United States'
+      },
+      client: {
+        name: 'Acme Enterprises Inc.',
+        email: 'procurement@acme.com',
+        address: "500 Technology Way\nSuite 100\nSeattle, WA 98101",
+        phone: '+1 (555) 014-9988',
+        taxId: 'US-11223344'
+      },
+      details: {
+        invoiceNumber: 'INV-2026-042',
+        issueDate: new Date().toISOString().split('T')[0],
+        dueDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+        currency: 'USD'
+      },
+      items: [
+        {
+          id: 'demo-item-1',
+          name: 'Premium UI/UX Design System Retainer',
+          description: 'Design, asset guidelines, and component specifications for Web & Mobile applications.',
+          rate: '150',
+          quantity: '40'
+        },
+        {
+          id: 'demo-item-2',
+          name: 'Front-End Component Auditing & Review',
+          description: 'Code quality audit, accessibility compliance review, and performance optimizations.',
+          rate: '125',
+          quantity: '12'
+        }
+      ],
+      totals: {
+        subtotal: 7500,
+        discountRate: 10,
+        discountType: 'percent' as const,
+        discountValue: '10',
+        taxLabel: 'Tax',
+        taxRate: '8.5',
+        shipping: '',
+        amountPaid: '2000',
+        discountAmount: 750,
+        taxAmount: 573.75,
+        total: 7323.75,
+        balanceDue: 5323.75
+      },
+      notes: 'Thank you for choosing DesignCraft Studio. We appreciate your partnership!',
+      terms: 'Payment is due within 14 days of invoice date. Late payments are subject to a 1.5% fee per month.',
+      paymentInstructions: "Direct bank transfer routing details:\nBank: SVB Private\nRouting: 021000021\nAccount: 9988776655",
+      signatureUrl: null
+    };
+    loadInvoiceFromHistory(null as any, demoData);
+  };
+
   return (
     <>
       <Header 
@@ -224,7 +293,13 @@ function App() {
       <main className="container" id="generator" style={{ minWidth: 0 }}>
         {activeView === 'editor' ? (
           <>
-            <PageIntro />
+            <HeroSection 
+              onStart={() => document.getElementById('generator-editor')?.scrollIntoView({ behavior: 'smooth' })} 
+              onLoadDemo={loadDemoData} 
+            />
+            <div id="generator-editor">
+              <PageIntro />
+            </div>
             <div className="workspace-layout">
               {/* Main Desktop Workspace (Wizard) */}
               <div className="workspace-main">
