@@ -48,7 +48,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
                   justifyContent: 'center',
                   overflow: 'hidden'
                 }}>
-                  <img src={data.business.logoUrl} alt="Logo" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+                  <img src={data.business.logoUrl} alt="Logo" loading="lazy" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
                   <div style={{
                     position: 'absolute',
                     top: 0, left: 0, right: 0, bottom: 0,

@@ -10,7 +10,8 @@ const ItemsSection = lazy(() => import('./components/invoice/ItemsSection').then
 const TotalsSection = lazy(() => import('./components/invoice/TotalsSection').then(module => ({ default: module.TotalsSection })));
 
 const PreviewSidebar = lazy(() => import('./components/invoice/PreviewSidebar').then(module => ({ default: module.PreviewSidebar })));
-const MobileWizard = lazy(() => import('./components/mobile/MobileWizard').then(module => ({ default: module.MobileWizard })));
+import { MobileWizard } from './components/mobile/MobileWizard';
+// const MobileWizard = lazy(() => import('./components/mobile/MobileWizard').then(module => ({ default: module.MobileWizard })));
 const HistoryDashboard = lazy(() => import('./components/history/HistoryDashboard').then(module => ({ default: module.HistoryDashboard })));
 
 import { useInvoice } from './hooks/useInvoice';
@@ -24,24 +25,7 @@ import { generateInvoicePDF } from './utils/pdfGenerator';
 import { generateInvoiceNumber } from './utils/invoiceNumber';
 import type { SavedInvoice } from './types/invoice';
 
-const MobileWizardFallback = () => (
-  <div style={{ paddingBottom: '140px', display: 'flex', flexDirection: 'column', gap: '20px', width: '100%', marginTop: '20px' }}>
-    <div>
-      <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0F172A', margin: '0 0 4px 0' }}>Business details</h2>
-      <p style={{ fontSize: '12px', color: '#475569', margin: '0 0 24px 0' }}>Add the information shown on your invoice.</p>
-    </div>
-    <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <div>
-        <div style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#475569', marginBottom: '6px' }}>Business Name *</div>
-        <div style={{ width: '100%', height: '40px', border: '1px solid #D1D5DB', borderRadius: '6px', background: '#FFFFFF' }} />
-      </div>
-      <div>
-        <div style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: '#475569', marginBottom: '6px' }}>Email *</div>
-        <div style={{ width: '100%', height: '40px', border: '1px solid #D1D5DB', borderRadius: '6px', background: '#FFFFFF' }} />
-      </div>
-    </div>
-  </div>
-);
+
 
 function App() {
   const [currentStage, setCurrentStage] = useState(1);
@@ -331,31 +315,29 @@ function App() {
               /* Mobile Step-by-Step Flow */
               <div className="mobile-only" style={{ width: '100%', minWidth: 0 }}>
                 <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} isMobile={true} />
-                <Suspense fallback={<MobileWizardFallback />}>
-                  <MobileWizard 
-                    currentStage={currentStage}
-                    setStage={setCurrentStage}
-                    data={data}
-                    updateBusiness={updateBusiness}
-                    updateClient={updateClient}
-                    clientHook={clientHook}
-                    selectedSavedClientId={selectedSavedClientId}
-                    setSelectedSavedClientId={setSelectedSavedClientId}
-                    updateDetails={updateDetails}
-                    updateOtherFields={updateOtherFields}
-                    addItem={addItem}
-                    duplicateItem={duplicateItem}
-                    removeItem={removeItem}
-                    updateItem={updateItem}
-                    setDiscount={setDiscount}
-                    setTaxRate={setTaxRate}
-                    setTaxLabel={setTaxLabel}
-                    setShipping={setShipping}
-                    setAmountPaid={setAmountPaid}
-                    onDownloadPDF={() => generateInvoicePDF(data)}
-                    onOpenFullPreview={() => setIsPreviewOpen(true)}
-                  />
-                </Suspense>
+                <MobileWizard 
+                  currentStage={currentStage}
+                  setStage={setCurrentStage}
+                  data={data}
+                  updateBusiness={updateBusiness}
+                  updateClient={updateClient}
+                  clientHook={clientHook}
+                  selectedSavedClientId={selectedSavedClientId}
+                  setSelectedSavedClientId={setSelectedSavedClientId}
+                  updateDetails={updateDetails}
+                  updateOtherFields={updateOtherFields}
+                  addItem={addItem}
+                  duplicateItem={duplicateItem}
+                  removeItem={removeItem}
+                  updateItem={updateItem}
+                  setDiscount={setDiscount}
+                  setTaxRate={setTaxRate}
+                  setTaxLabel={setTaxLabel}
+                  setShipping={setShipping}
+                  setAmountPaid={setAmountPaid}
+                  onDownloadPDF={() => generateInvoicePDF(data)}
+                  onOpenFullPreview={() => setIsPreviewOpen(true)}
+                />
               </div>
             ) : (
               <>

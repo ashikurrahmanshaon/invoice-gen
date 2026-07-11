@@ -101,7 +101,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onLoadDemo }) => {
             letterSpacing: '-0.02em',
             color: '#FFFFFF',
             margin: '0 0 4px 0',
-            fontFamily: 'Inter, sans-serif'
+            fontFamily: "'Inter', 'Inter Fallback', sans-serif"
           }}>
             Free Professional Invoice Generator
           </h2>
@@ -115,6 +115,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onLoadDemo }) => {
           }}>
             100% Free &bull; Secure &bull; No Sign-Up &bull; Browser-Based &bull; Instant PDF Download. Your financial data stays locally on your device.
           </p>
+        </div>
+
+        {/* Hero Illustration */}
+        <div className="hero-illustration" style={{ flex: '1 1 200px', display: 'flex', justifyContent: 'center', alignItems: 'center', minWidth: '180px' }}>
+          <img 
+            src="/hero.webp" 
+            alt="Invoice Generator" 
+            fetchPriority="high"
+            style={{ width: '100%', maxWidth: '200px', height: 'auto', objectFit: 'contain', opacity: 0.9 }} 
+          />
         </div>
 
         {/* Action Button & Demo Link */}

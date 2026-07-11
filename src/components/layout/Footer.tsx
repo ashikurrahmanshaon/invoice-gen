@@ -44,13 +44,13 @@ export const Footer: React.FC = () => {
               fontWeight: 800, 
               letterSpacing: '-0.04em', 
               color: '#FFFFFF', 
-              fontFamily: 'Outfit, Inter, sans-serif',
+              fontFamily: "'Outfit', 'Inter', 'Inter Fallback', sans-serif",
               lineHeight: 1
             }}>
               Invoice<span style={{ color: '#06B6D4' }}>-Gen</span>
             </span>
           </div>
-          <span style={{ color: '#475569', fontSize: '11.5px' }}>
+          <span style={{ color: '#94A3B8', fontSize: '11.5px' }}>
             100% browser-native utility. Watermark-free invoices.
           </span>
         </div>
@@ -59,15 +59,17 @@ export const Footer: React.FC = () => {
         <div style={{ 
           display: 'grid', 
           gridTemplateColumns: isDesktop ? 'repeat(4, 1fr)' : '1fr', 
-          gap: isDesktop ? '32px' : '8px',
+          gap: isDesktop ? '24px' : '12px',
         }}>
           {/* Column 1: Product */}
           <details open={isDesktop} className="footer-col">
             <summary className="footer-summary">Product</summary>
             <div className="footer-links">
               <a href="/">Invoice Generator</a>
-              <a href="#how-it-works">How It Works</a>
-              <a href="#faq">FAQ & Support</a>
+              <a href="/about/">About Us</a>
+              <a href="/trust/">Trust Center</a>
+              <a href="/privacy/">Privacy Policy</a>
+              <a href="/terms/">Terms of Service</a>
             </div>
           </details>
 
@@ -85,35 +87,15 @@ export const Footer: React.FC = () => {
                 <summary className="footer-sub-summary">View All Templates</summary>
                 <div className="footer-sub-links">
                   <a href="/templates/web-developer/">Web Developer</a>
-                  <a href="/templates/marketing-consultant/">Marketing Advisor</a>
+                  <a href="/templates/marketing-consultant/">Marketing Consultant</a>
                   <a href="/templates/virtual-assistant/">Virtual Assistant</a>
-                  <a href="/templates/social-media-manager/">Social Media</a>
+                  <a href="/templates/social-media-manager/">Social Media Manager</a>
                   <a href="/templates/cleaning-service/">Cleaning Service</a>
                   <a href="/templates/seo-consultant/">SEO Consultant</a>
                   <a href="/templates/digital-marketing/">Digital Marketing</a>
                   <a href="/templates/video-editor/">Video Editor</a>
                   <a href="/templates/content-creator/">Content Creator</a>
                   <a href="/templates/copywriter/">Copywriter</a>
-                  <a href="/templates/translator/">Translator</a>
-                  <a href="/templates/editor-proofreader/">Editor & Proofreader</a>
-                  <a href="/templates/voiceover-artist/">Voiceover Artist</a>
-                  <a href="/templates/event-planner/">Event Planner</a>
-                  <a href="/templates/business-coach/">Business Coach</a>
-                  <a href="/templates/project-manager/">Project Manager</a>
-                  <a href="/templates/it-support/">IT Support</a>
-                  <a href="/templates/data-analyst/">Data Analyst</a>
-                  <a href="/templates/architect/">Architect</a>
-                  <a href="/templates/interior-designer/">Interior Designer</a>
-                  <a href="/templates/handyman/">Handyman</a>
-                  <a href="/templates/plumber/">Plumber</a>
-                  <a href="/templates/electrician/">Electrician</a>
-                  <a href="/templates/hvac-technician/">HVAC Tech</a>
-                  <a href="/templates/painter-contractor/">Painting Contractor</a>
-                  <a href="/templates/carpenter/">Carpenter</a>
-                  <a href="/templates/roofer/">Roofer</a>
-                  <a href="/templates/landscaping/">Landscaping</a>
-                  <a href="/templates/gardener/">Gardener</a>
-                  <a href="/templates/pet-sitter/">Pet Sitter</a>
                 </div>
               </details>
             </div>
@@ -123,40 +105,25 @@ export const Footer: React.FC = () => {
           <details open={isDesktop} className="footer-col">
             <summary className="footer-summary">Resources</summary>
             <div className="footer-links">
-              <a href="/blog/how-to-create-professional-invoice/">Create Invoice</a>
+              <a href="/blog/how-to-create-professional-invoice/">Create Invoice Guide</a>
               <a href="/blog/what-to-include-in-invoice/">What to Include</a>
               <a href="/blog/invoice-vs-receipt-difference/">Invoice vs Receipt</a>
               <a href="/blog/best-payment-terms-freelancers/">Payment Terms</a>
-              <a href="/blog/how-to-write-freelance-invoice/">Write Freelance Invoice</a>
+              <a href="/blog/how-to-write-freelance-invoice/">Freelance Guide</a>
               
               <details className="footer-sub-details">
                 <summary className="footer-sub-summary">View All Guides</summary>
                 <div className="footer-sub-links">
-                  <a href="/blog/common-invoice-mistakes-avoid/">Invoicing Mistakes</a>
-                  <a href="/blog/how-to-invoice-as-consultant/">Invoice as Consultant</a>
-                  <a href="/blog/hourly-vs-fixed-price-invoices/">Hourly vs Fixed Price</a>
-                  <a href="/blog/when-to-send-invoice/">When to Invoice</a>
+                  <a href="/blog/common-invoice-mistakes-avoid/">Common Mistakes</a>
+                  <a href="/blog/how-to-invoice-as-consultant/">Consultant Guide</a>
+                  <a href="/blog/hourly-vs-fixed-price-invoices/">Hourly vs Fixed</a>
+                  <a href="/blog/when-to-send-invoice/">When to Send</a>
                   <a href="/blog/how-to-get-paid-faster-invoices/">Get Paid Faster</a>
-                  <a href="/blog/how-to-write-a-professional-invoice/">Create Professional Invoice</a>
-                  <a href="/blog/essential-fields-to-include-on-invoice/">Essential Invoice Fields</a>
-                  <a href="/blog/invoice-vs-receipt-key-differences/">Invoice vs Receipt Diff</a>
-                  <a href="/blog/choosing-the-best-payment-terms-for-freelancers/">Choose Payment Terms</a>
-                  <a href="/blog/how-to-invoice-clients-internationally/">Invoice Internationally</a>
-                  <a href="/blog/what-is-a-proforma-invoice/">Proforma Invoices</a>
-                  <a href="/blog/when-to-use-a-commercial-invoice/">Commercial Invoices</a>
-                  <a href="/blog/how-to-invoice-for-hourly-work/">Hourly Invoice Guide</a>
-                  <a href="/blog/writing-an-invoice-under-a-retainer/">Retainer Invoice Guide</a>
-                  <a href="/blog/how-to-invoice-for-mileage-reimbursement/">Mileage Reimbursements</a>
                   <a href="/blog/invoicing-for-creative-licenses-and-royalties/">Creative Licenses</a>
                   <a href="/blog/handling-down-payments-and-deposits/">Down Payments</a>
                   <a href="/blog/how-to-request-milestone-payments/">Milestone Payments</a>
                   <a href="/blog/what-is-net-30-and-how-to-use-it/">Net 30 Billing</a>
                   <a href="/blog/what-is-a-credit-note-and-how-to-issue/">Credit Notes</a>
-                  <a href="/blog/what-is-a-debit-note-differences-explained/">Debit Notes</a>
-                  <a href="/blog/how-to-follow-up-on-unpaid-invoices/">Follow Up Guide</a>
-                  <a href="/blog/friendly-late-payment-reminder-email-templates/">Reminder Templates</a>
-                  <a href="/blog/legal-options-when-client-refuses-to-pay/">Legal Refusals</a>
-                  <a href="/blog/charging-late-fees-terms-and-best-practices/">Late Fee Terms</a>
                 </div>
               </details>
             </div>
@@ -183,7 +150,7 @@ export const Footer: React.FC = () => {
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: '8px',
-          color: '#475569',
+          color: '#94A3B8',
           fontSize: '11px'
         }}>
           <span>&copy; {new Date().getFullYear()} Invoice-Gen. All rights reserved.</span>

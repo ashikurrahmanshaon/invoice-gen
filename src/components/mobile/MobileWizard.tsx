@@ -153,7 +153,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
               <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Business Logo</label>
               {data.business.logoUrl ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <img src={data.business.logoUrl} alt="Logo" style={{ width: '120px', height: '96px', objectFit: 'contain', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)' }} />
+                  <img src={data.business.logoUrl} alt="Logo" loading="lazy" style={{ width: '120px', height: '96px', objectFit: 'contain', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)' }} />
                   <button className="btn btn-outline text-xs" style={{ minHeight: '36px', height: '36px', padding: '0 12px' }} onClick={() => updateBusiness({ logoUrl: null })}>Remove</button>
                 </div>
               ) : (
@@ -180,8 +180,9 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
 
             {/* Invoice Number */}
             <div>
-              <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Invoice Number</label>
+              <label htmlFor="mobile-invoice-number" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Invoice Number</label>
               <input 
+                id="mobile-invoice-number"
                 type="text" 
                 value={data.details.invoiceNumber}
                 onChange={(e) => updateDetails({ invoiceNumber: e.target.value })}
@@ -191,8 +192,9 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
 
             {/* Issue Date */}
             <div>
-              <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Issue Date</label>
+              <label htmlFor="mobile-issue-date" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Issue Date</label>
               <input 
+                id="mobile-issue-date"
                 type="date" 
                 value={data.details.issueDate}
                 onChange={(e) => updateDetails({ issueDate: e.target.value })}
@@ -202,8 +204,9 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
 
             {/* Due Date */}
             <div>
-              <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Due Date</label>
+              <label htmlFor="mobile-due-date" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Due Date</label>
               <input 
+                id="mobile-due-date"
                 type="date" 
                 value={data.details.dueDate}
                 onChange={(e) => updateDetails({ dueDate: e.target.value })}
@@ -213,8 +216,9 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
 
             {/* Currency */}
             <div>
-              <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Currency</label>
+              <label htmlFor="mobile-currency" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Currency</label>
               <select 
+                id="mobile-currency"
                 value={data.details.currency}
                 onChange={(e) => updateDetails({ currency: e.target.value })}
                 style={{ fontSize: '16px', height: '48px' }}

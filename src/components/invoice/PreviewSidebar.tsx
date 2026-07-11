@@ -44,7 +44,7 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
             <div>
               {data.business.logoUrl && (
                 <div style={{ width: '40px', height: '32px', marginBottom: '8px', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', overflow: 'hidden' }}>
-                  <img src={data.business.logoUrl} alt="Logo" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+                  <img src={data.business.logoUrl} alt="Logo" loading="lazy" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
                 </div>
               )}
               <div style={{ fontWeight: 'bold', color: 'var(--color-text-main)', fontSize: '14px', marginBottom: '2px' }}>

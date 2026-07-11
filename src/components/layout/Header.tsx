@@ -204,7 +204,7 @@ export const Header: React.FC<HeaderProps> = ({
             fontWeight: 800, 
             letterSpacing: '-0.04em', 
             color: 'var(--color-text-main)', 
-            fontFamily: 'Outfit, Inter, sans-serif',
+            fontFamily: "'Outfit', 'Inter', 'Inter Fallback', sans-serif",
             lineHeight: 1,
             display: 'flex',
             alignItems: 'center'

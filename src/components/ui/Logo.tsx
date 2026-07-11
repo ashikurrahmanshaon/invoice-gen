@@ -39,7 +39,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 32, hideText = false }) => {
             fontWeight: 800, 
             letterSpacing: '-0.04em', 
             color: 'inherit',
-            fontFamily: 'Outfit, Inter, sans-serif',
+            fontFamily: "'Outfit', 'Inter', 'Inter Fallback', sans-serif",
             lineHeight: 1
           }}
         >
