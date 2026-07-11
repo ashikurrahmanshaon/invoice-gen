@@ -294,7 +294,7 @@ function App() {
           <div className="workspace-layout">
               {/* Main Desktop Workspace (Wizard) */}
               <div className="workspace-main">
-                <div className="card animate-fade-in" style={{ padding: '0' }}>
+                <div className="card" style={{ padding: '0' }}>
                   <div style={{ padding: '24px 32px' }}>
                     <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} isMobile={false} />
                     

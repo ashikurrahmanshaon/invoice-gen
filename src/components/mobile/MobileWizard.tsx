@@ -123,7 +123,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             <p className="text-xs text-secondary" style={{ margin: 0 }}>Add the information shown on your invoice.</p>
           </div>
           
-          <div className="mobile-card animate-fade-in">
+          <div className="mobile-card">
             {/* Business Name */}
             <div>
               <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Business Name *</label>

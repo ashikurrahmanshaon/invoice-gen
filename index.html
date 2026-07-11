@@ -153,7 +153,135 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- App Shell Placeholder for Instant First Contentful Paint / LCP -->
+      <style>
+        .app-shell-header {
+          background: rgba(255, 255, 255, 0.75);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+          height: 52px;
+          display: flex;
+          align-items: center;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          padding: 0 16px;
+        }
+        .app-shell-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 16px;
+          width: 100%;
+        }
+        .app-shell-flex {
+          display: flex;
+          gap: 24px;
+        }
+        .app-shell-card {
+          flex: 1;
+          background: #FFFFFF;
+          border: 1px solid #E2E8F0;
+          border-radius: 12px;
+          padding: 24px 32px;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .app-shell-title {
+          font-size: 20px;
+          font-weight: 700;
+          color: #0F172A;
+          margin: 0 0 4px 0;
+        }
+        .app-shell-subtitle {
+          font-size: 12px;
+          color: #475569;
+          margin: 0 0 24px 0;
+        }
+        .app-shell-input-group {
+          margin-bottom: 16px;
+        }
+        .app-shell-label {
+          display: block;
+          font-size: 12px;
+          font-weight: 600;
+          color: #475569;
+          margin-bottom: 6px;
+        }
+        .app-shell-input {
+          width: 100%;
+          height: 40px;
+          border: 1px solid #D1D5DB;
+          border-radius: 6px;
+          background: #FFFFFF;
+          padding: 0 12px;
+        }
+        @media (max-width: 767px) {
+          .app-shell-desktop { display: none !important; }
+          .app-shell-header { height: 60px !important; }
+        }
+        @media (min-width: 768px) {
+          .app-shell-mobile { display: none !important; }
+        }
+      </style>
+      
+      <header class="app-shell-header">
+        <div style="display: flex; align-items: center; gap: 8px; color: #0F172A;">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle;">
+            <path d="M6 4H20L26 10V28H6V4Z" fill="#4F46E5" />
+            <path d="M20 4V10H26L20 4Z" fill="#06B6D4" />
+            <line x1="10" y1="15" x2="22" y2="15" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" />
+            <line x1="10" y1="20" x2="22" y2="20" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" />
+            <line x1="10" y1="24" x2="16" y2="24" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+          <span style="font-size: 11px; font-weight: 800; letter-spacing: -0.04em; font-family: Outfit, Inter, sans-serif;">
+            Invoice<span style="color: #06B6D4;">-Gen</span>
+          </span>
+        </div>
+      </header>
+
+      <main class="app-shell-container">
+        <!-- Desktop App Shell -->
+        <div class="app-shell-desktop">
+          <div class="app-shell-flex">
+            <div class="app-shell-card">
+              <h2 class="app-shell-title">Business details</h2>
+              <p class="app-shell-subtitle">Add the information shown on your invoice.</p>
+              
+              <div class="app-shell-input-group">
+                <div class="app-shell-label">Business Name *</div>
+                <div class="app-shell-input"></div>
+              </div>
+              <div class="app-shell-input-group">
+                <div class="app-shell-label">Email *</div>
+                <div class="app-shell-input"></div>
+              </div>
+            </div>
+            <div style="width: 320px; height: 400px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px;"></div>
+          </div>
+        </div>
+
+        <!-- Mobile App Shell -->
+        <div class="app-shell-mobile">
+          <div style="padding-bottom: 140px; display: flex; flex-direction: column; gap: 20px;">
+            <div>
+              <h2 class="app-shell-title">Business details</h2>
+              <p class="app-shell-subtitle">Add the information shown on your invoice.</p>
+            </div>
+            <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 16px;">
+              <div class="app-shell-input-group">
+                <div class="app-shell-label">Business Name *</div>
+                <div class="app-shell-input"></div>
+              </div>
+              <div class="app-shell-input-group">
+                <div class="app-shell-label">Email *</div>
+                <div class="app-shell-input"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
     <noscript>
       <div style="padding: 40px; background: #0B1220; color: #98A2B3; font-family: sans-serif; font-size: 14px; text-align: center;">
         <h3>Site Map & Resources</h3>
