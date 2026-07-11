@@ -14,44 +14,76 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     
-    <!-- Google Analytics 4 -->
-    <script>
+    <!-- Optimized Analytics & Third-Party Script Loader -->
+    <script type="text/javascript">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          var script = document.createElement('script');
-          script.async = true;
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z8JWXK5L15';
-          document.head.appendChild(script);
-          gtag('config', 'G-Z8JWXK5L15');
-        }, 3000);
-      });
-    </script>
-
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
       window.clarity = window.clarity || function() { (window.clarity.q = window.clarity.q || []).push(arguments) };
+      
+      // Keep Microsoft Clarity masking active immediately for privacy compliance
       window.clarity("mask", true);
 
-      window.addEventListener('load', function() {
-        if (window.__clarity_initialized) return;
-        window.__clarity_initialized = true;
+      (function() {
+        var initialized = false;
 
-        setTimeout(function() {
-          var t = document.createElement('script');
-          t.async = true;
-          t.src = "https://www.clarity.ms/tag/xksdnuqlz1";
-          var y = document.getElementsByTagName('script')[0];
-          if (y && y.parentNode) {
-            y.parentNode.insertBefore(t, y);
+        function initThirdParty() {
+          if (initialized) return;
+          initialized = true;
+
+          // Remove interaction listeners
+          removeListeners();
+
+          // Initialize Google Analytics 4 (via Google Tag Manager)
+          gtag('js', new Date());
+          var gaScript = document.createElement('script');
+          gaScript.async = true;
+          gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z8JWXK5L15';
+          document.head.appendChild(gaScript);
+          gtag('config', 'G-Z8JWXK5L15');
+
+          // Initialize Microsoft Clarity
+          var clarityScript = document.createElement('script');
+          clarityScript.async = true;
+          clarityScript.src = "https://www.clarity.ms/tag/xksdnuqlz1";
+          var firstScript = document.getElementsByTagName('script')[0];
+          if (firstScript && firstScript.parentNode) {
+            firstScript.parentNode.insertBefore(clarityScript, firstScript);
           } else {
-            document.head.appendChild(t);
+            document.head.appendChild(clarityScript);
           }
-        }, 4000);
-      });
+        }
+
+        var interactionEvents = ['scroll', 'mousedown', 'mousemove', 'touchstart', 'keydown'];
+
+        function addListeners() {
+          interactionEvents.forEach(function(event) {
+            window.addEventListener(event, initThirdParty, { passive: true, once: true });
+          });
+        }
+
+        function removeListeners() {
+          interactionEvents.forEach(function(event) {
+            window.removeEventListener(event, initThirdParty);
+          });
+        }
+
+        // Add listeners for early user interaction
+        addListeners();
+
+        // Fallback: load after page load and when the browser is idle
+        window.addEventListener('load', function() {
+          var idleCallback = window.requestIdleCallback || function(cb) {
+            return setTimeout(cb, 1000);
+          };
+          
+          // Small timeout after load to ensure main frame rendering finishes, then wait for idle
+          setTimeout(function() {
+            idleCallback(function() {
+              initThirdParty();
+            });
+          }, 2000);
+        });
+      })();
     </script>
 
     <!-- Open Graph / Facebook -->
