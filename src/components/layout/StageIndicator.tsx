@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check } from 'lucide-react';
+import { Check, ChevronRight } from 'lucide-react';
 
 interface StageIndicatorProps {
   currentStage: number;
@@ -61,7 +61,8 @@ export const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, on
     <div style={{
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'space-between',
+      justifyContent: 'flex-start',
+      gap: '16px',
       padding: '0 0 24px 0',
       borderBottom: '1px solid var(--color-border)',
       width: '100%'
@@ -128,14 +129,7 @@ export const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, on
             </div>
             
             {!isLast && (
-              <div style={{
-                flex: 1,
-                height: '2px',
-                margin: '0 16px',
-                background: isPast ? 'var(--color-primary)' : '#E4E7EC',
-                borderRadius: '1px',
-                transition: 'all 0.3s ease'
-              }} />
+              <ChevronRight size={16} color="#D0D5DD" strokeWidth={2.5} />
             )}
           </React.Fragment>
         );

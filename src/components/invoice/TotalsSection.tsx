@@ -46,7 +46,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
           <div>
             <label className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Notes</label>
             <textarea 
-              placeholder="Thank you for your business."
+              placeholder="Add a special note or thank you message for your client..."
               value={data.notes}
               onChange={(e) => updateOtherFields({ notes: e.target.value })}
               style={{ height: '128px', maxHeight: '128px', resize: 'none', width: '100%' }}
@@ -116,11 +116,11 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
           )}
 
           {/* Secondary Buttons Row */}
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             {!showTerms && (
               <button 
                 className="btn btn-outline text-xs" 
-                style={{ minHeight: '36px', height: '36px', padding: '0 12px', fontWeight: 500 }}
+                style={{ minHeight: '36px', height: '36px', padding: '0 16px', borderRadius: '18px', fontWeight: 500 }}
                 onClick={() => setShowTerms(true)}
               >
                 {data.terms ? 'Edit terms' : '+ Add terms'}
@@ -129,7 +129,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
             {!showInstructions && (
               <button 
                 className="btn btn-outline text-xs" 
-                style={{ minHeight: '36px', height: '36px', padding: '0 12px', fontWeight: 500 }}
+                style={{ minHeight: '36px', height: '36px', padding: '0 16px', borderRadius: '18px', fontWeight: 500 }}
                 onClick={() => setShowInstructions(true)}
               >
                 {data.paymentInstructions ? 'Edit instructions' : '+ Payment instructions'}
@@ -140,17 +140,18 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
 
         {/* Right Side: Totals Card */}
         <div style={{
-          background: '#F8FAFC',
-          border: '1px solid #E4E7EC',
-          borderRadius: '12px',
+          background: 'var(--color-surface)',
+          border: '1px solid var(--color-border)',
+          borderRadius: '16px',
           padding: '24px',
           display: 'flex',
           flexDirection: 'column',
           gap: '16px',
-          width: '100%'
+          width: '100%',
+          boxShadow: '0 4px 12px rgba(16, 24, 40, 0.03)'
         }}>
           {/* Subtotal Row */}
-          <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '8px', alignItems: 'center', fontSize: '14px', color: 'var(--color-text-main)', fontWeight: 500 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px', color: 'var(--color-text-secondary)', fontWeight: 500 }}>
             <span>Subtotal</span>
             <div></div>
             <div></div>
@@ -159,7 +160,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
 
           {/* Discount Row */}
           {enableDiscount ? (
-            <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '8px', alignItems: 'center', fontSize: '14px' }}>
+            <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px' }}>
               <span className="text-secondary">Discount</span>
               <div style={{ justifySelf: 'start', display: 'flex', border: '1px solid var(--color-border)', borderRadius: '6px', background: 'white', overflow: 'hidden', height: '32px', width: '92px' }}>
                 <input 
@@ -192,7 +193,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
               </span>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '8px', alignItems: 'center', fontSize: '14px', height: '32px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px', height: '32px' }}>
               <span className="text-secondary">Discount</span>
               <button 
                 className="text-primary" 
@@ -208,7 +209,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
 
           {/* Tax Row */}
           {enableTax ? (
-            <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '8px', alignItems: 'center', fontSize: '14px' }}>
+            <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px' }}>
               <input 
                 type="text" 
                 className="text-secondary font-medium"
@@ -247,7 +248,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
               </span>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '8px', alignItems: 'center', fontSize: '14px', height: '32px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px', height: '32px' }}>
               <span className="text-secondary">Tax</span>
               <button 
                 className="text-primary" 
@@ -263,7 +264,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
 
           {/* Shipping Row */}
           {enableShipping ? (
-            <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '8px', alignItems: 'center', fontSize: '14px' }}>
+            <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px' }}>
               <span className="text-secondary">Shipping</span>
               <div style={{ justifySelf: 'start', position: 'relative', width: '92px', height: '32px' }}>
                 <span style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', fontSize: '11px', color: 'var(--color-text-tertiary)', pointerEvents: 'none' }}>{symbol}</span>
@@ -289,7 +290,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
               </span>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '8px', alignItems: 'center', fontSize: '14px', height: '32px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px', height: '32px' }}>
               <span className="text-secondary">Shipping</span>
               <button 
                 className="text-primary" 
@@ -306,7 +307,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
           <div style={{ borderTop: '1px solid #E4E7EC', margin: '4px 0' }} />
 
           {/* Total Row */}
-          <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '8px', alignItems: 'center', fontSize: '15px', color: 'var(--color-text-main)', fontWeight: 600 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '16px', color: 'var(--color-text-main)', fontWeight: 600 }}>
             <span>Total</span>
             <div></div>
             <div></div>
@@ -314,7 +315,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
           </div>
 
           {/* Amount Paid Row */}
-          <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '8px', alignItems: 'center', fontSize: '13px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '13px' }}>
             <span className="text-secondary">Amount Paid</span>
             <div></div>
             <div></div>
@@ -336,7 +337,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
           <div style={{
             background: '#EEF4FF',
             border: '1px solid rgba(21, 94, 239, 0.2)',
-            borderRadius: '8px',
+            borderRadius: '12px',
             minHeight: '56px',
             display: 'flex',
             alignItems: 'center',
