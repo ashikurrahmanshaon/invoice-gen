@@ -90,6 +90,15 @@
       background-color: var(--color-primary-hover);
       transform: translateY(-1px);
     }
+    .trust-bullets {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
     main {
       max-width: 800px;
       margin: 80px auto;
@@ -116,6 +125,34 @@
       text-align: center;
     }
     .highlight-card p { margin-bottom: 24px; }
+    
+    .related-templates {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 48px;
+    }
+    .related-templates h3 { margin-top: 0; margin-bottom: 16px; }
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .related-links a {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      background: #F0F4FE;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 150ms ease;
+    }
+    .related-links a:hover {
+      background: #E1E9FD;
+    }
+
     footer {
       background: white;
       border-top: 1px solid var(--color-border);
@@ -145,8 +182,25 @@
     <div class="hero">
       <h1>Free Photographer Invoice Template</h1>
       <p class="subtitle">An open, browser-native invoice generator designed for freelance photographers, event videographers, and commercial studios.</p>
-      <a href="/?niche=photographer" class="btn-cta">Create Photography Invoice</a>
+      <div style="margin-top: 24px;">
+        <a href="/?niche=photographer" class="btn-cta">Create Photo Invoice</a>
+        <div class="trust-bullets">
+          <span>✓ 100% Free</span>
+          <span>✓ No Sign Up</span>
+          <span>✓ No Watermark</span>
+          <span>✓ Runs in Your Browser</span>
+          <span>✓ Your Data Stays on Your Device</span>
+        </div>
+      </div>
     </div>
+
+    <h2>Who is this template for?</h2>
+    <p>This photography billing structure fits creators handling production media, including:</p>
+    <ul>
+      <li><strong>Event & Wedding Photographers:</strong> Invoicing booking fees, shooting hours, and delivery terms.</li>
+      <li><strong>Commercial & Portrait Studios:</strong> Documenting commercial image licensing rights, studio fees, and gear rentals.</li>
+      <li><strong>Videographers & Video Editors:</strong> Billing for editing timelines, post-production revisions, and motion assets.</li>
+    </ul>
 
     <h2>Photography Invoicing Best Practices</h2>
     <p>Professional photographer invoices must list details clearly to avoid delivery issues or payment delays. Follow these formatting guidelines:</p>
@@ -169,6 +223,13 @@
       <h3>No Registration Required. 100% Free.</h3>
       <p>Invoice-Gen runs entirely locally. We do not store your client details or billing data on remote databases, protecting your business relationships.</p>
       <a href="/?niche=photographer" class="btn-cta">Generate PDF Invoice</a>
+      <div class="trust-bullets">
+        <span>✓ 100% Free</span>
+        <span>✓ No Sign Up</span>
+        <span>✓ No Watermark</span>
+        <span>✓ Runs in Your Browser</span>
+        <span>✓ Your Data Stays on Your Device</span>
+      </div>
     </div>
 
     <h2>Photography Payment Terms</h2>
@@ -188,6 +249,15 @@
 
       <h3>How long does the PDF export take?</h3>
       <p>Instantly. The PDF is created locally using <code>jsPDF</code> and downloads directly to your device memory.</p>
+    </div>
+
+    <div class="related-templates">
+      <h3>Related Templates</h3>
+      <div class="related-links">
+        <a href="/templates/graphic-designer/">Graphic Designer Template</a>
+        <a href="/templates/freelance/">Freelance Invoice Template</a>
+        <a href="/templates/virtual-assistant/">Virtual Assistant Template</a>
+      </div>
     </div>
   </main>
 

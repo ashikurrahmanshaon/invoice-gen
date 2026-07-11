@@ -90,6 +90,15 @@
       background-color: var(--color-primary-hover);
       transform: translateY(-1px);
     }
+    .trust-bullets {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
     main {
       max-width: 800px;
       margin: 80px auto;
@@ -116,6 +125,34 @@
       text-align: center;
     }
     .highlight-card p { margin-bottom: 24px; }
+    
+    .related-templates {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 48px;
+    }
+    .related-templates h3 { margin-top: 0; margin-bottom: 16px; }
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .related-links a {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      background: #F0F4FE;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 150ms ease;
+    }
+    .related-links a:hover {
+      background: #E1E9FD;
+    }
+
     footer {
       background: white;
       border-top: 1px solid var(--color-border);
@@ -144,9 +181,26 @@
   <main>
     <div class="hero">
       <h1>Free Contractor Invoice Template</h1>
-      <p class="subtitle">An open, browser-native invoice generator designed for general contractors, independent builders, and subcontractors.</p>
-      <a href="/?niche=contractor" class="btn-cta">Create Contractor Invoice</a>
+      <p class="subtitle">An open, browser-native invoice generator designed for general contractors, builders, and tradespeople.</p>
+      <div style="margin-top: 24px;">
+        <a href="/?niche=contractor" class="btn-cta">Create Contractor Invoice</a>
+        <div class="trust-bullets">
+          <span>✓ 100% Free</span>
+          <span>✓ No Sign Up</span>
+          <span>✓ No Watermark</span>
+          <span>✓ Runs in Your Browser</span>
+          <span>✓ Your Data Stays on Your Device</span>
+        </div>
+      </div>
     </div>
+
+    <h2>Who is this template for?</h2>
+    <p>This contractor layout satisfies requirements for physical builders and on-site specialists, including:</p>
+    <ul>
+      <li><strong>General Construction Contractors:</strong> Billing for site builds, framings, and architectural additions.</li>
+      <li><strong>Independent Electricians & Plumbers:</strong> Invoicing hourly service calls, plumbing setups, and electrical upgrades.</li>
+      <li><strong>Subcontractors & HVAC Experts:</strong> Documenting progress stages, materials installations, and equipment charges.</li>
+    </ul>
 
     <h2>How Contractors Should Structure Invoices</h2>
     <p>Contractor projects often involve complex resource calculations. Keep your invoicing precise by using these formatting rules:</p>
@@ -169,6 +223,13 @@
       <h3>Free Forever. No Payments Required.</h3>
       <p>Invoice-Gen runs client-side. There are no monthly fees, subscription paywalls, or accounts to manage. Process all invoicing securely inside your web browser cache.</p>
       <a href="/?niche=contractor" class="btn-cta">Generate PDF Invoice</a>
+      <div class="trust-bullets">
+        <span>✓ 100% Free</span>
+        <span>✓ No Sign Up</span>
+        <span>✓ No Watermark</span>
+        <span>✓ Runs in Your Browser</span>
+        <span>✓ Your Data Stays on Your Device</span>
+      </div>
     </div>
 
     <h2>Contractor Payment Cycles</h2>
@@ -189,6 +250,15 @@
 
       <h3>How long does it take to download my invoice?</h3>
       <p>Instantly. As soon as you click the "Download PDF" button, the PDF compiles locally in client memory and downloads directly to your device.</p>
+    </div>
+
+    <div class="related-templates">
+      <h3>Related Templates</h3>
+      <div class="related-links">
+        <a href="/templates/cleaning-service/">Cleaning Service Template</a>
+        <a href="/templates/freelance/">Freelance Invoice Template</a>
+        <a href="/templates/web-developer/">Web Developer Template</a>
+      </div>
     </div>
   </main>
 

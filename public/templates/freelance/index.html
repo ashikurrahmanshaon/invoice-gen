@@ -90,6 +90,15 @@
       background-color: var(--color-primary-hover);
       transform: translateY(-1px);
     }
+    .trust-bullets {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
     main {
       max-width: 800px;
       margin: 80px auto;
@@ -116,6 +125,34 @@
       text-align: center;
     }
     .highlight-card p { margin-bottom: 24px; }
+    
+    .related-templates {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 48px;
+    }
+    .related-templates h3 { margin-top: 0; margin-bottom: 16px; }
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .related-links a {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      background: #F0F4FE;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 150ms ease;
+    }
+    .related-links a:hover {
+      background: #E1E9FD;
+    }
+
     footer {
       background: white;
       border-top: 1px solid var(--color-border);
@@ -144,9 +181,26 @@
   <main>
     <div class="hero">
       <h1>Free Freelance Invoice Template</h1>
-      <p class="subtitle">A privacy-first, professional invoicing tool built specifically for independent contractors, writers, developers, and creators.</p>
-      <a href="/?niche=freelance" class="btn-cta">Create Freelance Invoice</a>
+      <p class="subtitle">A privacy-first, professional invoicing tool built specifically for independent contractors, writers, and creative freelancers.</p>
+      <div style="margin-top: 24px;">
+        <a href="/?niche=freelance" class="btn-cta">Create Freelance Invoice</a>
+        <div class="trust-bullets">
+          <span>✓ 100% Free</span>
+          <span>✓ No Sign Up</span>
+          <span>✓ No Watermark</span>
+          <span>✓ Runs in Your Browser</span>
+          <span>✓ Your Data Stays on Your Device</span>
+        </div>
+      </div>
     </div>
+
+    <h2>Who is this template for?</h2>
+    <p>This template is built specifically for sole proprietors and independent operators managing direct client relationships, including:</p>
+    <ul>
+      <li><strong>Independent Content Writers & Copywriters:</strong> Billing per word or flat fee per article deliverables.</li>
+      <li><strong>Freelance Consultants:</strong> Invoicing for strategic advisory milestones or hourly assessments.</li>
+      <li><strong>Creative Designers & Illustrators:</strong> Structuring simple layout designs and illustration releases.</li>
+    </ul>
 
     <h2>Freelancer Invoicing Best Practices</h2>
     <p>Managing your cash flow as a freelancer starts with sending clear, consistent invoices. Following these industry best practices will ensure your clients process your billing without delays:</p>
@@ -159,7 +213,7 @@
     <h2>Common Invoicing Mistakes to Avoid</h2>
     <p>Invoicing errors make your business look unprofessional and complicate tax filings. Watch out for these three pitfalls:</p>
     <h3>1. Vague Line Item Descriptions</h3>
-    <p>Writing generic terms like "Work Done" leads to client confusion. Use descriptive tags (e.g., "Front-end Development (React Milestone 2)").</p>
+    <p>Writing generic terms like "Work Done" leads to client confusion. Use descriptive tags (e.g., "Content Production (Strategy Milestone 2)").</p>
     <h3>2. Omitting the Unique Invoice Number</h3>
     <p>Each invoice must have a sequential, unique tracking number (e.g., INV-001). This is required for business accounting and helps prevent payment double-processing.</p>
     <h3>3. Sending Invoices as Editable Formats</h3>
@@ -169,6 +223,13 @@
       <h3>No Paywalls. Zero Signup Required.</h3>
       <p>Invoice-Gen runs entirely in your web browser. Your client databases and invoice calculations are processed locally on your device, ensuring total privacy.</p>
       <a href="/?niche=freelance" class="btn-cta">Generate PDF Invoice</a>
+      <div class="trust-bullets">
+        <span>✓ 100% Free</span>
+        <span>✓ No Sign Up</span>
+        <span>✓ No Watermark</span>
+        <span>✓ Runs in Your Browser</span>
+        <span>✓ Your Data Stays on Your Device</span>
+      </div>
     </div>
 
     <h2>Freelance Payment Terms & Net Invoicing</h2>
@@ -181,14 +242,23 @@
 
     <h2>Frequently Asked Questions</h2>
     <div style="margin-top: 24px;">
-      <h3>Do I need to sign up to download my invoice?</h3>
+      <h3>Do I need to sign up to download my freelance invoice?</h3>
       <p>No. Invoice-Gen is a 100% open tool. You can input your details and export a clean PDF without ever sharing your email or creating an account.</p>
       
-      <h3>Can I save my business details for future invoices?</h3>
+      <h3>Can I save my freelance client details for future invoices?</h3>
       <p>Yes. The app automatically caches your business profile parameters securely inside your browser's local sandbox storage, saving you from re-entering details next time.</p>
 
-      <h3>How secure is my client data?</h3>
+      <h3>How secure is my financial data?</h3>
       <p>Extremely secure. Because all calculations and PDF processing occur locally inside your browser, neither our team nor any external server can read or access your financial inputs.</p>
+    </div>
+
+    <div class="related-templates">
+      <h3>Related Templates</h3>
+      <div class="related-links">
+        <a href="/templates/consultant/">Consultant Invoice Template</a>
+        <a href="/templates/graphic-designer/">Graphic Designer Template</a>
+        <a href="/templates/virtual-assistant/">Virtual Assistant Template</a>
+      </div>
     </div>
   </main>
 
@@ -212,7 +282,7 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Do I need to sign up to download my invoice?",
+        "name": "Do I need to sign up to download my freelance invoice?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "No. Invoice-Gen is a 100% open tool. You can input your details and export a clean PDF without ever sharing your email or creating an account."
@@ -220,7 +290,7 @@
       },
       {
         "@type": "Question",
-        "name": "Can I save my business details for future invoices?",
+        "name": "Can I save my freelance client details for future invoices?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes. The app automatically caches your business profile parameters securely inside your browser's local sandbox storage, saving you from re-entering details next time."
@@ -228,7 +298,7 @@
       },
       {
         "@type": "Question",
-        "name": "How secure is my client data?",
+        "name": "How secure is my financial data?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Extremely secure. Because all calculations and PDF processing occur locally inside your browser, neither our team nor any external server can read or access your financial inputs."
