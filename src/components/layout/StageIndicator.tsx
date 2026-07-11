@@ -27,10 +27,9 @@ export const StageIndicator: React.FC<StageIndicatorProps> = ({ currentStage, on
         boxSizing: 'border-box'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          {stages.map((stage, idx) => {
+          {stages.map((stage) => {
             const isActive = stage.num === currentStage;
             const isPast = stage.num < currentStage;
-            const isLast = idx === stages.length - 1;
             
             return (
               <React.Fragment key={stage.num}>
