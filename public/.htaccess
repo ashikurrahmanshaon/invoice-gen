@@ -3,6 +3,17 @@
   AddType text/javascript .mjs
 </IfModule>
 
+<IfModule mod_headers.c>
+  # Cache hashed assets for 1 year (immutable)
+  SetEnvIf Request_URI "/assets/" HASHED_ASSET
+  Header set Cache-Control "public, max-age=31536000, immutable" env=HASHED_ASSET
+
+  # HTML files must be revalidated every time to ensure users get updates instantly
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
 RewriteEngine On
 
 # Redirect WWW to Non-WWW
