@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Download, MoreVertical, Trash2, FilePlus } from 'lucide-react';
+import { Download, MoreVertical, Trash2, FilePlus, Sparkles } from 'lucide-react';
 import { Logo } from '../ui/Logo';
 import type { SaveStatus } from '../../hooks/useAutoSave';
 
@@ -14,6 +14,7 @@ interface HeaderProps {
   onSave?: () => void;
   onSaveAsNew?: () => void;
   hasLoadedHistory?: boolean;
+  onLoadDemo?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ 
@@ -26,7 +27,8 @@ export const Header: React.FC<HeaderProps> = ({
   onViewChange,
   onSave,
   onSaveAsNew,
-  hasLoadedHistory = false
+  hasLoadedHistory = false,
+  onLoadDemo
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -42,27 +44,29 @@ export const Header: React.FC<HeaderProps> = ({
   }, []);
 
   const getStatusPill = () => {
-    if (saveStatus === 'idle') return null;
-    
     let bg = '#F1F5F9';
     let border = '1px solid #E2E8F0';
     let color = '#475569';
-    let text = '';
+    let dotColor = '#10B981';
+    let text = 'Secure Sandbox';
 
     if (saveStatus === 'saving') {
       bg = '#FFFBEB';
       border = '1px solid #FDE68A';
       color = '#B45309';
+      dotColor = '#F59E0B';
       text = 'Saving...';
     } else if (saveStatus === 'success') {
       bg = '#ECFDF5';
       border = '1px solid #A7F3D0';
       color = '#047857';
+      dotColor = '#10B981';
       text = 'Saved Locally';
     } else if (saveStatus.startsWith('error')) {
       bg = '#FEF2F2';
       border = '1px solid #FCA5A5';
       color = '#B91C1C';
+      dotColor = '#EF4444';
       text = saveStatus === 'error_profile' ? 'Logo too large' : 'Save Error';
     }
 
@@ -80,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({
         border: border,
         transition: 'all 0.2s ease'
       }}>
-        <span className="status-dot-pulse" style={{ color: saveStatus === 'success' ? '#10B981' : (saveStatus === 'saving' ? '#F59E0B' : '#EF4444') }}></span>
+        <span className="status-dot-pulse" style={{ color: dotColor }}></span>
         <span>{text}</span>
       </div>
     );
@@ -252,24 +256,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Right Section: Status Indicator & Actions */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '12px' }}>
-          {/* Subtle Security Badge */}
-          <div className="desktop-only" style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '4px',
-            fontSize: '11px',
-            fontWeight: 600,
-            color: '#475569',
-            backgroundColor: '#F1F5F9',
-            padding: '2px 8px',
-            borderRadius: '999px',
-            border: '1px solid #E2E8F0'
-          }}>
-            <span className="status-dot-pulse" style={{ color: '#10B981' }}></span>
-            <span>Secure Sandbox</span>
-          </div>
-
-          {/* Premium Status Pill */}
+          {/* Unified Premium Status Pill */}
           <div className="desktop-only">
             {getStatusPill()}
           </div>
@@ -324,8 +311,33 @@ export const Header: React.FC<HeaderProps> = ({
                 boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '4px'
+                gap: '4px',
+                zIndex: 1010
               }}>
+                {activeView === 'editor' && onLoadDemo && (
+                  <button 
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      width: '100%',
+                      padding: '8px 12px',
+                      border: 'none',
+                      background: 'transparent',
+                      textAlign: 'left',
+                      fontSize: '13px',
+                      cursor: 'pointer',
+                      borderRadius: '4px',
+                      color: 'var(--color-text-main)'
+                    }}
+                    onClick={() => {
+                      setMenuOpen(false);
+                      onLoadDemo();
+                    }}
+                  >
+                    <Sparkles size={14} className="text-primary" /> Load Demo Data
+                  </button>
+                )}
                 {activeView === 'editor' && (
                   <button 
                     className="mobile-only"

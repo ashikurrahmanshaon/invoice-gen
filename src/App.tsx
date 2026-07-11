@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
-import { PageIntro } from './components/layout/PageIntro';
-import { HeroSection } from './components/layout/HeroSection';
 import { StageIndicator } from './components/layout/StageIndicator';
 import { BusinessSection } from './components/invoice/BusinessSection';
 import { ClientSection } from './components/invoice/ClientSection';
@@ -269,6 +267,7 @@ function App() {
         onSave={handleSave}
         onSaveAsNew={handleSaveAsNew}
         hasLoadedHistory={loadedHistoryId !== null}
+        onLoadDemo={loadDemoData}
       />
       
       {/* Toast Notifications */}
@@ -292,14 +291,7 @@ function App() {
 
       <main className="container" id="generator" style={{ minWidth: 0 }}>
         {activeView === 'editor' ? (
-          <>
-            <HeroSection 
-              onLoadDemo={loadDemoData} 
-            />
-            <div id="generator-editor">
-              <PageIntro />
-            </div>
-            <div className="workspace-layout">
+          <div className="workspace-layout">
               {/* Main Desktop Workspace (Wizard) */}
               <div className="workspace-main">
                 <div className="card animate-fade-in" style={{ padding: '0' }}>
@@ -407,7 +399,6 @@ function App() {
               {/* Right Utility Sidebar (Desktop) */}
               <PreviewSidebar data={data} onOpenFullPreview={() => setIsPreviewOpen(true)} />
             </div>
-          </>
         ) : (
           <div style={{ marginTop: '24px' }}>
             <HistoryDashboard 
