@@ -359,9 +359,14 @@ function App() {
                           Continue
                         </button>
                       ) : (
-                        <button className="btn btn-primary" onClick={() => setIsPreviewOpen(true)} style={{ padding: '0 32px', height: '44px', fontWeight: 600 }}>
-                          Review Full Invoice
-                        </button>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                          <button className="btn btn-primary" onClick={() => setIsPreviewOpen(true)} style={{ padding: '0 32px', height: '44px', fontWeight: 600 }}>
+                            Review Full Invoice
+                          </button>
+                          <div style={{ fontSize: '11px', color: 'var(--color-text-tertiary)', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '6px' }}>
+                            🔒 100% secure & local sandbox
+                          </div>
+                        </div>
                       )}
                     </div>
                   </div>

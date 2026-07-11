@@ -995,6 +995,9 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
               <button className="premium-btn-primary full-width" onClick={onDownloadPDF}>
                 Download PDF
               </button>
+              <div style={{ fontSize: '11px', color: 'var(--color-text-tertiary)', display: 'flex', alignItems: 'center', gap: '4px', justifyContent: 'center', marginTop: '-4px' }}>
+                🔒 100% secure & local sandbox
+              </div>
             </div>
           )}
         </div>,

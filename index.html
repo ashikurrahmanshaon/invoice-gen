@@ -67,6 +67,11 @@
           "description": "Free Professional Invoice Generator. 100% Free. Secure. Browser-Based. No Sign-Up Required. Instant PDF Download.",
           "publisher": {
             "@id": "https://invoice-gen.net/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://invoice-gen.net/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
           }
         },
         {
@@ -100,6 +105,48 @@
           "description": "Free Professional Invoice Generator. 100% Free. Secure. Browser-Based. No Sign-Up Required. Instant PDF Download.",
           "image": "https://invoice-gen.net/og-image.png",
           "applicationSubCategory": "Invoicing & Billing Utility"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://invoice-gen.net/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://invoice-gen.net/"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://invoice-gen.net/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is Invoice-Gen completely free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, Invoice-Gen is 100% free with no sign-up or credit card required. Download as many PDFs as you need with no watermarks."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where is my billing data stored?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Your invoice data is processed entirely inside your local web browser. We do not store or transmit any of your business or client data to external servers."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I save my business details?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, Invoice-Gen automatically saves your business draft locally using your browser's secure storage, so you don't have to retype details when you return."
+              }
+            }
+          ]
         }
       ]
     }
