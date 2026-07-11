@@ -199,7 +199,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Left Section: Logo & Wordmark */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '8px' }}>
           <Logo size={20} hideText={true} />
-          <span style={{ 
+          <span className="desktop-only" style={{ 
             fontSize: '14px', 
             fontWeight: 800, 
             letterSpacing: '-0.04em', 

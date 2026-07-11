@@ -170,16 +170,18 @@
   
   /* Enforce touch targets on mobile */
   input, select, textarea {
-    min-height: 40px;
+    min-height: 44px !important;
+    height: 44px !important;
   }
   
   .btn, .btn-primary, .btn-outline, .btn-ghost {
-    min-height: 42px;
+    min-height: 44px !important;
+    height: 44px !important;
   }
 
   .app-header .btn {
-    min-height: 28px !important;
-    height: 28px !important;
+    min-height: 32px !important;
+    height: 32px !important;
   }
 }
 

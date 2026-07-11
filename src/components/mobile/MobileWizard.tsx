@@ -958,7 +958,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           {currentStage === 1 && (
             <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
               <button className="premium-btn-primary full-width" onClick={() => setStage(2)}>
-                Continue to Client <ArrowRight size={18} />
+                Continue <ArrowRight size={18} />
               </button>
             </div>
           )}
@@ -968,7 +968,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                 <ArrowLeft size={18} /> Back
               </button>
               <button className="premium-btn-primary" onClick={() => setStage(3)}>
-                Continue to Items <ArrowRight size={18} />
+                Continue <ArrowRight size={18} />
               </button>
             </div>
           )}
@@ -978,7 +978,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                 <ArrowLeft size={18} /> Back
               </button>
               <button className="premium-btn-primary" onClick={() => setStage(4)}>
-                Review Invoice <ArrowRight size={18} />
+                Review <ArrowRight size={18} />
               </button>
             </div>
           )}

@@ -370,7 +370,7 @@ function App() {
               
               {/* Mobile Step-by-Step Flow */}
               <div className="mobile-only" style={{ width: '100%', minWidth: 0 }}>
-                <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} />
+                <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} isMobile={true} />
                 <MobileWizard 
                   currentStage={currentStage}
                   setStage={setCurrentStage}
