@@ -41,133 +41,266 @@ export const Header: React.FC<HeaderProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const getStatusDisplay = () => {
-    if (saveStatus === 'saving') return { color: 'var(--color-text-secondary)', text: 'Saving...', dot: '#f59e0b' };
-    if (saveStatus === 'error_draft') return { color: '#ef4444', text: 'Error saving draft', dot: '#ef4444' };
-    if (saveStatus === 'error_profile') return { color: '#ef4444', text: 'Logo too large', dot: '#ef4444' };
-    if (saveStatus === 'success') return { color: 'var(--color-text-secondary)', text: 'Saved locally', dot: 'var(--color-success)' };
-    return { color: 'transparent', text: '', dot: 'transparent' };
+  const getStatusPill = () => {
+    if (saveStatus === 'idle') return null;
+    
+    let bg = '#F1F5F9';
+    let border = '1px solid #E2E8F0';
+    let color = '#475569';
+    let text = '';
+
+    if (saveStatus === 'saving') {
+      bg = '#FFFBEB';
+      border = '1px solid #FDE68A';
+      color = '#B45309';
+      text = 'Saving...';
+    } else if (saveStatus === 'success') {
+      bg = '#ECFDF5';
+      border = '1px solid #A7F3D0';
+      color = '#047857';
+      text = 'Saved Locally';
+    } else if (saveStatus.startsWith('error')) {
+      bg = '#FEF2F2';
+      border = '1px solid #FCA5A5';
+      color = '#B91C1C';
+      text = saveStatus === 'error_profile' ? 'Logo too large' : 'Save Error';
+    }
+
+    return (
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '6px',
+        fontSize: '11px',
+        fontWeight: 600,
+        color: color,
+        backgroundColor: bg,
+        padding: '2px 8px',
+        borderRadius: '999px',
+        border: border,
+        transition: 'all 0.2s ease'
+      }}>
+        <span className="status-dot-pulse" style={{ color: saveStatus === 'success' ? '#10B981' : (saveStatus === 'saving' ? '#F59E0B' : '#EF4444') }}></span>
+        <span>{text}</span>
+      </div>
+    );
   };
 
-  const status = getStatusDisplay();
-
   return (
-      <header style={{ 
-        background: 'rgba(255, 255, 255, 0.7)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
-        height: '60px',
+    <header style={{ 
+      background: 'rgba(255, 255, 255, 0.75)',
+      backdropFilter: 'blur(8px)',
+      WebkitBackdropFilter: 'blur(8px)',
+      borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
+      height: '52px',
       display: 'flex',
       alignItems: 'center',
       position: 'sticky',
       top: 0,
-      zIndex: 1000,
-      transition: 'box-shadow var(--transition-fast)'
+      zIndex: 1000
     }} className="app-header">
-      <div className="container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%', height: '100%', minWidth: 0, padding: '0 16px' }}>
-        {/* Left: Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Logo size={28} />
-          <span className="font-bold text-base desktop-only" style={{ color: 'var(--color-text-main)', lineHeight: 1, letterSpacing: '-0.5px' }}>Invoice-Gen</span>
-          
-          {/* Navigation Tabs */}
-          <div style={{ display: 'flex', gap: '4px', marginLeft: '24px', backgroundColor: 'rgba(0, 0, 0, 0.04)', padding: '4px', borderRadius: '8px' }}>
-            <button 
-              onClick={() => onViewChange('editor')}
-              style={{
-                padding: '6px 12px',
-                fontSize: '13px',
-                fontWeight: activeView === 'editor' ? 600 : 500,
-                color: activeView === 'editor' ? 'var(--color-text-main)' : 'var(--color-text-secondary)',
-                backgroundColor: activeView === 'editor' ? 'var(--color-surface)' : 'transparent',
-                border: 'none',
-                borderRadius: '6px',
-                boxShadow: activeView === 'editor' ? 'var(--shadow-sm)' : 'none',
-                cursor: 'pointer',
-                transition: 'all 0.2s'
-              }}
-            >
-              Editor
-            </button>
-            <button 
-              onClick={() => onViewChange('history')}
-              style={{
-                padding: '6px 12px',
-                fontSize: '13px',
-                fontWeight: activeView === 'history' ? 600 : 500,
-                color: activeView === 'history' ? 'var(--color-text-main)' : 'var(--color-text-secondary)',
-                backgroundColor: activeView === 'history' ? 'var(--color-surface)' : 'transparent',
-                border: 'none',
-                borderRadius: '6px',
-                boxShadow: activeView === 'history' ? 'var(--shadow-sm)' : 'none',
-                cursor: 'pointer',
-                transition: 'all 0.2s'
-              }}
-            >
-              History
-            </button>
-          </div>
+      <div className="container header-grid">
+        {/* Style block for Header self-contained classes */}
+        <style>{`
+          .status-dot-pulse {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: currentColor;
+            display: inline-block;
+            position: relative;
+          }
+          .status-dot-pulse::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            opacity: 0;
+            animation: pulse-ring 2.2s infinite ease-out;
+          }
+          @keyframes pulse-ring {
+            0% { transform: scale(0.6); opacity: 0; }
+            50% { opacity: 0.45; }
+            100% { transform: scale(1.6); opacity: 0; }
+          }
 
+          .segmented-nav-btn {
+            padding: 4px 10px;
+            fontSize: 12px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 4px;
+            line-height: 1.2;
+          }
+          .segmented-nav-btn.active {
+            font-weight: 600;
+            background-color: #FFFFFF;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+          }
+          .segmented-nav-btn:not(.active):hover {
+            background-color: rgba(0, 0, 0, 0.04);
+          }
+
+          .header-pdf-btn {
+            font-weight: 600 !important;
+            font-size: 12px !important;
+            height: 28px !important;
+            border-radius: 6px !important;
+            background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%) !important;
+            border: none !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+          }
+          .header-pdf-btn:hover {
+            transform: translateY(-0.5px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+          }
+          .header-pdf-btn:active {
+            transform: translateY(0.5px);
+            scale: 0.98;
+          }
+
+          .header-save-btn {
+            font-weight: 600 !important;
+            font-size: 12px !important;
+            height: 28px !important;
+            border-radius: 6px !important;
+            background-color: #FFFFFF !important;
+            border: 1px solid #D1D5DB !important;
+            color: #374151 !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            cursor: pointer !important;
+          }
+          .header-save-btn:hover {
+            background-color: #F9FAFB !important;
+            border-color: #9CA3AF !important;
+            color: #111827 !important;
+          }
+          .header-save-btn:active {
+            scale: 0.98;
+          }
+        `}</style>
+
+        {/* Left Section: Logo & Wordmark */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '8px' }}>
+          <Logo size={20} hideText={true} />
+          <span style={{ 
+            fontSize: '14px', 
+            fontWeight: 800, 
+            letterSpacing: '-0.04em', 
+            color: 'var(--color-text-main)', 
+            fontFamily: 'Outfit, Inter, sans-serif',
+            lineHeight: 1,
+            display: 'flex',
+            alignItems: 'center'
+          }}>
+            Invoice<span style={{ color: '#06B6D4' }}>-Gen</span>
+          </span>
+          
           {/* Toast Notification */}
           {showNewInvoiceToast && (
             <div style={{
-              marginLeft: '12px',
-              padding: '4px 8px',
-              background: 'rgba(21, 94, 239, 0.1)',
+              marginLeft: '8px',
+              padding: '2px 6px',
+              background: 'rgba(21, 94, 239, 0.08)',
               color: 'var(--color-primary)',
               borderRadius: '4px',
-              fontSize: '12px',
+              fontSize: '11px',
               fontWeight: 500,
               display: 'flex',
               alignItems: 'center',
               gap: '4px',
               animation: 'fadeIn 0.3s ease'
             }}>
-              <InfoIcon size={14} /> Business details preserved
+              <InfoIcon size={12} /> Business details preserved
             </div>
           )}
         </div>
 
-        {/* Right: Actions */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          {/* Status Indicator Badge */}
-          {saveStatus !== 'idle' && (
-            <div className="desktop-only" style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '6px', 
-              fontSize: '12px', 
-              color: status.color, 
-              fontWeight: 600,
-              padding: '4px 10px',
-              backgroundColor: saveStatus === 'success' ? '#ECFDF3' : '#F9FAFB',
-              borderRadius: '999px',
-              border: saveStatus === 'success' ? '1px solid #D1FADF' : '1px solid #E4E7EC'
-            }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: status.dot, display: 'inline-block' }}></span>
-              <span>{status.text}</span>
-            </div>
-          )}
+        {/* Center Section: Segmented Navigation */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', gap: '2px', backgroundColor: 'rgba(0, 0, 0, 0.05)', padding: '2px', borderRadius: '6px' }}>
+            <button 
+              onClick={() => onViewChange('editor')}
+              className={`segmented-nav-btn ${activeView === 'editor' ? 'active' : ''}`}
+              style={{
+                color: activeView === 'editor' ? 'var(--color-text-main)' : 'var(--color-text-secondary)',
+              }}
+            >
+              Editor
+            </button>
+            <button 
+              onClick={() => onViewChange('history')}
+              className={`segmented-nav-btn ${activeView === 'history' ? 'active' : ''}`}
+              style={{
+                color: activeView === 'history' ? 'var(--color-text-main)' : 'var(--color-text-secondary)',
+              }}
+            >
+              History
+            </button>
+          </div>
+        </div>
+
+        {/* Right Section: Status Indicator & Actions */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '12px' }}>
+          {/* Subtle Security Badge */}
+          <div className="desktop-only" style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px',
+            fontSize: '11px',
+            fontWeight: 600,
+            color: '#475569',
+            backgroundColor: '#F1F5F9',
+            padding: '2px 8px',
+            borderRadius: '999px',
+            border: '1px solid #E2E8F0'
+          }}>
+            <span className="status-dot-pulse" style={{ color: '#10B981' }}></span>
+            <span>Secure Sandbox</span>
+          </div>
+
+          {/* Premium Status Pill */}
+          <div className="desktop-only">
+            {getStatusPill()}
+          </div>
 
           {/* Desktop Actions */}
           <div className="desktop-only" style={{ display: 'flex', gap: '8px' }}>
             {activeView === 'editor' && (
-              <button className="btn btn-outline btn-sm" onClick={onSave} style={{ fontWeight: 600 }}>
+              <button 
+                className="btn btn-sm header-save-btn" 
+                onClick={onSave}
+              >
                 Save
               </button>
             )}
             {activeView === 'editor' && onDownloadPDF && (
-              <button className="btn btn-primary btn-sm" onClick={onDownloadPDF} style={{ fontWeight: 600 }}>
-                <Download size={14} /> PDF
+              <button 
+                className="btn btn-sm header-pdf-btn" 
+                onClick={onDownloadPDF}
+              >
+                <Download size={12} /> PDF
               </button>
             )}
           </div>
 
           {/* Mobile PDF Action */}
           {activeView === 'editor' && onDownloadPDF && (
-            <button className="btn btn-primary btn-sm mobile-only" onClick={onDownloadPDF}>
-              <Download size={14} /> PDF
+            <button 
+              className="btn btn-sm mobile-only header-pdf-btn" 
+              onClick={onDownloadPDF}
+            >
+              <Download size={12} /> PDF
             </button>
           )}
 

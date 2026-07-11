@@ -23,10 +23,19 @@ async function runTests() {
 
   try {
     // 1. Create first history record
+    await page.fill('input[placeholder="Your Business Name"]', 'My Biz');
+    await page.click('text=Continue');
+    await page.waitForTimeout(100);
+
     await page.fill('input[placeholder="Client or Company Name"]', 'Acme Corp');
     await page.fill('input[placeholder="client@example.com"]', 'billing@acme.com');
+    await page.click('text=Continue');
+    await page.waitForTimeout(100);
+
     await page.fill('input[placeholder="Description (optional)"]', 'Web Design v2');
     await page.fill('input[placeholder="0.00"]', '1000');
+    await page.click('text=Continue');
+    await page.waitForTimeout(100);
     
     await page.click('text=Save');
     await page.waitForTimeout(500);
@@ -50,19 +59,23 @@ async function runTests() {
     
     // 4. Edit history record
     await page.click('button[aria-label="Actions"]');
-    await page.click('text=Edit');
+    await page.click('text="Edit"');
     await page.waitForTimeout(500);
     await takeScreenshot('history_editor_loaded');
 
     // 5. Unsaved changes modal
-    await page.fill('input[placeholder="Description (optional)"]', 'Web Design v3'); // Make dirty
-    await page.click('text=New Invoice');
+    await page.fill('input[placeholder="Your Business Name"]', 'My Biz v3'); // Make dirty
+    await page.click('button[aria-label="More options"]');
+    await page.waitForTimeout(200);
+    await page.click('text="New Invoice"');
     await page.waitForTimeout(500);
     await takeScreenshot('history_unsaved_modal');
     // Cancel the modal
     await page.click('text=Cancel');
     
     // 6. Save As New
+    await page.click('button[aria-label="More options"]');
+    await page.waitForTimeout(200);
     await page.click('text=Save As New');
     await page.waitForTimeout(500);
     await takeScreenshot('history_save_as_new');

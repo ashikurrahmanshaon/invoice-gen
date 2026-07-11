@@ -2,13 +2,12 @@ import React from 'react';
 
 interface LogoProps {
   size?: number;
-  color?: string;
   hideText?: boolean;
 }
 
 export const Logo: React.FC<LogoProps> = ({ size = 32, hideText = false }) => {
   return (
-    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'inherit' }}>
       <svg 
         width={size} 
         height={size} 
@@ -18,60 +17,57 @@ export const Logo: React.FC<LogoProps> = ({ size = 32, hideText = false }) => {
         style={{ display: 'inline-block', verticalAlign: 'middle' }}
       >
         <defs>
-          <linearGradient id="logo-accent-grad" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#38BDF8" />
-            <stop offset="50%" stopColor="#4F46E5" />
-            <stop offset="100%" stopColor="#818CF8" />
-          </linearGradient>
-          <linearGradient id="logo-back-grad" x1="4" y1="20" x2="20" y2="28" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="rgba(255, 255, 255, 0.08)" />
-            <stop offset="100%" stopColor="rgba(255, 255, 255, 0.02)" />
+          <linearGradient id="logo-premium-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#4F46E5" />
+            <stop offset="100%" stopColor="#06B6D4" />
           </linearGradient>
         </defs>
         
-        {/* Background Layer: Glassmorphic invoice sheet */}
+        {/* Sleek Outer rounded container */}
         <rect 
-          x="4" 
-          y="8" 
-          width="18" 
-          height="20" 
-          rx="4" 
-          fill="url(#logo-back-grad)" 
-          stroke="rgba(255, 255, 255, 0.15)" 
-          strokeWidth="1.5" 
+          x="3" 
+          y="3" 
+          width="26" 
+          height="26" 
+          rx="8" 
+          fill="#0B132B" 
+          stroke="url(#logo-premium-grad)" 
+          strokeWidth="2" 
         />
         
-        {/* Foreground Layer: Overlapping invoice sheet with glowing gradient border */}
-        <rect 
-          x="10" 
-          y="4" 
-          width="18" 
-          height="20" 
-          rx="4" 
-          fill="#0B1220" 
-          stroke="url(#logo-accent-grad)" 
-          strokeWidth="1.75" 
+        {/* Clean checkmark representing approved/processed billing */}
+        <path 
+          d="M10 15L14 19L22 11" 
+          stroke="url(#logo-premium-grad)" 
+          strokeWidth="2.5" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
         />
         
-        {/* Sleek billing lines inside the foreground sheet */}
-        <line x1="14" y1="9" x2="24" y2="9" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="14" y1="13" x2="20" y2="13" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="1.5" strokeLinecap="round" />
-        
-        {/* Bright green status dot representing payment confirmation / success */}
-        <circle cx="23" cy="17" r="2" fill="#10B981" />
+        {/* Document line representing transaction total */}
+        <line 
+          x1="10" 
+          y1="23" 
+          x2="22" 
+          y2="23" 
+          stroke="#94A3B8" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+        />
       </svg>
       
       {!hideText && (
         <span 
           style={{ 
-            fontSize: `${size * 0.6}px`, 
-            fontWeight: 700, 
-            letterSpacing: '-0.03em', 
-            color: '#FFFFFF',
-            fontFamily: 'Inter, sans-serif'
+            fontSize: `${size * 0.55}px`, 
+            fontWeight: 800, 
+            letterSpacing: '-0.04em', 
+            color: 'inherit',
+            fontFamily: 'Outfit, Inter, sans-serif',
+            lineHeight: 1
           }}
         >
-          Invoice<span style={{ color: '#38BDF8' }}>-Gen</span>
+          Invoice<span style={{ color: '#06B6D4' }}>-Gen</span>
         </span>
       )}
     </div>

@@ -294,7 +294,6 @@ function App() {
         {activeView === 'editor' ? (
           <>
             <HeroSection 
-              onStart={() => document.getElementById('generator-editor')?.scrollIntoView({ behavior: 'smooth' })} 
               onLoadDemo={loadDemoData} 
             />
             <div id="generator-editor">
