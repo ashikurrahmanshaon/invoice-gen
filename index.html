@@ -15,12 +15,20 @@
     <link rel="manifest" href="/manifest.json" />
     
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8JWXK5L15"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-Z8JWXK5L15');
+
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z8JWXK5L15';
+          document.head.appendChild(script);
+          gtag('config', 'G-Z8JWXK5L15');
+        }, 3000);
+      });
     </script>
 
     <!-- Microsoft Clarity -->
