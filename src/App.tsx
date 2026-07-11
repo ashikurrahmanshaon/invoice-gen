@@ -9,7 +9,7 @@ import { ItemsSection } from './components/invoice/ItemsSection';
 import { TotalsSection } from './components/invoice/TotalsSection';
 
 const PreviewSidebar = lazy(() => import('./components/invoice/PreviewSidebar').then(module => ({ default: module.PreviewSidebar })));
-const MobileWizard = lazy(() => import('./components/mobile/MobileWizard').then(module => ({ default: module.MobileWizard })));
+import { MobileWizard } from './components/mobile/MobileWizard';
 const HistoryDashboard = lazy(() => import('./components/history/HistoryDashboard').then(module => ({ default: module.HistoryDashboard })));
 
 import { useInvoice } from './hooks/useInvoice';

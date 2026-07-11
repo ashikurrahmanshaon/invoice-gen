@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from '../ui/Logo';
 
 export const Footer: React.FC = () => {
-  const [isDesktop, setIsDesktop] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth > 768;
+    }
+    return true;
+  });
 
   useEffect(() => {
     setIsDesktop(window.innerWidth > 768);
