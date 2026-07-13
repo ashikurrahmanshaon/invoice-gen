@@ -33,12 +33,13 @@ interface MobileWizardProps {
   setAmountPaid: (amount: number | string) => void;
   onDownloadPDF: () => void;
   onOpenFullPreview: () => void;
+  onOpenTemplateGallery?: () => void;
 }
 
 export const MobileWizard: React.FC<MobileWizardProps> = ({
   currentStage, setStage, data, updateBusiness, updateClient, clientHook, selectedSavedClientId, setSelectedSavedClientId, updateDetails,
   updateOtherFields, addItem, duplicateItem, removeItem, updateItem,
-  setDiscount, setTaxRate, setTaxLabel, setShipping, setAmountPaid, onDownloadPDF, onOpenFullPreview
+  setDiscount, setTaxRate, setTaxLabel, setShipping, setAmountPaid, onDownloadPDF, onOpenFullPreview, onOpenTemplateGallery
 }) => {
   const [mounted, setMounted] = useState(false);
   const [isBottomBarVisible, setIsBottomBarVisible] = useState(true);
@@ -93,7 +94,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
               display: 'inline-flex',
               alignItems: 'center',
               gap: '4px',
-              padding: '6px 12px',
+              padding: '6px var(--space-3)',
               background: 'rgba(21, 94, 239, 0.04)',
               border: '1px solid rgba(21, 94, 239, 0.08)',
               borderRadius: '999px',
@@ -117,11 +118,12 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             <h2 className="text-xl font-bold" style={{ color: 'var(--color-text-main)', margin: 0 }}>Business details</h2>
             <p className="text-xs text-secondary" style={{ margin: 0 }}>Add the information shown on your invoice.</p>
           </div>
-          <div className="mobile-card" style={{ padding: '16px' }}>
+          <div className="mobile-card" style={{ padding: 'var(--space-4)' }}>
             <BusinessSection 
               data={data}
               updateBusiness={updateBusiness}
               updateDetails={updateDetails}
+              onOpenTemplateGallery={onOpenTemplateGallery}
             />
           </div>
         </div>
@@ -134,7 +136,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             <h2 className="text-xl font-bold" style={{ color: 'var(--color-text-main)', margin: 0 }}>Client details</h2>
             <p className="text-xs text-secondary" style={{ margin: 0 }}>Who is this invoice for?</p>
           </div>
-          <div className="mobile-card" style={{ padding: '16px' }}>
+          <div className="mobile-card" style={{ padding: 'var(--space-4)' }}>
             <ClientSection
               data={data}
               updateClient={updateClient}
@@ -153,7 +155,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             <h2 className="text-xl font-bold" style={{ color: 'var(--color-text-main)', margin: 0 }}>Line items</h2>
             <p className="text-xs text-secondary" style={{ margin: 0 }}>Add your products or services.</p>
           </div>
-          <div className="mobile-card" style={{ padding: '16px' }}>
+          <div className="mobile-card" style={{ padding: 'var(--space-4)' }}>
             <ItemsSection
               items={data.items}
               currency={data.details.currency}
@@ -173,7 +175,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             <h2 className="text-xl font-bold" style={{ color: 'var(--color-text-main)', margin: 0 }}>Totals & Extras</h2>
             <p className="text-xs text-secondary" style={{ margin: 0 }}>Taxes, discounts, and payment terms.</p>
           </div>
-          <div className="mobile-card" style={{ padding: '16px' }}>
+          <div className="mobile-card" style={{ padding: 'var(--space-4)' }}>
             <TotalsSection
               data={data}
               updateOtherFields={updateOtherFields}
@@ -197,8 +199,8 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             left: 0,
             right: 0,
             background: 'var(--color-surface)',
-            padding: '16px',
-            paddingBottom: 'calc(16px + env(safe-area-inset-bottom))',
+            padding: 'var(--space-4)',
+            paddingBottom: 'calc(var(--space-4) + env(safe-area-inset-bottom))',
             display: 'flex',
             flexDirection: 'column',
             gap: '12px',

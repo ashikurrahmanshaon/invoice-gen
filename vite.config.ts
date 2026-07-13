@@ -21,6 +21,7 @@ function cacheControlPlugin() {
 export default defineConfig({
   plugins: [react(), cacheControlPlugin()],
   build: {
+    chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {

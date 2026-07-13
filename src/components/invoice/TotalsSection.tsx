@@ -57,7 +57,7 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
               <div style={{ position: 'absolute', top: 0, right: 0, zIndex: 10 }}>
                 <button 
                   onClick={() => { setShowTerms(false); updateOtherFields({ terms: '' }); }}
-                  style={{ color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
+                  style={{ color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', padding: 'var(--space-1)' }}
                   className="hover-text-error"
                 >
                   <Trash2 size={16} />
@@ -79,7 +79,7 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
               <div style={{ position: 'absolute', top: 0, right: 0, zIndex: 10 }}>
                 <button 
                   onClick={() => { setShowInstructions(false); updateOtherFields({ paymentInstructions: '' }); }}
-                  style={{ color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
+                  style={{ color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', padding: 'var(--space-1)' }}
                   className="hover-text-error"
                 >
                   <Trash2 size={16} />
@@ -96,7 +96,7 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
             </div>
           )}
 
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap' }}>
             {!showTerms && (
               <Button variant="outline" size="sm" onClick={() => setShowTerms(true)}>
                 {data.terms ? 'Edit terms' : '+ Add terms'}
@@ -111,10 +111,10 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
         </div>
 
         {/* Right Side: Totals Card & Configuration */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
           
           {/* Adjustments Form */}
-          <div className="flex-col gap-4" style={{ padding: '24px', background: 'var(--color-surface)', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
+          <div className="flex-col gap-4" style={{ padding: 'var(--space-6)', background: 'var(--color-surface)', borderRadius: 'var(--radius-xl)', border: '1px solid var(--color-border)' }}>
             <div className="grid-2">
               <Input 
                 id="discount-input"
@@ -142,7 +142,7 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
                 id="tax-label-input"
                 label="Tax Label"
                 type="text"
-                value={totals.taxLabel || settings.taxLabel || 'Tax'}
+                value={totals.taxLabel || settings.invoiceDefaults.defaultTaxLabel || 'Tax'}
                 onChange={(e) => setTaxLabel(e.target.value)}
               />
               <Input 
@@ -154,7 +154,7 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
                   if (isValidDecimalInput(e.target.value)) setTaxRate(e.target.value);
                 }}
                 placeholder="0"
-                rightIcon={<span style={{ fontSize: '14px', color: 'var(--color-text-tertiary)' }}>%</span>}
+                rightIcon={<span style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-tertiary)' }}>%</span>}
               />
             </div>
 
@@ -168,7 +168,7 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
                   if (isValidDecimalInput(e.target.value)) setShipping(e.target.value);
                 }}
                 placeholder="0.00"
-                leftIcon={<span style={{ fontSize: '14px', color: 'var(--color-text-tertiary)' }}>{symbol}</span>}
+                leftIcon={<span style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-tertiary)' }}>{symbol}</span>}
               />
               <Input 
                 id="amount-paid-input"
@@ -179,7 +179,7 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
                   if (isValidDecimalInput(e.target.value)) setAmountPaid(e.target.value);
                 }}
                 placeholder="0.00"
-                leftIcon={<span style={{ fontSize: '14px', color: 'var(--color-text-tertiary)' }}>{symbol}</span>}
+                leftIcon={<span style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-tertiary)' }}>{symbol}</span>}
               />
             </div>
           </div>
@@ -188,15 +188,15 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
           <div style={{
             background: 'var(--color-surface)',
             border: '1px solid var(--color-border)',
-            borderRadius: '16px',
-            padding: '24px',
+            borderRadius: 'var(--radius-xl)',
+            padding: 'var(--space-6)',
             display: 'flex',
             flexDirection: 'column',
-            gap: '16px',
+            gap: 'var(--space-4)',
             width: '100%',
             boxShadow: '0 4px 12px rgba(16, 24, 40, 0.03)'
           }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: 'var(--color-text-secondary)', fontWeight: 500 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)', fontWeight: 500 }}>
               <span>Subtotal</span>
               <span>{formatCurrency(totals.subtotal, currency)}</span>
             </div>
@@ -207,21 +207,21 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
               </div>
             )}
             {totals.taxAmount > 0 && (
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
-                <span>{totals.taxLabel || settings.taxLabel || 'Tax'}</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)' }}>
+                <span>{totals.taxLabel || settings.invoiceDefaults.defaultTaxLabel || 'Tax'}</span>
                 <span>{formatCurrency(totals.taxAmount, currency)}</span>
               </div>
             )}
             {Number(totals.shipping) > 0 && (
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)' }}>
                 <span>Shipping</span>
                 <span>{formatCurrency(Number(totals.shipping), currency)}</span>
               </div>
             )}
             
-            <div style={{ borderTop: '1px solid #E4E7EC', margin: '4px 0' }} />
+            <div style={{ borderTop: '1px solid var(--color-border)', margin: '4px 0' }} />
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '16px', color: 'var(--color-text-main)', fontWeight: 600 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--text-base)', color: 'var(--color-text-main)', fontWeight: 600 }}>
               <span>Total</span>
               <span>{formatCurrency(totals.total, currency)}</span>
             </div>
@@ -234,11 +234,11 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              padding: '0 16px',
+              padding: '0 var(--space-4)',
               marginTop: '8px'
             }}>
-              <span style={{ color: 'var(--color-text-main)', fontWeight: 600, fontSize: '14px' }}>Balance Due</span>
-              <span style={{ color: '#155EEF', fontWeight: 800, fontSize: '20px' }}>
+              <span style={{ color: 'var(--color-text-main)', fontWeight: 600, fontSize: 'var(--text-sm)' }}>Balance Due</span>
+              <span style={{ color: 'var(--color-primary)', fontWeight: 800, fontSize: 'var(--text-xl)' }}>
                 {formatCurrency(totals.balanceDue, currency)}
               </span>
             </div>

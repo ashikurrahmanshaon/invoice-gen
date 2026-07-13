@@ -159,7 +159,7 @@ export const Select: React.FC<SelectProps> = ({
         onKeyDown={handleKeyDown}
       >
         <div className="input-element" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', overflow: 'hidden' }}>
             {selectedOption?.icon && <span style={{ flexShrink: 0 }}>{selectedOption.icon}</span>}
             <span style={{ 
               color: selectedOption ? 'var(--color-text-main)' : 'var(--color-text-tertiary)',
@@ -192,7 +192,7 @@ export const Select: React.FC<SelectProps> = ({
             }}
           >
             {searchable && (
-              <div style={{ padding: '8px', borderBottom: '1px solid var(--color-border)', flexShrink: 0 }}>
+              <div style={{ padding: 'var(--space-2)', borderBottom: '1px solid var(--color-border)', flexShrink: 0 }}>
                 <div className="input-wrapper" style={{ minHeight: '40px', height: '40px' }}>
                   <div className="input-icon left"><Search size={16} /></div>
                   <input
@@ -203,7 +203,7 @@ export const Select: React.FC<SelectProps> = ({
                     value={search}
                     onChange={e => setSearch(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    style={{ fontSize: '14px' }}
+                    style={{ fontSize: 'var(--text-sm)' }}
                   />
                 </div>
               </div>
@@ -211,10 +211,10 @@ export const Select: React.FC<SelectProps> = ({
             
             <div 
               ref={listboxRef}
-              style={{ overflowY: 'auto', flex: 1, padding: '4px' }}
+              style={{ overflowY: 'auto', flex: 1, padding: 'var(--space-1)' }}
             >
               {filteredOptions.length === 0 ? (
-                <div style={{ padding: '16px', textAlign: 'center', color: 'var(--color-text-tertiary)', fontSize: '14px' }}>
+                <div style={{ padding: 'var(--space-4)', textAlign: 'center', color: 'var(--color-text-tertiary)', fontSize: 'var(--text-sm)' }}>
                   No results found
                 </div>
               ) : (
@@ -231,7 +231,7 @@ export const Select: React.FC<SelectProps> = ({
                       }}
                       onMouseEnter={() => setHighlightedIndex(index)}
                       style={{
-                        padding: '12px 16px',
+                        padding: 'var(--space-3) var(--space-4)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
@@ -241,18 +241,18 @@ export const Select: React.FC<SelectProps> = ({
                         minHeight: '44px' // Large touch targets
                       }}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
                         {option.icon && <span>{option.icon}</span>}
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                           <span style={{ 
-                            fontSize: '14px', 
+                            fontSize: 'var(--text-sm)', 
                             fontWeight: isSelected ? 600 : 500,
                             color: 'var(--color-text-main)'
                           }}>
                             {option.label}
                           </span>
                           {option.description && (
-                            <span style={{ fontSize: '12px', color: 'var(--color-text-tertiary)' }}>
+                            <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-tertiary)' }}>
                               {option.description}
                             </span>
                           )}

@@ -1,4 +1,11 @@
 import type { InvoiceData, InvoiceDraftData, ProfileData, SavedClient } from '../types/invoice';
+
+const isBrowser = typeof window !== 'undefined';
+const safeLocalStorage = {
+  getItem: (k: string): string | null => isBrowser ? window.localStorage.getItem(k) : null,
+  setItem: (k: string, v: string): void => { if (isBrowser) window.localStorage.setItem(k, v); },
+  removeItem: (k: string): void => { if (isBrowser) window.localStorage.removeItem(k); }
+};
 import { STORAGE_KEY_CLIENTS } from '../types/invoice';
 
 const STORAGE_KEY_DRAFT = 'invoice_gen_data';
@@ -7,7 +14,7 @@ export const STORAGE_KEY_HISTORY = 'invoice_gen_history';
 
 export const loadProfile = (): ProfileData | null => {
   try {
-    const serializedData = localStorage.getItem(STORAGE_KEY_PROFILE);
+    const serializedData = safeLocalStorage.getItem(STORAGE_KEY_PROFILE);
     if (serializedData) {
       return JSON.parse(serializedData) as ProfileData;
     }
@@ -19,7 +26,7 @@ export const loadProfile = (): ProfileData | null => {
 
 export const loadDraft = (): InvoiceDraftData | null => {
   try {
-    const serializedData = localStorage.getItem(STORAGE_KEY_DRAFT);
+    const serializedData = safeLocalStorage.getItem(STORAGE_KEY_DRAFT);
     if (serializedData) {
       return JSON.parse(serializedData) as InvoiceDraftData;
     }
@@ -31,7 +38,7 @@ export const loadDraft = (): InvoiceDraftData | null => {
 
 export const loadClients = (): SavedClient[] => {
   try {
-    const serializedData = localStorage.getItem(STORAGE_KEY_CLIENTS);
+    const serializedData = safeLocalStorage.getItem(STORAGE_KEY_CLIENTS);
     if (serializedData) {
       const parsed = JSON.parse(serializedData);
       if (Array.isArray(parsed)) {
@@ -46,7 +53,7 @@ export const loadClients = (): SavedClient[] => {
 
 export const saveClients = (clients: SavedClient[]): { success: boolean; status: string } => {
   try {
-    localStorage.setItem(STORAGE_KEY_CLIENTS, JSON.stringify(clients));
+    safeLocalStorage.setItem(STORAGE_KEY_CLIENTS, JSON.stringify(clients));
     return { success: true, status: 'success' };
   } catch (error) {
     console.error('Failed to save clients to local storage', error);
@@ -71,7 +78,7 @@ export const saveToStorage = (data: InvoiceData): { draftSuccess: boolean; profi
 
   // Save Draft
   try {
-    localStorage.setItem(STORAGE_KEY_DRAFT, JSON.stringify(draftData));
+    safeLocalStorage.setItem(STORAGE_KEY_DRAFT, JSON.stringify(draftData));
     draftSuccess = true;
   } catch (error) {
     console.error('Failed to save draft to local storage', error);
@@ -81,7 +88,7 @@ export const saveToStorage = (data: InvoiceData): { draftSuccess: boolean; profi
   try {
     const currentProfile = loadProfile();
     if (!isProfileEqual(newProfile, currentProfile)) {
-      localStorage.setItem(STORAGE_KEY_PROFILE, JSON.stringify(newProfile));
+      safeLocalStorage.setItem(STORAGE_KEY_PROFILE, JSON.stringify(newProfile));
     }
     profileSuccess = true; // Still counts as success if we skipped unnecessary save
   } catch (error) {
@@ -93,7 +100,7 @@ export const saveToStorage = (data: InvoiceData): { draftSuccess: boolean; profi
 
 export const clearDraftStorage = (): void => {
   try {
-    localStorage.removeItem(STORAGE_KEY_DRAFT);
+    safeLocalStorage.removeItem(STORAGE_KEY_DRAFT);
   } catch (error) {
     console.error('Failed to clear draft storage', error);
   }
@@ -101,9 +108,9 @@ export const clearDraftStorage = (): void => {
 
 export const clearAllStorage = (): void => {
   try {
-    localStorage.removeItem(STORAGE_KEY_DRAFT);
-    localStorage.removeItem(STORAGE_KEY_PROFILE);
-    localStorage.removeItem(STORAGE_KEY_CLIENTS);
+    safeLocalStorage.removeItem(STORAGE_KEY_DRAFT);
+    safeLocalStorage.removeItem(STORAGE_KEY_PROFILE);
+    safeLocalStorage.removeItem(STORAGE_KEY_CLIENTS);
   } catch (error) {
     console.error('Failed to clear all storage', error);
   }
@@ -114,7 +121,7 @@ export const loadHydratedData = (defaultInvoice: InvoiceData): InvoiceData => {
   
   let draft: any = null;
   try {
-    const serializedData = localStorage.getItem(STORAGE_KEY_DRAFT);
+    const serializedData = safeLocalStorage.getItem(STORAGE_KEY_DRAFT);
     if (serializedData) {
       draft = JSON.parse(serializedData);
     }
@@ -131,7 +138,7 @@ export const loadHydratedData = (defaultInvoice: InvoiceData): InvoiceData => {
       currency: draft.details?.currency || 'USD'
     };
     try {
-      localStorage.setItem(STORAGE_KEY_PROFILE, JSON.stringify(finalProfile));
+      safeLocalStorage.setItem(STORAGE_KEY_PROFILE, JSON.stringify(finalProfile));
     } catch (e) {
       console.error('Migration profile save failed', e);
     }

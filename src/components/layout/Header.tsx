@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Download, MoreVertical, Trash2, FilePlus, Sparkles } from 'lucide-react';
+import { Download, MoreVertical, Trash2, FilePlus, Sparkles, LayoutTemplate, Settings as SettingsIcon } from 'lucide-react';
 import { Logo } from '../ui/Logo';
 import type { SaveStatus } from '../../hooks/useAutoSave';
 
 interface HeaderProps {
   onNewInvoice?: () => void;
+  onChangeTemplate?: () => void;
   onResetEverything?: () => void;
   onDownloadPDF?: () => void;
   saveStatus?: SaveStatus;
   showNewInvoiceToast?: boolean;
-  activeView: 'editor' | 'history';
-  onViewChange: (view: 'editor' | 'history') => void;
+  activeView: 'editor' | 'history' | 'settings';
+  onViewChange: (view: 'editor' | 'history' | 'settings') => void;
   onSave?: () => void;
   onSaveAsNew?: () => void;
   hasLoadedHistory?: boolean;
@@ -21,6 +22,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ 
   onNewInvoice, 
+  onChangeTemplate,
   onResetEverything, 
   onDownloadPDF,
   activeView,
@@ -104,6 +106,12 @@ export const Header: React.FC<HeaderProps> = ({
                   </button>
                 )}
 
+                {activeView === 'editor' && onChangeTemplate && (
+                  <button className="dropdown-item" onClick={() => { setMenuOpen(false); onChangeTemplate(); }}>
+                    <LayoutTemplate size={14} className="text-secondary" /> Change Template
+                  </button>
+                )}
+
                 {activeView === 'editor' && onDownloadPDF && (
                   <button className="dropdown-item mobile-only" onClick={() => { setMenuOpen(false); onDownloadPDF(); }}>
                     <Download size={14} /> Download PDF
@@ -114,11 +122,15 @@ export const Header: React.FC<HeaderProps> = ({
                     <FilePlus size={14} /> Save As New
                   </button>
                 )}
-                {onNewInvoice && (
+                {activeView === 'editor' && onNewInvoice && (
                   <button className="dropdown-item" onClick={() => { setMenuOpen(false); onNewInvoice(); }}>
                     <FilePlus size={14} /> New Invoice
                   </button>
                 )}
+                <button className="dropdown-item" onClick={() => { setMenuOpen(false); onViewChange('settings'); }}>
+                  <SettingsIcon size={14} className="text-secondary" /> Settings
+                </button>
+                <div style={{ height: '1px', backgroundColor: 'var(--color-border)', margin: '4px 0' }} />
                 <button className="dropdown-item text-error" onClick={() => { setMenuOpen(false); onResetEverything?.(); }}>
                   <Trash2 size={14} /> Reset Everything
                 </button>

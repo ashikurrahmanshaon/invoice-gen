@@ -8,6 +8,7 @@ interface HistoryDashboardProps {
   onDuplicate: (invoice: SavedInvoice) => void;
   onDelete: (id: string) => void;
   onUpdateStatus: (id: string, status: InvoiceStatus) => void;
+  onNewInvoice?: () => void;
 }
 
 export function HistoryDashboard({
@@ -15,7 +16,8 @@ export function HistoryDashboard({
   onEdit,
   onDuplicate,
   onDelete,
-  onUpdateStatus
+  onUpdateStatus,
+  onNewInvoice
 }: HistoryDashboardProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<InvoiceStatus | 'All'>('All');
@@ -38,12 +40,12 @@ export function HistoryDashboard({
 
   const getStatusColor = (status: InvoiceStatus) => {
     switch (status) {
-      case 'Draft': return '#6b7280';
-      case 'Saved': return '#3b82f6';
-      case 'Sent': return '#8b5cf6';
-      case 'Paid': return '#10b981';
-      case 'Void': return '#ef4444';
-      default: return '#6b7280';
+      case 'Draft': return 'var(--color-text-tertiary)';
+      case 'Saved': return 'var(--color-info)';
+      case 'Sent': return 'var(--color-primary)';
+      case 'Paid': return 'var(--color-success)';
+      case 'Void': return 'var(--color-error)';
+      default: return 'var(--color-text-tertiary)';
     }
   };
 
@@ -126,6 +128,15 @@ export function HistoryDashboard({
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.9375rem', maxWidth: '320px', margin: '0 auto' }}>
               Create your first invoice to see it appear here. Keep track of what you've sent and what's been paid.
             </p>
+            {onNewInvoice && (
+              <button 
+                className="btn btn-primary" 
+                style={{ marginTop: 'var(--space-6)' }} 
+                onClick={onNewInvoice}
+              >
+                Create First Invoice
+              </button>
+            )}
           </div>
         </div>
       ) : (
@@ -196,7 +207,7 @@ export function HistoryDashboard({
                         top: '100%', 
                         marginTop: '4px',
                         backgroundColor: 'white',
-                        border: '1px solid var(--border)',
+                        border: '1px solid var(--color-border)',
                         borderRadius: '8px',
                         boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
                         zIndex: 20,
@@ -204,39 +215,39 @@ export function HistoryDashboard({
                         padding: '4px'
                       }}
                     >
-                      <button className="dropdown-item flex-row" style={{ gap: '8px', padding: '8px 12px', width: '100%', textAlign: 'left', borderRadius: '4px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer', fontSize: '0.875rem', color: 'var(--text)' }} onClick={() => { onEdit(inv); setOpenDropdownId(null); }}>
+                      <button className="dropdown-item" onClick={() => { onEdit(inv); setOpenDropdownId(null); }}>
                         <Edit size={16} /> Edit
                       </button>
-                      <button className="dropdown-item flex-row" style={{ gap: '8px', padding: '8px 12px', width: '100%', textAlign: 'left', borderRadius: '4px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer', fontSize: '0.875rem', color: 'var(--text)' }} onClick={() => { onDuplicate(inv); setOpenDropdownId(null); }}>
+                      <button className="dropdown-item" onClick={() => { onDuplicate(inv); setOpenDropdownId(null); }}>
                         <Copy size={16} /> Duplicate
                       </button>
                       
-                      <div style={{ height: '1px', backgroundColor: 'var(--border)', margin: '4px 0' }} />
+                      <div style={{ height: '1px', backgroundColor: 'var(--color-border)', margin: '4px 0' }} />
                       
                       {inv.status !== 'Saved' && (
-                        <button className="dropdown-item flex-row" style={{ gap: '8px', padding: '8px 12px', width: '100%', textAlign: 'left', borderRadius: '4px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer', fontSize: '0.875rem', color: 'var(--text)' }} onClick={() => { onUpdateStatus(inv.id, 'Saved'); setOpenDropdownId(null); }}>
+                        <button className="dropdown-item" onClick={() => { onUpdateStatus(inv.id, 'Saved'); setOpenDropdownId(null); }}>
                           <FileText size={16} /> Mark as Saved
                         </button>
                       )}
                       {inv.status !== 'Sent' && (
-                        <button className="dropdown-item flex-row" style={{ gap: '8px', padding: '8px 12px', width: '100%', textAlign: 'left', borderRadius: '4px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer', fontSize: '0.875rem', color: 'var(--text)' }} onClick={() => { onUpdateStatus(inv.id, 'Sent'); setOpenDropdownId(null); }}>
+                        <button className="dropdown-item" onClick={() => { onUpdateStatus(inv.id, 'Sent'); setOpenDropdownId(null); }}>
                           <Send size={16} /> Mark as Sent
                         </button>
                       )}
                       {inv.status !== 'Paid' && (
-                        <button className="dropdown-item flex-row" style={{ gap: '8px', padding: '8px 12px', width: '100%', textAlign: 'left', borderRadius: '4px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer', fontSize: '0.875rem', color: 'var(--text)' }} onClick={() => { onUpdateStatus(inv.id, 'Paid'); setOpenDropdownId(null); }}>
+                        <button className="dropdown-item" onClick={() => { onUpdateStatus(inv.id, 'Paid'); setOpenDropdownId(null); }}>
                           <CheckCircle size={16} /> Mark as Paid
                         </button>
                       )}
                       {inv.status !== 'Void' && (
-                        <button className="dropdown-item flex-row" style={{ gap: '8px', padding: '8px 12px', width: '100%', textAlign: 'left', borderRadius: '4px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer', fontSize: '0.875rem', color: 'var(--text)' }} onClick={() => { onUpdateStatus(inv.id, 'Void'); setOpenDropdownId(null); }}>
+                        <button className="dropdown-item" onClick={() => { onUpdateStatus(inv.id, 'Void'); setOpenDropdownId(null); }}>
                           <XCircle size={16} /> Mark as Void
                         </button>
                       )}
 
-                      <div style={{ height: '1px', backgroundColor: 'var(--border)', margin: '4px 0' }} />
+                      <div style={{ height: '1px', backgroundColor: 'var(--color-border)', margin: '4px 0' }} />
                       
-                      <button className="dropdown-item flex-row" style={{ gap: '8px', padding: '8px 12px', width: '100%', textAlign: 'left', borderRadius: '4px', backgroundColor: 'transparent', border: 'none', cursor: 'pointer', fontSize: '0.875rem', color: 'var(--error)' }} onClick={() => { onDelete(inv.id); setOpenDropdownId(null); }}>
+                      <button className="dropdown-item text-error" onClick={() => { onDelete(inv.id); setOpenDropdownId(null); }}>
                         <Trash2 size={16} /> Delete
                       </button>
                     </div>

@@ -52,7 +52,16 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
   const currency = data.details.currency;
 
   // Colors
-  const primaryColor: [number, number, number] = [21, 94, 239]; // #155EEF (Invoice-Gen.net blue)
+  const hexToRgb = (hex: string): [number, number, number] => {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? [
+      parseInt(result[1], 16),
+      parseInt(result[2], 16),
+      parseInt(result[3], 16)
+    ] : [21, 94, 239];
+  };
+
+  const primaryColor: [number, number, number] = hexToRgb(data.details.themeColor || '#155EEF');
   const darkTextColor: [number, number, number] = [27, 38, 59]; // #1B263B
   const lightTextColor: [number, number, number] = [102, 112, 133]; // #667085
   const borderColor: [number, number, number] = [228, 231, 236]; // #E4E7EC

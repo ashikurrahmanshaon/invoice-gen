@@ -2,11 +2,23 @@
   /* Colors */
   --color-primary: #155EEF;
   --color-primary-hover: #004EEB;
+  --color-primary-light: #EEF4FF;
   --color-accent: #0EA5E9;
   
   --color-success: #16A34A;
+  --color-success-light: #f0fdf4;
+  --color-success-border: #bbf7d0;
   --color-warning: #F59E0B;
+  --color-warning-dark: #b45309;
+  --color-warning-light: #fff8e6;
+  --color-warning-border: #ffd57b;
   --color-error: #DC2626;
+  --color-error-light: #fef2f2;
+  --color-error-border: #fecaca;
+  --color-info: #0EA5E9;
+  --color-info-dark: #0369a1;
+  --color-info-light: #f0f9ff;
+  --color-info-border: #bae6fd;
   --color-danger: #DC2626;
   
   --color-text-title: #0F172A;
@@ -22,7 +34,7 @@
   --color-surface: #FFFFFF;
   --color-card: #FFFFFF;
 
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   
   /* Font Sizes */
   --text-xs: 0.8125rem; /* 13px */

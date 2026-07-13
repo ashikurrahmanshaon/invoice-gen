@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UploadCloud, Trash2, Edit2 } from 'lucide-react';
+import { UploadCloud, Trash2, Edit2, LayoutTemplate } from 'lucide-react';
 import type { InvoiceData } from '../../types/invoice';
 import { processImageFile } from '../../utils/image';
 import { Input } from '../ui/Input';
@@ -11,11 +11,12 @@ interface BusinessSectionProps {
   data: InvoiceData;
   updateBusiness: (updates: Partial<InvoiceData['business']>) => void;
   updateDetails: (updates: Partial<InvoiceData['details']>) => void;
+  onOpenTemplateGallery?: () => void;
 }
 
-const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, updateBusiness, updateDetails }) => {
+const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, updateBusiness, updateDetails, onOpenTemplateGallery }) => {
   const [showOptional, setShowOptional] = useState(false);
-  const { settings, updateSettings } = useSettings();
+  const { settings, updateNestedSetting } = useSettings();
 
   const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -31,6 +32,36 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
 
   return (
     <div className="flex-col gap-6" style={{ width: '100%', borderBottom: '1px solid var(--color-border)', paddingBottom: 'var(--space-6)' }}>
+      {/* Template Banner (only show if empty and onOpenTemplateGallery is provided) */}
+      {onOpenTemplateGallery && (!data.items.length || (!data.items[0].name && !data.items[0].rate)) && !data.business.name && (
+        <div 
+          onClick={onOpenTemplateGallery}
+          className="hover-lift"
+          style={{ 
+            backgroundColor: 'var(--color-primary-light)', 
+            border: '1px dashed var(--color-primary)', 
+            borderRadius: 'var(--radius-lg)', 
+            padding: 'var(--space-4)', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'space-between',
+            cursor: 'pointer',
+            marginBottom: 'var(--space-2)'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ backgroundColor: 'var(--color-primary)', color: '#FFFFFF', borderRadius: 'var(--radius-md)', padding: 'var(--space-2)', display: 'flex' }}>
+              <LayoutTemplate size={20} />
+            </div>
+            <div>
+              <h3 style={{ margin: 0, fontSize: 'var(--text-base)', fontWeight: 600, color: 'var(--color-text-title)' }}>Start with a Template</h3>
+              <p style={{ margin: 0, fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)' }}>Choose a professional layout tailored for your industry.</p>
+            </div>
+          </div>
+          <button className="btn btn-primary" style={{ padding: '8px 16px' }}>Browse Templates</button>
+        </div>
+      )}
+
       {/* Logo Upload */}
       <div style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'flex-start', width: '100%', marginBottom: 'var(--space-2)' }}>
         <div style={{ flex: '0 0 120px', width: '120px', height: '96px' }}>
@@ -47,7 +78,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
               justifyContent: 'center',
               overflow: 'hidden'
             }}>
-              <img src={data.business.logoUrl} alt="Logo" loading="lazy" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+              <img src={data.business.logoUrl} alt="Logo" loading="lazy" width="64" height="64" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
               <div style={{
                 position: 'absolute',
                 top: 0, left: 0, right: 0, bottom: 0,
@@ -155,16 +186,16 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
         <div className="grid-2">
           <CurrencyPicker 
             label="Currency"
-            value={data.details.currency || settings.currency}
+            value={data.details.currency || settings.localization.currency}
             onChange={(c) => {
               updateDetails({ currency: c });
-              updateSettings({ currency: c });
+              updateNestedSetting('localization', { currency: c });
             }}
           />
           <LanguagePicker
             label="Language"
-            value={settings.language}
-            onChange={(l) => updateSettings({ language: l })}
+            value={settings.localization.language}
+            onChange={(l) => updateNestedSetting('localization', { language: l })}
           />
         </div>
 

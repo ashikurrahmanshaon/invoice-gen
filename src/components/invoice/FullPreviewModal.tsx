@@ -150,7 +150,7 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            <div style={{ width: '48px', height: '5px', backgroundColor: '#CBD5E1', borderRadius: '3px' }} />
+            <div style={{ width: '48px', height: '5px', backgroundColor: 'var(--color-border-hover)', borderRadius: '3px' }} />
           </div>
 
           <TransformWrapper
@@ -175,31 +175,31 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
                     display: 'flex',
                     justifyContent: 'flex-end',
                     alignItems: 'center',
-                    padding: '16px 24px',
-                    gap: '12px',
+                    padding: 'var(--space-4) var(--space-6)',
+                    gap: 'var(--space-3)',
                     zIndex: 10,
-                    backgroundColor: '#F8FAFC',
-                    borderBottom: '1px solid #E2E8F0'
+                    backgroundColor: 'var(--color-background)',
+                    borderBottom: '1px solid var(--color-border)'
                   }}>
-                    <button className="btn btn-ghost" onClick={() => zoomOut(0.25)} style={{ padding: '8px' }}>
+                    <button aria-label="Zoom Out" className="btn btn-ghost" onClick={() => zoomOut(0.25)} style={{ padding: 'var(--space-2)' }}>
                       <ZoomOut size={20} />
                     </button>
-                    <span style={{ fontSize: '14px', fontWeight: 500, minWidth: '48px', textAlign: 'center' }}>
+                    <span style={{ fontSize: 'var(--text-sm)', fontWeight: 500, minWidth: '48px', textAlign: 'center' }}>
                       {Math.round(state.scale * 100)}%
                     </span>
-                    <button className="btn btn-ghost" onClick={() => zoomIn(0.25)} style={{ padding: '8px' }}>
+                    <button aria-label="Zoom In" className="btn btn-ghost" onClick={() => zoomIn(0.25)} style={{ padding: 'var(--space-2)' }}>
                       <ZoomIn size={20} />
                     </button>
-                    <button className="btn btn-ghost" onClick={handleFitWidth} style={{ padding: '8px 16px', display: 'flex', gap: '8px' }}>
+                    <button aria-label="Fit Width" className="btn btn-ghost" onClick={handleFitWidth} style={{ padding: 'var(--space-2) var(--space-4)', display: 'flex', gap: 'var(--space-2)' }}>
                       <Maximize size={16} /> Fit Width
                     </button>
                     
-                    <div style={{ width: '1px', height: '24px', backgroundColor: '#E2E8F0', margin: '0 8px' }} />
+                    <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--color-border)', margin: '0 var(--space-2)' }} />
                     
-                    <button className="btn btn-primary" onClick={onDownloadPDF} style={{ padding: '0 24px', height: '40px' }}>
-                      <Download size={18} style={{ marginRight: '8px' }} /> Download PDF
+                    <button aria-label="Download PDF" className="btn btn-primary" onClick={onDownloadPDF} style={{ padding: '0 var(--space-6)', height: '40px' }}>
+                      <Download size={18} style={{ marginRight: 'var(--space-2)' }} /> Download PDF
                     </button>
-                    <button className="btn btn-ghost" onClick={onClose} style={{ padding: '8px', marginLeft: '8px' }}>
+                    <button aria-label="Close Preview" className="btn btn-ghost" onClick={onClose} style={{ padding: 'var(--space-2)', marginLeft: 'var(--space-2)' }}>
                       <X size={24} />
                     </button>
                   </div>
@@ -210,12 +210,12 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
                     bottom: 0, 
                     left: 0, 
                     right: 0, 
-                    padding: '20px', 
+                    padding: 'var(--space-5)', 
                     zIndex: 10,
-                    background: 'linear-gradient(to top, #F8FAFC 60%, transparent)'
+                    background: 'linear-gradient(to top, var(--color-background) 60%, transparent)'
                   }}>
-                     <button className="btn btn-primary" onClick={onDownloadPDF} style={{ padding: '0 24px', height: '52px', width: '100%', borderRadius: '12px', fontSize: '16px' }}>
-                      <Download size={20} style={{ marginRight: '8px' }} /> Download PDF
+                     <button className="btn btn-primary" onClick={onDownloadPDF} style={{ padding: '0 var(--space-6)', height: '52px', width: '100%', borderRadius: 'var(--radius-lg)', fontSize: 'var(--text-base)' }}>
+                      <Download size={20} style={{ marginRight: 'var(--space-2)' }} /> Download PDF
                     </button>
                   </div>
 
@@ -227,11 +227,11 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
                       display: 'flex', 
                       justifyContent: 'center', 
                       alignItems: 'center',
-                      backgroundColor: '#F8FAFC',
+                      backgroundColor: 'var(--color-background)',
                       overflow: 'hidden'
                     }}
                   >
-                    <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }} contentStyle={{ padding: '40px' }}>
+                    <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }} contentStyle={{ padding: 'var(--space-10)' }}>
                       <div style={{ 
                         boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)', 
                         borderRadius: '2px', // Minimal paper radius

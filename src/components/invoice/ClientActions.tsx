@@ -68,16 +68,15 @@ export const ClientActions: React.FC<ClientActionsProps> = ({
   if (duplicatePrompt) {
     const dupClient = clientHook.clients.find(c => c.id === duplicatePrompt);
     return (
-      <div style={{ backgroundColor: '#fff8e6', border: '1px solid #ffd57b', padding: '10px 14px', borderRadius: '6px', fontSize: '13px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '12px', flexWrap: 'wrap', gap: '10px' }}>
-        <span style={{ color: '#8c6000' }}>
+      <div style={{ backgroundColor: 'var(--color-warning-light)', border: '1px solid var(--color-warning-border)', padding: 'var(--space-3) var(--space-4)', borderRadius: 'var(--radius-sm)', fontSize: 'var(--text-sm)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'var(--space-3)', flexWrap: 'wrap', gap: 'var(--space-3)' }}>
+        <span style={{ color: 'var(--color-warning-dark)' }}>
           Client <b>{dupClient?.name || dupClient?.email}</b> already exists.
         </span>
         <div style={{ display: 'flex', gap: '8px' }}>
           {onLoadClient && (
             <button 
               type="button" 
-              className="btn btn-secondary" 
-              style={{ padding: '4px 10px', fontSize: '12px' }}
+              className="btn btn-secondary btn-sm" 
               onClick={() => handleLoadDuplicate(duplicatePrompt)}
             >
               Load Existing
@@ -85,16 +84,14 @@ export const ClientActions: React.FC<ClientActionsProps> = ({
           )}
           <button 
             type="button" 
-            className="btn btn-primary" 
-            style={{ padding: '4px 10px', fontSize: '12px' }}
+            className="btn btn-primary btn-sm" 
             onClick={() => handleForceUpdate(duplicatePrompt)}
           >
             Update Existing
           </button>
           <button 
             type="button" 
-            className="btn btn-ghost" 
-            style={{ padding: '4px 10px', fontSize: '12px' }}
+            className="btn btn-ghost btn-sm" 
             onClick={() => setDuplicatePrompt(null)}
           >
             Cancel
@@ -106,14 +103,13 @@ export const ClientActions: React.FC<ClientActionsProps> = ({
 
   if (selectedSavedClientId && isModified) {
     return (
-      <div style={{ backgroundColor: '#f0f9ff', border: '1px solid #bae6fd', padding: '10px 14px', borderRadius: '6px', fontSize: '13px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '12px' }}>
-        <span style={{ color: '#0369a1' }}>
+      <div style={{ backgroundColor: 'var(--color-info-light)', border: '1px solid var(--color-info-border)', padding: 'var(--space-3) var(--space-4)', borderRadius: 'var(--radius-sm)', fontSize: 'var(--text-sm)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'var(--space-3)' }}>
+        <span style={{ color: 'var(--color-info-dark)' }}>
           Client modified.
         </span>
         <button 
           type="button" 
-          className="btn btn-primary" 
-          style={{ padding: '4px 10px', fontSize: '12px' }}
+          className="btn btn-primary btn-sm" 
           onClick={() => handleForceUpdate(selectedSavedClientId)}
         >
           Update saved client
@@ -124,11 +120,10 @@ export const ClientActions: React.FC<ClientActionsProps> = ({
 
   if (!selectedSavedClientId && hasData) {
     return (
-      <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'flex-end' }}>
+      <div style={{ marginTop: 'var(--space-3)', display: 'flex', justifyContent: 'flex-end' }}>
         <button 
           type="button" 
-          className="btn btn-secondary" 
-          style={{ fontSize: '13px', padding: '6px 12px' }}
+          className="btn btn-secondary btn-sm" 
           onClick={handleSave}
         >
           Save to clients

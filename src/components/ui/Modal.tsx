@@ -55,7 +55,7 @@ export const Modal: React.FC<ModalProps> = ({
         <button 
           onClick={onClose}
           className="btn btn-ghost"
-          style={{ position: 'absolute', top: '16px', right: '16px', padding: '4px' }}
+          style={{ position: 'absolute', top: 'var(--space-4)', right: 'var(--space-4)', padding: 'var(--space-1)' }}
         >
           <X size={20} className="text-secondary" />
         </button>
@@ -63,7 +63,7 @@ export const Modal: React.FC<ModalProps> = ({
         <div className="flex items-start gap-4">
           <div style={{
             background: isDanger ? 'rgba(239, 68, 68, 0.1)' : 'rgba(21, 94, 239, 0.1)',
-            padding: '10px',
+            padding: 'var(--space-2)',
             borderRadius: '50%',
             flexShrink: 0
           }}>
@@ -74,12 +74,12 @@ export const Modal: React.FC<ModalProps> = ({
             )}
           </div>
           <div style={{ width: '100%' }}>
-            <h3 className="font-bold text-lg" style={{ marginBottom: '8px' }}>{title}</h3>
-            <p className="text-secondary text-sm" style={{ marginBottom: '24px', lineHeight: 1.5 }}>
+            <h3 className="font-bold text-lg" style={{ marginBottom: 'var(--space-2)' }}>{title}</h3>
+            <p className="text-secondary text-sm" style={{ marginBottom: 'var(--space-6)', lineHeight: 1.5 }}>
               {message}
             </p>
             {onConfirm ? (
-              <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', width: '100%' }}>
+              <div style={{ display: 'flex', gap: 'var(--space-3)', justifyContent: 'flex-end', width: '100%' }}>
                 <button className="btn btn-outline" style={{ flex: 1 }} onClick={onClose}>
                   {cancelText}
                 </button>
@@ -87,8 +87,8 @@ export const Modal: React.FC<ModalProps> = ({
                   className="btn" 
                   style={{ 
                     flex: 1, 
-                    backgroundColor: isDanger ? '#ef4444' : 'var(--color-primary)', 
-                    color: '#fff', 
+                    backgroundColor: isDanger ? 'var(--color-danger)' : 'var(--color-primary)', 
+                    color: '#FFFFFF', 
                     border: 'none' 
                   }} 
                   onClick={() => {

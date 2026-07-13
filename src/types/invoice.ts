@@ -48,6 +48,7 @@ export interface InvoiceDetails {
   issueDate: string;
   dueDate: string;
   currency: string;
+  themeColor?: string;
 }
 
 export interface InvoiceTotals {
@@ -93,4 +94,21 @@ export interface SavedInvoice {
   status: InvoiceStatus;
   schemaVersion: number;
   data: InvoiceData;
+}
+
+export interface InvoiceTemplate {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  useCase: string;
+  tags: string[];
+  themeColor: string;
+  content: {
+    notes: string;
+    terms: string;
+    paymentInstructions: string;
+    items: Omit<LineItem, 'id'>[];
+    taxLabel?: string;
+  }
 }

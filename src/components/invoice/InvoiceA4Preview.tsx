@@ -13,7 +13,7 @@ interface InvoiceA4PreviewProps {
 
 // Memoized sections to ensure 16ms render performance
 
-const PreviewHeader = React.memo(({ business }: { business: InvoiceData['business'] }) => {
+const PreviewHeader = React.memo(({ business, themeColor }: { business: InvoiceData['business'], themeColor: string }) => {
   const { t } = useTranslation();
   const businessAddressLines = useMemo(() => formatAddress(business), [business]);
   
@@ -22,10 +22,10 @@ const PreviewHeader = React.memo(({ business }: { business: InvoiceData['busines
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxWidth: '50%' }}>
         {business.logoUrl && (
           <div style={{ width: '80px', height: '64px', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', overflow: 'hidden' }}>
-            <img src={business.logoUrl} alt="Logo" loading="lazy" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+            <img src={business.logoUrl} alt="Logo" loading="lazy" width="80" height="64" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           </div>
         )}
-        <div style={{ fontWeight: 700, color: '#1B263B', fontSize: '18px', marginBottom: '8px' }}>
+        <div style={{ fontWeight: 700, color: themeColor, fontSize: '18px', marginBottom: '8px' }}>
           {business.name || 'Your Business Name'}
         </div>
         <div style={{ color: '#667085', fontSize: '12px', lineHeight: 1.5 }}>
@@ -40,7 +40,7 @@ const PreviewHeader = React.memo(({ business }: { business: InvoiceData['busines
       </div>
       
       <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-        <div style={{ fontSize: '32px', fontWeight: 700, color: '#155EEF', letterSpacing: '2px', marginBottom: '16px' }}>
+        <div style={{ fontSize: '32px', fontWeight: 700, color: themeColor, letterSpacing: '2px', marginBottom: '16px' }}>
           {t('invoice_title', 'INVOICE')}
         </div>
       </div>
@@ -72,17 +72,17 @@ const PreviewMeta = React.memo(({ details }: { details: InvoiceData['details'] }
   );
 });
 
-const PreviewClient = React.memo(({ client }: { client: InvoiceData['client'] }) => {
+const PreviewClient = React.memo(({ client, themeColor }: { client: InvoiceData['client'], themeColor: string }) => {
   const { t } = useTranslation();
   const clientAddressLines = useMemo(() => formatAddress(client), [client]);
   
   return (
     <div style={{ marginBottom: '40px' }}>
-      <div style={{ color: '#155EEF', fontWeight: 700, fontSize: '12px', letterSpacing: '1px', marginBottom: '8px' }}>
+      <div style={{ color: themeColor, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', marginBottom: '8px' }}>
         {t('bill_to_label', 'BILL TO')}
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxWidth: '50%' }}>
-        <div style={{ fontWeight: 700, color: '#1B263B', fontSize: '14px', marginBottom: '4px' }}>
+        <div style={{ fontWeight: 700, color: themeColor, fontSize: '14px', marginBottom: '4px' }}>
           {client.name || 'Client Name'}
         </div>
         <div style={{ color: '#667085', fontSize: '12px', lineHeight: 1.5 }}>
@@ -128,7 +128,7 @@ const PreviewItems = React.memo(({ items, currency }: { items: InvoiceData['item
   );
 });
 
-const PreviewTotals = React.memo(({ totals, currency }: { totals: InvoiceData['totals'], currency: string }) => {
+const PreviewTotals = React.memo(({ totals, currency, themeColor }: { totals: InvoiceData['totals'], currency: string, themeColor: string }) => {
   const { t } = useTranslation();
   return (
     <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '40px' }}>
@@ -182,14 +182,14 @@ const PreviewTotals = React.memo(({ totals, currency }: { totals: InvoiceData['t
             <td colSpan={2} style={{ padding: '8px 0' }}>
               <div style={{ 
                 backgroundColor: '#EEF4FF', 
-                border: '1px solid #155EEF', 
+                border: `1px solid ${themeColor}`, 
                 padding: '12px 16px',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center'
               }}>
                 <span style={{ color: '#1B263B', fontWeight: 700 }}>{t('balance_due_label', 'Balance Due')}</span>
-                <span style={{ color: '#155EEF', fontWeight: 700, fontSize: '16px' }}>{formatCurrency(totals.balanceDue, currency)}</span>
+                <span style={{ color: themeColor, fontWeight: 700, fontSize: '16px' }}>{formatCurrency(totals.balanceDue, currency)}</span>
               </div>
             </td>
           </tr>
@@ -256,11 +256,11 @@ export const InvoiceA4Preview: React.FC<InvoiceA4PreviewProps> = ({ data, scale 
           direction: i18next.dir(),
         }}
       >
-        <PreviewHeader business={data.business} />
+        <PreviewHeader business={data.business} themeColor={data.details.themeColor || '#155EEF'} />
         <PreviewMeta details={data.details} />
-        <PreviewClient client={data.client} />
+        <PreviewClient client={data.client} themeColor={data.details.themeColor || '#155EEF'} />
         <PreviewItems items={data.items} currency={data.details.currency} />
-        <PreviewTotals totals={data.totals} currency={data.details.currency} />
+        <PreviewTotals totals={data.totals} currency={data.details.currency} themeColor={data.details.themeColor || '#155EEF'} />
         <PreviewNotes notes={data.notes} terms={data.terms} paymentInstructions={data.paymentInstructions} />
       </div>
     </div>

@@ -118,7 +118,7 @@ export const ClientPicker: React.FC<ClientPickerProps> = ({ clients, onSelect, o
           }}
         >
           {filteredClients.length === 0 ? (
-            <div style={{ padding: '12px', textAlign: 'center', color: 'var(--color-text-secondary)', fontSize: '13px' }}>
+            <div style={{ padding: 'var(--space-3)', textAlign: 'center', color: 'var(--color-text-secondary)', fontSize: 'var(--text-xs)' }}>
               No clients match "{search}"
             </div>
           ) : (
@@ -127,31 +127,31 @@ export const ClientPicker: React.FC<ClientPickerProps> = ({ clients, onSelect, o
                 key={client.id}
                 className={`client-picker-item ${index === activeIndex ? 'active' : ''}`}
                 style={{
-                  padding: '10px 12px',
-                  borderBottom: '1px solid var(--color-border-light)',
+                  padding: 'var(--space-2) var(--space-3)',
+                  borderBottom: '1px solid var(--color-border)',
                   cursor: 'pointer',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  backgroundColor: index === activeIndex ? '#f9fafb' : 'transparent'
+                  backgroundColor: index === activeIndex ? 'var(--color-background)' : 'transparent'
                 }}
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={() => handleSelect(client)}
               >
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', overflow: 'hidden' }}>
-                  <span style={{ fontWeight: 600, fontSize: '14px', color: 'var(--color-text-main)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
+                  <span style={{ fontWeight: 600, fontSize: 'var(--text-sm)', color: 'var(--color-text-main)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
                     {client.name || 'Unnamed Client'}
                   </span>
                   {client.email && (
-                    <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
+                    <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-secondary)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
                       {client.email}
                     </span>
                   )}
                 </div>
                 <button
                   type="button"
-                  className="btn btn-ghost"
-                  style={{ padding: '4px', height: 'auto', color: 'var(--color-text-tertiary)' }}
+                  className="btn btn-ghost btn-sm"
+                  style={{ padding: 'var(--space-1)', height: 'auto', color: 'var(--color-text-tertiary)' }}
                   onClick={(e) => {
                     e.stopPropagation();
                     onDeleteRequest(client);
