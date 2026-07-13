@@ -1,30 +1,17 @@
-<IfModule mod_headers.c>
-  # Security Headers
-  Header always set X-Content-Type-Options "nosniff"
-  Header always set X-Frame-Options "SAMEORIGIN"
-  Header always set Referrer-Policy "strict-origin-when-cross-origin"
-  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-  
-  # Note: A strict Content-Security-Policy (CSP) is intentionally omitted or relaxed 
-  # here to prevent breaking Google Analytics (gtag.js) and Microsoft Clarity which 
-  # dynamically inject inline scripts and assets.
-  # Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.clarity.ms; connect-src 'self' https://www.google-analytics.com https://*.clarity.ms"
-
-  # Error Pages
-  ErrorDocument 404 /404.html
-</IfModule>
-
 <IfModule mod_rewrite.c>
   RewriteEngine On
-
-  # Enable HTML Extensionless URLs (optional, if supported by the build)
+  RewriteBase /
+  
+  # Serve physical files or directories if they exist
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME}.html -f
-  RewriteRule ^(.*)$ $1.html [L]
-
-  # Redirect Vite SPA to index.html if not a file/dir and not static html
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^/?(.*)$ /index.html [L]
+  
+  # For all other routes (SPA routes), serve index.html
+  RewriteRule ^ index.html [QSA,L]
+  
+  # Handle the case where a physical directory exists but lacks index.html 
+  # (e.g. /templates) - route to index.html instead of 403 Forbidden
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html !-f
+  RewriteRule ^(.*)$ /index.html [L]
 </IfModule>
