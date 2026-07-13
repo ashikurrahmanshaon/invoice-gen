@@ -19,89 +19,53 @@ export const Footer: React.FC = () => {
   }, []);
 
   return (
-    <footer style={{ 
-      background: '#0F172A',
-      color: '#94A3B8', 
-      padding: '24px 0 16px 0',
-      fontSize: '13px',
-      borderTop: '1px solid rgba(255, 255, 255, 0.05)'
+    <footer id="main-footer" style={{ 
+      background: 'var(--color-background)',
+      color: 'var(--color-text-secondary)', 
+      padding: '64px 0 32px 0',
+      fontSize: '14px',
+      borderTop: '1px solid var(--color-border)',
+      fontFamily: "var(--font-family)",
+      marginTop: '64px'
     }}>
-      <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        {/* Top Section: Compact branding header */}
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
-          paddingBottom: '12px',
-          flexWrap: 'wrap',
-          gap: '12px'
-        }}>
-          <div style={{ color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Logo size={20} hideText={true} />
-            <span style={{ 
-              fontSize: '14px', 
-              fontWeight: 800, 
-              letterSpacing: '-0.04em', 
-              color: '#FFFFFF', 
-              fontFamily: "'Outfit', 'Inter', 'Inter Fallback', sans-serif",
-              lineHeight: 1
-            }}>
-              Invoice<span style={{ color: '#06B6D4' }}>-Gen</span>
-            </span>
-          </div>
-          <span style={{ color: '#94A3B8', fontSize: '11.5px' }}>
-            100% browser-native utility. Watermark-free invoices.
-          </span>
-        </div>
-
-        {/* Middle Section: Exactly 4 Columns using Grid */}
+      <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+        
+        {/* Main Footer Content */}
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: isDesktop ? 'repeat(4, 1fr)' : '1fr', 
-          gap: isDesktop ? '24px' : '12px',
+          gridTemplateColumns: isDesktop ? '1.5fr repeat(3, 1fr)' : '1fr', 
+          gap: isDesktop ? '32px' : '32px',
         }}>
+          {/* Brand Column */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Logo size={24} hideText={true} />
+              <span style={{ 
+                fontSize: '16px', 
+                fontWeight: 700, 
+                letterSpacing: '-0.02em', 
+                color: 'var(--color-text-main)', 
+                lineHeight: 1
+              }}>
+                Invoice-Gen.net
+              </span>
+            </div>
+            <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', lineHeight: 1.5, margin: 0, maxWidth: '280px' }}>
+              100% browser-native utility. Watermark-free, professional invoices generated instantly.
+            </p>
+          </div>
+
           {/* Column 1: Product */}
           <details open={isDesktop} className="footer-col">
             <summary className="footer-summary">Product</summary>
             <div className="footer-links">
-              <a href="/">Invoice-Gen</a>
-              <a href="/about/">About Us</a>
+              <a href="/">Invoice Generator</a>
+              <a href="/templates/">Templates</a>
               <a href="/trust/">Trust Center</a>
-              <a href="/privacy/">Privacy Policy</a>
-              <a href="/terms/">Terms of Service</a>
             </div>
           </details>
 
-          {/* Column 2: Templates */}
-          <details open={isDesktop} className="footer-col">
-            <summary className="footer-summary">Templates</summary>
-            <div className="footer-links">
-              <a href="/templates/freelance/">Freelance</a>
-              <a href="/templates/consultant/">Consultant</a>
-              <a href="/templates/contractor/">Contractor</a>
-              <a href="/templates/graphic-designer/">Graphic Designer</a>
-              <a href="/templates/photographer/">Photographer</a>
-              
-              <details className="footer-sub-details">
-                <summary className="footer-sub-summary">View All Templates</summary>
-                <div className="footer-sub-links">
-                  <a href="/templates/web-developer/">Web Developer</a>
-                  <a href="/templates/marketing-consultant/">Marketing Consultant</a>
-                  <a href="/templates/virtual-assistant/">Virtual Assistant</a>
-                  <a href="/templates/social-media-manager/">Social Media Manager</a>
-                  <a href="/templates/cleaning-service/">Cleaning Service</a>
-                  <a href="/templates/seo-consultant/">SEO Consultant</a>
-                  <a href="/templates/digital-marketing/">Digital Marketing</a>
-                  <a href="/templates/video-editor/">Video Editor</a>
-                  <a href="/templates/content-creator/">Content Creator</a>
-                  <a href="/templates/copywriter/">Copywriter</a>
-                </div>
-              </details>
-            </div>
-          </details>
-
-          {/* Column 3: Resources */}
+          {/* Column 2: Resources */}
           <details open={isDesktop} className="footer-col">
             <summary className="footer-summary">Resources</summary>
             <div className="footer-links">
@@ -109,33 +73,15 @@ export const Footer: React.FC = () => {
               <a href="/blog/what-to-include-in-invoice/">What to Include</a>
               <a href="/blog/invoice-vs-receipt-difference/">Invoice vs Receipt</a>
               <a href="/blog/best-payment-terms-freelancers/">Payment Terms</a>
-              <a href="/blog/how-to-write-freelance-invoice/">Freelance Guide</a>
-              
-              <details className="footer-sub-details">
-                <summary className="footer-sub-summary">View All Guides</summary>
-                <div className="footer-sub-links">
-                  <a href="/blog/common-invoice-mistakes-avoid/">Common Mistakes</a>
-                  <a href="/blog/how-to-invoice-as-consultant/">Consultant Guide</a>
-                  <a href="/blog/hourly-vs-fixed-price-invoices/">Hourly vs Fixed</a>
-                  <a href="/blog/when-to-send-invoice/">When to Send</a>
-                  <a href="/blog/how-to-get-paid-faster-invoices/">Get Paid Faster</a>
-                  <a href="/blog/invoicing-for-creative-licenses-and-royalties/">Creative Licenses</a>
-                  <a href="/blog/handling-down-payments-and-deposits/">Down Payments</a>
-                  <a href="/blog/how-to-request-milestone-payments/">Milestone Payments</a>
-                  <a href="/blog/what-is-net-30-and-how-to-use-it/">Net 30 Billing</a>
-                  <a href="/blog/what-is-a-credit-note-and-how-to-issue/">Credit Notes</a>
-                </div>
-              </details>
             </div>
           </details>
 
-          {/* Column 4: Company */}
+          {/* Column 3: Company */}
           <details open={isDesktop} className="footer-col">
             <summary className="footer-summary">Company</summary>
             <div className="footer-links">
-              <a href="/about/">About Us</a>
-              <a href="/contact/">Contact Us</a>
-              <a href="/trust/">Trust Center</a>
+              <a href="/about/">About</a>
+              <a href="/contact/">Contact</a>
               <a href="/privacy/">Privacy Policy</a>
               <a href="/terms/">Terms of Service</a>
             </div>
@@ -144,17 +90,20 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Section: Copyright */}
         <div style={{ 
-          borderTop: '1px solid rgba(255, 255, 255, 0.05)', 
-          paddingTop: '8px', 
+          borderTop: '1px solid var(--color-border)', 
+          paddingTop: '24px', 
           display: 'flex', 
           justifyContent: 'space-between',
           flexWrap: 'wrap',
-          gap: '8px',
-          color: '#94A3B8',
-          fontSize: '11px'
+          gap: '16px',
+          color: 'var(--color-text-tertiary)',
+          fontSize: '13px'
         }}>
-          <span>&copy; {new Date().getFullYear()} Invoice-Gen. All rights reserved.</span>
-          <span>Security verified. Local browser storage only.</span>
+          <span>&copy; {new Date().getFullYear()} Invoice-Gen.net. All rights reserved.</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Security verified. Local browser storage only.
+          </span>
         </div>
       </div>
 
@@ -163,12 +112,10 @@ export const Footer: React.FC = () => {
           width: 100%;
         }
         .footer-summary {
-          color: #FFFFFF;
+          color: var(--color-text-main);
           font-weight: 600;
-          font-size: 11px;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          margin-bottom: 8px;
+          font-size: 14px;
+          margin-bottom: 16px;
           cursor: pointer;
           outline: none;
           list-style: none;
@@ -182,72 +129,34 @@ export const Footer: React.FC = () => {
         .footer-links {
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 12px;
         }
         .footer-links a {
-          color: #94A3B8;
+          color: var(--color-text-secondary);
           text-decoration: none;
           transition: color 0.15s ease;
-          font-size: 12.5px;
+          font-size: 14px;
         }
         .footer-links a:hover {
-          color: #FFFFFF;
-        }
-
-        .footer-sub-details {
-          margin-top: 4px;
-        }
-        .footer-sub-summary {
-          font-size: 11.5px;
-          color: #06B6D4;
-          font-weight: 500;
-          cursor: pointer;
-          list-style: none;
-          outline: none;
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          transition: color 0.15s ease;
-        }
-        .footer-sub-summary:hover {
-          color: #22D3EE;
-        }
-        .footer-sub-summary::-webkit-details-marker {
-          display: none;
-        }
-        .footer-sub-summary::after {
-          content: '→';
-          font-size: 10px;
-          transition: transform 0.2s;
-        }
-        .footer-sub-details[open] .footer-sub-summary::after {
-          transform: rotate(90deg);
-        }
-        .footer-sub-links {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-          padding: 4px 0 0 8px;
-          border-left: 1px solid rgba(255, 255, 255, 0.05);
-          margin-top: 4px;
+          color: var(--color-text-main);
         }
         
         @media (max-width: 768px) {
           .footer-summary {
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            margin-bottom: 4px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 8px;
           }
           .footer-summary::after {
             content: '+';
-            font-size: 12px;
-            color: #64748B;
+            font-size: 16px;
+            color: var(--color-text-tertiary);
           }
           details[open] .footer-summary::after {
             content: '−';
           }
           .footer-links {
-            padding: 4px 0 12px 6px;
+            padding: 8px 0 16px 8px;
           }
         }
 

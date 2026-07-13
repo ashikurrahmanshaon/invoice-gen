@@ -44,9 +44,27 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
   const [showOptionalClient, setShowOptionalClient] = useState(false);
   const [clientToDelete, setClientToDelete] = useState<SavedClient | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [isBottomBarVisible, setIsBottomBarVisible] = useState(true);
 
   useEffect(() => {
     setMounted(true);
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setIsBottomBarVisible(!entries[0].isIntersecting);
+      },
+      { root: null, threshold: 0, rootMargin: "0px" }
+    );
+    
+    // We add a slight delay to let the DOM settle before observing
+    setTimeout(() => {
+      const footer = document.getElementById('main-footer') || document.querySelector('footer');
+      if (footer) {
+        observer.observe(footer);
+      }
+    }, 500);
+    
+    return () => observer.disconnect();
   }, []);
 
   const handleLoadClient = (client: ClientDetails) => {
@@ -113,7 +131,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
   const symbol = getCurrencySymbol(currency);
 
   return (
-    <div className="mobile-only mobile-step-container" style={{ width: '100%', minWidth: 0, paddingBottom: '160px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+    <div className="mobile-only mobile-step-container" style={{ width: '100%', minWidth: 0, paddingBottom: '240px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
       
       {/* Mobile Trust Chip Bar (Stage 1 only) */}
       {currentStage === 1 && (
@@ -152,6 +170,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
               {chip.icon} {chip.label}
             </span>
           ))}
+          <div style={{ flexShrink: 0, width: '8px' }} />
         </div>
       )}
       
@@ -594,12 +613,12 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                     onChange={(e) => updateItem(item.id, { name: e.target.value })}
                     style={{ height: '46px', fontSize: '16px', padding: '0 12px' }}
                   />
-                  <input 
-                    type="text" 
+                  <textarea 
                     placeholder="Description (optional)"
                     value={item.description}
                     onChange={(e) => updateItem(item.id, { description: e.target.value })}
-                    style={{ height: '46px', fontSize: '16px', padding: '0 12px' }}
+                    style={{ minHeight: '46px', height: 'auto', fontSize: '16px', padding: '12px', resize: 'vertical', fontFamily: 'inherit', lineHeight: '1.4' }}
+                    rows={1}
                   />
                 </div>
 
@@ -676,7 +695,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
 
       {/* STEP 4 — REVIEW */}
       {currentStage === 4 && (
-        <div className="flex-col gap-5" style={{ width: '100%', paddingBottom: '140px' }}>
+        <div className="flex-col gap-4" style={{ width: '100%', paddingBottom: '100px' }}>
           <div>
             <h2 className="text-xl font-bold" style={{ color: 'var(--color-text-main)', margin: 0 }}>Review & finish</h2>
             <p className="text-xs text-secondary" style={{ margin: 0 }}>Add notes and check the final amount.</p>
@@ -712,7 +731,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
               placeholder="Thank you for your business."
               value={data.notes}
               onChange={(e) => updateOtherFields({ notes: e.target.value })}
-              style={{ height: '128px', maxHeight: '128px', resize: 'none', width: '100%', fontSize: '16px' }}
+              style={{ height: '80px', maxHeight: '128px', resize: 'vertical', width: '100%', fontSize: '16px' }}
             />
           </div>
 
@@ -998,7 +1017,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
 
       {/* MOBILE BOTTOM ACTION BAR (Portaled to body for guaranteed stickiness) */}
       {mounted && createPortal(
-        <div className="mobile-only premium-bottom-bar">
+        <div className={`mobile-only premium-bottom-bar ${!isBottomBarVisible ? 'bottom-bar-hidden' : ''}`}>
           {/* Floating Progress Pill */}
           <div style={{
             display: 'flex',
@@ -1022,7 +1041,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                 width: `${(currentStage / 4) * 100}%`,
                 height: '100%',
                 borderRadius: '2px',
-                background: 'linear-gradient(90deg, #4F46E5, #06B6D4)',
+                background: 'var(--color-primary)',
                 transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
               }} />
             </div>
@@ -1083,24 +1102,22 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       <style>{`
         .premium-bottom-bar {
           position: fixed;
-          bottom: calc(20px + env(safe-area-inset-bottom));
-          left: 50%;
-          transform: translateX(-50%);
-          width: calc(100% - 48px);
-          max-width: 640px;
-          background: rgba(255, 255, 255, 0.92);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.35);
-          border-radius: 24px;
-          padding: 12px;
-          box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.12), 0 6px 16px rgba(0, 0, 0, 0.06);
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
+          border-top: 1px solid rgba(0, 0, 0, 0.08);
+          padding: 16px 20px calc(16px + env(safe-area-inset-bottom)) 20px;
+          box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.04);
           z-index: 9999;
-          animation: slideUpFloating 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: slideUpFloating 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         @keyframes slideUpFloating {
-          from { opacity: 0; transform: translate(-50%, 30px) scale(0.95); }
-          to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+          from { opacity: 0; transform: translateY(100%); }
+          to { opacity: 1; transform: translateY(0); }
         }
         .premium-btn-back {
           flex: 40 1 0%;
@@ -1129,9 +1146,9 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
         }
         .premium-btn-primary {
           flex: 60 1 0%;
-          height: 56px;
-          border-radius: 16px;
-          background: linear-gradient(180deg, #3B82F6 0%, #2563EB 100%);
+          height: 52px;
+          border-radius: 12px;
+          background: var(--color-primary);
           color: #FFFFFF;
           font-weight: 600;
           font-size: 16px;
@@ -1140,7 +1157,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           justify-content: center;
           gap: 8px;
           border: none;
-          box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+          box-shadow: none;
           transition: all 180ms ease;
           cursor: pointer;
         }
@@ -1148,19 +1165,18 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           flex: 1 1 100%;
         }
         .premium-btn-primary:hover {
-          box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+          background: var(--color-primary-hover);
           transform: translateY(-1px);
         }
         .premium-btn-primary:active {
           transform: scale(0.98);
-          box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
         }
         .premium-btn-secondary {
           flex: 1 1 0%;
           height: 52px;
-          border-radius: 14px;
+          border-radius: 12px;
           background: #FFFFFF;
-          border: 1px solid #E4E7EC;
+          border: 1px solid var(--color-border);
           color: var(--color-text-main);
           font-weight: 600;
           font-size: 14px;
@@ -1172,15 +1188,15 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           cursor: pointer;
         }
         .premium-btn-secondary:hover {
-          background: #F9FAFB;
-          border-color: #D1D5DB;
+          background: var(--color-background);
+          border-color: var(--color-border-hover);
         }
         .premium-btn-secondary:active {
           transform: scale(0.98);
         }
         .premium-btn-download {
-          background: linear-gradient(180deg, #4F46E5 0%, #4338CA 100%) !important;
-          box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+          background: var(--color-primary) !important;
+          box-shadow: none !important;
         }
         .hover-text-error:hover { color: var(--color-error) !important; }
         .mobile-item-card .btn-action-dup:hover { background-color: #F2F4F7; color: #344054 !important; }

@@ -1,0 +1,83 @@
+{
+  "timestamp": "2026-07-13T03:45:09.767Z",
+  "dateRange": "last_7_days",
+  "gsc": {
+    "seoMetrics": {
+      "clicks": 4250,
+      "impressions": 125400,
+      "ctr": 3.39,
+      "avgPosition": 14.2,
+      "indexedPages": 112,
+      "sitemapStatus": "Success",
+      "coverageIssues": 2
+    },
+    "topQueries": [
+      {
+        "query": "free invoice generator",
+        "clicks": 1200,
+        "impressions": 45000,
+        "position": 5.1
+      },
+      {
+        "query": "invoice-gen",
+        "clicks": 800,
+        "impressions": 2100,
+        "position": 1
+      },
+      {
+        "query": "pdf invoice maker",
+        "clicks": 500,
+        "impressions": 18000,
+        "position": 8.4
+      }
+    ],
+    "topPages": [
+      {
+        "url": "/",
+        "clicks": 2500
+      },
+      {
+        "url": "/templates/freelance/",
+        "clicks": 450
+      },
+      {
+        "url": "/blog/how-to-write-freelance-invoice/",
+        "clicks": 300
+      }
+    ]
+  },
+  "ga4": {
+    "traffic": {
+      "users": 3800,
+      "sessions": 4100,
+      "bounceRate": 42.5,
+      "engagementRate": 57.5,
+      "avgSessionDuration": 145
+    },
+    "events": {
+      "downloads": 1850,
+      "previewClicks": 2100,
+      "saveDraft": 950,
+      "funnelCompletion": 68.4
+    }
+  },
+  "clarity": {
+    "behavior": {
+      "rageClicks": 45,
+      "deadClicks": 120,
+      "quickBacks": 310,
+      "avgScrollDepth": 68
+    },
+    "breakdown": {
+      "desktop": 55,
+      "mobile": 42,
+      "tablet": 3
+    }
+  },
+  "insights": [
+    "🔴 **CTR dropped:** Overall CTR is below 4.0%. Recommend reviewing meta descriptions for top high-impression queries.",
+    "🟡 **Funnel Drop-off:** Invoice completion rate is 68.4%. Consider reducing the number of required fields or improving the UI for adding items.",
+    "🔴 **UX Friction:** Detected 45 rage clicks. Check Clarity session recordings to see where users are getting frustrated.",
+    "🟡 **Search Intent Mismatch:** High number of quick backs (310) detected. Users are landing from Google and immediately leaving."
+  ]
+}

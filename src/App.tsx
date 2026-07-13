@@ -326,7 +326,6 @@ function App() {
             {isMobileView ? (
               /* Mobile Step-by-Step Flow */
               <div className="mobile-only" style={{ width: '100%', minWidth: 0 }}>
-                <StageIndicator currentStage={currentStage} onStageChange={handleStageChange} isMobile={true} />
                 <MobileWizard 
                   currentStage={currentStage}
                   setStage={handleStageChange}

@@ -51,7 +51,7 @@ const allLinks = [
   { url: '/templates/voiceover-artist/', text: 'Voiceover Template' }
 ];
 
-let linksHtml = '<div style="background: #F8FAFC; padding: 40px 24px; border-top: 1px solid #E2E8F0; margin-top: 60px;"><div style="max-width: 1000px; margin: 0 auto;"><h4 style="font-size: 14px; font-weight: 600; color: #475569; margin-bottom: 16px;">Invoice-Gen Directory</h4><div style="display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 13px;">';
+let linksHtml = '<div style="background: #F8FAFC; padding: 40px 24px; border-top: 1px solid #E2E8F0; margin-top: 60px;"><div style="max-width: 1000px; margin: 0 auto;"><h4 style="font-size: 14px; font-weight: 600; color: #475569; margin-bottom: 16px;">Invoice-Gen.net Directory</h4><div style="display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 13px;">';
 allLinks.forEach(l => {
   linksHtml += `<a href="${l.url}" style="color: #64748b; text-decoration: none;">${l.text}</a>`;
 });
@@ -60,7 +60,7 @@ linksHtml += '</div></div></div>';
 // 1. Inject into index.html
 const indexHtmlPath = path.join(__dirname, '..', 'index.html');
 let indexHtml = fs.readFileSync(indexHtmlPath, 'utf8');
-if (!indexHtml.includes('Invoice-Gen Directory')) {
+if (!indexHtml.includes('Invoice-Gen.net Directory')) {
   // Find the closing footer tag or closing body
   indexHtml = indexHtml.replace('</footer>', `</footer>\n    ${linksHtml}`);
   fs.writeFileSync(indexHtmlPath, indexHtml);
@@ -83,7 +83,7 @@ function walkSync(dir, filelist = []) {
 const publicFiles = walkSync(path.join(__dirname, '..', 'public'));
 publicFiles.forEach(file => {
   let content = fs.readFileSync(file, 'utf8');
-  if (!content.includes('Invoice-Gen Directory')) {
+  if (!content.includes('Invoice-Gen.net Directory')) {
     if (content.includes('</footer>')) {
       content = content.replace('</footer>', `</footer>\n  ${linksHtml}`);
     } else {
@@ -119,7 +119,7 @@ generatorFiles.forEach(gen => {
   const genPath = path.join(__dirname, '..', gen);
   if (fs.existsSync(genPath)) {
     let genContent = fs.readFileSync(genPath, 'utf8');
-    if (!genContent.includes('Invoice-Gen Directory')) {
+    if (!genContent.includes('Invoice-Gen.net Directory')) {
       // Escape for template literals
       const escapedLinksHtml = linksHtml.replace(/`/g, '\\`').replace(/\$/g, '\\$');
       genContent = genContent.replace(/<\/body>/g, `  ${escapedLinksHtml}\n</body>`);

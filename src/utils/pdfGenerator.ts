@@ -51,7 +51,7 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
   const currency = data.details.currency;
 
   // Colors
-  const primaryColor: [number, number, number] = [21, 94, 239]; // #155EEF (Invoice-Gen blue)
+  const primaryColor: [number, number, number] = [21, 94, 239]; // #155EEF (Invoice-Gen.net blue)
   const darkTextColor: [number, number, number] = [27, 38, 59]; // #1B263B
   const lightTextColor: [number, number, number] = [102, 112, 133]; // #667085
   const borderColor: [number, number, number] = [228, 231, 236]; // #E4E7EC

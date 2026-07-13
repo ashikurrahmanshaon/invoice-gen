@@ -1,4 +1,4 @@
-# Invoice-Gen Final Growth Audit Report
+# Invoice-Gen.net Final Growth Audit Report
 
 This report confirms the resolution of the structural SEO issues across the production build.
 

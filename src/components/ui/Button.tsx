@@ -31,10 +31,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       alignItems: 'center',
       justifyContent: 'center',
       gap: '8px',
-      fontWeight: 600,
+      fontWeight: 500,
       fontFamily: 'var(--font-family)',
-      borderRadius: 'var(--radius-md)',
-      transition: 'all var(--transition-fast)',
+      borderRadius: 'var(--radius-lg)',
+      transition: 'all 0.15s ease',
       cursor: disabled || isLoading ? 'not-allowed' : 'pointer',
       opacity: disabled ? 0.6 : 1,
       width: fullWidth ? '100%' : 'auto',
@@ -45,43 +45,42 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     // Size variants
     if (size === 'sm') {
-      baseStyle = { ...baseStyle, padding: '6px 12px', fontSize: '13px', height: '32px' };
+      baseStyle = { ...baseStyle, padding: '0 16px', fontSize: '14px', height: '40px', borderRadius: 'var(--radius-md)' };
     } else if (size === 'md') {
-      baseStyle = { ...baseStyle, padding: '8px 16px', fontSize: '14.5px', height: '40px' };
+      baseStyle = { ...baseStyle, padding: '0 24px', fontSize: '16px', height: '52px' };
     } else if (size === 'lg') {
-      baseStyle = { ...baseStyle, padding: '12px 24px', fontSize: '16px', height: '48px' };
+      baseStyle = { ...baseStyle, padding: '0 32px', fontSize: '18px', height: '60px' };
     }
 
     // Color variants
     if (variant === 'primary') {
       baseStyle = {
         ...baseStyle,
-        background: isHovered && !disabled ? 'var(--gradient-primary-hover)' : 'var(--gradient-primary)',
+        background: isHovered && !disabled ? 'var(--color-primary-hover)' : 'var(--color-primary)',
         color: '#FFFFFF',
-        boxShadow: isHovered && !disabled ? 'var(--shadow-button-primary)' : '0 1px 2px rgba(0,0,0,0.1)',
-        transform: isHovered && !disabled && !isActive ? 'translateY(-1px)' : isActive ? 'translateY(1px)' : 'none',
+        transform: isActive && !disabled ? 'scale(0.98)' : 'none',
       };
-    } else if (variant === 'secondary') {
+    } else if (variant === 'secondary' || variant === 'outline') {
       baseStyle = {
         ...baseStyle,
-        background: isHovered && !disabled ? '#F1F5F9' : '#FFFFFF',
+        background: isHovered && !disabled ? 'var(--color-background)' : '#FFFFFF',
         color: 'var(--color-text-main)',
         border: '1px solid var(--color-border)',
-        boxShadow: 'var(--shadow-sm)',
-        transform: isActive && !disabled ? 'translateY(1px)' : 'none',
+        transform: isActive && !disabled ? 'scale(0.98)' : 'none',
       };
     } else if (variant === 'ghost') {
       baseStyle = {
         ...baseStyle,
-        background: isHovered && !disabled ? 'rgba(0,0,0,0.05)' : 'transparent',
-        color: 'var(--color-text-main)',
+        background: isHovered && !disabled ? 'rgba(37,99,235,0.05)' : 'transparent',
+        color: 'var(--color-primary)',
+        transform: isActive && !disabled ? 'scale(0.98)' : 'none',
       };
     } else if (variant === 'danger') {
       baseStyle = {
         ...baseStyle,
         background: isHovered && !disabled ? '#DC2626' : '#EF4444',
         color: '#FFFFFF',
-        boxShadow: '0 1px 2px rgba(0,0,0,0.1)',
+        transform: isActive && !disabled ? 'scale(0.98)' : 'none',
       };
     }
 
@@ -98,7 +97,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading && (
-          <svg className="animate-spin" viewBox="0 0 24 24" width="16" height="16" style={{ animation: 'spin 1s linear infinite' }}>
+          <svg className="animate-spin" viewBox="0 0 24 24" width="20" height="20" style={{ animation: 'spin 1s linear infinite' }}>
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" opacity="0.25"></circle>
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>

@@ -15,151 +15,100 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
     { num: 4, label: 'Review' }
   ];
 
-  if (isMobile) {
-    // Premium animated mobile step indicator
-    return (
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '16px 20px',
-        width: '100%',
-        boxSizing: 'border-box'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          {stages.map((stage) => {
-            const isActive = stage.num === currentStage;
-            const isPast = stage.num < currentStage;
-            
-            return (
-              <React.Fragment key={stage.num}>
-                <div 
-                  onClick={() => onStageChange?.(stage.num)}
-                  style={{
-                    width: isActive ? '32px' : '8px',
-                    height: '8px',
-                    borderRadius: '4px',
-                    background: isActive ? 'var(--gradient-primary)' : (isPast ? 'var(--color-primary)' : '#E2E8F0'),
-                    transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                    opacity: isPast ? 0.6 : 1,
-                    cursor: onStageChange ? 'pointer' : 'default',
-                    boxShadow: isActive ? '0 2px 4px rgba(79, 70, 229, 0.3)' : 'none'
-                  }} 
-                />
-              </React.Fragment>
-            );
-          })}
-        </div>
-        <div style={{ marginLeft: '16px', fontSize: '14px', fontWeight: 600, color: 'var(--color-text-main)' }}>
-          {stages[currentStage - 1].label}
-        </div>
-      </div>
-    );
-  }
-
-  // Premium SaaS-like desktop step indicator
   return (
     <div style={{
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'space-between', // Spread out to fill container
-      gap: '8px',
-      padding: '0 0 24px 0',
+      justifyContent: 'space-between',
+      paddingBottom: isMobile ? '16px' : '24px',
       width: '100%',
       position: 'relative'
     }}>
-      {/* Background track line */}
-      <div style={{
-        position: 'absolute',
-        top: '12px',
-        left: '24px',
-        right: '24px',
-        height: '2px',
-        background: 'var(--color-border)',
-        zIndex: 0,
-        borderRadius: '1px'
-      }} />
-      
-      {/* Active progress track */}
-      <div style={{
-        position: 'absolute',
-        top: '12px',
-        left: '24px',
-        height: '2px',
-        background: 'var(--gradient-primary)',
-        width: `calc(${(currentStage - 1) / (stages.length - 1) * 100}% - 48px)`,
-        zIndex: 0,
-        transition: 'width 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
-        borderRadius: '1px'
-      }} />
-
-      {stages.map((stage) => {
+      {stages.map((stage, index) => {
         const isActive = stage.num === currentStage;
         const isPast = stage.num < currentStage;
+        
+        let bg = '#FFFFFF';
+        let border = '1px solid var(--color-border)';
+        let color = 'var(--color-text-secondary)';
+        let iconColor = 'var(--color-text-tertiary)';
 
-        let circleBg = 'var(--color-surface)';
-        let circleBorder = '2px solid var(--color-border)';
-        let circleColor = 'var(--color-text-tertiary)';
-        let shadow = 'none';
-
-        if (isActive) {
-          circleBg = 'var(--color-surface)';
-          circleBorder = '2px solid var(--color-primary)';
-          circleColor = 'var(--color-primary)';
-          shadow = '0 0 0 4px rgba(79, 70, 229, 0.1)';
-        } else if (isPast) {
-          circleBg = 'var(--gradient-primary)';
-          circleBorder = '2px solid var(--color-primary)';
-          circleColor = '#FFFFFF';
+        if (isPast) {
+          bg = 'var(--color-primary)';
+          border = '1px solid var(--color-primary)';
+          color = '#FFFFFF';
+          iconColor = '#FFFFFF';
+        } else if (isActive) {
+          bg = '#FFFFFF';
+          border = '1px solid var(--color-primary)';
+          color = 'var(--color-text-main)';
         }
 
         return (
-          <div 
-            key={stage.num}
-            style={{ 
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center', 
-              gap: '8px', 
-              cursor: onStageChange ? 'pointer' : 'default',
-              opacity: (isActive || isPast) ? 1 : 0.6,
-              transition: 'all 0.3s ease',
-              zIndex: 1,
-              width: '80px' // fixed width to center labels under circles
-            }} 
-            onClick={() => onStageChange?.(stage.num)}
-          >
-            <div 
+          <React.Fragment key={stage.num}>
+            <div
+              onClick={() => onStageChange?.(stage.num)}
               style={{
-                width: '24px',
-                height: '24px',
-                borderRadius: '50%',
-                background: circleBg,
-                border: circleBorder,
-                color: circleColor,
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '12px',
-                fontWeight: 700,
-                transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                boxShadow: shadow
+                gap: '8px',
+                padding: isMobile ? '8px 12px' : '10px 16px',
+                borderRadius: '8px',
+                background: bg,
+                border: border,
+                cursor: onStageChange ? 'pointer' : 'default',
+                transition: 'all 0.3s ease',
+                position: 'relative',
+                zIndex: 2,
+                boxShadow: isActive ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'
               }}
             >
-              {isPast ? <Check size={14} strokeWidth={3} /> : stage.num}
+              {isPast ? (
+                <Check size={16} color={iconColor} strokeWidth={3} />
+              ) : (
+                <span style={{ 
+                  fontSize: '13px', 
+                  fontWeight: 600,
+                  color: isActive ? 'var(--color-primary)' : 'var(--color-text-tertiary)' 
+                }}>
+                  {stage.num}
+                </span>
+              )}
+              {!isMobile && (
+                <span style={{
+                  fontSize: '14px',
+                  fontWeight: isActive ? 600 : 500,
+                  color: color
+                }}>
+                  {stage.label}
+                </span>
+              )}
             </div>
-            <span 
-              style={{ 
-                fontSize: '13px',
-                fontWeight: isActive ? 600 : 500,
-                color: (isActive || isPast) ? 'var(--color-text-main)' : 'var(--color-text-tertiary)',
-                transition: 'color 0.2s ease',
-                textAlign: 'center'
-              }}
-            >
-              {stage.label}
-            </span>
-          </div>
+            
+            {/* Connector Line */}
+            {index < stages.length - 1 && (
+              <div style={{
+                flex: 1,
+                height: '2px',
+                margin: '0 8px',
+                background: 'var(--color-border)',
+                position: 'relative',
+                overflow: 'hidden',
+                borderRadius: '2px'
+              }}>
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  height: '100%',
+                  width: '100%',
+                  background: 'var(--color-primary)',
+                  transform: stage.num < currentStage ? 'translateX(0)' : 'translateX(-100%)',
+                  transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+                }} />
+              </div>
+            )}
+          </React.Fragment>
         );
       })}
     </div>

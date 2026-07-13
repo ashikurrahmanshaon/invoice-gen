@@ -51,29 +51,21 @@ export const Header: React.FC<HeaderProps> = ({
   }, []);
 
   const getStatusPill = () => {
-    let bg = '#F1F5F9';
+    let bg = '#FFFFFF';
     let border = '1px solid #E2E8F0';
     let color = '#475569';
     let dotColor = '#10B981';
     let text = 'Secure Sandbox';
 
     if (saveStatus === 'saving') {
-      bg = '#FFFBEB';
-      border = '1px solid #FDE68A';
-      color = '#B45309';
       dotColor = '#F59E0B';
       text = 'Saving...';
     } else if (saveStatus === 'success') {
-      bg = '#ECFDF5';
-      border = '1px solid #A7F3D0';
-      color = '#047857';
       dotColor = '#10B981';
       text = 'Saved Locally';
     } else if (saveStatus.startsWith('error')) {
-      bg = '#FEF2F2';
-      border = '1px solid #FCA5A5';
-      color = '#B91C1C';
       dotColor = '#EF4444';
+      color = '#B91C1C';
       text = saveStatus === 'error_profile' ? 'Logo too large' : 'Save Error';
     }
 
@@ -81,19 +73,18 @@ export const Header: React.FC<HeaderProps> = ({
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '4px',
-        fontSize: '10.5px',
+        gap: '6px',
+        fontSize: '11px',
         fontWeight: 600,
         color: color,
         backgroundColor: bg,
-        padding: '2px 6px',
+        padding: '4px 8px',
         borderRadius: '999px',
         border: border,
         transition: 'all 0.2s ease',
-        height: '18px',
         lineHeight: 1
       }}>
-        <span className="status-dot-pulse" style={{ color: dotColor }}></span>
+        <span className="status-dot-pulse" style={{ color: dotColor, width: '6px', height: '6px', borderRadius: '50%', background: dotColor }}></span>
         <span>{text}</span>
       </div>
     );
@@ -101,11 +92,8 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header style={{ 
-      background: 'rgba(255, 255, 255, 0.75)',
-      backdropFilter: 'blur(8px)',
-      WebkitBackdropFilter: 'blur(8px)',
-      borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
-      height: '52px',
+      background: '#FFFFFF',
+      borderBottom: '1px solid var(--color-border)',
       display: 'flex',
       alignItems: 'center',
       position: 'sticky',
@@ -151,78 +139,74 @@ export const Header: React.FC<HeaderProps> = ({
           .segmented-nav-btn.active {
             font-weight: 600;
             background-color: #FFFFFF;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--color-border);
+            box-shadow: none;
           }
           .segmented-nav-btn:not(.active):hover {
             background-color: rgba(0, 0, 0, 0.04);
           }
 
           .header-pdf-btn {
-            font-weight: 600 !important;
-            font-size: 12px !important;
-            height: 28px !important;
+            font-weight: 500 !important;
+            font-size: 13px !important;
+            height: 32px !important;
             border-radius: 6px !important;
-            background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%) !important;
+            background: var(--color-primary) !important;
             border: none !important;
             color: #FFFFFF !important;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            transition: background 0.15s ease, transform 0.1s ease !important;
             cursor: pointer !important;
             display: flex !important;
             align-items: center !important;
-            gap: 4px !important;
+            gap: 6px !important;
           }
           .header-pdf-btn:hover {
-            transform: translateY(-0.5px);
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+            background: var(--color-primary-hover) !important;
           }
           .header-pdf-btn:active {
-            transform: translateY(0.5px);
-            scale: 0.98;
+            transform: scale(0.98) !important;
           }
 
           .header-save-btn {
-            font-weight: 600 !important;
-            font-size: 12px !important;
-            height: 28px !important;
+            font-weight: 500 !important;
+            font-size: 13px !important;
+            height: 32px !important;
             border-radius: 6px !important;
             background-color: #FFFFFF !important;
-            border: 1px solid #D1D5DB !important;
-            color: #374151 !important;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            border: 1px solid var(--color-border) !important;
+            color: var(--color-text-main) !important;
+            transition: all 0.15s ease !important;
             cursor: pointer !important;
           }
           .header-save-btn:hover {
-            background-color: #F9FAFB !important;
-            border-color: #9CA3AF !important;
-            color: #111827 !important;
+            background-color: var(--color-background) !important;
+            border-color: var(--color-border-hover) !important;
           }
           .header-save-btn:active {
-            scale: 0.98;
+            transform: scale(0.98) !important;
           }
         `}</style>
 
         {/* Left Section: Logo & Wordmark */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '8px' }}>
-          <Logo size={20} hideText={true} />
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '10px' }}>
+          <Logo size={28} hideText={true} />
           <span className="desktop-only" style={{ 
-            fontSize: '14px', 
+            fontSize: '16px', 
             fontWeight: 800, 
-            letterSpacing: '-0.04em', 
-            color: 'var(--color-text-main)', 
-            fontFamily: "'Outfit', 'Inter', 'Inter Fallback', sans-serif",
+            letterSpacing: '-0.03em', 
+            color: '#0F172A', 
+            fontFamily: "'Inter', sans-serif",
             lineHeight: 1,
             display: 'flex',
             alignItems: 'center'
           }}>
-            Invoice<span style={{ color: '#06B6D4' }}>-Gen</span>
+            Invoice-Gen.net
           </span>
           
           {/* Mobile: Step Title + Progress Dots */}
           {isMobileView && activeView === 'editor' && (
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginLeft: '4px' }}>
-              <span style={{ 
+              <span className="mobile-step-text" style={{ 
                 fontSize: '14px', 
                 fontWeight: 700, 
                 color: 'var(--color-text-main)',
@@ -267,12 +251,13 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Center Section: Segmented Navigation */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ display: 'flex', gap: '2px', backgroundColor: 'rgba(0, 0, 0, 0.05)', padding: '2px', borderRadius: '6px' }}>
+          <div style={{ display: 'flex', gap: '2px', backgroundColor: '#F1F5F9', padding: '3px', borderRadius: '8px', border: '1px solid #E2E8F0' }}>
             <button 
               onClick={() => onViewChange('editor')}
               className={`segmented-nav-btn ${activeView === 'editor' ? 'active' : ''}`}
               style={{
-                color: activeView === 'editor' ? 'var(--color-text-main)' : 'var(--color-text-secondary)',
+                color: activeView === 'editor' ? '#0F172A' : '#64748B',
+                fontWeight: activeView === 'editor' ? 600 : 500
               }}
             >
               Editor
@@ -281,7 +266,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => onViewChange('history')}
               className={`segmented-nav-btn ${activeView === 'history' ? 'active' : ''}`}
               style={{
-                color: activeView === 'history' ? 'var(--color-text-main)' : 'var(--color-text-secondary)',
+                color: activeView === 'history' ? '#0F172A' : '#64748B',
+                fontWeight: activeView === 'history' ? 600 : 500
               }}
             >
               History
@@ -297,7 +283,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Action Buttons (Unified Responsive Design) */}
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          <div className="desktop-only" style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
             {activeView === 'editor' && (
               <button 
                 className="btn btn-sm header-save-btn" 
@@ -386,6 +372,31 @@ export const Header: React.FC<HeaderProps> = ({
                     }}
                   >
                     <FilePlus size={14} /> Save
+                  </button>
+                )}
+                {activeView === 'editor' && onDownloadPDF && (
+                  <button 
+                    className="mobile-only"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      width: '100%',
+                      padding: '8px 12px',
+                      border: 'none',
+                      background: 'transparent',
+                      textAlign: 'left',
+                      fontSize: '13px',
+                      cursor: 'pointer',
+                      borderRadius: '4px',
+                      color: 'var(--color-text-main)'
+                    }}
+                    onClick={() => {
+                      setMenuOpen(false);
+                      onDownloadPDF();
+                    }}
+                  >
+                    <Download size={14} /> Download PDF
                   </button>
                 )}
                 {hasLoadedHistory && onSaveAsNew && (

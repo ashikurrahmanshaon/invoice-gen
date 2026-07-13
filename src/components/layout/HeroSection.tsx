@@ -103,7 +103,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onLoadDemo }) => {
             margin: '0 0 4px 0',
             fontFamily: "'Inter', 'Inter Fallback', sans-serif"
           }}>
-            Invoice-Gen — Free Professional Invoice Creator
+            Invoice-Gen.net — Free Professional Invoice Creator
           </h2>
           
           <p style={{
@@ -121,7 +121,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onLoadDemo }) => {
         <div className="hero-illustration" style={{ flex: '1 1 200px', display: 'flex', justifyContent: 'center', alignItems: 'center', minWidth: '180px' }}>
           <img 
             src="/hero.webp" 
-            alt="Invoice-Gen — Free Professional Invoice Creator" 
+            alt="Invoice-Gen.net — Free Professional Invoice Creator" 
             fetchPriority="high"
             width="200"
             height="200"

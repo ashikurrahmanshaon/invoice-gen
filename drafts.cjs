@@ -1,5 +1,5 @@
 /**
- * Invoice-Gen Article Database
+ * Invoice-Gen.net Article Database
  * Contains published articles and drafts.
  */
 
@@ -7,13 +7,13 @@ const ARTICLES = [
   // ── Published ──
   {
     slug: 'what-is-an-invoice-beginners-guide',
-    title: 'What Is an Invoice? A Complete Beginner\'s Guide | Invoice-Gen',
+    title: 'What Is an Invoice? A Complete Beginner\'s Guide | Invoice-Gen.net',
     h1: 'What Is an Invoice? A Complete Beginner\'s Guide for 2026',
     description: 'Learn what an invoice is, why businesses use them, and how to create one. This beginner\'s guide covers invoice types, essential components, and common mistakes.',
     keywords: 'what is an invoice, invoice definition, invoice basics, invoice guide',
     category: 'Invoice Fundamentals',
     tags: ['Basics', 'Freelancing', 'Small Business'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-13',
     dateModified: '2026-07-13',
     status: 'published',
@@ -66,7 +66,7 @@ const ARTICLES = [
       <p>For a complete breakdown, see our guide on <a href="/blog/essential-fields-to-include-on-invoice/">essential fields to include on an invoice</a>.</p>
 
       <h2>How to Create an Invoice</h2>
-      <p>Creating an invoice is straightforward with the right tool. <a href="/">Invoice-Gen</a> lets you build professional PDF invoices in under 2 minutes — completely free, with no signup required.</p>
+      <p>Creating an invoice is straightforward with the right tool. <a href="/">Invoice-Gen.net</a> lets you build professional PDF invoices in under 2 minutes — completely free, with no signup required.</p>
       <p>Here's the basic workflow:</p>
       <ol>
         <li>Enter your business details (name, address, logo)</li>
@@ -102,25 +102,25 @@ const ARTICLES = [
       { q: 'Is an invoice the same as a bill?', a: 'Essentially yes. The terms refer to the same document. "Invoice" is typically used by the seller, while "bill" is used from the buyer\'s perspective.' },
       { q: 'Do freelancers need to send invoices?', a: 'Yes. Freelancers should always send invoices for professional documentation, tax compliance, and to establish clear payment expectations with clients.' },
       { q: 'What is the difference between an invoice and a receipt?', a: 'An invoice is a request for payment sent before payment is made. A receipt is proof of payment issued after payment has been received.' },
-      { q: 'Can I create an invoice for free?', a: 'Yes. Invoice-Gen is a 100% free Invoice-Gen that lets you create, customize, and download professional PDF invoices with no signup required.' }
+      { q: 'Can I create an invoice for free?', a: 'Yes. Invoice-Gen.net is a 100% free Invoice-Gen.net that lets you create, customize, and download professional PDF invoices with no signup required.' }
     ],
     relatedLinks: [
       { url: '/blog/how-to-create-professional-invoice/', text: 'How to Create a Professional Invoice' },
       { url: '/blog/essential-fields-to-include-on-invoice/', text: 'Essential Invoice Fields' },
       { url: '/blog/invoice-vs-receipt-key-differences/', text: 'Invoice vs Receipt Differences' },
       { url: '/blog/common-invoice-mistakes-avoid/', text: 'Common Invoice Mistakes' },
-      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen' }
+      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen.net' }
     ]
   },
   {
     slug: 'invoice-number-best-practices',
-    title: 'Invoice Number Best Practices for Small Businesses | Invoice-Gen',
+    title: 'Invoice Number Best Practices for Small Businesses | Invoice-Gen.net',
     h1: 'Invoice Number Best Practices for Small Businesses in 2026',
     description: 'Learn how to format and manage invoice numbers correctly. Discover professional numbering systems, alphanumeric sequences, and why sequential numbering is critical for tax compliance.',
     keywords: 'invoice number, invoice numbering system, how to number invoices, invoice number format',
     category: 'Invoice Fundamentals',
     tags: ['Best Practices', 'Accounting'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-14',
     dateModified: '2026-07-14',
     status: 'published',
@@ -183,7 +183,7 @@ const ARTICLES = [
       <p>Avoid excessively long numbers. <code>INV-1042</code> is much easier for a client to type into a bank transfer reference field than <code>INVOICE-2026-07-14-CLIENT-1042</code>.</p>
 
       <h3>Use Automation</h3>
-      <p>Manually tracking invoice numbers in a spreadsheet is a recipe for disaster. It's incredibly easy to accidentally reuse a number. Instead, use an automated tool like <a href="/">Invoice-Gen</a>, which automatically generates and increments your invoice numbers for you.</p>
+      <p>Manually tracking invoice numbers in a spreadsheet is a recipe for disaster. It's incredibly easy to accidentally reuse a number. Instead, use an automated tool like <a href="/">Invoice-Gen.net</a>, which automatically generates and increments your invoice numbers for you.</p>
 
       <h2>How to Fix an Invoice Number Mistake</h2>
       <p>If you accidentally skip a number or issue a duplicate, don't panic, but do not just delete the invoice. Instead:</p>
@@ -194,32 +194,32 @@ const ARTICLES = [
       <p>For more tips on avoiding errors, check out our guide on <a href="/blog/common-invoice-mistakes-avoid/">common invoice mistakes</a>.</p>
 
       <h2>Start Numbering Invoices the Right Way</h2>
-      <p>The easiest way to guarantee perfect invoice numbering is to use software that handles it for you. With <a href="/">Invoice-Gen</a>, your invoice numbers are automatically tracked and incremented. You can customize the prefix and starting number, and the system ensures you never create a duplicate.</p>
+      <p>The easiest way to guarantee perfect invoice numbering is to use software that handles it for you. With <a href="/">Invoice-Gen.net</a>, your invoice numbers are automatically tracked and incremented. You can customize the prefix and starting number, and the system ensures you never create a duplicate.</p>
     `,
     faqs: [
       { q: 'Should invoice numbers start at 1?', a: 'No, it is highly recommended not to start at 1. Starting at 1 or 001 signals to clients that they are your first customer. Instead, start at 1001 or 10001 to appear more established.' },
       { q: 'Can invoice numbers include letters?', a: 'Yes. Alphanumeric invoice numbers (like INV-1001) are very common and perfectly legal. They can help categorize invoices or identify specific clients.' },
       { q: 'What happens if I skip an invoice number?', a: 'Skipping an invoice number breaks the sequential chain, which can look suspicious during a tax audit. If you accidentally skip a number, you should document the error in your accounting records to explain the gap.' },
       { q: 'Do invoice numbers reset every year?', a: 'They can, but it is not required. Some businesses reset their numbering at the start of the financial year (e.g., 2026-001, then 2027-001 next year). This is perfectly fine as long as the format clearly distinguishes the years.' },
-      { q: 'How do I avoid duplicate invoice numbers?', a: 'The best way to avoid duplicates is to use automated invoicing software like Invoice-Gen, which tracks your history and automatically assigns the next sequential number.' }
+      { q: 'How do I avoid duplicate invoice numbers?', a: 'The best way to avoid duplicates is to use automated invoicing software like Invoice-Gen.net, which tracks your history and automatically assigns the next sequential number.' }
     ],
     relatedLinks: [
       { url: '/blog/what-is-an-invoice-beginners-guide/', text: 'What is an Invoice?' },
       { url: '/blog/essential-fields-to-include-on-invoice/', text: 'Essential Invoice Fields' },
       { url: '/blog/common-invoice-mistakes-avoid/', text: 'Common Invoice Mistakes' },
-      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen' },
+      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen.net' },
       { url: '/invoice-creator/', text: 'Online Invoice Creator' }
     ]
   },
   {
     slug: 'invoice-date-vs-due-date-difference',
-    title: 'Invoice Date vs Due Date: What Is the Difference? | Invoice-Gen',
+    title: 'Invoice Date vs Due Date: What Is the Difference? | Invoice-Gen.net',
     h1: 'Invoice Date vs Due Date: Understanding the Difference',
     description: 'Learn the critical differences between an invoice date and a due date. Understand how they impact payment terms, cash flow, and tax reporting for your business.',
     keywords: 'invoice date vs due date, invoice date meaning, due date meaning, payment terms, issue date',
     category: 'Invoice Fundamentals',
     tags: ['Payment Terms', 'Basics'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-15',
     dateModified: '2026-07-15',
     status: 'published',
@@ -271,7 +271,7 @@ const ARTICLES = [
       <p>While the Supply Date and the Invoice Date are often the same, they can be different. For example, you might finish a consulting project on Friday (Supply Date) but not generate and send the invoice until Monday (Invoice Date). Ensure you check your local tax regulations to see if the Supply Date needs to be explicitly listed on your invoices.</p>
 
       <h2>How to Set Dates Easily</h2>
-      <p>Calculating due dates manually leaves room for error. When you use <a href="/">Invoice-Gen</a>, the Invoice Date defaults to today, and you can simply select your payment terms (like Net 15 or Net 30) from a dropdown. The system will automatically calculate and display the exact, concrete Due Date on your final PDF invoice.</p>
+      <p>Calculating due dates manually leaves room for error. When you use <a href="/">Invoice-Gen.net</a>, the Invoice Date defaults to today, and you can simply select your payment terms (like Net 15 or Net 30) from a dropdown. The system will automatically calculate and display the exact, concrete Due Date on your final PDF invoice.</p>
     `,
     faqs: [
       { q: 'What does invoice date mean?', a: 'The invoice date is the date the invoice was officially generated and billed to the client. It is used to determine accounting periods and serves as the starting point for calculating payment due dates.' },
@@ -299,7 +299,7 @@ const ARTICLES = [
     keywords: 'net 15, net 30, net 60, invoice payment terms, net payment terms, billing terms',
     category: 'Payment Terms',
     tags: ['Cash Flow', 'Billing'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-16',
     dateModified: '2026-07-16',
     status: 'draft',
@@ -376,7 +376,7 @@ const ARTICLES = [
       <h2>Summary: Which Should You Choose?</h2>
       <p>If you are a freelancer or small agency, try to negotiate <strong>Net 15</strong> or even "Due on Receipt" for the healthiest cash flow. If you are dealing with mid-sized to large corporations, <strong>Net 30</strong> is the safest, most professional standard.</p>
       
-      <p>Ready to bill your clients? Use <a href="/">Invoice-Gen</a> to instantly create professional invoices with automatically calculated Net 15, Net 30, or Net 60 due dates.</p>
+      <p>Ready to bill your clients? Use <a href="/">Invoice-Gen.net</a> to instantly create professional invoices with automatically calculated Net 15, Net 30, or Net 60 due dates.</p>
     `,
     faqs: [
       { q: 'What does Net 30 mean on an invoice?', a: 'Net 30 means that the total, net amount of the invoice is due exactly 30 days from the invoice date.' },
@@ -389,20 +389,20 @@ const ARTICLES = [
       { url: '/blog/invoice-date-vs-due-date-difference/', text: 'Invoice Date vs Due Date' },
       { url: '/blog/how-to-handle-overdue-unpaid-invoices/', text: 'Handling Overdue Invoices' },
       { url: '/blog/best-payment-terms-freelancers/', text: 'Best Payment Terms for Freelancers' },
-      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen' },
+      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen.net' },
       { url: '/templates/freelance/', text: 'Freelance Invoice Template' }
     ]
   },
 
   {
     slug: 'how-to-invoice-international-clients',
-    title: 'How to Invoice International Clients: A Complete Guide | Invoice-Gen',
+    title: 'How to Invoice International Clients: A Complete Guide | Invoice-Gen.net',
     h1: 'How to Invoice International Clients: Best Practices for Global Billing',
     description: 'Learn the best practices for invoicing international clients. Discover how to handle multiple currencies, exchange rates, cross-border taxes, and global payment methods.',
     keywords: 'how to invoice international clients, international invoice, foreign currency invoice, cross border invoicing, SWIFT, IBAN',
     category: 'International Invoicing',
     tags: ['Freelancing', 'Global Business'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-17',
     dateModified: '2026-07-17',
     status: 'draft',
@@ -455,33 +455,33 @@ const ARTICLES = [
       <h2>Summary</h2>
       <p>Invoicing internationally doesn't have to be daunting. Agree on the currency upfront, provide your SWIFT/IBAN details clearly, and use a modern fintech platform to avoid exorbitant bank fees.</p>
       
-      <p>Ready to bill your global clients? Use <a href="/">Invoice-Gen</a> to instantly create multi-currency invoices. You can customize the currency symbol, add your international wire details, and download a pristine PDF in seconds.</p>
+      <p>Ready to bill your global clients? Use <a href="/">Invoice-Gen.net</a> to instantly create multi-currency invoices. You can customize the currency symbol, add your international wire details, and download a pristine PDF in seconds.</p>
     `,
     faqs: [
       { q: 'Should I invoice international clients in my currency or theirs?', a: 'Billing in your client\'s currency is more professional and creates less friction, but you assume the exchange rate risk. Billing in your local currency is safer for you but harder for the client.' },
       { q: 'Do I charge VAT to international clients?', a: 'Generally, B2B services exported outside your country are zero-rated for VAT/GST (you charge 0%). If billing within the EU, the reverse charge mechanism usually applies. Always consult an accountant for specific regulations.' },
       { q: 'What is a SWIFT code and do I need it?', a: 'A SWIFT (or BIC) code is a unique identifier for your specific bank branch. You absolutely need to include it on your invoice if you expect an international wire transfer.' },
       { q: 'What is an IBAN?', a: 'IBAN stands for International Bank Account Number. It is an internationally agreed system of identifying bank accounts across borders to reduce errors in cross-border transactions.' },
-      { q: 'Can I use Invoice-Gen for international invoices?', a: 'Yes! Invoice-Gen allows you to type any currency symbol (like €, £, or CAD) and includes a flexible notes section where you can clearly list your SWIFT code and IBAN.' }
+      { q: 'Can I use Invoice-Gen.net for international invoices?', a: 'Yes! Invoice-Gen.net allows you to type any currency symbol (like €, £, or CAD) and includes a flexible notes section where you can clearly list your SWIFT code and IBAN.' }
     ],
     relatedLinks: [
       { url: '/blog/vat-invoice-requirements-guide/', text: 'VAT Invoice Guide' },
       { url: '/blog/gst-invoice-rules-and-formats/', text: 'GST Invoice Guide' },
       { url: '/blog/best-payment-terms-freelancers/', text: 'Best Payment Terms' },
-      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen' },
+      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen.net' },
       { url: '/templates/freelance/', text: 'Freelance Invoice Template' }
     ]
   },
 
   {
     slug: 'vat-invoice-requirements-guide',
-    title: 'VAT Invoice Guide: Requirements and Best Practices | Invoice-Gen',
+    title: 'VAT Invoice Guide: Requirements and Best Practices | Invoice-Gen.net',
     h1: 'VAT Invoice Guide: Requirements, Formats, and Best Practices',
     description: 'Everything you need to know about issuing a valid VAT invoice. Learn the mandatory fields, when to use simplified VAT invoices, and how to stay compliant in the UK and EU.',
     keywords: 'VAT invoice, VAT invoice requirements, valid VAT invoice, simplified VAT invoice, reverse charge VAT',
     category: 'Taxes',
     tags: ['Accounting', 'UK Business', 'EU Business'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-18',
     dateModified: '2026-07-18',
     status: 'draft',
@@ -547,33 +547,33 @@ const ARTICLES = [
       <h2>Summary</h2>
       <p>VAT compliance relies heavily on flawless invoicing. Ensure your VAT number, the net amounts, and the tax rates are crystal clear on every document you send to a B2B client.</p>
       
-      <p>With <a href="/">Invoice-Gen</a>, you can easily create compliant VAT invoices. Simply add your VAT number to the business details section, add a "Tax" field in the totals section, and clearly describe your goods in the line items.</p>
+      <p>With <a href="/">Invoice-Gen.net</a>, you can easily create compliant VAT invoices. Simply add your VAT number to the business details section, add a "Tax" field in the totals section, and clearly describe your goods in the line items.</p>
     `,
     faqs: [
       { q: 'Do I need to issue a VAT invoice if I am not VAT registered?', a: 'No, and doing so is illegal. If you are not VAT registered, you cannot charge VAT and must issue a standard commercial invoice instead.' },
       { q: 'What happens if I make a mistake on a VAT invoice?', a: 'You cannot simply delete or alter a VAT invoice once it has been issued. You must issue a credit note to cancel the original invoice and then generate a new, correct VAT invoice with a new invoice number.' },
       { q: 'What is a reverse charge VAT invoice?', a: 'A reverse charge invoice is used primarily for cross-border B2B sales (and some domestic industries like construction). You charge 0% VAT, and the buyer is responsible for accounting for the VAT on their own tax return.' },
       { q: 'What is a tax point?', a: 'The tax point, or time of supply, is the date the transaction is considered to have taken place for VAT purposes. This dictates which VAT return period the transaction falls into.' },
-      { q: 'Can I use Invoice-Gen to make a VAT invoice?', a: 'Yes. Invoice-Gen allows you to add custom fields (like your VAT Registration Number), apply tax percentages, and include specific notes (like "Reverse Charge Applies") to ensure full compliance.' }
+      { q: 'Can I use Invoice-Gen.net to make a VAT invoice?', a: 'Yes. Invoice-Gen.net allows you to add custom fields (like your VAT Registration Number), apply tax percentages, and include specific notes (like "Reverse Charge Applies") to ensure full compliance.' }
     ],
     relatedLinks: [
       { url: '/blog/how-to-invoice-international-clients/', text: 'Invoicing International Clients' },
       { url: '/blog/invoice-number-best-practices/', text: 'Invoice Numbering Rules' },
       { url: '/blog/essential-fields-to-include-on-invoice/', text: 'Essential Invoice Fields' },
-      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen' },
+      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen.net' },
       { url: '/invoice-creator/', text: 'Online Invoice Creator' }
     ]
   },
 
   {
     slug: 'gst-invoice-rules-and-formats',
-    title: 'Complete Guide to GST Invoices: Rules, Formats, and Requirements | Invoice-Gen',
+    title: 'Complete Guide to GST Invoices: Rules, Formats, and Requirements | Invoice-Gen.net',
     h1: 'Complete Guide to GST Invoices: Rules, Formats, and Requirements',
     description: 'A comprehensive guide to Goods and Services Tax (GST) invoices. Understand the mandatory components, HSN/SAC codes, and compliance rules for businesses.',
     keywords: 'GST invoice, what is a GST invoice, GST rules, tax invoice format, HSN code, SAC code',
     category: 'Taxes',
     tags: ['Accounting', 'Business Taxes'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-19',
     dateModified: '2026-07-19',
     status: 'draft',
@@ -629,33 +629,33 @@ const ARTICLES = [
       <h2>Summary</h2>
       <p>Staying compliant with GST regulations requires diligence. Always ensure your GST number, the buyer's GST number, and the exact tax breakdown are clearly visible on every tax invoice you issue.</p>
       
-      <p><a href="/">Invoice-Gen</a> makes creating GST-compliant invoices easy. You can change the main title to "TAX INVOICE," add custom fields for GSTIN/ABN numbers, and apply precise tax percentages to your subtotals in seconds.</p>
+      <p><a href="/">Invoice-Gen.net</a> makes creating GST-compliant invoices easy. You can change the main title to "TAX INVOICE," add custom fields for GSTIN/ABN numbers, and apply precise tax percentages to your subtotals in seconds.</p>
     `,
     faqs: [
       { q: 'What is the difference between a GST invoice and a bill of supply?', a: 'A GST Tax Invoice includes charged tax and allows the buyer to claim Input Tax Credits. A Bill of Supply is used for tax-exempt goods or by businesses under special exemption schemes, and does not include tax amounts.' },
       { q: 'Do freelancers need to charge GST?', a: 'It depends on your country\'s revenue threshold. For example, in Australia, you must register and charge GST if your turnover exceeds $75,000 AUD. In Canada, the threshold is $30,000 CAD. If you are under the threshold, you generally do not charge GST.' },
       { q: 'What is an HSN or SAC code?', a: 'In the Indian GST system, HSN (Harmonized System of Nomenclature) codes classify goods, while SAC (Services Accounting Code) classify services. They are mandatory on tax invoices for businesses above certain turnover thresholds.' },
-      { q: 'Can I generate a GST invoice for free?', a: 'Yes. You can use Invoice-Gen to create a free, GST-compliant invoice. Just ensure you manually add your GST registration number and apply the correct tax percentage.' },
+      { q: 'Can I generate a GST invoice for free?', a: 'Yes. You can use Invoice-Gen.net to create a free, GST-compliant invoice. Just ensure you manually add your GST registration number and apply the correct tax percentage.' },
       { q: 'What happens if I forget to put the client\'s GST number on the invoice?', a: 'If you omit the client\'s GST number on a B2B invoice, they will likely reject the invoice and ask for a revision, because without their number on the document, they cannot legally claim their Input Tax Credit.' }
     ],
     relatedLinks: [
       { url: '/blog/vat-invoice-requirements-guide/', text: 'VAT Invoice Guide' },
       { url: '/blog/essential-fields-to-include-on-invoice/', text: 'Essential Invoice Fields' },
       { url: '/blog/invoice-date-vs-due-date-difference/', text: 'Invoice Date vs Due Date' },
-      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen' },
+      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen.net' },
       { url: '/templates/freelance/', text: 'Freelance Invoice Template' }
     ]
   },
 
   {
     slug: 'invoice-payment-terms-explained',
-    title: 'Invoice Payment Terms Explained: Get Paid Faster in 2026 | Invoice-Gen',
+    title: 'Invoice Payment Terms Explained: Get Paid Faster in 2026 | Invoice-Gen.net',
     h1: 'Invoice Payment Terms Explained: How to Get Paid Faster',
     description: 'Discover the most common invoice payment terms, what they mean, and how to use them strategically to improve your cash flow and get paid on time.',
     keywords: 'invoice payment terms, payment terms explained, PIA, CIA, net 30, early payment discount',
     category: 'Payment Terms',
     tags: ['Cash Flow', 'Business Strategy'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-20',
     dateModified: '2026-07-20',
     status: 'draft',
@@ -705,7 +705,7 @@ const ARTICLES = [
       <h2>Summary</h2>
       <p>Your payment terms are the steering wheel for your business's cash flow. Be explicit, be professional, and don't be afraid to enforce the rules you set.</p>
       
-      <p>When you use <a href="/">Invoice-Gen</a>, you can select standard terms from a dropdown, and the system will automatically calculate and display the exact, unambiguous due date for your client.</p>
+      <p>When you use <a href="/">Invoice-Gen.net</a>, you can select standard terms from a dropdown, and the system will automatically calculate and display the exact, unambiguous due date for your client.</p>
     `,
     faqs: [
       { q: 'What is the best payment term for freelancers?', a: 'For most freelancers, "Due on Receipt" or "Net 15" are the best terms. They ensure healthy cash flow and set expectations for prompt payment without being overly aggressive.' },
@@ -718,20 +718,20 @@ const ARTICLES = [
       { url: '/blog/net-15-vs-net-30-vs-net-60-payment-terms/', text: 'Net 15 vs Net 30 vs Net 60' },
       { url: '/blog/how-to-handle-overdue-unpaid-invoices/', text: 'Handling Overdue Invoices' },
       { url: '/blog/how-to-get-paid-faster-invoices/', text: 'How to Get Paid Faster' },
-      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen' },
+      { url: '/free-invoice-generator/', text: 'Free Invoice-Gen.net' },
       { url: '/invoice-creator/', text: 'Online Invoice Creator' }
     ]
   },
 
   {
     slug: 'how-to-handle-overdue-unpaid-invoices',
-    title: 'How to Handle Overdue Invoices Without Losing the Client | Invoice-Gen',
+    title: 'How to Handle Overdue Invoices Without Losing the Client | Invoice-Gen.net',
     h1: 'How to Handle Overdue Invoices Without Losing the Client',
     description: 'A step-by-step guide to recovering unpaid invoices. Learn how to write effective payment reminders, enforce late fees, and know when to take legal action.',
     keywords: 'overdue invoice, unpaid invoice, late payment, late invoice email, charge late fees, debt collection',
     category: 'Payment Terms',
     tags: ['Collections', 'Client Management'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-21',
     dateModified: '2026-07-21',
     status: 'draft',
@@ -805,13 +805,13 @@ const ARTICLES = [
 
   {
     slug: 'freelance-invoice-checklist-before-sending',
-    title: 'The Ultimate Freelance Invoice Checklist: 10 Things to Verify | Invoice-Gen',
+    title: 'The Ultimate Freelance Invoice Checklist: 10 Things to Verify | Invoice-Gen.net',
     h1: 'The Ultimate Freelance Invoice Checklist: 10 Things to Verify Before Sending',
     description: 'Don\'t send that invoice yet! Use this 10-point freelance invoice checklist to ensure accuracy, professionalism, and rapid payment.',
     keywords: 'freelance invoice checklist, invoice checklist, what to include on invoice, invoice review, freelance billing',
     category: 'Freelancer Invoicing',
     tags: ['Freelancing', 'Best Practices'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-22',
     dateModified: '2026-07-22',
     status: 'draft',
@@ -855,13 +855,13 @@ const ARTICLES = [
       <h2>Summary</h2>
       <p>Taking 60 seconds to review this checklist before sending can save you weeks of frustrating email chains and delayed cash flow. Treat your invoices with the same attention to detail that you give your actual client work.</p>
       
-      <p>Want to skip the manual checks? Use <a href="/">Invoice-Gen</a>. Our free tool automatically calculates the math, formats the dates, and generates a pristine, locked PDF ready for your client.</p>
+      <p>Want to skip the manual checks? Use <a href="/">Invoice-Gen.net</a>. Our free tool automatically calculates the math, formats the dates, and generates a pristine, locked PDF ready for your client.</p>
     `,
     faqs: [
       { q: 'What format should I send my invoice in?', a: 'Always send your invoice as a PDF file. PDFs ensure your formatting looks exactly the same on the client\'s computer and prevents accidental edits to amounts or banking details.' },
       { q: 'Should I attach the invoice or link to it?', a: 'It is best practice to attach the PDF directly to the email. Links to cloud storage or invoicing portals can expire, require logins, or get flagged by corporate spam filters.' },
       { q: 'What should my email subject line be?', a: 'Keep it clear and searchable. Standard format: "Invoice #[Number] from [Your Name/Company] for [Project Name]". For example: "Invoice #1043 from Jane Doe for Q3 Copywriting".' },
-      { q: 'Can I use a free tool to generate invoices?', a: 'Yes! You do not need expensive accounting software to generate professional invoices. Free tools like Invoice-Gen allow you to create compliant, beautifully formatted PDF invoices instantly.' },
+      { q: 'Can I use a free tool to generate invoices?', a: 'Yes! You do not need expensive accounting software to generate professional invoices. Free tools like Invoice-Gen.net allow you to create compliant, beautifully formatted PDF invoices instantly.' },
       { q: 'Do I need to include my address if I work from home?', a: 'Yes. An invoice is a formal business document, and both the supplier\'s and buyer\'s addresses are required for it to be valid for tax and accounting purposes.' }
     ],
     relatedLinks: [
@@ -875,20 +875,20 @@ const ARTICLES = [
   ,
   {
     slug: 'how-to-create-your-first-invoice',
-    title: 'How to Create Your First Invoice (Step-by-Step) | Invoice-Gen',
+    title: 'How to Create Your First Invoice (Step-by-Step) | Invoice-Gen.net',
     h1: 'How to Create Your First Invoice (Step-by-Step)',
     description: 'Sending your first invoice? Follow this step-by-step guide to create a professional invoice that guarantees you get paid on time.',
     keywords: 'how to create an invoice, first invoice, make an invoice, freelance invoice',
     category: 'Invoice Fundamentals',
     tags: ['Beginner', 'Freelancing'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-13',
     dateModified: '2026-07-13',
     status: 'published',
     content: `
       <p>Creating your first invoice can feel intimidating, but it is a vital step in establishing your business. A clear, professional invoice ensures you get paid quickly and sets a standard for your client relationships.</p>
       <h2>Step 1: Choose Your Tool</h2>
-      <p>While you can use Word or Excel, a dedicated tool like Invoice-Gen ensures your math is perfect and the formatting is professional.</p>
+      <p>While you can use Word or Excel, a dedicated tool like Invoice-Gen.net ensures your math is perfect and the formatting is professional.</p>
       <h2>Step 2: Add Your Information</h2>
       <p>Include your business name, address, and contact information. Your client needs to know exactly who is billing them.</p>
       <h2>Step 3: Add Client Details</h2>
@@ -905,13 +905,13 @@ const ARTICLES = [
   },
   {
     slug: 'anatomy-of-a-perfect-invoice',
-    title: 'The Anatomy of a Perfect Invoice | Invoice-Gen',
+    title: 'The Anatomy of a Perfect Invoice | Invoice-Gen.net',
     h1: 'The Anatomy of a Perfect Invoice',
     description: 'Discover the exact elements that make up a perfect invoice, reducing payment delays and improving professional credibility.',
     keywords: 'perfect invoice, invoice layout, invoice anatomy, professional invoice',
     category: 'Invoice Fundamentals',
     tags: ['Design', 'Best Practices'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-13',
     dateModified: '2026-07-13',
     status: 'draft',
@@ -933,13 +933,13 @@ const ARTICLES = [
   },
   {
     slug: 'how-to-write-thank-you-note-on-invoice',
-    title: 'How to Write a Thank You Note on an Invoice | Invoice-Gen',
+    title: 'How to Write a Thank You Note on an Invoice | Invoice-Gen.net',
     h1: 'How to Write a Thank You Note on an Invoice',
     description: 'Learn why adding a thank you note to your invoice increases on-time payments and builds stronger client relationships.',
     keywords: 'invoice thank you note, invoice message, what to write on an invoice',
     category: 'Invoice Fundamentals',
     tags: ['Client Relations', 'Best Practices'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-13',
     dateModified: '2026-07-13',
     status: 'draft',
@@ -957,13 +957,13 @@ const ARTICLES = [
   },
   {
     slug: 'invoice-vs-bill-vs-statement-differences',
-    title: 'Invoice vs Bill vs Statement: Key Differences Explained | Invoice-Gen',
+    title: 'Invoice vs Bill vs Statement: Key Differences Explained | Invoice-Gen.net',
     h1: 'Invoice vs Bill vs Statement: Key Differences Explained',
     description: 'Confused about the difference between an invoice, a bill, and a statement? We break down the terminology so you can bill correctly.',
     keywords: 'invoice vs bill, invoice vs statement, difference between bill and invoice',
     category: 'Invoice Fundamentals',
     tags: ['Terminology', 'Accounting'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-13',
     dateModified: '2026-07-13',
     status: 'draft',
@@ -983,13 +983,13 @@ const ARTICLES = [
   },
   {
     slug: 'how-to-include-discounts-on-invoice',
-    title: 'How to Include Discounts on an Invoice | Invoice-Gen',
+    title: 'How to Include Discounts on an Invoice | Invoice-Gen.net',
     h1: 'How to Include Discounts on an Invoice',
     description: 'Learn the proper accounting methods for applying discounts to your invoices without confusing your clients or messing up your tax reporting.',
     keywords: 'invoice discount, how to discount an invoice, early payment discount',
     category: 'Invoice Fundamentals',
     tags: ['Pricing', 'Best Practices'],
-    author: 'Invoice-Gen Editorial Team',
+    author: 'Invoice-Gen.net Editorial Team',
     datePublished: '2026-07-13',
     dateModified: '2026-07-13',
     status: 'draft',

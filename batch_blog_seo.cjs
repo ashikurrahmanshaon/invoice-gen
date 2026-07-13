@@ -51,10 +51,10 @@ function getArticleSchema(title, description, url, slug) {
     "headline": "${title.replace(/"/g, '\\"')}",
     "description": "${description.replace(/"/g, '\\"')}",
     "url": "${url}",
-    "author": { "@type": "Organization", "name": "Invoice-Gen", "url": "https://invoice-gen.net/" },
+    "author": { "@type": "Organization", "name": "Invoice-Gen.net", "url": "https://invoice-gen.net/" },
     "publisher": {
       "@type": "Organization",
-      "name": "Invoice-Gen",
+      "name": "Invoice-Gen.net",
       "logo": { "@type": "ImageObject", "url": "https://invoice-gen.net/android-chrome-512x512.png" }
     },
     "datePublished": "2026-07-11",
@@ -143,8 +143,8 @@ function processBlog(slug) {
   }
 
   // 2. Standardize CTA text
-  if (html.includes('>Free Invoice-Gen<')) {
-    html = html.replace(/>Free Invoice-Gen</g, '>Try Invoice-Gen Free<');
+  if (html.includes('>Free Invoice-Gen.net<')) {
+    html = html.replace(/>Free Invoice-Gen.net</g, '>Try Invoice-Gen.net Free<');
     changes.push('Standardized CTA text');
   }
 

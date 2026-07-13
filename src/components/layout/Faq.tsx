@@ -3,9 +3,9 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 
 export const Faq: React.FC = () => {
   const faqs = [
-    { q: 'Is Invoice-Gen free?', a: 'Yes, Invoice-Gen is 100% free with no signup, login, or subscription required.' },
+    { q: 'Is Invoice-Gen.net free?', a: 'Yes, Invoice-Gen.net is 100% free with no signup, login, or subscription required.' },
     { q: 'Do I need to create an account?', a: 'No, you do not need an account. You can generate and download invoices immediately.' },
-    { q: 'Can I use Invoice-Gen on my phone?', a: 'Yes, our mobile flow is fully optimized. You can easily build and review invoices from any mobile browser.' },
+    { q: 'Can I use Invoice-Gen.net on my phone?', a: 'Yes, our mobile flow is fully optimized. You can easily build and review invoices from any mobile browser.' },
     { q: 'Does my draft save automatically?', a: 'Yes, your draft is automatically saved in your browser local storage so you can safely refresh or return later.' },
     { q: 'Which currencies are supported?', a: 'We support major currencies including USD, EUR, and GBP to customize your invoice layout.' },
     { q: 'Can I add tax and discounts?', a: 'Yes, you can easily add custom tax rates, discount rates, shipping fees, and record payments already made.' }

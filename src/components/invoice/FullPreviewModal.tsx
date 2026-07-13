@@ -95,8 +95,9 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
-        // Leave some padding
-        setPageWidth(Math.min(containerRef.current.clientWidth - 48, 800));
+        const isMobile = window.innerWidth <= 768;
+        const padding = isMobile ? 32 : 48; // 16px padding on each side for mobile
+        setPageWidth(Math.min(containerRef.current.clientWidth - padding, 800));
       }
     };
     
@@ -275,14 +276,16 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
                         </div>
                       }
                     >
-                      <Page 
-                        pageNumber={1} 
-                        width={pageWidth} 
-                        scale={scale}
-                        renderTextLayer={false} 
-                        renderAnnotationLayer={false}
-                        className="shadow-lg bg-white"
-                      />
+                      <div style={{ boxShadow: 'var(--shadow-paper)' }}>
+                        <Page 
+                          pageNumber={1} 
+                          width={pageWidth} 
+                          scale={scale}
+                          renderTextLayer={false} 
+                          renderAnnotationLayer={false}
+                          className="bg-white"
+                        />
+                      </div>
                     </Document>
                   )}
                 </div>
@@ -304,17 +307,17 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
                   gap: '4px',
                   zIndex: 10
                 }}>
-                  <button onClick={handleZoomOut} className="btn btn-ghost" style={{ padding: '8px', borderRadius: '50%', minWidth: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-label="Zoom out">
+                  <button onClick={handleZoomOut} className="btn btn-ghost" style={{ padding: '8px', borderRadius: '50%', minWidth: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-label="Zoom out">
                     <ZoomOut size={18} className="text-secondary" />
                   </button>
                   <span style={{ fontSize: '14px', fontWeight: '500', minWidth: '48px', textAlign: 'center', color: 'var(--color-text-main)' }}>
                     {scale === 1 ? 'Fit' : `${Math.round(scale * 100)}%`}
                   </span>
-                  <button onClick={handleZoomIn} className="btn btn-ghost" style={{ padding: '8px', borderRadius: '50%', minWidth: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-label="Zoom in">
+                  <button onClick={handleZoomIn} className="btn btn-ghost" style={{ padding: '8px', borderRadius: '50%', minWidth: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-label="Zoom in">
                     <ZoomIn size={18} className="text-secondary" />
                   </button>
                   <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--color-border)', margin: '0 4px' }} />
-                  <button onClick={handleFit} className={`btn ${scale === 1 ? 'btn-secondary' : 'btn-ghost'}`} style={{ padding: '0 16px', height: '36px', borderRadius: '999px', fontSize: '14px', fontWeight: '500', display: 'flex', alignItems: 'center', backgroundColor: scale === 1 ? 'var(--color-border)' : 'transparent' }} aria-label="Fit to screen">
+                  <button onClick={handleFit} className={`btn ${scale === 1 ? 'btn-secondary' : 'btn-ghost'}`} style={{ padding: '0 16px', height: '44px', borderRadius: '999px', fontSize: '14px', fontWeight: '500', display: 'flex', alignItems: 'center', backgroundColor: scale === 1 ? 'var(--color-border)' : 'transparent' }} aria-label="Fit to screen">
                     <Maximize size={16} className={scale === 1 ? '' : 'text-secondary'} style={{ marginRight: '6px' }} />
                     Fit
                   </button>

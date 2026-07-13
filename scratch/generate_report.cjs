@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const report = JSON.parse(fs.readFileSync('scratch/seo_report.json', 'utf8'));
 
-let md = `# Invoice-Gen Final Growth Audit Report
+let md = `# Invoice-Gen.net Final Growth Audit Report
 
 This report confirms the resolution of the structural SEO issues across the production build.
 

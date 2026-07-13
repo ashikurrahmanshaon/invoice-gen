@@ -27,16 +27,17 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
         
         {/* Miniature Cropped Invoice Paper (Clean white sheet aesthetics) */}
         <div style={{
-          background: '#FFFFFF',
-          borderRadius: '4px', // Slightly sharper for paper feel
-          padding: '28px 24px',
-          minHeight: '340px',
+          background: '#fff',
+          border: '1px solid var(--color-border)',
+          borderRadius: 0,
+          padding: '32px',
+          minHeight: '380px',
           position: 'relative',
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
           boxShadow: 'var(--shadow-paper)',
-          lineHeight: 1.4
+          lineHeight: 1.5
         }}>
           {/* Header */}
           <div className="flex justify-between" style={{ marginBottom: '20px', alignItems: 'flex-start' }}>

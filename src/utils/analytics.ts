@@ -1,5 +1,5 @@
 /**
- * Invoice-Gen Analytics Utility
+ * Invoice-Gen.net Analytics Utility
  * Lightweight wrapper around gtag() for GA4 custom event tracking.
  * Tracks the invoice creation funnel and key conversion actions.
  */

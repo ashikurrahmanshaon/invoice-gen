@@ -8,78 +8,78 @@ const path = require('path');
 const pages = [
   {
     slug: 'free-invoice-generator',
-    h1: 'Free Invoice-Gen — Create Professional Invoices Instantly',
-    title: 'Free Invoice-Gen | Invoice-Gen — No Signup, No Fees',
-    description: 'Generate professional PDF invoices for free with Invoice-Gen. No signup, no fees, no watermarks. Create, customize, and download invoices in seconds.',
-    intro: 'Invoice-Gen is a completely free Invoice-Gen that runs entirely in your browser. Create polished, professional PDF invoices without signing up, paying fees, or installing software. Perfect for freelancers, consultants, and small businesses who need reliable invoicing without the overhead.',
+    h1: 'Free Invoice-Gen.net — Create Professional Invoices Instantly',
+    title: 'Free Invoice-Gen.net | Invoice-Gen.net — No Signup, No Fees',
+    description: 'Generate professional PDF invoices for free with Invoice-Gen.net. No signup, no fees, no watermarks. Create, customize, and download invoices in seconds.',
+    intro: 'Invoice-Gen.net is a completely free Invoice-Gen.net that runs entirely in your browser. Create polished, professional PDF invoices without signing up, paying fees, or installing software. Perfect for freelancers, consultants, and small businesses who need reliable invoicing without the overhead.',
     features: ['100% free with no hidden costs', 'No account or signup required', 'Instant PDF download', 'Multi-currency support (USD, EUR, GBP, and more)', 'Automatic tax and discount calculations', 'Client management and invoice history', 'Works on desktop and mobile', 'Offline-capable — your data stays local'],
     faqs: [
-      { q: 'Is this Invoice-Gen really free?', a: 'Yes, Invoice-Gen is 100% free. There are no premium tiers, no trial periods, and no feature gates. You can create unlimited invoices and download unlimited PDFs without paying anything.' },
-      { q: 'Do I need to create an account?', a: 'No. Invoice-Gen requires zero signup. Open the page and start creating invoices immediately. Your data is saved locally in your browser.' },
+      { q: 'Is this Invoice-Gen.net really free?', a: 'Yes, Invoice-Gen.net is 100% free. There are no premium tiers, no trial periods, and no feature gates. You can create unlimited invoices and download unlimited PDFs without paying anything.' },
+      { q: 'Do I need to create an account?', a: 'No. Invoice-Gen.net requires zero signup. Open the page and start creating invoices immediately. Your data is saved locally in your browser.' },
       { q: 'Can I add my company logo?', a: 'Yes. Upload your business logo and it will appear on every invoice you generate. The logo is stored locally in your browser — we never upload it to any server.' }
     ]
   },
   {
     slug: 'invoice-maker',
     h1: 'Online Invoice Maker — Design Beautiful Invoices in Minutes',
-    title: 'Invoice Maker | Invoice-Gen — Beautiful Invoices in Minutes',
-    description: 'Make professional invoices online with Invoice-Gen. Our free invoice maker helps you design, customize, and download PDF invoices with automatic calculations.',
-    intro: 'Invoice-Gen is a modern invoice maker designed for speed and simplicity. Whether you are a solo freelancer or a growing agency, our step-by-step invoice maker walks you through creating polished invoices with automatic totals, tax calculations, and instant PDF generation — all without leaving your browser.',
+    title: 'Invoice Maker | Invoice-Gen.net — Beautiful Invoices in Minutes',
+    description: 'Make professional invoices online with Invoice-Gen.net. Our free invoice maker helps you design, customize, and download PDF invoices with automatic calculations.',
+    intro: 'Invoice-Gen.net is a modern invoice maker designed for speed and simplicity. Whether you are a solo freelancer or a growing agency, our step-by-step invoice maker walks you through creating polished invoices with automatic totals, tax calculations, and instant PDF generation — all without leaving your browser.',
     features: ['Step-by-step guided creation flow', 'Live invoice preview as you type', 'Automatic subtotal, tax, and balance calculations', 'Professional PDF output with no watermarks', 'Save and reuse client details', 'Invoice history and draft management', 'Mobile-optimized maker experience'],
     faqs: [
       { q: 'How long does it take to make an invoice?', a: 'Most users complete their first invoice in under 2 minutes. Our step-by-step maker guides you through business details, client info, line items, and review — then generates a PDF instantly.' },
-      { q: 'Can I save invoices I have made?', a: 'Yes. Invoice-Gen saves your drafts automatically and maintains a full invoice history in your browser. You can edit, duplicate, or re-download any previous invoice.' },
-      { q: 'Does the invoice maker work on phones?', a: 'Absolutely. Invoice-Gen features a dedicated mobile experience with large touch targets, a floating action bar, and smooth step navigation optimized for iOS and Android.' }
+      { q: 'Can I save invoices I have made?', a: 'Yes. Invoice-Gen.net saves your drafts automatically and maintains a full invoice history in your browser. You can edit, duplicate, or re-download any previous invoice.' },
+      { q: 'Does the invoice maker work on phones?', a: 'Absolutely. Invoice-Gen.net features a dedicated mobile experience with large touch targets, a floating action bar, and smooth step navigation optimized for iOS and Android.' }
     ]
   },
   {
     slug: 'invoice-creator',
     h1: 'Invoice Creator — Build Custom Invoices for Any Business',
-    title: 'Invoice Creator | Invoice-Gen — Custom Invoices for Any Business',
-    description: 'Create custom invoices for freelancers, contractors, and businesses with Invoice-Gen. Free invoice creator with professional templates and instant PDF export.',
-    intro: 'Invoice-Gen is a versatile invoice creator built for every type of business. From hourly consulting to fixed-price projects, retainer agreements to milestone billing — our creator adapts to your needs. Add custom line items, flexible payment terms, notes, and branding to produce invoices that represent your business professionally.',
+    title: 'Invoice Creator | Invoice-Gen.net — Custom Invoices for Any Business',
+    description: 'Create custom invoices for freelancers, contractors, and businesses with Invoice-Gen.net. Free invoice creator with professional templates and instant PDF export.',
+    intro: 'Invoice-Gen.net is a versatile invoice creator built for every type of business. From hourly consulting to fixed-price projects, retainer agreements to milestone billing — our creator adapts to your needs. Add custom line items, flexible payment terms, notes, and branding to produce invoices that represent your business professionally.',
     features: ['Flexible line item configuration', 'Custom notes and payment instructions', 'Percentage or flat-rate discount support', 'Configurable tax labels and rates', 'Shipping fee support', 'Payment tracking (amount paid / balance due)', 'Signature support', 'Multiple invoice templates for different industries'],
     faqs: [
-      { q: 'Can I create invoices for different types of work?', a: 'Yes. Invoice-Gen supports hourly billing, fixed-price projects, milestone payments, retainer invoicing, and more. Simply configure your line items to match your billing structure.' },
+      { q: 'Can I create invoices for different types of work?', a: 'Yes. Invoice-Gen.net supports hourly billing, fixed-price projects, milestone payments, retainer invoicing, and more. Simply configure your line items to match your billing structure.' },
       { q: 'Can I add custom fields to my invoice?', a: 'You can add custom notes, payment instructions, terms and conditions, and signature fields. Each invoice supports unlimited line items with descriptions.' },
-      { q: 'Is my business data secure?', a: 'Completely. Invoice-Gen processes everything locally in your browser. No data is ever sent to external servers. Your business information, client details, and invoice data remain private on your device.' }
+      { q: 'Is my business data secure?', a: 'Completely. Invoice-Gen.net processes everything locally in your browser. No data is ever sent to external servers. Your business information, client details, and invoice data remain private on your device.' }
     ]
   },
   {
     slug: 'invoice-software',
     h1: 'Free Invoice Software — Professional Invoicing Without the Cost',
-    title: 'Free Invoice Software | Invoice-Gen — No Subscription Required',
-    description: 'Replace expensive invoice software with Invoice-Gen. Free, browser-based invoicing with all the features you need — PDF export, calculations, client management, and more.',
-    intro: 'Stop paying monthly fees for invoice software. Invoice-Gen delivers professional-grade invoicing capabilities entirely free, running in your web browser. Unlike traditional invoicing software that requires subscriptions, server accounts, and complex setup — Invoice-Gen works instantly with zero configuration. Your data stays on your device for complete privacy.',
+    title: 'Free Invoice Software | Invoice-Gen.net — No Subscription Required',
+    description: 'Replace expensive invoice software with Invoice-Gen.net. Free, browser-based invoicing with all the features you need — PDF export, calculations, client management, and more.',
+    intro: 'Stop paying monthly fees for invoice software. Invoice-Gen.net delivers professional-grade invoicing capabilities entirely free, running in your web browser. Unlike traditional invoicing software that requires subscriptions, server accounts, and complex setup — Invoice-Gen.net works instantly with zero configuration. Your data stays on your device for complete privacy.',
     features: ['No monthly subscription fees', 'No software installation required', 'Browser-based — works on any device', 'Automatic calculations and tax support', 'Client address book with auto-save', 'Invoice history and duplicate tracking', 'Offline functionality', 'Privacy-first architecture'],
     faqs: [
-      { q: 'How does Invoice-Gen compare to paid invoicing software?', a: 'Invoice-Gen provides the core invoicing features most businesses need — invoice creation, PDF export, tax calculations, client management, and history tracking — all completely free. Unlike paid alternatives, there are no feature limits or subscription tiers.' },
-      { q: 'Does this replace QuickBooks or FreshBooks for invoicing?', a: 'For straightforward invoice creation and PDF generation, yes. Invoice-Gen handles the entire invoice workflow. For advanced accounting features like expense tracking, payroll, or bank reconciliation, you may still need dedicated accounting software.' },
-      { q: 'Will my invoices look professional?', a: 'Yes. Invoice-Gen produces clean, well-formatted PDF invoices with your business branding, structured line items, and calculated totals. The output is indistinguishable from paid invoicing software.' }
+      { q: 'How does Invoice-Gen.net compare to paid invoicing software?', a: 'Invoice-Gen.net provides the core invoicing features most businesses need — invoice creation, PDF export, tax calculations, client management, and history tracking — all completely free. Unlike paid alternatives, there are no feature limits or subscription tiers.' },
+      { q: 'Does this replace QuickBooks or FreshBooks for invoicing?', a: 'For straightforward invoice creation and PDF generation, yes. Invoice-Gen.net handles the entire invoice workflow. For advanced accounting features like expense tracking, payroll, or bank reconciliation, you may still need dedicated accounting software.' },
+      { q: 'Will my invoices look professional?', a: 'Yes. Invoice-Gen.net produces clean, well-formatted PDF invoices with your business branding, structured line items, and calculated totals. The output is indistinguishable from paid invoicing software.' }
     ]
   },
   {
     slug: 'invoice-app',
     h1: 'Invoice App — Create Invoices From Any Device',
-    title: 'Invoice App | Invoice-Gen — Create Invoices From Any Device',
-    description: 'Use Invoice-Gen as your go-to invoice app on desktop, tablet, or phone. Create professional PDF invoices on any device with our mobile-optimized experience.',
-    intro: 'Invoice-Gen works as a full-featured invoice app right in your browser — no app store download required. Our mobile-optimized experience features large touch targets, a floating action bar, smooth step navigation, and safe-area support for modern phones. Create, preview, and download professional PDF invoices from anywhere.',
+    title: 'Invoice App | Invoice-Gen.net — Create Invoices From Any Device',
+    description: 'Use Invoice-Gen.net as your go-to invoice app on desktop, tablet, or phone. Create professional PDF invoices on any device with our mobile-optimized experience.',
+    intro: 'Invoice-Gen.net works as a full-featured invoice app right in your browser — no app store download required. Our mobile-optimized experience features large touch targets, a floating action bar, smooth step navigation, and safe-area support for modern phones. Create, preview, and download professional PDF invoices from anywhere.',
     features: ['Mobile-first design with native app feel', 'Works on iOS Safari and Android Chrome', 'No app store download needed', 'Floating bottom action bar', 'Touch-optimized forms and buttons', 'Auto-save across sessions', 'Offline-capable PWA', 'Instant PDF generation on any device'],
     faqs: [
-      { q: 'Do I need to download an app?', a: 'No. Invoice-Gen is a Progressive Web App (PWA) that runs in your browser. You can optionally add it to your home screen for an app-like experience, but no download is required.' },
-      { q: 'Does the invoice app work offline?', a: 'Yes. Once loaded, Invoice-Gen works without an internet connection. Your drafts are saved locally and you can generate PDFs offline.' },
-      { q: 'Which devices are supported?', a: 'Invoice-Gen works on any modern device — iPhone, Android phone, iPad, Android tablet, Windows PC, Mac, Chromebook, and Linux. Any device with a modern web browser is supported.' }
+      { q: 'Do I need to download an app?', a: 'No. Invoice-Gen.net is a Progressive Web App (PWA) that runs in your browser. You can optionally add it to your home screen for an app-like experience, but no download is required.' },
+      { q: 'Does the invoice app work offline?', a: 'Yes. Once loaded, Invoice-Gen.net works without an internet connection. Your drafts are saved locally and you can generate PDFs offline.' },
+      { q: 'Which devices are supported?', a: 'Invoice-Gen.net works on any modern device — iPhone, Android phone, iPad, Android tablet, Windows PC, Mac, Chromebook, and Linux. Any device with a modern web browser is supported.' }
     ]
   },
   {
     slug: 'invoice-template',
     h1: 'Free Invoice Templates — Professional Designs for Every Industry',
-    title: 'Free Invoice Templates | Invoice-Gen — Professional Designs',
-    description: 'Download free professional invoice templates for freelancers, contractors, consultants, and more. Customize and generate PDF invoices instantly with Invoice-Gen.',
-    intro: 'Invoice-Gen offers professionally designed invoice templates for over 30 industries. Whether you are a freelance designer, IT consultant, cleaning service, photographer, or contractor — we have a template tailored to your business. Each template is fully customizable and generates clean PDF invoices with your branding.',
+    title: 'Free Invoice Templates | Invoice-Gen.net — Professional Designs',
+    description: 'Download free professional invoice templates for freelancers, contractors, consultants, and more. Customize and generate PDF invoices instantly with Invoice-Gen.net.',
+    intro: 'Invoice-Gen.net offers professionally designed invoice templates for over 30 industries. Whether you are a freelance designer, IT consultant, cleaning service, photographer, or contractor — we have a template tailored to your business. Each template is fully customizable and generates clean PDF invoices with your branding.',
     features: ['30+ industry-specific templates', 'Fully customizable layout', 'Add your logo and branding', 'Professional typography and spacing', 'Automatic calculations built-in', 'Templates for freelancers, consultants, contractors, and more', 'Clean PDF output for every template'],
     faqs: [
-      { q: 'Are the invoice templates free?', a: 'Yes, all Invoice-Gen templates are completely free. There are no premium templates or paid upgrades. Every template is available to every user.' },
+      { q: 'Are the invoice templates free?', a: 'Yes, all Invoice-Gen.net templates are completely free. There are no premium templates or paid upgrades. Every template is available to every user.' },
       { q: 'Can I customize the templates?', a: 'Absolutely. Every field is customizable — add your business name, logo, client details, custom line items, notes, terms, and payment instructions. The template adapts to your content.' },
       { q: 'Which industries are supported?', a: 'We have templates for freelancers, consultants, contractors, graphic designers, photographers, web developers, marketing consultants, virtual assistants, cleaning services, and many more.' }
     ]
@@ -87,40 +87,40 @@ const pages = [
   {
     slug: 'invoice-pdf-generator',
     h1: 'Invoice PDF Generator — Instant PDF Invoice Downloads',
-    title: 'Invoice PDF Generator | Invoice-Gen — Instant PDF Downloads',
-    description: 'Generate PDF invoices instantly with Invoice-Gen. Create professional invoices and download them as clean, print-ready PDF files — completely free.',
-    intro: 'Invoice-Gen specializes in generating high-quality PDF invoices. Our PDF generator produces clean, properly formatted, print-ready documents with your business branding, structured line items, calculated totals, and professional typography. Every PDF is generated locally in your browser — no server processing, no file uploads, complete privacy.',
+    title: 'Invoice PDF Generator | Invoice-Gen.net — Instant PDF Downloads',
+    description: 'Generate PDF invoices instantly with Invoice-Gen.net. Create professional invoices and download them as clean, print-ready PDF files — completely free.',
+    intro: 'Invoice-Gen.net specializes in generating high-quality PDF invoices. Our PDF generator produces clean, properly formatted, print-ready documents with your business branding, structured line items, calculated totals, and professional typography. Every PDF is generated locally in your browser — no server processing, no file uploads, complete privacy.',
     features: ['Instant client-side PDF generation', 'Clean, print-ready formatting', 'Your logo and branding included', 'Proper page breaks for multi-page invoices', 'Consistent typography and spacing', 'No watermarks on any PDF', 'Download or print directly', 'No file size or page limits'],
     faqs: [
-      { q: 'How fast is PDF generation?', a: 'Invoice-Gen generates PDFs instantly — typically in under 1 second. The entire process happens locally in your browser, so there is no server wait time.' },
-      { q: 'Are there watermarks on the PDFs?', a: 'No. Invoice-Gen never adds watermarks, branding, or advertisements to your PDF invoices. The output is clean and professional.' },
-      { q: 'Can I generate multi-page invoices?', a: 'Yes. Invoice-Gen automatically handles page breaks for invoices with many line items. Each page maintains consistent headers and formatting.' }
+      { q: 'How fast is PDF generation?', a: 'Invoice-Gen.net generates PDFs instantly — typically in under 1 second. The entire process happens locally in your browser, so there is no server wait time.' },
+      { q: 'Are there watermarks on the PDFs?', a: 'No. Invoice-Gen.net never adds watermarks, branding, or advertisements to your PDF invoices. The output is clean and professional.' },
+      { q: 'Can I generate multi-page invoices?', a: 'Yes. Invoice-Gen.net automatically handles page breaks for invoices with many line items. Each page maintains consistent headers and formatting.' }
     ]
   },
   {
     slug: 'professional-invoice-generator',
-    h1: 'Professional Invoice-Gen — Elevate Your Billing',
-    title: 'Professional Invoice-Gen | Invoice-Gen — Elevate Your Billing',
-    description: 'Create professional-grade invoices with Invoice-Gen. Our free Invoice-Gen produces polished, branded PDF invoices that build trust and accelerate payments.',
-    intro: 'First impressions matter in business, and your invoice is often the last touchpoint before payment. Invoice-Gen helps you create professional-grade invoices that reflect the quality of your work. With clean typography, structured layouts, your business branding, and precise calculations — every invoice you send builds trust and credibility.',
+    h1: 'Professional Invoice-Gen.net — Elevate Your Billing',
+    title: 'Professional Invoice-Gen.net | Invoice-Gen.net — Elevate Your Billing',
+    description: 'Create professional-grade invoices with Invoice-Gen.net. Our free Invoice-Gen.net produces polished, branded PDF invoices that build trust and accelerate payments.',
+    intro: 'First impressions matter in business, and your invoice is often the last touchpoint before payment. Invoice-Gen.net helps you create professional-grade invoices that reflect the quality of your work. With clean typography, structured layouts, your business branding, and precise calculations — every invoice you send builds trust and credibility.',
     features: ['Premium invoice formatting and typography', 'Business logo and branding support', 'Structured line items with descriptions', 'Automatic tax, discount, and shipping calculations', 'Payment terms and instructions', 'Digital signature support', 'Multi-currency for international clients', 'Invoice history for consistent numbering'],
     faqs: [
-      { q: 'What makes an invoice look professional?', a: 'A professional invoice includes your business logo, clear contact information, a unique invoice number, itemized charges with descriptions, calculated totals, and explicit payment terms. Invoice-Gen includes all of these elements in every invoice.' },
-      { q: 'Can I add a digital signature?', a: 'Yes. Invoice-Gen supports adding a digital signature to your invoices for an extra layer of professionalism and authenticity.' },
-      { q: 'How do I maintain consistent invoice numbering?', a: 'Invoice-Gen automatically generates sequential invoice numbers and maintains history. You can also customize the format (e.g., INV-2026-001) to match your business convention.' }
+      { q: 'What makes an invoice look professional?', a: 'A professional invoice includes your business logo, clear contact information, a unique invoice number, itemized charges with descriptions, calculated totals, and explicit payment terms. Invoice-Gen.net includes all of these elements in every invoice.' },
+      { q: 'Can I add a digital signature?', a: 'Yes. Invoice-Gen.net supports adding a digital signature to your invoices for an extra layer of professionalism and authenticity.' },
+      { q: 'How do I maintain consistent invoice numbering?', a: 'Invoice-Gen.net automatically generates sequential invoice numbers and maintains history. You can also customize the format (e.g., INV-2026-001) to match your business convention.' }
     ]
   },
   {
     slug: 'online-invoice-generator',
-    h1: 'Online Invoice-Gen — No Download, No Signup, Just Invoices',
-    title: 'Online Invoice-Gen | Invoice-Gen — No Download Required',
-    description: 'Generate invoices online with Invoice-Gen. No software to download, no account to create. Our browser-based Invoice-Gen creates professional PDFs instantly.',
-    intro: 'Invoice-Gen is an online Invoice-Gen that works entirely in your web browser. There is nothing to download, nothing to install, and no account to create. Simply open the page and start building your invoice. Our online generator is always available, always up-to-date, and works on any device with a modern browser.',
+    h1: 'Online Invoice-Gen.net — No Download, No Signup, Just Invoices',
+    title: 'Online Invoice-Gen.net | Invoice-Gen.net — No Download Required',
+    description: 'Generate invoices online with Invoice-Gen.net. No software to download, no account to create. Our browser-based Invoice-Gen.net creates professional PDFs instantly.',
+    intro: 'Invoice-Gen.net is an online Invoice-Gen.net that works entirely in your web browser. There is nothing to download, nothing to install, and no account to create. Simply open the page and start building your invoice. Our online generator is always available, always up-to-date, and works on any device with a modern browser.',
     features: ['100% online — no downloads', 'No signup or registration', 'Works on any modern browser', 'Always up-to-date, no manual updates', 'Cross-device compatibility', 'Secure browser-based processing', 'Auto-save to prevent data loss', 'Accessible from anywhere'],
     faqs: [
-      { q: 'Is this really online-only with no download?', a: 'Yes. Invoice-Gen is a web application that runs entirely in your browser. There is no desktop application, no mobile app to download, and no plugins required.' },
-      { q: 'Is my data safe using an online generator?', a: 'Absolutely. Unlike most online tools, Invoice-Gen processes everything locally in your browser. Your data never leaves your device — we do not have servers that store your information.' },
-      { q: 'What happens if I lose internet while working?', a: 'Invoice-Gen saves your work locally in your browser. If you lose connectivity, your draft is preserved and you can continue when you are back online. PDF generation also works offline.' }
+      { q: 'Is this really online-only with no download?', a: 'Yes. Invoice-Gen.net is a web application that runs entirely in your browser. There is no desktop application, no mobile app to download, and no plugins required.' },
+      { q: 'Is my data safe using an online generator?', a: 'Absolutely. Unlike most online tools, Invoice-Gen.net processes everything locally in your browser. Your data never leaves your device — we do not have servers that store your information.' },
+      { q: 'What happens if I lose internet while working?', a: 'Invoice-Gen.net saves your work locally in your browser. If you lose connectivity, your draft is preserved and you can continue when you are back online. PDF generation also works offline.' }
     ]
   }
 ];
@@ -160,7 +160,7 @@ function generatePage(page) {
   <meta property="og:url" content="${url}" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://invoice-gen.net/og-image.webp" />
-  <meta property="og:site_name" content="Invoice-Gen" />
+  <meta property="og:site_name" content="Invoice-Gen.net" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${page.title}" />
   <meta name="twitter:description" content="${page.description}" />
@@ -200,24 +200,24 @@ function generatePage(page) {
     header { background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: 100; height: 72px; display: flex; align-items: center; }
     .nav-container { max-width: 1000px; width: 100%; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
     .logo-link { display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 20px; color: var(--color-text-main); }
-    .logo-icon { width: 28px; height: 28px; background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%); border-radius: 8px; }
-    .btn-cta { background-color: var(--color-primary); color: white; text-decoration: none; padding: 10px 20px; border-radius: 12px; font-size: 14px; font-weight: 600; transition: all 180ms ease; box-shadow: 0 4px 12px rgba(79,70,229,0.15); display: inline-block; }
+    .logo-icon { width: 28px; height: 28px; background: var(--color-primary); border-radius: 8px; }
+    .btn-cta { background-color: var(--color-primary); color: white; text-decoration: none; padding: 10px 20px; border-radius: 12px; font-size: 14px; font-weight: 600; transition: all 180ms ease; display: inline-block; }
     .btn-cta:hover { background-color: var(--color-primary-hover); transform: translateY(-1px); }
-    main { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
-    h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; line-height: 1.2; }
-    h2 { font-size: 24px; font-weight: 600; margin-top: 40px; margin-bottom: 16px; }
-    h3 { font-size: 18px; font-weight: 600; margin-top: 20px; margin-bottom: 8px; }
-    p { color: var(--color-text-secondary); font-size: 16px; margin-bottom: 20px; line-height: 1.7; }
-    ul { margin: 0 0 24px 24px; color: var(--color-text-secondary); }
-    li { margin-bottom: 8px; font-size: 15px; }
+    main { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+    h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 24px; line-height: 1.15; color: #0F172A; }
+    h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin-top: 56px; margin-bottom: 24px; color: #0F172A; }
+    h3 { font-size: 24px; font-weight: 600; margin-top: 40px; margin-bottom: 16px; color: #0F172A; }
+    p { color: #334155; font-size: 18px; margin-bottom: 24px; line-height: 1.8; letter-spacing: -0.01em; }
+    ul { margin: 0 0 24px 24px; color: #334155; font-size: 18px; line-height: 1.8; }
+    li { margin-bottom: 12px; padding-left: 8px; }
     .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
-    .feature-card { background: white; border: 1px solid var(--color-border); border-radius: 12px; padding: 20px; }
+    .feature-card { background: white; border: 1px solid var(--color-border); border-radius: 16px; padding: 20px; }
     .feature-card strong { display: block; margin-bottom: 4px; color: var(--color-text-main); }
-    .cta-box { background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: 16px; padding: 40px; margin: 48px 0; text-align: center; color: white; }
+    .cta-box { background: #0F172A; border-radius: 16px; padding: 40px; margin: 48px 0; text-align: center; color: white; }
     .cta-box h3 { color: white; margin-top: 0; font-size: 22px; }
     .cta-box p { color: #94A3B8; text-align: center; }
     .cta-box .btn-cta { margin-top: 8px; padding: 14px 32px; font-size: 16px; }
-    .faq-item { border: 1px solid var(--color-border); border-radius: 12px; padding: 20px; margin-bottom: 12px; background: white; }
+    .faq-item { border: 1px solid var(--color-border); border-radius: 16px; padding: 20px; margin-bottom: 12px; background: white; }
     .faq-item h3 { margin-top: 0; font-size: 16px; }
     .faq-item p { margin-bottom: 0; font-size: 14px; }
     .internal-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
@@ -234,9 +234,9 @@ function generatePage(page) {
     <div class="nav-container">
       <a href="/" class="logo-link">
         <div class="logo-icon"></div>
-        <span>Invoice-Gen</span>
+        <span>Invoice-Gen.net</span>
       </a>
-      <a href="/" class="btn-cta">Try Invoice-Gen Free</a>
+      <a href="/" class="btn-cta">Try Invoice-Gen.net Free</a>
     </div>
   </header>
 
@@ -252,8 +252,8 @@ ${page.features.map(f => `        <li><strong>${f.split(' — ')[0]}</strong></l
 
       <div class="cta-box">
         <h3>Start Creating Invoices Now</h3>
-        <p>Join thousands of freelancers and businesses who trust Invoice-Gen for their invoicing needs.</p>
-        <a href="/" class="btn-cta">Try Invoice-Gen Free</a>
+        <p>Join thousands of freelancers and businesses who trust Invoice-Gen.net for their invoicing needs.</p>
+        <a href="/" class="btn-cta">Try Invoice-Gen.net Free</a>
       </div>
 
       <h2>Frequently Asked Questions</h2>
@@ -264,7 +264,7 @@ ${page.faqs.map(faq => `      <div class="faq-item">
 
       <h2>Related Resources</h2>
       <div class="internal-links">
-        <a href="/">Invoice-Gen Home</a>
+        <a href="/">Invoice-Gen.net Home</a>
         <a href="/blog/how-to-create-professional-invoice/">How to Create a Professional Invoice</a>
         <a href="/blog/what-to-include-in-invoice/">What to Include in an Invoice</a>
         <a href="/templates/freelance/">Freelance Invoice Template</a>
@@ -283,9 +283,9 @@ ${page.faqs.map(faq => `      <div class="faq-item">
       <a href="/contact/">Contact</a>
       <a href="/trust/">Trust Center</a>
     </div>
-    <p style="margin-top: 16px">&copy; 2026 Invoice-Gen. All rights reserved.</p>
+    <p style="margin-top: 16px">&copy; 2026 Invoice-Gen.net. All rights reserved.</p>
   </footer>
-  <div style="background: #F8FAFC; padding: 40px 24px; border-top: 1px solid #E2E8F0; margin-top: 60px;"><div style="max-width: 1000px; margin: 0 auto;"><h4 style="font-size: 14px; font-weight: 600; color: #475569; margin-bottom: 16px;">Invoice-Gen Directory</h4><div style="display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 13px;"><a href="/blog/charging-late-fees-terms-and-best-practices/" style="color: #64748b; text-decoration: none;">Charging Late Fees</a><a href="/blog/choosing-the-best-payment-terms-for-freelancers/" style="color: #64748b; text-decoration: none;">Best Payment Terms</a><a href="/blog/handling-down-payments-and-deposits/" style="color: #64748b; text-decoration: none;">Down Payments</a><a href="/blog/how-to-create-your-first-invoice/" style="color: #64748b; text-decoration: none;">First Invoice Guide</a><a href="/blog/how-to-follow-up-on-unpaid-invoices/" style="color: #64748b; text-decoration: none;">Follow Up Unpaid Invoices</a><a href="/blog/how-to-invoice-clients-internationally/" style="color: #64748b; text-decoration: none;">Invoice Internationally</a><a href="/blog/how-to-invoice-for-hourly-work/" style="color: #64748b; text-decoration: none;">Hourly Work Invoicing</a><a href="/blog/how-to-invoice-for-mileage-reimbursement/" style="color: #64748b; text-decoration: none;">Mileage Reimbursement</a><a href="/blog/how-to-request-milestone-payments/" style="color: #64748b; text-decoration: none;">Milestone Payments</a><a href="/blog/how-to-write-a-professional-invoice/" style="color: #64748b; text-decoration: none;">Professional Invoice</a><a href="/blog/invoice-date-vs-due-date-difference/" style="color: #64748b; text-decoration: none;">Invoice Date vs Due Date</a><a href="/blog/invoicing-for-creative-licenses-and-royalties/" style="color: #64748b; text-decoration: none;">Creative Licenses</a><a href="/blog/legal-options-when-client-refuses-to-pay/" style="color: #64748b; text-decoration: none;">Legal Options for Unpaid</a><a href="/blog/what-is-a-debit-note-differences-explained/" style="color: #64748b; text-decoration: none;">Debit Note Explained</a><a href="/blog/what-is-net-30-and-how-to-use-it/" style="color: #64748b; text-decoration: none;">Net 30 Terms</a><a href="/blog/when-to-use-a-commercial-invoice/" style="color: #64748b; text-decoration: none;">Commercial Invoice</a><a href="/blog/writing-an-invoice-under-a-retainer/" style="color: #64748b; text-decoration: none;">Retainer Invoice</a><a href="/compare/adobe-express-invoice-alternative/" style="color: #64748b; text-decoration: none;">Adobe Express Alternative</a><a href="/compare/invoice-generator-alternative/" style="color: #64748b; text-decoration: none;">Invoice Generator Alternative</a><a href="/compare/invoice-simple-alternative/" style="color: #64748b; text-decoration: none;">Invoice Simple Alternative</a><a href="/invoice-app/" style="color: #64748b; text-decoration: none;">Invoice App</a><a href="/invoice-pdf-generator/" style="color: #64748b; text-decoration: none;">Invoice PDF Generator</a><a href="/invoice-software/" style="color: #64748b; text-decoration: none;">Invoice Software</a><a href="/invoice-template/" style="color: #64748b; text-decoration: none;">Invoice Template</a><a href="/online-invoice-generator/" style="color: #64748b; text-decoration: none;">Online Invoice Generator</a><a href="/professional-invoice-generator/" style="color: #64748b; text-decoration: none;">Professional Invoice Generator</a><a href="/templates/architect/" style="color: #64748b; text-decoration: none;">Architect Template</a><a href="/templates/business-coach/" style="color: #64748b; text-decoration: none;">Business Coach Template</a><a href="/templates/carpenter/" style="color: #64748b; text-decoration: none;">Carpenter Template</a><a href="/templates/data-analyst/" style="color: #64748b; text-decoration: none;">Data Analyst Template</a><a href="/templates/editor-proofreader/" style="color: #64748b; text-decoration: none;">Editor Template</a><a href="/templates/electrician/" style="color: #64748b; text-decoration: none;">Electrician Template</a><a href="/templates/event-planner/" style="color: #64748b; text-decoration: none;">Event Planner Template</a><a href="/templates/gardener/" style="color: #64748b; text-decoration: none;">Gardener Template</a><a href="/templates/handyman/" style="color: #64748b; text-decoration: none;">Handyman Template</a><a href="/templates/hvac-technician/" style="color: #64748b; text-decoration: none;">HVAC Template</a><a href="/templates/interior-designer/" style="color: #64748b; text-decoration: none;">Interior Designer Template</a><a href="/templates/it-support/" style="color: #64748b; text-decoration: none;">IT Support Template</a><a href="/templates/landscaping/" style="color: #64748b; text-decoration: none;">Landscaping Template</a><a href="/templates/painter-contractor/" style="color: #64748b; text-decoration: none;">Painter Template</a><a href="/templates/pet-sitter/" style="color: #64748b; text-decoration: none;">Pet Sitter Template</a><a href="/templates/plumber/" style="color: #64748b; text-decoration: none;">Plumber Template</a><a href="/templates/project-manager/" style="color: #64748b; text-decoration: none;">Project Manager Template</a><a href="/templates/roofer/" style="color: #64748b; text-decoration: none;">Roofer Template</a><a href="/templates/translator/" style="color: #64748b; text-decoration: none;">Translator Template</a><a href="/templates/voiceover-artist/" style="color: #64748b; text-decoration: none;">Voiceover Template</a></div></div></div>
+  <div style="background: #F8FAFC; padding: 40px 24px; border-top: 1px solid #E2E8F0; margin-top: 60px;"><div style="max-width: 1000px; margin: 0 auto;"><h4 style="font-size: 14px; font-weight: 600; color: #475569; margin-bottom: 16px;">Invoice-Gen.net Directory</h4><div style="display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 13px;"><a href="/blog/charging-late-fees-terms-and-best-practices/" style="color: #64748b; text-decoration: none;">Charging Late Fees</a><a href="/blog/choosing-the-best-payment-terms-for-freelancers/" style="color: #64748b; text-decoration: none;">Best Payment Terms</a><a href="/blog/handling-down-payments-and-deposits/" style="color: #64748b; text-decoration: none;">Down Payments</a><a href="/blog/how-to-create-your-first-invoice/" style="color: #64748b; text-decoration: none;">First Invoice Guide</a><a href="/blog/how-to-follow-up-on-unpaid-invoices/" style="color: #64748b; text-decoration: none;">Follow Up Unpaid Invoices</a><a href="/blog/how-to-invoice-clients-internationally/" style="color: #64748b; text-decoration: none;">Invoice Internationally</a><a href="/blog/how-to-invoice-for-hourly-work/" style="color: #64748b; text-decoration: none;">Hourly Work Invoicing</a><a href="/blog/how-to-invoice-for-mileage-reimbursement/" style="color: #64748b; text-decoration: none;">Mileage Reimbursement</a><a href="/blog/how-to-request-milestone-payments/" style="color: #64748b; text-decoration: none;">Milestone Payments</a><a href="/blog/how-to-write-a-professional-invoice/" style="color: #64748b; text-decoration: none;">Professional Invoice</a><a href="/blog/invoice-date-vs-due-date-difference/" style="color: #64748b; text-decoration: none;">Invoice Date vs Due Date</a><a href="/blog/invoicing-for-creative-licenses-and-royalties/" style="color: #64748b; text-decoration: none;">Creative Licenses</a><a href="/blog/legal-options-when-client-refuses-to-pay/" style="color: #64748b; text-decoration: none;">Legal Options for Unpaid</a><a href="/blog/what-is-a-debit-note-differences-explained/" style="color: #64748b; text-decoration: none;">Debit Note Explained</a><a href="/blog/what-is-net-30-and-how-to-use-it/" style="color: #64748b; text-decoration: none;">Net 30 Terms</a><a href="/blog/when-to-use-a-commercial-invoice/" style="color: #64748b; text-decoration: none;">Commercial Invoice</a><a href="/blog/writing-an-invoice-under-a-retainer/" style="color: #64748b; text-decoration: none;">Retainer Invoice</a><a href="/compare/adobe-express-invoice-alternative/" style="color: #64748b; text-decoration: none;">Adobe Express Alternative</a><a href="/compare/invoice-generator-alternative/" style="color: #64748b; text-decoration: none;">Invoice Generator Alternative</a><a href="/compare/invoice-simple-alternative/" style="color: #64748b; text-decoration: none;">Invoice Simple Alternative</a><a href="/invoice-app/" style="color: #64748b; text-decoration: none;">Invoice App</a><a href="/invoice-pdf-generator/" style="color: #64748b; text-decoration: none;">Invoice PDF Generator</a><a href="/invoice-software/" style="color: #64748b; text-decoration: none;">Invoice Software</a><a href="/invoice-template/" style="color: #64748b; text-decoration: none;">Invoice Template</a><a href="/online-invoice-generator/" style="color: #64748b; text-decoration: none;">Online Invoice Generator</a><a href="/professional-invoice-generator/" style="color: #64748b; text-decoration: none;">Professional Invoice Generator</a><a href="/templates/architect/" style="color: #64748b; text-decoration: none;">Architect Template</a><a href="/templates/business-coach/" style="color: #64748b; text-decoration: none;">Business Coach Template</a><a href="/templates/carpenter/" style="color: #64748b; text-decoration: none;">Carpenter Template</a><a href="/templates/data-analyst/" style="color: #64748b; text-decoration: none;">Data Analyst Template</a><a href="/templates/editor-proofreader/" style="color: #64748b; text-decoration: none;">Editor Template</a><a href="/templates/electrician/" style="color: #64748b; text-decoration: none;">Electrician Template</a><a href="/templates/event-planner/" style="color: #64748b; text-decoration: none;">Event Planner Template</a><a href="/templates/gardener/" style="color: #64748b; text-decoration: none;">Gardener Template</a><a href="/templates/handyman/" style="color: #64748b; text-decoration: none;">Handyman Template</a><a href="/templates/hvac-technician/" style="color: #64748b; text-decoration: none;">HVAC Template</a><a href="/templates/interior-designer/" style="color: #64748b; text-decoration: none;">Interior Designer Template</a><a href="/templates/it-support/" style="color: #64748b; text-decoration: none;">IT Support Template</a><a href="/templates/landscaping/" style="color: #64748b; text-decoration: none;">Landscaping Template</a><a href="/templates/painter-contractor/" style="color: #64748b; text-decoration: none;">Painter Template</a><a href="/templates/pet-sitter/" style="color: #64748b; text-decoration: none;">Pet Sitter Template</a><a href="/templates/plumber/" style="color: #64748b; text-decoration: none;">Plumber Template</a><a href="/templates/project-manager/" style="color: #64748b; text-decoration: none;">Project Manager Template</a><a href="/templates/roofer/" style="color: #64748b; text-decoration: none;">Roofer Template</a><a href="/templates/translator/" style="color: #64748b; text-decoration: none;">Translator Template</a><a href="/templates/voiceover-artist/" style="color: #64748b; text-decoration: none;">Voiceover Template</a></div></div></div>
 </body>
 </html>`;
 }
