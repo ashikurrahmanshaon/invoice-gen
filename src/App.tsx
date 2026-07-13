@@ -23,8 +23,9 @@ const FullPreviewModal = lazy(() => import('./components/invoice/FullPreviewModa
 import { Modal } from './components/ui/Modal';
 import { generateInvoicePDF } from './utils/pdfGenerator';
 import { generateInvoiceNumber } from './utils/invoiceNumber';
-import type { SavedInvoice } from './types/invoice';
+import type { SavedInvoice, InvoiceData } from './types/invoice';
 import { trackEvent, trackFunnelStep } from './utils/analytics';
+import { useSettings } from './contexts/SettingsContext';
 
 
 
@@ -62,6 +63,8 @@ function App() {
     }
   }, []);
 
+  const { settings } = useSettings();
+
   const {
     data,
     selectedSavedClientId,
@@ -85,7 +88,7 @@ function App() {
     isDirty,
     setOriginalSnapshotForCurrentData,
     loadInvoiceFromHistory
-  } = useInvoice();
+  } = useInvoice({ currency: settings.currency, taxLabel: settings.taxLabel });
 
   const clientHook = useClients();
   const historyHook = useHistory();
@@ -154,6 +157,15 @@ function App() {
       setShowQuotaErrorToast(true);
       setTimeout(() => setShowQuotaErrorToast(false), 3000);
     }
+  };
+
+  const { updateSettings } = useSettings();
+
+  const handleUpdateDetails = (updates: Partial<InvoiceData['details']>) => {
+    if (updates.currency) {
+      updateSettings({ currency: updates.currency });
+    }
+    updateDetails(updates);
   };
 
   const handleSaveAsNew = () => {
@@ -335,7 +347,7 @@ function App() {
                   clientHook={clientHook}
                   selectedSavedClientId={selectedSavedClientId}
                   setSelectedSavedClientId={setSelectedSavedClientId}
-                  updateDetails={updateDetails}
+                  updateDetails={handleUpdateDetails}
                   updateOtherFields={updateOtherFields}
                   addItem={addItem}
                   duplicateItem={duplicateItem}

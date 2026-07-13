@@ -3,6 +3,9 @@ import { UploadCloud, Trash2, Edit2 } from 'lucide-react';
 import type { InvoiceData } from '../../types/invoice';
 import { processImageFile } from '../../utils/image';
 import { Input } from '../ui/Input';
+import { CurrencyPicker } from '../ui/CurrencyPicker';
+import { LanguagePicker } from '../ui/LanguagePicker';
+import { useSettings } from '../../contexts/SettingsContext';
 
 interface BusinessSectionProps {
   data: InvoiceData;
@@ -12,6 +15,7 @@ interface BusinessSectionProps {
 
 const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, updateBusiness, updateDetails }) => {
   const [showOptional, setShowOptional] = useState(false);
+  const { settings, updateSettings } = useSettings();
 
   const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -27,233 +31,110 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
 
   return (
     <div className="flex-col gap-6" style={{ width: '100%', borderBottom: '1px solid var(--color-border)', paddingBottom: 'var(--space-6)' }}>
-      {/* Section Header removed in favor of global wizard step indicator */}
-
-      <div className="business-grid">
-        {/* Left Column: Business Identity */}
-        <div className="flex-col gap-4" style={{ width: '100%' }}>
-          {/* Top row: Logo Upload and Business Name */}
-          <div style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'flex-end', width: '100%' }}>
-            {/* Logo Upload (120x96px) */}
-            <div style={{ flex: '0 0 120px', width: '120px', height: '96px' }}>
-              {data.business.logoUrl ? (
-                <div style={{
-                  width: '120px',
-                  height: '96px',
-                  position: 'relative',
-                  borderRadius: 'var(--radius-md)',
-                  border: '1px solid var(--color-border)',
-                  background: 'var(--color-surface)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  overflow: 'hidden'
-                }}>
-                  <img src={data.business.logoUrl} alt="Logo" loading="lazy" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
-                  <div style={{
-                    position: 'absolute',
-                    top: 0, left: 0, right: 0, bottom: 0,
-                    background: 'rgba(0, 0, 0, 0.4)',
-                    opacity: 0,
-                    transition: 'opacity 0.2s',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px'
-                  }} className="logo-hover-overlay">
-                    <label htmlFor="business-logo-edit-input" style={{ cursor: 'pointer' }}>
-                      <Edit2 size={14} color="white" />
-                      <input id="business-logo-edit-input" aria-label="Change business logo" type="file" accept="image/*" onChange={handleLogoUpload} style={{ display: 'none' }} />
-                    </label>
-                    <button aria-label="Delete logo" onClick={() => updateBusiness({ logoUrl: null })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-                      <Trash2 size={14} color="white" />
-                    </button>
-                  </div>
-                  <style>{`.logo-hover-overlay:hover { opacity: 1 !important; }`}</style>
-                </div>
-              ) : (
-                <label htmlFor="business-logo-upload-input" style={{
-                  width: '120px',
-                  height: '96px',
-                  border: '1px dashed var(--color-border)',
-                  borderRadius: 'var(--radius-md)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '2px',
-                  cursor: 'pointer',
-                  background: 'var(--color-surface)',
-                  color: 'var(--color-text-secondary)',
-                  transition: 'border-color 0.2s'
-                }}>
-                  <UploadCloud size={20} className="text-secondary" />
-                  <span style={{ fontSize: '11px', fontWeight: 500 }}>Add logo</span>
-                  <input id="business-logo-upload-input" aria-label="Upload business logo" type="file" accept="image/*" onChange={handleLogoUpload} style={{ display: 'none' }} />
+      {/* Logo Upload */}
+      <div style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'flex-start', width: '100%', marginBottom: 'var(--space-2)' }}>
+        <div style={{ flex: '0 0 120px', width: '120px', height: '96px' }}>
+          {data.business.logoUrl ? (
+            <div style={{
+              width: '120px',
+              height: '96px',
+              position: 'relative',
+              borderRadius: 'var(--radius-md)',
+              border: '1px solid var(--color-border)',
+              background: 'var(--color-surface)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden'
+            }}>
+              <img src={data.business.logoUrl} alt="Logo" loading="lazy" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+              <div style={{
+                position: 'absolute',
+                top: 0, left: 0, right: 0, bottom: 0,
+                background: 'rgba(0, 0, 0, 0.4)',
+                opacity: 0,
+                transition: 'opacity 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px'
+              }} className="logo-hover-overlay">
+                <label htmlFor="business-logo-edit-input" style={{ cursor: 'pointer' }}>
+                  <Edit2 size={14} color="white" />
+                  <input id="business-logo-edit-input" aria-label="Change business logo" type="file" accept="image/*" onChange={handleLogoUpload} style={{ display: 'none' }} />
                 </label>
-              )}
-            </div>
-
-            {/* Business Name Field (fills remaining width) */}
-            <div style={{ flex: 1, paddingBottom: '6px' }}>
-              <Input 
-                id="business-name-input"
-                label="Business Name *"
-                type="text" 
-                placeholder="Your Business Name"
-                value={data.business.name}
-                onChange={(e) => updateBusiness({ name: e.target.value })}
-              />
-            </div>
-          </div>
-
-          {/* Email Field stacked below (full width across left column) */}
-          <div style={{ width: '100%' }}>
-            <Input 
-              id="business-email-input"
-              label="Email *"
-              type="email" 
-              placeholder="you@example.com"
-              value={data.business.email}
-              onChange={(e) => updateBusiness({ email: e.target.value })}
-            />
-          </div>
-
-          {/* Toggleable optional fields */}
-          <div className="flex-col gap-4" style={{ width: '100%' }}>
-            {showOptional ? (
-              <div className="flex-col gap-4" style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-2)' }}>
-                <div className="grid-2">
-                  <div>
-                    <Input 
-                      id="business-phone-input"
-                      label="Phone"
-                      type="tel" 
-                      placeholder="Phone number"
-                      value={data.business.phone || ''}
-                      onChange={(e) => updateBusiness({ phone: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <Input 
-                      id="business-website-input"
-                      label="Website"
-                      type="url" 
-                      placeholder="e.g. www.website.com"
-                      value={data.business.website || ''}
-                      onChange={(e) => updateBusiness({ website: e.target.value })}
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <Input 
-                    id="business-address1-input"
-                    label="Address Line 1"
-                    type="text" 
-                    placeholder="Street address"
-                    value={data.business.address1 || ''}
-                    onChange={(e) => updateBusiness({ address1: e.target.value })}
-                  />
-                </div>
-                
-                <div>
-                  <Input 
-                    id="business-address2-input"
-                    label="Address Line 2"
-                    type="text" 
-                    placeholder="Apt, suite, etc. (optional)"
-                    value={data.business.address2 || ''}
-                    onChange={(e) => updateBusiness({ address2: e.target.value })}
-                  />
-                </div>
-
-                <div className="grid-2">
-                  <div>
-                    <Input 
-                      id="business-city-input"
-                      label="City"
-                      type="text" 
-                      placeholder="City"
-                      value={data.business.city || ''}
-                      onChange={(e) => updateBusiness({ city: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <Input 
-                      id="business-state-input"
-                      label="State / Province"
-                      type="text" 
-                      placeholder="State or Region"
-                      value={data.business.state || ''}
-                      onChange={(e) => updateBusiness({ state: e.target.value })}
-                    />
-                  </div>
-                </div>
-
-                <div className="grid-2">
-                  <div>
-                    <Input 
-                      id="business-postal-input"
-                      label="Postal / ZIP Code"
-                      type="text" 
-                      placeholder="Postal code"
-                      value={data.business.postalCode || ''}
-                      onChange={(e) => updateBusiness({ postalCode: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <Input 
-                      id="business-country-input"
-                      label="Country"
-                      type="text" 
-                      placeholder="Country"
-                      value={data.business.country || ''}
-                      onChange={(e) => updateBusiness({ country: e.target.value })}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <Input 
-                    id="business-taxid-input"
-                    label="Tax ID / VAT Number"
-                    type="text" 
-                    placeholder="e.g. VAT / GST ID"
-                    value={data.business.taxId || ''}
-                    onChange={(e) => updateBusiness({ taxId: e.target.value })}
-                  />
-                </div>
-
-                <button 
-                  className="btn btn-ghost text-primary text-xs" 
-                  style={{ paddingLeft: 0, justifyContent: 'flex-start', alignSelf: 'flex-start', minHeight: 'auto', padding: '4px 0', marginTop: '4px' }}
-                  onClick={() => setShowOptional(false)}
-                >
-                  − Hide additional business details
+                <button aria-label="Delete logo" onClick={() => updateBusiness({ logoUrl: null })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                  <Trash2 size={14} color="white" />
                 </button>
               </div>
-            ) : (
-              <button 
-                className="btn btn-ghost text-primary text-xs" 
-                style={{ paddingLeft: 0, justifyContent: 'flex-start', alignSelf: 'flex-start', minHeight: 'auto', padding: '4px 0' }}
-                onClick={() => setShowOptional(true)}
-              >
-                + Add more business details
-              </button>
-            )}
-          </div>
+              <style>{`.logo-hover-overlay:hover { opacity: 1 !important; }`}</style>
+            </div>
+          ) : (
+            <label htmlFor="business-logo-upload-input" style={{
+              width: '120px',
+              height: '96px',
+              border: '1px dashed var(--color-border)',
+              borderRadius: 'var(--radius-md)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '2px',
+              cursor: 'pointer',
+              background: 'var(--color-surface)',
+              color: 'var(--color-text-secondary)',
+              transition: 'border-color 0.2s'
+            }}>
+              <UploadCloud size={20} className="text-secondary" />
+              <span style={{ fontSize: '11px', fontWeight: 500 }}>Add logo</span>
+              <input id="business-logo-upload-input" aria-label="Upload business logo" type="file" accept="image/*" onChange={handleLogoUpload} style={{ display: 'none' }} />
+            </label>
+          )}
         </div>
+      </div>
 
-        {/* Right Column: Invoice Details */}
-        <div className="flex-col gap-4">
+      <div className="flex-col gap-4">
+        {/* Row 1: Business Name & Invoice Number */}
+        <div className="grid-2">
+          <Input 
+            id="business-name-input"
+            label="Business Name *"
+            type="text" 
+            placeholder="Your Business Name"
+            value={data.business.name}
+            onChange={(e) => updateBusiness({ name: e.target.value })}
+          />
           <Input 
             id="invoice-number-input"
-            label="Invoice Number"
+            label="Invoice Number *"
             type="text" 
             value={data.details.invoiceNumber}
             onChange={(e) => updateDetails({ invoiceNumber: e.target.value })}
           />
+        </div>
+
+        {/* Row 2: Email & Phone */}
+        <div className="grid-2">
+          <Input 
+            id="business-email-input"
+            label="Email *"
+            type="email" 
+            placeholder="you@example.com"
+            value={data.business.email}
+            onChange={(e) => updateBusiness({ email: e.target.value })}
+          />
+          <Input 
+            id="business-phone-input"
+            label="Phone"
+            type="tel" 
+            placeholder="Phone number"
+            value={data.business.phone || ''}
+            onChange={(e) => updateBusiness({ phone: e.target.value })}
+          />
+        </div>
+
+        {/* Row 3: Issue Date & Due Date */}
+        <div className="grid-2">
           <Input 
             id="invoice-issue-date-input"
             label="Issue Date"
@@ -268,20 +149,119 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
             value={data.details.dueDate}
             onChange={(e) => updateDetails({ dueDate: e.target.value })}
           />
-          <div className="flex items-center justify-between gap-3">
-            <label htmlFor="invoice-currency-select" className="text-xs font-semibold text-secondary" style={{ width: '110px' }}>Currency</label>
-            <select 
-              id="invoice-currency-select"
-              value={data.details.currency}
-              onChange={(e) => updateDetails({ currency: e.target.value })}
-              style={{ flex: 1 }}
-            >
-              <option value="USD">USD - US Dollar</option>
-              <option value="EUR">EUR - Euro</option>
-              <option value="GBP">GBP - British Pound</option>
-            </select>
-          </div>
         </div>
+
+        {/* Row 4: Currency & Language */}
+        <div className="grid-2">
+          <CurrencyPicker 
+            label="Currency"
+            value={data.details.currency || settings.currency}
+            onChange={(c) => {
+              updateDetails({ currency: c });
+              updateSettings({ currency: c });
+            }}
+          />
+          <LanguagePicker
+            label="Language"
+            value={settings.language}
+            onChange={(l) => updateSettings({ language: l })}
+          />
+        </div>
+
+        {/* Toggleable optional fields */}
+        {showOptional ? (
+          <div className="flex-col gap-4" style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-2)' }}>
+            <Input 
+              id="business-website-input"
+              label="Website"
+              type="url" 
+              placeholder="e.g. www.website.com"
+              value={data.business.website || ''}
+              onChange={(e) => updateBusiness({ website: e.target.value })}
+            />
+            
+            <Input 
+              id="business-address1-input"
+              label="Address Line 1"
+              type="text" 
+              placeholder="Street address"
+              value={data.business.address1 || ''}
+              onChange={(e) => updateBusiness({ address1: e.target.value })}
+            />
+            
+            <Input 
+              id="business-address2-input"
+              label="Address Line 2"
+              type="text" 
+              placeholder="Apt, suite, etc. (optional)"
+              value={data.business.address2 || ''}
+              onChange={(e) => updateBusiness({ address2: e.target.value })}
+            />
+
+            <div className="grid-2">
+              <Input 
+                id="business-city-input"
+                label="City"
+                type="text" 
+                placeholder="City"
+                value={data.business.city || ''}
+                onChange={(e) => updateBusiness({ city: e.target.value })}
+              />
+              <Input 
+                id="business-state-input"
+                label="State / Province"
+                type="text" 
+                placeholder="State or Region"
+                value={data.business.state || ''}
+                onChange={(e) => updateBusiness({ state: e.target.value })}
+              />
+            </div>
+
+            <div className="grid-2">
+              <Input 
+                id="business-postal-input"
+                label="Postal / ZIP Code"
+                type="text" 
+                placeholder="Postal code"
+                value={data.business.postalCode || ''}
+                onChange={(e) => updateBusiness({ postalCode: e.target.value })}
+              />
+              <Input 
+                id="business-country-input"
+                label="Country"
+                type="text" 
+                placeholder="Country"
+                value={data.business.country || ''}
+                onChange={(e) => updateBusiness({ country: e.target.value })}
+              />
+            </div>
+
+            <Input 
+              id="business-taxid-input"
+              label="Tax ID / VAT Number"
+              type="text" 
+              placeholder="e.g. VAT / GST ID"
+              value={data.business.taxId || ''}
+              onChange={(e) => updateBusiness({ taxId: e.target.value })}
+            />
+
+            <button 
+              className="btn btn-ghost text-primary text-xs" 
+              style={{ paddingLeft: 0, justifyContent: 'flex-start', alignSelf: 'flex-start', minHeight: 'auto', padding: '4px 0', marginTop: '4px' }}
+              onClick={() => setShowOptional(false)}
+            >
+              − Hide additional business details
+            </button>
+          </div>
+        ) : (
+          <button 
+            className="btn btn-ghost text-primary text-xs" 
+            style={{ paddingLeft: 0, justifyContent: 'flex-start', alignSelf: 'flex-start', minHeight: 'auto', padding: '4px 0' }}
+            onClick={() => setShowOptional(true)}
+          >
+            + Add more business details
+          </button>
+        )}
       </div>
     </div>
   );

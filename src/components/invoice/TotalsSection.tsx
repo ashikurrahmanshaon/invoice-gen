@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Trash2, ChevronUp } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 import type { InvoiceData } from '../../types/invoice';
 import { formatCurrency } from '../../utils/currency';
 import { isValidDecimalInput } from '../../utils/calculations';
 import { Input } from '../ui/Input';
 import { Button } from '../ui/Button';
+import { useSettings } from '../../contexts/SettingsContext';
+import { Select } from '../ui/Select';
 
 interface TotalsSectionProps {
   data: InvoiceData;
@@ -21,14 +23,10 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
 }) => {
   const { currency } = data.details;
   const { totals } = data;
+  const { settings } = useSettings();
 
   const [showTerms, setShowTerms] = useState(() => !!data.terms);
   const [showInstructions, setShowInstructions] = useState(() => !!data.paymentInstructions);
-
-  // Toggle calculations rows
-  const [enableDiscount, setEnableDiscount] = useState(() => Number(totals.discountValue) > 0 || totals.discountAmount > 0);
-  const [enableTax, setEnableTax] = useState(() => Number(totals.taxRate) > 0 || totals.taxAmount > 0);
-  const [enableShipping, setEnableShipping] = useState(() => Number(totals.shipping) > 0);
 
   const getCurrencySymbol = (code: string) => {
     switch (code) {
@@ -41,332 +39,211 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
   const symbol = getCurrencySymbol(currency);
 
   return (
-    <div className="flex-col gap-6" style={{ width: '100%' }}>
+    <div className="flex-col gap-6" style={{ width: '100%', borderBottom: '1px solid var(--color-border)', paddingBottom: 'var(--space-6)' }}>
       <div className="business-grid">
         {/* Left Side: Notes & Conditions */}
         <div className="flex-col gap-4">
-          <div>
-            <Input 
-              id="invoice-notes-input"
-              label="Notes"
-              multiline
-              placeholder="Add a special note or thank you message for your client..."
-              value={data.notes}
-              onChange={(e) => updateOtherFields({ notes: e.target.value })}
-              style={{ height: '128px' }}
-            />
-          </div>
+          <Input 
+            id="invoice-notes-input"
+            label="Notes"
+            multiline
+            placeholder="Add a special note or thank you message for your client..."
+            value={data.notes}
+            onChange={(e) => updateOtherFields({ notes: e.target.value })}
+          />
 
           {showTerms && (
-            <div className="animate-fade-in">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <label htmlFor="invoice-terms-input" className="text-xs font-semibold text-secondary">Terms & Conditions</label>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <button 
-                    onClick={() => setShowTerms(false)}
-                    style={{ color: 'var(--color-text-secondary)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '2px' }}
-                    title="Collapse"
-                  >
-                    <ChevronUp size={16} />
-                  </button>
-                  <button 
-                    onClick={() => { setShowTerms(false); updateOtherFields({ terms: '' }); }}
-                    style={{ color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '2px' }}
-                    className="hover-text-error"
-                    title="Clear"
-                  >
-                    <Trash2 size={14} />
-                  </button>
-                </div>
+            <div className="animate-fade-in" style={{ position: 'relative' }}>
+              <div style={{ position: 'absolute', top: 0, right: 0, zIndex: 10 }}>
+                <button 
+                  onClick={() => { setShowTerms(false); updateOtherFields({ terms: '' }); }}
+                  style={{ color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
+                  className="hover-text-error"
+                >
+                  <Trash2 size={16} />
+                </button>
               </div>
               <Input 
                 id="invoice-terms-input"
+                label="Terms & Conditions"
                 multiline
                 placeholder="e.g. Payment is due within 14 days"
                 value={data.terms || ''}
                 onChange={(e) => updateOtherFields({ terms: e.target.value })}
-                style={{ height: '80px', width: '100%' }}
               />
             </div>
           )}
 
           {showInstructions && (
-            <div className="animate-fade-in">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <label htmlFor="invoice-payment-instructions-input" className="text-xs font-semibold text-secondary">Payment Instructions</label>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <button 
-                    onClick={() => setShowInstructions(false)}
-                    style={{ color: 'var(--color-text-secondary)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '2px' }}
-                    title="Collapse"
-                  >
-                    <ChevronUp size={16} />
-                  </button>
-                  <button 
-                    onClick={() => { setShowInstructions(false); updateOtherFields({ paymentInstructions: '' }); }}
-                    style={{ color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '2px' }}
-                    className="hover-text-error"
-                    title="Clear"
-                  >
-                    <Trash2 size={14} />
-                  </button>
-                </div>
+            <div className="animate-fade-in" style={{ position: 'relative' }}>
+              <div style={{ position: 'absolute', top: 0, right: 0, zIndex: 10 }}>
+                <button 
+                  onClick={() => { setShowInstructions(false); updateOtherFields({ paymentInstructions: '' }); }}
+                  style={{ color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
+                  className="hover-text-error"
+                >
+                  <Trash2 size={16} />
+                </button>
               </div>
               <Input 
                 id="invoice-payment-instructions-input"
+                label="Payment Instructions"
                 multiline
                 placeholder="e.g. Bank transfer details, PayPal email"
                 value={data.paymentInstructions || ''}
                 onChange={(e) => updateOtherFields({ paymentInstructions: e.target.value })}
-                style={{ height: '80px', width: '100%' }}
               />
             </div>
           )}
 
-          {/* Secondary Buttons Row */}
           <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             {!showTerms && (
-              <Button 
-                variant="outline"
-                size="sm"
-                onClick={() => setShowTerms(true)}
-              >
+              <Button variant="outline" size="sm" onClick={() => setShowTerms(true)}>
                 {data.terms ? 'Edit terms' : '+ Add terms'}
               </Button>
             )}
             {!showInstructions && (
-              <Button 
-                variant="outline"
-                size="sm"
-                onClick={() => setShowInstructions(true)}
-              >
+              <Button variant="outline" size="sm" onClick={() => setShowInstructions(true)}>
                 {data.paymentInstructions ? 'Edit instructions' : '+ Payment instructions'}
               </Button>
             )}
           </div>
         </div>
 
-        {/* Right Side: Totals Card */}
-        <div style={{
-          background: 'var(--color-surface)',
-          border: '1px solid var(--color-border)',
-          borderRadius: '16px',
-          padding: '24px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '16px',
-          width: '100%',
-          boxShadow: '0 4px 12px rgba(16, 24, 40, 0.03)'
-        }}>
-          {/* Subtotal Row */}
-          <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px', color: 'var(--color-text-secondary)', fontWeight: 500 }}>
-            <span>Subtotal</span>
-            <div></div>
-            <div></div>
-            <span style={{ textAlign: 'right' }}>{formatCurrency(totals.subtotal, currency)}</span>
-          </div>
-
-          {/* Discount Row */}
-          {enableDiscount ? (
-            <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px' }}>
-              <label htmlFor="discount-input" className="text-secondary">Discount</label>
-              <div style={{ justifySelf: 'start', display: 'flex', border: '1px solid var(--color-border)', borderRadius: '6px', background: 'white', overflow: 'hidden', height: '32px', width: '92px' }}>
-                <input 
-                  id="discount-input"
-                  type="text" 
-                  value={totals.discountValue !== undefined ? totals.discountValue : ''}
-                  onChange={(e) => {
-                    if (isValidDecimalInput(e.target.value)) setDiscount(e.target.value, totals.discountType);
-                  }}
-                  style={{ border: 'none', padding: '0 6px', width: '100%', minWidth: 0, textAlign: 'right', minHeight: 'auto', height: '100%', fontSize: '12px', background: 'none', outline: 'none' }}
-                  placeholder="0"
-                />
-                <select 
-                  id="discount-type-select"
-                  aria-label="Discount Type"
-                  value={totals.discountType}
-                  onChange={(e) => setDiscount(totals.discountValue, e.target.value as 'percent' | 'flat')}
-                  style={{ border: 'none', borderLeft: '1px solid var(--color-border)', background: '#F8FAFC', fontSize: '11px', height: '100%', padding: '0 4px', width: '38px', minHeight: 'auto', borderRadius: 0, flexShrink: 0 }}
-                >
-                  <option value="percent">%</option>
-                  <option value="flat">{symbol}</option>
-                </select>
-              </div>
-              <button 
-                onClick={() => { setEnableDiscount(false); setDiscount(0, 'percent'); }} 
-                style={{ justifySelf: 'center', color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px' }}
-                className="hover-text-error"
-              >
-                <Trash2 size={14} />
-              </button>
-              <span className="font-medium text-secondary" style={{ textAlign: 'right' }}>
-                -{formatCurrency(totals.discountAmount, currency)}
-              </span>
-            </div>
-          ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px', height: '32px' }}>
-              <span className="text-secondary">Discount</span>
-              <button 
-                className="text-primary" 
-                style={{ justifySelf: 'start', padding: 0, minHeight: 'auto', background: 'none', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 500 }}
-                onClick={() => setEnableDiscount(true)}
-              >
-                + Add discount
-              </button>
-              <div></div>
-              <div></div>
-            </div>
-          )}
-
-          {/* Tax Row */}
-          {enableTax ? (
-            <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px' }}>
-              <input 
-                id="tax-label-input"
-                aria-label="Tax Label"
-                type="text" 
-                className="text-secondary font-medium"
-                value={totals.taxLabel || ''}
-                onChange={(e) => setTaxLabel(e.target.value)}
-                onBlur={(e) => {
-                  const trimmed = e.target.value.trim();
-                  if (!trimmed) setTaxLabel('Tax');
-                  else setTaxLabel(trimmed);
+        {/* Right Side: Totals Card & Configuration */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          
+          {/* Adjustments Form */}
+          <div className="flex-col gap-4" style={{ padding: '24px', background: 'var(--color-surface)', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
+            <div className="grid-2">
+              <Input 
+                id="discount-input"
+                label="Discount"
+                type="text"
+                value={totals.discountValue !== undefined ? totals.discountValue : ''}
+                onChange={(e) => {
+                  if (isValidDecimalInput(e.target.value)) setDiscount(e.target.value, totals.discountType);
                 }}
-                maxLength={15}
-                placeholder="Tax"
-                style={{ border: '1px solid transparent', background: 'transparent', outline: 'none', padding: 0, margin: 0, width: '100%', fontSize: '14px' }}
+                placeholder="0"
               />
-              <div style={{ justifySelf: 'start', display: 'flex', alignItems: 'center', border: '1px solid var(--color-border)', borderRadius: '6px', background: 'white', overflow: 'hidden', height: '32px', width: '92px' }}>
-                <input 
-                  id="tax-rate-input"
-                  aria-label="Tax Rate Percentage"
-                  type="text" 
-                  value={totals.taxRate !== undefined ? totals.taxRate : ''}
-                  onChange={(e) => {
-                    if (isValidDecimalInput(e.target.value)) setTaxRate(e.target.value);
-                  }}
-                  style={{ border: 'none', padding: '0 6px', width: '100%', minWidth: 0, textAlign: 'right', minHeight: 'auto', height: '100%', fontSize: '12px', background: 'none', outline: 'none' }}
-                  placeholder="0"
-                />
-                <span style={{ fontSize: '11px', color: 'var(--color-text-tertiary)', paddingRight: '8px', background: 'white', userSelect: 'none' }}>%</span>
-              </div>
-              <button 
-                onClick={() => { setEnableTax(false); setTaxRate(0); }} 
-                style={{ justifySelf: 'center', color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px' }}
-                className="hover-text-error"
-              >
-                <Trash2 size={14} />
-              </button>
-              <span className="font-medium text-secondary" style={{ textAlign: 'right' }}>
-                {formatCurrency(totals.taxAmount, currency)}
-              </span>
+              <Select
+                label="Discount Type"
+                value={totals.discountType}
+                onChange={(v) => setDiscount(totals.discountValue, v as 'percent' | 'flat')}
+                options={[
+                  { value: 'percent', label: 'Percentage (%)' },
+                  { value: 'flat', label: `Flat Amount (${symbol})` }
+                ]}
+              />
             </div>
-          ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px', height: '32px' }}>
-              <span className="text-secondary">Tax</span>
-              <button 
-                className="text-primary" 
-                style={{ justifySelf: 'start', padding: 0, minHeight: 'auto', background: 'none', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 500 }}
-                onClick={() => setEnableTax(true)}
-              >
-                + Add tax
-              </button>
-              <div></div>
-              <div></div>
+            
+            <div className="grid-2">
+              <Input 
+                id="tax-label-input"
+                label="Tax Label"
+                type="text"
+                value={totals.taxLabel || settings.taxLabel || 'Tax'}
+                onChange={(e) => setTaxLabel(e.target.value)}
+              />
+              <Input 
+                id="tax-rate-input"
+                label="Tax Rate (%)"
+                type="text"
+                value={totals.taxRate !== undefined ? totals.taxRate : ''}
+                onChange={(e) => {
+                  if (isValidDecimalInput(e.target.value)) setTaxRate(e.target.value);
+                }}
+                placeholder="0"
+                rightIcon={<span style={{ fontSize: '14px', color: 'var(--color-text-tertiary)' }}>%</span>}
+              />
             </div>
-          )}
 
-          {/* Shipping Row */}
-          {enableShipping ? (
-            <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px' }}>
-              <label htmlFor="shipping-input" className="text-secondary">Shipping</label>
-              <div style={{ justifySelf: 'start', position: 'relative', width: '92px', height: '32px' }}>
-                <span style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', fontSize: '11px', color: 'var(--color-text-tertiary)', pointerEvents: 'none' }}>{symbol}</span>
-                <input 
-                  id="shipping-input"
-                  type="text" 
-                  value={totals.shipping !== undefined ? totals.shipping : ''}
-                  onChange={(e) => {
-                    if (isValidDecimalInput(e.target.value)) setShipping(e.target.value);
-                  }}
-                  style={{ border: '1px solid var(--color-border)', padding: '0 6px 0 16px', width: '100%', minHeight: 'auto', height: '100%', fontSize: '12px', borderRadius: '6px', textAlign: 'right', outline: 'none' }}
-                  placeholder="0.00"
-                />
-              </div>
-              <button 
-                onClick={() => { setEnableShipping(false); setShipping(0); }} 
-                style={{ justifySelf: 'center', color: 'var(--color-text-tertiary)', background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px' }}
-                className="hover-text-error"
-              >
-                <Trash2 size={14} />
-              </button>
-              <span className="font-medium text-secondary" style={{ textAlign: 'right' }}>
-                {formatCurrency(Number(totals.shipping), currency)}
-              </span>
-            </div>
-          ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '14px', height: '32px' }}>
-              <span className="text-secondary">Shipping</span>
-              <button 
-                className="text-primary" 
-                style={{ justifySelf: 'start', padding: 0, minHeight: 'auto', background: 'none', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 500 }}
-                onClick={() => setEnableShipping(true)}
-              >
-                + Add shipping
-              </button>
-              <div></div>
-              <div></div>
-            </div>
-          )}
-
-          <div style={{ borderTop: '1px solid #E4E7EC', margin: '4px 0' }} />
-
-          {/* Total Row */}
-          <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '16px', color: 'var(--color-text-main)', fontWeight: 600 }}>
-            <span>Total</span>
-            <div></div>
-            <div></div>
-            <span style={{ textAlign: 'right' }}>{formatCurrency(totals.total, currency)}</span>
-          </div>
-
-          {/* Amount Paid Row */}
-          <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '12px', alignItems: 'center', fontSize: '13px' }}>
-            <label htmlFor="amount-paid-input" className="text-secondary">Amount Paid</label>
-            <div></div>
-            <div></div>
-            <div style={{ justifySelf: 'end', position: 'relative', width: '92px', height: '32px' }}>
-              <span style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', fontSize: '11px', color: 'var(--color-text-tertiary)', pointerEvents: 'none' }}>{symbol}</span>
-              <input 
+            <div className="grid-2">
+              <Input 
+                id="shipping-input"
+                label="Shipping"
+                type="text"
+                value={totals.shipping !== undefined ? totals.shipping : ''}
+                onChange={(e) => {
+                  if (isValidDecimalInput(e.target.value)) setShipping(e.target.value);
+                }}
+                placeholder="0.00"
+                leftIcon={<span style={{ fontSize: '14px', color: 'var(--color-text-tertiary)' }}>{symbol}</span>}
+              />
+              <Input 
                 id="amount-paid-input"
-                type="text" 
+                label="Amount Paid"
+                type="text"
                 value={totals.amountPaid !== undefined ? totals.amountPaid : ''}
                 onChange={(e) => {
                   if (isValidDecimalInput(e.target.value)) setAmountPaid(e.target.value);
                 }}
-                style={{ border: '1px solid var(--color-border)', padding: '0 6px 0 16px', width: '100%', minHeight: 'auto', height: '100%', fontSize: '12px', borderRadius: '6px', textAlign: 'right', outline: 'none' }}
                 placeholder="0.00"
+                leftIcon={<span style={{ fontSize: '14px', color: 'var(--color-text-tertiary)' }}>{symbol}</span>}
               />
             </div>
           </div>
 
-          {/* Balance Due Block (Soft blue, 56px height, large text) */}
+          {/* Totals Summary */}
           <div style={{
-            background: '#EEF4FF',
-            border: '1px solid rgba(21, 94, 239, 0.2)',
-            borderRadius: '12px',
-            minHeight: '56px',
+            background: 'var(--color-surface)',
+            border: '1px solid var(--color-border)',
+            borderRadius: '16px',
+            padding: '24px',
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '0 16px',
-            marginTop: '8px'
+            flexDirection: 'column',
+            gap: '16px',
+            width: '100%',
+            boxShadow: '0 4px 12px rgba(16, 24, 40, 0.03)'
           }}>
-            <span style={{ color: 'var(--color-text-main)', fontWeight: 600, fontSize: '14px' }}>Balance Due</span>
-            <span style={{ color: '#155EEF', fontWeight: 800, fontSize: '20px' }}>
-              {formatCurrency(totals.balanceDue, currency)}
-            </span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: 'var(--color-text-secondary)', fontWeight: 500 }}>
+              <span>Subtotal</span>
+              <span>{formatCurrency(totals.subtotal, currency)}</span>
+            </div>
+            {totals.discountAmount > 0 && (
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
+                <span>Discount</span>
+                <span>-{formatCurrency(totals.discountAmount, currency)}</span>
+              </div>
+            )}
+            {totals.taxAmount > 0 && (
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
+                <span>{totals.taxLabel || settings.taxLabel || 'Tax'}</span>
+                <span>{formatCurrency(totals.taxAmount, currency)}</span>
+              </div>
+            )}
+            {Number(totals.shipping) > 0 && (
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
+                <span>Shipping</span>
+                <span>{formatCurrency(Number(totals.shipping), currency)}</span>
+              </div>
+            )}
+            
+            <div style={{ borderTop: '1px solid #E4E7EC', margin: '4px 0' }} />
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '16px', color: 'var(--color-text-main)', fontWeight: 600 }}>
+              <span>Total</span>
+              <span>{formatCurrency(totals.total, currency)}</span>
+            </div>
+
+            <div style={{
+              background: '#EEF4FF',
+              border: '1px solid rgba(21, 94, 239, 0.2)',
+              borderRadius: '12px',
+              minHeight: '56px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '0 16px',
+              marginTop: '8px'
+            }}>
+              <span style={{ color: 'var(--color-text-main)', fontWeight: 600, fontSize: '14px' }}>Balance Due</span>
+              <span style={{ color: '#155EEF', fontWeight: 800, fontSize: '20px' }}>
+                {formatCurrency(totals.balanceDue, currency)}
+              </span>
+            </div>
           </div>
+
         </div>
       </div>
       <style>{`

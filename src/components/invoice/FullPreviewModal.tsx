@@ -1,13 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Download, FileText, Loader2, ZoomIn, ZoomOut, Maximize } from 'lucide-react';
+import { X, Download, ZoomIn, ZoomOut, Maximize } from 'lucide-react';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import type { InvoiceData } from '../../types/invoice';
-import { buildInvoicePDF } from '../../utils/pdfGenerator';
-import { Document, Page, pdfjs } from 'react-pdf';
-
-// Initialize PDF.js worker locally
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
-pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
+import { InvoiceA4Preview } from './InvoiceA4Preview';
 
 interface FullPreviewModalProps {
   isOpen: boolean;
@@ -17,69 +13,21 @@ interface FullPreviewModalProps {
 }
 
 export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onClose, data, onDownloadPDF }) => {
-  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
-  const [hasError, setHasError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [pageWidth, setPageWidth] = useState(600); // Dynamic width based on container
-  const [scale, setScale] = useState(1);
   const modalRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchCurrent, setTouchCurrent] = useState<number | null>(null);
+  const isDragging = touchStart !== null && touchCurrent !== null;
+  const dragDistance = isDragging ? Math.max(0, touchCurrent - touchStart) : 0;
+  
+  // Calculate fit-width scale
+  const [fitScale, setFitScale] = useState(0.8);
 
-  const handleZoomIn = () => setScale(s => Math.min(s + 0.25, 3));
-  const handleZoomOut = () => setScale(s => Math.max(s - 0.25, 0.5));
-  const handleFit = () => {
-    setScale(1);
-    if (containerRef.current) {
-      containerRef.current.scrollTop = 0;
-      containerRef.current.scrollLeft = 0;
-    }
-  };
-
-  // Handle PDF Generation & Blob URL lifecycle
-  useEffect(() => {
-    if (!isOpen) {
-      setScale(1);
-      if (pdfUrl) {
-        URL.revokeObjectURL(pdfUrl);
-        setPdfUrl(null);
-      }
-      return;
-    }
-
-    setHasError(false);
-    setIsLoading(true);
-    let active = true;
-    
-    // Generate new PDF blob
-    const generatePdf = async () => {
-      try {
-        const doc = await buildInvoicePDF(data);
-        if (!active) return;
-        const blob = doc.output('blob');
-        const newUrl = URL.createObjectURL(blob);
-        setPdfUrl(newUrl);
-      } catch (err) {
-        if (!active) return;
-        console.error('Failed to generate PDF preview:', err);
-        setHasError(true);
-        setIsLoading(false);
-      }
-    };
-    
-    generatePdf();
-
-    // Cleanup on data change or unmount
-    return () => {
-      active = false;
-      if (pdfUrl) URL.revokeObjectURL(pdfUrl);
-    };
-  }, [isOpen, data]);
-
-  // Handle ESC and Scroll lock
+  // Handle ESC
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') onClose();
       };
@@ -91,29 +39,46 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
     }
   }, [isOpen, onClose]);
 
-  // Dynamic sizing
+  // Dynamic initial sizing to fit width
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
         const isMobile = window.innerWidth <= 768;
-        const padding = isMobile ? 32 : 48; // 16px padding on each side for mobile
-        setPageWidth(Math.min(containerRef.current.clientWidth - padding, 800));
+        const padding = isMobile ? 32 : 80;
+        const availableWidth = containerRef.current.clientWidth - padding;
+        const targetScale = Math.min(1.5, availableWidth / 800);
+        setFitScale(targetScale);
       }
     };
     
     if (isOpen) {
-      // Small delay to ensure modal is rendered
       setTimeout(updateWidth, 50);
       window.addEventListener('resize', updateWidth);
       return () => window.removeEventListener('resize', updateWidth);
     }
   }, [isOpen]);
 
-  // Handle backdrop click
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
+  // Touch handlers for drag-to-dismiss (mobile)
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientY);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStart !== null) {
+      setTouchCurrent(e.touches[0].clientY);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (dragDistance > 100) {
       onClose();
     }
+    setTouchStart(null);
+    setTouchCurrent(null);
+  };
+
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) onClose();
   };
 
   if (!isOpen) return null;
@@ -127,8 +92,8 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
             align-items: flex-end !important;
           }
           .full-preview-card {
-            height: 94dvh !important;
-            max-height: 94dvh !important;
+            height: 96dvh !important;
+            max-height: 96dvh !important;
             border-radius: 24px 24px 0 0 !important;
             width: 100vw !important;
             animation: slideUpSheet 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -141,193 +106,147 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
       `}</style>
       <div 
         className="full-preview-backdrop"
-        data-testid="full-preview-overlay"
         onClick={handleBackdropClick}
         role="dialog"
         aria-modal="true"
-        aria-labelledby="preview-title"
         style={{
           position: 'fixed',
           inset: 0,
           width: '100vw',
           height: '100dvh',
-          backgroundColor: 'rgba(16, 24, 40, 0.75)',
+          backgroundColor: 'rgba(15, 23, 42, 0.4)', // Softer backdrop
+          backdropFilter: 'blur(4px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           zIndex: 9999,
-          padding: 'var(--space-4)'
-        }}
-    >
-      <div 
-        ref={modalRef}
-        className="card full-preview-card" 
-        style={{
-          width: '100%',
-          maxWidth: '850px',
-          height: '90vh',
-          maxHeight: '1000px',
-          display: 'flex',
-          flexDirection: 'column',
-          position: 'relative',
-          overflow: 'hidden'
+          padding: '24px',
+          transition: 'opacity 0.3s ease'
         }}
       >
-        {/* Mobile Drag Handle */}
-        <div className="mobile-only" style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingTop: '12px', paddingBottom: '4px', backgroundColor: 'var(--color-surface)' }}>
-          <div style={{ width: '40px', height: '4px', backgroundColor: '#E2E8F0', borderRadius: '2px' }} />
-        </div>
-
-        {/* Header */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '16px 24px',
-          borderBottom: '1px solid var(--color-border)',
-          backgroundColor: 'var(--color-surface)',
-          flexShrink: 0
-        }}>
-          <h2 id="preview-title" className="font-bold text-lg m-0" style={{ color: 'var(--color-text-main)' }}>
-            Invoice Preview
-          </h2>
-          <div style={{ display: 'flex', gap: '12px' }}>
-            <button className="btn btn-primary" style={{ padding: '0 16px', height: '36px' }} onClick={onDownloadPDF}>
-              <Download size={16} style={{ marginRight: '8px' }} /> <span className="hidden sm:inline">Download PDF</span>
-            </button>
-            <button 
-              onClick={onClose}
-              className="btn btn-ghost"
-              style={{ width: '36px', height: '36px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-              aria-label="Close"
-            >
-              <X size={20} className="text-secondary" />
-            </button>
+        <div 
+          ref={modalRef}
+          className="full-preview-card"
+          style={{
+            width: '100%',
+            maxWidth: '1200px',
+            height: '92vh',
+            backgroundColor: '#F8FAFC',
+            borderRadius: '16px',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'relative',
+            overflow: 'hidden',
+            transform: isDragging ? `translateY(${dragDistance}px)` : 'translateY(0)',
+            transition: isDragging ? 'none' : 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+        >
+          {/* Mobile Drag Handle */}
+          <div 
+            className="mobile-only" 
+            style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingTop: '16px', paddingBottom: '8px', cursor: 'grab', zIndex: 10 }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div style={{ width: '48px', height: '5px', backgroundColor: '#CBD5E1', borderRadius: '3px' }} />
           </div>
-        </div>
-        
-        {/* Body (PDF Viewer) */}
-        <div ref={containerRef} style={{ flex: 1, backgroundColor: '#EAECF0', position: 'relative', overflowY: 'auto', overscrollBehavior: 'contain' }}>
-          
-          {hasError ? (
-            // Fallback UI
-            <div style={{
-              position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-              padding: '32px', textAlign: 'center'
-            }}>
-              <FileText size={48} className="text-secondary" style={{ marginBottom: '16px' }} />
-              <h3 className="font-bold text-lg" style={{ marginBottom: '8px', color: 'var(--color-text-main)' }}>
-                Preview not supported
-              </h3>
-              <p className="text-secondary" style={{ marginBottom: '24px', maxWidth: '300px' }}>
-                Your browser cannot display the PDF inline. You can still download it or open it directly.
-              </p>
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <a href={pdfUrl || '#'} target="_blank" rel="noreferrer" className="btn btn-outline">
-                  Open PDF
-                </a>
-                <button className="btn btn-primary" onClick={onDownloadPDF}>
-                  <Download size={16} style={{ marginRight: '8px' }} /> Download PDF
-                </button>
-              </div>
-            </div>
-          ) : (
-            <>
-              <div style={{ padding: '24px', minWidth: 'fit-content', minHeight: 'fit-content' }}>
-                <div style={{ margin: '0 auto', width: 'fit-content' }}>
-                  {pdfUrl && (
-                    <Document
-                      file={pdfUrl}
-                      onLoadSuccess={() => setIsLoading(false)}
-                      onLoadError={(err) => {
-                        console.error("React-pdf failed to load document:", err);
-                        setHasError(true);
-                      }}
-                      loading={
-                        <div style={{ padding: '24px', display: 'flex', justifyContent: 'center' }}>
-                          <div style={{ 
-                            width: pageWidth, 
-                            height: pageWidth * 1.414, // A4 aspect ratio 
-                            backgroundColor: 'var(--color-surface)', 
-                            boxShadow: 'var(--shadow-md)',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            padding: '40px',
-                            gap: '24px',
-                            animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-                          }}>
-                            {/* Header Skeleton */}
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-                              <div style={{ width: '40%', height: '40px', backgroundColor: '#F1F5F9', borderRadius: '4px' }} />
-                              <div style={{ width: '25%', height: '40px', backgroundColor: '#F1F5F9', borderRadius: '4px' }} />
-                            </div>
-                            {/* Lines Skeleton */}
-                            <div style={{ width: '60%', height: '16px', backgroundColor: '#F1F5F9', borderRadius: '4px' }} />
-                            <div style={{ width: '80%', height: '16px', backgroundColor: '#F1F5F9', borderRadius: '4px' }} />
-                            <div style={{ width: '50%', height: '16px', backgroundColor: '#F1F5F9', borderRadius: '4px' }} />
-                            {/* Table Skeleton */}
-                            <div style={{ marginTop: '40px', width: '100%', height: '200px', backgroundColor: '#F1F5F9', borderRadius: '8px' }} />
-                          </div>
-                          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', background: 'rgba(255,255,255,0.9)', padding: '16px 24px', borderRadius: '12px', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
-                            <Loader2 className="animate-spin" size={32} style={{ color: 'var(--color-primary)' }} />
-                            <span style={{ fontWeight: 600, color: 'var(--color-text-main)' }}>Rendering PDF...</span>
-                          </div>
-                        </div>
-                      }
-                    >
-                      <div style={{ boxShadow: 'var(--shadow-paper)' }}>
-                        <Page 
-                          pageNumber={1} 
-                          width={pageWidth} 
-                          scale={scale}
-                          renderTextLayer={false} 
-                          renderAnnotationLayer={false}
-                          className="bg-white"
-                        />
-                      </div>
-                    </Document>
-                  )}
-                </div>
-              </div>
+
+          <TransformWrapper
+            initialScale={fitScale}
+            minScale={0.3}
+            maxScale={3}
+            centerOnInit
+            wheel={{ step: 0.1 }}
+            doubleClick={{ mode: 'reset' }}
+          >
+            {({ zoomIn, zoomOut, setTransform, state }) => {
+              // Update initial scale when fitScale changes, but only if we haven't zoomed
+              // A bit complex without a wrapper, so we just use the UI buttons to reset
+              const handleFitWidth = () => {
+                setTransform(0, 0, fitScale, 200, "easeOut");
+              };
               
-              {/* Floating Zoom Controls */}
-              {pdfUrl && !isLoading && (
-                <div style={{
-                  position: 'fixed',
-                  bottom: '24px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  backgroundColor: 'var(--color-surface)',
-                  padding: '6px',
-                  borderRadius: '999px',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1)',
-                  gap: '4px',
-                  zIndex: 10
-                }}>
-                  <button onClick={handleZoomOut} className="btn btn-ghost" style={{ padding: '8px', borderRadius: '50%', minWidth: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-label="Zoom out">
-                    <ZoomOut size={18} className="text-secondary" />
-                  </button>
-                  <span style={{ fontSize: '14px', fontWeight: '500', minWidth: '48px', textAlign: 'center', color: 'var(--color-text-main)' }}>
-                    {scale === 1 ? 'Fit' : `${Math.round(scale * 100)}%`}
-                  </span>
-                  <button onClick={handleZoomIn} className="btn btn-ghost" style={{ padding: '8px', borderRadius: '50%', minWidth: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-label="Zoom in">
-                    <ZoomIn size={18} className="text-secondary" />
-                  </button>
-                  <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--color-border)', margin: '0 4px' }} />
-                  <button onClick={handleFit} className={`btn ${scale === 1 ? 'btn-secondary' : 'btn-ghost'}`} style={{ padding: '0 16px', height: '44px', borderRadius: '999px', fontSize: '14px', fontWeight: '500', display: 'flex', alignItems: 'center', backgroundColor: scale === 1 ? 'var(--color-border)' : 'transparent' }} aria-label="Fit to screen">
-                    <Maximize size={16} className={scale === 1 ? '' : 'text-secondary'} style={{ marginRight: '6px' }} />
-                    Fit
-                  </button>
-                </div>
-              )}
-            </>
-          )}
+              return (
+                <>
+                  {/* Desktop Toolbar */}
+                  <div className="desktop-only" style={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    alignItems: 'center',
+                    padding: '16px 24px',
+                    gap: '12px',
+                    zIndex: 10,
+                    backgroundColor: '#F8FAFC',
+                    borderBottom: '1px solid #E2E8F0'
+                  }}>
+                    <button className="btn btn-ghost" onClick={() => zoomOut(0.25)} style={{ padding: '8px' }}>
+                      <ZoomOut size={20} />
+                    </button>
+                    <span style={{ fontSize: '14px', fontWeight: 500, minWidth: '48px', textAlign: 'center' }}>
+                      {Math.round(state.scale * 100)}%
+                    </span>
+                    <button className="btn btn-ghost" onClick={() => zoomIn(0.25)} style={{ padding: '8px' }}>
+                      <ZoomIn size={20} />
+                    </button>
+                    <button className="btn btn-ghost" onClick={handleFitWidth} style={{ padding: '8px 16px', display: 'flex', gap: '8px' }}>
+                      <Maximize size={16} /> Fit Width
+                    </button>
+                    
+                    <div style={{ width: '1px', height: '24px', backgroundColor: '#E2E8F0', margin: '0 8px' }} />
+                    
+                    <button className="btn btn-primary" onClick={onDownloadPDF} style={{ padding: '0 24px', height: '40px' }}>
+                      <Download size={18} style={{ marginRight: '8px' }} /> Download PDF
+                    </button>
+                    <button className="btn btn-ghost" onClick={onClose} style={{ padding: '8px', marginLeft: '8px' }}>
+                      <X size={24} />
+                    </button>
+                  </div>
+
+                  {/* Mobile Actions Overlay */}
+                  <div className="mobile-only" style={{ 
+                    position: 'absolute', 
+                    bottom: 0, 
+                    left: 0, 
+                    right: 0, 
+                    padding: '20px', 
+                    zIndex: 10,
+                    background: 'linear-gradient(to top, #F8FAFC 60%, transparent)'
+                  }}>
+                     <button className="btn btn-primary" onClick={onDownloadPDF} style={{ padding: '0 24px', height: '52px', width: '100%', borderRadius: '12px', fontSize: '16px' }}>
+                      <Download size={20} style={{ marginRight: '8px' }} /> Download PDF
+                    </button>
+                  </div>
+
+                  {/* Paper Container */}
+                  <div 
+                    ref={containerRef} 
+                    style={{ 
+                      flex: 1, 
+                      display: 'flex', 
+                      justifyContent: 'center', 
+                      alignItems: 'center',
+                      backgroundColor: '#F8FAFC',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }} contentStyle={{ padding: '40px' }}>
+                      <div style={{ 
+                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)', 
+                        borderRadius: '2px', // Minimal paper radius
+                        overflow: 'hidden'
+                      }}>
+                        <InvoiceA4Preview data={data} scale={1} />
+                      </div>
+                    </TransformComponent>
+                  </div>
+                </>
+              );
+            }}
+          </TransformWrapper>
         </div>
       </div>
-    </div>
     </>,
     document.body
   );

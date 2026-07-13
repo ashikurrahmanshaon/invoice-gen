@@ -54,8 +54,6 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
 
   return (
     <div className="flex-col gap-6" style={{ width: '100%', borderBottom: '1px solid var(--color-border)', paddingBottom: 'var(--space-6)' }}>
-      {/* Section Header removed in favor of global wizard step indicator */}
-
       <div style={{ width: '100%' }}>
         <ClientPicker 
           clients={clientHook.clients} 
@@ -65,119 +63,99 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
         
         <div className="flex-col gap-4">
           <div className="grid-2">
-            <div style={{ paddingBottom: '6px' }}>
-              <Input 
-                id="client-name-input"
-                label="Client Name *"
-                type="text" 
-                placeholder="Client or Company Name"
-                value={data.client.name}
-                onChange={(e) => updateClient({ name: e.target.value })}
-              />
-            </div>
-            <div style={{ paddingBottom: '6px' }}>
-              <Input 
-                id="client-email-input"
-                label="Email *"
-                type="email" 
-                placeholder="client@example.com"
-                value={data.client.email}
-                onChange={(e) => updateClient({ email: e.target.value })}
-              />
-            </div>
+            <Input 
+              id="client-name-input"
+              label="Client Name *"
+              type="text" 
+              placeholder="Client or Company Name"
+              value={data.client.name}
+              onChange={(e) => updateClient({ name: e.target.value })}
+            />
+            <Input 
+              id="client-email-input"
+              label="Email *"
+              type="email" 
+              placeholder="client@example.com"
+              value={data.client.email}
+              onChange={(e) => updateClient({ email: e.target.value })}
+            />
           </div>
 
           {showOptional ? (
             <div className="flex-col gap-4" style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-2)' }}>
               <div className="grid-2">
-                <div>
-                  <Input 
-                    id="client-phone-input"
-                    label="Phone"
-                    type="tel" 
-                    placeholder="Client phone number"
-                    value={data.client.phone || ''}
-                    onChange={(e) => updateClient({ phone: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <Input 
-                    id="client-taxid-input"
-                    label="Tax ID / VAT Number"
-                    type="text" 
-                    placeholder="e.g. VAT / GST ID"
-                    value={data.client.taxId || ''}
-                    onChange={(e) => updateClient({ taxId: e.target.value })}
-                  />
-                </div>
-              </div>
-
-              <div>
                 <Input 
-                  id="client-address1-input"
-                  label="Address Line 1"
+                  id="client-phone-input"
+                  label="Phone"
+                  type="tel" 
+                  placeholder="Client phone number"
+                  value={data.client.phone || ''}
+                  onChange={(e) => updateClient({ phone: e.target.value })}
+                />
+                <Input 
+                  id="client-taxid-input"
+                  label="Tax ID / VAT Number"
                   type="text" 
-                  placeholder="Street address"
-                  value={data.client.address1 || ''}
-                  onChange={(e) => updateClient({ address1: e.target.value })}
+                  placeholder="e.g. VAT / GST ID"
+                  value={data.client.taxId || ''}
+                  onChange={(e) => updateClient({ taxId: e.target.value })}
                 />
               </div>
+
+              <Input 
+                id="client-address1-input"
+                label="Address Line 1"
+                type="text" 
+                placeholder="Street address"
+                value={data.client.address1 || ''}
+                onChange={(e) => updateClient({ address1: e.target.value })}
+              />
               
-              <div>
+              <Input 
+                id="client-address2-input"
+                label="Address Line 2"
+                type="text" 
+                placeholder="Apt, suite, etc. (optional)"
+                value={data.client.address2 || ''}
+                onChange={(e) => updateClient({ address2: e.target.value })}
+              />
+
+              <div className="grid-2">
                 <Input 
-                  id="client-address2-input"
-                  label="Address Line 2"
+                  id="client-city-input"
+                  label="City"
                   type="text" 
-                  placeholder="Apt, suite, etc. (optional)"
-                  value={data.client.address2 || ''}
-                  onChange={(e) => updateClient({ address2: e.target.value })}
+                  placeholder="City"
+                  value={data.client.city || ''}
+                  onChange={(e) => updateClient({ city: e.target.value })}
+                />
+                <Input 
+                  id="client-state-input"
+                  label="State / Province"
+                  type="text" 
+                  placeholder="State or Region"
+                  value={data.client.state || ''}
+                  onChange={(e) => updateClient({ state: e.target.value })}
                 />
               </div>
 
               <div className="grid-2">
-                <div>
-                  <Input 
-                    id="client-city-input"
-                    label="City"
-                    type="text" 
-                    placeholder="City"
-                    value={data.client.city || ''}
-                    onChange={(e) => updateClient({ city: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <Input 
-                    id="client-state-input"
-                    label="State / Province"
-                    type="text" 
-                    placeholder="State or Region"
-                    value={data.client.state || ''}
-                    onChange={(e) => updateClient({ state: e.target.value })}
-                  />
-                </div>
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
-                <div>
-                  <Input 
-                    id="client-postal-input"
-                    label="Postal / ZIP Code"
-                    type="text" 
-                    placeholder="Postal code"
-                    value={data.client.postalCode || ''}
-                    onChange={(e) => updateClient({ postalCode: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <Input 
-                    id="client-country-input"
-                    label="Country"
-                    type="text" 
-                    placeholder="Country"
-                    value={data.client.country || ''}
-                    onChange={(e) => updateClient({ country: e.target.value })}
-                  />
-                </div>
+                <Input 
+                  id="client-postal-input"
+                  label="Postal / ZIP Code"
+                  type="text" 
+                  placeholder="Postal code"
+                  value={data.client.postalCode || ''}
+                  onChange={(e) => updateClient({ postalCode: e.target.value })}
+                />
+                <Input 
+                  id="client-country-input"
+                  label="Country"
+                  type="text" 
+                  placeholder="Country"
+                  value={data.client.country || ''}
+                  onChange={(e) => updateClient({ country: e.target.value })}
+                />
               </div>
 
               <button 

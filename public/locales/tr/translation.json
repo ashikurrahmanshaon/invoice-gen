@@ -1,0 +1,46 @@
+{
+  "invoice": {
+    "title": "Invoice",
+    "number": "Invoice Number",
+    "issueDate": "Issue Date",
+    "dueDate": "Due Date",
+    "billTo": "Bill To",
+    "from": "From"
+  },
+  "business": {
+    "name": "Business Name",
+    "email": "Email",
+    "phone": "Phone",
+    "website": "Website",
+    "taxId": "Tax ID",
+    "address": "Address"
+  },
+  "client": {
+    "name": "Client Name",
+    "email": "Email",
+    "phone": "Phone",
+    "taxId": "Tax ID",
+    "address": "Address"
+  },
+  "items": {
+    "description": "Description",
+    "quantity": "Qty",
+    "rate": "Rate",
+    "amount": "Amount",
+    "addItem": "Add Item"
+  },
+  "totals": {
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "tax": "Tax",
+    "shipping": "Shipping",
+    "total": "Total",
+    "amountPaid": "Amount Paid",
+    "balanceDue": "Balance Due"
+  },
+  "settings": {
+    "language": "Language",
+    "currency": "Currency",
+    "paperSize": "Paper Size"
+  }
+}

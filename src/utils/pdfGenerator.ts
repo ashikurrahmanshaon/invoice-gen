@@ -1,8 +1,9 @@
 import type { jsPDF } from 'jspdf';
 import type { InvoiceData } from '../types/invoice';
-import { formatCurrency } from './currency';
+import { formatCurrency, formatDate } from './currency';
 import { formatAddress } from './addressFormatter';
 import { calculateLineAmount, sanitizeNumber } from './calculations';
+import i18next from 'i18next';
 
 const safeSplitTextToSize = (doc: jsPDF, text: string, maxWidth: number) => {
   const paragraphs = text.split('\n');
@@ -89,7 +90,7 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(22);
   doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
-  doc.text('INVOICE', 190, metadataY, { align: 'right' });
+  doc.text(i18next.t('invoice_title', 'INVOICE'), 190, metadataY, { align: 'right' });
   metadataY += 8;
   
   doc.setFont('helvetica', 'normal');
@@ -98,7 +99,7 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
   
   // Render "Invoice No:" label
   doc.setFont('helvetica', 'bold');
-  doc.text('Invoice No:', 190, metadataY, { align: 'right' });
+  doc.text(i18next.t('invoice_no_label', 'Invoice No:'), 190, metadataY, { align: 'right' });
   metadataY += 5;
   
   // Render wrapped Invoice Number value
@@ -110,9 +111,9 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
   });
   
   // Render Date and Due Date below the wrapped invoice number
-  doc.text(`Date: ${data.details.issueDate}`, 190, metadataY, { align: 'right' });
+  doc.text(`${i18next.t('date_label', 'Date:')} ${formatDate(data.details.issueDate)}`, 190, metadataY, { align: 'right' });
   metadataY += 5;
-  doc.text(`Due Date: ${data.details.dueDate}`, 190, metadataY, { align: 'right' });
+  doc.text(`${i18next.t('due_date_label', 'Due Date:')} ${formatDate(data.details.dueDate)}`, 190, metadataY, { align: 'right' });
   metadataY += 5;
 
   // Business details (Left side - wrapped to 75mm max width to prevent extending past X=95)
@@ -139,14 +140,14 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
   });
 
   if (data.business.phone) {
-    const businessPhoneLines = doc.splitTextToSize(`Phone: ${data.business.phone}`, 75);
+    const businessPhoneLines = doc.splitTextToSize(`${i18next.t('phone_label', 'Phone:')} ${data.business.phone}`, 75);
     businessPhoneLines.forEach((line: string) => {
       doc.text(line, 20, leftY);
       leftY += 5;
     });
   }
   if (data.business.website) {
-    const businessWebLines = doc.splitTextToSize(`Website: ${data.business.website}`, 75);
+    const businessWebLines = doc.splitTextToSize(`${i18next.t('website_label', 'Website:')} ${data.business.website}`, 75);
     businessWebLines.forEach((line: string) => {
       doc.text(line, 20, leftY);
       leftY += 5;
@@ -163,7 +164,7 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
     });
   }
   if (data.business.taxId) {
-    const businessTaxLines = doc.splitTextToSize(`Tax ID: ${data.business.taxId}`, 75);
+    const businessTaxLines = doc.splitTextToSize(`${i18next.t('tax_id_label', 'Tax ID:')} ${data.business.taxId}`, 75);
     businessTaxLines.forEach((line: string) => {
       doc.text(line, 20, leftY);
       leftY += 5;
@@ -175,7 +176,7 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
-  doc.text('BILL TO', 105, rightY);
+  doc.text(i18next.t('bill_to_label', 'BILL TO'), 105, rightY);
   rightY += 5;
 
   doc.setFont('helvetica', 'bold');
@@ -214,7 +215,7 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
   });
 
   if (data.client.taxId) {
-    const clientTaxLines = doc.splitTextToSize(`Tax ID: ${data.client.taxId}`, 40);
+    const clientTaxLines = doc.splitTextToSize(`${i18next.t('tax_id_label', 'Tax ID:')} ${data.client.taxId}`, 40);
     clientTaxLines.forEach((line: string) => {
       doc.text(line, 105, rightY);
       rightY += 5;
@@ -225,7 +226,13 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
   currentY = Math.max(leftY, rightY, metadataY) + 10;
 
   // Build items table data
-  const tableHeaders = [['Item / Service', 'Description', 'Rate', 'Qty', 'Amount']];
+  const tableHeaders = [[
+    i18next.t('item_header', 'Item / Service'),
+    i18next.t('description_header', 'Description'),
+    i18next.t('rate_header', 'Rate'),
+    i18next.t('qty_header', 'Qty'),
+    i18next.t('amount_header', 'Amount')
+  ]];
   const tableData = data.items.map((item) => [
     item.name || 'Untitled Item',
     item.description || '',
@@ -315,9 +322,9 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
     currentY += 5; // spacing after section
   };
 
-  drawSection('Notes', data.notes);
-  drawSection('Terms & Conditions', data.terms);
-  drawSection('Payment Instructions', data.paymentInstructions);
+  drawSection(i18next.t('notes_section', 'Notes'), data.notes);
+  drawSection(i18next.t('terms_section', 'Terms & Conditions'), data.terms);
+  drawSection(i18next.t('payment_instructions_section', 'Payment Instructions'), data.paymentInstructions);
 
   // Totals Section (Right side, X=120 to X=190)
   let totalsHeight = 25; // Base height for subtotal, total, amount paid, balance due
@@ -343,13 +350,13 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
   const totals = data.totals;
 
   // Subtotal
-  drawRow('Subtotal', formatCurrency(totals.subtotal, currency));
+  drawRow(i18next.t('subtotal_label', 'Subtotal'), formatCurrency(totals.subtotal, currency));
 
   // Discount
   if (Number(totals.discountValue) > 0) {
     const discountLabel = totals.discountType === 'percent' 
-      ? `Discount (${totals.discountValue}%)` 
-      : 'Discount';
+      ? `${i18next.t('discount_label', 'Discount')} (${totals.discountValue}%)` 
+      : i18next.t('discount_label', 'Discount');
     drawRow(discountLabel, `-${formatCurrency(totals.discountAmount, currency)}`);
   }
 
@@ -361,7 +368,7 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
 
   // Shipping
   if (Number(totals.shipping) !== 0 && totals.shipping !== '') {
-    drawRow('Shipping', formatCurrency(Number(totals.shipping) || 0, currency));
+    drawRow(i18next.t('shipping_label', 'Shipping'), formatCurrency(Number(totals.shipping) || 0, currency));
   }
 
   // Total
@@ -371,10 +378,10 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
   doc.setLineWidth(0.1);
   doc.line(120, totalY - 4, 190, totalY - 4);
   
-  drawRow('Total', formatCurrency(totals.total, currency), true);
+  drawRow(i18next.t('total_label', 'Total'), formatCurrency(totals.total, currency), true);
 
   // Amount Paid
-  drawRow('Amount Paid', formatCurrency(Number(totals.amountPaid) || 0, currency));
+  drawRow(i18next.t('amount_paid_label', 'Amount Paid'), formatCurrency(Number(totals.amountPaid) || 0, currency));
 
   // Balance Due highlighted block
   totalY += 2;
@@ -385,7 +392,7 @@ export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   doc.setTextColor(darkTextColor[0], darkTextColor[1], darkTextColor[2]);
-  doc.text('Balance Due', 124, totalY + 4);
+  doc.text(i18next.t('balance_due_label', 'Balance Due'), 124, totalY + 4);
 
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(12);

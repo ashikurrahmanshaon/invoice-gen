@@ -1,3 +1,4 @@
+@import './rtl.css';
 @import './tokens.css';
 @import './responsive.css';
 
@@ -57,16 +58,16 @@ textarea {
 /* Input Component Architecture */
 .input-container {
   width: 100%;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-6); /* 24px between sections */
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-2); /* 8px between label and input */
 }
 
 .input-label {
   font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted); /* Muted gray */
 }
 
 .input-wrapper {
@@ -75,9 +76,9 @@ textarea {
   align-items: center;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  transition: all var(--transition-fast);
-  min-height: 52px;
+  border-radius: var(--radius-lg); /* 12px */
+  transition: all 150ms ease;
+  height: 52px;
 }
 
 .input-wrapper:hover {
@@ -86,7 +87,7 @@ textarea {
 
 .input-wrapper:focus-within {
   border-color: var(--color-primary);
-  box-shadow: var(--shadow-focus);
+  box-shadow: none; /* No glow */
 }
 
 .input-wrapper.has-error {
@@ -94,7 +95,7 @@ textarea {
 }
 
 .input-wrapper.has-error:focus-within {
-  box-shadow: var(--shadow-focus-error);
+  box-shadow: none;
 }
 
 .input-icon {
@@ -111,11 +112,16 @@ textarea {
   border: none;
   background: transparent;
   outline: none;
-  padding: 0 var(--space-4);
-  font-size: var(--text-base);
+  padding: 0 var(--space-4); /* 16px inside */
+  font-size: var(--text-base); /* 16px font */
   color: var(--color-text-main);
-  font-family: inherit;
+  font-family: var(--font-family); /* Inter */
   height: 100%;
+}
+
+.input-wrapper.is-multiline {
+  height: auto;
+  min-height: 52px;
 }
 
 .input-wrapper.is-multiline .input-element {
@@ -746,4 +752,3 @@ a {
   font-weight: 500;
   margin-right: 8px;
 }
-

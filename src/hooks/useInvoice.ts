@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import type { InvoiceData, LineItem } from '../types/invoice';
 import { calculateTotals } from '../utils/calculations';
 import { loadHydratedData, clearDraftStorage, clearAllStorage } from '../utils/storage';
@@ -87,9 +87,14 @@ const normalizeDecimalString = (val: any): string => {
 export const STORAGE_KEY_ACTIVE_HISTORY_ID = 'invoice_gen_active_history_id';
 export const STORAGE_KEY_ORIGINAL_SNAPSHOT = 'invoice_gen_original_snapshot';
 
-export const useInvoice = () => {
+export const useInvoice = (initialSettings?: { currency: string, taxLabel: string }) => {
   const [data, setData] = useState<InvoiceData>(() => {
-    const hydrated = loadHydratedData(defaultInvoice);
+    const defaultWithSettings = {
+      ...defaultInvoice,
+      details: { ...defaultInvoice.details, currency: initialSettings?.currency || 'USD' },
+      totals: { ...defaultInvoice.totals, taxLabel: initialSettings?.taxLabel || 'Tax' }
+    };
+    const hydrated = loadHydratedData(defaultWithSettings);
     
     // Safe Data Migration: If legacy address exists but new structured fields are missing
     if (hydrated.business && hydrated.business.address && !hydrated.business.address1 && !hydrated.business.city && !hydrated.business.country) {
@@ -154,6 +159,22 @@ export const useInvoice = () => {
     if (originalSnapshot === null) return true;
     return JSON.stringify(data) !== originalSnapshot;
   }, [data, originalSnapshot]);
+
+  // Handle async IP detection: if settings load later and user hasn't modified anything, apply them.
+  useEffect(() => {
+    if (!isDirty && initialSettings) {
+      setData(prev => {
+        if (prev.details.currency === initialSettings.currency && prev.totals.taxLabel === initialSettings.taxLabel) {
+          return prev;
+        }
+        return {
+          ...prev,
+          details: { ...prev.details, currency: initialSettings.currency },
+          totals: { ...prev.totals, taxLabel: initialSettings.taxLabel }
+        };
+      });
+    }
+  }, [initialSettings?.currency, initialSettings?.taxLabel, isDirty]);
 
   const setOriginalSnapshotForCurrentData = useCallback((newData: InvoiceData, newHistoryId: string | null) => {
     const snapshot = JSON.stringify(newData);
@@ -320,7 +341,12 @@ export const useInvoice = () => {
       ...defaultInvoice,
       details: {
         ...defaultInvoice.details,
-        invoiceNumber: generateInvoiceNumber() // Fresh number
+        invoiceNumber: generateInvoiceNumber(), // Fresh number
+        currency: initialSettings?.currency || 'USD'
+      },
+      totals: {
+        ...defaultInvoice.totals,
+        taxLabel: initialSettings?.taxLabel || 'Tax'
       }
     };
     setOriginalSnapshotForCurrentData(freshData, null);

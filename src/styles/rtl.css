@@ -1,0 +1,48 @@
+
+/* ==========================================================================
+   RTL (Right-to-Left) Support
+   ========================================================================== */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .input-icon.left { 
+  padding-left: 0; 
+  padding-right: var(--space-4); 
+}
+
+[dir="rtl"] .input-icon.right { 
+  padding-right: 0; 
+  padding-left: var(--space-4); 
+}
+
+[dir="rtl"] .btn-icon {
+  margin-left: 0;
+  margin-right: var(--space-2);
+}
+
+[dir="rtl"] .btn svg {
+  margin-right: 0;
+  margin-left: var(--space-2);
+}
+
+/* Ensure flex rows flip correctly */
+[dir="rtl"] .flex-row-reverse {
+  flex-direction: row;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left !important;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right !important;
+}
+
+/* Specific component fixes for RTL */
+[dir="rtl"] .items-header-row > div:nth-last-child(2),
+[dir="rtl"] .item-row-grid > div:nth-last-child(2) {
+  text-align: left !important; /* Amount column in items list */
+}
