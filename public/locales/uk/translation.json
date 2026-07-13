@@ -1,13 +1,4 @@
-const fs = require('fs');
-const path = require('path');
-
-const languages = [
-  'en', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'ar', 
-  'ja', 'zh', 'ko', 'hi', 'bn', 'tr', 'ru', 'pl', 
-  'ro', 'el', 'th', 'vi', 'id', 'ms', 'ur', 'he', 'uk'
-];
-
-const baseTranslations = {
+{
   "invoice": {
     "title": "Invoice",
     "number": "Invoice Number",
@@ -52,23 +43,4 @@ const baseTranslations = {
     "currency": "Currency",
     "paperSize": "Paper Size"
   }
-};
-
-const localesDir = path.join(__dirname, '..', 'public', 'locales');
-
-if (!fs.existsSync(localesDir)) {
-  fs.mkdirSync(localesDir, { recursive: true });
 }
-
-languages.forEach(lng => {
-  const lngDir = path.join(localesDir, lng);
-  if (!fs.existsSync(lngDir)) {
-    fs.mkdirSync(lngDir);
-  }
-  
-  const filePath = path.join(lngDir, 'translation.json');
-  // For now, we seed every language with the english keys. 
-  // In a real app, these would be sent to a translation service.
-  fs.writeFileSync(filePath, JSON.stringify(baseTranslations, null, 2));
-  console.log(`Generated locale for ${lng}`);
-});

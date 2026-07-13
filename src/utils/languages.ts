@@ -29,7 +29,8 @@ export const supportedLanguages: LanguageData[] = [
   { code: 'id', name: 'Indonesian', nativeName: 'Bahasa Indonesia', dir: 'ltr' },
   { code: 'ms', name: 'Malay', nativeName: 'Bahasa Melayu', dir: 'ltr' },
   { code: 'ur', name: 'Urdu', nativeName: 'اردو', dir: 'rtl' },
-  { code: 'he', name: 'Hebrew', nativeName: 'עברית', dir: 'rtl' }
+  { code: 'he', name: 'Hebrew', nativeName: 'עברית', dir: 'rtl' },
+  { code: 'uk', name: 'Ukrainian', nativeName: 'Українська', dir: 'ltr' }
 ];
 
 export const getLanguageData = (code: string): LanguageData => {

@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { getLanguageData } from '../utils/languages';
 import { detectRegionFromBrowser, getRegionalSettings, fetchIPGeolocation } from '../utils/locale';
+import i18next from 'i18next';
 
 export interface Settings {
   language: string;
@@ -107,6 +108,11 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   useEffect(() => {
     localStorage.setItem('invoice_gen_settings', JSON.stringify(settings));
+    
+    // Update i18next
+    if (i18next.language !== settings.language) {
+      i18next.changeLanguage(settings.language);
+    }
     
     // Apply RTL/LTR
     const langData = getLanguageData(settings.language);

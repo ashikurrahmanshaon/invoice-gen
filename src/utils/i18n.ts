@@ -12,7 +12,7 @@ i18n
     supportedLngs: [
       'en', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'ar', 
       'ja', 'zh', 'ko', 'hi', 'bn', 'tr', 'ru', 'pl', 
-      'ro', 'el', 'th', 'vi', 'id', 'ms', 'ur', 'he'
+      'ro', 'el', 'th', 'vi', 'id', 'ms', 'ur', 'he', 'uk'
     ],
     load: 'languageOnly',
     interpolation: {

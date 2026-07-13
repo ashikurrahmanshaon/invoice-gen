@@ -3,6 +3,7 @@ import type { InvoiceData } from '../../types/invoice';
 import { formatCurrency, formatDate } from '../../utils/currency';
 import { formatAddress } from '../../utils/addressFormatter';
 import { calculateLineAmount, sanitizeNumber } from '../../utils/calculations';
+import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
 interface InvoiceA4PreviewProps {
@@ -13,6 +14,7 @@ interface InvoiceA4PreviewProps {
 // Memoized sections to ensure 16ms render performance
 
 const PreviewHeader = React.memo(({ business }: { business: InvoiceData['business'] }) => {
+  const { t } = useTranslation();
   const businessAddressLines = useMemo(() => formatAddress(business), [business]);
   
   return (
@@ -33,13 +35,13 @@ const PreviewHeader = React.memo(({ business }: { business: InvoiceData['busines
           {businessAddressLines.map((line, idx) => (
             <div key={idx}>{line}</div>
           ))}
-          {business.taxId && <div>{i18next.t('tax_id_label', 'Tax ID:')} {business.taxId}</div>}
+          {business.taxId && <div>{t('tax_id_label', 'Tax ID:')} {business.taxId}</div>}
         </div>
       </div>
       
       <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
         <div style={{ fontSize: '32px', fontWeight: 700, color: '#155EEF', letterSpacing: '2px', marginBottom: '16px' }}>
-          {i18next.t('invoice_title', 'INVOICE')}
+          {t('invoice_title', 'INVOICE')}
         </div>
       </div>
     </div>
@@ -47,20 +49,21 @@ const PreviewHeader = React.memo(({ business }: { business: InvoiceData['busines
 });
 
 const PreviewMeta = React.memo(({ details }: { details: InvoiceData['details'] }) => {
+  const { t } = useTranslation();
   return (
     <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '40px' }}>
       <table style={{ width: 'auto', borderCollapse: 'collapse', fontSize: '12px' }}>
         <tbody>
           <tr>
-            <td style={{ padding: '4px 16px 4px 0', fontWeight: 600, color: '#667085', textAlign: 'right' }}>{i18next.t('invoice_no_label', 'Invoice No:')}</td>
+            <td style={{ padding: '4px 16px 4px 0', fontWeight: 600, color: '#667085', textAlign: 'right' }}>{t('invoice_no_label', 'Invoice No:')}</td>
             <td style={{ padding: '4px 0', color: '#1B263B', textAlign: 'right' }}>{details.invoiceNumber}</td>
           </tr>
           <tr>
-            <td style={{ padding: '4px 16px 4px 0', fontWeight: 600, color: '#667085', textAlign: 'right' }}>{i18next.t('date_label', 'Date:')}</td>
+            <td style={{ padding: '4px 16px 4px 0', fontWeight: 600, color: '#667085', textAlign: 'right' }}>{t('date_label', 'Date:')}</td>
             <td style={{ padding: '4px 0', color: '#1B263B', textAlign: 'right' }}>{formatDate(details.issueDate)}</td>
           </tr>
           <tr>
-            <td style={{ padding: '4px 16px 4px 0', fontWeight: 600, color: '#667085', textAlign: 'right' }}>{i18next.t('due_date_label', 'Due Date:')}</td>
+            <td style={{ padding: '4px 16px 4px 0', fontWeight: 600, color: '#667085', textAlign: 'right' }}>{t('due_date_label', 'Due Date:')}</td>
             <td style={{ padding: '4px 0', color: '#1B263B', textAlign: 'right' }}>{formatDate(details.dueDate)}</td>
           </tr>
         </tbody>
@@ -70,12 +73,13 @@ const PreviewMeta = React.memo(({ details }: { details: InvoiceData['details'] }
 });
 
 const PreviewClient = React.memo(({ client }: { client: InvoiceData['client'] }) => {
+  const { t } = useTranslation();
   const clientAddressLines = useMemo(() => formatAddress(client), [client]);
   
   return (
     <div style={{ marginBottom: '40px' }}>
       <div style={{ color: '#155EEF', fontWeight: 700, fontSize: '12px', letterSpacing: '1px', marginBottom: '8px' }}>
-        {i18next.t('bill_to_label', 'BILL TO')}
+        {t('bill_to_label', 'BILL TO')}
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxWidth: '50%' }}>
         <div style={{ fontWeight: 700, color: '#1B263B', fontSize: '14px', marginBottom: '4px' }}>
@@ -87,7 +91,7 @@ const PreviewClient = React.memo(({ client }: { client: InvoiceData['client'] })
           {clientAddressLines.map((line, idx) => (
             <div key={idx}>{line}</div>
           ))}
-          {client.taxId && <div>{i18next.t('tax_id_label', 'Tax ID:')} {client.taxId}</div>}
+          {client.taxId && <div>{t('tax_id_label', 'Tax ID:')} {client.taxId}</div>}
         </div>
       </div>
     </div>
@@ -95,16 +99,17 @@ const PreviewClient = React.memo(({ client }: { client: InvoiceData['client'] })
 });
 
 const PreviewItems = React.memo(({ items, currency }: { items: InvoiceData['items'], currency: string }) => {
+  const { t } = useTranslation();
   return (
     <div style={{ marginBottom: '40px' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
         <thead>
           <tr style={{ backgroundColor: '#F8FAFC', borderTop: '1px solid #E4E7EC', borderBottom: '1px solid #E4E7EC' }}>
-            <th style={{ padding: '12px 16px', textAlign: 'left', color: '#1B263B', fontWeight: 700 }}>{i18next.t('item_header', 'Item / Service')}</th>
-            <th style={{ padding: '12px 16px', textAlign: 'left', color: '#1B263B', fontWeight: 700 }}>{i18next.t('description_header', 'Description')}</th>
-            <th style={{ padding: '12px 16px', textAlign: 'right', color: '#1B263B', fontWeight: 700 }}>{i18next.t('rate_header', 'Rate')}</th>
-            <th style={{ padding: '12px 16px', textAlign: 'center', color: '#1B263B', fontWeight: 700 }}>{i18next.t('qty_header', 'Qty')}</th>
-            <th style={{ padding: '12px 16px', textAlign: 'right', color: '#1B263B', fontWeight: 700 }}>{i18next.t('amount_header', 'Amount')}</th>
+            <th style={{ padding: '12px 16px', textAlign: 'left', color: '#1B263B', fontWeight: 700 }}>{t('item_header', 'Item / Service')}</th>
+            <th style={{ padding: '12px 16px', textAlign: 'left', color: '#1B263B', fontWeight: 700 }}>{t('description_header', 'Description')}</th>
+            <th style={{ padding: '12px 16px', textAlign: 'right', color: '#1B263B', fontWeight: 700 }}>{t('rate_header', 'Rate')}</th>
+            <th style={{ padding: '12px 16px', textAlign: 'center', color: '#1B263B', fontWeight: 700 }}>{t('qty_header', 'Qty')}</th>
+            <th style={{ padding: '12px 16px', textAlign: 'right', color: '#1B263B', fontWeight: 700 }}>{t('amount_header', 'Amount')}</th>
           </tr>
         </thead>
         <tbody>
@@ -124,19 +129,20 @@ const PreviewItems = React.memo(({ items, currency }: { items: InvoiceData['item
 });
 
 const PreviewTotals = React.memo(({ totals, currency }: { totals: InvoiceData['totals'], currency: string }) => {
+  const { t } = useTranslation();
   return (
     <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '40px' }}>
       <table style={{ width: '300px', borderCollapse: 'collapse', fontSize: '12px' }}>
         <tbody>
           <tr>
-            <td style={{ padding: '8px 16px 8px 0', color: '#1B263B' }}>{i18next.t('subtotal_label', 'Subtotal')}</td>
+            <td style={{ padding: '8px 16px 8px 0', color: '#1B263B' }}>{t('subtotal_label', 'Subtotal')}</td>
             <td style={{ padding: '8px 0', color: '#1B263B', textAlign: 'right' }}>{formatCurrency(totals.subtotal, currency)}</td>
           </tr>
           
           {Number(totals.discountValue) > 0 && (
             <tr>
               <td style={{ padding: '8px 16px 8px 0', color: '#1B263B' }}>
-                {totals.discountType === 'percent' ? `${i18next.t('discount_label', 'Discount')} (${totals.discountValue}%)` : i18next.t('discount_label', 'Discount')}
+                {totals.discountType === 'percent' ? `${t('discount_label', 'Discount')} (${totals.discountValue}%)` : t('discount_label', 'Discount')}
               </td>
               <td style={{ padding: '8px 0', color: '#1B263B', textAlign: 'right' }}>-{formatCurrency(totals.discountAmount, currency)}</td>
             </tr>
@@ -151,7 +157,7 @@ const PreviewTotals = React.memo(({ totals, currency }: { totals: InvoiceData['t
 
           {Number(totals.shipping) !== 0 && totals.shipping !== '' && (
             <tr>
-              <td style={{ padding: '8px 16px 8px 0', color: '#1B263B' }}>{i18next.t('shipping_label', 'Shipping')}</td>
+              <td style={{ padding: '8px 16px 8px 0', color: '#1B263B' }}>{t('shipping_label', 'Shipping')}</td>
               <td style={{ padding: '8px 0', color: '#1B263B', textAlign: 'right' }}>{formatCurrency(Number(totals.shipping) || 0, currency)}</td>
             </tr>
           )}
@@ -163,12 +169,12 @@ const PreviewTotals = React.memo(({ totals, currency }: { totals: InvoiceData['t
           </tr>
 
           <tr>
-            <td style={{ padding: '12px 16px 12px 0', color: '#1B263B', fontWeight: 700 }}>{i18next.t('total_label', 'Total')}</td>
+            <td style={{ padding: '12px 16px 12px 0', color: '#1B263B', fontWeight: 700 }}>{t('total_label', 'Total')}</td>
             <td style={{ padding: '12px 0', color: '#1B263B', textAlign: 'right', fontWeight: 700 }}>{formatCurrency(totals.total, currency)}</td>
           </tr>
 
           <tr>
-            <td style={{ padding: '8px 16px 8px 0', color: '#1B263B' }}>{i18next.t('amount_paid_label', 'Amount Paid')}</td>
+            <td style={{ padding: '8px 16px 8px 0', color: '#1B263B' }}>{t('amount_paid_label', 'Amount Paid')}</td>
             <td style={{ padding: '8px 0', color: '#1B263B', textAlign: 'right' }}>{formatCurrency(Number(totals.amountPaid) || 0, currency)}</td>
           </tr>
 
@@ -182,7 +188,7 @@ const PreviewTotals = React.memo(({ totals, currency }: { totals: InvoiceData['t
                 justifyContent: 'space-between',
                 alignItems: 'center'
               }}>
-                <span style={{ color: '#1B263B', fontWeight: 700 }}>{i18next.t('balance_due_label', 'Balance Due')}</span>
+                <span style={{ color: '#1B263B', fontWeight: 700 }}>{t('balance_due_label', 'Balance Due')}</span>
                 <span style={{ color: '#155EEF', fontWeight: 700, fontSize: '16px' }}>{formatCurrency(totals.balanceDue, currency)}</span>
               </div>
             </td>
@@ -194,23 +200,24 @@ const PreviewTotals = React.memo(({ totals, currency }: { totals: InvoiceData['t
 });
 
 const PreviewNotes = React.memo(({ notes, terms, paymentInstructions }: { notes: string, terms: string, paymentInstructions: string }) => {
+  const { t } = useTranslation();
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '75%' }}>
       {notes && (
         <div>
-          <div style={{ color: '#1B263B', fontWeight: 700, fontSize: '12px', marginBottom: '8px' }}>{i18next.t('notes_section', 'Notes')}</div>
+          <div style={{ color: '#1B263B', fontWeight: 700, fontSize: '12px', marginBottom: '8px' }}>{t('notes_section', 'Notes')}</div>
           <div style={{ color: '#667085', fontSize: '11px', lineHeight: 1.5, whiteSpace: 'pre-wrap' }}>{notes}</div>
         </div>
       )}
       {terms && (
         <div>
-          <div style={{ color: '#1B263B', fontWeight: 700, fontSize: '12px', marginBottom: '8px' }}>{i18next.t('terms_section', 'Terms & Conditions')}</div>
+          <div style={{ color: '#1B263B', fontWeight: 700, fontSize: '12px', marginBottom: '8px' }}>{t('terms_section', 'Terms & Conditions')}</div>
           <div style={{ color: '#667085', fontSize: '11px', lineHeight: 1.5, whiteSpace: 'pre-wrap' }}>{terms}</div>
         </div>
       )}
       {paymentInstructions && (
         <div>
-          <div style={{ color: '#1B263B', fontWeight: 700, fontSize: '12px', marginBottom: '8px' }}>{i18next.t('payment_instructions_section', 'Payment Instructions')}</div>
+          <div style={{ color: '#1B263B', fontWeight: 700, fontSize: '12px', marginBottom: '8px' }}>{t('payment_instructions_section', 'Payment Instructions')}</div>
           <div style={{ color: '#667085', fontSize: '11px', lineHeight: 1.5, whiteSpace: 'pre-wrap' }}>{paymentInstructions}</div>
         </div>
       )}
