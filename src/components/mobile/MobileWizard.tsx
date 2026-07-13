@@ -10,6 +10,7 @@ import { ClientActions } from '../invoice/ClientActions';
 import type { useClients } from '../../hooks/useClients';
 import type { ClientDetails, SavedClient } from '../../types/invoice';
 import { Modal } from '../ui/Modal';
+import { StageIndicator } from '../layout/StageIndicator';
 
 interface MobileWizardProps {
   currentStage: number;
@@ -133,58 +134,8 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
   return (
     <div className="mobile-only mobile-step-container" style={{ width: '100%', minWidth: 0, paddingBottom: '240px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
       
-      {/* Native Mobile Step Indicator */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 4px', marginTop: '16px' }}>
-        {[
-          { label: 'Business', step: 1 },
-          { label: 'Client', step: 2 },
-          { label: 'Items', step: 3 },
-          { label: 'Review', step: 4 }
-        ].map((s, idx) => {
-          const isCompleted = currentStage > s.step;
-          const isCurrent = currentStage === s.step;
-          
-          return (
-            <React.Fragment key={s.step}>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', zIndex: 1 }}>
-                <div style={{
-                  width: '20px',
-                  height: '20px',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: isCompleted ? 'var(--color-primary)' : isCurrent ? '#FFFFFF' : '#F8FAFC',
-                  border: `2px solid ${isCompleted || isCurrent ? 'var(--color-primary)' : '#E2E8F0'}`,
-                  color: isCompleted ? '#FFFFFF' : isCurrent ? 'var(--color-primary)' : 'transparent',
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  transition: 'all 150ms ease-out'
-                }}>
-                  {isCompleted && '✓'}
-                </div>
-                <span style={{
-                  fontSize: '11px',
-                  fontWeight: isCurrent ? 600 : 500,
-                  color: (isCompleted || isCurrent) ? 'var(--color-text-main)' : 'var(--color-text-tertiary)',
-                  transition: 'color 150ms ease-out'
-                }}>{s.label}</span>
-              </div>
-              
-              {idx < 3 && (
-                <div style={{
-                  flex: 1,
-                  height: '1px',
-                  background: currentStage > s.step ? 'var(--color-primary)' : '#E2E8F0',
-                  margin: '0 4px',
-                  transform: 'translateY(-10px)',
-                  transition: 'background 150ms ease-out'
-                }} />
-              )}
-            </React.Fragment>
-          );
-        })}
-      </div>
+      {/* Unified Progress System */}
+      <StageIndicator currentStage={currentStage} onStageChange={setStage} isMobile={true} />
 
       {/* Mobile Trust Chip Bar (Stage 1 only) */}
       {currentStage === 1 && (

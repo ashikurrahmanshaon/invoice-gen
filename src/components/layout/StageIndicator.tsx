@@ -20,95 +20,116 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingBottom: isMobile ? '16px' : '24px',
+      paddingBottom: isMobile ? '8px' : '24px',
       width: '100%',
       position: 'relative'
     }}>
-      {stages.map((stage, index) => {
+      {/* Universal Background Line */}
+      <div style={{
+        position: 'absolute',
+        top: isMobile ? '14px' : '16px',
+        left: '24px',
+        right: '24px',
+        height: '2px',
+        background: 'var(--color-border)',
+        zIndex: 1,
+        borderRadius: '2px'
+      }} />
+
+      {/* Universal Active Line */}
+      <div style={{
+        position: 'absolute',
+        top: isMobile ? '14px' : '16px',
+        left: '24px',
+        right: '24px',
+        height: '2px',
+        background: 'transparent',
+        zIndex: 2,
+        pointerEvents: 'none'
+      }}>
+        <div style={{
+          height: '100%',
+          background: 'var(--color-primary)',
+          width: `${Math.max(0, (currentStage - 1) / (stages.length - 1)) * 100}%`,
+          transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+        }} />
+      </div>
+
+      {stages.map((stage) => {
         const isActive = stage.num === currentStage;
         const isPast = stage.num < currentStage;
         
+        // Define colors strictly by requirement
+        // Completed: Blue circle, White check
+        // Current: White background, Blue border
+        // Future: White background, Gray border
+        
         let bg = '#FFFFFF';
-        let border = '1px solid var(--color-border)';
-        let color = 'var(--color-text-secondary)';
-        let iconColor = 'var(--color-text-tertiary)';
+        let border = '2px solid var(--color-border)';
 
         if (isPast) {
           bg = 'var(--color-primary)';
-          border = '1px solid var(--color-primary)';
-          color = '#FFFFFF';
-          iconColor = '#FFFFFF';
+          border = '2px solid var(--color-primary)';
         } else if (isActive) {
           bg = '#FFFFFF';
-          border = '1px solid var(--color-primary)';
-          color = 'var(--color-text-main)';
+          border = '2px solid var(--color-primary)';
         }
 
+        const circleSize = isMobile ? '28px' : '32px';
+
         return (
-          <React.Fragment key={stage.num}>
-            <div
-              onClick={() => onStageChange?.(stage.num)}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: isMobile ? '8px 12px' : '10px 16px',
-                borderRadius: '8px',
-                background: bg,
-                border: border,
-                cursor: onStageChange ? 'pointer' : 'default',
-                transition: 'all 0.3s ease',
-                position: 'relative',
-                zIndex: 2,
-                boxShadow: isActive ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'
-              }}
-            >
+          <div 
+            key={stage.num}
+            onClick={() => onStageChange?.(stage.num)}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '8px',
+              cursor: onStageChange ? 'pointer' : 'default',
+              position: 'relative',
+              zIndex: 3,
+              background: 'transparent',
+              width: '60px' // Ensure uniform spacing containers
+            }}
+          >
+            {/* The Circle */}
+            <div style={{
+              width: circleSize,
+              height: circleSize,
+              borderRadius: '50%',
+              background: bg,
+              border: border,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.3s ease',
+              boxShadow: 'none' // Explicitly no shadows
+            }}>
               {isPast ? (
-                <Check size={16} color={iconColor} strokeWidth={3} />
+                <Check size={isMobile ? 14 : 16} color="#FFFFFF" strokeWidth={3} />
               ) : (
                 <span style={{ 
-                  fontSize: '13px', 
+                  fontSize: isMobile ? '12px' : '14px', 
                   fontWeight: 600,
                   color: isActive ? 'var(--color-primary)' : 'var(--color-text-tertiary)' 
                 }}>
                   {stage.num}
                 </span>
               )}
-              {!isMobile && (
-                <span style={{
-                  fontSize: '14px',
-                  fontWeight: isActive ? 600 : 500,
-                  color: color
-                }}>
-                  {stage.label}
-                </span>
-              )}
             </div>
             
-            {/* Connector Line */}
-            {index < stages.length - 1 && (
-              <div style={{
-                flex: 1,
-                height: '2px',
-                margin: '0 8px',
-                background: 'var(--color-border)',
-                position: 'relative',
-                overflow: 'hidden',
-                borderRadius: '2px'
-              }}>
-                <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  height: '100%',
-                  width: '100%',
-                  background: 'var(--color-primary)',
-                  transform: stage.num < currentStage ? 'translateX(0)' : 'translateX(-100%)',
-                  transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-                }} />
-              </div>
-            )}
-          </React.Fragment>
+            {/* The Label */}
+            <span style={{
+              fontSize: '12px',
+              fontWeight: isActive || isPast ? 600 : 500,
+              color: isActive || isPast ? 'var(--color-text-main)' : 'var(--color-text-tertiary)',
+              textAlign: 'center',
+              transition: 'color 0.3s ease'
+            }}>
+              {stage.label}
+            </span>
+          </div>
         );
       })}
     </div>
