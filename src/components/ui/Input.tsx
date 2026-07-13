@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState, forwardRef, useEffect, useRef } from 'react';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   label?: string;
@@ -9,10 +9,21 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement |
 }
 
 export const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProps>(
-  ({ label, error, multiline, leftIcon, rightIcon, className = '', value, onChange, placeholder, ...props }, ref) => {
+  ({ label, error, multiline, leftIcon, rightIcon, className = '', value, onChange, placeholder, ...props }, forwardedRef) => {
     const [isFocused, setIsFocused] = useState(false);
+    const internalRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+    const ref = (forwardedRef || internalRef) as React.MutableRefObject<HTMLInputElement | HTMLTextAreaElement>;
     
     const Component = multiline ? 'textarea' : 'input';
+
+    useEffect(() => {
+      if (multiline && ref.current) {
+        const el = ref.current as HTMLTextAreaElement;
+        el.style.height = '52px';
+        const scrollHeight = el.scrollHeight;
+        el.style.height = Math.min(scrollHeight, 180) + 'px';
+      }
+    }, [value, multiline, ref]);
 
     return (
       <div className={`premium-input-container ${className}`} style={{ width: '100%', marginBottom: '24px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -33,11 +44,11 @@ export const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputPro
             display: 'flex',
             alignItems: 'center',
             background: 'var(--color-surface)',
-            border: `1px solid ${error ? 'var(--color-error)' : isFocused ? 'var(--color-primary)' : 'var(--color-border-hover)'}`,
+            border: `1px solid ${error ? 'var(--color-error)' : isFocused ? 'var(--color-primary)' : 'var(--color-border)'}`,
             borderRadius: 'var(--radius-lg)',
             boxShadow: 'none',
-            transition: 'all 0.15s ease',
-            minHeight: multiline ? '100px' : '52px',
+            transition: 'all 150ms ease-out',
+            minHeight: '52px',
           }}
         >
           {leftIcon && (
@@ -68,8 +79,11 @@ export const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputPro
               fontSize: '16px',
               color: 'var(--color-text-main)',
               fontFamily: 'inherit',
-              resize: multiline ? 'vertical' : 'none',
-              height: multiline ? '100%' : '100%',
+              resize: 'none',
+              height: multiline ? '52px' : '100%',
+              maxHeight: multiline ? '180px' : 'none',
+              overflowY: multiline ? 'auto' : 'hidden',
+              lineHeight: '1.5',
             }}
             {...props as any}
           />

@@ -52,8 +52,7 @@ export const Header: React.FC<HeaderProps> = ({
       alignItems: 'center',
       position: 'sticky',
       top: 0,
-      zIndex: 1000,
-      height: '68px'
+      zIndex: 1000
     }} className="app-header">
       <div className="container header-grid">
         {/* Style block for Header self-contained classes */}

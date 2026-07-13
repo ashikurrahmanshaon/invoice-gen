@@ -51,6 +51,7 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
       <div>
         <Input 
           type="text" 
+          multiline
           placeholder="Description (optional)"
           aria-label="Description"
           value={item.description}

@@ -152,10 +152,10 @@
   
   .mobile-card {
     background: var(--color-surface);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl); /* 16px */
     border: 1px solid var(--color-border);
-    padding: 16px !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    padding: 20px !important;
+    box-shadow: var(--shadow-sm); /* Very soft shadow */
     display: flex;
     flex-direction: column;
     gap: 16px !important;
@@ -186,18 +186,29 @@
   
   /* Enforce touch targets on mobile */
   .premium-input-container > div {
-    min-height: 48px !important;
+    min-height: 52px !important;
   }
   
-  input, select, textarea {
-    min-height: 48px !important;
+  input, select {
+    height: 52px !important;
+    min-height: 52px !important;
+    border-radius: 12px !important;
+  }
+
+  textarea {
+    min-height: 52px !important;
+    max-height: 180px !important;
+    border-radius: 12px !important;
+    resize: none;
+    overflow-y: auto;
   }
   
-  .btn, .btn-primary, .btn-outline, .btn-ghost, .premium-btn {
-    min-height: 56px !important;
-    height: 56px !important;
+  .btn, .btn-primary, .btn-outline, .btn-ghost, .premium-btn, .premium-btn-primary, .premium-btn-secondary, .premium-btn-back {
+    min-height: 48px !important;
+    height: 48px !important;
     font-size: 16px !important;
     border-radius: 12px !important;
+    box-shadow: none !important;
   }
 
   .app-header .btn {

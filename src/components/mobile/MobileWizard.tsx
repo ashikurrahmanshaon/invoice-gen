@@ -133,6 +133,59 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
   return (
     <div className="mobile-only mobile-step-container" style={{ width: '100%', minWidth: 0, paddingBottom: '240px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
       
+      {/* Native Mobile Step Indicator */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 4px', marginTop: '16px' }}>
+        {[
+          { label: 'Business', step: 1 },
+          { label: 'Client', step: 2 },
+          { label: 'Items', step: 3 },
+          { label: 'Review', step: 4 }
+        ].map((s, idx) => {
+          const isCompleted = currentStage > s.step;
+          const isCurrent = currentStage === s.step;
+          
+          return (
+            <React.Fragment key={s.step}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', zIndex: 1 }}>
+                <div style={{
+                  width: '20px',
+                  height: '20px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: isCompleted ? 'var(--color-primary)' : isCurrent ? '#FFFFFF' : '#F8FAFC',
+                  border: `2px solid ${isCompleted || isCurrent ? 'var(--color-primary)' : '#E2E8F0'}`,
+                  color: isCompleted ? '#FFFFFF' : isCurrent ? 'var(--color-primary)' : 'transparent',
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  transition: 'all 150ms ease-out'
+                }}>
+                  {isCompleted && '✓'}
+                </div>
+                <span style={{
+                  fontSize: '11px',
+                  fontWeight: isCurrent ? 600 : 500,
+                  color: (isCompleted || isCurrent) ? 'var(--color-text-main)' : 'var(--color-text-tertiary)',
+                  transition: 'color 150ms ease-out'
+                }}>{s.label}</span>
+              </div>
+              
+              {idx < 3 && (
+                <div style={{
+                  flex: 1,
+                  height: '1px',
+                  background: currentStage > s.step ? 'var(--color-primary)' : '#E2E8F0',
+                  margin: '0 4px',
+                  transform: 'translateY(-10px)',
+                  transition: 'background 150ms ease-out'
+                }} />
+              )}
+            </React.Fragment>
+          );
+        })}
+      </div>
+
       {/* Mobile Trust Chip Bar (Stage 1 only) */}
       {currentStage === 1 && (
         <div style={{
@@ -825,6 +878,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                 <div style={{ justifySelf: 'start', display: 'flex', border: '1px solid var(--color-border)', borderRadius: '6px', background: 'var(--color-surface)', overflow: 'hidden', height: '32px', width: '92px' }}>
                   <input 
                     type="text" 
+                    inputMode="decimal"
                     value={Number(totals.discountValue) > 0 ? totals.discountValue : ''}
                     placeholder="0"
                     onChange={(e) => {
@@ -886,6 +940,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                 <div style={{ justifySelf: 'start', display: 'flex', alignItems: 'center', border: '1px solid var(--color-border)', borderRadius: '6px', background: 'var(--color-surface)', overflow: 'hidden', height: '32px', width: '92px' }}>
                   <input 
                     type="text" 
+                    inputMode="decimal"
                     value={Number(totals.taxRate) > 0 ? totals.taxRate : ''}
                     placeholder="0"
                     onChange={(e) => {
@@ -930,6 +985,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                   <span style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', fontSize: '11px', color: 'var(--color-text-tertiary)', pointerEvents: 'none' }}>{symbol}</span>
                   <input 
                     type="text" 
+                    inputMode="decimal"
                     value={Number(totals.shipping) > 0 ? totals.shipping : ''}
                     placeholder="0.00"
                     onChange={(e) => {
@@ -984,6 +1040,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                 <span style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', fontSize: '11px', color: 'var(--color-text-tertiary)', pointerEvents: 'none' }}>{symbol}</span>
                 <input 
                   type="text" 
+                  inputMode="decimal"
                   value={totals.amountPaid !== undefined ? totals.amountPaid : ''}
                   onChange={(e) => {
                     if (isValidDecimalInput(e.target.value)) setAmountPaid(e.target.value);
@@ -1018,29 +1075,6 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       {/* MOBILE BOTTOM ACTION BAR (Portaled to body for guaranteed stickiness) */}
       {mounted && createPortal(
         <div className={`mobile-only premium-bottom-bar ${!isBottomBarVisible ? 'bottom-bar-hidden' : ''}`}>
-          {/* Segmented Progress Indicator */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            marginBottom: '12px'
-          }}>
-            <span style={{ fontSize: '11px', fontWeight: 600, color: '#64748B' }}>
-              Step {currentStage} of 4
-            </span>
-            <div style={{ display: 'flex', gap: '4px', flex: 1, maxWidth: '120px' }}>
-              {[1, 2, 3, 4].map(step => (
-                <div key={step} style={{
-                  flex: 1,
-                  height: '4px',
-                  borderRadius: '2px',
-                  background: step <= currentStage ? 'var(--color-primary)' : '#E4E7EC',
-                  transition: 'background 0.3s ease'
-                }} />
-              ))}
-            </div>
-          </div>
 
           {currentStage === 1 && (
             <div style={{ display: 'flex', gap: '12px', width: '100%' }}>
@@ -1072,10 +1106,10 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           {currentStage === 4 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
               <div style={{ display: 'flex', gap: '12px', width: '100%' }}>
-                <button className="premium-btn-back" onClick={() => setStage(3)}>
+                <button className="premium-btn-secondary" onClick={() => setStage(3)}>
                   <ArrowLeft size={16} /> Back
                 </button>
-                <button className="premium-btn-back" onClick={onOpenFullPreview}>
+                <button className="premium-btn-outlined" onClick={onOpenFullPreview}>
                   <Eye size={16} /> Preview
                 </button>
               </div>
@@ -1105,18 +1139,18 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) 16px;
           box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.08);
           z-index: 9999;
-          animation: slideUpFloating 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: slideUpFloating 0.15s ease-out forwards;
         }
         @keyframes slideUpFloating {
           from { opacity: 0; transform: translateY(100%); }
           to { opacity: 1; transform: translateY(0); }
         }
-        .premium-btn-back {
+        .premium-btn-secondary {
           flex: 1 1 0%;
           height: 48px;
           border-radius: 12px;
           background: #FFFFFF;
-          border: 1px solid #E4E7EC;
+          border: 1px solid transparent; /* No border for secondary */
           color: var(--color-text-main);
           font-weight: 600;
           font-size: 15px;
@@ -1124,17 +1158,61 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           align-items: center;
           justify-content: center;
           gap: 8px;
-          transition: all 180ms ease;
+          transition: all 150ms ease-out;
+          cursor: pointer;
+        }
+        .premium-btn-secondary:hover {
+          background: #F8FAFC;
+        }
+        .premium-btn-secondary:active {
+          transform: scale(0.98);
+        }
+        
+        .premium-btn-outlined {
+          flex: 1 1 0%;
+          height: 48px;
+          border-radius: 12px;
+          background: #FFFFFF;
+          border: 1px solid var(--color-border);
+          color: var(--color-text-main);
+          font-weight: 600;
+          font-size: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          transition: all 150ms ease-out;
+          cursor: pointer;
+        }
+        .premium-btn-outlined:hover {
+          background: #F8FAFC;
+          border-color: var(--color-border-hover);
+        }
+        .premium-btn-outlined:active {
+          transform: scale(0.98);
+        }
+        
+        .premium-btn-back {
+          flex: 1 1 0%;
+          height: 48px;
+          border-radius: 12px;
+          background: #FFFFFF;
+          border: 1px solid transparent;
+          color: var(--color-text-main);
+          font-weight: 600;
+          font-size: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          transition: all 150ms ease-out;
           cursor: pointer;
         }
         .premium-btn-back:hover {
-          background: #F9FAFB;
-          transform: translateY(-1px);
-          box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+          background: #F8FAFC;
         }
         .premium-btn-back:active {
           transform: scale(0.98);
-          box-shadow: none;
         }
         .premium-btn-primary {
           flex: 1 1 0%;
@@ -1150,15 +1228,15 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           gap: 8px;
           border: none;
           box-shadow: none;
-          transition: all 180ms ease;
+          transition: all 150ms ease-out;
           cursor: pointer;
         }
         .premium-btn-primary.full-width {
-          flex: 1 1 100%;
+          flex: none;
+          width: 100%;
         }
         .premium-btn-primary:hover {
           background: var(--color-primary-hover);
-          transform: translateY(-1px);
         }
         .premium-btn-primary:active {
           transform: scale(0.98);
