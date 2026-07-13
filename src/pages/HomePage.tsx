@@ -35,6 +35,7 @@ import { useSettings } from '../contexts/SettingsContext';
 
 
 import { SEO } from '../components/seo/SEO';
+import { INVOICE_TEMPLATES } from '../config/templates';
 
 export default function HomePage() {
   const [currentStage, setCurrentStage] = useState(1);
@@ -260,6 +261,30 @@ export default function HomePage() {
       setItems(newItems);
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const nicheParam = params.get('niche');
+      if (nicheParam) {
+        // Map common niche params to template ids
+        let templateId = nicheParam;
+        if (templateId === 'freelance') templateId = 'freelancer';
+        if (templateId === 'software') templateId = 'software-agency';
+        if (templateId === 'contractor') templateId = 'construction';
+        if (templateId === 'digital-marketing') templateId = 'marketing';
+        if (templateId === 'graphic-designer') templateId = 'creator';
+        
+        const template = INVOICE_TEMPLATES.find(t => t.id === templateId || t.id.includes(templateId));
+        if (template && data.items.length === 0) {
+          handleTemplateSelect(template, 'replace-content');
+          // Clear query params to prevent re-triggering
+          const newUrl = window.location.pathname;
+          window.history.replaceState({}, '', newUrl);
+        }
+      }
+    }
+  }, [data.items.length]);
 
   const loadDemoData = () => {
     const demoData = {
