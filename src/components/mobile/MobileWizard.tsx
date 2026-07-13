@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import type { InvoiceData, LineItem } from '../../types/invoice';
 import { formatCurrency } from '../../utils/currency';
-import { Trash2, Copy, Plus, ChevronUp, ArrowLeft, ArrowRight, Download, Eye, Save } from 'lucide-react';
+import { Trash2, Copy, Plus, ChevronUp, ArrowLeft, ArrowRight, Download, Eye, Lock, Globe, User, Zap, Shield, Smartphone } from 'lucide-react';
 import { processImageFile } from '../../utils/image';
 import { isValidDecimalInput, calculateLineAmount } from '../../utils/calculations';
 import { ClientPicker } from '../invoice/ClientPicker';
@@ -146,12 +146,12 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           marginTop: '4px'
         }}>
           {[
-            { icon: '🔒', label: 'Secure' },
-            { icon: '🌐', label: 'Browser Based' },
-            { icon: '👤', label: 'No Signup' },
-            { icon: '⚡', label: 'Instant PDF' },
-            { icon: '🔐', label: 'Private' },
-            { icon: '📱', label: 'Offline Ready' }
+            { icon: <Lock size={12} />, label: 'Secure' },
+            { icon: <Globe size={12} />, label: 'Browser Based' },
+            { icon: <User size={12} />, label: 'No Signup' },
+            { icon: <Zap size={12} />, label: 'Instant PDF' },
+            { icon: <Shield size={12} />, label: 'Private' },
+            { icon: <Smartphone size={12} />, label: 'Offline Ready' }
           ].map((chip) => (
             <span key={chip.label} style={{
               display: 'inline-flex',
@@ -820,9 +820,9 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
 
             {/* Discount Row */}
             {enableDiscount ? (
-              <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', minHeight: '32px' }}>
-                <span className="text-sm font-medium" style={{ color: 'var(--color-text-main)' }}>Discount</span>
-                <div style={{ justifySelf: 'start', display: 'flex', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', background: 'var(--color-surface)', overflow: 'hidden', height: '32px', width: '92px' }}>
+              <div className="animate-fade-in" style={{ display: 'grid', gridTemplateColumns: '90px 1fr 24px 92px', gap: '8px', alignItems: 'center', fontSize: '14px', minHeight: '32px' }}>
+                <span className="text-secondary">Discount</span>
+                <div style={{ justifySelf: 'start', display: 'flex', border: '1px solid var(--color-border)', borderRadius: '6px', background: 'var(--color-surface)', overflow: 'hidden', height: '32px', width: '92px' }}>
                   <input 
                     type="text" 
                     value={Number(totals.discountValue) > 0 ? totals.discountValue : ''}
@@ -883,7 +883,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                   placeholder="Tax"
                   style={{ border: '1px solid transparent', background: 'transparent', outline: 'none', padding: 0, margin: 0, width: '100%', fontSize: '14px' }}
                 />
-                <div style={{ justifySelf: 'start', display: 'flex', alignItems: 'center', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', background: 'var(--color-surface)', overflow: 'hidden', height: '32px', width: '92px' }}>
+                <div style={{ justifySelf: 'start', display: 'flex', alignItems: 'center', border: '1px solid var(--color-border)', borderRadius: '6px', background: 'var(--color-surface)', overflow: 'hidden', height: '32px', width: '92px' }}>
                   <input 
                     type="text" 
                     value={Number(totals.taxRate) > 0 ? totals.taxRate : ''}
@@ -936,7 +936,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                       const val = e.target.value;
                       if (isValidDecimalInput(val)) setShipping(val);
                     }}
-                    style={{ border: '1px solid var(--color-border)', padding: '0 6px 0 16px', width: '100%', minHeight: 'auto', height: '100%', fontSize: '12px', borderRadius: 'var(--radius-sm)', textAlign: 'right', outline: 'none' }}
+                    style={{ border: '1px solid var(--color-border)', padding: '0 6px 0 16px', width: '100%', minHeight: 'auto', height: '100%', fontSize: '12px', borderRadius: '6px', textAlign: 'right', outline: 'none' }}
                   />
                 </div>
                 <button 
@@ -1018,32 +1018,27 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       {/* MOBILE BOTTOM ACTION BAR (Portaled to body for guaranteed stickiness) */}
       {mounted && createPortal(
         <div className={`mobile-only premium-bottom-bar ${!isBottomBarVisible ? 'bottom-bar-hidden' : ''}`}>
-          {/* Floating Progress Pill */}
+          {/* Segmented Progress Indicator */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             gap: '8px',
-            marginBottom: '8px'
+            marginBottom: '12px'
           }}>
             <span style={{ fontSize: '11px', fontWeight: 600, color: '#64748B' }}>
               Step {currentStage} of 4
             </span>
-            <div style={{
-              flex: 1,
-              maxWidth: '120px',
-              height: '3px',
-              borderRadius: '2px',
-              background: '#E4E7EC',
-              overflow: 'hidden'
-            }}>
-              <div style={{
-                width: `${(currentStage / 4) * 100}%`,
-                height: '100%',
-                borderRadius: '2px',
-                background: 'var(--color-primary)',
-                transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-              }} />
+            <div style={{ display: 'flex', gap: '4px', flex: 1, maxWidth: '120px' }}>
+              {[1, 2, 3, 4].map(step => (
+                <div key={step} style={{
+                  flex: 1,
+                  height: '4px',
+                  borderRadius: '2px',
+                  background: step <= currentStage ? 'var(--color-primary)' : '#E4E7EC',
+                  transition: 'background 0.3s ease'
+                }} />
+              ))}
             </div>
           </div>
 
@@ -1076,22 +1071,19 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           )}
           {currentStage === 4 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
-              <div style={{ display: 'flex', gap: '10px', width: '100%' }}>
+              <div style={{ display: 'flex', gap: '12px', width: '100%' }}>
                 <button className="premium-btn-back" onClick={() => setStage(3)}>
-                  <ArrowLeft size={16} />
+                  <ArrowLeft size={16} /> Back
                 </button>
-                <button className="premium-btn-secondary" onClick={onOpenFullPreview}>
+                <button className="premium-btn-back" onClick={onOpenFullPreview}>
                   <Eye size={16} /> Preview
-                </button>
-                <button className="premium-btn-secondary" style={{ flex: '0 0 auto', padding: '0 16px' }}>
-                  <Save size={16} />
                 </button>
               </div>
               <button className="premium-btn-primary full-width premium-btn-download" onClick={onDownloadPDF}>
                 <Download size={18} /> Download PDF
               </button>
               <div style={{ fontSize: '11px', color: 'var(--color-text-tertiary)', display: 'flex', alignItems: 'center', gap: '4px', justifyContent: 'center', marginTop: '-4px' }}>
-                🔒 100% secure &amp; browser-based
+                <Lock size={12} /> 100% secure &amp; browser-based
               </div>
             </div>
           )}
@@ -1110,8 +1102,8 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           backdrop-filter: blur(24px);
           -webkit-backdrop-filter: blur(24px);
           border-top: 1px solid rgba(0, 0, 0, 0.08);
-          padding: 16px 20px calc(16px + env(safe-area-inset-bottom)) 20px;
-          box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.04);
+          padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) 16px;
+          box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.08);
           z-index: 9999;
           animation: slideUpFloating 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -1120,14 +1112,14 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           to { opacity: 1; transform: translateY(0); }
         }
         .premium-btn-back {
-          flex: 40 1 0%;
-          height: 56px;
-          border-radius: 16px;
+          flex: 1 1 0%;
+          height: 48px;
+          border-radius: 12px;
           background: #FFFFFF;
           border: 1px solid #E4E7EC;
           color: var(--color-text-main);
           font-weight: 600;
-          font-size: 16px;
+          font-size: 15px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1145,13 +1137,13 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           box-shadow: none;
         }
         .premium-btn-primary {
-          flex: 60 1 0%;
-          height: 52px;
+          flex: 1 1 0%;
+          height: 48px;
           border-radius: 12px;
           background: var(--color-primary);
           color: #FFFFFF;
           font-weight: 600;
-          font-size: 16px;
+          font-size: 15px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1173,13 +1165,13 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
         }
         .premium-btn-secondary {
           flex: 1 1 0%;
-          height: 52px;
+          height: 48px;
           border-radius: 12px;
           background: #FFFFFF;
           border: 1px solid var(--color-border);
           color: var(--color-text-main);
           font-weight: 600;
-          font-size: 14px;
+          font-size: 15px;
           display: flex;
           align-items: center;
           justify-content: center;

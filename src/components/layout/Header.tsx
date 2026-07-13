@@ -23,22 +23,14 @@ export const Header: React.FC<HeaderProps> = ({
   onNewInvoice, 
   onResetEverything, 
   onDownloadPDF,
-  saveStatus = 'idle',
-  showNewInvoiceToast = false,
   activeView,
   onViewChange,
-  onSave,
   onSaveAsNew,
   hasLoadedHistory = false,
-  onLoadDemo,
-  currentStage = 1,
-  isMobileView = false
+  onLoadDemo
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
-  const STAGE_LABELS = ['Business', 'Client', 'Items', 'Review'];
-  const TOTAL_STAGES = 4;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -50,45 +42,7 @@ export const Header: React.FC<HeaderProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const getStatusPill = () => {
-    let bg = '#FFFFFF';
-    let border = '1px solid #E2E8F0';
-    let color = '#475569';
-    let dotColor = '#10B981';
-    let text = 'Secure Sandbox';
 
-    if (saveStatus === 'saving') {
-      dotColor = '#F59E0B';
-      text = 'Saving...';
-    } else if (saveStatus === 'success') {
-      dotColor = '#10B981';
-      text = 'Saved Locally';
-    } else if (saveStatus.startsWith('error')) {
-      dotColor = '#EF4444';
-      color = '#B91C1C';
-      text = saveStatus === 'error_profile' ? 'Logo too large' : 'Save Error';
-    }
-
-    return (
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '6px',
-        fontSize: '11px',
-        fontWeight: 600,
-        color: color,
-        backgroundColor: bg,
-        padding: '4px 8px',
-        borderRadius: '999px',
-        border: border,
-        transition: 'all 0.2s ease',
-        lineHeight: 1
-      }}>
-        <span className="status-dot-pulse" style={{ color: dotColor, width: '6px', height: '6px', borderRadius: '50%', background: dotColor }}></span>
-        <span>{text}</span>
-      </div>
-    );
-  };
 
   return (
     <header style={{ 
@@ -98,7 +52,8 @@ export const Header: React.FC<HeaderProps> = ({
       alignItems: 'center',
       position: 'sticky',
       top: 0,
-      zIndex: 1000
+      zIndex: 1000,
+      height: '68px'
     }} className="app-header">
       <div className="container header-grid">
         {/* Style block for Header self-contained classes */}
@@ -188,65 +143,22 @@ export const Header: React.FC<HeaderProps> = ({
         `}</style>
 
         {/* Left Section: Logo & Wordmark */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '10px' }}>
-          <Logo size={28} hideText={true} />
-          <span className="desktop-only" style={{ 
-            fontSize: '16px', 
-            fontWeight: 800, 
-            letterSpacing: '-0.03em', 
-            color: '#0F172A', 
-            fontFamily: "'Inter', sans-serif",
-            lineHeight: 1,
-            display: 'flex',
-            alignItems: 'center'
-          }}>
-            Invoice-Gen.net
-          </span>
-          
-          {/* Mobile: Step Title + Progress Dots */}
-          {isMobileView && activeView === 'editor' && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginLeft: '4px' }}>
-              <span className="mobile-step-text" style={{ 
-                fontSize: '14px', 
-                fontWeight: 700, 
-                color: 'var(--color-text-main)',
-                letterSpacing: '-0.01em'
-              }}>
-                {STAGE_LABELS[currentStage - 1]}
-              </span>
-              <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
-                {Array.from({ length: TOTAL_STAGES }).map((_, i) => (
-                  <div key={i} style={{
-                    width: i === currentStage - 1 ? '16px' : '6px',
-                    height: '6px',
-                    borderRadius: '3px',
-                    background: i < currentStage ? 'var(--color-primary)' : '#E4E7EC',
-                    opacity: i < currentStage - 1 ? 0.5 : 1,
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                  }} />
-                ))}
-              </div>
-            </div>
-          )}
-          
-          {/* Toast Notification */}
-          {showNewInvoiceToast && (
-            <div style={{
-              marginLeft: '8px',
-              padding: '2px 6px',
-              background: 'rgba(21, 94, 239, 0.08)',
-              color: 'var(--color-primary)',
-              borderRadius: '4px',
-              fontSize: '11px',
-              fontWeight: 500,
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+            <Logo size={32} hideText={true} />
+            <span className="desktop-only" style={{ 
+              fontSize: '16px', 
+              fontWeight: 800, 
+              letterSpacing: '-0.03em', 
+              color: '#0F172A', 
+              fontFamily: "'Inter', sans-serif",
+              lineHeight: 1,
               display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-              animation: 'fadeIn 0.3s ease'
+              alignItems: 'center'
             }}>
-              <InfoIcon size={12} /> Business details preserved
-            </div>
-          )}
+              Invoice-Gen.net
+            </span>
+          </a>
         </div>
 
         {/* Center Section: Segmented Navigation */}
@@ -277,21 +189,8 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Right Section: Status Indicator & Actions */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '12px' }}>
-          {/* Unified Premium Status Pill */}
-          <div className="desktop-only">
-            {getStatusPill()}
-          </div>
-
           {/* Action Buttons (Unified Responsive Design) */}
           <div className="desktop-only" style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-            {activeView === 'editor' && (
-              <button 
-                className="btn btn-sm header-save-btn" 
-                onClick={onSave}
-              >
-                Save
-              </button>
-            )}
             {activeView === 'editor' && onDownloadPDF && (
               <button 
                 className="btn btn-sm header-pdf-btn" 
@@ -349,31 +248,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <Sparkles size={14} className="text-primary" /> Load Demo Data
                   </button>
                 )}
-                {activeView === 'editor' && (
-                  <button 
-                    className="mobile-only"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      width: '100%',
-                      padding: '8px 12px',
-                      border: 'none',
-                      background: 'transparent',
-                      textAlign: 'left',
-                      fontSize: '13px',
-                      cursor: 'pointer',
-                      borderRadius: '4px',
-                      color: 'var(--color-text-main)'
-                    }}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      onSave?.();
-                    }}
-                  >
-                    <FilePlus size={14} /> Save
-                  </button>
-                )}
+
                 {activeView === 'editor' && onDownloadPDF && (
                   <button 
                     className="mobile-only"
@@ -484,11 +359,4 @@ export const Header: React.FC<HeaderProps> = ({
   );
 };
 
-// Helper inline icon for toast to avoid large imports
-const InfoIcon = ({ size }: { size: number }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"></circle>
-    <line x1="12" y1="16" x2="12" y2="12"></line>
-    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-  </svg>
-);
+
