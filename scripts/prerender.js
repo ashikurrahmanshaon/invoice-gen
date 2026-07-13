@@ -25,7 +25,7 @@ const routes = [
 ];
 
 async function build() {
-  const isProd = process.env.NODE_ENV === 'production';
+  
   const root = path.resolve(__dirname, '..');
   
   // Create Vite dev server to use its ssrLoadModule

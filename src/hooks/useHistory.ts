@@ -52,11 +52,11 @@ export const useHistory = () => {
     loadHistory();
   }, [loadHistory]);
 
-  const checkDuplicateNumber = (invoiceNumber: string, excludeId: string | null): boolean => {
+  const checkDuplicateNumber = useCallback((invoiceNumber: string, excludeId: string | null): boolean => {
     return history.some(
       (inv) => inv?.data?.details?.invoiceNumber === invoiceNumber && inv?.id !== excludeId
     );
-  };
+  }, [history]);
 
   const saveToHistory = useCallback((
     data: InvoiceData,
@@ -118,7 +118,7 @@ export const useHistory = () => {
       }
       return { success: false, error: 'unknown_error' };
     }
-  }, [history, loadHistory]);
+  }, [history, loadHistory, checkDuplicateNumber]);
 
   const updateStatus = useCallback((id: string, status: InvoiceStatus): boolean => {
     try {

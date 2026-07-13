@@ -68,7 +68,7 @@ export const Select: React.FC<SelectProps> = ({
         setTimeout(() => searchInputRef.current?.focus(), 10);
       }
     }
-  }, [isOpen]);
+  }, [isOpen, searchable, value, filteredOptions]);
 
   useEffect(() => {
     setHighlightedIndex(0);
@@ -141,7 +141,7 @@ export const Select: React.FC<SelectProps> = ({
         window.removeEventListener('resize', updateDropdownPosition);
       };
     }
-  }, [isOpen]);
+  }, [isOpen, searchable, value, filteredOptions]);
 
   return (
     <div className={`input-container ${className}`} ref={containerRef}>

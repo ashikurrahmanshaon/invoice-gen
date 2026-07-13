@@ -43,7 +43,7 @@ export const DataBackupSection: React.FC = () => {
         setTimeout(() => {
           window.location.reload();
         }, 1500);
-      } catch (err) {
+      } catch {
         setImportStatus('Error: Invalid backup file format.');
       }
     };

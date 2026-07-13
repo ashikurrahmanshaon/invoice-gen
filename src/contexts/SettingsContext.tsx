@@ -35,7 +35,7 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       if (saved) {
         return { ...defaultSettings, ...JSON.parse(saved) };
       }
-    } catch (e) {
+    } catch {
       // Ignore
     }
 
@@ -144,4 +144,5 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useSettings = () => useContext(SettingsContext);

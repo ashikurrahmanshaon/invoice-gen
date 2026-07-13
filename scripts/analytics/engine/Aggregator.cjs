@@ -1,6 +1,6 @@
 const { MockGSCProvider, MockGA4Provider, MockClarityProvider } = require('../providers/MockProvider.cjs');
 const { generateInsights } = require('./InsightsGenerator.cjs');
-const config = require('../config.cjs');
+
 
 /**
  * Orchestrates fetching data from all providers and combining it into a normalized dataset.

@@ -1,10 +1,10 @@
-# Invoice-Gen Brand Guidelines
+# Invoice-Gen.net Brand Guidelines
 
-This document outlines the official brand identity, design system, and visual voice of Invoice-Gen. Consistency across these elements ensures our brand remains premium, trustworthy, and recognizable.
+This document outlines the official brand identity, design system, and visual voice of Invoice-Gen.net. Consistency across these elements ensures our brand remains premium, trustworthy, and recognizable.
 
 ## 1. Brand Identity & Voice
 
-- **Name:** Invoice-Gen (Always capitalized, always hyphenated).
+- **Name:** Invoice-Gen.net (Always capitalized, always hyphenated).
 - **Tagline:** Free Professional Invoice Generator
 - **Voice & Tone:** Clean, direct, empowering, and minimal. We do not use jargon. We do not use aggressive sales language. We speak like a helpful design-focused B2B tool (e.g., Stripe, Linear).
 
@@ -26,7 +26,7 @@ Our color system is built around trust and clarity. We utilize a vibrant, digita
 
 ## 3. Typography
 
-**Inter** is the exclusive typeface for the Invoice-Gen brand. It is an open-source, highly legible sans-serif designed for computer screens.
+**Inter** is the exclusive typeface for the Invoice-Gen.net brand. It is an open-source, highly legible sans-serif designed for computer screens.
 
 - **Headings (H1/H2):** Inter Bold (700) or SemiBold (600). Tight tracking (`-0.02em`).
 - **Subheadings (H3/H4):** Inter Medium (500).
@@ -35,9 +35,9 @@ Our color system is built around trust and clarity. We utilize a vibrant, digita
 
 ## 4. Logo Usage
 
-The Invoice-Gen logo represents precision, speed, and documentation.
+The Invoice-Gen.net logo represents precision, speed, and documentation.
 
-- **Clear Space:** Always maintain a clear space around the logo equal to the height of the "I" in Invoice-Gen.
+- **Clear Space:** Always maintain a clear space around the logo equal to the height of the "I" in Invoice-Gen.net.
 - **Minimum Size:** The logo should never be reproduced smaller than `24px` in height on digital screens.
 - **Improper Usage:** 
   - Do not distort, stretch, or alter the proportions.

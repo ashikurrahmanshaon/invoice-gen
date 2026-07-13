@@ -7,7 +7,7 @@ class BaseProvider {
     this.name = name;
   }
 
-  async fetchData(dateRange) {
+  async fetchData(_dateRange) {
     throw new Error(`fetchData() must be implemented by ${this.name}`);
   }
 }

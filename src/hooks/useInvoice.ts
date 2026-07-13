@@ -240,7 +240,7 @@ export const useInvoice = (initialSettings?: Settings) => {
         };
       });
     }
-  }, [initialSettings?.invoiceDefaults.defaultCurrency, initialSettings?.invoiceDefaults.defaultTaxLabel, isDirty]);
+  }, [initialSettings, isDirty]);
 
   const setOriginalSnapshotForCurrentData = useCallback((newData: InvoiceData, newHistoryId: string | null) => {
     const snapshot = JSON.stringify(newData);

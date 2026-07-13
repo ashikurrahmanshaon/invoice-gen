@@ -34,7 +34,7 @@ export const detectRegionFromBrowser = (): string | null => {
       const loc = new Intl.Locale(navigator.language);
       if (loc.region) return loc.region; // e.g. "US" from "en-US"
     }
-  } catch (e) {}
+  } catch {}
 
   // Priority 2: Simple language split fallback
   const parts = navigator.language.split('-');
@@ -53,7 +53,7 @@ export const detectRegionFromBrowser = (): string | null => {
         return tzInfo.countries[0];
       }
     }
-  } catch (e) {}
+  } catch {}
 
   return null;
 };
@@ -75,8 +75,8 @@ export const fetchIPGeolocation = async (): Promise<string | null> => {
     if (data && data.success && data.country_code) {
       return data.country_code;
     }
-  } catch (e) {
-    console.warn('IP Geolocation failed:', e);
+  } catch {
+    console.warn('IP Geolocation failed');
   }
   return null;
 };

@@ -1,14 +1,14 @@
-# Invoice-Gen Media Kit
+# Invoice-Gen.net Media Kit
 
-Welcome to the Invoice-Gen Media Kit. This document contains approved boilerplate copy, descriptions, and feature lists for use in editorial coverage, partnerships, and directory listings.
+Welcome to the Invoice-Gen.net Media Kit. This document contains approved boilerplate copy, descriptions, and feature lists for use in editorial coverage, partnerships, and directory listings.
 
 ## Boilerplate Copy
 
 ### 50 Words (Short)
-Invoice-Gen is a free, premium, browser-native invoice generator designed for freelancers and small businesses. Built with a focus on privacy and speed, it allows users to create professional, localized PDF invoices instantly without signing up or storing data on external servers.
+Invoice-Gen.net is a free, premium, browser-native invoice generator designed for freelancers and small businesses. Built with a focus on privacy and speed, it allows users to create professional, localized PDF invoices instantly without signing up or storing data on external servers.
 
 ### 100 Words (Medium)
-Invoice-Gen is a free, premium, browser-native invoice generator built to help freelancers, contractors, and small businesses get paid faster. Featuring a clean, modern interface inspired by top-tier SaaS design, Invoice-Gen allows users to create, preview, and download professional PDF invoices instantly. Because it is completely browser-based, no sign-ups are required, and all client and financial data remains 100% private on the user's device. Invoice-Gen offers automated local history, tax calculations, and industry-specific templates—making professional billing accessible to everyone.
+Invoice-Gen.net is a free, premium, browser-native invoice generator built to help freelancers, contractors, and small businesses get paid faster. Featuring a clean, modern interface inspired by top-tier SaaS design, Invoice-Gen.net allows users to create, preview, and download professional PDF invoices instantly. Because it is completely browser-based, no sign-ups are required, and all client and financial data remains 100% private on the user's device. Invoice-Gen.net offers automated local history, tax calculations, and industry-specific templates—making professional billing accessible to everyone.
 
 ## Key Features
 

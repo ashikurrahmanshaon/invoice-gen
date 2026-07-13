@@ -66,7 +66,7 @@ export const getAllCurrencies = (): CurrencyData[] => {
       if (countryCode) {
         try {
           flag = getFlagEmoji(countryCode);
-        } catch (e) {
+        } catch {
           // Fallback to globe
         }
       }

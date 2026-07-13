@@ -1,6 +1,6 @@
-# Invoice-Gen Press Kit
+# Invoice-Gen.net Press Kit
 
-Welcome to the official Press Kit for Invoice-Gen. Here you will find our story, mission, and resources for media coverage.
+Welcome to the official Press Kit for Invoice-Gen.net. Here you will find our story, mission, and resources for media coverage.
 
 ## Mission & Vision
 
@@ -12,12 +12,12 @@ A world where independent professionals never have to pay a monthly subscription
 
 ## The Founder Story
 
-Invoice-Gen was born out of frustration. Our editorial and development team, comprised of seasoned freelancers and indie makers, realized that the market was flooded with "free" invoice generators that either:
+Invoice-Gen.net was born out of frustration. Our editorial and development team, comprised of seasoned freelancers and indie makers, realized that the market was flooded with "free" invoice generators that either:
 1. Demanded an account sign-up before downloading the PDF.
 2. Put watermarks on the final invoice.
 3. Served aggressive upsells for accounting software.
 
-We wanted to build something different—a tool that respects the user's time and data. By leveraging modern browser technologies (like local storage and client-side PDF generation), we created Invoice-Gen. It looks and feels like premium SaaS software (inspired by the clean aesthetics of Stripe and Linear), but operates entirely within the browser for free. No tracking, no sign-ups, no paywalls.
+We wanted to build something different—a tool that respects the user's time and data. By leveraging modern browser technologies (like local storage and client-side PDF generation), we created Invoice-Gen.net. It looks and feels like premium SaaS software (inspired by the clean aesthetics of Stripe and Linear), but operates entirely within the browser for free. No tracking, no sign-ups, no paywalls.
 
 ## Press Contacts
 
@@ -33,4 +33,4 @@ We require that all media coverage uses the actual application interface rather 
 - **LinkedIn Banner:** `/assets/brand/linkedin-banner.webp`
 - **Twitter Banner:** `/assets/brand/twitter-banner.webp`
 
-When referencing the product, always capitalize the "I" and "G", and include the hyphen: **Invoice-Gen**.
+When referencing the product, always capitalize the "I" and "G", and include the hyphen: **Invoice-Gen.net**.
