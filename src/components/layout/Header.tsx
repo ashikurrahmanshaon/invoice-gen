@@ -42,165 +42,51 @@ export const Header: React.FC<HeaderProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-
-
   return (
-    <header style={{ 
-      background: '#FFFFFF',
-      borderBottom: '1px solid var(--color-border)',
-      display: 'flex',
-      alignItems: 'center',
-      position: 'sticky',
-      top: 0,
-      zIndex: 1000
-    }} className="app-header">
+    <header className="app-header header-container">
       <div className="container header-grid">
-        {/* Style block for Header self-contained classes */}
-        <style>{`
-          .status-dot-pulse {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background-color: currentColor;
-            display: inline-block;
-            position: relative;
-          }
-          .status-dot-pulse::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 50%;
-            border: 1.5px solid currentColor;
-            opacity: 0;
-            animation: pulse-ring 2.2s infinite ease-out;
-          }
-          @keyframes pulse-ring {
-            0% { transform: scale(0.6); opacity: 0; }
-            50% { opacity: 0.45; }
-            100% { transform: scale(1.6); opacity: 0; }
-          }
-
-          .segmented-nav-btn {
-            padding: 4px 10px;
-            fontSize: 12px;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 4px;
-            line-height: 1.2;
-          }
-          .segmented-nav-btn.active {
-            font-weight: 600;
-            background-color: #FFFFFF;
-            border: 1px solid var(--color-border);
-            box-shadow: none;
-          }
-          .segmented-nav-btn:not(.active):hover {
-            background-color: rgba(0, 0, 0, 0.04);
-          }
-
-          .header-pdf-btn {
-            font-weight: 500 !important;
-            font-size: 13px !important;
-            height: 32px !important;
-            border-radius: 6px !important;
-            background: var(--color-primary) !important;
-            border: none !important;
-            color: #FFFFFF !important;
-            transition: background 0.15s ease, transform 0.1s ease !important;
-            cursor: pointer !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-          }
-          .header-pdf-btn:hover {
-            background: var(--color-primary-hover) !important;
-          }
-          .header-pdf-btn:active {
-            transform: scale(0.98) !important;
-          }
-
-          .header-save-btn {
-            font-weight: 500 !important;
-            font-size: 13px !important;
-            height: 32px !important;
-            border-radius: 6px !important;
-            background-color: #FFFFFF !important;
-            border: 1px solid var(--color-border) !important;
-            color: var(--color-text-main) !important;
-            transition: all 0.15s ease !important;
-            cursor: pointer !important;
-          }
-          .header-save-btn:hover {
-            background-color: var(--color-background) !important;
-            border-color: var(--color-border-hover) !important;
-          }
-          .header-save-btn:active {
-            transform: scale(0.98) !important;
-          }
-        `}</style>
-
         {/* Left Section: Logo & Wordmark */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
-          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+        <div className="flex items-center">
+          <a href="/" className="flex items-center gap-2 logo-link">
             <Logo size={32} hideText={true} />
-            <span className="desktop-only" style={{ 
-              fontSize: '16px', 
-              fontWeight: 800, 
-              letterSpacing: '-0.03em', 
-              color: '#0F172A', 
-              fontFamily: "'Inter', sans-serif",
-              lineHeight: 1,
-              display: 'flex',
-              alignItems: 'center'
-            }}>
+            <span className="desktop-only header-wordmark">
               Invoice-Gen.net
             </span>
           </a>
         </div>
 
         {/* Center Section: Segmented Navigation */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ display: 'flex', gap: '2px', backgroundColor: '#F1F5F9', padding: '3px', borderRadius: '8px', border: '1px solid #E2E8F0' }}>
+        <div className="flex items-center" style={{ justifyContent: 'center' }}>
+          <div className="segmented-control">
             <button 
               onClick={() => onViewChange('editor')}
               className={`segmented-nav-btn ${activeView === 'editor' ? 'active' : ''}`}
-              style={{
-                color: activeView === 'editor' ? '#0F172A' : '#64748B',
-                fontWeight: activeView === 'editor' ? 600 : 500
-              }}
             >
               Editor
             </button>
             <button 
               onClick={() => onViewChange('history')}
               className={`segmented-nav-btn ${activeView === 'history' ? 'active' : ''}`}
-              style={{
-                color: activeView === 'history' ? '#0F172A' : '#64748B',
-                fontWeight: activeView === 'history' ? 600 : 500
-              }}
             >
               History
             </button>
           </div>
         </div>
 
-        {/* Right Section: Status Indicator & Actions */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '12px' }}>
-          {/* Action Buttons (Unified Responsive Design) */}
-          <div className="desktop-only" style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+        {/* Right Section: Actions */}
+        <div className="flex items-center justify-end gap-3">
+          <div className="desktop-only flex items-center gap-2">
             {activeView === 'editor' && onDownloadPDF && (
               <button 
-                className="btn btn-sm header-pdf-btn" 
+                className="btn btn-sm btn-primary header-pdf-btn" 
                 onClick={onDownloadPDF}
               >
-                <Download size={12} /> PDF
+                <Download size={14} /> PDF
               </button>
             )}
           </div>
 
-          {/* Meatball Menu (Both Desktop & Mobile for Reset) */}
+          {/* Meatball Menu */}
           <div style={{ position: 'relative' }} ref={menuRef}>
             <button 
               className="btn btn-ghost btn-icon" 
@@ -211,136 +97,29 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
             
             {menuOpen && (
-              <div className="card" style={{
-                position: 'absolute',
-                top: 'calc(100% + 8px)',
-                right: 0,
-                width: '180px',
-                padding: '8px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '4px',
-                zIndex: 1010
-              }}>
+              <div className="card header-dropdown-menu animate-scale-up">
                 {activeView === 'editor' && onLoadDemo && (
-                  <button 
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      width: '100%',
-                      padding: '8px 12px',
-                      border: 'none',
-                      background: 'transparent',
-                      textAlign: 'left',
-                      fontSize: '13px',
-                      cursor: 'pointer',
-                      borderRadius: '4px',
-                      color: 'var(--color-text-main)'
-                    }}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      onLoadDemo();
-                    }}
-                  >
+                  <button className="dropdown-item" onClick={() => { setMenuOpen(false); onLoadDemo(); }}>
                     <Sparkles size={14} className="text-primary" /> Load Demo Data
                   </button>
                 )}
 
                 {activeView === 'editor' && onDownloadPDF && (
-                  <button 
-                    className="mobile-only"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      width: '100%',
-                      padding: '8px 12px',
-                      border: 'none',
-                      background: 'transparent',
-                      textAlign: 'left',
-                      fontSize: '13px',
-                      cursor: 'pointer',
-                      borderRadius: '4px',
-                      color: 'var(--color-text-main)'
-                    }}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      onDownloadPDF();
-                    }}
-                  >
+                  <button className="dropdown-item mobile-only" onClick={() => { setMenuOpen(false); onDownloadPDF(); }}>
                     <Download size={14} /> Download PDF
                   </button>
                 )}
                 {hasLoadedHistory && onSaveAsNew && (
-                  <button 
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      width: '100%',
-                      padding: '8px 12px',
-                      border: 'none',
-                      background: 'transparent',
-                      textAlign: 'left',
-                      fontSize: '13px',
-                      cursor: 'pointer',
-                      borderRadius: '4px',
-                      color: 'var(--color-text-main)'
-                    }}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      onSaveAsNew();
-                    }}
-                  >
+                  <button className="dropdown-item" onClick={() => { setMenuOpen(false); onSaveAsNew(); }}>
                     <FilePlus size={14} /> Save As New
                   </button>
                 )}
                 {onNewInvoice && (
-                  <button 
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      width: '100%',
-                      padding: '8px 12px',
-                      border: 'none',
-                      background: 'transparent',
-                      textAlign: 'left',
-                      fontSize: '13px',
-                      cursor: 'pointer',
-                      borderRadius: '4px',
-                      color: 'var(--color-text-main)'
-                    }}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      onNewInvoice();
-                    }}
-                  >
+                  <button className="dropdown-item" onClick={() => { setMenuOpen(false); onNewInvoice(); }}>
                     <FilePlus size={14} /> New Invoice
                   </button>
                 )}
-                <button 
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    width: '100%',
-                    padding: '8px 12px',
-                    border: 'none',
-                    background: 'transparent',
-                    textAlign: 'left',
-                    fontSize: '13px',
-                    cursor: 'pointer',
-                    borderRadius: '4px',
-                    color: '#ef4444'
-                  }}
-                  onClick={() => {
-                    setMenuOpen(false);
-                    onResetEverything?.();
-                  }}
-                >
+                <button className="dropdown-item text-error" onClick={() => { setMenuOpen(false); onResetEverything?.(); }}>
                   <Trash2 size={14} /> Reset Everything
                 </button>
               </div>
@@ -348,14 +127,6 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
       </div>
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-4px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </header>
   );
 };
-
-

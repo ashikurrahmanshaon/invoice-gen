@@ -19,38 +19,20 @@ export const Footer: React.FC = () => {
   }, []);
 
   return (
-    <footer id="main-footer" style={{ 
-      background: 'var(--color-background)',
-      color: 'var(--color-text-secondary)', 
-      padding: '64px 0 32px 0',
-      fontSize: '14px',
-      borderTop: '1px solid var(--color-border)',
-      fontFamily: "var(--font-family)",
-      marginTop: '64px'
-    }}>
-      <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+    <footer id="main-footer" className="app-footer">
+      <div className="container flex-col" style={{ gap: '48px' }}>
         
         {/* Main Footer Content */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: isDesktop ? '1.5fr repeat(3, 1fr)' : '1fr', 
-          gap: isDesktop ? '32px' : '32px',
-        }}>
+        <div className="footer-grid">
           {/* Brand Column */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div className="footer-brand-col">
+            <div className="flex items-center gap-2">
               <Logo size={24} hideText={true} />
-              <span style={{ 
-                fontSize: '16px', 
-                fontWeight: 700, 
-                letterSpacing: '-0.02em', 
-                color: 'var(--color-text-main)', 
-                lineHeight: 1
-              }}>
+              <span className="footer-brand-name">
                 Invoice-Gen.net
               </span>
             </div>
-            <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', lineHeight: 1.5, margin: 0, maxWidth: '280px' }}>
+            <p className="footer-brand-desc">
               100% browser-native utility. Watermark-free, professional invoices generated instantly.
             </p>
           </div>
@@ -89,81 +71,10 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Section: Copyright */}
-        <div style={{ 
-          borderTop: '1px solid var(--color-border)', 
-          paddingTop: '24px', 
-          display: 'flex', 
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: '16px',
-          color: 'var(--color-text-tertiary)',
-          fontSize: '13px'
-        }}>
+        <div className="footer-bottom">
           <span>&copy; {new Date().getFullYear()} Invoice-Gen.net. All rights reserved.</span>
-
         </div>
       </div>
-
-      <style>{`
-        .footer-col {
-          width: 100%;
-        }
-        .footer-summary {
-          color: var(--color-text-main);
-          font-weight: 600;
-          font-size: 14px;
-          margin-bottom: 16px;
-          cursor: pointer;
-          outline: none;
-          list-style: none;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-        .footer-summary::-webkit-details-marker {
-          display: none;
-        }
-        .footer-links {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-        .footer-links a {
-          color: var(--color-text-secondary);
-          text-decoration: none;
-          transition: color 0.15s ease;
-          font-size: 14px;
-        }
-        .footer-links a:hover {
-          color: var(--color-text-main);
-        }
-        
-        @media (max-width: 768px) {
-          .footer-summary {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--color-border);
-            margin-bottom: 8px;
-          }
-          .footer-summary::after {
-            content: '+';
-            font-size: 16px;
-            color: var(--color-text-tertiary);
-          }
-          details[open] .footer-summary::after {
-            content: '−';
-          }
-          .footer-links {
-            padding: 8px 0 16px 8px;
-          }
-        }
-
-        @media (min-width: 769px) {
-          .footer-summary {
-            pointer-events: none;
-            cursor: default;
-          }
-        }
-      `}</style>
     </footer>
   );
 };

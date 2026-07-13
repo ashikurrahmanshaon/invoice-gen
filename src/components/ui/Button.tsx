@@ -23,77 +23,32 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     disabled, 
     ...props 
   }, ref) => {
-    const [isHovered, setIsHovered] = React.useState(false);
-    const [isActive, setIsActive] = React.useState(false);
+    
+    // Determine classes based on props
+    const baseClass = 'btn';
+    
+    // Map variants
+    let variantClass = '';
+    if (variant === 'primary') variantClass = 'btn-primary';
+    else if (variant === 'secondary' || variant === 'outline') variantClass = 'btn-outline';
+    else if (variant === 'ghost') variantClass = 'btn-ghost';
+    else if (variant === 'danger') variantClass = 'btn-danger';
 
-    let baseStyle: React.CSSProperties = {
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px',
-      fontWeight: 500,
-      fontFamily: 'var(--font-family)',
-      borderRadius: 'var(--radius-lg)',
-      transition: 'all 0.15s ease',
-      cursor: disabled || isLoading ? 'not-allowed' : 'pointer',
-      opacity: disabled ? 0.6 : 1,
-      width: fullWidth ? '100%' : 'auto',
-      border: 'none',
-      position: 'relative',
-      overflow: 'hidden',
-    };
+    // Map sizes
+    let sizeClass = '';
+    if (size === 'sm') sizeClass = 'btn-sm';
+    else if (size === 'lg') sizeClass = 'btn-lg'; // Assumes .btn-lg is in globals.css
 
-    // Size variants
-    if (size === 'sm') {
-      baseStyle = { ...baseStyle, padding: '0 16px', fontSize: '14px', height: '40px', borderRadius: 'var(--radius-md)' };
-    } else if (size === 'md') {
-      baseStyle = { ...baseStyle, padding: '0 24px', fontSize: '16px', height: '52px' };
-    } else if (size === 'lg') {
-      baseStyle = { ...baseStyle, padding: '0 32px', fontSize: '18px', height: '60px' };
-    }
+    const widthStyle = fullWidth ? { width: '100%' } : {};
 
-    // Color variants
-    if (variant === 'primary') {
-      baseStyle = {
-        ...baseStyle,
-        background: isHovered && !disabled ? 'var(--color-primary-hover)' : 'var(--color-primary)',
-        color: '#FFFFFF',
-        transform: isActive && !disabled ? 'scale(0.98)' : 'none',
-      };
-    } else if (variant === 'secondary' || variant === 'outline') {
-      baseStyle = {
-        ...baseStyle,
-        background: isHovered && !disabled ? 'var(--color-background)' : '#FFFFFF',
-        color: 'var(--color-text-main)',
-        border: '1px solid var(--color-border)',
-        transform: isActive && !disabled ? 'scale(0.98)' : 'none',
-      };
-    } else if (variant === 'ghost') {
-      baseStyle = {
-        ...baseStyle,
-        background: isHovered && !disabled ? 'rgba(37,99,235,0.05)' : 'transparent',
-        color: 'var(--color-primary)',
-        transform: isActive && !disabled ? 'scale(0.98)' : 'none',
-      };
-    } else if (variant === 'danger') {
-      baseStyle = {
-        ...baseStyle,
-        background: isHovered && !disabled ? '#DC2626' : '#EF4444',
-        color: '#FFFFFF',
-        transform: isActive && !disabled ? 'scale(0.98)' : 'none',
-      };
-    }
+    const combinedClassName = [baseClass, variantClass, sizeClass, className].filter(Boolean).join(' ');
 
     return (
       <button
         ref={ref}
-        className={`premium-btn ${className}`}
-        style={{ ...baseStyle, ...style }}
+        className={combinedClassName}
+        style={{ ...widthStyle, ...style }}
         disabled={disabled || isLoading}
-        onMouseEnter={(e) => { setIsHovered(true); props.onMouseEnter?.(e); }}
-        onMouseLeave={(e) => { setIsHovered(false); setIsActive(false); props.onMouseLeave?.(e); }}
-        onMouseDown={(e) => { setIsActive(true); props.onMouseDown?.(e); }}
-        onMouseUp={(e) => { setIsActive(false); props.onMouseUp?.(e); }}
         {...props}
       >
         {isLoading && (
