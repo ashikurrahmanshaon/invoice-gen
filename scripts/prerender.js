@@ -59,8 +59,8 @@ async function build() {
     const { html } = render(url, helmetContext);
     const { helmet } = helmetContext;
 
-    // Inject the rendered HTML into the template
-    let appHtml = template.replace(`<!-- App Shell Placeholder for Instant First Contentful Paint / LCP -->`, html);
+    // Inject the rendered HTML into the template by replacing the entire App Shell block
+    let appHtml = template.replace(/<!-- APP_SHELL_START -->[\s\S]*?<!-- APP_SHELL_END -->/, html);
     
     // Replace title and meta tags if helmet provided them
     if (helmet) {

@@ -142,7 +142,7 @@ export function HistoryDashboard({
       ) : (
         <div className="history-list" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {filteredHistory.map(inv => (
-            <div key={inv.id} className="history-row flex-between" style={{ 
+            <div key={inv.id} className="history-row item-row-grid flex-between" style={{ 
               padding: '16px', 
               border: '1px solid var(--border)', 
               borderRadius: '8px',
