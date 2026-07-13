@@ -1,25 +1,30 @@
-<IfModule mod_mime.c>
-  AddType text/javascript .js
-  AddType text/javascript .mjs
-</IfModule>
-
 <IfModule mod_headers.c>
-  # Cache hashed assets for 1 year (immutable)
-  SetEnvIf Request_URI "/assets/" HASHED_ASSET
-  Header set Cache-Control "public, max-age=31536000, immutable" env=HASHED_ASSET
+  # Security Headers
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  
+  # Note: A strict Content-Security-Policy (CSP) is intentionally omitted or relaxed 
+  # here to prevent breaking Google Analytics (gtag.js) and Microsoft Clarity which 
+  # dynamically inject inline scripts and assets.
+  # Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.clarity.ms; connect-src 'self' https://www.google-analytics.com https://*.clarity.ms"
 
-  # HTML files must be revalidated every time to ensure users get updates instantly
-  <FilesMatch "\.html$">
-    Header set Cache-Control "public, max-age=0, must-revalidate"
-  </FilesMatch>
+  # Error Pages
+  ErrorDocument 404 /404.html
 </IfModule>
 
-RewriteEngine On
+<IfModule mod_rewrite.c>
+  RewriteEngine On
 
-# Redirect WWW to Non-WWW
-RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+  # Enable HTML Extensionless URLs (optional, if supported by the build)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
 
-# Force HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+  # Redirect Vite SPA to index.html if not a file/dir and not static html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^/?(.*)$ /index.html [L]
+</IfModule>

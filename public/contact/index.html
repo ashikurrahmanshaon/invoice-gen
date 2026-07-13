@@ -4,48 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us | Invoice-Gen</title>
-  <meta name="description" content="Get in touch with the Invoice-Gen support team. Find help with technical issues, bug reports, feature requests, and partnership inquiries." />
+  <meta name="description" content="Get in touch with the Invoice-Gen team for support, press inquiries, or general questions about our free invoice generator." />
   <link rel="canonical" href="https://invoice-gen.net/contact/" />
-  
+
+  <!-- E-E-A-T JSON-LD Schemas -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": "https://invoice-gen.net/contact/#webpage",
+        "url": "https://invoice-gen.net/contact/",
+        "name": "Contact Us | Invoice-Gen",
+        "isPartOf": {
+          "@id": "https://invoice-gen.net/#website"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://invoice-gen.net/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Contact",
+            "item": "https://invoice-gen.net/contact/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   
   <!-- Fonts & Icons -->
-  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <style>
-    @font-face {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
-      src: url('/fonts/inter-latin.woff2') format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-    @font-face {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 500;
-      font-display: swap;
-      src: url('/fonts/inter-latin.woff2') format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-    @font-face {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 600;
-      font-display: swap;
-      src: url('/fonts/inter-latin.woff2') format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-    @font-face {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 700;
-      font-display: swap;
-      src: url('/fonts/inter-latin.woff2') format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -58,266 +61,47 @@
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); color: var(--color-text-main); background-color: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-    body {
-      font-family: var(--font-sans);
-      color: var(--color-text-main);
-      background-color: var(--color-bg);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+    header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: 100; height: 72px; display: flex; align-items: center; }
+    .nav-container { max-width: 1000px; width: 100%; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo-link { display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 20px; color: var(--color-text-main); }
+    .logo-icon { width: 28px; height: 28px; background: linear-gradient(135deg, #2E72FF 0%, #155EEF 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .logo-icon::after { content: ''; width: 10px; height: 10px; background: white; border-radius: 2px; }
 
-    /* Header Nav */
-    header {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--color-border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: 72px;
-      display: flex;
-      align-items: center;
-    }
+    .btn-cta { background-color: var(--color-primary); color: white; text-decoration: none; padding: 10px 20px; border-radius: 12px; font-size: 14px; font-weight: 600; transition: all 180ms ease; box-shadow: 0 4px 12px rgba(21, 94, 239, 0.15); }
+    .btn-cta:hover { background-color: var(--color-primary-hover); transform: translateY(-1px); }
 
-    .nav-container {
-      max-width: 1000px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    main { max-width: 800px; margin: 80px auto; padding: 0 24px; }
+    h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; text-align: left; }
+    .subtitle { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 48px; }
 
-    .logo-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 20px;
-      color: var(--color-text-main);
-    }
-
-    .logo-icon {
-      width: 28px;
-      height: 28px;
-      background: linear-gradient(135deg, #2E72FF 0%, #155EEF 100%);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-icon::after {
-      content: '';
-      width: 10px;
-      height: 10px;
-      background: white;
-      border-radius: 2px;
-    }
-
-    .btn-cta {
-      background-color: var(--color-primary);
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: all 180ms ease;
-      box-shadow: 0 4px 12px rgba(21, 94, 239, 0.15);
-    }
-
-    .btn-cta:hover {
-      background-color: var(--color-primary-hover);
-      transform: translateY(-1px);
-    }
-
-    /* Main Container */
-    main {
-      max-width: 1000px;
-      margin: 80px auto;
-      padding: 0 24px;
-    }
-
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    h1 {
-      font-size: 44px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-
-    .subtitle {
-      font-size: 18px;
-      color: var(--color-text-secondary);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Grid Layout */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 64px;
-    }
-
-    @media (max-width: 768px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-    }
-
-    /* Support Categories */
-    .support-card {
+    .content-section { margin-bottom: 40px; }
+    h2 { font-size: 22px; font-weight: 600; margin-bottom: 16px; border-bottom: 1px solid var(--color-border); padding-bottom: 8px; }
+    p { color: var(--color-text-secondary); font-size: 16px; margin-bottom: 20px; }
+    
+    .contact-card {
       background: white;
       border: 1px solid var(--color-border);
       border-radius: 16px;
       padding: 32px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    }
-
-    .support-card h2 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
-
-    .categories-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    @media (max-width: 480px) {
-      .categories-list {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .category-item {
-      padding: 12px;
-      background: #F8FAFC;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--color-text-secondary);
-      text-align: center;
-      border: 1px solid var(--color-border);
-    }
-
-    .contact-info {
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--color-border);
-    }
-
-    .contact-email {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-
-    .response-time {
-      font-size: 13px;
-      color: var(--color-text-secondary);
-      margin-top: 8px;
-    }
-
-    /* FAQ Section */
-    .faq-card {
-      background: white;
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    }
-
-    .faq-card h2 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
-
-    .faq-item {
-      margin-bottom: 20px;
-    }
-
-    .faq-item h3 {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .faq-item p {
-      font-size: 14px;
-      color: var(--color-text-secondary);
-    }
-
-    /* Privacy Banner */
-    .privacy-notice {
-      background: #EFF6FF;
-      border: 1px solid rgba(37, 99, 235, 0.15);
-      border-radius: 16px;
-      padding: 24px;
       margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
     }
-
-    .privacy-notice h3 {
-      font-size: 16px;
-      font-weight: 600;
+    
+    .contact-card a {
       color: var(--color-primary);
-    }
-
-    .privacy-notice p {
-      font-size: 14px;
-      color: var(--color-text-secondary);
-      margin-bottom: 0;
-    }
-
-    /* Footer */
-    footer {
-      background: white;
-      border-top: 1px solid var(--color-border);
-      padding: 40px 0;
-      text-align: center;
-      color: var(--color-text-secondary);
-      font-size: 14px;
-    }
-
-    .footer-links {
-      margin-bottom: 16px;
-    }
-
-    .footer-links a {
-      color: var(--color-text-secondary);
       text-decoration: none;
-      margin: 0 12px;
+      font-weight: 600;
     }
+    
+    .contact-card a:hover { text-decoration: underline; }
 
-    .footer-links a:hover {
-      color: var(--color-primary);
-    }
+    footer { background: white; border-top: 1px solid var(--color-border); padding: 40px 0; text-align: center; color: var(--color-text-secondary); font-size: 14px; }
+    .footer-links { margin-bottom: 16px; }
+    .footer-links a { color: var(--color-text-secondary); text-decoration: none; margin: 0 12px; }
+    .footer-links a:hover { color: var(--color-primary); }
   </style>
 </head>
 <body>
@@ -333,61 +117,27 @@
   </header>
 
   <main>
-    <div class="hero">
-      <h1>Contact Support</h1>
-      <p class="subtitle">Have questions or need assistance? Reach out to the Invoice-Gen support team.</p>
-    </div>
+    <h1>Contact Us</h1>
+    <p class="subtitle">We're here to help. Reach out to the Invoice-Gen team.</p>
 
-    <div class="contact-grid">
-      <!-- Left Column: Support Categories -->
-      <div class="support-card">
-        <h2>How We Can Help</h2>
-        <div class="categories-list">
-          <div class="category-item">General Questions</div>
-          <div class="category-item">Technical Issues</div>
-          <div class="category-item">Bug Reports</div>
-          <div class="category-item">Feature Requests</div>
-          <div class="category-item">Business & Partnerships</div>
-          <div class="category-item">Privacy & Legal</div>
-        </div>
-        
-        <div class="contact-info">
-          <p>Email our support team directly at:</p>
-          <a href="mailto:support@invoice-gen.net" class="contact-email">support@invoice-gen.net</a>
-          <p class="response-time">We strive to respond to all inquiries within 24 to 48 business hours.</p>
-        </div>
+    <div class="content-section">
+      <div class="contact-card">
+        <h2>Customer Support</h2>
+        <p>If you have any questions about using our free invoice generator, formatting your invoices, or managing your data, please review our <a href="/trust/">Trust Center</a> or reach out directly.</p>
+        <p>Email: <a href="mailto:support@invoice-gen.net">support@invoice-gen.net</a></p>
       </div>
 
-      <!-- Right Column: Simple FAQ -->
-      <div class="faq-card">
-        <h2>Frequently Asked Questions</h2>
-        
-        <div class="faq-item">
-          <h3>How do I recover my past invoices?</h3>
-          <p>Because Invoice-Gen is a browser-native app, your history is stored locally in your browser cache. If you clear cache, switch browsers, or use private browsing, the data cannot be recovered by our team.</p>
-        </div>
-        
-        <div class="faq-item">
-          <h3>Does Invoice-Gen store my bank details?</h3>
-          <p>No. Your financial details, client information, and tax IDs are processed entirely client-side and are never transmitted to our servers.</p>
-        </div>
-        
-        <div class="faq-item">
-          <h3>How much does Invoice-Gen cost?</h3>
-          <p>Invoice-Gen is 100% free with no monthly subscription fees, paywalls, or limits on invoice volume.</p>
-        </div>
-        
-        <div class="faq-item">
-          <h3>Can I generate invoices in multiple currencies?</h3>
-          <p>Yes. You can switch between USD, EUR, GBP, and custom currency codes from the Totals and Items view.</p>
-        </div>
+      <div class="contact-card">
+        <h2>Editorial & Press Inquiries</h2>
+        <p>For questions related to our articles, editorial policies, or press releases, please contact our editorial team. We welcome feedback and corrections from our community.</p>
+        <p>Email: <a href="mailto:press@invoice-gen.net">press@invoice-gen.net</a></p>
       </div>
-    </div>
 
-    <!-- Privacy Banner -->
-    <div class="privacy-notice">
-      <h3>🔒 Important Privacy Note</h3>
-      <p>Because all invoice details are saved locally in your browser's private storage sandbox, our team has zero access to your generated invoices. Our support agents cannot inspect, retrieve, recover, or delete your billing files. For any issues relating to specific invoices, please ensure you have downloaded your offline PDF copy.</p>
+      <div class="contact-card">
+        <h2>Open Source Contributions</h2>
+        <p>Invoice-Gen is proudly built in public. If you're a developer or designer who would like to contribute or report a technical bug, you can reach out to us on GitHub.</p>
+        <p>GitHub: <a href="https://github.com/ashikurrahmanshaon/invoice-gen" target="_blank" rel="noopener noreferrer">github.com/ashikurrahmanshaon/invoice-gen</a></p>
+      </div>
     </div>
   </main>
 
@@ -395,12 +145,16 @@
     <div class="footer-links">
       <a href="/">Home</a>
       <a href="/about/">About</a>
+      <a href="/author/invoice-gen-editorial-team/">Authors</a>
+      <a href="/editorial-policy/">Editorial Policy</a>
       <a href="/privacy/">Privacy Policy</a>
       <a href="/terms/">Terms of Service</a>
       <a href="/contact/">Contact</a>
+      <a href="/trust/">Trust Center</a>
     </div>
     <p>&copy; 2026 Invoice-Gen. All rights reserved.</p>
   </footer>
+  <div style="background: #F8FAFC; padding: 40px 24px; border-top: 1px solid #E2E8F0; margin-top: 60px;"><div style="max-width: 1000px; margin: 0 auto;"><h4 style="font-size: 14px; font-weight: 600; color: #475569; margin-bottom: 16px;">Invoice-Gen Directory</h4><div style="display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 13px;"><a href="/blog/charging-late-fees-terms-and-best-practices/" style="color: #64748b; text-decoration: none;">Charging Late Fees</a><a href="/blog/choosing-the-best-payment-terms-for-freelancers/" style="color: #64748b; text-decoration: none;">Best Payment Terms</a><a href="/blog/handling-down-payments-and-deposits/" style="color: #64748b; text-decoration: none;">Down Payments</a><a href="/blog/how-to-create-your-first-invoice/" style="color: #64748b; text-decoration: none;">First Invoice Guide</a><a href="/blog/how-to-follow-up-on-unpaid-invoices/" style="color: #64748b; text-decoration: none;">Follow Up Unpaid Invoices</a><a href="/blog/how-to-invoice-clients-internationally/" style="color: #64748b; text-decoration: none;">Invoice Internationally</a><a href="/blog/how-to-invoice-for-hourly-work/" style="color: #64748b; text-decoration: none;">Hourly Work Invoicing</a><a href="/blog/how-to-invoice-for-mileage-reimbursement/" style="color: #64748b; text-decoration: none;">Mileage Reimbursement</a><a href="/blog/how-to-request-milestone-payments/" style="color: #64748b; text-decoration: none;">Milestone Payments</a><a href="/blog/how-to-write-a-professional-invoice/" style="color: #64748b; text-decoration: none;">Professional Invoice</a><a href="/blog/invoice-date-vs-due-date-difference/" style="color: #64748b; text-decoration: none;">Invoice Date vs Due Date</a><a href="/blog/invoicing-for-creative-licenses-and-royalties/" style="color: #64748b; text-decoration: none;">Creative Licenses</a><a href="/blog/legal-options-when-client-refuses-to-pay/" style="color: #64748b; text-decoration: none;">Legal Options for Unpaid</a><a href="/blog/what-is-a-debit-note-differences-explained/" style="color: #64748b; text-decoration: none;">Debit Note Explained</a><a href="/blog/what-is-net-30-and-how-to-use-it/" style="color: #64748b; text-decoration: none;">Net 30 Terms</a><a href="/blog/when-to-use-a-commercial-invoice/" style="color: #64748b; text-decoration: none;">Commercial Invoice</a><a href="/blog/writing-an-invoice-under-a-retainer/" style="color: #64748b; text-decoration: none;">Retainer Invoice</a><a href="/compare/adobe-express-invoice-alternative/" style="color: #64748b; text-decoration: none;">Adobe Express Alternative</a><a href="/compare/invoice-generator-alternative/" style="color: #64748b; text-decoration: none;">Invoice Generator Alternative</a><a href="/compare/invoice-simple-alternative/" style="color: #64748b; text-decoration: none;">Invoice Simple Alternative</a><a href="/invoice-app/" style="color: #64748b; text-decoration: none;">Invoice App</a><a href="/invoice-pdf-generator/" style="color: #64748b; text-decoration: none;">Invoice PDF Generator</a><a href="/invoice-software/" style="color: #64748b; text-decoration: none;">Invoice Software</a><a href="/invoice-template/" style="color: #64748b; text-decoration: none;">Invoice Template</a><a href="/online-invoice-generator/" style="color: #64748b; text-decoration: none;">Online Invoice Generator</a><a href="/professional-invoice-generator/" style="color: #64748b; text-decoration: none;">Professional Invoice Generator</a><a href="/templates/architect/" style="color: #64748b; text-decoration: none;">Architect Template</a><a href="/templates/business-coach/" style="color: #64748b; text-decoration: none;">Business Coach Template</a><a href="/templates/carpenter/" style="color: #64748b; text-decoration: none;">Carpenter Template</a><a href="/templates/data-analyst/" style="color: #64748b; text-decoration: none;">Data Analyst Template</a><a href="/templates/editor-proofreader/" style="color: #64748b; text-decoration: none;">Editor Template</a><a href="/templates/electrician/" style="color: #64748b; text-decoration: none;">Electrician Template</a><a href="/templates/event-planner/" style="color: #64748b; text-decoration: none;">Event Planner Template</a><a href="/templates/gardener/" style="color: #64748b; text-decoration: none;">Gardener Template</a><a href="/templates/handyman/" style="color: #64748b; text-decoration: none;">Handyman Template</a><a href="/templates/hvac-technician/" style="color: #64748b; text-decoration: none;">HVAC Template</a><a href="/templates/interior-designer/" style="color: #64748b; text-decoration: none;">Interior Designer Template</a><a href="/templates/it-support/" style="color: #64748b; text-decoration: none;">IT Support Template</a><a href="/templates/landscaping/" style="color: #64748b; text-decoration: none;">Landscaping Template</a><a href="/templates/painter-contractor/" style="color: #64748b; text-decoration: none;">Painter Template</a><a href="/templates/pet-sitter/" style="color: #64748b; text-decoration: none;">Pet Sitter Template</a><a href="/templates/plumber/" style="color: #64748b; text-decoration: none;">Plumber Template</a><a href="/templates/project-manager/" style="color: #64748b; text-decoration: none;">Project Manager Template</a><a href="/templates/roofer/" style="color: #64748b; text-decoration: none;">Roofer Template</a><a href="/templates/translator/" style="color: #64748b; text-decoration: none;">Translator Template</a><a href="/templates/voiceover-artist/" style="color: #64748b; text-decoration: none;">Voiceover Template</a></div></div></div>
 
 </body>
 </html>

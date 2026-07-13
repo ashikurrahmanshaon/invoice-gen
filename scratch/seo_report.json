@@ -1,0 +1,2479 @@
+{
+  "totalFiles": 89,
+  "files": [
+    {
+      "url": "/about/",
+      "title": "About Us | Invoice-Gen",
+      "desc": "Learn about Invoice-Gen, the modern, privacy-first invoice generator designed for freelancers and small businesses.",
+      "h1": "About Invoice-Gen",
+      "canonical": "https://invoice-gen.net/about/",
+      "ogTitle": false,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 59
+    },
+    {
+      "url": "/author/invoice-gen-editorial-team/",
+      "title": "Invoice-Gen Editorial Team",
+      "desc": "Meet the Invoice-Gen Editorial Team. Our experts provide accurate, actionable guides on invoicing, accounting, and business finance.",
+      "h1": "Invoice-Gen Editorial Team",
+      "canonical": "https://invoice-gen.net/author/invoice-gen-editorial-team/",
+      "ogTitle": false,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 58
+    },
+    {
+      "url": "/blog/best-payment-terms-freelancers/",
+      "title": "Best Payment Terms for Freelancers & Solo Contractors | Invoice-Gen",
+      "desc": "Optimize your cash flow. Learn the best payment terms for freelancers, including Net 15, Net 30, and upfront deposits.",
+      "h1": "Best Payment Terms for Freelancers",
+      "canonical": "https://invoice-gen.net/blog/best-payment-terms-freelancers/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 59
+    },
+    {
+      "url": "/blog/charging-late-fees-terms-and-best-practices/",
+      "title": "Charging Late Fees: Terms and Best Practices | Invoice-Gen",
+      "desc": "You cannot charge late fees unless they were agreed to in writing in your initial contract. Outline late fee percentages clearly.",
+      "h1": "Charging Late Fees: Terms and Best Practices",
+      "canonical": "https://invoice-gen.net/blog/charging-late-fees-terms-and-best-practices/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/choosing-the-best-payment-terms-for-freelancers/",
+      "title": "Choosing the Best Invoicing Payment Terms | Invoice-Gen",
+      "desc": "Payment terms define when your client must pay. They are typically indicated using code abbreviations like Net 15, Net 30, or COD (Cash on Delivery).",
+      "h1": "Choosing the Best Invoicing Payment Terms",
+      "canonical": "https://invoice-gen.net/blog/choosing-the-best-payment-terms-for-freelancers/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/common-invoice-mistakes-avoid/",
+      "title": "Common Invoice Mistakes to Avoid: Checklist | Invoice-Gen",
+      "desc": "Avoid payment delays. Learn the most common invoice mistakes, including poor itemization, missing tracking numbers, and vague terms.",
+      "h1": "Common Invoice Mistakes to Avoid",
+      "canonical": "https://invoice-gen.net/blog/common-invoice-mistakes-avoid/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 59
+    },
+    {
+      "url": "/blog/essential-fields-to-include-on-invoice/",
+      "title": "Essential Fields to Include on Your Invoices | Invoice-Gen",
+      "desc": "Ensure both your billing details and the client&#39;s corporate name match official tax filings. Include email address, active phone number, and physica...",
+      "h1": "Essential Fields to Include on Your Invoices",
+      "canonical": "https://invoice-gen.net/blog/essential-fields-to-include-on-invoice/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/friendly-late-payment-reminder-email-templates/",
+      "title": "Late Payment Reminder Email Templates for Freelancers | Invoice-Gen",
+      "desc": "&quot;Hi [Name], just a friendly reminder that invoice [Num] for [Project] was due yesterday. Let me know if you have any payment questions.&quot;",
+      "h1": "Late Payment Reminder Email Templates for Freelancers",
+      "canonical": "https://invoice-gen.net/blog/friendly-late-payment-reminder-email-templates/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/handling-down-payments-and-deposits/",
+      "title": "How to Handle Down Payments and Upfront Deposits | Invoice-Gen",
+      "desc": "For new clients or large projects, demanding a down payment is essential. This guarantees that you can allocate dedicated schedule blocks without risk.",
+      "h1": "How to Handle Down Payments and Upfront Deposits",
+      "canonical": "https://invoice-gen.net/blog/handling-down-payments-and-deposits/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/hourly-vs-fixed-price-invoices/",
+      "title": "Hourly vs Fixed Price Invoices: Which is Best? | Invoice-Gen",
+      "desc": "Learn the pros and cons of hourly vs fixed price invoicing. Understand how to write them, when to use each, and how to protect your revenue.",
+      "h1": "Hourly vs Fixed Price Invoices: Which is Best?",
+      "canonical": "https://invoice-gen.net/blog/hourly-vs-fixed-price-invoices/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 59
+    },
+    {
+      "url": "/blog/how-to-create-professional-invoice/",
+      "title": "How to Create a Professional Invoice: Step-by-Step Guide | Invoice-Gen",
+      "desc": "Learn how to write and format a professional invoice. Step-by-step instructions on styling headers, detailing terms, and calculating totals.",
+      "h1": "How to Create a Professional Invoice: Step-by-Step Guide",
+      "canonical": "https://invoice-gen.net/blog/how-to-create-professional-invoice/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 59
+    },
+    {
+      "url": "/blog/how-to-create-your-first-invoice/",
+      "title": "How to Create Your First Invoice (Step-by-Step) | Invoice-Gen",
+      "desc": "Sending your first invoice? Follow this step-by-step guide to create a professional invoice that guarantees you get paid on time.",
+      "h1": "How to Create Your First Invoice (Step-by-Step)",
+      "canonical": "https://invoice-gen.net/blog/how-to-create-your-first-invoice/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\":\"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 59
+    },
+    {
+      "url": "/blog/how-to-follow-up-on-unpaid-invoices/",
+      "title": "How to Follow Up on Unpaid Invoices Professionally | Invoice-Gen",
+      "desc": "Send polite follow-ups: (a) 1 day after the due date. (b) 7 days late. (c) 14 days late. (d) Call at 30 days late.",
+      "h1": "How to Follow Up on Unpaid Invoices Professionally",
+      "canonical": "https://invoice-gen.net/blog/how-to-follow-up-on-unpaid-invoices/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/how-to-get-paid-faster-invoices/",
+      "title": "How to Get Paid Faster with Better Invoices | Invoice-Gen",
+      "desc": "Reduce payment delays. Learn how to write invoices that clients pay faster, with clear terms, itemizations, and payment routing.",
+      "h1": "How to Get Paid Faster with Better Invoices",
+      "canonical": "https://invoice-gen.net/blog/how-to-get-paid-faster-invoices/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 59
+    },
+    {
+      "url": "/blog/how-to-invoice-as-consultant/",
+      "title": "How to Invoice Clients as a Consultant | Invoice-Gen",
+      "desc": "Step-by-step guide on how to invoice as a consultant. Structure monthly advisory retainers, document travel expenses, and format hours.",
+      "h1": "How to Invoice Clients as a Consultant",
+      "canonical": "https://invoice-gen.net/blog/how-to-invoice-as-consultant/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 59
+    },
+    {
+      "url": "/blog/how-to-invoice-clients-internationally/",
+      "title": "How to Invoice Clients Internationally: A Practical Guide | Invoice-Gen",
+      "desc": "When billing international clients, specify the target currency (e.g. USD, EUR, GBP) using standard three-letter ISO codes next to all amounts.",
+      "h1": "How to Invoice Clients Internationally: A Practical Guide",
+      "canonical": "https://invoice-gen.net/blog/how-to-invoice-clients-internationally/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/how-to-invoice-for-hourly-work/",
+      "title": "How to Invoice for Hourly Work and Consulting Hours | Invoice-Gen",
+      "desc": "When billing hourly, use a time-tracker app to capture work increments down to the minute. Log detailed notes for each session.",
+      "h1": "How to Invoice for Hourly Work and Consulting Hours",
+      "canonical": "https://invoice-gen.net/blog/how-to-invoice-for-hourly-work/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/how-to-invoice-for-mileage-reimbursement/",
+      "title": "How to Invoice for Mileage and Expense Reimbursements | Invoice-Gen",
+      "desc": "When a client agrees to reimburse you for project expenses (travel, software, assets), list them as separate line items on your invoice.",
+      "h1": "How to Invoice for Mileage and Expense Reimbursements",
+      "canonical": "https://invoice-gen.net/blog/how-to-invoice-for-mileage-reimbursement/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/how-to-request-milestone-payments/",
+      "title": "How to Request and Invoice Milestone Payments | Invoice-Gen",
+      "desc": "Milestone billing involves dividing a large project into smaller, deliverable-based payment blocks (e.g., Wireframes, Beta Version, Final Code Release).",
+      "h1": "How to Request and Invoice Milestone Payments",
+      "canonical": "https://invoice-gen.net/blog/how-to-request-milestone-payments/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/how-to-write-a-professional-invoice/",
+      "title": "How to Write a Professional Invoice: Step-by-Step Guide | Invoice-Gen",
+      "desc": "Your invoice is the final touchpoint of a client transaction. If it is messy, vague, or missing key parameters, your payment will be delayed. Standardiz...",
+      "h1": "How to Write a Professional Invoice: Step-by-Step Guide",
+      "canonical": "https://invoice-gen.net/blog/how-to-write-a-professional-invoice/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/how-to-write-freelance-invoice/",
+      "title": "How to Write a Freelance Invoice: Tutorial | Invoice-Gen",
+      "desc": "Step-by-step tutorial on how to write a freelance invoice. Structure headers, format line items, calculate taxes, and outline bank details.",
+      "h1": "How to Write a Freelance Invoice",
+      "canonical": "https://invoice-gen.net/blog/how-to-write-freelance-invoice/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 59
+    },
+    {
+      "url": "/blog/invoice-date-vs-due-date-difference/",
+      "title": "Invoice Date vs Due Date: What Is the Difference? | Invoice-Gen",
+      "desc": "Learn the critical differences between an invoice date and a due date. Understand how they impact payment terms, cash flow, and tax reporting for your business.",
+      "h1": "Invoice Date vs Due Date: Understanding the Difference",
+      "canonical": "https://invoice-gen.net/blog/invoice-date-vs-due-date-difference/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 65
+    },
+    {
+      "url": "/blog/invoice-number-best-practices/",
+      "title": "Invoice Number Best Practices for Small Businesses | Invoice-Gen",
+      "desc": "Learn how to format and manage invoice numbers correctly. Discover professional numbering systems, alphanumeric sequences, and why sequential numbering is critical for tax compliance.",
+      "h1": "Invoice Number Best Practices for Small Businesses in 2026",
+      "canonical": "https://invoice-gen.net/blog/invoice-number-best-practices/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 65
+    },
+    {
+      "url": "/blog/invoice-vs-receipt-difference/",
+      "title": "Invoice vs Receipt: What's the Difference? | Invoice-Gen",
+      "desc": "Learn the key differences between invoices and receipts. Understand when to issue an invoice, when to send a receipt, and how to stay tax compliant.",
+      "h1": "Invoice vs Receipt: What's the Difference?",
+      "canonical": "https://invoice-gen.net/blog/invoice-vs-receipt-difference/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 59
+    },
+    {
+      "url": "/blog/invoice-vs-receipt-key-differences/",
+      "title": "Invoice vs. Receipt: Key Differences Explained | Invoice-Gen",
+      "desc": "An invoice is a request for payment sent by a service provider to a client. It details the services provided, rates, and terms, indicating that a paymen...",
+      "h1": "Invoice vs. Receipt: Key Differences Explained",
+      "canonical": "https://invoice-gen.net/blog/invoice-vs-receipt-key-differences/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/invoicing-for-creative-licenses-and-royalties/",
+      "title": "Invoicing for Creative Licenses, Assets, and Royalties | Invoice-Gen",
+      "desc": "If you are a designer, photographer, or voice artist, separate your labor creation fee from the asset licensing fee on the invoice.",
+      "h1": "Invoicing for Creative Licenses, Assets, and Royalties",
+      "canonical": "https://invoice-gen.net/blog/invoicing-for-creative-licenses-and-royalties/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/legal-options-when-client-refuses-to-pay/",
+      "title": "Legal Options When a Client Refuses to Pay Your Invoice | Invoice-Gen",
+      "desc": "Before taking legal action, mail a certified demand letter stating the outstanding amount, terms, and the deadline before escalation.",
+      "h1": "Legal Options When a Client Refuses to Pay Your Invoice",
+      "canonical": "https://invoice-gen.net/blog/legal-options-when-client-refuses-to-pay/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/what-is-a-credit-note-and-how-to-issue/",
+      "title": "What is a Credit Note and How to Issue One? | Invoice-Gen",
+      "desc": "A credit note (or credit memo) is a legal document issued to reduce the amount owed on a previously sent invoice.",
+      "h1": "What is a Credit Note and How to Issue One?",
+      "canonical": "https://invoice-gen.net/blog/what-is-a-credit-note-and-how-to-issue/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/what-is-a-debit-note-differences-explained/",
+      "title": "What is a Debit Note? Differences Explained | Invoice-Gen",
+      "desc": "A debit note is a document issued by a seller to increase the amount owed on a previously sent invoice.",
+      "h1": "What is a Debit Note? Differences Explained",
+      "canonical": "https://invoice-gen.net/blog/what-is-a-debit-note-differences-explained/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/what-is-a-proforma-invoice/",
+      "title": "What is a Proforma Invoice and When Do You Need One? | Invoice-Gen",
+      "desc": "A proforma invoice is a preliminary bill sent before goods or services are delivered. It estimates cost, shipping, and customs details.",
+      "h1": "What is a Proforma Invoice and When Do You Need One?",
+      "canonical": "https://invoice-gen.net/blog/what-is-a-proforma-invoice/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/what-is-an-invoice-beginners-guide/",
+      "title": "What Is an Invoice? A Complete Beginner's Guide | Invoice-Gen",
+      "desc": "Learn what an invoice is, why businesses use them, and how to create one. This beginner's guide covers invoice types, essential components, and common mistakes.",
+      "h1": "What Is an Invoice? A Complete Beginner's Guide for 2026",
+      "canonical": "https://invoice-gen.net/blog/what-is-an-invoice-beginners-guide/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\":\"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 71
+    },
+    {
+      "url": "/blog/what-is-net-30-and-how-to-use-it/",
+      "title": "What is Net 30 and How to Use It in Billing | Invoice-Gen",
+      "desc": "Net 30 means the client must settle the invoice within 30 calendar days from the invoice date. This is common in enterprise client billing.",
+      "h1": "What is Net 30 and How to Use It in Billing",
+      "canonical": "https://invoice-gen.net/blog/what-is-net-30-and-how-to-use-it/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/what-to-include-in-invoice/",
+      "title": "What Should Be Included in an Invoice? Checklist | Invoice-Gen",
+      "desc": "The complete invoicing checklist. Learn the exact requirements, including unique numbers, tax identification details, and payment terms.",
+      "h1": "What Should Be Included in an Invoice?",
+      "canonical": "https://invoice-gen.net/blog/what-to-include-in-invoice/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 59
+    },
+    {
+      "url": "/blog/when-to-send-invoice/",
+      "title": "When Should You Send an Invoice? Invoicing Cycles | Invoice-Gen",
+      "desc": "Optimize cash flow. Learn when to send an invoice, including upfront deposits, project milestones, and monthly recurring retainers.",
+      "h1": "When Should You Send an Invoice?",
+      "canonical": "https://invoice-gen.net/blog/when-to-send-invoice/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": true
+      },
+      "outLinksCount": 59
+    },
+    {
+      "url": "/blog/when-to-use-a-commercial-invoice/",
+      "title": "When to Use a Commercial Invoice for Global Trade | Invoice-Gen",
+      "desc": "A commercial invoice is a custom document used for importing and exporting goods. Customs agents use it to calculate duties and taxes.",
+      "h1": "When to Use a Commercial Invoice for Global Trade",
+      "canonical": "https://invoice-gen.net/blog/when-to-use-a-commercial-invoice/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/blog/writing-an-invoice-under-a-retainer/",
+      "title": "How to Write an Invoice for Retainer Agreements | Invoice-Gen",
+      "desc": "A retainer is an advance payment made by a client to secure a freelancer&#39;s availability for a specific number of monthly hours.",
+      "h1": "How to Write an Invoice for Retainer Agreements",
+      "canonical": "https://invoice-gen.net/blog/writing-an-invoice-under-a-retainer/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/compare/adobe-express-invoice-alternative/",
+      "title": "Invoice-Gen vs Adobe Express Invoice Maker | Best Free Alternative",
+      "desc": "Tired of logging into Adobe Express just to make an invoice? Discover Invoice-Gen, the instant, no-login alternative that works flawlessly on mobile and desktop.",
+      "h1": "Invoice-Gen vs Adobe Express",
+      "canonical": "https://invoice-gen.net/compare/adobe-express-invoice-alternative/",
+      "ogTitle": false,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 57
+    },
+    {
+      "url": "/compare/invoice-generator-alternative/",
+      "title": "Invoice-Gen vs Invoice Generator | Best Alternative 2026",
+      "desc": "Looking for an alternative to Invoice Generator by Invoiced? Discover Invoice-Gen, the modern, privacy-first, 100% free invoice maker with SaaS-quality design.",
+      "h1": "Invoice-Gen vs Invoice Generator (by Invoiced)",
+      "canonical": "https://invoice-gen.net/compare/invoice-generator-alternative/",
+      "ogTitle": false,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 57
+    },
+    {
+      "url": "/compare/invoice-simple-alternative/",
+      "title": "Invoice-Gen vs Invoice Simple | Best Free Alternative 2026",
+      "desc": "Looking for a free alternative to Invoice Simple? See how Invoice-Gen compares. No paywalls, no login required, and 100% free PDF downloads.",
+      "h1": "Invoice-Gen vs Invoice Simple",
+      "canonical": "https://invoice-gen.net/compare/invoice-simple-alternative/",
+      "ogTitle": false,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 57
+    },
+    {
+      "url": "/contact/",
+      "title": "Contact Us | Invoice-Gen",
+      "desc": "Get in touch with the Invoice-Gen team for support, press inquiries, or general questions about our free invoice generator.",
+      "h1": "Contact Us",
+      "canonical": "https://invoice-gen.net/contact/",
+      "ogTitle": false,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 57
+    },
+    {
+      "url": "/editorial-policy/",
+      "title": "Editorial Policy | Invoice-Gen",
+      "desc": "Invoice-Gen's commitment to accurate, objective, and expert-reviewed financial content for freelancers and small businesses.",
+      "h1": "Editorial Policy",
+      "canonical": "https://invoice-gen.net/editorial-policy/",
+      "ogTitle": false,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 58
+    },
+    {
+      "url": "/free-invoice-generator/",
+      "title": "Free Invoice-Gen | Invoice-Gen — No Signup, No Fees",
+      "desc": "Generate professional PDF invoices for free with Invoice-Gen. No signup, no fees, no watermarks. Create, customize, and download invoices in seconds.",
+      "h1": "Free Invoice-Gen — Create Professional Invoices Instantly",
+      "canonical": "https://invoice-gen.net/free-invoice-generator/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 61
+    },
+    {
+      "url": "/",
+      "title": "Invoice-Gen | Free Professional Invoice-Gen — No Signup Required",
+      "desc": "Create professional PDF invoices instantly with Invoice-Gen. 100% free, secure, browser-based invoice creator with no signup required. Download PDF invoices in seconds.",
+      "h1": "Free Invoice Generator",
+      "canonical": "https://invoice-gen.net/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": true,
+        "Org": true
+      },
+      "outLinksCount": 31
+    },
+    {
+      "url": "/invoice-app/",
+      "title": "Invoice App | Invoice-Gen — Create Invoices From Any Device",
+      "desc": "Use Invoice-Gen as your go-to invoice app on desktop, tablet, or phone. Create professional PDF invoices on any device with our mobile-optimized experience.",
+      "h1": "Invoice App — Create Invoices From Any Device",
+      "canonical": "https://invoice-gen.net/invoice-app/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 61
+    },
+    {
+      "url": "/invoice-creator/",
+      "title": "Invoice Creator | Invoice-Gen — Custom Invoices for Any Business",
+      "desc": "Create custom invoices for freelancers, contractors, and businesses with Invoice-Gen. Free invoice creator with professional templates and instant PDF export.",
+      "h1": "Invoice Creator — Build Custom Invoices for Any Business",
+      "canonical": "https://invoice-gen.net/invoice-creator/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 61
+    },
+    {
+      "url": "/invoice-maker/",
+      "title": "Invoice Maker | Invoice-Gen — Beautiful Invoices in Minutes",
+      "desc": "Make professional invoices online with Invoice-Gen. Our free invoice maker helps you design, customize, and download PDF invoices with automatic calculations.",
+      "h1": "Online Invoice Maker — Design Beautiful Invoices in Minutes",
+      "canonical": "https://invoice-gen.net/invoice-maker/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 61
+    },
+    {
+      "url": "/invoice-pdf-generator/",
+      "title": "Invoice PDF Generator | Invoice-Gen — Instant PDF Downloads",
+      "desc": "Generate PDF invoices instantly with Invoice-Gen. Create professional invoices and download them as clean, print-ready PDF files — completely free.",
+      "h1": "Invoice PDF Generator — Instant PDF Invoice Downloads",
+      "canonical": "https://invoice-gen.net/invoice-pdf-generator/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 61
+    },
+    {
+      "url": "/invoice-software/",
+      "title": "Free Invoice Software | Invoice-Gen — No Subscription Required",
+      "desc": "Replace expensive invoice software with Invoice-Gen. Free, browser-based invoicing with all the features you need — PDF export, calculations, client management, and more.",
+      "h1": "Free Invoice Software — Professional Invoicing Without the Cost",
+      "canonical": "https://invoice-gen.net/invoice-software/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 61
+    },
+    {
+      "url": "/invoice-template/",
+      "title": "Free Invoice Templates | Invoice-Gen — Professional Designs",
+      "desc": "Download free professional invoice templates for freelancers, contractors, consultants, and more. Customize and generate PDF invoices instantly with Invoice-Gen.",
+      "h1": "Free Invoice Templates — Professional Designs for Every Industry",
+      "canonical": "https://invoice-gen.net/invoice-template/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 61
+    },
+    {
+      "url": "/online-invoice-generator/",
+      "title": "Online Invoice-Gen | Invoice-Gen — No Download Required",
+      "desc": "Generate invoices online with Invoice-Gen. No software to download, no account to create. Our browser-based Invoice-Gen creates professional PDFs instantly.",
+      "h1": "Online Invoice-Gen — No Download, No Signup, Just Invoices",
+      "canonical": "https://invoice-gen.net/online-invoice-generator/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 61
+    },
+    {
+      "url": "/privacy/",
+      "title": "Privacy Policy | Invoice-Gen",
+      "desc": "Read the Invoice-Gen Privacy Policy. Learn how our browser-native architecture guarantees your billing data never leaves your device.",
+      "h1": "Privacy Policy",
+      "canonical": "https://invoice-gen.net/privacy/",
+      "ogTitle": false,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 54
+    },
+    {
+      "url": "/professional-invoice-generator/",
+      "title": "Professional Invoice-Gen | Invoice-Gen — Elevate Your Billing",
+      "desc": "Create professional-grade invoices with Invoice-Gen. Our free Invoice-Gen produces polished, branded PDF invoices that build trust and accelerate payments.",
+      "h1": "Professional Invoice-Gen — Elevate Your Billing",
+      "canonical": "https://invoice-gen.net/professional-invoice-generator/",
+      "ogTitle": true,
+      "twitterCard": true,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 61
+    },
+    {
+      "url": "/templates/architect/",
+      "title": "Free Architect Invoice Template | Invoice-Gen",
+      "desc": "Professional billing templates for architectural designers, draftspersons, and building consultants.",
+      "h1": "Free Architect Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/architect/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/business-coach/",
+      "title": "Free Business Coach Invoice Template | Invoice-Gen",
+      "desc": "Clean invoicing templates for executive coaches, startup mentors, and career guides.",
+      "h1": "Free Business Coach Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/business-coach/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/carpenter/",
+      "title": "Free Carpenter Invoice Template | Invoice-Gen",
+      "desc": "Streamlined carpenter billing templates for trim installers, deck builders, and furniture makers.",
+      "h1": "Free Carpenter Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/carpenter/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/cleaning-service/",
+      "title": "Free Cleaning Service Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional cleaning service invoices. Structured for residential cleanings, commercial offices, maid services, and material supplies.",
+      "h1": "Free Cleaning Service Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/cleaning-service/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/consultant/",
+      "title": "Free Consultant Invoice Template | Invoice-Gen",
+      "desc": "Professional, privacy-first Invoice-Gen for consultants. Create clean hourly or retainer-based PDF invoices in under 30 seconds.",
+      "h1": "Free Consultant Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/consultant/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/content-creator/",
+      "title": "Free Content Creator Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional content creator invoices. Best for UGC creators, brand sponsorships, influencers, and creative partnerships.",
+      "h1": "Free Content Creator Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/content-creator/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/contractor/",
+      "title": "Free Contractor Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional contractor invoices. Highly optimized for general contractors, sub-contractors, and independent trades.",
+      "h1": "Free Contractor Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/contractor/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/copywriter/",
+      "title": "Free Copywriter Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional copywriter invoices. Optimized for freelance writers, SEO copywriters, and advertising content strategists.",
+      "h1": "Free Copywriter Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/copywriter/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/data-analyst/",
+      "title": "Free Data Analyst Invoice Template | Invoice-Gen",
+      "desc": "Elegant data analyst invoicing templates for BI developers, dashboard designers, and SQL query writers.",
+      "h1": "Free Data Analyst Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/data-analyst/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/digital-marketing/",
+      "title": "Free Digital Marketing Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional digital marketing invoices. Optimized for PPC specialists, social media managers, SEOs, and digital ad agencies.",
+      "h1": "Free Digital Marketing Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/digital-marketing/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/editor-proofreader/",
+      "title": "Free Editor & Proofreader Invoice Template | Invoice-Gen",
+      "desc": "Professional billing for manuscript editors, academic proofreaders, and content polishers.",
+      "h1": "Free Editor & Proofreader Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/editor-proofreader/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/electrician/",
+      "title": "Free Electrician Invoice Template | Invoice-Gen",
+      "desc": "Streamlined billing templates for licensed electricians, panel upgraders, and fixture installers.",
+      "h1": "Free Electrician Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/electrician/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/event-planner/",
+      "title": "Free Event Planner Invoice Template | Invoice-Gen",
+      "desc": "Professional billing for wedding planners, corporate event coordinators, and party hosts.",
+      "h1": "Free Event Planner Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/event-planner/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/freelance/",
+      "title": "Free Freelance Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional freelance invoices in under 30 seconds. Zero registration, browser-native security, and clean modern layouts.",
+      "h1": "Free Freelance Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/freelance/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/gardener/",
+      "title": "Free Gardener Invoice Template | Invoice-Gen",
+      "desc": "Easy invoicing templates for local weeding, lawn mowing, and yard cleanup.",
+      "h1": "Free Gardener Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/gardener/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/graphic-designer/",
+      "title": "Free Graphic Designer Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional graphic design invoices. Perfect for branding, UI/UX design, and freelance illustration engagements.",
+      "h1": "Free Graphic Designer Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/graphic-designer/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/handyman/",
+      "title": "Free Handyman Invoice Template | Invoice-Gen",
+      "desc": "Easy handyman billing templates for local repairers, assembly services, and home maintenance.",
+      "h1": "Free Handyman Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/handyman/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/hvac-technician/",
+      "title": "Free HVAC Technician Invoice Template | Invoice-Gen",
+      "desc": "Professional invoice templates for AC repairers, furnace installers, and duct cleaners.",
+      "h1": "Free HVAC Technician Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/hvac-technician/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/interior-designer/",
+      "title": "Free Interior Designer Invoice Template | Invoice-Gen",
+      "desc": "Streamlined invoicing templates for space planners, home stagers, and decor decorators.",
+      "h1": "Free Interior Designer Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/interior-designer/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/it-support/",
+      "title": "Free IT Support Invoice Template | Invoice-Gen",
+      "desc": "Easy invoicing templates for network engineers, tech consultants, and systems administrators.",
+      "h1": "Free IT Support Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/it-support/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/landscaping/",
+      "title": "Free Landscaping Invoice Template | Invoice-Gen",
+      "desc": "Elegant billing templates for sod installers, garden designers, and hardscaping crews.",
+      "h1": "Free Landscaping Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/landscaping/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/marketing-consultant/",
+      "title": "Free Marketing Consultant Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional marketing consultant invoices. Perfectly structured for ad managers, SEO strategists, and branding consultants.",
+      "h1": "Free Marketing Consultant Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/marketing-consultant/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/painter-contractor/",
+      "title": "Free Painting Contractor Invoice Template | Invoice-Gen",
+      "desc": "Elegant billing templates for house painters, dry-wall finishers, and commercial paint crews.",
+      "h1": "Free Painting Contractor Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/painter-contractor/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/pet-sitter/",
+      "title": "Free Pet Sitter Invoice Template | Invoice-Gen",
+      "desc": "Clean invoicing templates for dog walkers, cat sitters, and overnight pet hosts.",
+      "h1": "Free Pet Sitter Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/pet-sitter/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/photographer/",
+      "title": "Free Photographer Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional photography invoices. Best for event coverage, portrait shoots, commercial assignments, and editing fees.",
+      "h1": "Free Photographer Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/photographer/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/plumber/",
+      "title": "Free Plumber Invoice Template | Invoice-Gen",
+      "desc": "Professional plumbing billing templates for local drain clearers, piping repairers, and water heaters.",
+      "h1": "Free Plumber Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/plumber/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/project-manager/",
+      "title": "Free Project Manager Invoice Template | Invoice-Gen",
+      "desc": "Professional PM invoicing templates for agile coordinators, construction managers, and Scrum masters.",
+      "h1": "Free Project Manager Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/project-manager/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/roofer/",
+      "title": "Free Roofer Invoice Template | Invoice-Gen",
+      "desc": "Professional roofing invoice templates for shingle installers, leak patchers, and gutter crews.",
+      "h1": "Free Roofer Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/roofer/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/seo-consultant/",
+      "title": "Free SEO Consultant Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional SEO consultant invoices. Structured for technical site audits, keyword strategies, and monthly search marketing retainers.",
+      "h1": "Free SEO Consultant Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/seo-consultant/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/social-media-manager/",
+      "title": "Free Social Media Manager Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional social media marketing invoices. Structured for content creation, profile management, and community moderation.",
+      "h1": "Free Social Media Manager Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/social-media-manager/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/translator/",
+      "title": "Free Translator Invoice Template | Invoice-Gen",
+      "desc": "Generate professional translator invoices with word count billing, language pairings, and multi-currency options.",
+      "h1": "Free Translator Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/translator/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/video-editor/",
+      "title": "Free Video Editor Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional video editing invoices. Optimized for freelance video editors, motion designers, and post-production studios.",
+      "h1": "Free Video Editor Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/video-editor/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/virtual-assistant/",
+      "title": "Free Virtual Assistant Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional virtual assistant invoices. Optimized for administrative assistants, inbox triagers, and scheduling coordinators.",
+      "h1": "Free Virtual Assistant Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/virtual-assistant/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/templates/voiceover-artist/",
+      "title": "Free Voiceover Artist Invoice Template | Invoice-Gen",
+      "desc": "Streamlined invoicing for voice actors, audio narrators, and audio book creators.",
+      "h1": "Free Voiceover Artist Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/voiceover-artist/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 55
+    },
+    {
+      "url": "/templates/web-developer/",
+      "title": "Free Web Developer Invoice Template | Invoice-Gen",
+      "desc": "Generate and download professional web development invoices. Optimized for developers, programmers, and software engineers with browser-native privacy.",
+      "h1": "Free Web Developer Invoice Template",
+      "canonical": "https://invoice-gen.net/templates/web-developer/",
+      "ogTitle": true,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": true,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 62
+    },
+    {
+      "url": "/terms/",
+      "title": "Terms of Service | Invoice-Gen",
+      "desc": "Read the Invoice-Gen Terms of Service. Understand our browser-native application terms, local storage storage parameters, and user responsibilities.",
+      "h1": "Terms of Service",
+      "canonical": "https://invoice-gen.net/terms/",
+      "ogTitle": false,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": null,
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 56
+    },
+    {
+      "url": "/trust/",
+      "title": "Trust Center | Invoice-Gen",
+      "desc": "Welcome to the Invoice-Gen Trust Center. Read about our privacy-first browser architecture, local sandbox security, and data transparency commitments.",
+      "h1": "Trust Center",
+      "canonical": "https://invoice-gen.net/trust/",
+      "ogTitle": false,
+      "twitterCard": false,
+      "schemas": {
+        "FAQ": false,
+        "Breadcrumb": [
+          "\"@type\": \"BreadcrumbList\""
+        ],
+        "Software": false,
+        "Org": false
+      },
+      "outLinksCount": 58
+    }
+  ],
+  "titles": {
+    "About Us | Invoice-Gen": [
+      "/about/"
+    ],
+    "Invoice-Gen Editorial Team": [
+      "/author/invoice-gen-editorial-team/"
+    ],
+    "Best Payment Terms for Freelancers & Solo Contractors | Invoice-Gen": [
+      "/blog/best-payment-terms-freelancers/"
+    ],
+    "Charging Late Fees: Terms and Best Practices | Invoice-Gen": [
+      "/blog/charging-late-fees-terms-and-best-practices/"
+    ],
+    "Choosing the Best Invoicing Payment Terms | Invoice-Gen": [
+      "/blog/choosing-the-best-payment-terms-for-freelancers/"
+    ],
+    "Common Invoice Mistakes to Avoid: Checklist | Invoice-Gen": [
+      "/blog/common-invoice-mistakes-avoid/"
+    ],
+    "Essential Fields to Include on Your Invoices | Invoice-Gen": [
+      "/blog/essential-fields-to-include-on-invoice/"
+    ],
+    "Late Payment Reminder Email Templates for Freelancers | Invoice-Gen": [
+      "/blog/friendly-late-payment-reminder-email-templates/"
+    ],
+    "How to Handle Down Payments and Upfront Deposits | Invoice-Gen": [
+      "/blog/handling-down-payments-and-deposits/"
+    ],
+    "Hourly vs Fixed Price Invoices: Which is Best? | Invoice-Gen": [
+      "/blog/hourly-vs-fixed-price-invoices/"
+    ],
+    "How to Create a Professional Invoice: Step-by-Step Guide | Invoice-Gen": [
+      "/blog/how-to-create-professional-invoice/"
+    ],
+    "How to Create Your First Invoice (Step-by-Step) | Invoice-Gen": [
+      "/blog/how-to-create-your-first-invoice/"
+    ],
+    "How to Follow Up on Unpaid Invoices Professionally | Invoice-Gen": [
+      "/blog/how-to-follow-up-on-unpaid-invoices/"
+    ],
+    "How to Get Paid Faster with Better Invoices | Invoice-Gen": [
+      "/blog/how-to-get-paid-faster-invoices/"
+    ],
+    "How to Invoice Clients as a Consultant | Invoice-Gen": [
+      "/blog/how-to-invoice-as-consultant/"
+    ],
+    "How to Invoice Clients Internationally: A Practical Guide | Invoice-Gen": [
+      "/blog/how-to-invoice-clients-internationally/"
+    ],
+    "How to Invoice for Hourly Work and Consulting Hours | Invoice-Gen": [
+      "/blog/how-to-invoice-for-hourly-work/"
+    ],
+    "How to Invoice for Mileage and Expense Reimbursements | Invoice-Gen": [
+      "/blog/how-to-invoice-for-mileage-reimbursement/"
+    ],
+    "How to Request and Invoice Milestone Payments | Invoice-Gen": [
+      "/blog/how-to-request-milestone-payments/"
+    ],
+    "How to Write a Professional Invoice: Step-by-Step Guide | Invoice-Gen": [
+      "/blog/how-to-write-a-professional-invoice/"
+    ],
+    "How to Write a Freelance Invoice: Tutorial | Invoice-Gen": [
+      "/blog/how-to-write-freelance-invoice/"
+    ],
+    "Invoice Date vs Due Date: What Is the Difference? | Invoice-Gen": [
+      "/blog/invoice-date-vs-due-date-difference/"
+    ],
+    "Invoice Number Best Practices for Small Businesses | Invoice-Gen": [
+      "/blog/invoice-number-best-practices/"
+    ],
+    "Invoice vs Receipt: What's the Difference? | Invoice-Gen": [
+      "/blog/invoice-vs-receipt-difference/"
+    ],
+    "Invoice vs. Receipt: Key Differences Explained | Invoice-Gen": [
+      "/blog/invoice-vs-receipt-key-differences/"
+    ],
+    "Invoicing for Creative Licenses, Assets, and Royalties | Invoice-Gen": [
+      "/blog/invoicing-for-creative-licenses-and-royalties/"
+    ],
+    "Legal Options When a Client Refuses to Pay Your Invoice | Invoice-Gen": [
+      "/blog/legal-options-when-client-refuses-to-pay/"
+    ],
+    "What is a Credit Note and How to Issue One? | Invoice-Gen": [
+      "/blog/what-is-a-credit-note-and-how-to-issue/"
+    ],
+    "What is a Debit Note? Differences Explained | Invoice-Gen": [
+      "/blog/what-is-a-debit-note-differences-explained/"
+    ],
+    "What is a Proforma Invoice and When Do You Need One? | Invoice-Gen": [
+      "/blog/what-is-a-proforma-invoice/"
+    ],
+    "What Is an Invoice? A Complete Beginner's Guide | Invoice-Gen": [
+      "/blog/what-is-an-invoice-beginners-guide/"
+    ],
+    "What is Net 30 and How to Use It in Billing | Invoice-Gen": [
+      "/blog/what-is-net-30-and-how-to-use-it/"
+    ],
+    "What Should Be Included in an Invoice? Checklist | Invoice-Gen": [
+      "/blog/what-to-include-in-invoice/"
+    ],
+    "When Should You Send an Invoice? Invoicing Cycles | Invoice-Gen": [
+      "/blog/when-to-send-invoice/"
+    ],
+    "When to Use a Commercial Invoice for Global Trade | Invoice-Gen": [
+      "/blog/when-to-use-a-commercial-invoice/"
+    ],
+    "How to Write an Invoice for Retainer Agreements | Invoice-Gen": [
+      "/blog/writing-an-invoice-under-a-retainer/"
+    ],
+    "Invoice-Gen vs Adobe Express Invoice Maker | Best Free Alternative": [
+      "/compare/adobe-express-invoice-alternative/"
+    ],
+    "Invoice-Gen vs Invoice Generator | Best Alternative 2026": [
+      "/compare/invoice-generator-alternative/"
+    ],
+    "Invoice-Gen vs Invoice Simple | Best Free Alternative 2026": [
+      "/compare/invoice-simple-alternative/"
+    ],
+    "Contact Us | Invoice-Gen": [
+      "/contact/"
+    ],
+    "Editorial Policy | Invoice-Gen": [
+      "/editorial-policy/"
+    ],
+    "Free Invoice-Gen | Invoice-Gen — No Signup, No Fees": [
+      "/free-invoice-generator/"
+    ],
+    "Invoice-Gen | Free Professional Invoice-Gen — No Signup Required": [
+      "/"
+    ],
+    "Invoice App | Invoice-Gen — Create Invoices From Any Device": [
+      "/invoice-app/"
+    ],
+    "Invoice Creator | Invoice-Gen — Custom Invoices for Any Business": [
+      "/invoice-creator/"
+    ],
+    "Invoice Maker | Invoice-Gen — Beautiful Invoices in Minutes": [
+      "/invoice-maker/"
+    ],
+    "Invoice PDF Generator | Invoice-Gen — Instant PDF Downloads": [
+      "/invoice-pdf-generator/"
+    ],
+    "Free Invoice Software | Invoice-Gen — No Subscription Required": [
+      "/invoice-software/"
+    ],
+    "Free Invoice Templates | Invoice-Gen — Professional Designs": [
+      "/invoice-template/"
+    ],
+    "Online Invoice-Gen | Invoice-Gen — No Download Required": [
+      "/online-invoice-generator/"
+    ],
+    "Privacy Policy | Invoice-Gen": [
+      "/privacy/"
+    ],
+    "Professional Invoice-Gen | Invoice-Gen — Elevate Your Billing": [
+      "/professional-invoice-generator/"
+    ],
+    "Free Architect Invoice Template | Invoice-Gen": [
+      "/templates/architect/"
+    ],
+    "Free Business Coach Invoice Template | Invoice-Gen": [
+      "/templates/business-coach/"
+    ],
+    "Free Carpenter Invoice Template | Invoice-Gen": [
+      "/templates/carpenter/"
+    ],
+    "Free Cleaning Service Invoice Template | Invoice-Gen": [
+      "/templates/cleaning-service/"
+    ],
+    "Free Consultant Invoice Template | Invoice-Gen": [
+      "/templates/consultant/"
+    ],
+    "Free Content Creator Invoice Template | Invoice-Gen": [
+      "/templates/content-creator/"
+    ],
+    "Free Contractor Invoice Template | Invoice-Gen": [
+      "/templates/contractor/"
+    ],
+    "Free Copywriter Invoice Template | Invoice-Gen": [
+      "/templates/copywriter/"
+    ],
+    "Free Data Analyst Invoice Template | Invoice-Gen": [
+      "/templates/data-analyst/"
+    ],
+    "Free Digital Marketing Invoice Template | Invoice-Gen": [
+      "/templates/digital-marketing/"
+    ],
+    "Free Editor & Proofreader Invoice Template | Invoice-Gen": [
+      "/templates/editor-proofreader/"
+    ],
+    "Free Electrician Invoice Template | Invoice-Gen": [
+      "/templates/electrician/"
+    ],
+    "Free Event Planner Invoice Template | Invoice-Gen": [
+      "/templates/event-planner/"
+    ],
+    "Free Freelance Invoice Template | Invoice-Gen": [
+      "/templates/freelance/"
+    ],
+    "Free Gardener Invoice Template | Invoice-Gen": [
+      "/templates/gardener/"
+    ],
+    "Free Graphic Designer Invoice Template | Invoice-Gen": [
+      "/templates/graphic-designer/"
+    ],
+    "Free Handyman Invoice Template | Invoice-Gen": [
+      "/templates/handyman/"
+    ],
+    "Free HVAC Technician Invoice Template | Invoice-Gen": [
+      "/templates/hvac-technician/"
+    ],
+    "Free Interior Designer Invoice Template | Invoice-Gen": [
+      "/templates/interior-designer/"
+    ],
+    "Free IT Support Invoice Template | Invoice-Gen": [
+      "/templates/it-support/"
+    ],
+    "Free Landscaping Invoice Template | Invoice-Gen": [
+      "/templates/landscaping/"
+    ],
+    "Free Marketing Consultant Invoice Template | Invoice-Gen": [
+      "/templates/marketing-consultant/"
+    ],
+    "Free Painting Contractor Invoice Template | Invoice-Gen": [
+      "/templates/painter-contractor/"
+    ],
+    "Free Pet Sitter Invoice Template | Invoice-Gen": [
+      "/templates/pet-sitter/"
+    ],
+    "Free Photographer Invoice Template | Invoice-Gen": [
+      "/templates/photographer/"
+    ],
+    "Free Plumber Invoice Template | Invoice-Gen": [
+      "/templates/plumber/"
+    ],
+    "Free Project Manager Invoice Template | Invoice-Gen": [
+      "/templates/project-manager/"
+    ],
+    "Free Roofer Invoice Template | Invoice-Gen": [
+      "/templates/roofer/"
+    ],
+    "Free SEO Consultant Invoice Template | Invoice-Gen": [
+      "/templates/seo-consultant/"
+    ],
+    "Free Social Media Manager Invoice Template | Invoice-Gen": [
+      "/templates/social-media-manager/"
+    ],
+    "Free Translator Invoice Template | Invoice-Gen": [
+      "/templates/translator/"
+    ],
+    "Free Video Editor Invoice Template | Invoice-Gen": [
+      "/templates/video-editor/"
+    ],
+    "Free Virtual Assistant Invoice Template | Invoice-Gen": [
+      "/templates/virtual-assistant/"
+    ],
+    "Free Voiceover Artist Invoice Template | Invoice-Gen": [
+      "/templates/voiceover-artist/"
+    ],
+    "Free Web Developer Invoice Template | Invoice-Gen": [
+      "/templates/web-developer/"
+    ],
+    "Terms of Service | Invoice-Gen": [
+      "/terms/"
+    ],
+    "Trust Center | Invoice-Gen": [
+      "/trust/"
+    ]
+  },
+  "descriptions": {
+    "Learn about Invoice-Gen, the modern, privacy-first invoice generator designed for freelancers and small businesses.": [
+      "/about/"
+    ],
+    "Meet the Invoice-Gen Editorial Team. Our experts provide accurate, actionable guides on invoicing, accounting, and business finance.": [
+      "/author/invoice-gen-editorial-team/"
+    ],
+    "Optimize your cash flow. Learn the best payment terms for freelancers, including Net 15, Net 30, and upfront deposits.": [
+      "/blog/best-payment-terms-freelancers/"
+    ],
+    "You cannot charge late fees unless they were agreed to in writing in your initial contract. Outline late fee percentages clearly.": [
+      "/blog/charging-late-fees-terms-and-best-practices/"
+    ],
+    "Payment terms define when your client must pay. They are typically indicated using code abbreviations like Net 15, Net 30, or COD (Cash on Delivery).": [
+      "/blog/choosing-the-best-payment-terms-for-freelancers/"
+    ],
+    "Avoid payment delays. Learn the most common invoice mistakes, including poor itemization, missing tracking numbers, and vague terms.": [
+      "/blog/common-invoice-mistakes-avoid/"
+    ],
+    "Ensure both your billing details and the client&#39;s corporate name match official tax filings. Include email address, active phone number, and physica...": [
+      "/blog/essential-fields-to-include-on-invoice/"
+    ],
+    "&quot;Hi [Name], just a friendly reminder that invoice [Num] for [Project] was due yesterday. Let me know if you have any payment questions.&quot;": [
+      "/blog/friendly-late-payment-reminder-email-templates/"
+    ],
+    "For new clients or large projects, demanding a down payment is essential. This guarantees that you can allocate dedicated schedule blocks without risk.": [
+      "/blog/handling-down-payments-and-deposits/"
+    ],
+    "Learn the pros and cons of hourly vs fixed price invoicing. Understand how to write them, when to use each, and how to protect your revenue.": [
+      "/blog/hourly-vs-fixed-price-invoices/"
+    ],
+    "Learn how to write and format a professional invoice. Step-by-step instructions on styling headers, detailing terms, and calculating totals.": [
+      "/blog/how-to-create-professional-invoice/"
+    ],
+    "Sending your first invoice? Follow this step-by-step guide to create a professional invoice that guarantees you get paid on time.": [
+      "/blog/how-to-create-your-first-invoice/"
+    ],
+    "Send polite follow-ups: (a) 1 day after the due date. (b) 7 days late. (c) 14 days late. (d) Call at 30 days late.": [
+      "/blog/how-to-follow-up-on-unpaid-invoices/"
+    ],
+    "Reduce payment delays. Learn how to write invoices that clients pay faster, with clear terms, itemizations, and payment routing.": [
+      "/blog/how-to-get-paid-faster-invoices/"
+    ],
+    "Step-by-step guide on how to invoice as a consultant. Structure monthly advisory retainers, document travel expenses, and format hours.": [
+      "/blog/how-to-invoice-as-consultant/"
+    ],
+    "When billing international clients, specify the target currency (e.g. USD, EUR, GBP) using standard three-letter ISO codes next to all amounts.": [
+      "/blog/how-to-invoice-clients-internationally/"
+    ],
+    "When billing hourly, use a time-tracker app to capture work increments down to the minute. Log detailed notes for each session.": [
+      "/blog/how-to-invoice-for-hourly-work/"
+    ],
+    "When a client agrees to reimburse you for project expenses (travel, software, assets), list them as separate line items on your invoice.": [
+      "/blog/how-to-invoice-for-mileage-reimbursement/"
+    ],
+    "Milestone billing involves dividing a large project into smaller, deliverable-based payment blocks (e.g., Wireframes, Beta Version, Final Code Release).": [
+      "/blog/how-to-request-milestone-payments/"
+    ],
+    "Your invoice is the final touchpoint of a client transaction. If it is messy, vague, or missing key parameters, your payment will be delayed. Standardiz...": [
+      "/blog/how-to-write-a-professional-invoice/"
+    ],
+    "Step-by-step tutorial on how to write a freelance invoice. Structure headers, format line items, calculate taxes, and outline bank details.": [
+      "/blog/how-to-write-freelance-invoice/"
+    ],
+    "Learn the critical differences between an invoice date and a due date. Understand how they impact payment terms, cash flow, and tax reporting for your business.": [
+      "/blog/invoice-date-vs-due-date-difference/"
+    ],
+    "Learn how to format and manage invoice numbers correctly. Discover professional numbering systems, alphanumeric sequences, and why sequential numbering is critical for tax compliance.": [
+      "/blog/invoice-number-best-practices/"
+    ],
+    "Learn the key differences between invoices and receipts. Understand when to issue an invoice, when to send a receipt, and how to stay tax compliant.": [
+      "/blog/invoice-vs-receipt-difference/"
+    ],
+    "An invoice is a request for payment sent by a service provider to a client. It details the services provided, rates, and terms, indicating that a paymen...": [
+      "/blog/invoice-vs-receipt-key-differences/"
+    ],
+    "If you are a designer, photographer, or voice artist, separate your labor creation fee from the asset licensing fee on the invoice.": [
+      "/blog/invoicing-for-creative-licenses-and-royalties/"
+    ],
+    "Before taking legal action, mail a certified demand letter stating the outstanding amount, terms, and the deadline before escalation.": [
+      "/blog/legal-options-when-client-refuses-to-pay/"
+    ],
+    "A credit note (or credit memo) is a legal document issued to reduce the amount owed on a previously sent invoice.": [
+      "/blog/what-is-a-credit-note-and-how-to-issue/"
+    ],
+    "A debit note is a document issued by a seller to increase the amount owed on a previously sent invoice.": [
+      "/blog/what-is-a-debit-note-differences-explained/"
+    ],
+    "A proforma invoice is a preliminary bill sent before goods or services are delivered. It estimates cost, shipping, and customs details.": [
+      "/blog/what-is-a-proforma-invoice/"
+    ],
+    "Learn what an invoice is, why businesses use them, and how to create one. This beginner's guide covers invoice types, essential components, and common mistakes.": [
+      "/blog/what-is-an-invoice-beginners-guide/"
+    ],
+    "Net 30 means the client must settle the invoice within 30 calendar days from the invoice date. This is common in enterprise client billing.": [
+      "/blog/what-is-net-30-and-how-to-use-it/"
+    ],
+    "The complete invoicing checklist. Learn the exact requirements, including unique numbers, tax identification details, and payment terms.": [
+      "/blog/what-to-include-in-invoice/"
+    ],
+    "Optimize cash flow. Learn when to send an invoice, including upfront deposits, project milestones, and monthly recurring retainers.": [
+      "/blog/when-to-send-invoice/"
+    ],
+    "A commercial invoice is a custom document used for importing and exporting goods. Customs agents use it to calculate duties and taxes.": [
+      "/blog/when-to-use-a-commercial-invoice/"
+    ],
+    "A retainer is an advance payment made by a client to secure a freelancer&#39;s availability for a specific number of monthly hours.": [
+      "/blog/writing-an-invoice-under-a-retainer/"
+    ],
+    "Tired of logging into Adobe Express just to make an invoice? Discover Invoice-Gen, the instant, no-login alternative that works flawlessly on mobile and desktop.": [
+      "/compare/adobe-express-invoice-alternative/"
+    ],
+    "Looking for an alternative to Invoice Generator by Invoiced? Discover Invoice-Gen, the modern, privacy-first, 100% free invoice maker with SaaS-quality design.": [
+      "/compare/invoice-generator-alternative/"
+    ],
+    "Looking for a free alternative to Invoice Simple? See how Invoice-Gen compares. No paywalls, no login required, and 100% free PDF downloads.": [
+      "/compare/invoice-simple-alternative/"
+    ],
+    "Get in touch with the Invoice-Gen team for support, press inquiries, or general questions about our free invoice generator.": [
+      "/contact/"
+    ],
+    "Invoice-Gen's commitment to accurate, objective, and expert-reviewed financial content for freelancers and small businesses.": [
+      "/editorial-policy/"
+    ],
+    "Generate professional PDF invoices for free with Invoice-Gen. No signup, no fees, no watermarks. Create, customize, and download invoices in seconds.": [
+      "/free-invoice-generator/"
+    ],
+    "Create professional PDF invoices instantly with Invoice-Gen. 100% free, secure, browser-based invoice creator with no signup required. Download PDF invoices in seconds.": [
+      "/"
+    ],
+    "Use Invoice-Gen as your go-to invoice app on desktop, tablet, or phone. Create professional PDF invoices on any device with our mobile-optimized experience.": [
+      "/invoice-app/"
+    ],
+    "Create custom invoices for freelancers, contractors, and businesses with Invoice-Gen. Free invoice creator with professional templates and instant PDF export.": [
+      "/invoice-creator/"
+    ],
+    "Make professional invoices online with Invoice-Gen. Our free invoice maker helps you design, customize, and download PDF invoices with automatic calculations.": [
+      "/invoice-maker/"
+    ],
+    "Generate PDF invoices instantly with Invoice-Gen. Create professional invoices and download them as clean, print-ready PDF files — completely free.": [
+      "/invoice-pdf-generator/"
+    ],
+    "Replace expensive invoice software with Invoice-Gen. Free, browser-based invoicing with all the features you need — PDF export, calculations, client management, and more.": [
+      "/invoice-software/"
+    ],
+    "Download free professional invoice templates for freelancers, contractors, consultants, and more. Customize and generate PDF invoices instantly with Invoice-Gen.": [
+      "/invoice-template/"
+    ],
+    "Generate invoices online with Invoice-Gen. No software to download, no account to create. Our browser-based Invoice-Gen creates professional PDFs instantly.": [
+      "/online-invoice-generator/"
+    ],
+    "Read the Invoice-Gen Privacy Policy. Learn how our browser-native architecture guarantees your billing data never leaves your device.": [
+      "/privacy/"
+    ],
+    "Create professional-grade invoices with Invoice-Gen. Our free Invoice-Gen produces polished, branded PDF invoices that build trust and accelerate payments.": [
+      "/professional-invoice-generator/"
+    ],
+    "Professional billing templates for architectural designers, draftspersons, and building consultants.": [
+      "/templates/architect/"
+    ],
+    "Clean invoicing templates for executive coaches, startup mentors, and career guides.": [
+      "/templates/business-coach/"
+    ],
+    "Streamlined carpenter billing templates for trim installers, deck builders, and furniture makers.": [
+      "/templates/carpenter/"
+    ],
+    "Generate and download professional cleaning service invoices. Structured for residential cleanings, commercial offices, maid services, and material supplies.": [
+      "/templates/cleaning-service/"
+    ],
+    "Professional, privacy-first Invoice-Gen for consultants. Create clean hourly or retainer-based PDF invoices in under 30 seconds.": [
+      "/templates/consultant/"
+    ],
+    "Generate and download professional content creator invoices. Best for UGC creators, brand sponsorships, influencers, and creative partnerships.": [
+      "/templates/content-creator/"
+    ],
+    "Generate and download professional contractor invoices. Highly optimized for general contractors, sub-contractors, and independent trades.": [
+      "/templates/contractor/"
+    ],
+    "Generate and download professional copywriter invoices. Optimized for freelance writers, SEO copywriters, and advertising content strategists.": [
+      "/templates/copywriter/"
+    ],
+    "Elegant data analyst invoicing templates for BI developers, dashboard designers, and SQL query writers.": [
+      "/templates/data-analyst/"
+    ],
+    "Generate and download professional digital marketing invoices. Optimized for PPC specialists, social media managers, SEOs, and digital ad agencies.": [
+      "/templates/digital-marketing/"
+    ],
+    "Professional billing for manuscript editors, academic proofreaders, and content polishers.": [
+      "/templates/editor-proofreader/"
+    ],
+    "Streamlined billing templates for licensed electricians, panel upgraders, and fixture installers.": [
+      "/templates/electrician/"
+    ],
+    "Professional billing for wedding planners, corporate event coordinators, and party hosts.": [
+      "/templates/event-planner/"
+    ],
+    "Generate and download professional freelance invoices in under 30 seconds. Zero registration, browser-native security, and clean modern layouts.": [
+      "/templates/freelance/"
+    ],
+    "Easy invoicing templates for local weeding, lawn mowing, and yard cleanup.": [
+      "/templates/gardener/"
+    ],
+    "Generate and download professional graphic design invoices. Perfect for branding, UI/UX design, and freelance illustration engagements.": [
+      "/templates/graphic-designer/"
+    ],
+    "Easy handyman billing templates for local repairers, assembly services, and home maintenance.": [
+      "/templates/handyman/"
+    ],
+    "Professional invoice templates for AC repairers, furnace installers, and duct cleaners.": [
+      "/templates/hvac-technician/"
+    ],
+    "Streamlined invoicing templates for space planners, home stagers, and decor decorators.": [
+      "/templates/interior-designer/"
+    ],
+    "Easy invoicing templates for network engineers, tech consultants, and systems administrators.": [
+      "/templates/it-support/"
+    ],
+    "Elegant billing templates for sod installers, garden designers, and hardscaping crews.": [
+      "/templates/landscaping/"
+    ],
+    "Generate and download professional marketing consultant invoices. Perfectly structured for ad managers, SEO strategists, and branding consultants.": [
+      "/templates/marketing-consultant/"
+    ],
+    "Elegant billing templates for house painters, dry-wall finishers, and commercial paint crews.": [
+      "/templates/painter-contractor/"
+    ],
+    "Clean invoicing templates for dog walkers, cat sitters, and overnight pet hosts.": [
+      "/templates/pet-sitter/"
+    ],
+    "Generate and download professional photography invoices. Best for event coverage, portrait shoots, commercial assignments, and editing fees.": [
+      "/templates/photographer/"
+    ],
+    "Professional plumbing billing templates for local drain clearers, piping repairers, and water heaters.": [
+      "/templates/plumber/"
+    ],
+    "Professional PM invoicing templates for agile coordinators, construction managers, and Scrum masters.": [
+      "/templates/project-manager/"
+    ],
+    "Professional roofing invoice templates for shingle installers, leak patchers, and gutter crews.": [
+      "/templates/roofer/"
+    ],
+    "Generate and download professional SEO consultant invoices. Structured for technical site audits, keyword strategies, and monthly search marketing retainers.": [
+      "/templates/seo-consultant/"
+    ],
+    "Generate and download professional social media marketing invoices. Structured for content creation, profile management, and community moderation.": [
+      "/templates/social-media-manager/"
+    ],
+    "Generate professional translator invoices with word count billing, language pairings, and multi-currency options.": [
+      "/templates/translator/"
+    ],
+    "Generate and download professional video editing invoices. Optimized for freelance video editors, motion designers, and post-production studios.": [
+      "/templates/video-editor/"
+    ],
+    "Generate and download professional virtual assistant invoices. Optimized for administrative assistants, inbox triagers, and scheduling coordinators.": [
+      "/templates/virtual-assistant/"
+    ],
+    "Streamlined invoicing for voice actors, audio narrators, and audio book creators.": [
+      "/templates/voiceover-artist/"
+    ],
+    "Generate and download professional web development invoices. Optimized for developers, programmers, and software engineers with browser-native privacy.": [
+      "/templates/web-developer/"
+    ],
+    "Read the Invoice-Gen Terms of Service. Understand our browser-native application terms, local storage storage parameters, and user responsibilities.": [
+      "/terms/"
+    ],
+    "Welcome to the Invoice-Gen Trust Center. Read about our privacy-first browser architecture, local sandbox security, and data transparency commitments.": [
+      "/trust/"
+    ]
+  },
+  "h1s": {
+    "About Invoice-Gen": [
+      "/about/"
+    ],
+    "Invoice-Gen Editorial Team": [
+      "/author/invoice-gen-editorial-team/"
+    ],
+    "Best Payment Terms for Freelancers": [
+      "/blog/best-payment-terms-freelancers/"
+    ],
+    "Charging Late Fees: Terms and Best Practices": [
+      "/blog/charging-late-fees-terms-and-best-practices/"
+    ],
+    "Choosing the Best Invoicing Payment Terms": [
+      "/blog/choosing-the-best-payment-terms-for-freelancers/"
+    ],
+    "Common Invoice Mistakes to Avoid": [
+      "/blog/common-invoice-mistakes-avoid/"
+    ],
+    "Essential Fields to Include on Your Invoices": [
+      "/blog/essential-fields-to-include-on-invoice/"
+    ],
+    "Late Payment Reminder Email Templates for Freelancers": [
+      "/blog/friendly-late-payment-reminder-email-templates/"
+    ],
+    "How to Handle Down Payments and Upfront Deposits": [
+      "/blog/handling-down-payments-and-deposits/"
+    ],
+    "Hourly vs Fixed Price Invoices: Which is Best?": [
+      "/blog/hourly-vs-fixed-price-invoices/"
+    ],
+    "How to Create a Professional Invoice: Step-by-Step Guide": [
+      "/blog/how-to-create-professional-invoice/"
+    ],
+    "How to Create Your First Invoice (Step-by-Step)": [
+      "/blog/how-to-create-your-first-invoice/"
+    ],
+    "How to Follow Up on Unpaid Invoices Professionally": [
+      "/blog/how-to-follow-up-on-unpaid-invoices/"
+    ],
+    "How to Get Paid Faster with Better Invoices": [
+      "/blog/how-to-get-paid-faster-invoices/"
+    ],
+    "How to Invoice Clients as a Consultant": [
+      "/blog/how-to-invoice-as-consultant/"
+    ],
+    "How to Invoice Clients Internationally: A Practical Guide": [
+      "/blog/how-to-invoice-clients-internationally/"
+    ],
+    "How to Invoice for Hourly Work and Consulting Hours": [
+      "/blog/how-to-invoice-for-hourly-work/"
+    ],
+    "How to Invoice for Mileage and Expense Reimbursements": [
+      "/blog/how-to-invoice-for-mileage-reimbursement/"
+    ],
+    "How to Request and Invoice Milestone Payments": [
+      "/blog/how-to-request-milestone-payments/"
+    ],
+    "How to Write a Professional Invoice: Step-by-Step Guide": [
+      "/blog/how-to-write-a-professional-invoice/"
+    ],
+    "How to Write a Freelance Invoice": [
+      "/blog/how-to-write-freelance-invoice/"
+    ],
+    "Invoice Date vs Due Date: Understanding the Difference": [
+      "/blog/invoice-date-vs-due-date-difference/"
+    ],
+    "Invoice Number Best Practices for Small Businesses in 2026": [
+      "/blog/invoice-number-best-practices/"
+    ],
+    "Invoice vs Receipt: What's the Difference?": [
+      "/blog/invoice-vs-receipt-difference/"
+    ],
+    "Invoice vs. Receipt: Key Differences Explained": [
+      "/blog/invoice-vs-receipt-key-differences/"
+    ],
+    "Invoicing for Creative Licenses, Assets, and Royalties": [
+      "/blog/invoicing-for-creative-licenses-and-royalties/"
+    ],
+    "Legal Options When a Client Refuses to Pay Your Invoice": [
+      "/blog/legal-options-when-client-refuses-to-pay/"
+    ],
+    "What is a Credit Note and How to Issue One?": [
+      "/blog/what-is-a-credit-note-and-how-to-issue/"
+    ],
+    "What is a Debit Note? Differences Explained": [
+      "/blog/what-is-a-debit-note-differences-explained/"
+    ],
+    "What is a Proforma Invoice and When Do You Need One?": [
+      "/blog/what-is-a-proforma-invoice/"
+    ],
+    "What Is an Invoice? A Complete Beginner's Guide for 2026": [
+      "/blog/what-is-an-invoice-beginners-guide/"
+    ],
+    "What is Net 30 and How to Use It in Billing": [
+      "/blog/what-is-net-30-and-how-to-use-it/"
+    ],
+    "What Should Be Included in an Invoice?": [
+      "/blog/what-to-include-in-invoice/"
+    ],
+    "When Should You Send an Invoice?": [
+      "/blog/when-to-send-invoice/"
+    ],
+    "When to Use a Commercial Invoice for Global Trade": [
+      "/blog/when-to-use-a-commercial-invoice/"
+    ],
+    "How to Write an Invoice for Retainer Agreements": [
+      "/blog/writing-an-invoice-under-a-retainer/"
+    ],
+    "Invoice-Gen vs Adobe Express": [
+      "/compare/adobe-express-invoice-alternative/"
+    ],
+    "Invoice-Gen vs Invoice Generator (by Invoiced)": [
+      "/compare/invoice-generator-alternative/"
+    ],
+    "Invoice-Gen vs Invoice Simple": [
+      "/compare/invoice-simple-alternative/"
+    ],
+    "Contact Us": [
+      "/contact/"
+    ],
+    "Editorial Policy": [
+      "/editorial-policy/"
+    ],
+    "Free Invoice-Gen — Create Professional Invoices Instantly": [
+      "/free-invoice-generator/"
+    ],
+    "Free Invoice Generator": [
+      "/"
+    ],
+    "Invoice App — Create Invoices From Any Device": [
+      "/invoice-app/"
+    ],
+    "Invoice Creator — Build Custom Invoices for Any Business": [
+      "/invoice-creator/"
+    ],
+    "Online Invoice Maker — Design Beautiful Invoices in Minutes": [
+      "/invoice-maker/"
+    ],
+    "Invoice PDF Generator — Instant PDF Invoice Downloads": [
+      "/invoice-pdf-generator/"
+    ],
+    "Free Invoice Software — Professional Invoicing Without the Cost": [
+      "/invoice-software/"
+    ],
+    "Free Invoice Templates — Professional Designs for Every Industry": [
+      "/invoice-template/"
+    ],
+    "Online Invoice-Gen — No Download, No Signup, Just Invoices": [
+      "/online-invoice-generator/"
+    ],
+    "Privacy Policy": [
+      "/privacy/"
+    ],
+    "Professional Invoice-Gen — Elevate Your Billing": [
+      "/professional-invoice-generator/"
+    ],
+    "Free Architect Invoice Template": [
+      "/templates/architect/"
+    ],
+    "Free Business Coach Invoice Template": [
+      "/templates/business-coach/"
+    ],
+    "Free Carpenter Invoice Template": [
+      "/templates/carpenter/"
+    ],
+    "Free Cleaning Service Invoice Template": [
+      "/templates/cleaning-service/"
+    ],
+    "Free Consultant Invoice Template": [
+      "/templates/consultant/"
+    ],
+    "Free Content Creator Invoice Template": [
+      "/templates/content-creator/"
+    ],
+    "Free Contractor Invoice Template": [
+      "/templates/contractor/"
+    ],
+    "Free Copywriter Invoice Template": [
+      "/templates/copywriter/"
+    ],
+    "Free Data Analyst Invoice Template": [
+      "/templates/data-analyst/"
+    ],
+    "Free Digital Marketing Invoice Template": [
+      "/templates/digital-marketing/"
+    ],
+    "Free Editor & Proofreader Invoice Template": [
+      "/templates/editor-proofreader/"
+    ],
+    "Free Electrician Invoice Template": [
+      "/templates/electrician/"
+    ],
+    "Free Event Planner Invoice Template": [
+      "/templates/event-planner/"
+    ],
+    "Free Freelance Invoice Template": [
+      "/templates/freelance/"
+    ],
+    "Free Gardener Invoice Template": [
+      "/templates/gardener/"
+    ],
+    "Free Graphic Designer Invoice Template": [
+      "/templates/graphic-designer/"
+    ],
+    "Free Handyman Invoice Template": [
+      "/templates/handyman/"
+    ],
+    "Free HVAC Technician Invoice Template": [
+      "/templates/hvac-technician/"
+    ],
+    "Free Interior Designer Invoice Template": [
+      "/templates/interior-designer/"
+    ],
+    "Free IT Support Invoice Template": [
+      "/templates/it-support/"
+    ],
+    "Free Landscaping Invoice Template": [
+      "/templates/landscaping/"
+    ],
+    "Free Marketing Consultant Invoice Template": [
+      "/templates/marketing-consultant/"
+    ],
+    "Free Painting Contractor Invoice Template": [
+      "/templates/painter-contractor/"
+    ],
+    "Free Pet Sitter Invoice Template": [
+      "/templates/pet-sitter/"
+    ],
+    "Free Photographer Invoice Template": [
+      "/templates/photographer/"
+    ],
+    "Free Plumber Invoice Template": [
+      "/templates/plumber/"
+    ],
+    "Free Project Manager Invoice Template": [
+      "/templates/project-manager/"
+    ],
+    "Free Roofer Invoice Template": [
+      "/templates/roofer/"
+    ],
+    "Free SEO Consultant Invoice Template": [
+      "/templates/seo-consultant/"
+    ],
+    "Free Social Media Manager Invoice Template": [
+      "/templates/social-media-manager/"
+    ],
+    "Free Translator Invoice Template": [
+      "/templates/translator/"
+    ],
+    "Free Video Editor Invoice Template": [
+      "/templates/video-editor/"
+    ],
+    "Free Virtual Assistant Invoice Template": [
+      "/templates/virtual-assistant/"
+    ],
+    "Free Voiceover Artist Invoice Template": [
+      "/templates/voiceover-artist/"
+    ],
+    "Free Web Developer Invoice Template": [
+      "/templates/web-developer/"
+    ],
+    "Terms of Service": [
+      "/terms/"
+    ],
+    "Trust Center": [
+      "/trust/"
+    ]
+  },
+  "internalLinks": {
+    "/": 336,
+    "/author/invoice-gen-editorial-team/": 10,
+    "/editorial-policy/": 10,
+    "/trust/": 49,
+    "/about/": 89,
+    "/privacy/": 91,
+    "/terms/": 89,
+    "/contact/": 91,
+    "/blog/charging-late-fees-terms-and-best-practices/": 88,
+    "/blog/choosing-the-best-payment-terms-for-freelancers/": 88,
+    "/blog/handling-down-payments-and-deposits/": 88,
+    "/blog/how-to-create-your-first-invoice/": 88,
+    "/blog/how-to-follow-up-on-unpaid-invoices/": 88,
+    "/blog/how-to-invoice-clients-internationally/": 88,
+    "/blog/how-to-invoice-for-hourly-work/": 88,
+    "/blog/how-to-invoice-for-mileage-reimbursement/": 88,
+    "/blog/how-to-request-milestone-payments/": 88,
+    "/blog/how-to-write-a-professional-invoice/": 88,
+    "/blog/invoice-date-vs-due-date-difference/": 88,
+    "/blog/invoicing-for-creative-licenses-and-royalties/": 88,
+    "/blog/legal-options-when-client-refuses-to-pay/": 88,
+    "/blog/what-is-a-debit-note-differences-explained/": 88,
+    "/blog/what-is-net-30-and-how-to-use-it/": 88,
+    "/blog/when-to-use-a-commercial-invoice/": 88,
+    "/blog/writing-an-invoice-under-a-retainer/": 88,
+    "/compare/adobe-express-invoice-alternative/": 88,
+    "/compare/invoice-generator-alternative/": 88,
+    "/compare/invoice-simple-alternative/": 88,
+    "/invoice-app/": 88,
+    "/invoice-pdf-generator/": 88,
+    "/invoice-software/": 88,
+    "/invoice-template/": 88,
+    "/online-invoice-generator/": 88,
+    "/professional-invoice-generator/": 88,
+    "/templates/architect/": 88,
+    "/templates/business-coach/": 88,
+    "/templates/carpenter/": 88,
+    "/templates/data-analyst/": 88,
+    "/templates/editor-proofreader/": 88,
+    "/templates/electrician/": 88,
+    "/templates/event-planner/": 88,
+    "/templates/gardener/": 88,
+    "/templates/handyman/": 88,
+    "/templates/hvac-technician/": 88,
+    "/templates/interior-designer/": 88,
+    "/templates/it-support/": 88,
+    "/templates/landscaping/": 88,
+    "/templates/painter-contractor/": 88,
+    "/templates/pet-sitter/": 88,
+    "/templates/plumber/": 88,
+    "/templates/project-manager/": 88,
+    "/templates/roofer/": 88,
+    "/templates/translator/": 88,
+    "/templates/voiceover-artist/": 88,
+    "/templates/freelance/": 27,
+    "/blog/how-to-write-freelance-invoice/": 4,
+    "/blog/when-to-send-invoice/": 11,
+    "/blog/how-to-get-paid-faster-invoices/": 22,
+    "/blog/how-to-create-professional-invoice/": 21,
+    "/blog/what-to-include-in-invoice/": 17,
+    "/templates/web-developer/": 6,
+    "/blog/how-to-invoice-as-consultant/": 6,
+    "/blog/common-invoice-mistakes-avoid/": 16,
+    "/blog/best-payment-terms-freelancers/": 11,
+    "/templates/consultant/": 17,
+    "/blog/hourly-vs-fixed-price-invoices/": 7,
+    "/blog/friendly-late-payment-reminder-email-templates/": 2,
+    "/blog/what-is-an-invoice-beginners-guide/": 2,
+    "/invoice-maker/": 1,
+    "/blog/essential-fields-to-include-on-invoice/": 3,
+    "/free-invoice-generator/": 2,
+    "/invoice-creator/": 1,
+    "/templates/cleaning-service/": 3,
+    "/blog/what-is-a-proforma-invoice/": 1,
+    "/blog/what-is-a-credit-note-and-how-to-issue/": 1,
+    "/blog/invoice-vs-receipt-key-differences/": 2,
+    "/blog/invoice-number-best-practices/": 1,
+    "/blog/invoice-vs-receipt-difference/": 6,
+    "/templates/contractor/": 2,
+    "/templates/graphic-designer/": 5,
+    "/templates/photographer/": 4,
+    "/templates/marketing-consultant/": 5,
+    "/templates/virtual-assistant/": 5,
+    "/templates/social-media-manager/": 5,
+    "/templates/seo-consultant/": 2,
+    "/templates/digital-marketing/": 4,
+    "/templates/video-editor/": 2,
+    "/templates/content-creator/": 2,
+    "/templates/copywriter/": 2,
+    "/?niche=architect": 2,
+    "/?niche=business-coach": 2,
+    "/?niche=carpenter": 2,
+    "/?niche=cleaning-service": 2,
+    "/?niche=consultant": 2,
+    "/?niche=content-creator": 2,
+    "/?niche=contractor": 2,
+    "/?niche=copywriter": 2,
+    "/?niche=data-analyst": 2,
+    "/?niche=digital-marketing": 2,
+    "/?niche=editor-proofreader": 2,
+    "/?niche=electrician": 2,
+    "/?niche=event-planner": 2,
+    "/?niche=freelance": 2,
+    "/?niche=gardener": 2,
+    "/?niche=graphic-designer": 2,
+    "/?niche=handyman": 2,
+    "/?niche=hvac-technician": 2,
+    "/?niche=interior-designer": 2,
+    "/?niche=it-support": 2,
+    "/?niche=landscaping": 2,
+    "/?niche=marketing-consultant": 2,
+    "/?niche=painter-contractor": 2,
+    "/?niche=pet-sitter": 2,
+    "/?niche=photographer": 2,
+    "/?niche=plumber": 2,
+    "/?niche=project-manager": 2,
+    "/?niche=roofer": 2,
+    "/?niche=seo-consultant": 2,
+    "/?niche=social-media-manager": 2,
+    "/?niche=translator": 2,
+    "/?niche=video-editor": 2,
+    "/?niche=virtual-assistant": 2,
+    "/?niche=voiceover-artist": 2,
+    "/?niche=web-developer": 2
+  },
+  "brokenLinks": [],
+  "orphanPages": [],
+  "missingAltImages": [],
+  "sitemapMissing": [],
+  "rssMissing": [],
+  "redirectChains": [],
+  "duplicateContent": [],
+  "schemas": {
+    "FAQPage": 70,
+    "BreadcrumbList": 52,
+    "SoftwareApplication": 1,
+    "Organization": 14
+  }
+}

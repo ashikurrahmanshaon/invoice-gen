@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import type { InvoiceData, LineItem } from '../../types/invoice';
 import { formatCurrency } from '../../utils/currency';
-import { Trash2, Copy, Plus, ChevronUp, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Trash2, Copy, Plus, ChevronUp, ArrowLeft, ArrowRight, Download, Eye, Save } from 'lucide-react';
 import { processImageFile } from '../../utils/image';
 import { isValidDecimalInput, calculateLineAmount } from '../../utils/calculations';
 import { ClientPicker } from '../invoice/ClientPicker';
@@ -113,7 +113,47 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
   const symbol = getCurrencySymbol(currency);
 
   return (
-    <div className="mobile-only mobile-step-container" style={{ width: '100%', minWidth: 0, paddingBottom: '140px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+    <div className="mobile-only mobile-step-container" style={{ width: '100%', minWidth: 0, paddingBottom: '160px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      
+      {/* Mobile Trust Chip Bar (Stage 1 only) */}
+      {currentStage === 1 && (
+        <div style={{
+          display: 'flex',
+          gap: '8px',
+          overflowX: 'auto',
+          paddingBottom: '4px',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          WebkitOverflowScrolling: 'touch',
+          marginTop: '4px'
+        }}>
+          {[
+            { icon: '🔒', label: 'Secure' },
+            { icon: '🌐', label: 'Browser Based' },
+            { icon: '👤', label: 'No Signup' },
+            { icon: '⚡', label: 'Instant PDF' },
+            { icon: '🔐', label: 'Private' },
+            { icon: '📱', label: 'Offline Ready' }
+          ].map((chip) => (
+            <span key={chip.label} style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+              padding: '6px 12px',
+              background: 'rgba(79, 70, 229, 0.04)',
+              border: '1px solid rgba(79, 70, 229, 0.08)',
+              borderRadius: '999px',
+              fontSize: '11px',
+              fontWeight: 600,
+              color: '#475569',
+              whiteSpace: 'nowrap',
+              flexShrink: 0
+            }}>
+              {chip.icon} {chip.label}
+            </span>
+          ))}
+        </div>
+      )}
       
       {/* STEP 1 — BUSINESS */}
       {currentStage === 1 && (
@@ -959,15 +999,44 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       {/* MOBILE BOTTOM ACTION BAR (Portaled to body for guaranteed stickiness) */}
       {mounted && createPortal(
         <div className="mobile-only premium-bottom-bar">
+          {/* Floating Progress Pill */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            marginBottom: '8px'
+          }}>
+            <span style={{ fontSize: '11px', fontWeight: 600, color: '#64748B' }}>
+              Step {currentStage} of 4
+            </span>
+            <div style={{
+              flex: 1,
+              maxWidth: '120px',
+              height: '3px',
+              borderRadius: '2px',
+              background: '#E4E7EC',
+              overflow: 'hidden'
+            }}>
+              <div style={{
+                width: `${(currentStage / 4) * 100}%`,
+                height: '100%',
+                borderRadius: '2px',
+                background: 'linear-gradient(90deg, #4F46E5, #06B6D4)',
+                transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+              }} />
+            </div>
+          </div>
+
           {currentStage === 1 && (
-            <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
+            <div style={{ display: 'flex', gap: '12px', width: '100%' }}>
               <button className="premium-btn-primary full-width" onClick={() => setStage(2)}>
                 Continue <ArrowRight size={18} />
               </button>
             </div>
           )}
           {currentStage === 2 && (
-            <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
+            <div style={{ display: 'flex', gap: '12px', width: '100%' }}>
               <button className="premium-btn-back" onClick={() => setStage(1)}>
                 <ArrowLeft size={18} /> Back
               </button>
@@ -977,7 +1046,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             </div>
           )}
           {currentStage === 3 && (
-            <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
+            <div style={{ display: 'flex', gap: '12px', width: '100%' }}>
               <button className="premium-btn-back" onClick={() => setStage(2)}>
                 <ArrowLeft size={18} /> Back
               </button>
@@ -987,20 +1056,23 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             </div>
           )}
           {currentStage === 4 && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
-              <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
+              <div style={{ display: 'flex', gap: '10px', width: '100%' }}>
                 <button className="premium-btn-back" onClick={() => setStage(3)}>
-                  <ArrowLeft size={18} /> Back
+                  <ArrowLeft size={16} />
                 </button>
-                <button className="premium-btn-back" style={{ flex: '60 1 0%' }} onClick={onOpenFullPreview}>
-                  Preview
+                <button className="premium-btn-secondary" onClick={onOpenFullPreview}>
+                  <Eye size={16} /> Preview
+                </button>
+                <button className="premium-btn-secondary" style={{ flex: '0 0 auto', padding: '0 16px' }}>
+                  <Save size={16} />
                 </button>
               </div>
-              <button className="premium-btn-primary full-width" onClick={onDownloadPDF}>
-                Download PDF
+              <button className="premium-btn-primary full-width premium-btn-download" onClick={onDownloadPDF}>
+                <Download size={18} /> Download PDF
               </button>
               <div style={{ fontSize: '11px', color: 'var(--color-text-tertiary)', display: 'flex', alignItems: 'center', gap: '4px', justifyContent: 'center', marginTop: '-4px' }}>
-                🔒 100% secure & local sandbox
+                🔒 100% secure &amp; browser-based
               </div>
             </div>
           )}
@@ -1082,6 +1154,33 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
         .premium-btn-primary:active {
           transform: scale(0.98);
           box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+        }
+        .premium-btn-secondary {
+          flex: 1 1 0%;
+          height: 52px;
+          border-radius: 14px;
+          background: #FFFFFF;
+          border: 1px solid #E4E7EC;
+          color: var(--color-text-main);
+          font-weight: 600;
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          transition: all 180ms ease;
+          cursor: pointer;
+        }
+        .premium-btn-secondary:hover {
+          background: #F9FAFB;
+          border-color: #D1D5DB;
+        }
+        .premium-btn-secondary:active {
+          transform: scale(0.98);
+        }
+        .premium-btn-download {
+          background: linear-gradient(180deg, #4F46E5 0%, #4338CA 100%) !important;
+          box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
         }
         .hover-text-error:hover { color: var(--color-error) !important; }
         .mobile-item-card .btn-action-dup:hover { background-color: #F2F4F7; color: #344054 !important; }

@@ -4,6 +4,7 @@ import { ClientPicker } from './ClientPicker';
 import { ClientActions } from './ClientActions';
 import type { useClients } from '../../hooks/useClients';
 import { Modal } from '../ui/Modal';
+import { Input } from '../ui/Input';
 
 interface ClientSectionProps {
   data: InvoiceData;
@@ -64,20 +65,20 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
         
         <div className="flex-col gap-4">
           <div className="grid-2">
-            <div>
-              <label htmlFor="client-name-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Client Name *</label>
-              <input 
+            <div style={{ paddingBottom: '6px' }}>
+              <Input 
                 id="client-name-input"
+                label="Client Name *"
                 type="text" 
                 placeholder="Client or Company Name"
                 value={data.client.name}
                 onChange={(e) => updateClient({ name: e.target.value })}
               />
             </div>
-            <div>
-              <label htmlFor="client-email-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Email *</label>
-              <input 
+            <div style={{ paddingBottom: '6px' }}>
+              <Input 
                 id="client-email-input"
+                label="Email *"
                 type="email" 
                 placeholder="client@example.com"
                 value={data.client.email}
@@ -90,9 +91,9 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
             <div className="flex-col gap-4" style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-2)' }}>
               <div className="grid-2">
                 <div>
-                  <label htmlFor="client-phone-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Phone</label>
-                  <input 
+                  <Input 
                     id="client-phone-input"
+                    label="Phone"
                     type="tel" 
                     placeholder="Client phone number"
                     value={data.client.phone || ''}
@@ -100,9 +101,9 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
                   />
                 </div>
                 <div>
-                  <label htmlFor="client-taxid-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Tax ID / VAT Number</label>
-                  <input 
+                  <Input 
                     id="client-taxid-input"
+                    label="Tax ID / VAT Number"
                     type="text" 
                     placeholder="e.g. VAT / GST ID"
                     value={data.client.taxId || ''}
@@ -112,9 +113,9 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
               </div>
 
               <div>
-                <label htmlFor="client-address1-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Address Line 1</label>
-                <input 
+                <Input 
                   id="client-address1-input"
+                  label="Address Line 1"
                   type="text" 
                   placeholder="Street address"
                   value={data.client.address1 || ''}
@@ -123,9 +124,9 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
               </div>
               
               <div>
-                <label htmlFor="client-address2-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Address Line 2</label>
-                <input 
+                <Input 
                   id="client-address2-input"
+                  label="Address Line 2"
                   type="text" 
                   placeholder="Apt, suite, etc. (optional)"
                   value={data.client.address2 || ''}
@@ -135,9 +136,9 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
 
               <div className="grid-2">
                 <div>
-                  <label htmlFor="client-city-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>City</label>
-                  <input 
+                  <Input 
                     id="client-city-input"
+                    label="City"
                     type="text" 
                     placeholder="City"
                     value={data.client.city || ''}
@@ -145,9 +146,9 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
                   />
                 </div>
                 <div>
-                  <label htmlFor="client-state-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>State / Province</label>
-                  <input 
+                  <Input 
                     id="client-state-input"
+                    label="State / Province"
                     type="text" 
                     placeholder="State or Region"
                     value={data.client.state || ''}
@@ -158,9 +159,9 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
                 <div>
-                  <label htmlFor="client-postal-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Postal / ZIP Code</label>
-                  <input 
+                  <Input 
                     id="client-postal-input"
+                    label="Postal / ZIP Code"
                     type="text" 
                     placeholder="Postal code"
                     value={data.client.postalCode || ''}
@@ -168,9 +169,9 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
                   />
                 </div>
                 <div>
-                  <label htmlFor="client-country-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Country</label>
-                  <input 
+                  <Input 
                     id="client-country-input"
+                    label="Country"
                     type="text" 
                     placeholder="Country"
                     value={data.client.country || ''}

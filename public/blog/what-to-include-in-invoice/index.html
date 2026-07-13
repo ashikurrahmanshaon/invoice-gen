@@ -9,13 +9,43 @@
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/inter-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('/fonts/inter-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('/fonts/inter-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('/fonts/inter-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+  </style>
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Open Graph -->
+  <!-- Fonts --><!-- Open Graph -->
   <meta property="og:title" content="What Should Be Included in an Invoice? | Invoice-Gen" />
   <meta property="og:description" content="A complete professional invoice checklist for freelancers and small businesses." />
   <meta property="og:url" content="https://invoice-gen.net/blog/what-to-include-in-invoice/" />
@@ -133,6 +163,44 @@
     .footer-links a { color: var(--color-text-secondary); text-decoration: none; margin: 0 12px; }
     .footer-links a:hover { color: var(--color-primary); }
   </style>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What Should Be Included in an Invoice? Checklist | Invoice-Gen" />
+  <meta name="twitter:description" content="The complete invoicing checklist. Learn the exact requirements, including unique numbers, tax identification details, and payment terms." />
+  <meta name="twitter:image" content="https://invoice-gen.net/og-image.webp" />
+  <meta name="twitter:site" content="@invoice_gen" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What Should Be Included in an Invoice? Checklist | Invoice-Gen",
+    "description": "The complete invoicing checklist. Learn the exact requirements, including unique numbers, tax identification details, and payment terms.",
+    "url": "https://invoice-gen.net/blog/what-to-include-in-invoice/",
+    "author": { "@type": "Organization", "name": "Invoice-Gen", "url": "https://invoice-gen.net/" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Invoice-Gen",
+      "logo": { "@type": "ImageObject", "url": "https://invoice-gen.net/android-chrome-512x512.png" }
+    },
+    "datePublished": "2026-07-11",
+    "dateModified": "2026-07-12",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://invoice-gen.net/blog/what-to-include-in-invoice/" },
+    "image": "https://invoice-gen.net/og-image.webp"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://invoice-gen.net/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://invoice-gen.net/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "What Should Be Included in an Invoice? Checklist", "item": "https://invoice-gen.net/blog/what-to-include-in-invoice/" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -142,7 +210,7 @@
         <div class="logo-icon"></div>
         <span>Invoice-Gen</span>
       </a>
-      <a href="/" class="btn-cta">Free Invoice Generator</a>
+      <a href="/" class="btn-cta">Try Invoice-Gen Free</a>
     </div>
   </header>
 
@@ -217,6 +285,7 @@
     </div>
     <p>&copy; 2026 Invoice-Gen. All rights reserved.</p>
   </footer>
+  <div style="background: #F8FAFC; padding: 40px 24px; border-top: 1px solid #E2E8F0; margin-top: 60px;"><div style="max-width: 1000px; margin: 0 auto;"><h4 style="font-size: 14px; font-weight: 600; color: #475569; margin-bottom: 16px;">Invoice-Gen Directory</h4><div style="display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 13px;"><a href="/blog/charging-late-fees-terms-and-best-practices/" style="color: #64748b; text-decoration: none;">Charging Late Fees</a><a href="/blog/choosing-the-best-payment-terms-for-freelancers/" style="color: #64748b; text-decoration: none;">Best Payment Terms</a><a href="/blog/handling-down-payments-and-deposits/" style="color: #64748b; text-decoration: none;">Down Payments</a><a href="/blog/how-to-create-your-first-invoice/" style="color: #64748b; text-decoration: none;">First Invoice Guide</a><a href="/blog/how-to-follow-up-on-unpaid-invoices/" style="color: #64748b; text-decoration: none;">Follow Up Unpaid Invoices</a><a href="/blog/how-to-invoice-clients-internationally/" style="color: #64748b; text-decoration: none;">Invoice Internationally</a><a href="/blog/how-to-invoice-for-hourly-work/" style="color: #64748b; text-decoration: none;">Hourly Work Invoicing</a><a href="/blog/how-to-invoice-for-mileage-reimbursement/" style="color: #64748b; text-decoration: none;">Mileage Reimbursement</a><a href="/blog/how-to-request-milestone-payments/" style="color: #64748b; text-decoration: none;">Milestone Payments</a><a href="/blog/how-to-write-a-professional-invoice/" style="color: #64748b; text-decoration: none;">Professional Invoice</a><a href="/blog/invoice-date-vs-due-date-difference/" style="color: #64748b; text-decoration: none;">Invoice Date vs Due Date</a><a href="/blog/invoicing-for-creative-licenses-and-royalties/" style="color: #64748b; text-decoration: none;">Creative Licenses</a><a href="/blog/legal-options-when-client-refuses-to-pay/" style="color: #64748b; text-decoration: none;">Legal Options for Unpaid</a><a href="/blog/what-is-a-debit-note-differences-explained/" style="color: #64748b; text-decoration: none;">Debit Note Explained</a><a href="/blog/what-is-net-30-and-how-to-use-it/" style="color: #64748b; text-decoration: none;">Net 30 Terms</a><a href="/blog/when-to-use-a-commercial-invoice/" style="color: #64748b; text-decoration: none;">Commercial Invoice</a><a href="/blog/writing-an-invoice-under-a-retainer/" style="color: #64748b; text-decoration: none;">Retainer Invoice</a><a href="/compare/adobe-express-invoice-alternative/" style="color: #64748b; text-decoration: none;">Adobe Express Alternative</a><a href="/compare/invoice-generator-alternative/" style="color: #64748b; text-decoration: none;">Invoice Generator Alternative</a><a href="/compare/invoice-simple-alternative/" style="color: #64748b; text-decoration: none;">Invoice Simple Alternative</a><a href="/invoice-app/" style="color: #64748b; text-decoration: none;">Invoice App</a><a href="/invoice-pdf-generator/" style="color: #64748b; text-decoration: none;">Invoice PDF Generator</a><a href="/invoice-software/" style="color: #64748b; text-decoration: none;">Invoice Software</a><a href="/invoice-template/" style="color: #64748b; text-decoration: none;">Invoice Template</a><a href="/online-invoice-generator/" style="color: #64748b; text-decoration: none;">Online Invoice Generator</a><a href="/professional-invoice-generator/" style="color: #64748b; text-decoration: none;">Professional Invoice Generator</a><a href="/templates/architect/" style="color: #64748b; text-decoration: none;">Architect Template</a><a href="/templates/business-coach/" style="color: #64748b; text-decoration: none;">Business Coach Template</a><a href="/templates/carpenter/" style="color: #64748b; text-decoration: none;">Carpenter Template</a><a href="/templates/data-analyst/" style="color: #64748b; text-decoration: none;">Data Analyst Template</a><a href="/templates/editor-proofreader/" style="color: #64748b; text-decoration: none;">Editor Template</a><a href="/templates/electrician/" style="color: #64748b; text-decoration: none;">Electrician Template</a><a href="/templates/event-planner/" style="color: #64748b; text-decoration: none;">Event Planner Template</a><a href="/templates/gardener/" style="color: #64748b; text-decoration: none;">Gardener Template</a><a href="/templates/handyman/" style="color: #64748b; text-decoration: none;">Handyman Template</a><a href="/templates/hvac-technician/" style="color: #64748b; text-decoration: none;">HVAC Template</a><a href="/templates/interior-designer/" style="color: #64748b; text-decoration: none;">Interior Designer Template</a><a href="/templates/it-support/" style="color: #64748b; text-decoration: none;">IT Support Template</a><a href="/templates/landscaping/" style="color: #64748b; text-decoration: none;">Landscaping Template</a><a href="/templates/painter-contractor/" style="color: #64748b; text-decoration: none;">Painter Template</a><a href="/templates/pet-sitter/" style="color: #64748b; text-decoration: none;">Pet Sitter Template</a><a href="/templates/plumber/" style="color: #64748b; text-decoration: none;">Plumber Template</a><a href="/templates/project-manager/" style="color: #64748b; text-decoration: none;">Project Manager Template</a><a href="/templates/roofer/" style="color: #64748b; text-decoration: none;">Roofer Template</a><a href="/templates/translator/" style="color: #64748b; text-decoration: none;">Translator Template</a><a href="/templates/voiceover-artist/" style="color: #64748b; text-decoration: none;">Voiceover Template</a></div></div></div>
 
 </body>
 </html>

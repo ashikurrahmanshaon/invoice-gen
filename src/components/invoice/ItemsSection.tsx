@@ -3,6 +3,8 @@ import { Copy, Trash2, Plus } from 'lucide-react';
 import type { LineItem } from '../../types/invoice';
 import { formatCurrency } from '../../utils/currency';
 import { isValidDecimalInput, calculateLineAmount } from '../../utils/calculations';
+import { Input } from '../ui/Input';
+import { Button } from '../ui/Button';
 
 interface ItemsSectionProps {
   items: LineItem[];
@@ -36,7 +38,7 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
     }}>
       {/* Item Name */}
       <div>
-        <input 
+        <Input 
           type="text" 
           placeholder="Item or service name"
           aria-label="Item or service name"
@@ -47,7 +49,7 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
 
       {/* Description */}
       <div>
-        <input 
+        <Input 
           type="text" 
           placeholder="Description (optional)"
           aria-label="Description"
@@ -69,7 +71,7 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
             fontWeight: 500,
             pointerEvents: 'none'
           }}>{symbol}</span>
-          <input 
+          <Input 
             type="text"
             inputMode="decimal"
             placeholder="0.00"
@@ -88,7 +90,7 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
 
       {/* Qty (Centered input) */}
       <div>
-        <input 
+        <Input 
           type="text"
           inputMode="decimal"
           placeholder="1"
@@ -192,12 +194,13 @@ const ItemsSectionComponent: React.FC<ItemsSectionProps> = ({
       
       {/* Add Line Item Button */}
       <div style={{ display: 'flex' }}>
-        <button 
-          className="btn btn-outline text-primary" 
+        <Button 
+          variant="secondary"
+          leftIcon={<Plus size={16} />}
           onClick={addItem}
         >
-          <Plus size={16} /> Add Line Item
-        </button>
+          Add Line Item
+        </Button>
       </div>
     </div>
   );

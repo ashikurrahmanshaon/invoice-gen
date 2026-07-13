@@ -123,13 +123,19 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
         @media (max-width: 768px) {
           .full-preview-backdrop {
             padding: 0 !important;
+            align-items: flex-end !important;
           }
           .full-preview-card {
-            height: 100dvh !important;
-            max-height: 100dvh !important;
-            border-radius: 0 !important;
+            height: 94dvh !important;
+            max-height: 94dvh !important;
+            border-radius: 24px 24px 0 0 !important;
             width: 100vw !important;
+            animation: slideUpSheet 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           }
+        }
+        @keyframes slideUpSheet {
+          from { transform: translateY(100%); }
+          to { transform: translateY(0); }
         }
       `}</style>
       <div 
@@ -166,6 +172,11 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
           overflow: 'hidden'
         }}
       >
+        {/* Mobile Drag Handle */}
+        <div className="mobile-only" style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingTop: '12px', paddingBottom: '4px', backgroundColor: 'var(--color-surface)' }}>
+          <div style={{ width: '40px', height: '4px', backgroundColor: '#E2E8F0', borderRadius: '2px' }} />
+        </div>
+
         {/* Header */}
         <div style={{
           display: 'flex',

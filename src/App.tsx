@@ -24,11 +24,19 @@ import { Modal } from './components/ui/Modal';
 import { generateInvoicePDF } from './utils/pdfGenerator';
 import { generateInvoiceNumber } from './utils/invoiceNumber';
 import type { SavedInvoice } from './types/invoice';
+import { trackEvent, trackFunnelStep } from './utils/analytics';
 
 
 
 function App() {
   const [currentStage, setCurrentStage] = useState(1);
+
+  // Track funnel steps
+  const handleStageChange = (stage: number) => {
+    setCurrentStage(stage);
+    const labels = ['Business', 'Client', 'Items', 'Review'];
+    trackFunnelStep(stage, labels[stage - 1] || '');
+  };
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [showResetModal, setShowResetModal] = useState(false);
   const [showNewInvoiceToast, setShowNewInvoiceToast] = useState(false);
@@ -110,6 +118,7 @@ function App() {
       createNewInvoice();
       setCurrentStage(1);
       setActiveView('editor');
+      trackEvent('generate_invoice');
       
       // Show toast for 3 seconds
       setShowNewInvoiceToast(true);
@@ -135,6 +144,7 @@ function App() {
     const result = historyHook.saveToHistory(data, 'Saved', loadedHistoryId);
     if (result.success && result.id) {
       setOriginalSnapshotForCurrentData(data, result.id);
+      trackEvent('save_draft', { source: 'manual' });
       setShowSaveToast(true);
       setTimeout(() => setShowSaveToast(false), 3000);
     } else if (result.error === 'duplicate_number') {
@@ -287,6 +297,8 @@ function App() {
         onSaveAsNew={handleSaveAsNew}
         hasLoadedHistory={loadedHistoryId !== null}
         onLoadDemo={loadDemoData}
+        currentStage={currentStage}
+        isMobileView={isMobileView}
       />
       
       {/* Toast Notifications */}
@@ -314,10 +326,10 @@ function App() {
             {isMobileView ? (
               /* Mobile Step-by-Step Flow */
               <div className="mobile-only" style={{ width: '100%', minWidth: 0 }}>
-                <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} isMobile={true} />
+                <StageIndicator currentStage={currentStage} onStageChange={handleStageChange} isMobile={true} />
                 <MobileWizard 
                   currentStage={currentStage}
-                  setStage={setCurrentStage}
+                  setStage={handleStageChange}
                   data={data}
                   updateBusiness={updateBusiness}
                   updateClient={updateClient}
@@ -335,8 +347,8 @@ function App() {
                   setTaxLabel={setTaxLabel}
                   setShipping={setShipping}
                   setAmountPaid={setAmountPaid}
-                  onDownloadPDF={() => generateInvoicePDF(data)}
-                  onOpenFullPreview={() => setIsPreviewOpen(true)}
+                  onDownloadPDF={() => { trackEvent('download_pdf', { source: 'mobile' }); generateInvoicePDF(data); }}
+                  onOpenFullPreview={() => { trackEvent('preview_invoice', { source: 'mobile' }); setIsPreviewOpen(true); }}
                 />
               </div>
             ) : (
@@ -345,7 +357,7 @@ function App() {
                 <div className="workspace-main">
                   <div className="card" style={{ padding: '0' }}>
                     <div style={{ padding: '24px 32px' }}>
-                      <StageIndicator currentStage={currentStage} onStageChange={setCurrentStage} isMobile={false} />
+                      <StageIndicator currentStage={currentStage} onStageChange={handleStageChange} isMobile={false} />
                       
                       <div className="flex-col" style={{ gap: '40px', marginTop: '32px' }}>
                         {currentStage === 1 && (

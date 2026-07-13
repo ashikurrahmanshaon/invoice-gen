@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
           <details open={isDesktop} className="footer-col">
             <summary className="footer-summary">Product</summary>
             <div className="footer-links">
-              <a href="/">Invoice Generator</a>
+              <a href="/">Invoice-Gen</a>
               <a href="/about/">About Us</a>
               <a href="/trust/">Trust Center</a>
               <a href="/privacy/">Privacy Policy</a>

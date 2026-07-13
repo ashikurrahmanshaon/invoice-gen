@@ -3,6 +3,8 @@ import { Trash2, ChevronUp } from 'lucide-react';
 import type { InvoiceData } from '../../types/invoice';
 import { formatCurrency } from '../../utils/currency';
 import { isValidDecimalInput } from '../../utils/calculations';
+import { Input } from '../ui/Input';
+import { Button } from '../ui/Button';
 
 interface TotalsSectionProps {
   data: InvoiceData;
@@ -44,13 +46,14 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
         {/* Left Side: Notes & Conditions */}
         <div className="flex-col gap-4">
           <div>
-            <label htmlFor="invoice-notes-input" className="text-xs font-semibold text-secondary" style={{ display: 'block', marginBottom: '6px' }}>Notes</label>
-            <textarea 
+            <Input 
               id="invoice-notes-input"
+              label="Notes"
+              multiline
               placeholder="Add a special note or thank you message for your client..."
               value={data.notes}
               onChange={(e) => updateOtherFields({ notes: e.target.value })}
-              style={{ height: '128px', maxHeight: '128px', resize: 'none', width: '100%' }}
+              style={{ height: '128px' }}
             />
           </div>
 
@@ -76,12 +79,13 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
                   </button>
                 </div>
               </div>
-              <textarea 
+              <Input 
                 id="invoice-terms-input"
+                multiline
                 placeholder="e.g. Payment is due within 14 days"
                 value={data.terms || ''}
                 onChange={(e) => updateOtherFields({ terms: e.target.value })}
-                style={{ height: '80px', resize: 'vertical', width: '100%', wordBreak: 'break-word', whiteSpace: 'pre-wrap' }}
+                style={{ height: '80px', width: '100%' }}
               />
             </div>
           )}
@@ -108,12 +112,13 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
                   </button>
                 </div>
               </div>
-              <textarea 
+              <Input 
                 id="invoice-payment-instructions-input"
+                multiline
                 placeholder="e.g. Bank transfer details, PayPal email"
                 value={data.paymentInstructions || ''}
                 onChange={(e) => updateOtherFields({ paymentInstructions: e.target.value })}
-                style={{ height: '80px', resize: 'vertical', width: '100%', wordBreak: 'break-word', whiteSpace: 'pre-wrap' }}
+                style={{ height: '80px', width: '100%' }}
               />
             </div>
           )}
@@ -121,22 +126,22 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
           {/* Secondary Buttons Row */}
           <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             {!showTerms && (
-              <button 
-                className="btn btn-outline text-xs" 
-                style={{ minHeight: '36px', height: '36px', padding: '0 16px', borderRadius: '18px', fontWeight: 500 }}
+              <Button 
+                variant="outline"
+                size="sm"
                 onClick={() => setShowTerms(true)}
               >
                 {data.terms ? 'Edit terms' : '+ Add terms'}
-              </button>
+              </Button>
             )}
             {!showInstructions && (
-              <button 
-                className="btn btn-outline text-xs" 
-                style={{ minHeight: '36px', height: '36px', padding: '0 16px', borderRadius: '18px', fontWeight: 500 }}
+              <Button 
+                variant="outline"
+                size="sm"
                 onClick={() => setShowInstructions(true)}
               >
                 {data.paymentInstructions ? 'Edit instructions' : '+ Payment instructions'}
-              </button>
+              </Button>
             )}
           </div>
         </div>

@@ -15,6 +15,8 @@ interface HeaderProps {
   onSaveAsNew?: () => void;
   hasLoadedHistory?: boolean;
   onLoadDemo?: () => void;
+  currentStage?: number;
+  isMobileView?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({ 
@@ -28,10 +30,15 @@ export const Header: React.FC<HeaderProps> = ({
   onSave,
   onSaveAsNew,
   hasLoadedHistory = false,
-  onLoadDemo
+  onLoadDemo,
+  currentStage = 1,
+  isMobileView = false
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const STAGE_LABELS = ['Business', 'Client', 'Items', 'Review'];
+  const TOTAL_STAGES = 4;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -211,6 +218,32 @@ export const Header: React.FC<HeaderProps> = ({
           }}>
             Invoice<span style={{ color: '#06B6D4' }}>-Gen</span>
           </span>
+          
+          {/* Mobile: Step Title + Progress Dots */}
+          {isMobileView && activeView === 'editor' && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginLeft: '4px' }}>
+              <span style={{ 
+                fontSize: '14px', 
+                fontWeight: 700, 
+                color: 'var(--color-text-main)',
+                letterSpacing: '-0.01em'
+              }}>
+                {STAGE_LABELS[currentStage - 1]}
+              </span>
+              <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+                {Array.from({ length: TOTAL_STAGES }).map((_, i) => (
+                  <div key={i} style={{
+                    width: i === currentStage - 1 ? '16px' : '6px',
+                    height: '6px',
+                    borderRadius: '3px',
+                    background: i < currentStage ? 'var(--color-primary)' : '#E4E7EC',
+                    opacity: i < currentStage - 1 ? 0.5 : 1,
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                  }} />
+                ))}
+              </div>
+            </div>
+          )}
           
           {/* Toast Notification */}
           {showNewInvoiceToast && (

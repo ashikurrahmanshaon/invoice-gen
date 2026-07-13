@@ -1,7 +1,14 @@
 {
   "short_name": "Invoice-Gen",
-  "name": "Free Invoice Generator | Invoice-Gen",
-  "description": "Create, customize, and download professional PDF invoices in seconds. Completely free invoice generator.",
+  "name": "Invoice-Gen | Free Professional Invoice Creator",
+  "description": "Create professional PDF invoices instantly. 100% free, secure, browser-based. No signup required.",
+  "id": "/",
+  "scope": "/",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#f9fafb",
+  "categories": ["business", "finance", "productivity"],
   "icons": [
     {
       "src": "favicon.svg",
@@ -16,11 +23,8 @@
     {
       "src": "android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#ffffff",
-  "background_color": "#f9fafb"
+  ]
 }
