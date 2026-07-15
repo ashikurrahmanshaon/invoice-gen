@@ -1,5 +1,5 @@
-import { Suspense, lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Suspense, lazy, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
 const TemplateGalleryPage = lazy(() => import('./pages/TemplateGalleryPage').then(module => ({ default: module.TemplateGalleryPage })));
@@ -12,9 +12,31 @@ const ContactPage = lazy(() => import('./pages/LegalPages').then(module => ({ de
 const BlogHomePage = lazy(() => import('./pages/ContentDirectoryPages').then(module => ({ default: module.BlogHomePage })));
 const CompareHomePage = lazy(() => import('./pages/ContentDirectoryPages').then(module => ({ default: module.CompareHomePage })));
 
+declare global {
+  interface Window {
+    dataLayer: any[];
+  }
+}
+
+function GTMRouteTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
+        event: 'page_view',
+        page_path: location.pathname + location.search
+      });
+    }
+  }, [location]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <Suspense fallback={null}>
+      <GTMRouteTracker />
       <Routes>
         {/* Phase 1: Main Product */}
         <Route path="/" element={<HomePage />} />
