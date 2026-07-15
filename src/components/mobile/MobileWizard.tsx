@@ -32,13 +32,12 @@ interface MobileWizardProps {
   setAmountPaid: (amount: number | string) => void;
   onDownloadPDF: () => void;
   onOpenFullPreview: () => void;
-  onOpenTemplateGallery?: () => void;
 }
 
 export const MobileWizard: React.FC<MobileWizardProps> = ({
   currentStage, setStage, data, updateBusiness, updateClient, clientHook, selectedSavedClientId, setSelectedSavedClientId, updateDetails,
   updateOtherFields, addItem, removeItem, updateItem,
-  setDiscount, setTaxRate, setTaxLabel, setShipping, setAmountPaid, onDownloadPDF, onOpenFullPreview, onOpenTemplateGallery
+  setDiscount, setTaxRate, setTaxLabel, setShipping, setAmountPaid, onDownloadPDF, onOpenFullPreview
 }) => {
   const [mounted, setMounted] = useState(false);
   const [isBottomBarVisible, setIsBottomBarVisible] = useState(true);
@@ -122,7 +121,6 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
               data={data}
               updateBusiness={updateBusiness}
               updateDetails={updateDetails}
-              onOpenTemplateGallery={onOpenTemplateGallery}
             />
           </div>
         </div>

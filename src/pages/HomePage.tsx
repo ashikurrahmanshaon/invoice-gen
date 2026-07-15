@@ -436,7 +436,6 @@ export default function HomePage() {
                   setAmountPaid={setAmountPaid}
                   onDownloadPDF={() => { trackEvent('download_pdf', { source: 'mobile' }); generateInvoicePDF(data); }}
                   onOpenFullPreview={() => { trackEvent('preview_invoice', { source: 'mobile' }); setIsPreviewOpen(true); }}
-                  onOpenTemplateGallery={() => setIsTemplateGalleryOpen(true)}
                 />
               </div>
             ) : (
@@ -447,7 +446,7 @@ export default function HomePage() {
                     <div style={{ padding: '24px 32px' }}>
                       <StageIndicator currentStage={currentStage} onStageChange={handleStageChange} isMobile={false} />
                       <div className="flex-col" style={{ marginTop: '24px' }}>
-                        <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} onOpenTemplateGallery={() => setIsTemplateGalleryOpen(true)} />
+                        <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} />
                         
                         <Suspense fallback={null}>
                           <ClientSection 
@@ -532,6 +531,10 @@ export default function HomePage() {
             data={data} 
             onClose={() => setIsPreviewOpen(false)} 
             onDownloadPDF={() => generateInvoicePDF(data)}
+            onChangeTemplate={() => {
+              setIsPreviewOpen(false);
+              setIsTemplateGalleryOpen(true);
+            }}
           />
         )}
         {isTemplateGalleryOpen && (

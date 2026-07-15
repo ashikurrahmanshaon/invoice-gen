@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Download, ZoomIn, ZoomOut, Maximize } from 'lucide-react';
+import { X, Download, ZoomIn, ZoomOut, Maximize, LayoutTemplate } from 'lucide-react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import type { InvoiceData } from '../../types/invoice';
 import { InvoiceA4Preview } from './InvoiceA4Preview';
@@ -10,9 +10,10 @@ interface FullPreviewModalProps {
   onClose: () => void;
   data: InvoiceData;
   onDownloadPDF: () => void;
+  onChangeTemplate?: () => void;
 }
 
-export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onClose, data, onDownloadPDF }) => {
+export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onClose, data, onDownloadPDF, onChangeTemplate }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -196,6 +197,12 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
                     
                     <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--color-border)', margin: '0 var(--space-2)' }} />
                     
+                    {onChangeTemplate && (
+                      <button aria-label="Change Template" className="btn btn-secondary" onClick={onChangeTemplate} style={{ padding: '0 var(--space-4)', height: '40px', marginRight: 'var(--space-2)' }}>
+                        <LayoutTemplate size={16} style={{ marginRight: '8px' }} /> Change Design
+                      </button>
+                    )}
+                    
                     <button aria-label="Download PDF" className="btn btn-primary" onClick={onDownloadPDF} style={{ padding: '0 var(--space-6)', height: '40px' }}>
                       <Download size={18} style={{ marginRight: 'var(--space-2)' }} /> Download PDF
                     </button>
@@ -212,8 +219,16 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
                     right: 0, 
                     padding: 'var(--space-5)', 
                     zIndex: 10,
-                    background: 'linear-gradient(to top, var(--color-background) 60%, transparent)'
+                    background: 'linear-gradient(to top, var(--color-background) 80%, transparent)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px'
                   }}>
+                    {onChangeTemplate && (
+                      <button className="btn btn-secondary" onClick={onChangeTemplate} style={{ padding: '0 var(--space-6)', height: '52px', width: '100%', borderRadius: 'var(--radius-lg)', fontSize: 'var(--text-base)' }}>
+                        <LayoutTemplate size={20} style={{ marginRight: 'var(--space-2)' }} /> Change Design
+                      </button>
+                    )}
                      <button className="btn btn-primary" onClick={onDownloadPDF} style={{ padding: '0 var(--space-6)', height: '52px', width: '100%', borderRadius: 'var(--radius-lg)', fontSize: 'var(--text-base)' }}>
                       <Download size={20} style={{ marginRight: 'var(--space-2)' }} /> Download PDF
                     </button>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { UploadCloud, Trash2, Edit2, Building2, LayoutTemplate, Mail, Phone, FileText, MapPin, Hash, Calendar } from 'lucide-react';
+import { UploadCloud, Trash2, Edit2, Building2, Mail, Phone, FileText, MapPin, Hash, Calendar } from 'lucide-react';
 import type { InvoiceData } from '../../types/invoice';
 import { processImageFile } from '../../utils/image';
 import { Input } from '../ui/Input';
@@ -10,10 +10,9 @@ interface BusinessSectionProps {
   data: InvoiceData;
   updateBusiness: (updates: Partial<InvoiceData['business']>) => void;
   updateDetails: (updates: Partial<InvoiceData['details']>) => void;
-  onOpenTemplateGallery?: () => void;
 }
 
-const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, updateBusiness, updateDetails, onOpenTemplateGallery }) => {
+const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, updateBusiness, updateDetails }) => {
   const { settings, updateNestedSetting } = useSettings();
 
   const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,36 +40,6 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
           <p style={{ fontSize: '13px', color: '#64748B', margin: '4px 0 0 0' }}>Your company information will appear on the invoice.</p>
         </div>
       </div>
-
-      {/* Template Banner (only show if empty and onOpenTemplateGallery is provided) */}
-      {onOpenTemplateGallery && (!data.items.length || (!data.items[0].name && !data.items[0].rate)) && !data.business.name && (
-        <div 
-          onClick={onOpenTemplateGallery}
-          className="hover-lift"
-          style={{ 
-            backgroundColor: 'var(--color-primary-light)', 
-            border: '1px dashed var(--color-primary)', 
-            borderRadius: 'var(--radius-lg)', 
-            padding: 'var(--space-4)', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'space-between',
-            cursor: 'pointer',
-            marginBottom: 'var(--space-2)'
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ backgroundColor: 'var(--color-primary)', color: '#FFFFFF', borderRadius: 'var(--radius-md)', padding: 'var(--space-2)', display: 'flex' }}>
-              <LayoutTemplate size={20} />
-            </div>
-            <div>
-              <h3 style={{ margin: 0, fontSize: 'var(--text-base)', fontWeight: 600, color: 'var(--color-text-title)' }}>Start with a Template</h3>
-              <p style={{ margin: 0, fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)' }}>Choose a professional layout tailored for your industry.</p>
-            </div>
-          </div>
-          <button className="btn btn-primary" style={{ padding: '8px 16px' }}>Browse Templates</button>
-        </div>
-      )}
 
       {/* Main 2-Column Layout */}
       <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start', width: '100%', marginTop: '16px' }}>
