@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UploadCloud, Trash2, Edit2, LayoutTemplate } from 'lucide-react';
+import { UploadCloud, Trash2, Edit2, LayoutTemplate, Building2 } from 'lucide-react';
 import type { InvoiceData } from '../../types/invoice';
 import { processImageFile } from '../../utils/image';
 import { Input } from '../ui/Input';
@@ -31,7 +31,19 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
   };
 
   return (
-    <div className="flex-col gap-6" style={{ width: '100%', borderBottom: '1px solid var(--color-border)', paddingBottom: 'var(--space-6)' }}>
+    <div className="flex-col gap-6" style={{ width: '100%', paddingBottom: '32px', borderBottom: '1px solid #F1F5F9', marginBottom: '32px' }}>
+      
+      {/* Section Header */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '8px' }}>
+        <div style={{ padding: '8px', background: 'transparent' }}>
+          <Building2 size={24} color="#334155" />
+        </div>
+        <div>
+          <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1E293B', margin: 0, marginTop: '2px' }}>Business Details</h2>
+          <p style={{ fontSize: '13px', color: '#64748B', margin: '4px 0 0 0' }}>Your company information will appear on the invoice.</p>
+        </div>
+      </div>
+
       {/* Template Banner (only show if empty and onOpenTemplateGallery is provided) */}
       {onOpenTemplateGallery && (!data.items.length || (!data.items[0].name && !data.items[0].rate)) && !data.business.name && (
         <div 

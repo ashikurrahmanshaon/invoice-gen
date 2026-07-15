@@ -1,5 +1,4 @@
 import React from 'react';
-import { Check } from 'lucide-react';
 
 interface StageIndicatorProps {
   currentStage: number;
@@ -9,10 +8,10 @@ interface StageIndicatorProps {
 
 export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, onStageChange, isMobile = false }) => {
   const stages = [
-    { num: 1, label: 'Business' },
-    { num: 2, label: 'Client' },
-    { num: 3, label: 'Items' },
-    { num: 4, label: 'Review' }
+    { num: 1, label: 'Business', subtitle: 'Your company' },
+    { num: 2, label: 'Client', subtitle: 'Bill to' },
+    { num: 3, label: 'Items', subtitle: 'Add line items' },
+    { num: 4, label: 'Review', subtitle: 'Review & send' }
   ];
 
   return (
@@ -30,10 +29,9 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
         top: isMobile ? '14px' : '16px',
         left: '24px',
         right: '24px',
-        height: '2px',
-        background: 'var(--color-border)',
+        height: '1px',
+        background: '#E2E8F0',
         zIndex: 1,
-        borderRadius: '2px'
       }} />
 
       {/* Universal Active Line */}
@@ -42,7 +40,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
         top: isMobile ? '14px' : '16px',
         left: '24px',
         right: '24px',
-        height: '2px',
+        height: '1px',
         background: 'transparent',
         zIndex: 2,
         pointerEvents: 'none'
@@ -57,7 +55,6 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
 
       {stages.map((stage) => {
         const isActive = stage.num === currentStage;
-        const isPast = stage.num < currentStage;
         
         // Define colors strictly by requirement
         // Completed: Blue circle, White check
@@ -65,17 +62,16 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
         // Future: White background, Gray border
         
         let bg = '#FFFFFF';
-        let border = '2px solid var(--color-border)';
+        let border = '1px solid #E2E8F0';
+        let textColor = '#64748B';
 
-        if (isPast) {
-          bg = 'var(--color-primary)';
-          border = '2px solid var(--color-primary)';
-        } else if (isActive) {
-          bg = '#FFFFFF';
-          border = '2px solid var(--color-primary)';
+        if (isActive) {
+          bg = '#2563EB'; // Primary Blue
+          border = '1px solid #2563EB';
+          textColor = '#FFFFFF';
         }
 
-        const circleSize = isMobile ? '28px' : '32px';
+        const circleSize = isMobile ? '28px' : '36px';
 
         return (
           <div 
@@ -83,14 +79,14 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
             onClick={() => onStageChange?.(stage.num)}
             style={{
               display: 'flex',
-              flexDirection: 'column',
               alignItems: 'center',
-              gap: '8px',
+              gap: '12px',
               cursor: onStageChange ? 'pointer' : 'default',
               position: 'relative',
               zIndex: 3,
               background: 'transparent',
-              width: '60px' // Ensure uniform spacing containers
+              flex: 1,
+              justifyContent: 'center'
             }}
           >
             {/* The Circle */}
@@ -104,31 +100,38 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
               alignItems: 'center',
               justifyContent: 'center',
               transition: 'all 0.3s ease',
-              boxShadow: 'none' // Explicitly no shadows
+              boxShadow: 'none',
+              flexShrink: 0
             }}>
-              {isPast ? (
-                <Check size={isMobile ? 14 : 16} color="#FFFFFF" strokeWidth={3} />
-              ) : (
-                <span style={{ 
-                  fontSize: isMobile ? '12px' : '14px', 
-                  fontWeight: 600,
-                  color: isActive ? 'var(--color-primary)' : 'var(--color-text-tertiary)' 
-                }}>
-                  {stage.num}
-                </span>
-              )}
+              <span style={{ 
+                fontSize: isMobile ? '12px' : '14px', 
+                fontWeight: 600,
+                color: textColor 
+              }}>
+                {stage.num}
+              </span>
             </div>
             
             {/* The Label */}
-            <span style={{
-              fontSize: '12px',
-              fontWeight: isActive || isPast ? 600 : 500,
-              color: isActive || isPast ? 'var(--color-text-main)' : 'var(--color-text-tertiary)',
-              textAlign: 'center',
-              transition: 'color 0.3s ease'
-            }}>
-              {stage.label}
-            </span>
+            {!isMobile && (
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', background: '#FFFFFF', padding: '0 4px' }}>
+                <span style={{
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  color: isActive ? '#2563EB' : '#334155',
+                  lineHeight: '1.2'
+                }}>
+                  {stage.label}
+                </span>
+                <span style={{
+                  fontSize: '12px',
+                  color: '#64748B',
+                  lineHeight: '1.2'
+                }}>
+                  {stage.subtitle}
+                </span>
+              </div>
+            )}
           </div>
         );
       })}

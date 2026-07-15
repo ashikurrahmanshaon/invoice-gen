@@ -447,32 +447,28 @@ export default function HomePage() {
                   <div className="card" style={{ padding: '0' }}>
                     <div style={{ padding: '24px 32px' }}>
                       <StageIndicator currentStage={currentStage} onStageChange={handleStageChange} isMobile={false} />
-                      
-                      <div className="flex-col" style={{ gap: '40px', marginTop: '32px' }}>
-                        {currentStage === 1 && (
-                          <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} onOpenTemplateGallery={() => setIsTemplateGalleryOpen(true)} />
-                        )}
+                      <div className="flex-col" style={{ marginTop: '24px' }}>
+                        <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} onOpenTemplateGallery={() => setIsTemplateGalleryOpen(true)} />
+                        
                         <Suspense fallback={null}>
-                          {currentStage === 2 && (
-                            <ClientSection 
-                              data={data} 
-                              updateClient={updateClient} 
-                              clientHook={clientHook}
-                              selectedSavedClientId={selectedSavedClientId}
-                              setSelectedSavedClientId={setSelectedSavedClientId}
-                            />
-                          )}
-                          {currentStage === 3 && (
-                            <ItemsSection 
-                              items={data.items} 
-                              currency={data.details.currency} 
-                              addItem={addItem} 
-                              duplicateItem={duplicateItem} 
-                              removeItem={removeItem} 
-                              updateItem={updateItem} 
-                            />
-                          )}
-                          {currentStage === 4 && (
+                          <ClientSection 
+                            data={data} 
+                            updateClient={updateClient} 
+                            clientHook={clientHook}
+                            selectedSavedClientId={selectedSavedClientId}
+                            setSelectedSavedClientId={setSelectedSavedClientId}
+                          />
+                          
+                          <ItemsSection 
+                            items={data.items} 
+                            currency={data.details.currency} 
+                            addItem={addItem} 
+                            duplicateItem={duplicateItem} 
+                            removeItem={removeItem} 
+                            updateItem={updateItem} 
+                          />
+                          
+                          <div style={{ padding: '32px 0' }}>
                             <TotalsSection 
                               data={data}
                               updateOtherFields={updateOtherFields}
@@ -482,44 +478,8 @@ export default function HomePage() {
                               setShipping={setShipping}
                               setAmountPaid={setAmountPaid}
                             />
-                          )}
-                        </Suspense>
-                      </div>
-                    </div>
-
-                    {/* Desktop Bottom Action Bar */}
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      padding: '24px 40px',
-                      borderTop: '1px solid var(--color-border)',
-                      background: '#F9FAFB',
-                      borderBottomLeftRadius: 'var(--radius-xl)',
-                      borderBottomRightRadius: 'var(--radius-xl)'
-                    }}>
-                      <div>
-                        {currentStage > 1 && (
-                          <button className="btn btn-outline" onClick={() => setCurrentStage(s => Math.max(1, s - 1))} style={{ padding: '0 24px', height: '44px', fontWeight: 600 }}>
-                            Back
-                          </button>
-                        )}
-                      </div>
-                      <div>
-                        {currentStage < 4 ? (
-                          <button className="btn btn-primary" onClick={() => setCurrentStage(s => Math.min(4, s + 1))} style={{ padding: '0 32px', height: '44px', fontWeight: 600 }}>
-                            Continue
-                          </button>
-                        ) : (
-                          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                            <button className="btn btn-primary" onClick={() => setIsPreviewOpen(true)} style={{ padding: '0 32px', height: '44px', fontWeight: 600 }}>
-                              Review Full Invoice
-                            </button>
-                            <div style={{ fontSize: '11px', color: 'var(--color-text-tertiary)', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '6px' }}>
-                              🔒 100% secure & local sandbox
-                            </div>
                           </div>
-                        )}
+                        </Suspense>
                       </div>
                     </div>
                   </div>
