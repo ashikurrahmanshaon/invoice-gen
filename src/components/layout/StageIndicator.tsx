@@ -87,6 +87,10 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
           <div 
             key={stage.num}
             onClick={() => onStageChange?.(stage.num)}
+            role="button"
+            tabIndex={0}
+            aria-current={isActive ? 'step' : undefined}
+            aria-label={`Go to ${stage.label} step`}
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -145,6 +149,9 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
                   e.stopPropagation();
                   onStageChange?.(stage.num + 1);
                 }}
+                role="button"
+                tabIndex={0}
+                aria-label="Next Step"
                 style={{
                   marginLeft: '6px',
                   background: '#E8F8F0',

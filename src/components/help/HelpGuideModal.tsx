@@ -85,7 +85,7 @@ export const HelpGuideModal: React.FC<HelpGuideModalProps> = ({ isOpen, onClose 
 
         <div style={{ display: 'flex', gap: '32px', flex: 1, flexDirection: 'row' }}>
           
-          {/* Left Column: UI Mockup Wireframe */}
+          {/* Left Column: UI Mockup Wireframe (Realistic Mini Invoice) */}
           <div style={{ 
             flex: 1, 
             background: '#F8FAFC', 
@@ -97,26 +97,41 @@ export const HelpGuideModal: React.FC<HelpGuideModalProps> = ({ isOpen, onClose 
             flexDirection: 'column',
             gap: '16px'
           }}>
-            {/* Top Bar Mockup */}
-            <div style={{ width: '100%', height: '24px', background: '#E2E8F0', borderRadius: '4px', marginBottom: '16px' }} />
+            {/* Browser Top Bar Mockup */}
+            <div style={{ width: '100%', height: '28px', background: '#E2E8F0', borderRadius: '6px', marginBottom: '8px', display: 'flex', alignItems: 'center', padding: '0 12px', gap: '6px' }}>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#CBD5E1' }} />
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#CBD5E1' }} />
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#CBD5E1' }} />
+              <div style={{ marginLeft: '12px', fontSize: '10px', color: '#64748B', fontWeight: 600, fontFamily: 'monospace' }}>invoice-gen.net / new</div>
+            </div>
 
             {/* Business Section */}
             <div style={{ 
               position: 'relative',
               background: '#fff', 
-              border: `2px solid ${isBusiness ? '#00A65A' : '#E2E8F0'}`, 
+              border: `2px solid ${isBusiness ? '#00A65A' : 'transparent'}`, 
               borderRadius: '8px', 
               padding: '16px',
               display: 'flex',
-              gap: '16px',
+              justifyContent: 'space-between',
               transition: 'all 0.3s ease',
-              boxShadow: isBusiness ? '0 0 0 4px rgba(0, 166, 90, 0.1)' : 'none'
+              boxShadow: isBusiness ? '0 0 0 4px rgba(0, 166, 90, 0.1)' : '0 2px 4px rgba(0,0,0,0.02)'
             }}>
               {isBusiness && <PulsingDot />}
-              <div style={{ width: '60px', height: '60px', background: '#F1F5F9', borderRadius: '8px' }} />
-              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <div style={{ width: '60%', height: '12px', background: '#E2E8F0', borderRadius: '2px' }} />
-                <div style={{ width: '40%', height: '12px', background: '#F1F5F9', borderRadius: '2px' }} />
+              
+              <div style={{ display: 'flex', gap: '12px' }}>
+                <div style={{ width: '40px', height: '40px', background: 'linear-gradient(135deg, #00C853, #00A65A)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 800, fontSize: '20px' }}>
+                  C
+                </div>
+                <div>
+                  <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A' }}>Your Company Ltd.</div>
+                  <div style={{ fontSize: '10px', color: '#64748B', marginTop: '4px', lineHeight: '1.4' }}>123 Business Road<br/>Tech City, TC 10010</div>
+                </div>
+              </div>
+              
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: '18px', fontWeight: 800, color: '#0F172A', letterSpacing: '1px' }}>INVOICE</div>
+                <div style={{ fontSize: '10px', color: '#64748B', marginTop: '4px', lineHeight: '1.4' }}>#INV-2026-001<br/>Date: Today</div>
               </div>
             </div>
 
@@ -124,37 +139,64 @@ export const HelpGuideModal: React.FC<HelpGuideModalProps> = ({ isOpen, onClose 
             <div style={{ 
               position: 'relative',
               background: '#fff', 
-              border: `2px solid ${isClient ? '#00A65A' : '#E2E8F0'}`, 
+              border: `2px solid ${isClient ? '#00A65A' : 'transparent'}`, 
               borderRadius: '8px', 
               padding: '16px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '12px',
               transition: 'all 0.3s ease',
-              boxShadow: isClient ? '0 0 0 4px rgba(0, 166, 90, 0.1)' : 'none'
+              boxShadow: isClient ? '0 0 0 4px rgba(0, 166, 90, 0.1)' : '0 2px 4px rgba(0,0,0,0.02)'
             }}>
               {isClient && <PulsingDot />}
-              <div style={{ width: '30%', height: '12px', background: '#CBD5E1', borderRadius: '2px' }} />
-              <div style={{ width: '80%', height: '32px', background: '#F1F5F9', borderRadius: '4px' }} />
+              <div style={{ fontSize: '10px', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Billed To</div>
+              <div style={{ fontSize: '13px', fontWeight: 600, color: '#0F172A' }}>John Doe</div>
+              <div style={{ fontSize: '11px', color: '#64748B', marginTop: '4px', lineHeight: '1.4' }}>john.doe@example.com<br/>456 Client Avenue, Suite 20</div>
             </div>
 
             {/* Items Section */}
             <div style={{ 
               position: 'relative',
               background: '#fff', 
-              border: `2px solid ${isItems ? '#00A65A' : '#E2E8F0'}`, 
+              border: `2px solid ${isItems ? '#00A65A' : 'transparent'}`, 
               borderRadius: '8px', 
               padding: '16px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '8px',
               transition: 'all 0.3s ease',
-              boxShadow: isItems ? '0 0 0 4px rgba(0, 166, 90, 0.1)' : 'none'
+              boxShadow: isItems ? '0 0 0 4px rgba(0, 166, 90, 0.1)' : '0 2px 4px rgba(0,0,0,0.02)'
             }}>
               {isItems && <PulsingDot />}
-              <div style={{ width: '100%', height: '24px', background: '#F1F5F9', borderRadius: '4px' }} />
-              <div style={{ width: '100%', height: '24px', background: '#F1F5F9', borderRadius: '4px' }} />
-              <div style={{ width: '40%', height: '32px', background: '#E2E8F0', borderRadius: '4px', marginTop: '8px' }} />
+              
+              {/* Header */}
+              <div style={{ display: 'flex', fontSize: '10px', fontWeight: 600, color: '#94A3B8', borderBottom: '1px solid #E2E8F0', paddingBottom: '6px', marginBottom: '8px', textTransform: 'uppercase' }}>
+                <div style={{ flex: 2 }}>Description</div>
+                <div style={{ flex: 1, textAlign: 'center' }}>Qty</div>
+                <div style={{ flex: 1, textAlign: 'right' }}>Amount</div>
+              </div>
+              
+              {/* Item 1 */}
+              <div style={{ display: 'flex', fontSize: '11px', color: '#0F172A', marginBottom: '8px' }}>
+                <div style={{ flex: 2, fontWeight: 500 }}>Web Design Services</div>
+                <div style={{ flex: 1, textAlign: 'center', color: '#64748B' }}>1</div>
+                <div style={{ flex: 1, textAlign: 'right', fontWeight: 600 }}>$1,200.00</div>
+              </div>
+              
+              {/* Item 2 */}
+              <div style={{ display: 'flex', fontSize: '11px', color: '#0F172A', borderBottom: '1px solid #F1F5F9', paddingBottom: '12px', marginBottom: '12px' }}>
+                <div style={{ flex: 2, fontWeight: 500 }}>Hosting (1 Year)</div>
+                <div style={{ flex: 1, textAlign: 'center', color: '#64748B' }}>1</div>
+                <div style={{ flex: 1, textAlign: 'right', fontWeight: 600 }}>$150.00</div>
+              </div>
+              
+              {/* Totals */}
+              <div style={{ display: 'flex', justifyContent: 'flex-end', fontSize: '12px' }}>
+                <div style={{ width: '60%' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#64748B', marginBottom: '6px' }}>
+                    <span>Subtotal</span>
+                    <span>$1,350.00</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 800, color: '#0F172A', fontSize: '14px', marginTop: '6px', paddingTop: '6px', borderTop: '2px solid #E2E8F0' }}>
+                    <span>Total</span>
+                    <span>$1,350.00</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Preview Button */}
@@ -162,18 +204,21 @@ export const HelpGuideModal: React.FC<HelpGuideModalProps> = ({ isOpen, onClose 
               position: 'relative',
               width: '100%',
               height: '48px',
-              background: isPreview ? '#00A65A' : '#94A3B8',
+              background: isPreview ? 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)' : '#94A3B8',
               borderRadius: '99px',
               marginTop: 'auto',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              color: 'white',
+              fontSize: '15px',
+              fontWeight: 600,
               transition: 'all 0.3s ease',
-              boxShadow: isPreview ? '0 4px 12px rgba(0, 166, 90, 0.4)' : 'none',
+              boxShadow: isPreview ? '0 8px 24px rgba(0, 166, 90, 0.3)' : 'none',
               transform: isPreview ? 'scale(1.02)' : 'scale(1)'
             }}>
               {isPreview && <PulsingDot />}
-              <div style={{ width: '30%', height: '12px', background: '#fff', borderRadius: '4px', opacity: 0.8 }} />
+              Preview & Send
             </div>
 
           </div>

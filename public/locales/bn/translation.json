@@ -1,46 +1,25 @@
 {
-  "invoice": {
-    "title": "Invoice",
-    "number": "Invoice Number",
-    "issueDate": "Issue Date",
-    "dueDate": "Due Date",
-    "billTo": "Bill To",
-    "from": "From"
-  },
-  "business": {
-    "name": "Business Name",
-    "email": "Email",
-    "phone": "Phone",
-    "website": "Website",
-    "taxId": "Tax ID",
-    "address": "Address"
-  },
-  "client": {
-    "name": "Client Name",
-    "email": "Email",
-    "phone": "Phone",
-    "taxId": "Tax ID",
-    "address": "Address"
-  },
-  "items": {
-    "description": "Description",
-    "quantity": "Qty",
-    "rate": "Rate",
-    "amount": "Amount",
-    "addItem": "Add Item"
-  },
-  "totals": {
-    "subtotal": "Subtotal",
-    "discount": "Discount",
-    "tax": "Tax",
-    "shipping": "Shipping",
-    "total": "Total",
-    "amountPaid": "Amount Paid",
-    "balanceDue": "Balance Due"
-  },
-  "settings": {
-    "language": "Language",
-    "currency": "Currency",
-    "paperSize": "Paper Size"
-  }
+  "invoice_title": "ইনভয়েস",
+  "invoice_no_label": "ইনভয়েস নম্বর",
+  "issue_date_label": "ইস্যুর তারিখ",
+  "due_date_label": "শেষ তারিখ",
+  "bill_to_label": "যাকে বিল করা হবে",
+  "bill_from_label": "প্রেরক",
+  "tax_id_label": "ট্যাক্স আইডি:",
+  "description_header": "বিবরণ",
+  "price_header": "মূল্য",
+  "qty_header": "পরিমাণ",
+  "total_header": "মোট",
+  "payment_label": "পেমেন্ট নির্দেশিকা",
+  "terms_conditions_label": "নোট ও শর্তাবলী",
+  "subtotal_label": "উপমোট",
+  "discount_label": "ছাড়",
+  "tax_label": "ট্যাক্স",
+  "shipping_label": "শিপিং",
+  "paid_label": "প্রদত্ত পরিমাণ",
+  "total_label": "বকেয়া",
+  "header.history": "হিস্ট্রি",
+  "header.guides": "গাইড",
+  "header.signIn": "লগ ইন",
+  "header.signUp": "সাইন আপ"
 }

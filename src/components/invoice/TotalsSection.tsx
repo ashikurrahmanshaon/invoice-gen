@@ -189,57 +189,59 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
 
           {/* Totals Summary */}
           <div style={{
-            background: 'var(--color-surface)',
-            border: '1px solid var(--color-border)',
-            borderRadius: 'var(--radius-xl)',
-            padding: 'var(--space-6)',
+            background: '#F8FAFC',
+            border: '1px solid #E2E8F0',
+            borderRadius: '16px',
+            padding: '24px',
             display: 'flex',
             flexDirection: 'column',
-            gap: 'var(--space-4)',
-            width: '100%'
+            gap: '16px',
+            width: '100%',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.02)'
           }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)', fontWeight: 500 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#64748B', fontWeight: 500 }}>
               <span>Subtotal</span>
-              <span>{formatCurrency(totals.subtotal, currency)}</span>
+              <span style={{ color: '#1E293B', fontWeight: 600 }}>{formatCurrency(totals.subtotal, currency)}</span>
             </div>
             {totals.discountAmount > 0 && (
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#64748B' }}>
                 <span>Discount</span>
-                <span>-{formatCurrency(totals.discountAmount, currency)}</span>
+                <span style={{ color: '#1E293B', fontWeight: 600 }}>-{formatCurrency(totals.discountAmount, currency)}</span>
               </div>
             )}
             {totals.taxAmount > 0 && (
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#64748B' }}>
                 <span>{totals.taxLabel || settings.invoiceDefaults.defaultTaxLabel || 'Tax'}</span>
-                <span>{formatCurrency(totals.taxAmount, currency)}</span>
+                <span style={{ color: '#1E293B', fontWeight: 600 }}>{formatCurrency(totals.taxAmount, currency)}</span>
               </div>
             )}
             {Number(totals.shipping) > 0 && (
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: '#64748B' }}>
                 <span>Shipping</span>
-                <span>{formatCurrency(Number(totals.shipping), currency)}</span>
+                <span style={{ color: '#1E293B', fontWeight: 600 }}>{formatCurrency(Number(totals.shipping), currency)}</span>
               </div>
             )}
             
-            <div style={{ borderTop: '1px solid var(--color-border)', margin: '4px 0' }} />
+            <div style={{ borderTop: '1px dashed #CBD5E1', margin: '4px 0' }} />
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--text-base)', color: 'var(--color-text-main)', fontWeight: 600 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '16px', color: '#1E293B', fontWeight: 600 }}>
               <span>Total</span>
-              <span>{formatCurrency(totals.total, currency)}</span>
+              <span style={{ fontWeight: 700 }}>{formatCurrency(totals.total, currency)}</span>
             </div>
 
             <div style={{
-              background: 'var(--color-primary)',
-              borderRadius: '8px',
-              minHeight: '48px',
+              background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)',
+              borderRadius: '12px',
+              minHeight: '56px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              padding: '0 16px',
-              marginTop: '8px'
+              padding: '0 20px',
+              marginTop: '8px',
+              boxShadow: '0 4px 14px rgba(15, 23, 42, 0.15)'
             }}>
-              <span style={{ color: '#FFFFFF', fontWeight: 500, fontSize: '14px' }}>Balance Due</span>
-              <span style={{ color: '#FFFFFF', fontWeight: 500, fontSize: '18px' }}>
+              <span style={{ color: '#94A3B8', fontWeight: 500, fontSize: '14px' }}>Balance Due</span>
+              <span style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '22px', letterSpacing: '-0.5px' }}>
                 {formatCurrency(totals.balanceDue, currency)}
               </span>
             </div>

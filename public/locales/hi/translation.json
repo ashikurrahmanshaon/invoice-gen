@@ -1,46 +1,52 @@
 {
   "invoice": {
-    "title": "Invoice",
-    "number": "Invoice Number",
-    "issueDate": "Issue Date",
-    "dueDate": "Due Date",
-    "billTo": "Bill To",
-    "from": "From"
+    "title": "चालान",
+    "number": "चालान संख्या",
+    "issueDate": "जारी करने की तिथि",
+    "dueDate": "देय तिथि",
+    "billTo": "बिल किसे",
+    "from": "प्रेषक"
   },
   "business": {
-    "name": "Business Name",
-    "email": "Email",
-    "phone": "Phone",
-    "website": "Website",
-    "taxId": "Tax ID",
-    "address": "Address"
+    "name": "व्यवसाय का नाम",
+    "email": "ईमेल",
+    "phone": "फोन",
+    "website": "वेबसाइट",
+    "taxId": "कर आईडी",
+    "address": "पता"
   },
   "client": {
-    "name": "Client Name",
-    "email": "Email",
-    "phone": "Phone",
-    "taxId": "Tax ID",
-    "address": "Address"
+    "name": "ग्राहक का नाम",
+    "email": "ईमेल",
+    "phone": "फोन",
+    "taxId": "कर आईडी",
+    "address": "पता"
   },
   "items": {
-    "description": "Description",
-    "quantity": "Qty",
-    "rate": "Rate",
-    "amount": "Amount",
-    "addItem": "Add Item"
+    "description": "विवरण",
+    "quantity": "मात्रा",
+    "rate": "दर",
+    "amount": "राशि",
+    "addItem": "आइटम जोड़ें"
   },
   "totals": {
-    "subtotal": "Subtotal",
-    "discount": "Discount",
-    "tax": "Tax",
-    "shipping": "Shipping",
-    "total": "Total",
-    "amountPaid": "Amount Paid",
-    "balanceDue": "Balance Due"
+    "subtotal": "उप-कुल",
+    "discount": "छूट",
+    "tax": "कर",
+    "shipping": "शिपिंग",
+    "total": "कुल",
+    "amountPaid": "भुगतान की गई राशि",
+    "balanceDue": "बकाया राशि"
   },
   "settings": {
-    "language": "Language",
-    "currency": "Currency",
-    "paperSize": "Paper Size"
+    "language": "भाषा",
+    "currency": "मुद्रा",
+    "paperSize": "कागज का आकार"
+  },
+  "header": {
+    "history": "इतिहास",
+    "guides": "गाइड",
+    "signIn": "साइन इन",
+    "signUp": "साइन अप"
   }
 }

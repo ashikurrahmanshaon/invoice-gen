@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import type { InvoiceData, LineItem } from '../../types/invoice';
-import { ArrowLeft, ArrowRight, Download, Eye, Lock, Shield, Smartphone } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Download, Eye } from 'lucide-react';
 import type { useClients } from '../../hooks/useClients';
 import { StageIndicator } from '../layout/StageIndicator';
 
@@ -40,25 +40,61 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
   setDiscount, setTaxRate, setTaxLabel, setShipping, setAmountPaid, onDownloadPDF, onOpenFullPreview
 }) => {
   const [mounted, setMounted] = useState(false);
-  const [isBottomBarVisible, setIsBottomBarVisible] = useState(true);
+  const [isNavVisible, setIsNavVisible] = useState(true);
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    let lastScrollTop = 0;
     
-    const observer = new IntersectionObserver(
-      (entries) => {
-        setIsBottomBarVisible(!entries[0].isIntersecting);
-      },
-      { root: null, threshold: 0, rootMargin: "0px" }
-    );
-    
-    setTimeout(() => {
-      const footer = document.getElementById('main-footer') || document.querySelector('footer');
-      if (footer) {
-        observer.observe(footer);
+    const handleScroll = (e: Event) => {
+      let target = e.target as HTMLElement | Document;
+      let scrollTop = 0;
+      let scrollHeight = 0;
+      let clientHeight = 0;
+      
+      if (target === document) {
+        scrollTop = window.scrollY;
+        scrollHeight = document.documentElement.scrollHeight;
+        clientHeight = window.innerHeight;
+      } else {
+        const el = target as HTMLElement;
+        scrollTop = el.scrollTop;
+        scrollHeight = el.scrollHeight;
+        clientHeight = el.clientHeight;
       }
-    }, 500);
-    
+      
+      if (scrollTop === undefined) return;
+      
+      // Ignore tiny scrolling elements like dropdowns
+      if (scrollHeight - clientHeight < 50) return;
+
+      if (scrollTop <= 50) {
+        setIsNavVisible(true);
+      } else if (scrollTop > lastScrollTop + 5) {
+        setIsNavVisible(false);
+      } else if (scrollTop < lastScrollTop - 5) {
+        setIsNavVisible(true);
+      }
+      
+      lastScrollTop = scrollTop;
+    };
+
+    // Use capture phase to catch scroll events from any container
+    window.addEventListener('scroll', handleScroll, { passive: true, capture: true });
+    return () => window.removeEventListener('scroll', handleScroll, { capture: true });
+  }, []);
+
+  const bottomAnchorRef = useRef<HTMLDivElement>(null);
+  const [isAtBottom, setIsAtBottom] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsAtBottom(entry.isIntersecting);
+    });
+    if (bottomAnchorRef.current) observer.observe(bottomAnchorRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -140,16 +176,15 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             bottom: 0,
             left: 0,
             right: 0,
-            background: 'var(--color-surface)',
-            padding: 'var(--space-4)',
-            paddingBottom: 'calc(var(--space-4) + env(safe-area-inset-bottom))',
+            background: 'rgba(255, 255, 255, 1)',
+            padding: '16px 16px calc(16px + env(safe-area-inset-bottom)) 16px',
             display: 'flex',
             flexDirection: 'column',
             gap: '12px',
             boxShadow: '0 -4px 24px rgba(0,0,0,0.06)',
             zIndex: 100,
-            transform: isBottomBarVisible ? 'translateY(0)' : 'translateY(120%)',
-            transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+            transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+            transform: isNavVisible || isAtBottom ? 'translateY(0)' : 'translateY(120%)',
             borderTop: '1px solid var(--color-border)'
           }}
         >
@@ -222,6 +257,9 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
         </div>,
         document.body
       )}
+
+      {/* Anchor for Intersection Observer to detect the bottom of the page */}
+      <div ref={bottomAnchorRef} style={{ width: '100%', height: '1px' }} />
     </div>
   );
 };

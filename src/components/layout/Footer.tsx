@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
           <div className="footer-brand-col">
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               {/* Premium Custom SVG Logo */}
-              <svg width="40" height="45" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 4px 6px rgba(0, 166, 90, 0.2))' }}>
+              <svg width="40" height="45" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 4px 6px rgba(0, 166, 90, 0.2))' }} role="img" aria-label="Invoice-Gen.net Logo">
                 <defs>
                   <linearGradient id="docGradientFooter" x1="0" y1="0" x2="32" y2="36" gradientUnits="userSpaceOnUse">
                     <stop stopColor="#00E676" />
@@ -76,14 +76,9 @@ export const Footer: React.FC = () => {
                 <rect x="2" y="16" width="16" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
                 <rect x="2" y="22" width="22" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
                 <rect x="2" y="28" width="16" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
-                
-                {/* Blue accent lines glowing */}
-                <rect x="-6" y="16" width="8" height="2.5" rx="1.25" fill="#0084FF" style={{ filter: 'drop-shadow(0px 0px 4px rgba(0, 132, 255, 0.6))' }}/>
-                <rect x="-6" y="22" width="12" height="2.5" rx="1.25" fill="#0084FF" style={{ filter: 'drop-shadow(0px 0px 4px rgba(0, 132, 255, 0.6))' }}/>
-                <rect x="-6" y="28" width="8" height="2.5" rx="1.25" fill="#0084FF" style={{ filter: 'drop-shadow(0px 0px 4px rgba(0, 132, 255, 0.6))' }}/>
               </svg>
               <div style={{ display: 'flex', alignItems: 'baseline', fontFamily: 'Inter, sans-serif' }}>
-                <span style={{ fontSize: '26px', fontWeight: 800, color: '#333333', letterSpacing: '-0.5px' }}>Invoice-Gen</span>
+                <span style={{ fontSize: '26px', fontWeight: 800, color: '#333333', letterSpacing: '-0.5px' }}>Invoice<span style={{ color: '#00E676' }}>-Gen</span></span>
                 <span style={{ fontSize: '18px', fontWeight: 500, color: '#666666' }}>.net</span>
               </div>
             </div>

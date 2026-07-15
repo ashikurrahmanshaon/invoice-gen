@@ -1,46 +1,25 @@
 {
-  "invoice": {
-    "title": "Invoice",
-    "number": "Invoice Number",
-    "issueDate": "Issue Date",
-    "dueDate": "Due Date",
-    "billTo": "Bill To",
-    "from": "From"
-  },
-  "business": {
-    "name": "Business Name",
-    "email": "Email",
-    "phone": "Phone",
-    "website": "Website",
-    "taxId": "Tax ID",
-    "address": "Address"
-  },
-  "client": {
-    "name": "Client Name",
-    "email": "Email",
-    "phone": "Phone",
-    "taxId": "Tax ID",
-    "address": "Address"
-  },
-  "items": {
-    "description": "Description",
-    "quantity": "Qty",
-    "rate": "Rate",
-    "amount": "Amount",
-    "addItem": "Add Item"
-  },
-  "totals": {
-    "subtotal": "Subtotal",
-    "discount": "Discount",
-    "tax": "Tax",
-    "shipping": "Shipping",
-    "total": "Total",
-    "amountPaid": "Amount Paid",
-    "balanceDue": "Balance Due"
-  },
-  "settings": {
-    "language": "Language",
-    "currency": "Currency",
-    "paperSize": "Paper Size"
-  }
+  "invoice_title": "FACTURA",
+  "invoice_no_label": "Nº Factura",
+  "issue_date_label": "Fecha Emisión",
+  "due_date_label": "Vencimiento",
+  "bill_to_label": "Facturar a",
+  "bill_from_label": "De",
+  "tax_id_label": "NIF/CIF:",
+  "description_header": "Descripción",
+  "price_header": "Precio",
+  "qty_header": "Cant.",
+  "total_header": "Total",
+  "payment_label": "Instrucciones de Pago",
+  "terms_conditions_label": "Notas y Condiciones",
+  "subtotal_label": "Subtotal",
+  "discount_label": "Descuento",
+  "tax_label": "Impuestos",
+  "shipping_label": "Envío",
+  "paid_label": "Monto Pagado",
+  "total_label": "Saldo Pendiente",
+  "header.history": "Historial",
+  "header.guides": "Guías",
+  "header.signIn": "Entrar",
+  "header.signUp": "Registro"
 }

@@ -96,97 +96,136 @@ export const TemplateGalleryModal: React.FC<TemplateGalleryModalProps> = ({ isOp
   return (
     <div style={{
       position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-      backgroundColor: 'rgba(16, 24, 40, 0.6)',
+      backgroundColor: 'rgba(15, 23, 42, 0.75)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      zIndex: 9999, backdropFilter: 'blur(4px)'
+      zIndex: 9999, backdropFilter: 'blur(8px)'
     }}>
       <div className="card animate-scale-up" style={{
-        width: '95%', maxWidth: '1000px', height: '85vh',
+        width: '95%', maxWidth: '1200px', height: '85vh',
         display: 'flex', flexDirection: 'column',
-        overflow: 'hidden', padding: 0
+        overflow: 'hidden', padding: 0,
+        borderRadius: '24px',
+        boxShadow: '0 24px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1)'
       }}>
         {/* Header */}
-        <div style={{ padding: '24px', borderBottom: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div>
-            <h2 style={{ fontSize: '20px', fontWeight: 600, color: 'var(--text-primary)', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <LayoutTemplate size={24} className="text-brand" />
-              Template Gallery
-            </h2>
-            <p style={{ color: 'var(--text-secondary)', margin: '4px 0 0 0', fontSize: '14px' }}>Choose a professional layout tailored for your industry.</p>
+        <div style={{ padding: '24px 32px', borderBottom: '1px solid #E2E8F0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#FFFFFF' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)', color: 'white', padding: '10px', borderRadius: '12px', display: 'flex', boxShadow: '0 4px 12px rgba(15, 23, 42, 0.15)' }}>
+              <Sparkles size={24} />
+            </div>
+            <div>
+              <h2 style={{ fontSize: '22px', fontWeight: 800, color: '#0F172A', margin: 0, letterSpacing: '-0.5px' }}>
+                Template Gallery
+              </h2>
+              <p style={{ color: '#64748B', margin: '4px 0 0 0', fontSize: '14px', fontWeight: 500 }}>Choose a professional layout tailored for your industry.</p>
+            </div>
           </div>
-          <button onClick={onClose} className="btn btn-ghost" style={{ padding: '8px' }}>
+          <button onClick={onClose} className="btn btn-ghost" style={{ padding: '10px', color: '#64748B', borderRadius: '50%', background: '#F8FAFC', border: '1px solid #E2E8F0', transition: 'all 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.background = '#F1F5F9'} onMouseLeave={(e) => e.currentTarget.style.background = '#F8FAFC'}>
             <X size={20} />
           </button>
         </div>
 
         <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
           {/* Main Grid */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', borderRight: '1px solid var(--border-color)', backgroundColor: '#F8FAFC' }}>
-            <div style={{ padding: '24px' }}>
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', backgroundColor: '#F8FAFC' }}>
+            <div style={{ padding: '32px 32px 16px 32px' }}>
               <div style={{ position: 'relative' }}>
-                <Search size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#94A3B8' }} />
+                <Search size={20} style={{ position: 'absolute', left: '20px', top: '50%', transform: 'translateY(-50%)', color: '#94A3B8' }} />
                 <input 
                   type="text" 
-                  className="input" 
                   placeholder="Search industries, templates, or keywords..."
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
-                  style={{ width: '100%', paddingLeft: '44px', backgroundColor: '#FFFFFF' }}
+                  style={{ 
+                    width: '100%', 
+                    padding: '16px 20px 16px 52px', 
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #E2E8F0',
+                    borderRadius: '16px',
+                    fontSize: '15px',
+                    color: '#0F172A',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
+                    outline: 'none',
+                    transition: 'all 0.2s ease',
+                    boxSizing: 'border-box'
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = '#3B82F6';
+                    e.currentTarget.style.boxShadow = '0 0 0 4px rgba(59, 130, 246, 0.1)';
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = '#E2E8F0';
+                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.02)';
+                  }}
                 />
               </div>
             </div>
             
-            <div style={{ flex: 1, overflowY: 'auto', padding: '0 24px 24px 24px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '16px' }}>
+            <div style={{ flex: 1, overflowY: 'auto', padding: '0 32px 32px 32px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '20px' }}>
                 {sortedTemplates.map(template => {
                   const Icon = IconMap[template.icon] || LayoutTemplate;
                   const isFav = favorites.includes(template.id);
                   const isRecent = recent === template.id;
+                  const isHovered = hoveredTemplate?.id === template.id;
                   
                   return (
                     <div 
                       key={template.id}
-                      className="card hover-lift"
                       onMouseEnter={() => setHoveredTemplate(template)}
+                      onMouseLeave={() => setHoveredTemplate(null)}
                       onClick={() => handleSelect(template)}
                       style={{ 
-                        padding: '16px', 
+                        padding: '24px', 
                         cursor: 'pointer', 
-                        border: '1px solid',
-                        borderColor: 'var(--border-color)',
-                        display: 'flex', flexDirection: 'column', gap: '12px'
+                        border: '2px solid',
+                        borderColor: isHovered ? template.themeColor : '#FFFFFF',
+                        backgroundColor: '#FFFFFF',
+                        borderRadius: '20px',
+                        display: 'flex', flexDirection: 'column', gap: '16px',
+                        boxShadow: isHovered ? `0 12px 24px ${template.themeColor}20` : '0 4px 12px rgba(0,0,0,0.03)',
+                        transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                        transform: isHovered ? 'translateY(-4px)' : 'translateY(0)'
                       }}
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                         <div style={{ 
-                          width: '40px', height: '40px', 
-                          borderRadius: '8px', 
-                          backgroundColor: `${template.themeColor}15`, 
+                          width: '52px', height: '52px', 
+                          borderRadius: '16px', 
+                          background: `linear-gradient(135deg, ${template.themeColor}15 0%, ${template.themeColor}30 100%)`, 
                           color: template.themeColor,
-                          display: 'flex', alignItems: 'center', justifyContent: 'center'
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          boxShadow: `inset 0 0 0 1px ${template.themeColor}20`
                         }}>
-                          <Icon size={20} />
+                          <Icon size={26} />
                         </div>
                         <button 
                           onClick={(e) => toggleFavorite(e, template.id)}
-                          className="btn btn-ghost" 
-                          style={{ padding: '4px', color: isFav ? '#F59E0B' : '#CBD5E1' }}
+                          style={{ 
+                            padding: '8px', 
+                            color: isFav ? '#F59E0B' : '#CBD5E1',
+                            background: isFav ? '#FEF3C7' : 'transparent',
+                            borderRadius: '50%',
+                            border: 'none',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease'
+                          }}
                         >
                           <Star size={18} fill={isFav ? '#F59E0B' : 'none'} />
                         </button>
                       </div>
                       
                       <div>
-                        <h3 style={{ margin: '0 0 4px 0', fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <h3 style={{ margin: '0 0 6px 0', fontSize: '18px', fontWeight: 700, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '8px', letterSpacing: '-0.3px' }}>
                           {template.name}
-                          {isRecent && <span style={{ fontSize: '10px', backgroundColor: '#EEF4FF', color: '#155EEF', padding: '2px 6px', borderRadius: '4px', fontWeight: 600 }}>RECENT</span>}
+                          {isRecent && <span style={{ fontSize: '10px', backgroundColor: '#EEF4FF', color: '#3B82F6', padding: '2px 8px', borderRadius: '12px', fontWeight: 700, letterSpacing: '0.5px' }}>RECENT</span>}
                         </h3>
-                        <p style={{ margin: 0, fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.4 }}>{template.description}</p>
+                        <p style={{ margin: 0, fontSize: '14px', color: '#64748B', lineHeight: 1.5 }}>{template.description}</p>
                       </div>
                       
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid var(--border-color)' }}>
-                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: template.themeColor }} />
-                        <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>Accent Color</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid #F1F5F9' }}>
+                        <div style={{ width: '18px', height: '18px', borderRadius: '50%', backgroundColor: template.themeColor, border: '2px solid #FFF', boxShadow: '0 0 0 1px #E2E8F0' }} />
+                        <span style={{ fontSize: '13px', color: '#64748B', fontWeight: 500 }}>Accent: {template.themeColor}</span>
                       </div>
                     </div>
                   );
@@ -195,21 +234,45 @@ export const TemplateGalleryModal: React.FC<TemplateGalleryModalProps> = ({ isOp
             </div>
           </div>
           
-          {/* Sidebar Preview */}
-          <div style={{ width: '380px', display: 'flex', flexDirection: 'column', backgroundColor: '#FFFFFF' }}>
-            <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ margin: '0 0 16px 0', fontSize: '14px', fontWeight: 600, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                Preview
-              </h3>
-              <div style={{ flex: 1, backgroundColor: '#F8FAFC', border: '1px solid var(--border-color)', borderRadius: '8px', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+          {/* Sidebar Preview (Dark Mode) */}
+          <div style={{ width: '480px', display: 'flex', flexDirection: 'column', backgroundColor: '#0F172A', borderLeft: '1px solid #1E293B', position: 'relative' }}>
+            <div style={{ padding: '32px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+                <h3 style={{ margin: 0, fontSize: '13px', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                  Live Preview
+                </h3>
+                {(hoveredTemplate || selectedTemplate) && (
+                  <div style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', padding: '6px 14px', borderRadius: '16px', fontSize: '13px', fontWeight: 600, letterSpacing: '0.5px' }}>
+                    {(hoveredTemplate || selectedTemplate)!.name}
+                  </div>
+                )}
+              </div>
+              
+              <div style={{ 
+                flex: 1, 
+                backgroundColor: '#1E293B', 
+                borderRadius: '24px', 
+                overflow: 'hidden', 
+                display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                padding: '24px',
+                boxShadow: 'inset 0 4px 20px rgba(0,0,0,0.3)'
+              }}>
                 {(hoveredTemplate || selectedTemplate) ? (
-                  <div style={{ pointerEvents: 'none', transform: 'scale(0.35)', transformOrigin: 'top center' }}>
-                    <InvoiceA4Preview data={getMockData((selectedTemplate || hoveredTemplate)!)} scale={1} />
+                  <div style={{ 
+                    pointerEvents: 'none', 
+                    boxShadow: '0 24px 48px rgba(0,0,0,0.6), 0 8px 16px rgba(0,0,0,0.4)',
+                    borderRadius: '4px',
+                    overflow: 'hidden',
+                    display: 'flex'
+                  }}>
+                    <InvoiceA4Preview data={getMockData((selectedTemplate || hoveredTemplate)!)} scale={0.38} />
                   </div>
                 ) : (
-                  <div style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>
-                    <LayoutTemplate size={48} style={{ opacity: 0.2, margin: '0 auto 16px auto' }} />
-                    <p style={{ margin: 0, fontSize: '14px' }}>Hover over a template<br/>to see a preview.</p>
+                  <div style={{ textAlign: 'center', color: '#64748B', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+                    <div style={{ background: 'rgba(255,255,255,0.05)', padding: '24px', borderRadius: '50%' }}>
+                      <LayoutTemplate size={48} style={{ opacity: 0.5 }} />
+                    </div>
+                    <p style={{ margin: 0, fontSize: '15px', fontWeight: 500, lineHeight: 1.5 }}>Hover over any template card<br/>to see it in action.</p>
                   </div>
                 )}
               </div>

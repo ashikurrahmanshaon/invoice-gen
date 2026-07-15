@@ -1,46 +1,52 @@
 {
   "invoice": {
-    "title": "Invoice",
-    "number": "Invoice Number",
-    "issueDate": "Issue Date",
-    "dueDate": "Due Date",
-    "billTo": "Bill To",
-    "from": "From"
+    "title": "Fattura",
+    "number": "Numero Fattura",
+    "issueDate": "Data di Emissione",
+    "dueDate": "Data di Scadenza",
+    "billTo": "Fatturare a",
+    "from": "Da"
   },
   "business": {
-    "name": "Business Name",
+    "name": "Nome Azienda",
     "email": "Email",
-    "phone": "Phone",
-    "website": "Website",
-    "taxId": "Tax ID",
-    "address": "Address"
+    "phone": "Telefono",
+    "website": "Sito Web",
+    "taxId": "Partita IVA",
+    "address": "Indirizzo"
   },
   "client": {
-    "name": "Client Name",
+    "name": "Nome Cliente",
     "email": "Email",
-    "phone": "Phone",
-    "taxId": "Tax ID",
-    "address": "Address"
+    "phone": "Telefono",
+    "taxId": "Partita IVA",
+    "address": "Indirizzo"
   },
   "items": {
-    "description": "Description",
-    "quantity": "Qty",
-    "rate": "Rate",
-    "amount": "Amount",
-    "addItem": "Add Item"
+    "description": "Descrizione",
+    "quantity": "Qtà",
+    "rate": "Prezzo",
+    "amount": "Importo",
+    "addItem": "Aggiungi Articolo"
   },
   "totals": {
-    "subtotal": "Subtotal",
-    "discount": "Discount",
-    "tax": "Tax",
-    "shipping": "Shipping",
-    "total": "Total",
-    "amountPaid": "Amount Paid",
-    "balanceDue": "Balance Due"
+    "subtotal": "Subtotale",
+    "discount": "Sconto",
+    "tax": "Imposta",
+    "shipping": "Spedizione",
+    "total": "Totale",
+    "amountPaid": "Importo Pagato",
+    "balanceDue": "Saldo Dovuto"
   },
   "settings": {
-    "language": "Language",
-    "currency": "Currency",
-    "paperSize": "Paper Size"
+    "language": "Lingua",
+    "currency": "Valuta",
+    "paperSize": "Formato Carta"
+  },
+  "header": {
+    "history": "Cronologia",
+    "guides": "Guide",
+    "signIn": "Accedi",
+    "signUp": "Registrati"
   }
 }

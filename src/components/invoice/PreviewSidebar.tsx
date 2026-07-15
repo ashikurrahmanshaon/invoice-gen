@@ -1,9 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import type { InvoiceData } from '../../types/invoice';
 import { InvoiceA4Preview } from './InvoiceA4Preview';
-import { Download, Maximize2, Share2, Eye, Send, Settings, LayoutTemplate } from 'lucide-react';
-import { generateInvoicePDF } from '../../utils/pdfGenerator';
-import { trackEvent } from '../../utils/analytics';
+import { LayoutTemplate } from 'lucide-react';
 
 interface PreviewSidebarProps {
   data: InvoiceData;
@@ -12,10 +10,9 @@ interface PreviewSidebarProps {
   onOpenTemplateGallery: () => void;
 }
 
-export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFullPreview, onOpenSettings, onOpenTemplateGallery }) => {
+export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFullPreview, onOpenTemplateGallery }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0.5);
-  const [isGenerating, setIsGenerating] = useState(false);
 
   useEffect(() => {
     const observer = new ResizeObserver((entries) => {
@@ -37,16 +34,6 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
     return () => observer.disconnect();
   }, []);
 
-  const handleDownload = async () => {
-    try {
-      setIsGenerating(true);
-      trackEvent('download_pdf', { source: 'sidebar' });
-      await generateInvoicePDF(data);
-    } finally {
-      setIsGenerating(false);
-    }
-  };
-
   return (
     <div 
       className="workspace-sidebar desktop-only" 
@@ -62,28 +49,7 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '0 8px' }}>
-        <button 
-          onClick={onOpenSettings}
-          style={{
-            height: '32px',
-            backgroundColor: '#F1F5F9',
-            color: '#475467',
-            fontWeight: 600,
-            fontSize: '12px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '6px',
-            borderRadius: '6px',
-            border: '1px solid #E2E8F0',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#E2E8F0'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#F1F5F9'; }}
-        >
-          <Settings size={14} /> Invoice Settings
-        </button>
+
         <button 
           onClick={onOpenTemplateGallery}
           style={{

@@ -2,7 +2,7 @@ import type { jsPDF } from 'jspdf';
 import type { InvoiceData } from '../types/invoice';
 import { toJpeg } from 'html-to-image';
 
-export const buildInvoicePDF = async (data: InvoiceData): Promise<jsPDF> => {
+export const buildInvoicePDF = async (_data?: InvoiceData): Promise<jsPDF> => {
   const { jsPDF } = await import('jspdf');
 
   // Look for the dedicated hidden render container
