@@ -46,7 +46,7 @@ export const Header: React.FC<HeaderProps> = ({
   }, []);
 
   const renderSaveStatus = () => {
-    if (!saveStatus) return null;
+    if (!saveStatus || saveStatus === 'idle') return null;
     
     if (saveStatus === 'saving') {
       return (
@@ -56,7 +56,7 @@ export const Header: React.FC<HeaderProps> = ({
       );
     }
     
-    if (saveStatus === 'error') {
+    if (saveStatus === 'error_draft' || saveStatus === 'error_profile') {
       return (
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#EF4444', fontWeight: 500 }} className="desktop-only">
           <AlertCircle size={16} /> Save Failed
@@ -64,11 +64,15 @@ export const Header: React.FC<HeaderProps> = ({
       );
     }
 
-    return (
-      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#64748B', fontWeight: 500 }} className="desktop-only">
-        <CheckCircle2 size={16} color="#10B981" /> Saved
-      </div>
-    );
+    if (saveStatus === 'success') {
+      return (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#64748B', fontWeight: 500 }} className="desktop-only">
+          <CheckCircle2 size={16} color="#10B981" /> Saved
+        </div>
+      );
+    }
+    
+    return null;
   };
 
   return (
