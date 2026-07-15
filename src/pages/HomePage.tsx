@@ -307,6 +307,7 @@ export default function HomePage() {
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.items.length]);
 
   const loadDemoData = () => {

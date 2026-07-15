@@ -74,6 +74,7 @@ export const Select: React.FC<SelectProps> = ({
         setTimeout(() => searchInputRef.current?.focus(), 10);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   useEffect(() => {

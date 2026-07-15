@@ -245,8 +245,8 @@ function run() {
     .replace(/\s+/g, ' ')
     .replace(/ ?\{ ?/g, '{')
     .replace(/ ?\} ?/g, '}')
-    .replace(/ ?\: ?/g, ':')
-    .replace(/ ?\; ?/g, ';')
+    .replace(/ ?: ?/g, ':')
+    .replace(/ ?; ?/g, ';')
     .replace(/\/\*.*?\*\//g, '')
     .trim();
     

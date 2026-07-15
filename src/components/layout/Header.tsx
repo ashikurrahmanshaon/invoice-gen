@@ -61,7 +61,11 @@ export const Header: React.FC<HeaderProps> = ({
 
   const handleLogoClick = () => {
     if (location.pathname === '/') {
-      onViewChange ? onViewChange('editor') : navigate('/');
+      if (onViewChange) {
+        onViewChange('editor');
+      } else {
+        navigate('/');
+      }
     } else {
       navigate('/');
     }
