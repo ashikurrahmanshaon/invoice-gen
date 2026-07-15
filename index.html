@@ -75,14 +75,6 @@
           // Remove interaction listeners
           removeListeners();
 
-          // Initialize Google Analytics 4 (via Google Tag Manager)
-          gtag('js', new Date());
-          var gaScript = document.createElement('script');
-          gaScript.async = true;
-          gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z8JWXK5L15';
-          document.head.appendChild(gaScript);
-          gtag('config', 'G-Z8JWXK5L15');
-
           // Initialize Microsoft Clarity
           var clarityScript = document.createElement('script');
           clarityScript.async = true;
