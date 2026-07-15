@@ -120,7 +120,7 @@ export const defaultSettings: Settings = {
     defaultCurrency: 'USD'
   },
   appearance: {
-    theme: 'system',
+    theme: 'light',
     fontSize: 'medium',
     layoutMode: 'comfortable'
   }
