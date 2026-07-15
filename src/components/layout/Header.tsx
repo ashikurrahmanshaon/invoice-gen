@@ -49,9 +49,15 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="container header-grid">
         {/* Left Section: Logo & Wordmark */}
         <div className="flex items-center">
-          <a href="/" className="flex items-center gap-2 logo-link">
-            <Logo size={32} hideText={true} />
-            <span className="desktop-only header-wordmark">
+          <a href="/" className="flex items-center gap-2 logo-link" style={{ textDecoration: 'none' }}>
+            <Logo size={28} hideText={true} />
+            <span style={{ 
+              fontSize: '15px', 
+              fontWeight: 800, 
+              color: '#0F172A', 
+              letterSpacing: '-0.02em',
+              fontFamily: 'Outfit, Inter, sans-serif'
+            }} className="desktop-only header-wordmark">
               Invoice-Gen.net
             </span>
           </a>
@@ -59,16 +65,44 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Center Section: Segmented Navigation */}
         <div className="flex items-center" style={{ justifyContent: 'center' }}>
-          <div className="segmented-control">
+          <div style={{
+            display: 'flex',
+            background: '#F1F5F9',
+            padding: '4px',
+            borderRadius: '8px',
+            gap: '4px'
+          }}>
             <button 
               onClick={() => onViewChange('editor')}
-              className={`segmented-nav-btn ${activeView === 'editor' ? 'active' : ''}`}
+              style={{
+                padding: '6px 16px',
+                borderRadius: '6px',
+                fontSize: '13px',
+                fontWeight: activeView === 'editor' ? 600 : 500,
+                background: activeView === 'editor' ? '#FFFFFF' : 'transparent',
+                color: activeView === 'editor' ? '#0F172A' : '#64748B',
+                boxShadow: activeView === 'editor' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
             >
               Editor
             </button>
             <button 
               onClick={() => onViewChange('history')}
-              className={`segmented-nav-btn ${activeView === 'history' ? 'active' : ''}`}
+              style={{
+                padding: '6px 16px',
+                borderRadius: '6px',
+                fontSize: '13px',
+                fontWeight: activeView === 'history' ? 600 : 500,
+                background: activeView === 'history' ? '#FFFFFF' : 'transparent',
+                color: activeView === 'history' ? '#0F172A' : '#64748B',
+                boxShadow: activeView === 'history' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
             >
               History
             </button>
@@ -76,11 +110,26 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Right Section: Actions */}
-        <div className="flex items-center justify-end gap-3">
-          <div className="desktop-only flex items-center gap-2">
+        <div className="flex items-center justify-end gap-2">
+          <div className="desktop-only flex items-center">
             {activeView === 'editor' && onDownloadPDF && (
               <button 
-                className="btn btn-sm btn-primary header-pdf-btn" 
+                className="btn btn-primary" 
+                style={{
+                  background: '#2563EB',
+                  color: 'white',
+                  borderRadius: '6px',
+                  padding: '0 16px',
+                  height: '34px',
+                  minHeight: '34px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  boxShadow: '0 1px 2px rgba(37,99,235,0.1)',
+                  border: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}
                 onClick={onDownloadPDF}
               >
                 <Download size={14} /> PDF
@@ -92,10 +141,18 @@ export const Header: React.FC<HeaderProps> = ({
           <div style={{ position: 'relative' }} ref={menuRef}>
             <button 
               className="btn btn-ghost btn-icon" 
+              style={{
+                width: '34px',
+                height: '34px',
+                minHeight: '34px',
+                borderRadius: '6px',
+                color: '#64748B',
+                background: menuOpen ? '#F1F5F9' : 'transparent'
+              }}
               aria-label="More options"
               onClick={() => setMenuOpen(!menuOpen)}
             >
-              <MoreVertical size={18} className="text-secondary" />
+              <MoreVertical size={18} />
             </button>
             
             {menuOpen && (
