@@ -1,6 +1,6 @@
 import type { jsPDF } from 'jspdf';
 import type { InvoiceData } from '../types/invoice';
-import { toJpeg } from 'html-to-image';
+import { toPng } from 'html-to-image';
 
 export const buildInvoicePDF = async (_data?: InvoiceData): Promise<jsPDF> => {
   const { jsPDF } = await import('jspdf');
@@ -15,11 +15,15 @@ export const buildInvoicePDF = async (_data?: InvoiceData): Promise<jsPDF> => {
   // We wait a tiny bit to ensure fonts and styles are fully rendered
   await new Promise(resolve => setTimeout(resolve, 100));
 
-  // Take a high-resolution snapshot using the browser's native text rendering (fixes language/font issues)
-  const dataUrl = await toJpeg(element, { 
-    quality: 0.98,
-    pixelRatio: 2, // 2x resolution for crisp PDF text
-    backgroundColor: '#ffffff'
+  // Take a high-resolution lossless snapshot
+  const dataUrl = await toPng(element, { 
+    quality: 1.0,
+    pixelRatio: 3, // 3x resolution for crisp, high-quality text
+    backgroundColor: '#ffffff',
+    style: {
+      transform: 'scale(1)',
+      transformOrigin: 'top left'
+    }
   });
 
   const doc = new jsPDF({
@@ -37,14 +41,14 @@ export const buildInvoicePDF = async (_data?: InvoiceData): Promise<jsPDF> => {
   let position = 0;
 
   // Add the first page
-  doc.addImage(dataUrl, 'JPEG', 0, position, pdfWidth, pdfHeight);
+  doc.addImage(dataUrl, 'PNG', 0, position, pdfWidth, pdfHeight, undefined, 'FAST');
   heightLeft -= pageHeight;
 
   // Add subsequent pages if the invoice is longer than one A4 page
   while (heightLeft > 0) {
     position = position - pageHeight; // Shift the image up by exactly one page height
     doc.addPage();
-    doc.addImage(dataUrl, 'JPEG', 0, position, pdfWidth, pdfHeight);
+    doc.addImage(dataUrl, 'PNG', 0, position, pdfWidth, pdfHeight, undefined, 'FAST');
     heightLeft -= pageHeight;
   }
 

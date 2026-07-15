@@ -22,7 +22,7 @@ const PreviewHeader = React.memo(({ details, business, themeColor }: { details: 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {business.logoUrl && (
-            <img src={business.logoUrl} alt="Business Logo" style={{ maxHeight: '64px', maxWidth: '160px', objectFit: 'contain' }} width="160" height="64" loading="lazy" decoding="async" />
+            <img src={business.logoUrl} crossOrigin="anonymous" alt="Business Logo" style={{ maxHeight: '64px', maxWidth: '160px', objectFit: 'contain' }} width="160" height="64" loading="lazy" decoding="async" />
           )}
           <div style={{ 
             fontSize: business.logoUrl ? '20px' : '32px', 
@@ -259,11 +259,7 @@ export const InvoiceA4Preview: React.FC<InvoiceA4PreviewProps> = ({ data, scale 
           position: 'relative',
         }}
       >
-        <style>
-          {`
-            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-          `}
-        </style>
+        {/* Font styling inherits from main document, removing @import prevents CORS failure in html-to-image */}
 
         <PreviewHeader details={data.details} business={data.business} themeColor={data.details.themeColor || '#0F172A'} />
         <PreviewAddresses business={data.business} client={data.client} />
