@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Download, MoreVertical, Trash2, FilePlus, Sparkles, LayoutTemplate, Settings as SettingsIcon } from 'lucide-react';
+import { Download, MoreVertical, Trash2, FilePlus, Sparkles, LayoutTemplate, Settings as SettingsIcon, Mail, CheckCircle2, Eye, Loader2, AlertCircle } from 'lucide-react';
 import { Logo } from '../ui/Logo';
 import type { SaveStatus } from '../../hooks/useAutoSave';
 
@@ -29,6 +29,7 @@ export const Header: React.FC<HeaderProps> = ({
   onViewChange,
   onSaveAsNew,
   hasLoadedHistory = false,
+  saveStatus,
   onLoadDemo
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,11 +45,37 @@ export const Header: React.FC<HeaderProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const renderSaveStatus = () => {
+    if (!saveStatus) return null;
+    
+    if (saveStatus === 'saving') {
+      return (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#64748B', fontWeight: 500 }} className="desktop-only">
+          <Loader2 size={16} className="animate-spin" /> Saving...
+        </div>
+      );
+    }
+    
+    if (saveStatus === 'error') {
+      return (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#EF4444', fontWeight: 500 }} className="desktop-only">
+          <AlertCircle size={16} /> Save Failed
+        </div>
+      );
+    }
+
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#64748B', fontWeight: 500 }} className="desktop-only">
+        <CheckCircle2 size={16} color="#10B981" /> Saved
+      </div>
+    );
+  };
+
   return (
     <header className="app-header header-container">
-      <div className="container header-grid">
-        {/* Left Section: Logo & Wordmark */}
-        <div className="flex items-center">
+      <div className="container header-grid" style={{ gridTemplateColumns: 'auto 1fr auto' }}>
+        {/* Left Section: Logo & Send via Email */}
+        <div className="flex items-center gap-6">
           <a href="/" className="flex items-center gap-2 logo-link" style={{ textDecoration: 'none' }}>
             <Logo size={28} hideText={true} />
             <span style={{ 
@@ -61,80 +88,58 @@ export const Header: React.FC<HeaderProps> = ({
               Invoice-Gen.net
             </span>
           </a>
-        </div>
 
-        {/* Center Section: Segmented Navigation */}
-        <div className="flex items-center" style={{ justifyContent: 'center' }}>
-          <div style={{
-            display: 'flex',
-            background: '#F1F5F9',
-            padding: '4px',
-            borderRadius: '8px',
-            gap: '4px'
-          }}>
-            <button 
-              onClick={() => onViewChange('editor')}
-              style={{
-                padding: '6px 16px',
-                borderRadius: '6px',
-                fontSize: '13px',
-                fontWeight: activeView === 'editor' ? 600 : 500,
-                background: activeView === 'editor' ? '#FFFFFF' : 'transparent',
-                color: activeView === 'editor' ? '#0F172A' : '#64748B',
-                boxShadow: activeView === 'editor' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease'
-              }}
-            >
-              Editor
-            </button>
-            <button 
-              onClick={() => onViewChange('history')}
-              style={{
-                padding: '6px 16px',
-                borderRadius: '6px',
-                fontSize: '13px',
-                fontWeight: activeView === 'history' ? 600 : 500,
-                background: activeView === 'history' ? '#FFFFFF' : 'transparent',
-                color: activeView === 'history' ? '#0F172A' : '#64748B',
-                boxShadow: activeView === 'history' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease'
-              }}
-            >
-              History
+          <div className="desktop-only">
+            <button style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '6px 12px',
+              borderRadius: '6px',
+              border: '1px solid #E2E8F0',
+              background: '#FFFFFF',
+              color: '#0F172A',
+              fontSize: '13px',
+              fontWeight: 500,
+              boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+              cursor: 'pointer'
+            }}>
+              <Mail size={14} color="#475569" /> Send via Email
             </button>
           </div>
         </div>
 
+        {/* Center Section: Empty spacing */}
+        <div />
+
         {/* Right Section: Actions */}
-        <div className="flex items-center justify-end gap-2">
-          <div className="desktop-only flex items-center">
-            {activeView === 'editor' && onDownloadPDF && (
-              <button 
-                className="btn btn-primary" 
-                style={{
-                  background: '#2563EB',
-                  color: 'white',
-                  borderRadius: '6px',
-                  padding: '0 16px',
-                  height: '34px',
-                  minHeight: '34px',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  boxShadow: '0 1px 2px rgba(37,99,235,0.1)',
-                  border: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px'
-                }}
-                onClick={onDownloadPDF}
-              >
-                <Download size={14} /> PDF
-              </button>
-            )}
+        <div className="flex items-center justify-end gap-4">
+          {renderSaveStatus()}
+
+          <div className="desktop-only flex items-center gap-2">
+            <button 
+              onClick={() => activeView === 'editor' ? onViewChange('history') : onViewChange('editor')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '6px 16px',
+                borderRadius: '20px',
+                border: '1px solid #E2E8F0',
+                background: '#FFFFFF',
+                color: '#0F172A',
+                fontSize: '13px',
+                fontWeight: 500,
+                boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+                cursor: 'pointer'
+              }}
+            >
+              {activeView === 'editor' ? (
+                <><Eye size={14} color="#475569" /> Preview</>
+              ) : (
+                <><LayoutTemplate size={14} color="#475569" /> Editor</>
+              )}
+            </button>
           </div>
 
           {/* Meatball Menu */}
@@ -142,11 +147,11 @@ export const Header: React.FC<HeaderProps> = ({
             <button 
               className="btn btn-ghost btn-icon" 
               style={{
-                width: '34px',
-                height: '34px',
-                minHeight: '34px',
+                width: '32px',
+                height: '32px',
+                minHeight: '32px',
                 borderRadius: '6px',
-                color: '#64748B',
+                color: '#0F172A',
                 background: menuOpen ? '#F1F5F9' : 'transparent'
               }}
               aria-label="More options"
@@ -192,6 +197,33 @@ export const Header: React.FC<HeaderProps> = ({
                   <Trash2 size={14} /> Reset Everything
                 </button>
               </div>
+            )}
+          </div>
+
+          <div className="desktop-only flex items-center">
+            {activeView === 'editor' && onDownloadPDF && (
+              <button 
+                className="btn btn-primary" 
+                style={{
+                  background: '#2563EB',
+                  color: 'white',
+                  borderRadius: '8px',
+                  padding: '0 18px',
+                  height: '36px',
+                  minHeight: '36px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  boxShadow: '0 1px 2px rgba(37,99,235,0.1)',
+                  border: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  cursor: 'pointer'
+                }}
+                onClick={onDownloadPDF}
+              >
+                <Download size={16} /> Download PDF
+              </button>
             )}
           </div>
         </div>
