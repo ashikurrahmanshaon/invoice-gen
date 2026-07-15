@@ -559,10 +559,6 @@ export default function HomePage() {
             data={data} 
             onClose={() => setIsPreviewOpen(false)} 
             onDownloadPDF={() => generateInvoicePDF(data)}
-            onChangeTemplate={() => {
-              setIsPreviewOpen(false);
-              setIsTemplateGalleryOpen(true);
-            }}
           />
         )}
         {isTemplateGalleryOpen && (
@@ -642,7 +638,6 @@ export default function HomePage() {
           trackEvent('download_pdf', { source: 'preview_modal' });
           generateInvoicePDF(data);
         }}
-        onChangeTemplate={() => setIsTemplateGalleryOpen(true)}
       />
 
       <Footer />

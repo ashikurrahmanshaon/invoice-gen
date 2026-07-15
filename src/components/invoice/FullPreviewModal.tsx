@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Download, ZoomIn, ZoomOut, Maximize, LayoutTemplate, MessageCircle, Mail, MessageSquare, Image as ImageIcon, Send } from 'lucide-react';
+import { X, Download, ZoomIn, ZoomOut, Maximize, MessageCircle, Mail, MessageSquare, Image as ImageIcon } from 'lucide-react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { toJpeg } from 'html-to-image';
 import type { InvoiceData } from '../../types/invoice';
@@ -11,10 +11,9 @@ interface FullPreviewModalProps {
   onClose: () => void;
   data: InvoiceData;
   onDownloadPDF: () => void;
-  onChangeTemplate?: () => void;
 }
 
-export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onClose, data, onDownloadPDF, onChangeTemplate }) => {
+export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onClose, data, onDownloadPDF }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -135,10 +134,6 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
     }
     setTouchStart(null);
     setTouchCurrent(null);
-  };
-
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) onClose();
   };
 
   if (!isOpen) return null;

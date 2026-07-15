@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Logo } from '../ui/Logo';
+
 
 /* Inline SVG social icons for pixel-perfect control */
 const SocialIcon = ({ d, viewBox = '0 0 24 24', label }: { d: string; viewBox?: string; label: string }) => (

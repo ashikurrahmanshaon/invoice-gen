@@ -15,8 +15,6 @@ export const TrustpilotBadge: React.FC<TrustpilotBadgeProps> = ({
   totalReviews = 12,
   profileUrl = 'https://www.trustpilot.com/review/invoice-gen.net',
 }) => {
-  const label = score >= 4.5 ? 'Excellent' : score >= 3.5 ? 'Great' : 'Good';
-
   // Render 5 Trustpilot-style stars based on score
   const renderStars = () => {
     const stars = [];

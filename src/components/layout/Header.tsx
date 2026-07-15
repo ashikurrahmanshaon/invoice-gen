@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Download, MoreVertical, Trash2, FilePlus, Sparkles, LayoutTemplate, Settings as SettingsIcon, Mail, CheckCircle2, Eye, Loader2, AlertCircle, ShieldCheck } from 'lucide-react';
-import { Logo } from '../ui/Logo';
+import React from 'react';
 import type { SaveStatus } from '../../hooks/useAutoSave';
 
 interface HeaderProps {
@@ -22,72 +20,9 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ 
-  onNewInvoice, 
-  onChangeTemplate,
-  onResetEverything, 
-  onDownloadPDF,
-  activeView,
   onViewChange,
-  onSaveAsNew,
-  hasLoadedHistory = false,
-  saveStatus,
-  onLoadDemo,
   onOpenHelp
 }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setMenuOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const renderSaveStatus = () => {
-    if (!saveStatus || saveStatus === 'idle') return null;
-    
-    if (saveStatus === 'saving') {
-      return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#64748B', fontWeight: 500 }} className="desktop-only">
-          <Loader2 size={16} className="animate-spin" /> Saving...
-        </div>
-      );
-    }
-    
-    if (saveStatus === 'error_draft' || saveStatus === 'error_profile') {
-      return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#EF4444', fontWeight: 500 }} className="desktop-only">
-          <AlertCircle size={16} /> Save Failed
-        </div>
-      );
-    }
-
-    if (saveStatus === 'success') {
-      return (
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          gap: '6px', 
-          fontSize: '12px', 
-          color: '#059669', 
-          fontWeight: 600,
-          background: '#ECFDF5',
-          padding: '4px 10px',
-          borderRadius: '20px',
-          border: '1px solid #D1FAE5'
-        }} className="desktop-only animate-fade-in">
-          <CheckCircle2 size={14} color="#10B981" /> Saved
-        </div>
-      );
-    }
-    
-    return null;
-  };
-
   return (
     <>
       {/* Top thin dark bar */}
