@@ -18,7 +18,6 @@ interface ClientSectionProps {
 const ClientSectionComponent: React.FC<ClientSectionProps> = ({ 
   data, updateClient, clientHook, selectedSavedClientId, setSelectedSavedClientId 
 }) => {
-  const [showOptional, setShowOptional] = useState(false);
   const [clientToDelete, setClientToDelete] = useState<SavedClient | null>(null);
 
   const handleLoadClient = (client: ClientDetails) => {
@@ -74,120 +73,53 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
           onDeleteRequest={(c) => setClientToDelete(c)} 
         />
         
-        <div className="flex-col gap-4">
+        <div className="flex-col gap-4" style={{ marginTop: '16px' }}>
           <div className="grid-2">
             <Input 
               id="client-name-input"
-              label="Client Name *"
+              label="Client's business name"
               type="text" 
-              placeholder="Client or Company Name"
+              placeholder="E.g. Global Trade LLC"
               value={data.client.name}
               onChange={(e) => updateClient({ name: e.target.value })}
             />
             <Input 
               id="client-email-input"
-              label="Email *"
+              label="Client's email"
               type="email" 
-              placeholder="client@example.com"
+              placeholder="client@email.com"
               value={data.client.email}
               onChange={(e) => updateClient({ email: e.target.value })}
             />
           </div>
 
-          {showOptional ? (
-            <div className="flex-col gap-4" style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-2)' }}>
-              <div className="grid-2">
-                <Input 
-                  id="client-phone-input"
-                  label="Phone"
-                  type="tel" 
-                  placeholder="Client phone number"
-                  value={data.client.phone || ''}
-                  onChange={(e) => updateClient({ phone: e.target.value })}
-                />
-                <Input 
-                  id="client-taxid-input"
-                  label="Tax ID / VAT Number"
-                  type="text" 
-                  placeholder="e.g. VAT / GST ID"
-                  value={data.client.taxId || ''}
-                  onChange={(e) => updateClient({ taxId: e.target.value })}
-                />
-              </div>
+          <div className="grid-2">
+            <Input 
+              id="client-phone-input"
+              label="Phone Number"
+              type="tel" 
+              placeholder="+1 987 654 321"
+              value={data.client.phone || ''}
+              onChange={(e) => updateClient({ phone: e.target.value })}
+            />
+            <Input 
+              id="client-taxid-input"
+              label="Tax ID (optional)"
+              type="text" 
+              placeholder="E.g. XY9876543"
+              value={data.client.taxId || ''}
+              onChange={(e) => updateClient({ taxId: e.target.value })}
+            />
+          </div>
 
-              <Input 
-                id="client-address1-input"
-                label="Address Line 1"
-                type="text" 
-                placeholder="Street address"
-                value={data.client.address1 || ''}
-                onChange={(e) => updateClient({ address1: e.target.value })}
-              />
-              
-              <Input 
-                id="client-address2-input"
-                label="Address Line 2"
-                type="text" 
-                placeholder="Apt, suite, etc. (optional)"
-                value={data.client.address2 || ''}
-                onChange={(e) => updateClient({ address2: e.target.value })}
-              />
-
-              <div className="grid-2">
-                <Input 
-                  id="client-city-input"
-                  label="City"
-                  type="text" 
-                  placeholder="City"
-                  value={data.client.city || ''}
-                  onChange={(e) => updateClient({ city: e.target.value })}
-                />
-                <Input 
-                  id="client-state-input"
-                  label="State / Province"
-                  type="text" 
-                  placeholder="State or Region"
-                  value={data.client.state || ''}
-                  onChange={(e) => updateClient({ state: e.target.value })}
-                />
-              </div>
-
-              <div className="grid-2">
-                <Input 
-                  id="client-postal-input"
-                  label="Postal / ZIP Code"
-                  type="text" 
-                  placeholder="Postal code"
-                  value={data.client.postalCode || ''}
-                  onChange={(e) => updateClient({ postalCode: e.target.value })}
-                />
-                <Input 
-                  id="client-country-input"
-                  label="Country"
-                  type="text" 
-                  placeholder="Country"
-                  value={data.client.country || ''}
-                  onChange={(e) => updateClient({ country: e.target.value })}
-                />
-              </div>
-
-              <button 
-                className="btn btn-ghost text-primary text-xs" 
-                style={{ paddingLeft: 0, justifyContent: 'flex-start', alignSelf: 'flex-start', minHeight: 'auto', padding: '4px 0', marginTop: '4px' }}
-                onClick={() => setShowOptional(false)}
-              >
-                − Hide additional client details
-              </button>
-            </div>
-          ) : (
-            <button 
-              className="btn btn-ghost text-primary text-xs" 
-              style={{ paddingLeft: 0, justifyContent: 'flex-start', alignSelf: 'flex-start', minHeight: 'auto', padding: '4px 0' }}
-              onClick={() => setShowOptional(true)}
-            >
-              + Add client details
-            </button>
-          )}
+          <Input 
+            id="client-address1-input"
+            label="Address"
+            type="text" 
+            placeholder="456 Client Ave, City, Country"
+            value={data.client.address1 || ''}
+            onChange={(e) => updateClient({ address1: e.target.value })}
+          />
         </div>
         
         <ClientActions 

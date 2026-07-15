@@ -84,7 +84,6 @@ export default function HomePage() {
     updateOtherFields,
     addItem, 
     updateItem, 
-    duplicateItem, 
     removeItem, 
     setItems,
     setDiscount,
@@ -427,7 +426,6 @@ export default function HomePage() {
                   updateDetails={handleUpdateDetails}
                   updateOtherFields={updateOtherFields}
                   addItem={addItem}
-                  duplicateItem={duplicateItem}
                   removeItem={removeItem}
                   updateItem={updateItem}
                   setDiscount={setDiscount}
@@ -463,7 +461,6 @@ export default function HomePage() {
                             items={data.items} 
                             currency={data.details.currency} 
                             addItem={addItem} 
-                            duplicateItem={duplicateItem} 
                             removeItem={removeItem} 
                             updateItem={updateItem} 
                           />

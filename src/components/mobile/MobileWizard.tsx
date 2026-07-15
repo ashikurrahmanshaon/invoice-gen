@@ -23,7 +23,6 @@ interface MobileWizardProps {
   updateDetails: (updates: Partial<InvoiceData['details']>) => void;
   updateOtherFields: (updates: Partial<Pick<InvoiceData, 'notes' | 'terms' | 'paymentInstructions' | 'signatureUrl'>>) => void;
   addItem: () => void;
-  duplicateItem: (id: string) => void;
   removeItem: (id: string) => void;
   updateItem: (id: string, updates: Partial<LineItem>) => void;
   setDiscount: (value: number | string, type: 'percent' | 'flat') => void;
@@ -38,7 +37,7 @@ interface MobileWizardProps {
 
 export const MobileWizard: React.FC<MobileWizardProps> = ({
   currentStage, setStage, data, updateBusiness, updateClient, clientHook, selectedSavedClientId, setSelectedSavedClientId, updateDetails,
-  updateOtherFields, addItem, duplicateItem, removeItem, updateItem,
+  updateOtherFields, addItem, removeItem, updateItem,
   setDiscount, setTaxRate, setTaxLabel, setShipping, setAmountPaid, onDownloadPDF, onOpenFullPreview, onOpenTemplateGallery
 }) => {
   const [mounted, setMounted] = useState(false);
@@ -160,7 +159,6 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
               items={data.items}
               currency={data.details.currency}
               addItem={addItem}
-              duplicateItem={duplicateItem}
               removeItem={removeItem}
               updateItem={updateItem}
             />

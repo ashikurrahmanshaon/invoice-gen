@@ -1,16 +1,14 @@
 import React from 'react';
-import { Copy, Trash2, Plus, FileText } from 'lucide-react';
+import { Trash2, FileText } from 'lucide-react';
 import type { LineItem } from '../../types/invoice';
 import { formatCurrency } from '../../utils/currency';
 import { isValidDecimalInput, calculateLineAmount } from '../../utils/calculations';
 import { Input } from '../ui/Input';
-import { Button } from '../ui/Button';
 
 interface ItemsSectionProps {
   items: LineItem[];
   currency: string;
   addItem: () => void;
-  duplicateItem: (id: string) => void;
   removeItem: (id: string) => void;
   updateItem: (id: string, updates: Partial<LineItem>) => void;
 }
@@ -20,15 +18,14 @@ interface ItemRowProps {
   currency: string;
   symbol: string;
   updateItem: (id: string, updates: Partial<LineItem>) => void;
-  duplicateItem: (id: string) => void;
   removeItem: (id: string) => void;
 }
 
-const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem, removeItem }: ItemRowProps) => {
+const ItemRow = React.memo(({ item, currency, symbol, updateItem, removeItem }: ItemRowProps) => {
   return (
     <div className="item-row-grid" style={{
       display: 'grid',
-      gridTemplateColumns: 'minmax(200px, 1.6fr) minmax(190px, 1.5fr) 110px 80px 110px 72px',
+      gridTemplateColumns: 'minmax(200px, 2fr) 100px 120px 120px 48px',
       gap: '16px',
       alignItems: 'center',
       minHeight: '64px',
@@ -40,53 +37,11 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
       <div>
         <Input 
           type="text" 
-          placeholder="Item or service name"
-          aria-label="Item or service name"
+          placeholder="Web Design"
+          aria-label="Item name"
           value={item.name}
           onChange={(e) => updateItem(item.id, { name: e.target.value })}
         />
-      </div>
-
-      {/* Description */}
-      <div>
-        <Input 
-          type="text" 
-          multiline
-          placeholder="Description (optional)"
-          aria-label="Description"
-          value={item.description}
-          onChange={(e) => updateItem(item.id, { description: e.target.value })}
-        />
-      </div>
-
-      {/* Rate Input with currency symbol prefix */}
-      <div>
-        <div style={{ position: 'relative', width: '100%' }}>
-          <span style={{ 
-            position: 'absolute', 
-            left: '12px', 
-            top: '50%', 
-            transform: 'translateY(-50%)', 
-            color: 'var(--color-text-secondary)',
-            fontSize: '13px',
-            fontWeight: 500,
-            pointerEvents: 'none'
-          }}>{symbol}</span>
-          <Input 
-            type="text"
-            inputMode="decimal"
-            placeholder="0.00"
-            aria-label="Rate"
-            value={item.rate}
-            onChange={(e) => {
-              const val = e.target.value;
-              if (isValidDecimalInput(val)) {
-                updateItem(item.id, { rate: val });
-              }
-            }}
-            style={{ paddingLeft: '28px' }}
-          />
-        </div>
       </div>
 
       {/* Qty (Centered input) */}
@@ -107,6 +62,36 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
         />
       </div>
 
+      {/* Rate Input with currency symbol prefix */}
+      <div>
+        <div style={{ position: 'relative', width: '100%' }}>
+          <span style={{ 
+            position: 'absolute', 
+            left: '12px', 
+            top: '50%', 
+            transform: 'translateY(-50%)', 
+            color: 'var(--color-text-secondary)',
+            fontSize: '13px',
+            fontWeight: 500,
+            pointerEvents: 'none'
+          }}>{symbol}</span>
+          <Input 
+            type="text"
+            inputMode="decimal"
+            placeholder="1200"
+            aria-label="Rate"
+            value={item.rate}
+            onChange={(e) => {
+              const val = e.target.value;
+              if (isValidDecimalInput(val)) {
+                updateItem(item.id, { rate: val });
+              }
+            }}
+            style={{ paddingLeft: '28px' }}
+          />
+        </div>
+      </div>
+
       {/* Amount (Bold & Right-aligned) */}
       <div style={{ textAlign: 'right', fontWeight: 700, fontSize: '14px', color: 'var(--color-text-main)', paddingRight: '4px' }}>
         {formatCurrency(calculateLineAmount(item.rate, item.quantity), currency)}
@@ -114,14 +99,6 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
 
       {/* Actions */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '4px', justifyContent: 'flex-end' }}>
-        <button 
-          onClick={() => duplicateItem(item.id)}
-          className="btn-ghost btn-icon btn-action-dup"
-          aria-label="Duplicate item"
-          title="Duplicate item"
-        >
-          <Copy size={16} />
-        </button>
         <button 
           onClick={() => removeItem(item.id)}
           className="btn-ghost btn-icon text-error"
@@ -136,7 +113,7 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, duplicateItem,
 });
 
 const ItemsSectionComponent: React.FC<ItemsSectionProps> = ({ 
-  items, currency, addItem, duplicateItem, removeItem, updateItem 
+  items, currency, addItem, removeItem, updateItem 
 }) => {
   const getCurrencySymbol = (code: string) => {
     switch (code) {
@@ -166,26 +143,27 @@ const ItemsSectionComponent: React.FC<ItemsSectionProps> = ({
           {/* Header Row */}
           <div className="items-header-row" style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(200px, 1.6fr) minmax(190px, 1.5fr) 110px 80px 110px 72px',
+            gridTemplateColumns: 'minmax(200px, 2fr) 100px 120px 120px 48px',
             gap: '16px',
-            borderBottom: '1px solid var(--color-border)',
-            padding: '12px 0',
-            fontSize: 'var(--text-xs)',
-            color: 'var(--color-text-secondary)',
+            borderBottom: '1px solid #E2E8F0',
+            backgroundColor: '#F8FAFC',
+            padding: '12px 16px',
+            fontSize: '12px',
+            color: '#64748B',
             textTransform: 'uppercase',
             letterSpacing: '0.5px',
-            fontWeight: 600
+            fontWeight: 600,
+            borderRadius: '8px 8px 0 0'
           }}>
-            <div>Item or service</div>
-            <div>Description</div>
+            <div>Item name</div>
+            <div style={{ textAlign: 'center' }}>Quantity</div>
             <div>Rate</div>
-            <div style={{ textAlign: 'center' }}>Qty</div>
-            <div style={{ textAlign: 'right' }}>Amount</div>
+            <div style={{ textAlign: 'right' }}>Total</div>
             <div></div>
           </div>
 
           {/* Body Rows */}
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px' }}>
             {items.map((item) => (
               <ItemRow 
                 key={item.id}
@@ -193,7 +171,6 @@ const ItemsSectionComponent: React.FC<ItemsSectionProps> = ({
                 currency={currency}
                 symbol={symbol}
                 updateItem={updateItem}
-                duplicateItem={duplicateItem}
                 removeItem={removeItem}
               />
             ))}
@@ -202,14 +179,14 @@ const ItemsSectionComponent: React.FC<ItemsSectionProps> = ({
       </div>
       
       {/* Add Line Item Button */}
-      <div style={{ display: 'flex' }}>
-        <Button 
-          variant="secondary"
-          leftIcon={<Plus size={16} />}
+      <div style={{ display: 'flex', padding: '0 16px' }}>
+        <button 
+          className="btn btn-ghost"
+          style={{ color: '#2563EB', fontWeight: 600, paddingLeft: 0, background: 'transparent' }}
           onClick={addItem}
         >
-          Add Line Item
-        </Button>
+          + Add item
+        </button>
       </div>
     </div>
   );
