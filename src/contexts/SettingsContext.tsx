@@ -123,7 +123,7 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     // Apply Theme
     let actualTheme = settings.appearance.theme;
     if (actualTheme === 'system') {
-      actualTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      actualTheme = 'light'; // Force light mode by default unless explicitly set to 'dark' by the user
     }
     document.documentElement.setAttribute('data-theme', actualTheme);
   }, [settings]);
