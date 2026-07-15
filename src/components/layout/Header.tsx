@@ -73,8 +73,6 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      {/* Top thin dark bar */}
-      <div style={{ height: '5px', backgroundColor: '#333333', width: '100%' }} />
       <header className="app-header" style={{ padding: '0 24px', backgroundColor: '#ffffff', borderBottom: '1px solid #E2E8F0', height: '64px', display: 'flex', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: isMobileView ? 'center' : 'space-between', width: '100%', maxWidth: '1312px', margin: '0 auto' }}>
           
