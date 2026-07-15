@@ -7,6 +7,7 @@ export interface CurrencyData {
   symbol: string;
   name: string;
   flag: string;
+  countryCode?: string;
   searchStr: string;
   countries: string[];
 }
@@ -34,16 +35,20 @@ const customFlags: Record<string, string> = {
 const getPrimaryCountryCodeForCurrency = (currencyCode: string): string | null => {
   if (customFlags[currencyCode]) return null; // We already have a custom flag
   
-  // Direct matching using country-to-currency reverse lookup
+  // 1. Try to match the 2-letter prefix first (e.g. USD -> US, CAD -> CA)
+  if (currencyCode.length === 3 && !currencyCode.startsWith('X')) {
+    const prefix = currencyCode.substring(0, 2);
+    // @ts-ignore
+    if (countryToCurrency[prefix] === currencyCode) {
+      return prefix;
+    }
+  }
+
+  // 2. Fallback: Direct matching using country-to-currency reverse lookup
   const entries = Object.entries(countryToCurrency);
   // Find the first country that uses this currency
   const match = entries.find(([_, curr]) => curr === currencyCode);
   if (match) return match[0];
-
-  // Fallback: use first 2 letters
-  if (currencyCode.length === 3 && !currencyCode.startsWith('X')) {
-    return currencyCode.substring(0, 2);
-  }
 
   return null;
 };
@@ -59,11 +64,24 @@ export const getAllCurrencies = (): CurrencyData[] => {
     const symbol = getSymbolFromCurrency(code) || code;
     
     let flag = '🌎';
+    let finalCountryCode: string | undefined;
+
     if (customFlags[code]) {
       flag = customFlags[code];
+      // Map custom flags to their country codes for flagcdn if possible
+      const customCodeMap: Record<string, string> = {
+        EUR: 'eu',
+        XCD: 'ag',
+        XOF: 'sn',
+        XAF: 'cm',
+        XPF: 'pf',
+        ANG: 'cw'
+      };
+      finalCountryCode = customCodeMap[code];
     } else {
       const countryCode = getPrimaryCountryCodeForCurrency(code);
       if (countryCode) {
+        finalCountryCode = countryCode.toLowerCase();
         try {
           flag = getFlagEmoji(countryCode);
         } catch {
@@ -79,6 +97,7 @@ export const getAllCurrencies = (): CurrencyData[] => {
       symbol,
       name: data.currency,
       flag,
+      countryCode: finalCountryCode,
       countries,
       searchStr: `${code} ${data.currency} ${symbol} ${countries.join(' ')}`
     });

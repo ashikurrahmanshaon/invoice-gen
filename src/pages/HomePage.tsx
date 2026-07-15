@@ -22,6 +22,7 @@ import { useHistory } from '../hooks/useHistory';
 
 import { FullPreviewModal } from '../components/invoice/FullPreviewModal';
 import { TemplateGalleryModal } from '../components/templates/TemplateGalleryModal';
+import { HelpGuideModal } from '../components/help/HelpGuideModal';
 import { SetupWizard } from '../components/wizard/SetupWizard';
 import { SettingsDashboard } from '../components/settings/SettingsDashboard';
 import { Modal } from '../components/ui/Modal';
@@ -46,8 +47,19 @@ export default function HomePage() {
     setCurrentStage(stage);
     const labels = ['Business', 'Client', 'Items', 'Review'];
     trackFunnelStep(stage, labels[stage - 1] || '');
+
+    if (typeof window !== 'undefined' && !isMobileView) {
+      setTimeout(() => {
+        const el = document.getElementById(`section-${stage}`);
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 180; // offset for sticky header + sticky stage indicator
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 0);
+    }
   };
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [isHelpGuideOpen, setIsHelpGuideOpen] = useState(false);
   const [showResetModal, setShowResetModal] = useState(false);
   const [showNewInvoiceToast, setShowNewInvoiceToast] = useState(false);
   const [showSaveToast, setShowSaveToast] = useState(false);
@@ -374,6 +386,7 @@ export default function HomePage() {
         onChangeTemplate={() => setIsTemplateGalleryOpen(true)}
         onResetEverything={() => setShowResetModal(true)}
         onDownloadPDF={() => setIsPreviewOpen(true)} 
+        onOpenHelp={() => setIsHelpGuideOpen(true)}
         saveStatus={saveStatus}
         showNewInvoiceToast={showNewInvoiceToast}
         activeView={activeView}
@@ -443,29 +456,46 @@ export default function HomePage() {
                 {/* Main Desktop Workspace (Wizard) */}
                 <div className="workspace-main">
                   <div className="card" style={{ padding: '0' }}>
-                    <div style={{ padding: '24px 32px' }}>
+                    <div style={{
+                      position: 'sticky',
+                      top: '68px',
+                      zIndex: 20,
+                      background: 'var(--color-surface)',
+                      borderTopLeftRadius: '12px',
+                      borderTopRightRadius: '12px',
+                      borderBottom: '1px solid var(--color-border)',
+                      padding: '24px 32px 0'
+                    }}>
                       <StageIndicator currentStage={currentStage} onStageChange={handleStageChange} isMobile={false} />
-                      <div className="flex-col" style={{ marginTop: '24px' }}>
-                        <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} />
+                    </div>
+                    <div style={{ padding: '24px 32px' }}>
+                      <div className="flex-col">
+                        <div id="section-1">
+                          <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} />
+                        </div>
                         
                         <Suspense fallback={null}>
-                          <ClientSection 
+                          <div id="section-2">
+                            <ClientSection 
                             data={data} 
                             updateClient={updateClient} 
                             clientHook={clientHook}
                             selectedSavedClientId={selectedSavedClientId}
                             setSelectedSavedClientId={setSelectedSavedClientId}
                           />
+                          </div>
                           
-                          <ItemsSection 
+                          <div id="section-3">
+                            <ItemsSection 
                             items={data.items} 
                             currency={data.details.currency} 
                             addItem={addItem} 
                             removeItem={removeItem} 
                             updateItem={updateItem} 
                           />
+                          </div>
                           
-                          <div style={{ padding: '32px 0' }}>
+                          <div id="section-4" style={{ padding: '32px 0' }}>
                             <TotalsSection 
                               data={data}
                               updateOtherFields={updateOtherFields}
@@ -476,17 +506,15 @@ export default function HomePage() {
                               setAmountPaid={setAmountPaid}
                             />
                             
-                            {/* App-style Preview Button */}
-                            <div style={{ marginTop: '40px', padding: '0 16px' }}>
+                            {/* Preview & Send Button */}
+                            <div style={{ marginTop: '40px' }}>
                               <button 
                                 className="btn btn-primary"
                                 style={{ 
                                   width: '100%', 
-                                  height: '56px',
-                                  fontSize: '16px',
-                                  fontWeight: 600,
-                                  borderRadius: '12px',
-                                  boxShadow: '0 4px 12px rgba(37, 99, 235, 0.2)'
+                                  height: '52px',
+                                  fontSize: '15px',
+                                  fontWeight: 600
                                 }}
                                 onClick={() => setIsPreviewOpen(true)}
                               >
@@ -600,6 +628,23 @@ export default function HomePage() {
           }
         }}
       />
+      
+      <HelpGuideModal 
+        isOpen={isHelpGuideOpen}
+        onClose={() => setIsHelpGuideOpen(false)}
+      />
+
+      <FullPreviewModal
+        isOpen={isPreviewOpen}
+        onClose={() => setIsPreviewOpen(false)}
+        data={data}
+        onDownloadPDF={() => {
+          trackEvent('download_pdf', { source: 'preview_modal' });
+          generateInvoicePDF(data);
+        }}
+        onChangeTemplate={() => setIsTemplateGalleryOpen(true)}
+      />
+
       <Footer />
     </>
   );

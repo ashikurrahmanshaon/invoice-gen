@@ -1,4 +1,5 @@
 import React from 'react';
+import { Building2, User, List, Eye, ChevronRight } from 'lucide-react';
 
 interface StageIndicatorProps {
   currentStage: number;
@@ -8,10 +9,10 @@ interface StageIndicatorProps {
 
 export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, onStageChange, isMobile = false }) => {
   const stages = [
-    { num: 1, label: 'Business', subtitle: 'Your company' },
-    { num: 2, label: 'Client', subtitle: 'Bill to' },
-    { num: 3, label: 'Items', subtitle: 'Add line items' },
-    { num: 4, label: 'Review', subtitle: 'Review & send' }
+    { num: 1, label: 'Business', subtitle: 'Your company', icon: Building2 },
+    { num: 2, label: 'Client', subtitle: 'Bill to', icon: User },
+    { num: 3, label: 'Items', subtitle: 'Add line items', icon: List },
+    { num: 4, label: 'Review', subtitle: 'Review & send', icon: Eye }
   ];
 
   return (
@@ -23,6 +24,15 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
       width: '100%',
       position: 'relative'
     }}>
+      <style>{`
+        @keyframes jump-happy {
+          0% { transform: scale(1) translateY(0); }
+          40% { transform: scale(1.1) translateY(-3px); }
+          60% { transform: scale(1.02) translateY(1px); }
+          80% { transform: scale(1.08) translateY(-1px); }
+          100% { transform: scale(1.05) translateY(0); }
+        }
+      `}</style>
       {/* Universal Background Line */}
       <div style={{
         position: 'absolute',
@@ -47,7 +57,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
       }}>
         <div style={{
           height: '100%',
-          background: 'var(--color-primary)',
+          background: '#00A65A',
           width: `${Math.max(0, (currentStage - 1) / (stages.length - 1)) * 100}%`,
           transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
         }} />
@@ -63,15 +73,15 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
         
         let bg = '#FFFFFF';
         let border = '1px solid #E2E8F0';
-        let textColor = '#64748B';
+        let textColor = '#94A3B8';
 
         if (isActive) {
-          bg = '#2563EB'; // Primary Blue
-          border = '1px solid #2563EB';
+          bg = '#00A65A';
+          border = '1px solid #00A65A';
           textColor = '#FFFFFF';
         }
 
-        const circleSize = isMobile ? '28px' : '36px';
+        const circleSize = isMobile ? '28px' : '32px';
 
         return (
           <div 
@@ -80,7 +90,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '12px',
+              gap: '10px',
               cursor: onStageChange ? 'pointer' : 'default',
               position: 'relative',
               zIndex: 3,
@@ -99,37 +109,71 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'all 0.3s ease',
-              boxShadow: 'none',
-              flexShrink: 0
+              transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+              flexShrink: 0,
+              animation: isActive ? 'jump-happy 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards' : 'none',
+              boxShadow: isActive ? '0 4px 12px rgba(0, 166, 90, 0.35)' : 'none'
             }}>
-              <span style={{ 
-                fontSize: isMobile ? '12px' : '14px', 
-                fontWeight: 600,
-                color: textColor 
-              }}>
-                {stage.num}
-              </span>
+              <stage.icon size={isMobile ? 14 : 16} color={textColor} />
             </div>
             
             {/* The Label */}
             {!isMobile && (
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', background: '#FFFFFF', padding: '0 4px' }}>
                 <span style={{
-                  fontSize: '14px',
+                  fontSize: '13px',
                   fontWeight: 600,
-                  color: isActive ? '#2563EB' : '#334155',
+                  color: isActive ? '#00A65A' : '#334155',
                   lineHeight: '1.2'
                 }}>
                   {stage.label}
                 </span>
                 <span style={{
-                  fontSize: '12px',
-                  color: '#64748B',
+                  fontSize: '11px',
+                  color: '#94A3B8',
                   lineHeight: '1.2'
                 }}>
                   {stage.subtitle}
                 </span>
+              </div>
+            )}
+
+            {/* Next Arrow for Active Stage */}
+            {isActive && stage.num < stages.length && (
+              <div 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onStageChange?.(stage.num + 1);
+                }}
+                style={{
+                  marginLeft: '6px',
+                  background: '#E8F8F0',
+                  border: '1px solid #00A65A',
+                  borderRadius: '50%',
+                  width: '22px',
+                  height: '22px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  color: '#00A65A',
+                  boxShadow: '0 2px 6px rgba(0,166,90,0.15)',
+                  transition: 'all 0.2s',
+                  zIndex: 4
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.background = '#00A65A';
+                  e.currentTarget.style.color = '#FFFFFF';
+                  e.currentTarget.style.transform = 'scale(1.1)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.background = '#E8F8F0';
+                  e.currentTarget.style.color = '#00A65A';
+                  e.currentTarget.style.transform = 'scale(1)';
+                }}
+                title="Next Step"
+              >
+                <ChevronRight size={14} strokeWidth={3} />
               </div>
             )}
           </div>

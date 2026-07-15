@@ -127,14 +127,11 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 1);
+    border-top: 1px solid var(--color-border);
     padding: 16px 16px calc(16px + env(safe-area-inset-bottom)) 16px;
     display: flex;
     gap: 12px;
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.06);
     z-index: 100;
     animation: slideUp 0.2s ease-out forwards;
   }
@@ -174,7 +171,7 @@
     max-width: 100% !important;
   }
 
-  .grid-2 {
+  .grid-2, .grid-4 {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
   }
@@ -186,19 +183,19 @@
   
   /* Enforce touch targets on mobile */
   .input-container > div {
-    min-height: 52px !important;
+    min-height: 44px !important;
   }
   
   input, select {
-    height: 52px !important;
-    min-height: 52px !important;
-    border-radius: 12px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    border-radius: var(--radius-md) !important;
   }
 
   textarea {
-    min-height: 52px !important;
+    min-height: 44px !important;
     max-height: 180px !important;
-    border-radius: 12px !important;
+    border-radius: var(--radius-md) !important;
     resize: none;
     overflow-y: auto;
   }
@@ -264,12 +261,9 @@
     left: 0;
     right: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 1);
+    border-top: 1px solid var(--color-border);
     padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) 16px;
-    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.08);
     z-index: 9999;
     animation: slideUpFloating 0.15s ease-out forwards;
   }

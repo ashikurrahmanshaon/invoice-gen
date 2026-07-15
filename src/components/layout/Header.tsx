@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Download, MoreVertical, Trash2, FilePlus, Sparkles, LayoutTemplate, Settings as SettingsIcon, Mail, CheckCircle2, Eye, Loader2, AlertCircle } from 'lucide-react';
+import { Download, MoreVertical, Trash2, FilePlus, Sparkles, LayoutTemplate, Settings as SettingsIcon, Mail, CheckCircle2, Eye, Loader2, AlertCircle, ShieldCheck } from 'lucide-react';
 import { Logo } from '../ui/Logo';
 import type { SaveStatus } from '../../hooks/useAutoSave';
 
@@ -8,6 +8,7 @@ interface HeaderProps {
   onChangeTemplate?: () => void;
   onResetEverything?: () => void;
   onDownloadPDF?: () => void;
+  onOpenHelp?: () => void;
   saveStatus?: SaveStatus;
   showNewInvoiceToast?: boolean;
   activeView: 'editor' | 'history' | 'settings';
@@ -30,7 +31,8 @@ export const Header: React.FC<HeaderProps> = ({
   onSaveAsNew,
   hasLoadedHistory = false,
   saveStatus,
-  onLoadDemo
+  onLoadDemo,
+  onOpenHelp
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -66,8 +68,19 @@ export const Header: React.FC<HeaderProps> = ({
 
     if (saveStatus === 'success') {
       return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#64748B', fontWeight: 500 }} className="desktop-only">
-          <CheckCircle2 size={16} color="#10B981" /> Saved
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '6px', 
+          fontSize: '12px', 
+          color: '#059669', 
+          fontWeight: 600,
+          background: '#ECFDF5',
+          padding: '4px 10px',
+          borderRadius: '20px',
+          border: '1px solid #D1FAE5'
+        }} className="desktop-only animate-fade-in">
+          <CheckCircle2 size={14} color="#10B981" /> Saved
         </div>
       );
     }
@@ -76,162 +89,96 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="app-header header-container">
-      <div className="container header-grid" style={{ gridTemplateColumns: 'auto 1fr auto' }}>
-        {/* Left Section: Logo & Send via Email */}
-        <div className="flex items-center gap-6">
-          <a href="/" className="flex items-center gap-2 logo-link" style={{ textDecoration: 'none' }}>
-            <Logo size={28} hideText={true} />
-            <span style={{ 
-              fontSize: '15px', 
-              fontWeight: 800, 
-              color: '#0F172A', 
-              letterSpacing: '-0.02em',
-              fontFamily: 'Outfit, Inter, sans-serif'
-            }} className="desktop-only header-wordmark">
-              Invoice-Gen.net
-            </span>
-          </a>
-
-          <div className="desktop-only">
-            <button style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              padding: '6px 12px',
-              borderRadius: '6px',
-              border: '1px solid #E2E8F0',
-              background: '#FFFFFF',
-              color: '#334155',
-              fontSize: '13px',
-              fontWeight: 500,
-              boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
-              cursor: 'pointer'
-            }}>
-              <Mail size={14} color="#64748B" /> Send via Email
-            </button>
-          </div>
-        </div>
-
-        {/* Center Section: Empty spacing */}
-        <div />
-
-        {/* Right Section: Actions */}
-        <div className="flex items-center justify-end gap-4">
-          {renderSaveStatus()}
-
-          <div className="desktop-only flex items-center gap-2">
-            <button 
-              onClick={() => activeView === 'editor' ? onViewChange('history') : onViewChange('editor')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '6px 16px',
-                borderRadius: '9999px',
-                border: '1px solid #E2E8F0',
-                background: '#FFFFFF',
-                color: '#334155',
-                fontSize: '13px',
-                fontWeight: 500,
-                boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
-                cursor: 'pointer'
-              }}
-            >
-              {activeView === 'editor' ? (
-                <><Eye size={14} color="#64748B" /> Preview</>
-              ) : (
-                <><LayoutTemplate size={14} color="#64748B" /> Editor</>
-              )}
-            </button>
+    <>
+      {/* Top thin dark bar */}
+      <div style={{ height: '5px', backgroundColor: '#333333', width: '100%' }} />
+      <header className="app-header" style={{ padding: '0 24px', backgroundColor: '#ffffff', borderBottom: '1px solid #E2E8F0', height: '64px', display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1312px', margin: '0 auto' }}>
+          
+          {/* Left: Logo & Wordmark */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={() => onViewChange('editor')}>
+            {/* Premium Custom SVG Logo */}
+            <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 4px 6px rgba(0, 166, 90, 0.2))' }}>
+              <defs>
+                <linearGradient id="docGradient" x1="0" y1="0" x2="32" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#00E676" />
+                  <stop offset="1" stopColor="#00A65A" />
+                </linearGradient>
+                <linearGradient id="foldGradient" x1="16" y1="0" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#00C853" />
+                  <stop offset="1" stopColor="#007936" />
+                </linearGradient>
+              </defs>
+              <path d="M14 0H28C30.2091 0 32 1.79086 32 4V32C32 34.2091 30.2091 36 28 36H4C1.79086 36 0 34.2091 0 32V10L14 0Z" fill="url(#docGradient)"/>
+              <path d="M0 10H10C12.2091 10 14 8.20914 14 6V0L0 10Z" fill="url(#foldGradient)"/>
+              
+              <rect x="2" y="16" width="16" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
+              <rect x="2" y="22" width="22" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
+              <rect x="2" y="28" width="16" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
+              
+              {/* Blue accent lines glowing */}
+              <rect x="-6" y="16" width="8" height="2.5" rx="1.25" fill="#0084FF" style={{ filter: 'drop-shadow(0px 0px 4px rgba(0, 132, 255, 0.6))' }}/>
+              <rect x="-6" y="22" width="12" height="2.5" rx="1.25" fill="#0084FF" style={{ filter: 'drop-shadow(0px 0px 4px rgba(0, 132, 255, 0.6))' }}/>
+              <rect x="-6" y="28" width="8" height="2.5" rx="1.25" fill="#0084FF" style={{ filter: 'drop-shadow(0px 0px 4px rgba(0, 132, 255, 0.6))' }}/>
+            </svg>
+            <div style={{ display: 'flex', alignItems: 'baseline', fontFamily: 'Inter, sans-serif' }}>
+              <span style={{ fontSize: '20px', fontWeight: 800, color: '#333333', letterSpacing: '-0.5px' }}>Invoice-Gen</span>
+              <span style={{ fontSize: '15px', fontWeight: 500, color: '#666666' }}>.net</span>
+            </div>
           </div>
 
-          {/* Meatball Menu */}
-          <div style={{ position: 'relative' }} ref={menuRef}>
-            <button 
-              className="btn btn-ghost btn-icon" 
-              style={{
-                width: '32px',
-                height: '32px',
-                minHeight: '32px',
-                borderRadius: '6px',
-                color: '#0F172A',
-                background: menuOpen ? '#F1F5F9' : 'transparent'
-              }}
-              aria-label="More options"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              <MoreVertical size={18} />
-            </button>
-            
-            {menuOpen && (
-              <div className="card header-dropdown-menu animate-scale-up">
-                {activeView === 'editor' && onLoadDemo && (
-                  <button className="dropdown-item" onClick={() => { setMenuOpen(false); onLoadDemo(); }}>
-                    <Sparkles size={14} className="text-primary" /> Load Demo Data
-                  </button>
-                )}
-
-                {activeView === 'editor' && onChangeTemplate && (
-                  <button className="dropdown-item" onClick={() => { setMenuOpen(false); onChangeTemplate(); }}>
-                    <LayoutTemplate size={14} className="text-secondary" /> Change Template
-                  </button>
-                )}
-
-                {activeView === 'editor' && onDownloadPDF && (
-                  <button className="dropdown-item mobile-only" onClick={() => { setMenuOpen(false); onDownloadPDF(); }}>
-                    <Download size={14} /> Download PDF
-                  </button>
-                )}
-                {hasLoadedHistory && onSaveAsNew && (
-                  <button className="dropdown-item" onClick={() => { setMenuOpen(false); onSaveAsNew(); }}>
-                    <FilePlus size={14} /> Save As New
-                  </button>
-                )}
-                {activeView === 'editor' && onNewInvoice && (
-                  <button className="dropdown-item" onClick={() => { setMenuOpen(false); onNewInvoice(); }}>
-                    <FilePlus size={14} /> New Invoice
-                  </button>
-                )}
-                <button className="dropdown-item" onClick={() => { setMenuOpen(false); onViewChange('settings'); }}>
-                  <SettingsIcon size={14} className="text-secondary" /> Settings
-                </button>
-                <div style={{ height: '1px', backgroundColor: 'var(--color-border)', margin: '4px 0' }} />
-                <button className="dropdown-item text-error" onClick={() => { setMenuOpen(false); onResetEverything?.(); }}>
-                  <Trash2 size={14} /> Reset Everything
-                </button>
-              </div>
-            )}
+          {/* Center: Navigation Links */}
+          <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
+            <button onClick={() => onViewChange('history')} style={{ background: 'none', border: 'none', fontSize: '14.5px', color: '#64748B', cursor: 'pointer', fontWeight: 500, padding: 0 }}>History</button>
+            <button onClick={() => onOpenHelp ? onOpenHelp() : null} style={{ background: 'none', border: 'none', fontSize: '14.5px', color: '#64748B', cursor: 'pointer', fontWeight: 500, padding: 0 }}>Guides</button>
           </div>
 
-          <div className="desktop-only flex items-center">
-            {activeView === 'editor' && onDownloadPDF && (
-              <button 
-                className="btn btn-primary" 
-                style={{
-                  background: '#2563EB',
-                  color: 'white',
-                  borderRadius: '8px',
-                  padding: '0 18px',
-                  height: '36px',
-                  minHeight: '36px',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  boxShadow: '0 1px 2px rgba(37,99,235,0.1)',
-                  border: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  cursor: 'pointer'
-                }}
-                onClick={onDownloadPDF}
-              >
-                <Download size={16} /> Download PDF
+          {/* Right: Actions */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              {/* Language Icon Placeholder (A/Z) */}
+              <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#64748B', display: 'flex', alignItems: 'center' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+                  <path d="M7 15V9l4 6V9"></path>
+                  <path d="M15 15h4v-6h-4v6z"></path>
+                </svg>
               </button>
-            )}
+              
+              {/* Theme Toggle Icon (Sun) */}
+              <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#64748B', display: 'flex', alignItems: 'center' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2"></path>
+                  <path d="M12 20v2"></path>
+                  <path d="M4.93 4.93l1.41 1.41"></path>
+                  <path d="M17.66 17.66l1.41 1.41"></path>
+                  <path d="M2 12h2"></path>
+                  <path d="M20 12h2"></path>
+                  <path d="M4.93 19.07l1.41-1.41"></path>
+                  <path d="M17.66 6.34l1.41-1.41"></path>
+                </svg>
+              </button>
+
+              <button style={{ background: 'none', border: 'none', fontSize: '14.5px', color: '#64748B', cursor: 'pointer', fontWeight: 500, padding: 0 }}>Sign In</button>
+            </div>
+            
+            <button style={{ 
+              backgroundColor: '#00A65A', 
+              color: 'white', 
+              border: 'none', 
+              borderRadius: '4px', 
+              padding: '8px 20px', 
+              fontSize: '14.5px', 
+              fontWeight: 600,
+              cursor: 'pointer',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            }}>
+              Sign Up
+            </button>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 };

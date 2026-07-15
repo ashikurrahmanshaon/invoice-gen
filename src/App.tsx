@@ -1,7 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-const HomePage = lazy(() => import('./pages/HomePage'));
+import HomePage from './pages/HomePage';
 const TemplateGalleryPage = lazy(() => import('./pages/TemplateGalleryPage').then(module => ({ default: module.TemplateGalleryPage })));
 const TemplateDetailPage = lazy(() => import('./pages/TemplateDetailPage').then(module => ({ default: module.TemplateDetailPage })));
 const AboutPage = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.AboutPage })));
@@ -13,7 +13,7 @@ const CompareHomePage = lazy(() => import('./pages/ContentDirectoryPages').then(
 
 export default function App() {
   return (
-    <Suspense fallback={<div className="loading-state" style={{ height: '100vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Loading...</div>}>
+    <Suspense fallback={null}>
       <Routes>
         {/* Phase 1: Main Product */}
         <Route path="/" element={<HomePage />} />

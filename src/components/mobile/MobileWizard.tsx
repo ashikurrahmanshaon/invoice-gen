@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import type { InvoiceData, LineItem } from '../../types/invoice';
-import { ArrowLeft, ArrowRight, Download, Eye, Lock, Globe, User, Zap, Shield, Smartphone } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Download, Eye, Lock, Shield, Smartphone } from 'lucide-react';
 import type { useClients } from '../../hooks/useClients';
 import { StageIndicator } from '../layout/StageIndicator';
 
@@ -82,9 +82,6 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
         }}>
           {[
             { icon: <Lock size={12} />, label: 'Secure' },
-            { icon: <Globe size={12} />, label: 'Browser Based' },
-            { icon: <User size={12} />, label: 'No Signup' },
-            { icon: <Zap size={12} />, label: 'Instant PDF' },
             { icon: <Shield size={12} />, label: 'Private' },
             { icon: <Smartphone size={12} />, label: 'Offline Ready' }
           ].map((chip) => (
@@ -93,11 +90,11 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
               alignItems: 'center',
               gap: '4px',
               padding: '6px var(--space-3)',
-              background: 'rgba(21, 94, 239, 0.04)',
-              border: '1px solid rgba(21, 94, 239, 0.08)',
+              background: 'rgba(12, 68, 124, 0.04)',
+              border: '1px solid rgba(12, 68, 124, 0.08)',
               borderRadius: '999px',
               fontSize: '11px',
-              fontWeight: 600,
+              fontWeight: 500,
               color: 'var(--color-text-secondary)',
               whiteSpace: 'nowrap',
               flexShrink: 0
@@ -233,9 +230,9 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
               <button 
                 onClick={onOpenFullPreview}
                 className="btn btn-primary"
-                style={{ width: '100%', minHeight: '48px', height: '48px' }}
+                style={{ width: '100%', minHeight: '52px', height: '52px', fontSize: '15px', fontWeight: 600 }}
               >
-                <Eye size={18} />
+                <Eye size={20} />
                 Preview Invoice
               </button>
             )}

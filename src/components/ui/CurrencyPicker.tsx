@@ -22,7 +22,27 @@ export const CurrencyPicker: React.FC<CurrencyPickerProps> = ({
     return getAllCurrencies().map(c => ({
       value: c.code,
       label: `${c.code} — ${c.name} (${c.symbol})`,
-      icon: <span style={{ fontSize: '18px' }}>{c.flag}</span>,
+      triggerLabel: `${c.code} (${c.symbol})`,
+      icon: c.countryCode ? (
+        <>
+          <img 
+            src={`https://flagcdn.com/w20/${c.countryCode}.png`} 
+            width="20" 
+            alt={c.countryCode}
+            style={{ borderRadius: '2px', objectFit: 'cover' }}
+            onError={(e) => {
+              // fallback to emoji if image fails
+              e.currentTarget.style.display = 'none';
+              if (e.currentTarget.nextElementSibling) {
+                (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'inline';
+              }
+            }}
+          />
+          <span style={{ fontSize: '18px', display: 'none' }}>{c.flag}</span>
+        </>
+      ) : (
+        <span style={{ fontSize: '18px' }}>{c.flag}</span>
+      ),
       searchStr: c.searchStr
     }));
   }, []);

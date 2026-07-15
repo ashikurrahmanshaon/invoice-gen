@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trash2, FileText } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 import type { LineItem } from '../../types/invoice';
 import { formatCurrency } from '../../utils/currency';
 import { isValidDecimalInput, calculateLineAmount } from '../../utils/calculations';
@@ -126,34 +126,26 @@ const ItemsSectionComponent: React.FC<ItemsSectionProps> = ({
   const symbol = getCurrencySymbol(currency);
 
   return (
-    <div data-testid="items-section" className="flex-col gap-6" style={{ width: '100%', paddingBottom: '32px', borderBottom: '1px solid #F1F5F9' }}>
+    <div data-testid="items-section" className="flex-col gap-6" style={{ width: '100%', paddingBottom: '32px', borderBottom: '1px solid var(--color-border)' }}>
       
-      {/* Section Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '8px' }}>
-        <div style={{ padding: '8px', background: 'transparent' }}>
-          <FileText size={24} color="#334155" />
-        </div>
-        <div>
-          <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1E293B', margin: 0, marginTop: '2px' }}>Line Items</h2>
-          <p style={{ fontSize: '13px', color: '#64748B', margin: '4px 0 0 0' }}>Add the products or services you are billing for.</p>
-        </div>
-      </div>      {/* Grid Table Container */}
-      <div style={{ width: '100%', marginTop: 'var(--space-2)' }} className="items-section-wrapper">
+      {/* Section Label */}
+      <div className="section-label">Line Items</div>
+
+      {/* Grid Table Container */}
+      <div style={{ width: '100%' }} className="items-section-wrapper">
         <div className="items-table-container" style={{ display: 'flex', flexDirection: 'column' }}>
           {/* Header Row */}
           <div className="items-header-row" style={{
             display: 'grid',
             gridTemplateColumns: 'minmax(200px, 2fr) 100px 120px 120px 48px',
             gap: '16px',
-            borderBottom: '1px solid #E2E8F0',
-            backgroundColor: '#F8FAFC',
-            padding: '12px 16px',
-            fontSize: '12px',
-            color: '#64748B',
+            borderBottom: '1px solid var(--color-border)',
+            padding: '8px 16px',
+            fontSize: '11px',
+            color: 'var(--color-text-tertiary)',
             textTransform: 'uppercase',
-            letterSpacing: '0.5px',
-            fontWeight: 600,
-            borderRadius: '8px 8px 0 0'
+            letterSpacing: '0.06em',
+            fontWeight: 500
           }}>
             <div>Item name</div>
             <div style={{ textAlign: 'center' }}>Quantity</div>

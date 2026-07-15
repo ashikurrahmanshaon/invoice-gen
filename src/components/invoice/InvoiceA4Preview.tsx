@@ -18,33 +18,42 @@ const PreviewHeader = React.memo(({ business, themeColor }: { business: InvoiceD
   const businessAddressLines = useMemo(() => formatAddress(business), [business]);
   
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '40px' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxWidth: '50%' }}>
-        {business.logoUrl && (
-          <div style={{ width: '80px', height: '64px', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', overflow: 'hidden' }}>
-            <img src={business.logoUrl} alt="Logo" loading="lazy" width="80" height="64" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+    <>
+      {/* Accent Header Band */}
+      <div style={{ 
+        background: themeColor, 
+        margin: '-80px -80px 40px -80px', 
+        padding: '40px 80px 32px 80px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {business.logoUrl && (
+            <div style={{ width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', borderRadius: '6px', background: 'rgba(255,255,255,0.15)' }}>
+              <img src={business.logoUrl} alt="Logo" loading="lazy" width="48" height="48" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+            </div>
+          )}
+          <div style={{ color: '#FFFFFF', fontWeight: 500, fontSize: '18px' }}>
+            {business.name || '\u00A0'}
           </div>
-        )}
-        <div style={{ fontWeight: 700, color: themeColor, fontSize: '18px', marginBottom: '8px' }}>
-          {business.name || 'Your Business Name'}
         </div>
-        <div style={{ color: '#667085', fontSize: '12px', lineHeight: 1.5 }}>
-          {business.email && <div>{business.email}</div>}
-          {business.phone && <div>{business.phone}</div>}
-          {business.website && <div>{business.website}</div>}
-          {businessAddressLines.map((line, idx) => (
-            <div key={idx}>{line}</div>
-          ))}
-          {business.taxId && <div>{t('tax_id_label', 'Tax ID:')} {business.taxId}</div>}
-        </div>
-      </div>
-      
-      <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-        <div style={{ fontSize: '32px', fontWeight: 700, color: themeColor, letterSpacing: '2px', marginBottom: '16px' }}>
+        <div style={{ fontSize: '24px', fontWeight: 500, color: 'rgba(255,255,255,0.9)', letterSpacing: '3px' }}>
           {t('invoice_title', 'INVOICE')}
         </div>
       </div>
-    </div>
+
+      {/* Business Contact Details */}
+      <div style={{ color: '#64748B', fontSize: '12px', lineHeight: 1.6, marginBottom: '32px' }}>
+        {business.email && <div>{business.email}</div>}
+        {business.phone && <div>{business.phone}</div>}
+        {business.website && <div>{business.website}</div>}
+        {businessAddressLines.map((line, idx) => (
+          <div key={idx}>{line}</div>
+        ))}
+        {business.taxId && <div>{t('tax_id_label', 'Tax ID:')} {business.taxId}</div>}
+      </div>
+    </>
   );
 });
 
@@ -83,7 +92,7 @@ const PreviewClient = React.memo(({ client, themeColor }: { client: InvoiceData[
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxWidth: '50%' }}>
         <div style={{ fontWeight: 700, color: themeColor, fontSize: '14px', marginBottom: '4px' }}>
-          {client.name || 'Client Name'}
+          {client.name || '\u00A0'}
         </div>
         <div style={{ color: '#667085', fontSize: '12px', lineHeight: 1.5 }}>
           {client.email && <div>{client.email}</div>}
@@ -115,7 +124,7 @@ const PreviewItems = React.memo(({ items, currency }: { items: InvoiceData['item
         <tbody>
           {items.map((item, idx) => (
             <tr key={item.id || idx} style={{ borderBottom: '1px solid #E4E7EC' }}>
-              <td style={{ padding: '16px', color: '#1B263B', verticalAlign: 'top', width: '25%' }}>{item.name || 'Untitled Item'}</td>
+              <td style={{ padding: '16px', color: '#1B263B', verticalAlign: 'top', width: '25%' }}>{item.name || '\u00A0'}</td>
               <td style={{ padding: '16px', color: '#667085', verticalAlign: 'top', whiteSpace: 'pre-wrap' }}>{item.description}</td>
               <td style={{ padding: '16px', color: '#1B263B', verticalAlign: 'top', textAlign: 'right', width: '15%' }}>{formatCurrency(sanitizeNumber(item.rate), currency)}</td>
               <td style={{ padding: '16px', color: '#1B263B', verticalAlign: 'top', textAlign: 'center', width: '10%' }}>{sanitizeNumber(item.quantity)}</td>
@@ -181,15 +190,15 @@ const PreviewTotals = React.memo(({ totals, currency, themeColor }: { totals: In
           <tr>
             <td colSpan={2} style={{ padding: '8px 0' }}>
               <div style={{ 
-                backgroundColor: '#EEF4FF', 
-                border: `1px solid ${themeColor}`, 
+                backgroundColor: themeColor, 
                 padding: '12px 16px',
+                borderRadius: '6px',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center'
               }}>
-                <span style={{ color: '#1B263B', fontWeight: 700 }}>{t('balance_due_label', 'Balance Due')}</span>
-                <span style={{ color: themeColor, fontWeight: 700, fontSize: '16px' }}>{formatCurrency(totals.balanceDue, currency)}</span>
+                <span style={{ color: '#FFFFFF', fontWeight: 500 }}>{t('balance_due_label', 'Balance Due')}</span>
+                <span style={{ color: '#FFFFFF', fontWeight: 500, fontSize: '16px' }}>{formatCurrency(totals.balanceDue, currency)}</span>
               </div>
             </td>
           </tr>

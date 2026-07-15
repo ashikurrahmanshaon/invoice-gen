@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Building2, Mail, Phone, FileText, MapPin } from 'lucide-react';
+import { Building2, Mail, Phone, FileText, MapPin } from 'lucide-react';
 import type { InvoiceData, ClientDetails, SavedClient } from '../../types/invoice';
 import { ClientPicker } from './ClientPicker';
 import { ClientActions } from './ClientActions';
@@ -53,18 +53,10 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
   };
 
   return (
-    <div className="flex-col gap-6" style={{ width: '100%', paddingBottom: '32px', borderBottom: '1px solid #F1F5F9', marginBottom: '32px' }}>
+    <div className="flex-col gap-6" style={{ width: '100%', paddingBottom: '32px', borderBottom: '1px solid var(--color-border)', marginBottom: '32px' }}>
       
-      {/* Section Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '8px' }}>
-        <div style={{ padding: '8px', background: 'transparent' }}>
-          <User size={24} color="#334155" />
-        </div>
-        <div>
-          <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1E293B', margin: 0, marginTop: '2px' }}>Client Info</h2>
-          <p style={{ fontSize: '13px', color: '#64748B', margin: '4px 0 0 0' }}>Your client's information.</p>
-        </div>
-      </div>
+      {/* Section Label */}
+      <div className="section-label">Client Info</div>
 
       <div style={{ width: '100%' }}>
         <ClientPicker 

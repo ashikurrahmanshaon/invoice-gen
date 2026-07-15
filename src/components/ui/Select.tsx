@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 export interface SelectOption {
   value: string;
   label: string;
+  triggerLabel?: string;  // shorter label shown in the closed trigger button
   icon?: React.ReactNode;
   description?: string;
   searchStr?: string;
@@ -38,6 +39,7 @@ export const Select: React.FC<SelectProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const listboxRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const selectedOption = options.find(o => o.value === value);
 
@@ -50,7 +52,11 @@ export const Select: React.FC<SelectProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      const isOutsideContainer = containerRef.current && !containerRef.current.contains(target);
+      const isOutsideDropdown = !dropdownRef.current || !dropdownRef.current.contains(target);
+      
+      if (isOutsideContainer && isOutsideDropdown) {
         setIsOpen(false);
       }
     };
@@ -61,14 +67,14 @@ export const Select: React.FC<SelectProps> = ({
   useEffect(() => {
     if (isOpen) {
       setSearch('');
-      const index = filteredOptions.findIndex(o => o.value === value);
+      const index = options.findIndex(o => o.value === value);
       setHighlightedIndex(Math.max(0, index));
       if (searchable && searchInputRef.current) {
         // slight delay to allow rendering
         setTimeout(() => searchInputRef.current?.focus(), 10);
       }
     }
-  }, [isOpen, searchable, value, filteredOptions]);
+  }, [isOpen]);
 
   useEffect(() => {
     setHighlightedIndex(0);
@@ -167,7 +173,7 @@ export const Select: React.FC<SelectProps> = ({
               overflow: 'hidden',
               textOverflow: 'ellipsis'
             }}>
-              {selectedOption ? selectedOption.label : placeholder}
+              {selectedOption ? (selectedOption.triggerLabel ?? selectedOption.label) : placeholder}
             </span>
           </div>
           <ChevronDown size={20} color="var(--color-text-tertiary)" style={{ flexShrink: 0 }} />
@@ -177,7 +183,7 @@ export const Select: React.FC<SelectProps> = ({
       {error && <div className="input-error">{error}</div>}
 
       {isOpen && createPortal(
-        <div style={dropdownStyle}>
+        <div style={dropdownStyle} ref={dropdownRef}>
           <div 
             className="card" 
             style={{ 

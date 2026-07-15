@@ -120,6 +120,7 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
                 id="discount-input"
                 label="Discount"
                 type="text"
+                inputMode="decimal"
                 value={totals.discountValue !== undefined ? totals.discountValue : ''}
                 onChange={(e) => {
                   if (isValidDecimalInput(e.target.value)) setDiscount(e.target.value, totals.discountType);
@@ -149,6 +150,7 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
                 id="tax-rate-input"
                 label="Tax Rate (%)"
                 type="text"
+                inputMode="decimal"
                 value={totals.taxRate !== undefined ? totals.taxRate : ''}
                 onChange={(e) => {
                   if (isValidDecimalInput(e.target.value)) setTaxRate(e.target.value);
@@ -163,6 +165,7 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
                 id="shipping-input"
                 label="Shipping"
                 type="text"
+                inputMode="decimal"
                 value={totals.shipping !== undefined ? totals.shipping : ''}
                 onChange={(e) => {
                   if (isValidDecimalInput(e.target.value)) setShipping(e.target.value);
@@ -193,8 +196,7 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
             display: 'flex',
             flexDirection: 'column',
             gap: 'var(--space-4)',
-            width: '100%',
-            boxShadow: '0 4px 12px rgba(16, 24, 40, 0.03)'
+            width: '100%'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)', fontWeight: 500 }}>
               <span>Subtotal</span>
@@ -227,18 +229,17 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
             </div>
 
             <div style={{
-              background: '#EEF4FF',
-              border: '1px solid rgba(21, 94, 239, 0.2)',
-              borderRadius: '12px',
-              minHeight: '56px',
+              background: 'var(--color-primary)',
+              borderRadius: '8px',
+              minHeight: '48px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              padding: '0 var(--space-4)',
+              padding: '0 16px',
               marginTop: '8px'
             }}>
-              <span style={{ color: 'var(--color-text-main)', fontWeight: 600, fontSize: 'var(--text-sm)' }}>Balance Due</span>
-              <span style={{ color: 'var(--color-primary)', fontWeight: 800, fontSize: 'var(--text-xl)' }}>
+              <span style={{ color: '#FFFFFF', fontWeight: 500, fontSize: '14px' }}>Balance Due</span>
+              <span style={{ color: '#FFFFFF', fontWeight: 500, fontSize: '18px' }}>
                 {formatCurrency(totals.balanceDue, currency)}
               </span>
             </div>

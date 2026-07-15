@@ -18,7 +18,7 @@ export const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputPro
     useEffect(() => {
       if (multiline && ref.current) {
         const el = ref.current as HTMLTextAreaElement;
-        el.style.height = '52px';
+        el.style.height = '44px';
         const scrollHeight = el.scrollHeight;
         el.style.height = Math.min(scrollHeight, 180) + 'px';
       }

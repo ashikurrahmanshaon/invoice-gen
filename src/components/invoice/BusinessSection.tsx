@@ -28,91 +28,40 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
   };
 
   return (
-    <div className="flex-col gap-6" style={{ width: '100%', paddingBottom: '32px', borderBottom: '1px solid #F1F5F9', marginBottom: '32px' }}>
+    <div style={{ 
+      width: '100%', 
+      background: '#FFFFFF',
+      borderRadius: '20px',
+      padding: '32px',
+      border: '1px solid #E2E8F0',
+      boxShadow: '0 4px 24px -4px rgba(15, 23, 42, 0.03)',
+      marginBottom: '32px'
+    }}>
       
-      {/* Section Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '8px' }}>
-        <div style={{ padding: '8px', background: 'transparent' }}>
-          <Building2 size={24} color="#334155" />
+      {/* Section Header & Logo */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ padding: '10px', background: '#EFF6FF', color: '#2563EB', borderRadius: '12px', display: 'flex' }}>
+            <Building2 size={22} />
+          </div>
+          <h2 style={{ fontSize: '20px', fontWeight: 600, color: '#0F172A', margin: 0 }}>Business Details</h2>
         </div>
-        <div>
-          <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#1E293B', margin: 0, marginTop: '2px' }}>Business Details</h2>
-          <p style={{ fontSize: '13px', color: '#64748B', margin: '4px 0 0 0' }}>Your company information will appear on the invoice.</p>
-        </div>
-      </div>
-
-      {/* Main 2-Column Layout */}
-      <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start', width: '100%', marginTop: '16px' }}>
         
-        {/* Left Column (Inputs) */}
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div className="grid-2">
-            <Input 
-              id="business-name-input"
-              label="Your business name"
-              type="text" 
-              placeholder="E.g. Acme Corp"
-              value={data.business.name}
-              onChange={(e) => updateBusiness({ name: e.target.value })}
-              leftIcon={<Building2 size={16} />}
-            />
-            <Input 
-              id="business-email-input"
-              label="Email"
-              type="email" 
-              placeholder="biz@email.com"
-              value={data.business.email}
-              onChange={(e) => updateBusiness({ email: e.target.value })}
-              leftIcon={<Mail size={16} />}
-            />
-          </div>
-          
-          <div className="grid-2">
-            <Input 
-              id="business-phone-input"
-              label="Phone Number"
-              type="tel" 
-              placeholder="+1 234 567 890"
-              value={data.business.phone || ''}
-              onChange={(e) => updateBusiness({ phone: e.target.value })}
-              leftIcon={<Phone size={16} />}
-            />
-            <Input 
-              id="business-taxid-input"
-              label="Tax ID (optional)"
-              type="text" 
-              placeholder="E.g. AB1234567"
-              value={data.business.taxId || ''}
-              onChange={(e) => updateBusiness({ taxId: e.target.value })}
-              leftIcon={<FileText size={16} />}
-            />
-          </div>
-
-          <Input 
-            id="business-address1-input"
-            label="Address"
-            type="text" 
-            placeholder="123 Business Rd, City, Country"
-            value={data.business.address1 || ''}
-            onChange={(e) => updateBusiness({ address1: e.target.value })}
-            leftIcon={<MapPin size={16} />}
-          />
-        </div>
-
-        {/* Right Column (Logo Upload) */}
-        <div style={{ flex: '0 0 160px' }}>
+        {/* Logo Upload placed beautifully next to title */}
+        <div>
           {data.business.logoUrl ? (
             <div style={{
-              width: '160px',
-              height: '160px',
+              width: '80px',
+              height: '80px',
               position: 'relative',
-              borderRadius: '8px',
+              borderRadius: '20px',
               border: '1px solid #E2E8F0',
               background: '#FFFFFF',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              overflow: 'hidden'
+              overflow: 'hidden',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
             }}>
               <img src={data.business.logoUrl} alt="Logo" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
               <div style={{
@@ -124,89 +73,156 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '12px'
+                gap: '8px'
               }} className="logo-hover-overlay">
                 <label htmlFor="business-logo-edit-input" style={{ cursor: 'pointer' }}>
-                  <Edit2 size={16} color="white" />
+                  <Edit2 size={14} color="white" />
                   <input id="business-logo-edit-input" aria-label="Change business logo" type="file" accept="image/*" onChange={handleLogoUpload} style={{ display: 'none' }} />
                 </label>
                 <button aria-label="Delete logo" onClick={() => updateBusiness({ logoUrl: null })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-                  <Trash2 size={16} color="white" />
+                  <Trash2 size={14} color="white" />
                 </button>
               </div>
               <style>{`.logo-hover-overlay:hover { opacity: 1 !important; }`}</style>
             </div>
           ) : (
             <label htmlFor="business-logo-upload-input" style={{
-              width: '160px',
-              height: '160px',
-              border: '1px dashed #CBD5E1',
-              borderRadius: '8px',
+              width: '80px',
+              height: '80px',
+              border: '2px dashed #CBD5E1',
+              borderRadius: '20px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
+              gap: '4px',
               cursor: 'pointer',
               background: '#F8FAFC',
               color: '#64748B',
-              transition: 'border-color 0.2s, background-color 0.2s'
+              transition: 'all 0.2s ease',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.02)'
             }}
-            onMouseOver={(e) => { e.currentTarget.style.borderColor = '#2563EB'; e.currentTarget.style.backgroundColor = '#EFF6FF'; }}
-            onMouseOut={(e) => { e.currentTarget.style.borderColor = '#CBD5E1'; e.currentTarget.style.backgroundColor = '#F8FAFC'; }}
+            onMouseOver={(e) => { 
+              e.currentTarget.style.borderColor = '#00A65A'; 
+              e.currentTarget.style.backgroundColor = '#E8F8F0'; 
+              e.currentTarget.style.color = '#00A65A';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 6px 16px rgba(0, 166, 90, 0.1)';
+            }}
+            onMouseOut={(e) => { 
+              e.currentTarget.style.borderColor = '#CBD5E1'; 
+              e.currentTarget.style.backgroundColor = '#F8FAFC'; 
+              e.currentTarget.style.color = '#64748B';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.02)';
+            }}
             >
-              <UploadCloud size={24} />
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <span style={{ fontSize: '13px', fontWeight: 500, color: '#334155' }}>Upload logo</span>
-                <span style={{ fontSize: '11px' }}>(Max 2MB)</span>
-              </div>
+              <UploadCloud size={20} />
+              <span style={{ fontSize: '10px', fontWeight: 600 }}>Logo</span>
               <input id="business-logo-upload-input" aria-label="Upload business logo" type="file" accept="image/*" onChange={handleLogoUpload} style={{ display: 'none' }} />
             </label>
           )}
         </div>
       </div>
 
+      {/* Main Container */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%', marginBottom: '16px' }}>
+        <div className="grid-2">
+          <Input 
+            id="business-name-input"
+            label="Your business name"
+            type="text" 
+            placeholder="E.g. Acme Corp"
+            value={data.business.name}
+            onChange={(e) => updateBusiness({ name: e.target.value })}
+            leftIcon={<Building2 size={16} />}
+          />
+          <Input 
+            id="business-email-input"
+            label="Email"
+            type="email" 
+            placeholder="biz@email.com"
+            value={data.business.email}
+            onChange={(e) => updateBusiness({ email: e.target.value })}
+            leftIcon={<Mail size={16} />}
+          />
+        </div>
+        
+        <div className="grid-2">
+          <Input 
+            id="business-phone-input"
+            label="Phone Number"
+            type="tel" 
+            placeholder="+1 234 567 890"
+            value={data.business.phone || ''}
+            onChange={(e) => updateBusiness({ phone: e.target.value })}
+            leftIcon={<Phone size={16} />}
+          />
+          <Input 
+            id="business-taxid-input"
+            label="Tax ID (optional)"
+            type="text" 
+            placeholder="E.g. AB1234567"
+            value={data.business.taxId || ''}
+            onChange={(e) => updateBusiness({ taxId: e.target.value })}
+            leftIcon={<FileText size={16} />}
+          />
+        </div>
+
+      {/* Full Width Address */}
+      <Input 
+        id="business-address1-input"
+        label="Address"
+        type="text" 
+        placeholder="123 Business Rd, City, Country"
+        value={data.business.address1 || ''}
+        onChange={(e) => updateBusiness({ address1: e.target.value })}
+        leftIcon={<MapPin size={16} />}
+      />
+
+    </div>
       {/* Invoice Specific Details (Required but not in visual mockup) */}
-      <div style={{ marginTop: '32px', paddingTop: '24px', borderTop: '1px solid #F1F5F9' }}>
-        <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#334155', marginBottom: '16px' }}>Invoice Settings</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div className="grid-2">
-            <Input 
-              id="invoice-number-input"
-              label="Invoice Number *"
-              type="text" 
-              placeholder="INV-001"
-              value={data.details.invoiceNumber}
-              onChange={(e) => updateDetails({ invoiceNumber: e.target.value })}
-              leftIcon={<Hash size={16} />}
-            />
-            <Input 
-              id="invoice-issue-date-input"
-              label="Issue Date"
-              type="date" 
-              value={data.details.issueDate}
-              onChange={(e) => updateDetails({ issueDate: e.target.value })}
-              leftIcon={<Calendar size={16} />}
-            />
+      <div style={{ marginTop: '32px', paddingTop: '32px', borderTop: '1px solid #F1F5F9' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+          <div style={{ padding: '8px', background: '#F8FAFC', color: '#64748B', borderRadius: '10px', display: 'flex' }}>
+            <FileText size={18} />
           </div>
-          <div className="grid-2">
-            <Input 
-              id="invoice-due-date-input"
-              label="Due Date"
-              type="date" 
-              value={data.details.dueDate}
-              onChange={(e) => updateDetails({ dueDate: e.target.value })}
-              leftIcon={<Calendar size={16} />}
-            />
-            <CurrencyPicker 
-              label="Currency"
-              value={data.details.currency || settings.localization.currency}
-              onChange={(c) => {
-                updateDetails({ currency: c });
-                updateNestedSetting('localization', { currency: c });
-              }}
-            />
-          </div>
+          <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#334155', margin: 0 }}>Invoice Settings</h3>
+        </div>
+        <div className="grid-4">
+          <Input 
+            id="invoice-number-input"
+            label="Invoice Number *"
+            type="text" 
+            placeholder="INV-001"
+            value={data.details.invoiceNumber}
+            onChange={(e) => updateDetails({ invoiceNumber: e.target.value })}
+            leftIcon={<Hash size={16} />}
+          />
+          <Input 
+            id="invoice-issue-date-input"
+            label="Issue Date"
+            type="date" 
+            value={data.details.issueDate}
+            onChange={(e) => updateDetails({ issueDate: e.target.value })}
+            leftIcon={<Calendar size={16} />}
+          />
+          <Input 
+            id="invoice-due-date-input"
+            label="Due Date"
+            type="date" 
+            value={data.details.dueDate}
+            onChange={(e) => updateDetails({ dueDate: e.target.value })}
+            leftIcon={<Calendar size={16} />}
+          />
+          <CurrencyPicker 
+            label="Currency"
+            value={data.details.currency || settings.localization.currency}
+            onChange={(c) => {
+              updateDetails({ currency: c });
+              updateNestedSetting('localization', { currency: c });
+            }}
+          />
         </div>
       </div>
     </div>

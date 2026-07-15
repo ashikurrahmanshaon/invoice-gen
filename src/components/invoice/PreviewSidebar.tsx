@@ -44,10 +44,11 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
     >
       <div 
         ref={containerRef}
+        className="preview-paper-container"
         style={{ 
           width: '100%', 
           flex: 1, 
-          backgroundColor: '#F8FAFC', 
+          backgroundColor: '#FFFFFF', 
           display: 'flex', 
           justifyContent: 'center', 
           alignItems: 'flex-start',
@@ -55,7 +56,8 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
           overflowX: 'hidden',
           padding: '10px 0',
           cursor: 'pointer',
-          borderRadius: '12px'
+          borderRadius: '12px',
+          border: '1px solid var(--color-border)'
         }}
         onClick={onOpenFullPreview}
         title="Click to expand"
@@ -63,6 +65,21 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
         <div style={{ pointerEvents: 'none' }}>
           <InvoiceA4Preview data={data} scale={scale} />
         </div>
+      </div>
+
+      {/* Trust Badge */}
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        gap: '6px', 
+        padding: '10px 0',
+        fontSize: '12px',
+        color: 'var(--color-text-tertiary)',
+        fontWeight: 400
+      }}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Your data never leaves your browser
       </div>
     </div>
   );
