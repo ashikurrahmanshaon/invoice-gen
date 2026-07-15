@@ -1,5 +1,6 @@
 import { useState, Suspense, useEffect } from 'react';
 import { Header } from '../components/layout/Header';
+import { Eye } from 'lucide-react';
 import { Footer } from '../components/layout/Footer';
 import { StageIndicator } from '../components/layout/StageIndicator';
 
@@ -475,6 +476,25 @@ export default function HomePage() {
                               setShipping={setShipping}
                               setAmountPaid={setAmountPaid}
                             />
+                            
+                            {/* App-style Preview Button */}
+                            <div style={{ marginTop: '40px', padding: '0 16px' }}>
+                              <button 
+                                className="btn btn-primary"
+                                style={{ 
+                                  width: '100%', 
+                                  height: '56px',
+                                  fontSize: '16px',
+                                  fontWeight: 600,
+                                  borderRadius: '12px',
+                                  boxShadow: '0 4px 12px rgba(37, 99, 235, 0.2)'
+                                }}
+                                onClick={() => setIsPreviewOpen(true)}
+                              >
+                                <Eye size={20} />
+                                Preview & Send
+                              </button>
+                            </div>
                           </div>
                         </Suspense>
                       </div>

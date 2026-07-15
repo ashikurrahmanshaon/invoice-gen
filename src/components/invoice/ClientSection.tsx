@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User } from 'lucide-react';
+import { User, Building2, Mail, Phone, FileText, MapPin } from 'lucide-react';
 import type { InvoiceData, ClientDetails, SavedClient } from '../../types/invoice';
 import { ClientPicker } from './ClientPicker';
 import { ClientActions } from './ClientActions';
@@ -82,6 +82,7 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
               placeholder="E.g. Global Trade LLC"
               value={data.client.name}
               onChange={(e) => updateClient({ name: e.target.value })}
+              leftIcon={<Building2 size={16} />}
             />
             <Input 
               id="client-email-input"
@@ -90,6 +91,7 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
               placeholder="client@email.com"
               value={data.client.email}
               onChange={(e) => updateClient({ email: e.target.value })}
+              leftIcon={<Mail size={16} />}
             />
           </div>
 
@@ -101,6 +103,7 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
               placeholder="+1 987 654 321"
               value={data.client.phone || ''}
               onChange={(e) => updateClient({ phone: e.target.value })}
+              leftIcon={<Phone size={16} />}
             />
             <Input 
               id="client-taxid-input"
@@ -109,6 +112,7 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
               placeholder="E.g. XY9876543"
               value={data.client.taxId || ''}
               onChange={(e) => updateClient({ taxId: e.target.value })}
+              leftIcon={<FileText size={16} />}
             />
           </div>
 
@@ -119,6 +123,7 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
             placeholder="456 Client Ave, City, Country"
             value={data.client.address1 || ''}
             onChange={(e) => updateClient({ address1: e.target.value })}
+            leftIcon={<MapPin size={16} />}
           />
         </div>
         

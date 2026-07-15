@@ -1,5 +1,5 @@
 import React from 'react';
-import { UploadCloud, Trash2, Edit2, Building2, LayoutTemplate } from 'lucide-react';
+import { UploadCloud, Trash2, Edit2, Building2, LayoutTemplate, Mail, Phone, FileText, MapPin, Hash, Calendar } from 'lucide-react';
 import type { InvoiceData } from '../../types/invoice';
 import { processImageFile } from '../../utils/image';
 import { Input } from '../ui/Input';
@@ -85,6 +85,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
               placeholder="E.g. Acme Corp"
               value={data.business.name}
               onChange={(e) => updateBusiness({ name: e.target.value })}
+              leftIcon={<Building2 size={16} />}
             />
             <Input 
               id="business-email-input"
@@ -93,6 +94,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
               placeholder="biz@email.com"
               value={data.business.email}
               onChange={(e) => updateBusiness({ email: e.target.value })}
+              leftIcon={<Mail size={16} />}
             />
           </div>
           
@@ -104,6 +106,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
               placeholder="+1 234 567 890"
               value={data.business.phone || ''}
               onChange={(e) => updateBusiness({ phone: e.target.value })}
+              leftIcon={<Phone size={16} />}
             />
             <Input 
               id="business-taxid-input"
@@ -112,6 +115,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
               placeholder="E.g. AB1234567"
               value={data.business.taxId || ''}
               onChange={(e) => updateBusiness({ taxId: e.target.value })}
+              leftIcon={<FileText size={16} />}
             />
           </div>
 
@@ -122,6 +126,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
             placeholder="123 Business Rd, City, Country"
             value={data.business.address1 || ''}
             onChange={(e) => updateBusiness({ address1: e.target.value })}
+            leftIcon={<MapPin size={16} />}
           />
         </div>
 
@@ -201,8 +206,10 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
               id="invoice-number-input"
               label="Invoice Number *"
               type="text" 
+              placeholder="INV-001"
               value={data.details.invoiceNumber}
               onChange={(e) => updateDetails({ invoiceNumber: e.target.value })}
+              leftIcon={<Hash size={16} />}
             />
             <Input 
               id="invoice-issue-date-input"
@@ -210,6 +217,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
               type="date" 
               value={data.details.issueDate}
               onChange={(e) => updateDetails({ issueDate: e.target.value })}
+              leftIcon={<Calendar size={16} />}
             />
           </div>
           <div className="grid-2">
@@ -219,6 +227,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
               type="date" 
               value={data.details.dueDate}
               onChange={(e) => updateDetails({ dueDate: e.target.value })}
+              leftIcon={<Calendar size={16} />}
             />
             <CurrencyPicker 
               label="Currency"

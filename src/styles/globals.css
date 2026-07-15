@@ -65,9 +65,9 @@ textarea {
 }
 
 .input-label {
-  font-size: var(--text-sm);
+  font-size: 13px;
   font-weight: 500;
-  color: var(--color-text-muted); /* Muted gray */
+  color: var(--color-text-secondary);
 }
 
 .input-wrapper {
@@ -76,9 +76,9 @@ textarea {
   align-items: center;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg); /* 12px */
+  border-radius: 8px; /* Slightly sharper */
   transition: all 150ms ease;
-  height: 52px;
+  height: 44px; /* Smaller height */
 }
 
 .input-wrapper:hover {
@@ -87,7 +87,7 @@ textarea {
 
 .input-wrapper:focus-within {
   border-color: var(--color-primary);
-  box-shadow: none; /* No glow */
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1); /* Subtle app-like glow */
 }
 
 .input-wrapper.has-error {
@@ -95,7 +95,7 @@ textarea {
 }
 
 .input-wrapper.has-error:focus-within {
-  box-shadow: none;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
 }
 
 .input-icon {
@@ -104,28 +104,28 @@ textarea {
   align-items: center;
 }
 
-.input-icon.left { padding-left: var(--space-4); }
-.input-icon.right { padding-right: var(--space-4); }
+.input-icon.left { padding-left: 12px; }
+.input-icon.right { padding-right: 12px; }
 
 .input-element {
   width: 100%;
   border: none;
   background: transparent;
   outline: none;
-  padding: 0 var(--space-4); /* 16px inside */
-  font-size: var(--text-base); /* 16px font */
+  padding: 0 12px;
+  font-size: 14px; /* Smaller font */
   color: var(--color-text-main);
-  font-family: var(--font-family); /* Inter */
+  font-family: var(--font-family);
   height: 100%;
 }
 
 .input-wrapper.is-multiline {
   height: auto;
-  min-height: 52px;
+  min-height: 44px;
 }
 
 .input-wrapper.is-multiline .input-element {
-  padding: var(--space-4);
+  padding: 12px;
   resize: none;
   line-height: 1.5;
   overflow-y: auto;
