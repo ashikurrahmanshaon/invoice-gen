@@ -40,7 +40,7 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }
 
     // Auto-detect defaults on first visit (Synchronous)
-    const lang = navigator.language.split('-')[0];
+    const lang = typeof navigator !== 'undefined' && navigator.language ? navigator.language.split('-')[0] : 'en';
     const initialRegion = detectRegionFromBrowser() || 'US';
     const regional = getRegionalSettings(initialRegion);
 

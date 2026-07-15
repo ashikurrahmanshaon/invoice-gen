@@ -28,19 +28,23 @@ const getTaxLabel = (countryCode: string): string => {
 };
 
 export const detectRegionFromBrowser = (): string | null => {
+  if (typeof navigator === 'undefined') return null;
+  
   // Priority 1: Intl.Locale region (if supported and accurate)
   try {
-    if (Intl.Locale) {
+    if (Intl.Locale && navigator.language) {
       const loc = new Intl.Locale(navigator.language);
       if (loc.region) return loc.region; // e.g. "US" from "en-US"
     }
   } catch {}
 
   // Priority 2: Simple language split fallback
-  const parts = navigator.language.split('-');
-  if (parts.length > 1) {
-    const region = parts[1].toUpperCase();
-    if (region.length === 2) return region;
+  if (navigator.language) {
+    const parts = navigator.language.split('-');
+    if (parts.length > 1) {
+      const region = parts[1].toUpperCase();
+      if (region.length === 2) return region;
+    }
   }
 
   // Priority 3: Browser timezone
