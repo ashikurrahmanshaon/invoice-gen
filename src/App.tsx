@@ -8,6 +8,7 @@ const AboutPage = lazy(() => import('./pages/LegalPages').then(module => ({ defa
 const PrivacyPage = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.PrivacyPage })));
 const TermsPage = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.TermsPage })));
 const TrustPage = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.TrustPage })));
+const ContactPage = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.ContactPage })));
 const BlogHomePage = lazy(() => import('./pages/ContentDirectoryPages').then(module => ({ default: module.BlogHomePage })));
 const CompareHomePage = lazy(() => import('./pages/ContentDirectoryPages').then(module => ({ default: module.CompareHomePage })));
 
@@ -22,6 +23,9 @@ export default function App() {
         <Route path="/templates" element={<TemplateGalleryPage />} />
         <Route path="/templates/:id" element={<TemplateDetailPage />} />
         
+        {/* Redirects */}
+        <Route path="/tools" element={<TemplateGalleryPage />} />
+        
         {/* Phase 6 & 7: Content & Comparison */}
         <Route path="/blog" element={<BlogHomePage />} />
         <Route path="/compare" element={<CompareHomePage />} />
@@ -31,6 +35,7 @@ export default function App() {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/trust" element={<TrustPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         
         {/* Fallback to home for anything else */}
         <Route path="*" element={<HomePage />} />

@@ -22,7 +22,7 @@ const PreviewHeader = React.memo(({ details, business, themeColor }: { details: 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {business.logoUrl && (
-            <img src={business.logoUrl} alt="Logo" style={{ maxHeight: '64px', maxWidth: '160px', objectFit: 'contain' }} />
+            <img src={business.logoUrl} alt="Business Logo" style={{ maxHeight: '64px', maxWidth: '160px', objectFit: 'contain' }} width="160" height="64" loading="lazy" decoding="async" />
           )}
           <div style={{ 
             fontSize: business.logoUrl ? '20px' : '32px', 

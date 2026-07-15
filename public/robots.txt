@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /private/
+Disallow: /api/
 
+Host: https://invoice-gen.net
 Sitemap: https://invoice-gen.net/sitemap.xml

@@ -41,3 +41,14 @@ export const TrustPage: React.FC = () => (
     </ul>
   </ContentPage>
 );
+
+export const ContactPage: React.FC = () => (
+  <ContentPage title="Contact Us" description="Get in touch with the Invoice-Gen.net team for support or business inquiries." urlPath="/contact">
+    <p>If you have any questions, feedback, or need support with Invoice-Gen.net, we are here to help!</p>
+    <h2>General Inquiries</h2>
+    <p>For general questions or feature requests, please reach out to us at: <strong>support@invoice-gen.net</strong></p>
+    <h2>Business & Partnerships</h2>
+    <p>If you are interested in partnering with us or have business inquiries, contact: <strong>partnerships@invoice-gen.net</strong></p>
+    <p>We try to respond to all inquiries within 24-48 hours. Thank you for using Invoice-Gen.net!</p>
+  </ContentPage>
+);

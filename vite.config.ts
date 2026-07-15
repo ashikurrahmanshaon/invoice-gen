@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { VitePWA } from 'vite-plugin-pwa'
+
 function cacheControlPlugin() {
   return {
     name: 'cache-control',
@@ -19,7 +21,47 @@ function cacheControlPlugin() {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), cacheControlPlugin()],
+  plugins: [
+    react(), 
+    cacheControlPlugin(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      injectRegister: 'auto',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff2}'],
+        maximumFileSizeToCacheInBytes: 5000000
+      },
+      manifest: {
+        short_name: "Invoice-Gen",
+        name: "Invoice-Gen.net | Free Professional Invoice Creator",
+        description: "Create professional PDF invoices instantly. 100% free, secure, browser-based.",
+        id: "/",
+        scope: "/",
+        start_url: ".",
+        display: "standalone",
+        theme_color: "#ffffff",
+        background_color: "#f9fafb",
+        icons: [
+          {
+            src: "favicon.svg",
+            type: "image/svg+xml",
+            sizes: "any"
+          },
+          {
+            src: "android-chrome-192x192.png",
+            sizes: "192x192",
+            type: "image/png"
+          },
+          {
+            src: "android-chrome-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any maskable"
+          }
+        ]
+      }
+    })
+  ],
   build: {
     chunkSizeWarningLimit: 600,
     rollupOptions: {
