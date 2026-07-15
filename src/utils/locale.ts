@@ -1,6 +1,18 @@
 import countryToCurrency from 'country-to-currency';
 import { getTimezone } from 'countries-and-timezones';
 
+export const getLanguageFromCountry = (countryCode: string): string | null => {
+  const map: Record<string, string> = {
+    'JP': 'ja', 'CN': 'zh', 'TW': 'zh', 'KR': 'ko', 'IN': 'hi', 'BD': 'bn', 
+    'FR': 'fr', 'DE': 'de', 'ES': 'es', 'MX': 'es', 'AR': 'es', 'CO': 'es',
+    'IT': 'it', 'BR': 'pt', 'PT': 'pt', 'NL': 'nl', 'SA': 'ar', 'AE': 'ar',
+    'EG': 'ar', 'TR': 'tr', 'RU': 'ru', 'PL': 'pl', 'RO': 'ro', 'GR': 'el',
+    'TH': 'th', 'VN': 'vi', 'ID': 'id', 'MY': 'ms', 'PK': 'ur', 'IL': 'he',
+    'UA': 'uk',
+  };
+  return map[countryCode.toUpperCase()] || null;
+};
+
 export interface RegionalSettings {
   countryCode: string; // e.g. US, BD, GB
   currency: string;

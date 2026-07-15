@@ -341,11 +341,18 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
                       <div 
                         id="preview-paper-wrapper"
                         style={{ 
-                          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)', 
-                          borderRadius: '2px', // Minimal paper radius
+                          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 255, 255, 0.1)', 
+                          borderRadius: '4px', // Slight paper radius
                           overflow: 'hidden',
-                          backgroundColor: '#ffffff'
+                          backgroundColor: '#ffffff',
+                          animation: 'floatUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards'
                         }}>
+                        <style>{`
+                          @keyframes floatUp {
+                            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+                            to { opacity: 1; transform: translateY(0) scale(1); }
+                          }
+                        `}</style>
                         <InvoiceA4Preview data={data} scale={1} />
                       </div>
                     </TransformComponent>

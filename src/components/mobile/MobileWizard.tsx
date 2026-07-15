@@ -68,51 +68,9 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       {/* Unified Progress System */}
       <StageIndicator currentStage={currentStage} onStageChange={setStage} isMobile={true} />
 
-      {/* Mobile Trust Chip Bar (Stage 1 only) */}
-      {currentStage === 1 && (
-        <div style={{
-          display: 'flex',
-          gap: '8px',
-          overflowX: 'auto',
-          paddingBottom: '4px',
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none',
-          WebkitOverflowScrolling: 'touch',
-          marginTop: '4px'
-        }}>
-          {[
-            { icon: <Lock size={12} />, label: 'Secure' },
-            { icon: <Shield size={12} />, label: 'Private' },
-            { icon: <Smartphone size={12} />, label: 'Offline Ready' }
-          ].map((chip) => (
-            <span key={chip.label} style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
-              padding: '6px var(--space-3)',
-              background: 'rgba(12, 68, 124, 0.04)',
-              border: '1px solid rgba(12, 68, 124, 0.08)',
-              borderRadius: '999px',
-              fontSize: '11px',
-              fontWeight: 500,
-              color: 'var(--color-text-secondary)',
-              whiteSpace: 'nowrap',
-              flexShrink: 0
-            }}>
-              {chip.icon} {chip.label}
-            </span>
-          ))}
-          <div style={{ flexShrink: 0, width: '8px' }} />
-        </div>
-      )}
-      
       {/* STEP 1 — BUSINESS */}
       {currentStage === 1 && (
         <div className="flex-col gap-5" style={{ width: '100%' }}>
-          <div>
-            <h2 className="text-xl font-bold" style={{ color: 'var(--color-text-main)', margin: 0 }}>Business details</h2>
-            <p className="text-xs text-secondary" style={{ margin: 0 }}>Add the information shown on your invoice.</p>
-          </div>
           <div className="mobile-card" style={{ padding: 'var(--space-4)' }}>
             <BusinessSection 
               data={data}
@@ -126,10 +84,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       {/* STEP 2 — CLIENT */}
       {currentStage === 2 && (
         <div className="flex-col gap-5" style={{ width: '100%' }}>
-          <div>
-            <h2 className="text-xl font-bold" style={{ color: 'var(--color-text-main)', margin: 0 }}>Client details</h2>
-            <p className="text-xs text-secondary" style={{ margin: 0 }}>Who is this invoice for?</p>
-          </div>
+
           <div className="mobile-card" style={{ padding: 'var(--space-4)' }}>
             <ClientSection
               data={data}
@@ -145,10 +100,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       {/* STEP 3 — ITEMS */}
       {currentStage === 3 && (
         <div className="flex-col gap-5" style={{ width: '100%' }}>
-          <div>
-            <h2 className="text-xl font-bold" style={{ color: 'var(--color-text-main)', margin: 0 }}>Line items</h2>
-            <p className="text-xs text-secondary" style={{ margin: 0 }}>Add your products or services.</p>
-          </div>
+
           <div className="mobile-card" style={{ padding: 'var(--space-4)' }}>
             <ItemsSection
               items={data.items}
@@ -164,10 +116,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
       {/* STEP 4 — TOTALS & EXTRAS */}
       {currentStage === 4 && (
         <div className="flex-col gap-5" style={{ width: '100%' }}>
-          <div>
-            <h2 className="text-xl font-bold" style={{ color: 'var(--color-text-main)', margin: 0 }}>Totals & Extras</h2>
-            <p className="text-xs text-secondary" style={{ margin: 0 }}>Taxes, discounts, and payment terms.</p>
-          </div>
+
           <div className="mobile-card" style={{ padding: 'var(--space-4)' }}>
             <TotalsSection
               data={data}
@@ -205,14 +154,14 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
           }}
         >
           {/* Navigation Buttons */}
-          <div style={{ display: 'grid', gridTemplateColumns: currentStage > 1 ? '1fr 1fr' : '1fr', gap: '12px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: currentStage > 1 ? '1fr 1fr' : '1fr', gap: '12px', width: '100%' }}>
             {currentStage > 1 && (
               <button 
                 onClick={() => setStage(currentStage - 1)}
-                className="btn btn-outline"
-                style={{ width: '100%', minHeight: '48px', height: '48px' }}
+                className="btn"
+                style={{ width: '100%', minHeight: '48px', height: '48px', maxHeight: '48px', boxSizing: 'border-box', padding: '0', margin: '0', borderRadius: '100px', background: '#FFFFFF', border: '1.5px solid #E2E8F0', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '14.5px', fontWeight: 600, boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}
               >
-                <ArrowLeft size={18} />
+                <ArrowLeft size={16} />
                 Back
               </button>
             )}
@@ -220,19 +169,19 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             {currentStage < 4 ? (
               <button 
                 onClick={() => setStage(currentStage + 1)}
-                className="btn btn-primary"
-                style={{ width: '100%', minHeight: '48px', height: '48px' }}
+                className="btn"
+                style={{ width: '100%', minHeight: '48px', height: '48px', maxHeight: '48px', boxSizing: 'border-box', padding: '0', margin: '0', borderRadius: '100px', background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)', color: 'white', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '14.5px', fontWeight: 600, boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)' }}
               >
                 Next
-                <ArrowRight size={18} />
+                <ArrowRight size={16} />
               </button>
             ) : (
               <button 
                 onClick={onOpenFullPreview}
-                className="btn btn-primary"
-                style={{ width: '100%', minHeight: '52px', height: '52px', fontSize: '15px', fontWeight: 600 }}
+                className="btn"
+                style={{ width: '100%', minHeight: '48px', height: '48px', maxHeight: '48px', boxSizing: 'border-box', padding: '0', margin: '0', borderRadius: '100px', background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)', color: 'white', border: 'none', fontSize: '14.5px', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)' }}
               >
-                <Eye size={20} />
+                <Eye size={18} />
                 Preview Invoice
               </button>
             )}
@@ -240,20 +189,35 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
 
           {/* Download Button */}
           {currentStage === 4 && (
-            <button 
-              onClick={onDownloadPDF}
-              className="btn"
-              style={{ 
-                width: '100%', 
-                background: 'var(--color-text-main)', 
-                color: 'white', 
-                minHeight: '48px', 
-                height: '48px' 
-              }}
-            >
-              <Download size={18} />
-              Download PDF
-            </button>
+            <div style={{ width: '100%', marginTop: '8px' }}>
+              <button 
+                onClick={onDownloadPDF}
+                className="btn"
+                style={{ 
+                  width: '100%', 
+                  background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)', 
+                  color: 'white', 
+                  minHeight: '48px', 
+                  height: '48px',
+                  maxHeight: '48px',
+                  boxSizing: 'border-box',
+                  padding: '0',
+                  margin: '0',
+                  borderRadius: '100px',
+                  border: 'none',
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  gap: '8px',
+                  fontSize: '14.5px',
+                  fontWeight: 600,
+                  boxShadow: '0 4px 14px rgba(15, 23, 42, 0.25)'
+                }}
+              >
+                <Download size={18} />
+                Download PDF
+              </button>
+            </div>
           )}
         </div>,
         document.body

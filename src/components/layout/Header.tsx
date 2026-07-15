@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import type { SaveStatus } from '../../hooks/useAutoSave';
-
+import { useSettings } from '../../contexts/SettingsContext';
+import { supportedLanguages } from '../../utils/languages';
+import { Moon, Sun, Globe } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 interface HeaderProps {
   onNewInvoice?: () => void;
   onChangeTemplate?: () => void;
@@ -21,14 +24,48 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ 
   onViewChange,
-  onOpenHelp
+  onOpenHelp,
+  isMobileView
 }) => {
+  const { t } = useTranslation();
+  const { settings, updateNestedSetting } = useSettings();
+  const [showLangMenu, setShowLangMenu] = useState(false);
+  const langMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
+        setShowLangMenu(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const toggleTheme = () => {
+    let current = settings.appearance.theme;
+    if (current === 'system') {
+      current = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    const nextTheme = current === 'dark' ? 'light' : 'dark';
+    updateNestedSetting('appearance', { theme: nextTheme });
+  };
+
+  const handleLanguageChange = (code: string) => {
+    updateNestedSetting('localization', { language: code });
+    setShowLangMenu(false);
+  };
+
+  const currentTheme = settings.appearance.theme === 'system' 
+    ? (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    : settings.appearance.theme;
+
   return (
     <>
       {/* Top thin dark bar */}
       <div style={{ height: '5px', backgroundColor: '#333333', width: '100%' }} />
       <header className="app-header" style={{ padding: '0 24px', backgroundColor: '#ffffff', borderBottom: '1px solid #E2E8F0', height: '64px', display: 'flex', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1312px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: isMobileView ? 'center' : 'space-between', width: '100%', maxWidth: '1312px', margin: '0 auto' }}>
           
           {/* Left: Logo & Wordmark */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={() => onViewChange('editor')}>
@@ -64,54 +101,82 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Center: Navigation Links */}
           <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-            <button onClick={() => onViewChange('history')} style={{ background: 'none', border: 'none', fontSize: '14.5px', color: '#64748B', cursor: 'pointer', fontWeight: 500, padding: 0 }}>History</button>
-            <button onClick={() => onOpenHelp ? onOpenHelp() : null} style={{ background: 'none', border: 'none', fontSize: '14.5px', color: '#64748B', cursor: 'pointer', fontWeight: 500, padding: 0 }}>Guides</button>
+            <button onClick={() => onViewChange('history')} style={{ background: 'none', border: 'none', fontSize: '14.5px', color: '#64748B', cursor: 'pointer', fontWeight: 500, padding: 0 }}>{t('header.history', 'History')}</button>
+            <button onClick={() => onOpenHelp ? onOpenHelp() : null} style={{ background: 'none', border: 'none', fontSize: '14.5px', color: '#64748B', cursor: 'pointer', fontWeight: 500, padding: 0 }}>{t('header.guides', 'Guides')}</button>
           </div>
 
           {/* Right: Actions */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              {/* Language Icon Placeholder (A/Z) */}
-              <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#64748B', display: 'flex', alignItems: 'center' }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
-                  <path d="M7 15V9l4 6V9"></path>
-                  <path d="M15 15h4v-6h-4v6z"></path>
-                </svg>
-              </button>
-              
-              {/* Theme Toggle Icon (Sun) */}
-              <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#64748B', display: 'flex', alignItems: 'center' }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="4"></circle>
-                  <path d="M12 2v2"></path>
-                  <path d="M12 20v2"></path>
-                  <path d="M4.93 4.93l1.41 1.41"></path>
-                  <path d="M17.66 17.66l1.41 1.41"></path>
-                  <path d="M2 12h2"></path>
-                  <path d="M20 12h2"></path>
-                  <path d="M4.93 19.07l1.41-1.41"></path>
-                  <path d="M17.66 6.34l1.41-1.41"></path>
-                </svg>
-              </button>
+          {!isMobileView && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                {/* Language Icon */}
+                <div style={{ position: 'relative' }} ref={langMenuRef}>
+                  <button 
+                    onClick={() => setShowLangMenu(!showLangMenu)}
+                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}
+                  >
+                    <Globe size={20} />
+                    <span style={{ fontSize: '14px', fontWeight: 500, textTransform: 'uppercase' }}>
+                      {settings.localization.language.split('-')[0]}
+                    </span>
+                  </button>
 
-              <button style={{ background: 'none', border: 'none', fontSize: '14.5px', color: '#64748B', cursor: 'pointer', fontWeight: 500, padding: 0 }}>Sign In</button>
+                  {showLangMenu && (
+                    <div className="header-dropdown-menu" style={{ 
+                      background: 'var(--color-surface)', 
+                      border: '1px solid var(--color-border)', 
+                      borderRadius: '8px',
+                      boxShadow: 'var(--shadow-modal)',
+                      maxHeight: '300px',
+                      overflowY: 'auto'
+                    }}>
+                      {supportedLanguages.map(lang => (
+                        <button
+                          key={lang.code}
+                          className="dropdown-item"
+                          onClick={() => handleLanguageChange(lang.code)}
+                          style={{
+                            fontWeight: settings.localization.language === lang.code ? 600 : 400,
+                            backgroundColor: settings.localization.language === lang.code ? 'var(--color-background)' : 'transparent'
+                          }}
+                        >
+                          {lang.nativeName}
+                          <span style={{ color: 'var(--color-text-tertiary)', fontSize: '12px', marginLeft: 'auto' }}>
+                            {lang.name}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                
+                {/* Theme Toggle Icon (Sun/Moon) */}
+                <button 
+                  onClick={toggleTheme}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center' }}
+                  title="Toggle theme"
+                >
+                  {currentTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                </button>
+
+                <button style={{ background: 'none', border: 'none', fontSize: '14.5px', color: '#64748B', cursor: 'pointer', fontWeight: 500, padding: 0 }}>{t('header.signIn', 'Sign In')}</button>
+              </div>
+              
+              <button style={{ 
+                backgroundColor: '#00A65A', 
+                color: 'white', 
+                border: 'none', 
+                borderRadius: '4px', 
+                padding: '8px 20px', 
+                fontSize: '14.5px', 
+                fontWeight: 600,
+                cursor: 'pointer',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              }}>
+                {t('header.signUp', 'Sign Up')}
+              </button>
             </div>
-            
-            <button style={{ 
-              backgroundColor: '#00A65A', 
-              color: 'white', 
-              border: 'none', 
-              borderRadius: '4px', 
-              padding: '8px 20px', 
-              fontSize: '14.5px', 
-              fontWeight: 600,
-              cursor: 'pointer',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-            }}>
-              Sign Up
-            </button>
-          </div>
+          )}
         </div>
       </header>
     </>

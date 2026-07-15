@@ -7,7 +7,7 @@ const safeLocalStorage = {
   removeItem: (k: string): void => { if (isBrowser) window.localStorage.removeItem(k); }
 };
 import { getLanguageData } from '../utils/languages';
-import { detectRegionFromBrowser, getRegionalSettings, fetchIPGeolocation } from '../utils/locale';
+import { detectRegionFromBrowser, getRegionalSettings, fetchIPGeolocation, getLanguageFromCountry } from '../utils/locale';
 import i18next from 'i18next';
 import { type Settings, defaultSettings } from '../types/settings';
 
@@ -40,9 +40,10 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }
 
     // Auto-detect defaults on first visit (Synchronous)
-    const lang = typeof navigator !== 'undefined' && navigator.language ? navigator.language.split('-')[0] : 'en';
     const initialRegion = detectRegionFromBrowser() || 'US';
     const regional = getRegionalSettings(initialRegion);
+    const langFromCountry = getLanguageFromCountry(initialRegion);
+    const lang = langFromCountry || (typeof navigator !== 'undefined' && navigator.language ? navigator.language.split('-')[0] : 'en');
 
     return {
       ...defaultSettings,
@@ -77,12 +78,14 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
       if (finalCountryCode) {
         const regional = getRegionalSettings(finalCountryCode);
+        const langFromCountry = getLanguageFromCountry(finalCountryCode);
         setSettings(prev => ({
           ...prev,
           localization: {
             ...prev.localization,
             currency: regional.currency,
-            paperSize: regional.paperSize
+            paperSize: regional.paperSize,
+            language: langFromCountry || prev.localization.language
           },
           invoiceDefaults: {
             ...prev.invoiceDefaults,
@@ -116,6 +119,13 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const langData = getLanguageData(settings.localization.language);
     document.documentElement.dir = langData.dir;
     document.documentElement.lang = settings.localization.language;
+    
+    // Apply Theme
+    let actualTheme = settings.appearance.theme;
+    if (actualTheme === 'system') {
+      actualTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.setAttribute('data-theme', actualTheme);
   }, [settings]);
 
   const updateSettings = (updates: Partial<Settings>) => {

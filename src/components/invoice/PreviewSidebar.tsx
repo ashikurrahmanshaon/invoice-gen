@@ -1,24 +1,32 @@
 import React, { useRef, useEffect, useState } from 'react';
 import type { InvoiceData } from '../../types/invoice';
 import { InvoiceA4Preview } from './InvoiceA4Preview';
+import { Download, Maximize2, Share2, Eye, Send, Settings, LayoutTemplate } from 'lucide-react';
+import { generateInvoicePDF } from '../../utils/pdfGenerator';
+import { trackEvent } from '../../utils/analytics';
 
 interface PreviewSidebarProps {
   data: InvoiceData;
   onOpenFullPreview: () => void;
+  onOpenSettings: () => void;
+  onOpenTemplateGallery: () => void;
 }
 
-export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFullPreview }) => {
+export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFullPreview, onOpenSettings, onOpenTemplateGallery }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0.5);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   useEffect(() => {
     const observer = new ResizeObserver((entries) => {
       for (let entry of entries) {
-        // Base width of the paper is 800px
         const availableWidth = entry.contentRect.width;
-        // Keep a little padding (e.g., 20px total)
-        const targetWidth = availableWidth - 20; 
-        setScale(targetWidth / 800);
+        const availableHeight = entry.contentRect.height;
+        // Maximize the fit inside the box by removing the 48px padding subtraction
+        const scaleW = (availableWidth - 16) / 800; // Just a tiny 8px margin
+        const scaleH = (availableHeight - 16) / (800 * 1.414); 
+        
+        setScale(Math.min(scaleW, scaleH));
       }
     });
 
@@ -28,6 +36,16 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
 
     return () => observer.disconnect();
   }, []);
+
+  const handleDownload = async () => {
+    try {
+      setIsGenerating(true);
+      trackEvent('download_pdf', { source: 'sidebar' });
+      await generateInvoicePDF(data);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
 
   return (
     <div 
@@ -40,47 +58,93 @@ export const PreviewSidebar: React.FC<PreviewSidebarProps> = ({ data, onOpenFull
         height: 'calc(100vh - 100px)',
         display: 'flex',
         flexDirection: 'column',
+        gap: '20px',
       }}
     >
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '0 8px' }}>
+        <button 
+          onClick={onOpenSettings}
+          style={{
+            height: '32px',
+            backgroundColor: '#F1F5F9',
+            color: '#475467',
+            fontWeight: 600,
+            fontSize: '12px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '6px',
+            borderRadius: '6px',
+            border: '1px solid #E2E8F0',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#E2E8F0'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#F1F5F9'; }}
+        >
+          <Settings size={14} /> Invoice Settings
+        </button>
+        <button 
+          onClick={onOpenTemplateGallery}
+          style={{
+            height: '32px',
+            backgroundColor: '#F1F5F9',
+            color: '#475467',
+            fontWeight: 600,
+            fontSize: '12px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '6px',
+            borderRadius: '6px',
+            border: '1px solid #E2E8F0',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#E2E8F0'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#F1F5F9'; }}
+        >
+          <LayoutTemplate size={14} /> See Templates
+        </button>
+      </div>
       <div 
         ref={containerRef}
-        className="preview-paper-container"
         style={{ 
           width: '100%', 
           flex: 1, 
-          backgroundColor: '#FFFFFF', 
+          backgroundColor: '#F8FAFC',
           display: 'flex', 
           justifyContent: 'center', 
-          alignItems: 'flex-start',
+          alignItems: 'center', // Vertically center the paper!
           overflowY: 'auto',
           overflowX: 'hidden',
-          padding: '10px 0',
-          cursor: 'pointer',
-          borderRadius: '12px',
-          border: '1px solid var(--color-border)'
+          padding: '8px', // Minimal breathing room to maximize size
+          borderRadius: '24px', // Softer corners
+          border: '1px solid #E2E8F0',
+          position: 'relative',
+          boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.02)'
         }}
-        onClick={onOpenFullPreview}
-        title="Click to expand"
       >
-        <div style={{ pointerEvents: 'none' }}>
-          <InvoiceA4Preview data={data} scale={scale} />
+
+        <div 
+          onClick={onOpenFullPreview}
+          style={{ 
+            pointerEvents: 'auto',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+            borderRadius: '4px',
+            overflow: 'hidden',
+            backgroundColor: '#fff',
+            cursor: 'zoom-in',
+          }}
+        >
+          <div style={{ pointerEvents: 'none' }}>
+            <InvoiceA4Preview data={data} scale={scale} />
+          </div>
         </div>
       </div>
 
-      {/* Trust Badge */}
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        gap: '6px', 
-        padding: '10px 0',
-        fontSize: '12px',
-        color: 'var(--color-text-tertiary)',
-        fontWeight: 400
-      }}>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Your data never leaves your browser
-      </div>
+
+
     </div>
   );
 };

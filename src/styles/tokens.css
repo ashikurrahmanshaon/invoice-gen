@@ -81,3 +81,25 @@
   --transition-normal: 150ms cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Dark Mode Tokens */
+[data-theme="dark"] {
+  /* Text */
+  --color-text-title: #F8FAFC;
+  --color-text-main: #E2E8F0;
+  --color-text-secondary: #94A3B8;
+  --color-text-tertiary: #64748B;
+  --color-text-muted: #475569;
+  
+  /* Borders */
+  --color-border: #334155;
+  --color-border-hover: #475569;
+  
+  /* Surfaces */
+  --color-background: #0F172A;
+  --color-surface: #1E293B;
+  --color-card: #1E293B;
+
+  /* Adjust shadow for dark mode */
+  --shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.4);
+}

@@ -1,6 +1,6 @@
 import { useState, Suspense, useEffect } from 'react';
 import { Header } from '../components/layout/Header';
-import { Eye } from 'lucide-react';
+import { Eye, Download, Share2, Send, ArrowRight, ArrowLeft } from 'lucide-react';
 import { Footer } from '../components/layout/Footer';
 import { StageIndicator } from '../components/layout/StageIndicator';
 
@@ -21,6 +21,7 @@ import { useClients } from '../hooks/useClients';
 import { useHistory } from '../hooks/useHistory';
 
 import { FullPreviewModal } from '../components/invoice/FullPreviewModal';
+import { InvoiceA4Preview } from '../components/invoice/InvoiceA4Preview';
 import { TemplateGalleryModal } from '../components/templates/TemplateGalleryModal';
 import { HelpGuideModal } from '../components/help/HelpGuideModal';
 import { SetupWizard } from '../components/wizard/SetupWizard';
@@ -72,6 +73,7 @@ export default function HomePage() {
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
   const [resetHistoryAlso, setResetHistoryAlso] = useState(false);
   const [historyRecordToDelete, setHistoryRecordToDelete] = useState<string | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const [isMobileView, setIsMobileView] = useState(() => typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
 
@@ -112,6 +114,15 @@ export default function HomePage() {
     loadInvoiceFromHistory
   } = useInvoice(settings);
 
+  const handleDownload = async () => {
+    try {
+      setIsGenerating(true);
+      trackEvent('download_pdf', { source: 'homepage' });
+      await generateInvoicePDF(data);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
   const clientHook = useClients();
   const historyHook = useHistory();
 
@@ -424,7 +435,7 @@ export default function HomePage() {
             <SettingsDashboard />
           </Suspense>
         ) : activeView === 'editor' ? (
-          <div className="workspace-layout">
+          <div className="workspace-layout" style={!isMobileView && currentStage < 4 ? { display: 'flex', justifyContent: 'center' } : {}}>
             {isMobileView ? (
               /* Mobile Step-by-Step Flow */
               <div className="mobile-only" style={{ width: '100%', minWidth: 0 }}>
@@ -454,7 +465,10 @@ export default function HomePage() {
             ) : (
               <>
                 {/* Main Desktop Workspace (Wizard) */}
-                <div className="workspace-main">
+                <div 
+                  className="workspace-main" 
+                  style={currentStage < 4 ? { margin: '0 auto', maxWidth: '800px', width: '100%' } : {}}
+                >
                   <div className="card" style={{ padding: '0' }}>
                     <div style={{
                       position: 'sticky',
@@ -470,69 +484,227 @@ export default function HomePage() {
                     </div>
                     <div style={{ padding: '24px 32px' }}>
                       <div className="flex-col">
-                        <div id="section-1">
-                          <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} />
-                        </div>
+                        {currentStage === 1 && (
+                          <div id="section-1">
+                            <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} />
+                          </div>
+                        )}
                         
                         <Suspense fallback={null}>
-                          <div id="section-2">
-                            <ClientSection 
-                            data={data} 
-                            updateClient={updateClient} 
-                            clientHook={clientHook}
-                            selectedSavedClientId={selectedSavedClientId}
-                            setSelectedSavedClientId={setSelectedSavedClientId}
-                          />
-                          </div>
+                          {currentStage === 2 && (
+                            <div id="section-2">
+                              <ClientSection 
+                                data={data} 
+                                updateClient={updateClient} 
+                                clientHook={clientHook}
+                                selectedSavedClientId={selectedSavedClientId}
+                                setSelectedSavedClientId={setSelectedSavedClientId}
+                              />
+                            </div>
+                          )}
                           
-                          <div id="section-3">
-                            <ItemsSection 
-                            items={data.items} 
-                            currency={data.details.currency} 
-                            addItem={addItem} 
-                            removeItem={removeItem} 
-                            updateItem={updateItem} 
-                          />
-                          </div>
+                          {currentStage === 3 && (
+                            <div id="section-3">
+                              <ItemsSection 
+                                items={data.items} 
+                                currency={data.details.currency} 
+                                addItem={addItem} 
+                                removeItem={removeItem} 
+                                updateItem={updateItem} 
+                              />
+                            </div>
+                          )}
                           
-                          <div id="section-4" style={{ padding: '32px 0' }}>
-                            <TotalsSection 
-                              data={data}
-                              updateOtherFields={updateOtherFields}
-                              setDiscount={setDiscount}
-                              setTaxRate={setTaxRate}
-                              setTaxLabel={setTaxLabel}
-                              setShipping={setShipping}
-                              setAmountPaid={setAmountPaid}
-                            />
-                            
-                            {/* Preview & Send Button */}
-                            <div style={{ marginTop: '40px' }}>
+                          {currentStage === 4 && (
+                            <div id="section-4" style={{ padding: '32px 0' }}>
+                              <TotalsSection 
+                                data={data}
+                                updateOtherFields={updateOtherFields}
+                                setDiscount={setDiscount}
+                                setTaxRate={setTaxRate}
+                                setTaxLabel={setTaxLabel}
+                                setShipping={setShipping}
+                                setAmountPaid={setAmountPaid}
+                              />
+                              
+                            </div>
+                          )}
+                        </Suspense>
+
+                        {/* Navigation Buttons (Sticky Footer Band) */}
+                        <div style={{ 
+                          margin: '32px -32px -24px -32px', 
+                          padding: '24px 32px', 
+                          background: '#F8FAFC', 
+                          borderTop: '1px solid var(--color-border)', 
+                          borderBottomLeftRadius: '12px', 
+                          borderBottomRightRadius: '12px',
+                          display: 'flex', 
+                          gap: '16px', 
+                          justifyContent: currentStage > 1 ? 'space-between' : 'flex-end',
+                          alignItems: 'center'
+                        }}>
+                          {currentStage > 1 && (
+                            <button 
+                              className="btn" 
+                              onClick={() => handleStageChange(currentStage - 1)}
+                              style={{ 
+                                minWidth: '120px',
+                                height: '48px',
+                                borderRadius: '100px',
+                                background: '#FFFFFF',
+                                border: '1.5px solid #E2E8F0',
+                                color: '#475569',
+                                fontWeight: 600,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '8px',
+                                boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
+                              }}
+                            >
+                              <ArrowLeft size={16} />
+                              Back
+                            </button>
+                          )}
+                          {currentStage < 4 ? (
+                            <button 
+                              className="btn" 
+                              onClick={() => handleStageChange(currentStage + 1)}
+                              style={{ 
+                                minWidth: '140px',
+                                height: '48px',
+                                borderRadius: '100px',
+                                background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
+                                color: 'white',
+                                border: 'none',
+                                fontWeight: 600,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '8px',
+                                boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)'
+                              }}
+                            >
+                              Continue
+                              <ArrowRight size={16} />
+                            </button>
+                          ) : (
+                            <div style={{ display: 'flex', gap: '8px' }}>
                               <button 
-                                className="btn btn-primary"
-                                style={{ 
-                                  width: '100%', 
-                                  height: '52px',
-                                  fontSize: '15px',
-                                  fontWeight: 600
-                                }}
                                 onClick={() => setIsPreviewOpen(true)}
+                                style={{
+                                  height: '48px',
+                                  padding: '0 20px',
+                                  background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)',
+                                  color: 'white',
+                                  fontWeight: 600,
+                                  fontSize: '14px',
+                                  display: 'flex',
+                                  justifyContent: 'center',
+                                  alignItems: 'center',
+                                  gap: '8px',
+                                  borderRadius: '100px',
+                                  border: 'none',
+                                  boxShadow: '0 4px 14px rgba(15, 23, 42, 0.25)',
+                                  cursor: 'pointer',
+                                  transition: 'all 0.2s ease',
+                                }}
+                                onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.9'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
                               >
-                                <Eye size={20} />
-                                Preview & Send
+                                <Eye size={16} /> <span className="hide-on-mobile">Preview</span>
+                              </button>
+                              <button 
+                                onClick={handleDownload}
+                                disabled={isGenerating}
+                                style={{
+                                  height: '48px',
+                                  padding: '0 20px',
+                                  background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
+                                  color: 'white',
+                                  fontWeight: 600,
+                                  fontSize: '14px',
+                                  display: 'flex',
+                                  justifyContent: 'center',
+                                  alignItems: 'center',
+                                  gap: '8px',
+                                  borderRadius: '100px',
+                                  border: 'none',
+                                  boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)',
+                                  cursor: 'pointer',
+                                  transition: 'all 0.2s ease',
+                                }}
+                                onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.9'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                              >
+                                <Download size={16} /> <span className="hide-on-mobile">{isGenerating ? 'Wait...' : 'Download'}</span>
+                              </button>
+                              <button 
+                                style={{
+                                  height: '48px',
+                                  padding: '0 20px',
+                                  background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
+                                  color: 'white',
+                                  fontWeight: 600,
+                                  fontSize: '14px',
+                                  display: 'flex',
+                                  justifyContent: 'center',
+                                  alignItems: 'center',
+                                  gap: '8px',
+                                  borderRadius: '100px',
+                                  border: 'none',
+                                  boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)',
+                                  cursor: 'pointer',
+                                  transition: 'all 0.2s ease',
+                                }}
+                                onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.9'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                              >
+                                <Share2 size={16} /> <span className="hide-on-mobile">Share</span>
+                              </button>
+                              <button 
+                                style={{
+                                  height: '48px',
+                                  padding: '0 20px',
+                                  background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
+                                  color: 'white',
+                                  fontWeight: 600,
+                                  fontSize: '14px',
+                                  display: 'flex',
+                                  justifyContent: 'center',
+                                  alignItems: 'center',
+                                  gap: '8px',
+                                  borderRadius: '100px',
+                                  border: 'none',
+                                  boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)',
+                                  cursor: 'pointer',
+                                  transition: 'all 0.2s ease',
+                                }}
+                                onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.9'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                              >
+                                <Send size={16} /> <span className="hide-on-mobile">Send</span>
                               </button>
                             </div>
-                          </div>
-                        </Suspense>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Right Utility Sidebar (Desktop) */}
-                <Suspense fallback={null}>
-                  <PreviewSidebar data={data} onOpenFullPreview={() => setIsPreviewOpen(true)} />
-                </Suspense>
+                {currentStage === 4 && (
+                  <Suspense fallback={null}>
+                    <PreviewSidebar 
+                      data={data} 
+                      onOpenFullPreview={() => setIsPreviewOpen(true)} 
+                      onOpenSettings={() => setActiveView('settings')}
+                      onOpenTemplateGallery={() => setIsTemplateGalleryOpen(true)}
+                    />
+                  </Suspense>
+                )}
               </>
             )}
           </div>
@@ -639,6 +811,13 @@ export default function HomePage() {
           generateInvoicePDF(data);
         }}
       />
+
+      {/* Hidden container for PDF generation (captures layout perfectly regardless of language/fonts) */}
+      <div style={{ position: 'fixed', top: '-9999px', left: '-9999px', zIndex: -9999, opacity: 0, pointerEvents: 'none' }}>
+        <div id="pdf-render-container">
+          <InvoiceA4Preview data={data} scale={1} />
+        </div>
+      </div>
 
       <Footer />
     </>

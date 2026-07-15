@@ -53,7 +53,7 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
   };
 
   return (
-    <div className="flex-col gap-6" style={{ width: '100%', paddingBottom: '32px', borderBottom: '1px solid var(--color-border)', marginBottom: '32px' }}>
+    <div className="flex-col gap-6" style={{ width: '100%', marginBottom: '16px' }}>
       
       {/* Section Label */}
       <div className="section-label">Client Info</div>

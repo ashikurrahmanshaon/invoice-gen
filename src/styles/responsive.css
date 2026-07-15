@@ -65,34 +65,55 @@
   }
 
   .item-row-grid {
-    display: flex !important;
-    flex-direction: column !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
     gap: 12px !important;
     background: #FFFFFF;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: 20px !important;
-    margin-bottom: 16px !important;
+    padding: 16px !important;
+    margin-bottom: 12px !important;
     box-shadow: var(--shadow-sm);
   }
   
   .item-row-grid > div {
     width: 100% !important;
   }
+  
+  /* Item Name - Full width */
+  .item-row-grid > div:nth-child(1) {
+    grid-column: 1 / -1;
+  }
+  
+  /* Qty - Left half */
+  .item-row-grid > div:nth-child(2) {
+    grid-column: 1 / 2;
+  }
+  
+  /* Rate - Right half */
+  .item-row-grid > div:nth-child(3) {
+    grid-column: 2 / 3;
+  }
 
-  .item-row-grid > div:nth-child(5) {
-    /* Amount */
+  /* Amount - Bottom left */
+  .item-row-grid > div:nth-child(4) {
+    grid-column: 1 / 2;
     text-align: left !important;
     font-size: 16px !important;
+    display: flex;
+    align-items: center;
     margin-top: 8px;
     padding-top: 16px;
     border-top: 1px dashed var(--color-border);
   }
   
+  /* Actions - Bottom right */
   .item-row-grid > div:last-child {
-    /* Actions */
-    justify-content: flex-start !important;
+    grid-column: 2 / 3;
+    justify-content: flex-end !important;
     margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--color-border);
   }
 }
 
@@ -151,53 +172,82 @@
     background: var(--color-surface);
     border-radius: var(--radius-xl); /* 16px */
     border: 1px solid var(--color-border);
-    padding: 20px !important;
-    box-shadow: var(--shadow-sm); /* Very soft shadow */
+    padding: 16px !important;
+    box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
-    gap: 16px !important;
+    gap: 12px !important;
   }
   
   .mobile-card label {
-    margin-bottom: 8px !important;
-    font-size: 13px !important;
+    margin-bottom: 6px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
   }
   
   /* Reset all flex grids inside sections to stack vertically on mobile */
   .flex {
     flex-direction: column !important;
-    gap: 16px !important;
+    gap: 12px !important;
     width: 100% !important;
     max-width: 100% !important;
   }
 
   .grid-2, .grid-4 {
     grid-template-columns: 1fr !important;
-    gap: 16px !important;
+    gap: 12px !important;
   }
   
   .business-grid {
     grid-template-columns: 1fr !important;
-    gap: 16px !important;
+    gap: 12px !important;
   }
   
-  /* Enforce touch targets on mobile */
-  .input-container > div {
-    min-height: 44px !important;
+  /* Enforce touch targets on mobile but keep them sleek (App-like) */
+  .input-container {
+    gap: 6px !important;
+  }
+
+  .input-container > div, .input-wrapper {
+    min-height: 46px !important;
+    height: 46px !important;
+    border-radius: 12px !important;
+    border: 1.5px solid #1E293B !important; /* Black/Dark border everywhere */
+    background: #FFFFFF !important;
+    box-shadow: none !important;
+  }
+  
+  /* Disable the huge glowing focus effect on mobile, keep it simple and clean */
+  .input-container > div:focus-within, .input-wrapper:focus-within {
+    border: 2px solid #000000 !important;
+    background: #FFFFFF !important;
+    box-shadow: none !important;
   }
   
   input, select {
-    height: 44px !important;
-    min-height: 44px !important;
-    border-radius: var(--radius-md) !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    font-size: 15px !important;
+    border-radius: 12px !important;
+    padding: 0 14px !important;
   }
 
   textarea {
-    min-height: 44px !important;
-    max-height: 180px !important;
-    border-radius: var(--radius-md) !important;
+    min-height: 80px !important;
+    font-size: 15px !important;
+    border-radius: 12px !important;
+    padding: 14px !important;
+    border: 1.5px solid #1E293B !important;
     resize: none;
     overflow-y: auto;
+    background: #FFFFFF !important;
+    box-shadow: none !important;
+  }
+  
+  textarea:focus {
+    border: 2px solid #000000 !important;
+    outline: none !important;
+    box-shadow: none !important;
   }
   
   .btn {
@@ -237,6 +287,11 @@
   }
   .footer-grid {
     grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+  
+  .footer-brand-col {
+    align-items: center !important;
   }
   
   .footer-summary {
@@ -253,7 +308,15 @@
     content: '−';
   }
   .footer-links {
-    padding: 8px 0 16px 8px;
+    padding: 8px 0 16px 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer-bottom {
+    justify-content: center !important;
+    text-align: center;
   }
   .premium-bottom-bar {
     position: fixed;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { useTranslation } from 'react-i18next';
 
 /* Inline SVG social icons for pixel-perfect control */
 const SocialIcon = ({ d, viewBox = '0 0 24 24', label }: { d: string; viewBox?: string; label: string }) => (
@@ -32,6 +32,7 @@ const socials = [
 ];
 
 export const Footer: React.FC = () => {
+  const { t } = useTranslation();
   const [isDesktop, setIsDesktop] = useState(() => {
     if (typeof window !== 'undefined') {
       return window.innerWidth > 768;
@@ -106,40 +107,40 @@ export const Footer: React.FC = () => {
 
           {/* Column 1: Product */}
           <details open={isDesktop} className="footer-col">
-            <summary className="footer-summary">Product</summary>
+            <summary className="footer-summary">{t('footer.product', 'Product')}</summary>
             <div className="footer-links">
-              <a href="/">Invoice Generator</a>
-              <a href="/templates/">Templates</a>
-              <a href="/trust/">Trust Center</a>
+              <a href="/">{t('footer.invoiceGenerator', 'Invoice Generator')}</a>
+              <a href="/templates/">{t('footer.templates', 'Templates')}</a>
+              <a href="/trust/">{t('footer.trustCenter', 'Trust Center')}</a>
             </div>
           </details>
 
           {/* Column 2: Resources */}
           <details open={isDesktop} className="footer-col">
-            <summary className="footer-summary">Resources</summary>
+            <summary className="footer-summary">{t('footer.resources', 'Resources')}</summary>
             <div className="footer-links">
-              <a href="/blog/how-to-create-professional-invoice/">Create Invoice Guide</a>
-              <a href="/blog/what-to-include-in-invoice/">What to Include</a>
-              <a href="/blog/invoice-vs-receipt-difference/">Invoice vs Receipt</a>
-              <a href="/blog/best-payment-terms-freelancers/">Payment Terms</a>
+              <a href="/blog/how-to-create-professional-invoice/">{t('footer.createGuide', 'Create Invoice Guide')}</a>
+              <a href="/blog/what-to-include-in-invoice/">{t('footer.whatToInclude', 'What to Include')}</a>
+              <a href="/blog/invoice-vs-receipt-difference/">{t('footer.invoiceVsReceipt', 'Invoice vs Receipt')}</a>
+              <a href="/blog/best-payment-terms-freelancers/">{t('footer.paymentTerms', 'Payment Terms')}</a>
             </div>
           </details>
 
           {/* Column 3: Company */}
           <details open={isDesktop} className="footer-col">
-            <summary className="footer-summary">Company</summary>
+            <summary className="footer-summary">{t('footer.company', 'Company')}</summary>
             <div className="footer-links">
-              <a href="/about/">About</a>
-              <a href="/contact/">Contact</a>
-              <a href="/privacy/">Privacy Policy</a>
-              <a href="/terms/">Terms of Service</a>
+              <a href="/about/">{t('footer.about', 'About')}</a>
+              <a href="/contact/">{t('footer.contact', 'Contact')}</a>
+              <a href="/privacy/">{t('footer.privacy', 'Privacy Policy')}</a>
+              <a href="/terms/">{t('footer.terms', 'Terms of Service')}</a>
             </div>
           </details>
         </div>
 
         {/* Bottom Section: Copyright + Social repeat */}
         <div className="footer-bottom">
-          <span>&copy; {new Date().getFullYear()} Invoice-Gen.net. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Invoice-Gen.net. {t('footer.allRightsReserved', 'All rights reserved.')}</span>
         </div>
       </div>
     </footer>

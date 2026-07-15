@@ -30,31 +30,28 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
   return (
     <div style={{ 
       width: '100%', 
-      background: '#FFFFFF',
-      borderRadius: '20px',
-      padding: '32px',
-      border: '1px solid #E2E8F0',
-      boxShadow: '0 4px 24px -4px rgba(15, 23, 42, 0.03)',
+      display: 'flex',
+      flexDirection: 'column',
       marginBottom: '32px'
     }}>
       
       {/* Section Header & Logo */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div style={{ padding: '10px', background: '#EFF6FF', color: '#2563EB', borderRadius: '12px', display: 'flex' }}>
-            <Building2 size={22} />
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ padding: '8px', background: '#F8FAFC', color: '#64748B', borderRadius: '10px', display: 'flex' }}>
+            <Building2 size={18} />
           </div>
-          <h2 style={{ fontSize: '20px', fontWeight: 600, color: '#0F172A', margin: 0 }}>Business Details</h2>
+          <h2 style={{ fontSize: '16px', fontWeight: 600, color: '#334155', margin: 0 }}>Business Details</h2>
         </div>
         
         {/* Logo Upload placed beautifully next to title */}
         <div>
           {data.business.logoUrl ? (
             <div style={{
-              width: '80px',
-              height: '80px',
+              width: '64px',
+              height: '64px',
               position: 'relative',
-              borderRadius: '20px',
+              borderRadius: '16px',
               border: '1px solid #E2E8F0',
               background: '#FFFFFF',
               display: 'flex',
@@ -87,10 +84,10 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
             </div>
           ) : (
             <label htmlFor="business-logo-upload-input" style={{
-              width: '80px',
-              height: '80px',
+              width: '64px',
+              height: '64px',
               border: '2px dashed #CBD5E1',
-              borderRadius: '20px',
+              borderRadius: '16px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
