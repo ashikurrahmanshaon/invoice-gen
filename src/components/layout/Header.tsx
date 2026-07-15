@@ -102,13 +102,13 @@ export const Header: React.FC<HeaderProps> = ({
               borderRadius: '6px',
               border: '1px solid #E2E8F0',
               background: '#FFFFFF',
-              color: '#0F172A',
+              color: '#334155',
               fontSize: '13px',
               fontWeight: 500,
               boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
               cursor: 'pointer'
             }}>
-              <Mail size={14} color="#475569" /> Send via Email
+              <Mail size={14} color="#64748B" /> Send via Email
             </button>
           </div>
         </div>
@@ -128,10 +128,10 @@ export const Header: React.FC<HeaderProps> = ({
                 alignItems: 'center',
                 gap: '6px',
                 padding: '6px 16px',
-                borderRadius: '20px',
+                borderRadius: '9999px',
                 border: '1px solid #E2E8F0',
                 background: '#FFFFFF',
-                color: '#0F172A',
+                color: '#334155',
                 fontSize: '13px',
                 fontWeight: 500,
                 boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
@@ -139,9 +139,9 @@ export const Header: React.FC<HeaderProps> = ({
               }}
             >
               {activeView === 'editor' ? (
-                <><Eye size={14} color="#475569" /> Preview</>
+                <><Eye size={14} color="#64748B" /> Preview</>
               ) : (
-                <><LayoutTemplate size={14} color="#475569" /> Editor</>
+                <><LayoutTemplate size={14} color="#64748B" /> Editor</>
               )}
             </button>
           </div>
