@@ -48,14 +48,20 @@ export default function HomePage() {
     const labels = ['Business', 'Client', 'Items', 'Review'];
     trackFunnelStep(stage, labels[stage - 1] || '');
 
-    if (typeof window !== 'undefined' && !isMobileView) {
-      setTimeout(() => {
-        const el = document.getElementById(`section-${stage}`);
-        if (el) {
-          const y = el.getBoundingClientRect().top + window.scrollY - 180; // offset for sticky header + sticky stage indicator
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-      }, 0);
+    if (typeof window !== 'undefined') {
+      if (!isMobileView) {
+        setTimeout(() => {
+          const el = document.getElementById(`section-${stage}`);
+          if (el) {
+            const y = el.getBoundingClientRect().top + window.scrollY - 180; // offset for sticky header + sticky stage indicator
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }, 0);
+      } else {
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 0);
+      }
     }
   };
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);

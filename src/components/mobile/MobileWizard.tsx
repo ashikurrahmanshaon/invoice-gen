@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import type { InvoiceData, LineItem } from '../../types/invoice';
 import { ArrowLeft, ArrowRight, Download, Eye } from 'lucide-react';
@@ -40,62 +40,8 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
   setDiscount, setTaxRate, setTaxLabel, setShipping, setAmountPaid, onDownloadPDF, onOpenFullPreview
 }) => {
   const [mounted, setMounted] = useState(false);
-  const [isNavVisible, setIsNavVisible] = useState(true);
-
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    let lastScrollTop = 0;
-    
-    const handleScroll = (e: Event) => {
-      let target = e.target as HTMLElement | Document;
-      let scrollTop = 0;
-      let scrollHeight = 0;
-      let clientHeight = 0;
-      
-      if (target === document) {
-        scrollTop = window.scrollY;
-        scrollHeight = document.documentElement.scrollHeight;
-        clientHeight = window.innerHeight;
-      } else {
-        const el = target as HTMLElement;
-        scrollTop = el.scrollTop;
-        scrollHeight = el.scrollHeight;
-        clientHeight = el.clientHeight;
-      }
-      
-      if (scrollTop === undefined) return;
-      
-      // Ignore tiny scrolling elements like dropdowns
-      if (scrollHeight - clientHeight < 50) return;
-
-      if (scrollTop <= 50) {
-        setIsNavVisible(true);
-      } else if (scrollTop > lastScrollTop + 5) {
-        setIsNavVisible(false);
-      } else if (scrollTop < lastScrollTop - 5) {
-        setIsNavVisible(true);
-      }
-      
-      lastScrollTop = scrollTop;
-    };
-
-    // Use capture phase to catch scroll events from any container
-    window.addEventListener('scroll', handleScroll, { passive: true, capture: true });
-    return () => window.removeEventListener('scroll', handleScroll, { capture: true });
-  }, []);
-
-  const bottomAnchorRef = useRef<HTMLDivElement>(null);
-  const [isAtBottom, setIsAtBottom] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsAtBottom(entry.isIntersecting);
-    });
-    if (bottomAnchorRef.current) observer.observe(bottomAnchorRef.current);
-    return () => observer.disconnect();
   }, []);
 
   return (
@@ -183,8 +129,6 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             gap: '12px',
             boxShadow: '0 -4px 24px rgba(0,0,0,0.06)',
             zIndex: 100,
-            transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-            transform: isNavVisible || isAtBottom ? 'translateY(0)' : 'translateY(120%)',
             borderTop: '1px solid var(--color-border)'
           }}
         >
@@ -258,8 +202,6 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
         document.body
       )}
 
-      {/* Anchor for Intersection Observer to detect the bottom of the page */}
-      <div ref={bottomAnchorRef} style={{ width: '100%', height: '1px' }} />
     </div>
   );
 };
