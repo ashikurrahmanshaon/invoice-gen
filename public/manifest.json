@@ -11,7 +11,7 @@
   "categories": ["business", "finance", "productivity"],
   "icons": [
     {
-      "src": "favicon.svg",
+      "src": "brand-icon.svg",
       "type": "image/svg+xml",
       "sizes": "any"
     },
