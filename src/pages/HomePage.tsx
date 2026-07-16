@@ -378,16 +378,18 @@ export default function HomePage() {
     loadInvoiceFromHistory(null as any, demoData);
   };
 
-  if (!settings._hasCompletedFirstRun) {
-    return (
-      <Suspense fallback={null}>
-        <SetupWizard onComplete={() => {}} />
-      </Suspense>
-    );
-  }
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const showWizard = !settings._hasCompletedFirstRun && mounted;
 
   return (
     <>
+      {showWizard && (
+        <Suspense fallback={null}>
+          <SetupWizard onComplete={() => {}} />
+        </Suspense>
+      )}
       <SEO 
         title="Free Professional Invoice Generator | Invoice-Gen.net"
         description="Create professional PDF invoices instantly with Invoice-Gen.net. 100% free, secure, browser-based invoice creator with no signup required."
