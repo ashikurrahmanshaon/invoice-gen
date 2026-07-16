@@ -800,6 +800,10 @@ a {
   padding-left: 8px;
 }
 
+html.has-completed-setup #setup-wizard-overlay {
+  display: none !important;
+}
+
 .blog-article li::marker {
   color: var(--color-primary);
 }

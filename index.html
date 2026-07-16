@@ -52,6 +52,14 @@
     <meta name="theme-color" content="#FFFFFF" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="alternate" type="application/rss+xml" title="Invoice-Gen.net Blog" href="/rss.xml" />
+    <script>
+      try {
+        var s = localStorage.getItem('invoice_settings');
+        if (s && JSON.parse(s)._hasCompletedFirstRun) {
+          document.documentElement.classList.add('has-completed-setup');
+        }
+      } catch(e) {}
+    </script>
     
     <!-- Preload Hero Image -->
     <link rel="preload" as="image" href="/hero.webp" type="image/webp" />

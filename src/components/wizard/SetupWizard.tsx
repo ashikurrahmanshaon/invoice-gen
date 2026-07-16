@@ -179,7 +179,7 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({ onComplete }) => {
   };
 
   return (
-    <div style={{ 
+    <div id="setup-wizard-overlay" style={{ 
       position: 'fixed', inset: 0, zIndex: 9999, 
       backgroundColor: 'var(--color-background)',
       display: 'flex', flexDirection: 'column'

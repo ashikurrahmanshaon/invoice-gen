@@ -378,14 +378,9 @@ export default function HomePage() {
     loadInvoiceFromHistory(null as any, demoData);
   };
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  const showWizard = !settings._hasCompletedFirstRun && mounted;
-
   return (
     <>
-      {showWizard && (
+      {!settings._hasCompletedFirstRun && (
         <Suspense fallback={null}>
           <SetupWizard onComplete={() => {}} />
         </Suspense>
@@ -438,9 +433,8 @@ export default function HomePage() {
             <SettingsDashboard />
           </Suspense>
         ) : activeView === 'editor' ? (
-          <div className="workspace-layout" style={!isMobileView && currentStage < 4 ? { display: 'flex', justifyContent: 'center' } : {}}>
-            {isMobileView ? (
-              /* Mobile Step-by-Step Flow */
+          <div className="workspace-layout" style={currentStage < 4 ? { display: 'flex', justifyContent: 'center' } : {}}>
+              {/* Mobile Step-by-Step Flow */}
               <div className="mobile-only" style={{ width: '100%', minWidth: 0 }}>
                 <MobileWizard 
                   currentStage={currentStage}
@@ -465,9 +459,9 @@ export default function HomePage() {
                   onOpenFullPreview={() => { trackEvent('preview_invoice', { source: 'mobile' }); setIsPreviewOpen(true); }}
                 />
               </div>
-            ) : (
-              <>
-                {/* Main Desktop Workspace (Wizard) */}
+
+              {/* Main Desktop Workspace (Wizard) */}
+              <div className="desktop-only" style={{ width: '100%', display: 'flex', gap: '32px' }}>
                 <div 
                   className="workspace-main" 
                   style={currentStage < 4 ? { margin: '0 auto', maxWidth: '800px', width: '100%' } : {}}
@@ -708,8 +702,7 @@ export default function HomePage() {
                     />
                   </Suspense>
                 )}
-              </>
-            )}
+              </div>
           </div>
         ) : (
           <div style={{ marginTop: '24px' }}>

@@ -114,9 +114,8 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Right: Actions */}
-          {!isMobileView && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-              <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                 {/* Language Icon */}
                 <div style={{ position: 'relative' }} ref={langMenuRef}>
                   <button 
@@ -237,8 +236,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}>
                 {t('header.signUp', 'Sign Up')}
               </button>
-            </div>
-          )}
+          </div>
         </div>
       </header>
     </>
