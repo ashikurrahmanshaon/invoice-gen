@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, User, List, Eye, ChevronRight } from 'lucide-react';
+import { Building2, User, List, Eye, ChevronRight, Check } from 'lucide-react';
 
 interface StageIndicatorProps {
   currentStage: number;
@@ -20,7 +20,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingBottom: isMobile ? '8px' : '24px',
+      paddingBottom: isMobile ? '16px' : '24px',
       width: '100%',
       position: 'relative'
     }}>
@@ -36,7 +36,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
       {/* Universal Background Line */}
       <div style={{
         position: 'absolute',
-        top: isMobile ? '14px' : '16px',
+        top: isMobile ? '16px' : '18px',
         left: '24px',
         right: '24px',
         height: '1px',
@@ -47,7 +47,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
       {/* Universal Active Line */}
       <div style={{
         position: 'absolute',
-        top: isMobile ? '14px' : '16px',
+        top: isMobile ? '16px' : '18px',
         left: '24px',
         right: '24px',
         height: '1px',
@@ -65,11 +65,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
 
       {stages.map((stage) => {
         const isActive = stage.num === currentStage;
-        
-        // Define colors strictly by requirement
-        // Completed: Blue circle, White check
-        // Current: White background, Blue border
-        // Future: White background, Gray border
+        const isCompleted = stage.num < currentStage;
         
         let bg = '#FFFFFF';
         let border = '1px solid #E2E8F0';
@@ -79,9 +75,13 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
           bg = '#00A65A';
           border = '1px solid #00A65A';
           textColor = '#FFFFFF';
+        } else if (isCompleted) {
+          bg = '#F0FDF4'; // light green bg
+          border = '1px solid #00A65A';
+          textColor = '#00A65A';
         }
 
-        const circleSize = isMobile ? '28px' : '32px';
+        const circleSize = isMobile ? '32px' : '36px';
 
         return (
           <div 
@@ -118,7 +118,11 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
               animation: isActive ? 'jump-happy 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards' : 'none',
               boxShadow: isActive ? '0 4px 12px rgba(0, 166, 90, 0.35)' : 'none'
             }}>
-              <stage.icon size={isMobile ? 14 : 16} color={textColor} />
+              {isCompleted ? (
+                <Check size={isMobile ? 16 : 18} color={textColor} strokeWidth={3} />
+              ) : (
+                <stage.icon size={isMobile ? 14 : 16} color={textColor} />
+              )}
             </div>
             
             {/* The Label */}
@@ -142,47 +146,6 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
               </div>
             )}
 
-            {/* Next Arrow for Active Stage */}
-            {isActive && stage.num < stages.length && (
-              <div 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onStageChange?.(stage.num + 1);
-                }}
-                role="button"
-                tabIndex={0}
-                aria-label="Next Step"
-                style={{
-                  marginLeft: '6px',
-                  background: '#E8F8F0',
-                  border: '1px solid #00A65A',
-                  borderRadius: '50%',
-                  width: '22px',
-                  height: '22px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  color: '#00A65A',
-                  boxShadow: '0 2px 6px rgba(0,166,90,0.15)',
-                  transition: 'all 0.2s',
-                  zIndex: 4
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.background = '#00A65A';
-                  e.currentTarget.style.color = '#FFFFFF';
-                  e.currentTarget.style.transform = 'scale(1.1)';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.background = '#E8F8F0';
-                  e.currentTarget.style.color = '#00A65A';
-                  e.currentTarget.style.transform = 'scale(1)';
-                }}
-                title="Next Step"
-              >
-                <ChevronRight size={14} strokeWidth={3} />
-              </div>
-            )}
           </div>
         );
       })}
