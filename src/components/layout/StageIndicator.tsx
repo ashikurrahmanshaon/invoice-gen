@@ -127,7 +127,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
             
             {/* The Label */}
             {!isMobile && (
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', background: 'var(--color-background)', padding: '0 4px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', background: '#ffffff', padding: '0 8px' }}>
                 <span style={{
                   fontSize: '13px',
                   fontWeight: 600,

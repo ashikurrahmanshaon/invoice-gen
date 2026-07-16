@@ -82,6 +82,9 @@ export const Footer: React.FC = () => {
                 <span style={{ fontSize: '18px', fontWeight: 500, color: '#666666' }}>.net</span>
               </div>
             </div>
+            <p style={{ color: '#64748B', fontSize: '14px', lineHeight: '1.6', marginTop: '16px', marginBottom: '24px', maxWidth: '280px' }}>
+              Create professional, elegant invoices in seconds. 100% free, secure, and designed for modern businesses.
+            </p>
             {/* Social icons under logo */}
             <div className="footer-socials">
               {socials.map((s) => (
@@ -121,7 +124,29 @@ export const Footer: React.FC = () => {
             </div>
           </details>
 
-          {/* Column 3: Company */}
+          {/* Column 3: Invoice Types (SEO) */}
+          <details open={isDesktop} className="footer-col">
+            <summary className="footer-summary">{t('footer.invoiceTypes', 'Invoice Types')}</summary>
+            <div className="footer-links">
+              <a href="/freelance-invoice-template/">{t('footer.freelance', 'Freelance Invoice')}</a>
+              <a href="/contractor-invoice-template/">{t('footer.contractor', 'Contractor Invoice')}</a>
+              <a href="/proforma-invoice-template/">{t('footer.proforma', 'Proforma Invoice')}</a>
+              <a href="/commercial-invoice-template/">{t('footer.commercial', 'Commercial Invoice')}</a>
+            </div>
+          </details>
+
+          {/* Column 4: Free Tools (SEO) */}
+          <details open={isDesktop} className="footer-col">
+            <summary className="footer-summary">{t('footer.freeTools', 'Free Tools')}</summary>
+            <div className="footer-links">
+              <a href="/receipt-maker/">{t('footer.receiptMaker', 'Receipt Maker')}</a>
+              <a href="/estimate-maker/">{t('footer.estimateMaker', 'Estimate Maker')}</a>
+              <a href="/purchase-order-generator/">{t('footer.purchaseOrder', 'Purchase Order')}</a>
+              <a href="/pay-stub-generator/">{t('footer.payStub', 'Pay Stub Generator')}</a>
+            </div>
+          </details>
+
+          {/* Column 5: Company */}
           <details open={isDesktop} className="footer-col">
             <summary className="footer-summary">{t('footer.company', 'Company')}</summary>
             <div className="footer-links">

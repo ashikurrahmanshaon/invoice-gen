@@ -2,8 +2,7 @@ import { Suspense, lazy, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
-const TemplateGalleryPage = lazy(() => import('./pages/TemplateGalleryPage').then(module => ({ default: module.TemplateGalleryPage })));
-const TemplateDetailPage = lazy(() => import('./pages/TemplateDetailPage').then(module => ({ default: module.TemplateDetailPage })));
+
 const AboutPage = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.AboutPage })));
 const PrivacyPage = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.PrivacyPage })));
 const TermsPage = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.TermsPage })));
@@ -40,13 +39,8 @@ export default function App() {
       <Routes>
         {/* Phase 1: Main Product */}
         <Route path="/" element={<HomePage />} />
-        
-        {/* Phase 3 & 4: Templates */}
-        <Route path="/templates" element={<TemplateGalleryPage />} />
-        <Route path="/templates/:id" element={<TemplateDetailPage />} />
-        
         {/* Redirects */}
-        <Route path="/tools" element={<TemplateGalleryPage />} />
+        <Route path="/tools" element={<HomePage />} />
         
         {/* Phase 6 & 7: Content & Comparison */}
         <Route path="/blog" element={<BlogHomePage />} />

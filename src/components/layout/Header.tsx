@@ -1,12 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import type { SaveStatus } from '../../hooks/useAutoSave';
-import { useSettings } from '../../contexts/SettingsContext';
-import { supportedLanguages } from '../../utils/languages';
-import { Moon, Sun, Globe } from 'lucide-react';
+import { Clock, BookOpen, LogIn, UserPlus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 interface HeaderProps {
   onNewInvoice?: () => void;
-  onChangeTemplate?: () => void;
   onResetEverything?: () => void;
   onDownloadPDF?: () => void;
   onOpenHelp?: () => void;
@@ -31,33 +28,6 @@ export const Header: React.FC<HeaderProps> = ({
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
-  const { settings, updateNestedSetting } = useSettings();
-  const [showLangMenu, setShowLangMenu] = useState(false);
-  const langMenuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
-        setShowLangMenu(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const toggleTheme = () => {
-    let current = settings.appearance.theme;
-    if (current === 'system') {
-      current = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    const nextTheme = current === 'dark' ? 'light' : 'dark';
-    updateNestedSetting('appearance', { theme: nextTheme });
-  };
-
-  const handleLanguageChange = (code: string) => {
-    updateNestedSetting('localization', { language: code });
-    setShowLangMenu(false);
-  };
 
   const handleLogoClick = () => {
     if (location.pathname === '/') {
@@ -71,26 +41,11 @@ export const Header: React.FC<HeaderProps> = ({
     }
   };
 
-  const [isDarkMode, setIsDarkMode] = useState(settings.appearance.theme === 'dark');
-
-  useEffect(() => {
-    if (settings.appearance.theme === 'system') {
-      const match = window.matchMedia('(prefers-color-scheme: dark)');
-      setIsDarkMode(match.matches);
-      const listener = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
-      match.addEventListener('change', listener);
-      return () => match.removeEventListener('change', listener);
-    } else {
-      setIsDarkMode(settings.appearance.theme === 'dark');
-    }
-  }, [settings.appearance.theme]);
-
-  const currentTheme = isDarkMode ? 'dark' : 'light';
 
   return (
     <>
-      <header className="app-header" style={{ padding: '0 24px', backgroundColor: 'var(--color-surface)', borderBottom: '1px solid var(--color-border)', height: '64px', display: 'flex', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: isMobileView ? 'center' : 'space-between', width: '100%', maxWidth: '1312px', margin: '0 auto' }}>
+      <header className="app-header" style={{ padding: '0 24px', background: 'rgba(255, 255, 255, 0.85)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(0,0,0,0.06)', height: '60px', display: 'flex', alignItems: 'center', position: 'sticky', top: 0, zIndex: 1000, transition: 'all 0.3s ease' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: isMobileView ? 'center' : 'space-between', width: '100%', maxWidth: '1360px', margin: '0 auto', padding: '0 8px' }}>
           
           {/* Left: Logo & Wordmark */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={handleLogoClick} aria-label="Go to Homepage" role="button" tabIndex={0}>
@@ -120,132 +75,55 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Center: Navigation Links */}
-          <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-            <button onClick={() => onViewChange ? onViewChange('history') : navigate('/')} style={{ background: 'none', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 500, padding: 0 }}>{t('header.history', 'History')}</button>
-            <button onClick={() => onOpenHelp ? onOpenHelp() : null} style={{ background: 'none', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 500, padding: 0 }}>{t('header.guides', 'Guides')}</button>
+          <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <button 
+              onClick={() => onViewChange ? onViewChange('history') : navigate('/')} 
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'transparent', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 600, padding: '8px 14px', borderRadius: '8px', transition: 'all 0.2s ease' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.backgroundColor = 'transparent'; }}
+            >
+              <Clock size={16} />
+              {t('header.history', 'History')}
+            </button>
+            <button 
+              onClick={() => onOpenHelp ? onOpenHelp() : null} 
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'transparent', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 600, padding: '8px 14px', borderRadius: '8px', transition: 'all 0.2s ease' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.backgroundColor = 'transparent'; }}
+            >
+              <BookOpen size={16} />
+              {t('header.guides', 'Guides')}
+            </button>
           </div>
 
           {/* Right: Actions */}
           <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                {/* Language Icon */}
-                <div style={{ position: 'relative' }} ref={langMenuRef}>
-                  <button 
-                    onClick={() => setShowLangMenu(!showLangMenu)}
-                    aria-label="Select Language"
-                    aria-expanded={showLangMenu}
-                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}
-                  >
-                    <Globe size={20} />
-                    <span style={{ fontSize: '14px', fontWeight: 500, textTransform: 'uppercase' }}>
-                      {settings.localization.language.split('-')[0]}
-                    </span>
-                  </button>
-
-                  {showLangMenu && (
-                    <>
-                      <style dangerouslySetInnerHTML={{__html: `
-                        .lang-dropdown-container::-webkit-scrollbar {
-                          width: 4px;
-                        }
-                        .lang-dropdown-container::-webkit-scrollbar-track {
-                          background: transparent;
-                        }
-                        .lang-dropdown-container::-webkit-scrollbar-thumb {
-                          background: var(--color-border);
-                          border-radius: 4px;
-                        }
-                        .lang-dropdown-item {
-                          transition: all 0.2s ease;
-                        }
-                        .lang-dropdown-item:hover {
-                          background: var(--color-surface-hover);
-                          color: var(--color-text-title);
-                        }
-                      `}} />
-                      <div 
-                        className="lang-dropdown-container animate-scale-up" 
-                        style={{ 
-                          position: 'absolute',
-                          top: 'calc(100% + 12px)',
-                          right: '-10px',
-                          width: '220px',
-                          background: 'var(--color-surface)', 
-                          backdropFilter: 'blur(16px)',
-                          WebkitBackdropFilter: 'blur(16px)',
-                          border: '1px solid var(--color-border)', 
-                          borderRadius: '16px',
-                          boxShadow: 'var(--shadow-modal)',
-                          maxHeight: '340px',
-                          overflowY: 'auto',
-                          padding: '8px',
-                          zIndex: 100,
-                          transformOrigin: 'top right'
-                        }}
-                      >
-                        {supportedLanguages.map(lang => {
-                          const isSelected = settings.localization.language === lang.code;
-                          return (
-                            <button
-                              key={lang.code}
-                              className="lang-dropdown-item"
-                              onClick={() => handleLanguageChange(lang.code)}
-                              style={{
-                                width: '100%',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                padding: '10px 12px',
-                                borderRadius: '10px',
-                                border: 'none',
-                                cursor: 'pointer',
-                                background: isSelected ? 'var(--color-primary-faint)' : 'transparent',
-                                color: isSelected ? 'var(--color-primary)' : 'var(--color-text-main)',
-                                fontWeight: isSelected ? 600 : 500,
-                                fontSize: '14px',
-                                textAlign: 'left'
-                              }}
-                            >
-                              <span>{lang.nativeName}</span>
-                              <span style={{ 
-                                color: isSelected ? 'var(--color-primary)' : 'var(--color-text-secondary)', 
-                                fontSize: '12px', 
-                                fontWeight: 500 
-                              }}>
-                                {lang.name}
-                              </span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </>
-                  )}
-                </div>
-                
-                {/* Theme Toggle Icon (Sun/Moon) */}
-                <button 
-                  onClick={toggleTheme}
-                  aria-label="Toggle Theme"
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center' }}
-                  title="Toggle theme"
+                <button style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)', borderRadius: '8px', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 600, padding: '8px 18px', transition: 'all 0.2s ease' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; e.currentTarget.style.background = 'rgba(0,0,0,0.06)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
                 >
-                  {currentTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                  <LogIn size={16} />
+                  {t('header.signIn', 'Sign In')}
                 </button>
-
-                <button style={{ background: 'none', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 500, padding: 0 }}>{t('header.signIn', 'Sign In')}</button>
               </div>
               
               <button style={{ 
-                backgroundColor: 'var(--color-primary)', 
+                display: 'flex', alignItems: 'center', gap: '6px',
+                background: '#00A65A', 
                 color: 'white', 
                 border: 'none', 
-                borderRadius: '4px', 
-                padding: '8px 20px', 
-                fontSize: '14.5px', 
+                borderRadius: '6px', 
+                padding: '9px 20px', 
+                fontSize: '15px', 
                 fontWeight: 600,
                 cursor: 'pointer',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-              }}>
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = '#009650'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = '#00A65A'; }}
+              >
+                <UserPlus size={16} />
                 {t('header.signUp', 'Sign Up')}
               </button>
           </div>

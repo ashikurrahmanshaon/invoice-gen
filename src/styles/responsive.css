@@ -3,8 +3,8 @@
   display: none !important;
 }
 
-/* Mobile Flow Only (<768px) */
-@media (max-width: 767px) {
+/* Mobile Flow Only (<1025px) */
+@media (max-width: 1024px) {
   html, body {
     width: 100% !important;
     max-width: 100% !important;
@@ -125,7 +125,7 @@
 .item-row-grid:hover { background-color: #F8FAFC; }
 .btn-action-dup:hover { background-color: #F2F4F7; color: #344054 !important; }
 
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   .mobile-flex {
     display: flex !important;
   }
@@ -472,8 +472,8 @@
   .mobile-item-card .btn-action-del:hover { background-color: #FEF3F2; color: #D92D20 !important; }
 }
 
-/* Desktop Flow Only (>= 768px) */
-@media (min-width: 768px) {
+/* Desktop Flow Only (>= 1025px) */
+@media (min-width: 1025px) {
   .mobile-only {
     display: none !important;
   }

@@ -333,8 +333,9 @@ a {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 24px;
+  max-width: 1360px;
 }
 
 .footer-brand-col {
@@ -701,15 +702,14 @@ a {
 
 /* Workspace layout */
 .workspace-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 480px;
-  gap: 32px;
+  display: flex;
+  justify-content: center;
   padding: 12px 0 24px 0;
-  align-items: flex-start;
 }
 
 .workspace-main {
   width: 100%;
+  max-width: 900px;
   min-width: 0;
 }
 
@@ -741,7 +741,7 @@ a {
   padding: 0 16px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   .header-grid {
     display: flex !important;
     justify-content: space-between !important;
@@ -922,7 +922,7 @@ html.has-completed-setup #setup-wizard-overlay {
   margin-right: 8px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   html, body {
     overflow-x: hidden;
     max-width: 100vw;

@@ -271,17 +271,20 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
           padding: '24px 16px', 
           zIndex: 20,
           display: 'flex',
+          flexDirection: 'column',
           gap: '12px'
         }}>
-          <div style={{ position: 'relative', flex: 1 }} ref={shareMenuRef}>
-            <button className="btn" style={{ width: '100%', background: 'rgba(15, 23, 42, 0.8)', color: 'white', border: '1px solid rgba(255,255,255,0.2)', height: '52px', borderRadius: '16px', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(20px)' }} onClick={() => setShowShareMenu(!showShareMenu)}>
-              <Share2 size={20} />
+          <div style={{ display: 'flex', gap: '12px', width: '100%' }}>
+            <div style={{ position: 'relative', flex: 1 }} ref={shareMenuRef}>
+              <button className="btn" style={{ width: '100%', background: 'rgba(15, 23, 42, 0.8)', color: 'white', border: '1px solid rgba(255,255,255,0.2)', height: '52px', borderRadius: '16px', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(20px)' }} onClick={() => setShowShareMenu(!showShareMenu)}>
+                <Share2 size={20} />
+              </button>
+              {showShareMenu && <ShareMenu isMobile />}
+            </div>
+            <button className="btn btn-primary" onClick={onDownloadPDF} style={{ flex: 3, height: '52px', borderRadius: '16px', fontSize: '16px', fontWeight: 700, boxShadow: '0 8px 20px rgba(0, 166, 90, 0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Download size={20} style={{ marginRight: '8px' }} /> Download PDF
             </button>
-            {showShareMenu && <ShareMenu isMobile />}
           </div>
-          <button className="btn btn-primary" onClick={onDownloadPDF} style={{ flex: 3, height: '52px', borderRadius: '16px', fontSize: '16px', fontWeight: 700, boxShadow: '0 8px 20px rgba(0, 166, 90, 0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Download size={20} style={{ marginRight: '8px' }} /> Download PDF
-          </button>
         </div>
 
         {/* Static Paper Container */}

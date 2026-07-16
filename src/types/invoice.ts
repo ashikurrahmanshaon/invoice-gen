@@ -49,6 +49,7 @@ export interface InvoiceDetails {
   dueDate: string;
   currency: string;
   themeColor?: string;
+  layoutId?: string; // Kept as optional string for backwards compatibility with saved history
 }
 
 export interface InvoiceTotals {
@@ -96,19 +97,3 @@ export interface SavedInvoice {
   data: InvoiceData;
 }
 
-export interface InvoiceTemplate {
-  id: string;
-  name: string;
-  description: string;
-  icon: string;
-  useCase: string;
-  tags: string[];
-  themeColor: string;
-  content: {
-    notes: string;
-    terms: string;
-    paymentInstructions: string;
-    items: Omit<LineItem, 'id'>[];
-    taxLabel?: string;
-  }
-}

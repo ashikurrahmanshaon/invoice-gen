@@ -10,7 +10,6 @@ import { ClientSection } from '../components/invoice/ClientSection';
 import { ItemsSection } from '../components/invoice/ItemsSection';
 import { TotalsSection } from '../components/invoice/TotalsSection';
 
-import { PreviewSidebar } from '../components/invoice/PreviewSidebar';
 import { MobileWizard } from '../components/mobile/MobileWizard';
 // import { MobileWizard } from '../components/mobile/MobileWizard';
 import { HistoryDashboard } from '../components/history/HistoryDashboard';
@@ -22,13 +21,13 @@ import { useHistory } from '../hooks/useHistory';
 
 import { FullPreviewModal } from '../components/invoice/FullPreviewModal';
 import { InvoiceA4Preview } from '../components/invoice/InvoiceA4Preview';
-import { TemplateGalleryModal } from '../components/templates/TemplateGalleryModal';
+
 import { HelpGuideModal } from '../components/help/HelpGuideModal';
 import { SettingsDashboard } from '../components/settings/SettingsDashboard';
 import { Modal } from '../components/ui/Modal';
 import { generateInvoicePDF } from '../utils/pdfGenerator';
 import { generateInvoiceNumber } from '../utils/invoiceNumber';
-import type { SavedInvoice, InvoiceData, InvoiceTemplate } from '../types/invoice';
+import type { SavedInvoice, InvoiceData } from '../types/invoice';
 import { trackEvent, trackFunnelStep } from '../utils/analytics';
 import { useSettings } from '../contexts/SettingsContext';
 
@@ -37,7 +36,6 @@ import { useSettings } from '../contexts/SettingsContext';
 
 
 import { SEO } from '../components/seo/SEO';
-import { INVOICE_TEMPLATES } from '../config/templates';
 
 export default function HomePage() {
   const [currentStage, setCurrentStage] = useState(1);
@@ -74,7 +72,6 @@ export default function HomePage() {
   
   const [activeView, setActiveView] = useState<'editor' | 'history' | 'settings'>('editor');
   const [showUnsavedModal, setShowUnsavedModal] = useState(false);
-  const [isTemplateGalleryOpen, setIsTemplateGalleryOpen] = useState(false);
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
   const [resetHistoryAlso, setResetHistoryAlso] = useState(false);
   const [historyRecordToDelete, setHistoryRecordToDelete] = useState<string | null>(null);
@@ -84,9 +81,9 @@ export default function HomePage() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setIsMobileView(window.innerWidth <= 768);
+      setIsMobileView(window.innerWidth <= 1024);
       const handleResize = () => {
-        setIsMobileView(window.innerWidth <= 768);
+        setIsMobileView(window.innerWidth <= 1024);
       };
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
@@ -106,7 +103,6 @@ export default function HomePage() {
     addItem, 
     updateItem, 
     removeItem, 
-    setItems,
     setDiscount,
     setTaxRate,
     setTaxLabel,
@@ -266,55 +262,7 @@ export default function HomePage() {
     });
   };
 
-  const handleTemplateSelect = (template: InvoiceTemplate, mode: 'style-only' | 'replace-content') => {
-    updateDetails({ themeColor: template.themeColor });
-    if (mode === 'replace-content') {
-      updateOtherFields({
-        notes: template.content.notes,
-        terms: template.content.terms,
-        paymentInstructions: template.content.paymentInstructions
-      });
-      // Optionally update items if they chose replace-content and the invoice is empty
-      // Actually, if mode is replace-content, we replace items.
-      const newItems = template.content.items.map((item, idx) => ({
-        ...item,
-        id: `template-item-${Date.now()}-${idx}`
-      }));
-      // updateOtherFields can update items because it takes Partial<Omit<InvoiceData, 'business' | 'client' | 'details'>>
-      // which includes `items`. Let's just use updateOtherFields for all content updates!
-      updateOtherFields({
-        notes: template.content.notes,
-        terms: template.content.terms,
-        paymentInstructions: template.content.paymentInstructions
-      });
-      setItems(newItems);
-    }
-  };
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      const nicheParam = params.get('niche');
-      if (nicheParam) {
-        // Map common niche params to template ids
-        let templateId = nicheParam;
-        if (templateId === 'freelance') templateId = 'freelancer';
-        if (templateId === 'software') templateId = 'software-agency';
-        if (templateId === 'contractor') templateId = 'construction';
-        if (templateId === 'digital-marketing') templateId = 'marketing';
-        if (templateId === 'graphic-designer') templateId = 'creator';
-        
-        const template = INVOICE_TEMPLATES.find(t => t.id === templateId || t.id.includes(templateId));
-        if (template && data.items.length === 0) {
-          handleTemplateSelect(template, 'replace-content');
-          // Clear query params to prevent re-triggering
-          const newUrl = window.location.pathname;
-          window.history.replaceState({}, '', newUrl);
-        }
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data.items.length]);
 
   const loadDemoData = () => {
     const demoData = {
@@ -394,7 +342,6 @@ export default function HomePage() {
       />
       <Header 
         onNewInvoice={handleNewInvoice} 
-        onChangeTemplate={() => setIsTemplateGalleryOpen(true)}
         onResetEverything={() => setShowResetModal(true)}
         onDownloadPDF={() => setIsPreviewOpen(true)} 
         onOpenHelp={() => setIsHelpGuideOpen(true)}
@@ -687,20 +634,10 @@ export default function HomePage() {
                             </div>
                           )}
                         </div>
-                      </div>
+                        </div>
                     </div>
                   </div>
                 </div>
-
-                {/* Right Utility Sidebar (Desktop) */}
-                <Suspense fallback={null}>
-                  <PreviewSidebar 
-                    data={data} 
-                    onOpenFullPreview={() => setIsPreviewOpen(true)} 
-                    onOpenSettings={() => setActiveView('settings')}
-                    onOpenTemplateGallery={() => setIsTemplateGalleryOpen(true)}
-                  />
-                </Suspense>
               </>
             )}
           </div>
@@ -738,14 +675,6 @@ export default function HomePage() {
             data={data} 
             onClose={() => setIsPreviewOpen(false)} 
             onDownloadPDF={() => generateInvoicePDF(data)}
-          />
-        )}
-        {isTemplateGalleryOpen && (
-          <TemplateGalleryModal
-            isOpen={isTemplateGalleryOpen}
-            onClose={() => setIsTemplateGalleryOpen(false)}
-            onSelect={handleTemplateSelect}
-            hasExistingData={data.items.length > 0 && (data.items[0].name !== '' || Number(data.items[0].rate) > 0)}
           />
         )}
       </Suspense>
