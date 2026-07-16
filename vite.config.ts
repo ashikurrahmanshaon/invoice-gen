@@ -64,6 +64,7 @@ export default defineConfig({
     })
   ],
   build: {
+    cssTarget: 'safari14',
     chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {

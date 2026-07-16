@@ -1,3 +1,8 @@
+/* Base Default for Mobile-Only Elements */
+.mobile-only {
+  display: none !important;
+}
+
 /* Mobile Flow Only (<768px) */
 @media (max-width: 767px) {
   html, body {
@@ -482,3 +487,4 @@
     cursor: default;
   }
 }
+.mobile-only { display: none; } 
