@@ -11,9 +11,9 @@
   "categories": ["business", "finance", "productivity"],
   "icons": [
     {
-      "src": "brand-icon-48x48.png",
-      "type": "image/png",
-      "sizes": "48x48"
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
     },
     {
       "src": "android-chrome-192x192.png",
