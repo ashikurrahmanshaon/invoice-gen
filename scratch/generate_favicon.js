@@ -1,4 +1,7 @@
-<svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+const fs = require('fs');
+const { execSync } = require('child_process');
+
+const svgCode = `<svg width="512" height="512" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <linearGradient id="docGradient" x1="0" y1="0" x2="32" y2="36" gradientUnits="userSpaceOnUse">
 <stop stop-color="#00E676"></stop>
@@ -14,4 +17,8 @@
 <rect x="4" y="16" width="16" height="3" rx="1.5" fill="#ffffff" opacity="0.9"></rect>
 <rect x="4" y="22" width="24" height="3" rx="1.5" fill="#ffffff" opacity="0.9"></rect>
 <rect x="4" y="28" width="16" height="3" rx="1.5" fill="#ffffff" opacity="0.9"></rect>
-</svg>
+</svg>`;
+
+fs.writeFileSync('public/favicon.svg', svgCode);
+
+console.log('Saved favicon.svg');
