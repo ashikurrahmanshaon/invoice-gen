@@ -23,8 +23,11 @@ if (container) {
   );
 
   if (isPrerendered) {
-    ReactDOM.hydrateRoot(container, app);
-  } else {
-    ReactDOM.createRoot(container).render(app);
+    // Due to localStorage state initialization (which guarantees a mismatch with SSR) 
+    // and complex mobile layouts, React 18 hydration frequently fails and duplicates the DOM.
+    // We manually clear the container to guarantee a clean render. 
+    // SEO is unaffected as crawlers read the SSR HTML without executing JS.
+    container.innerHTML = '';
   }
+  ReactDOM.createRoot(container).render(app);
 }

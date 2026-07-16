@@ -71,9 +71,21 @@ export const Header: React.FC<HeaderProps> = ({
     }
   };
 
-  const currentTheme = settings.appearance.theme === 'system' 
-    ? (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-    : settings.appearance.theme;
+  const [isDarkMode, setIsDarkMode] = useState(settings.appearance.theme === 'dark');
+
+  useEffect(() => {
+    if (settings.appearance.theme === 'system') {
+      const match = window.matchMedia('(prefers-color-scheme: dark)');
+      setIsDarkMode(match.matches);
+      const listener = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
+      match.addEventListener('change', listener);
+      return () => match.removeEventListener('change', listener);
+    } else {
+      setIsDarkMode(settings.appearance.theme === 'dark');
+    }
+  }, [settings.appearance.theme]);
+
+  const currentTheme = isDarkMode ? 'dark' : 'light';
 
   return (
     <>
