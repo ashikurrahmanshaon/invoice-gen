@@ -1,12 +1,12 @@
 <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="docGradient" x1="2" y1="0" x2="34" y2="36" gradientUnits="userSpaceOnUse">
-      <stop stopColor="#00E676" />
-      <stop offset="1" stopColor="#00A65A" />
+      <stop stop-color="#00E676" />
+      <stop offset="1" stop-color="#00A65A" />
     </linearGradient>
     <linearGradient id="foldGradient" x1="18" y1="0" x2="34" y2="10" gradientUnits="userSpaceOnUse">
-      <stop stopColor="#00C853" />
-      <stop offset="1" stopColor="#007936" />
+      <stop stop-color="#00C853" />
+      <stop offset="1" stop-color="#007936" />
     </linearGradient>
   </defs>
   <g transform="translate(2, 0)">
