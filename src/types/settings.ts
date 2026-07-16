@@ -75,7 +75,7 @@ export interface Settings {
 }
 
 export const defaultSettings: Settings = {
-  _hasCompletedFirstRun: false,
+  _hasCompletedFirstRun: true,
   businessProfile: {
     name: '', ownerName: '', email: '', phone: '', website: '',
     address: '', city: '', state: '', postalCode: '', country: '',

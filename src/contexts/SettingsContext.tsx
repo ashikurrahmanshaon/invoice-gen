@@ -91,13 +91,11 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             ...prev.invoiceDefaults,
             defaultTaxLabel: regional.taxLabel,
             defaultCurrency: regional.currency
-          },
-          _hasCompletedFirstRun: true // Mark as completed so we never do this again
+          }
+          // Do NOT set _hasCompletedFirstRun here. Let SetupWizard handle it.
         }));
-      } else {
-        // Even if all failed, mark as completed
-        setSettings(prev => ({ ...prev, _hasCompletedFirstRun: true }));
       }
+      // Do NOT mark as completed if failed, let SetupWizard handle it.
     };
 
     performAsyncDetection();

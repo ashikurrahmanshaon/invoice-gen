@@ -46,8 +46,10 @@
     <link rel="alternate" hreflang="he" href="https://invoice-gen.net/" />
     <link rel="alternate" hreflang="uk" href="https://invoice-gen.net/" />
     
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="mask-icon" href="/favicon.svg" color="#2563EB" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/brand-apple-icon.png" />
     <meta name="msapplication-TileColor" content="#2563EB" />
     <meta name="theme-color" content="#FFFFFF" />
     <link rel="manifest" href="/manifest.json" />
@@ -344,45 +346,108 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <h1 class="sr-only" style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;">Free Invoice Generator</h1>
+    
+    <!-- Premium Splash Screen -->
+    <style>
+      #premium-splash {
+        position: fixed;
+        inset: 0;
+        background: #ffffff;
+        z-index: 2147483647;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        animation: splash-fade-out 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: 0.6s;
+        pointer-events: none;
+      }
+      
+      .splash-logo-wrapper {
+        position: relative;
+        width: 88px;
+        height: 88px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #ffffff;
+        border-radius: 24px;
+        box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.03);
+        animation: splash-logo-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .splash-logo {
+        width: 52px;
+        height: 52px;
+        object-fit: contain;
+      }
+
+      .splash-progress-container {
+        margin-top: 32px;
+        width: 140px;
+        height: 3px;
+        background: #F1F5F9;
+        border-radius: 3px;
+        overflow: hidden;
+        position: relative;
+        animation: splash-progress-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        opacity: 0;
+      }
+
+      .splash-progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(90deg, #00A65A, #00C853);
+        border-radius: 3px;
+        transform-origin: left;
+        animation: splash-progress-fill 0.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      }
+
+      @keyframes splash-logo-enter {
+        from { opacity: 0; transform: scale(0.9) translateY(10px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+      }
+
+      @keyframes splash-progress-enter {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes splash-progress-fill {
+        0% { transform: scaleX(0); }
+        50% { transform: scaleX(0.7); }
+        100% { transform: scaleX(1); }
+      }
+
+      @keyframes splash-fade-out {
+        0% { opacity: 1; visibility: visible; }
+        99% { opacity: 0; visibility: visible; }
+        100% { opacity: 0; visibility: hidden; display: none; }
+      }
+      
+      #root {
+        animation: root-reveal 1.0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      
+      @keyframes root-reveal {
+        0%, 60% { opacity: 0; transform: scale(0.98) translateY(8px); }
+        100% { opacity: 1; transform: scale(1) translateY(0); }
+      }
+    </style>
+    <div id="premium-splash">
+      <div class="splash-logo-wrapper">
+        <img src="/logo-icon.png" alt="Invoice-Gen.net" class="splash-logo" width="52" height="52" fetchpriority="high" decoding="sync" />
+      </div>
+      <div class="splash-progress-container">
+        <div class="splash-progress-bar"></div>
+      </div>
+    </div>
     <div id="root">
       <!-- APP_SHELL_START -->
-      <style>
-        .initial-loader {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: #F8FAFC;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-        }
-        .logo-loader {
-          width: 100px;
-          height: 100px;
-          object-fit: contain;
-          animation: logo-pulse 1.5s ease-in-out infinite;
-          filter: drop-shadow(0 10px 15px rgba(0, 166, 90, 0.2));
-        }
-        @keyframes logo-pulse {
-          0%, 100% { opacity: 0.8; transform: scale(0.98); }
-          50% { opacity: 1; transform: scale(1.02); }
-        }
-
-        /* Smooth fade in for the React app */
-        #root:not(:empty) {
-          animation: smoothFadeIn 0.8s ease-out forwards;
-        }
-        @keyframes smoothFadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-      </style>
-      <div class="initial-loader">
-        <img src="/logo-icon.png" alt="Invoice-Gen.net Loading" class="logo-loader" width="100" height="100" fetchpriority="high" decoding="sync" />
-      </div>
+      <!-- App shell removed, using global splash instead -->
       <!-- APP_SHELL_END -->
     </div>
     <noscript>

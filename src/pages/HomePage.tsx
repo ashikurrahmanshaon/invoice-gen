@@ -24,7 +24,6 @@ import { FullPreviewModal } from '../components/invoice/FullPreviewModal';
 import { InvoiceA4Preview } from '../components/invoice/InvoiceA4Preview';
 import { TemplateGalleryModal } from '../components/templates/TemplateGalleryModal';
 import { HelpGuideModal } from '../components/help/HelpGuideModal';
-import { SetupWizard } from '../components/wizard/SetupWizard';
 import { SettingsDashboard } from '../components/settings/SettingsDashboard';
 import { Modal } from '../components/ui/Modal';
 import { generateInvoicePDF } from '../utils/pdfGenerator';
@@ -380,11 +379,7 @@ export default function HomePage() {
 
   return (
     <>
-      {!settings._hasCompletedFirstRun && (
-        <Suspense fallback={null}>
-          <SetupWizard onComplete={() => {}} />
-        </Suspense>
-      )}
+      {/* SetupWizard removed to allow direct access to generator */}
       <SEO 
         title="Free Professional Invoice Generator | Invoice-Gen.net"
         description="Create professional PDF invoices instantly with Invoice-Gen.net. 100% free, secure, browser-based invoice creator with no signup required."
