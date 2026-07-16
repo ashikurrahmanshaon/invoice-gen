@@ -80,10 +80,11 @@ export default function HomePage() {
   const [historyRecordToDelete, setHistoryRecordToDelete] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const [isMobileView, setIsMobileView] = useState(() => typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+  const [isMobileView, setIsMobileView] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      setIsMobileView(window.innerWidth <= 768);
       const handleResize = () => {
         setIsMobileView(window.innerWidth <= 768);
       };
