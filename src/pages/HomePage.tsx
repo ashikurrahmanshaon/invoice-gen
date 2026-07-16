@@ -435,9 +435,9 @@ export default function HomePage() {
             <SettingsDashboard />
           </Suspense>
         ) : activeView === 'editor' ? (
-          <div className="workspace-layout" style={currentStage < 4 ? { display: 'flex', justifyContent: 'center' } : {}}>
-              {/* Mobile Step-by-Step Flow */}
-              <div className="mobile-only" style={{ width: '100%', minWidth: 0 }}>
+          <div className="workspace-layout">
+            {isMobileView ? (
+              <div style={{ width: '100%', minWidth: 0 }}>
                 <MobileWizard 
                   currentStage={currentStage}
                   setStage={handleStageChange}
@@ -461,12 +461,11 @@ export default function HomePage() {
                   onOpenFullPreview={() => { trackEvent('preview_invoice', { source: 'mobile' }); setIsPreviewOpen(true); }}
                 />
               </div>
-
-              {/* Main Desktop Workspace (Wizard) */}
-              <div className="desktop-only" style={{ width: '100%', display: 'flex', gap: '32px' }}>
+            ) : (
+              <>
                 <div 
                   className="workspace-main" 
-                  style={currentStage < 4 ? { margin: '0 auto', maxWidth: '800px', width: '100%' } : {}}
+                  style={{ width: '100%' }}
                 >
                   <div className="card" style={{ padding: '0' }}>
                     <div style={{
@@ -694,17 +693,16 @@ export default function HomePage() {
                 </div>
 
                 {/* Right Utility Sidebar (Desktop) */}
-                {currentStage === 4 && (
-                  <Suspense fallback={null}>
-                    <PreviewSidebar 
-                      data={data} 
-                      onOpenFullPreview={() => setIsPreviewOpen(true)} 
-                      onOpenSettings={() => setActiveView('settings')}
-                      onOpenTemplateGallery={() => setIsTemplateGalleryOpen(true)}
-                    />
-                  </Suspense>
-                )}
-              </div>
+                <Suspense fallback={null}>
+                  <PreviewSidebar 
+                    data={data} 
+                    onOpenFullPreview={() => setIsPreviewOpen(true)} 
+                    onOpenSettings={() => setActiveView('settings')}
+                    onOpenTemplateGallery={() => setIsTemplateGalleryOpen(true)}
+                  />
+                </Suspense>
+              </>
+            )}
           </div>
         ) : (
           <div style={{ marginTop: '24px' }}>
