@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, User, List, Eye, ChevronRight, Check } from 'lucide-react';
+import { Building2, User, List, Eye, Check } from 'lucide-react';
 
 interface StageIndicatorProps {
   currentStage: number;

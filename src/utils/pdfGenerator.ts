@@ -58,18 +58,6 @@ export const buildInvoicePDF = async (_data?: InvoiceData): Promise<jsPDF> => {
 export const generateInvoicePDF = async (data: InvoiceData) => {
   const filename = `Invoice-${data.details.invoiceNumber || 'draft'}.pdf`;
 
-  // Browser detection
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  
-  let newWindow: Window | null = null;
-  if (isIOS) {
-    // Open synchronously to avoid Safari popup blocker
-    newWindow = window.open('', '_blank');
-    if (newWindow) {
-      newWindow.document.write('<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#667085;">Generating PDF...</div>');
-    }
-  }
-
   const doc = await buildInvoicePDF(data);
 
   // For automated subagent testing and screenshots
@@ -79,29 +67,33 @@ export const generateInvoicePDF = async (data: InvoiceData) => {
 
   if (window.location.search.includes('preview=true') || (window as any).__TESTING_PREVIEW__) {
     window.location.href = blobUrl;
-    if (newWindow) newWindow.close();
     return;
   }
 
-  if (isIOS) {
-    try {
-      const blob = doc.output('blob');
-      const url = URL.createObjectURL(blob);
-      if (newWindow) {
-        newWindow.location.href = url;
-      } else {
-        window.location.href = url;
+  const blob = doc.output('blob');
+
+  // Beautiful native mobile experience using Web Share API
+  if (navigator.share && navigator.canShare) {
+    const file = new File([blob], filename, { type: 'application/pdf' });
+    if (navigator.canShare({ files: [file] })) {
+      try {
+        await navigator.share({
+          files: [file],
+          title: filename,
+        });
+        return; // Successfully shared!
+      } catch (err: any) {
+        // If the user cancelled the share, do not attempt to download again, just exit quietly.
+        if (err.name === 'AbortError') {
+          return;
+        }
+        console.warn("Share failed, falling back to download", err);
       }
-      return;
-    } catch (e) {
-      console.warn("iOS PDF display failed:", e);
-      if (newWindow) newWindow.close();
     }
   }
 
-  // Mobile-friendly progressive enhancement for Android and Desktop
+  // Fallback to standard download for desktop and unsupported mobile browsers
   try {
-    const blob = doc.output('blob');
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.style.display = 'none';
