@@ -3,6 +3,7 @@
   --color-primary: #00A65A;
   --color-primary-hover: #008347;
   --color-primary-light: #E8F8F0;
+  --color-primary-faint: rgba(0, 166, 90, 0.05);
   --color-accent: #00A65A;
   
   /* Status */
@@ -75,6 +76,7 @@
   --shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.12);
   --shadow-focus: none;
   --shadow-focus-error: none;
+  --color-focus-ring: rgba(0, 166, 90, 0.22);
   
   /* Transitions */
   --transition-fast: 100ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -102,4 +104,19 @@
 
   /* Adjust shadow for dark mode */
   --shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.4);
+  
+  /* Status adjustments for dark mode */
+  --color-success-light: rgba(22, 163, 74, 0.15); /* Subdued green bg */
+  --color-success-border: rgba(22, 163, 74, 0.3);
+  --color-warning-light: rgba(217, 119, 6, 0.15);
+  --color-warning-border: rgba(217, 119, 6, 0.3);
+  --color-error-light: rgba(220, 38, 38, 0.15);
+  --color-error-border: rgba(220, 38, 38, 0.3);
+  --color-info-light: rgba(0, 102, 255, 0.15);
+  --color-info-border: rgba(0, 102, 255, 0.3);
+  
+  /* New Tokens */
+  --color-surface-hover: #334155;
+  --color-primary-faint: rgba(0, 166, 90, 0.15);
+  --color-focus-ring: rgba(0, 166, 90, 0.4);
 }

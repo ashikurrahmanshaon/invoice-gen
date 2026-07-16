@@ -89,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <header className="app-header" style={{ padding: '0 24px', backgroundColor: '#ffffff', borderBottom: '1px solid #E2E8F0', height: '64px', display: 'flex', alignItems: 'center' }}>
+      <header className="app-header" style={{ padding: '0 24px', backgroundColor: 'var(--color-surface)', borderBottom: '1px solid var(--color-border)', height: '64px', display: 'flex', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: isMobileView ? 'center' : 'space-between', width: '100%', maxWidth: '1312px', margin: '0 auto' }}>
           
           {/* Left: Logo & Wordmark */}
@@ -114,15 +114,15 @@ export const Header: React.FC<HeaderProps> = ({
               <rect x="2" y="28" width="16" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
             </svg>
             <div style={{ display: 'flex', alignItems: 'baseline', fontFamily: 'Inter, sans-serif' }}>
-              <span style={{ fontSize: '20px', fontWeight: 800, color: '#333333', letterSpacing: '-0.5px' }}>Invoice<span style={{ color: '#00E676' }}>-Gen</span></span>
-              <span style={{ fontSize: '15px', fontWeight: 500, color: '#666666' }}>.net</span>
+              <span style={{ fontSize: '20px', fontWeight: 800, color: 'var(--color-text-title)', letterSpacing: '-0.5px' }}>Invoice<span style={{ color: 'var(--color-primary)' }}>-Gen</span></span>
+              <span style={{ fontSize: '15px', fontWeight: 500, color: 'var(--color-text-secondary)' }}>.net</span>
             </div>
           </div>
 
           {/* Center: Navigation Links */}
           <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-            <button onClick={() => onViewChange ? onViewChange('history') : navigate('/')} style={{ background: 'none', border: 'none', fontSize: '14.5px', color: '#64748B', cursor: 'pointer', fontWeight: 500, padding: 0 }}>{t('header.history', 'History')}</button>
-            <button onClick={() => onOpenHelp ? onOpenHelp() : null} style={{ background: 'none', border: 'none', fontSize: '14.5px', color: '#64748B', cursor: 'pointer', fontWeight: 500, padding: 0 }}>{t('header.guides', 'Guides')}</button>
+            <button onClick={() => onViewChange ? onViewChange('history') : navigate('/')} style={{ background: 'none', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 500, padding: 0 }}>{t('header.history', 'History')}</button>
+            <button onClick={() => onOpenHelp ? onOpenHelp() : null} style={{ background: 'none', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 500, padding: 0 }}>{t('header.guides', 'Guides')}</button>
           </div>
 
           {/* Right: Actions */}
@@ -152,15 +152,15 @@ export const Header: React.FC<HeaderProps> = ({
                           background: transparent;
                         }
                         .lang-dropdown-container::-webkit-scrollbar-thumb {
-                          background: #CBD5E1;
+                          background: var(--color-border);
                           border-radius: 4px;
                         }
                         .lang-dropdown-item {
                           transition: all 0.2s ease;
                         }
                         .lang-dropdown-item:hover {
-                          background: #F1F5F9;
-                          color: #0F172A;
+                          background: var(--color-surface-hover);
+                          color: var(--color-text-title);
                         }
                       `}} />
                       <div 
@@ -170,12 +170,12 @@ export const Header: React.FC<HeaderProps> = ({
                           top: 'calc(100% + 12px)',
                           right: '-10px',
                           width: '220px',
-                          background: 'rgba(255, 255, 255, 0.9)', 
+                          background: 'var(--color-surface)', 
                           backdropFilter: 'blur(16px)',
                           WebkitBackdropFilter: 'blur(16px)',
-                          border: '1px solid rgba(226, 232, 240, 0.8)', 
+                          border: '1px solid var(--color-border)', 
                           borderRadius: '16px',
-                          boxShadow: '0 20px 40px -12px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.02)',
+                          boxShadow: 'var(--shadow-modal)',
                           maxHeight: '340px',
                           overflowY: 'auto',
                           padding: '8px',
@@ -199,8 +199,8 @@ export const Header: React.FC<HeaderProps> = ({
                                 borderRadius: '10px',
                                 border: 'none',
                                 cursor: 'pointer',
-                                background: isSelected ? 'rgba(0, 166, 90, 0.08)' : 'transparent',
-                                color: isSelected ? '#00A65A' : '#475569',
+                                background: isSelected ? 'var(--color-primary-faint)' : 'transparent',
+                                color: isSelected ? 'var(--color-primary)' : 'var(--color-text-main)',
                                 fontWeight: isSelected ? 600 : 500,
                                 fontSize: '14px',
                                 textAlign: 'left'
@@ -208,7 +208,7 @@ export const Header: React.FC<HeaderProps> = ({
                             >
                               <span>{lang.nativeName}</span>
                               <span style={{ 
-                                color: isSelected ? '#00A65A' : '#94A3B8', 
+                                color: isSelected ? 'var(--color-primary)' : 'var(--color-text-secondary)', 
                                 fontSize: '12px', 
                                 fontWeight: 500 
                               }}>
@@ -232,11 +232,11 @@ export const Header: React.FC<HeaderProps> = ({
                   {currentTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                 </button>
 
-                <button style={{ background: 'none', border: 'none', fontSize: '14.5px', color: '#64748B', cursor: 'pointer', fontWeight: 500, padding: 0 }}>{t('header.signIn', 'Sign In')}</button>
+                <button style={{ background: 'none', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 500, padding: 0 }}>{t('header.signIn', 'Sign In')}</button>
               </div>
               
               <button style={{ 
-                backgroundColor: '#00A65A', 
+                backgroundColor: 'var(--color-primary)', 
                 color: 'white', 
                 border: 'none', 
                 borderRadius: '4px', 

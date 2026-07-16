@@ -122,7 +122,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             bottom: 0,
             left: 0,
             right: 0,
-            background: 'rgba(255, 255, 255, 1)',
+            background: 'var(--color-surface)',
             padding: '16px 16px calc(16px + env(safe-area-inset-bottom)) 16px',
             display: 'flex',
             flexDirection: 'column',
@@ -138,7 +138,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
               <button 
                 onClick={() => setStage(currentStage - 1)}
                 className="btn"
-                style={{ width: '100%', minHeight: '48px', height: '48px', maxHeight: '48px', boxSizing: 'border-box', padding: '0', margin: '0', borderRadius: '100px', background: '#FFFFFF', border: '1.5px solid #E2E8F0', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '14.5px', fontWeight: 600, boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}
+                style={{ width: '100%', minHeight: '48px', height: '48px', maxHeight: '48px', boxSizing: 'border-box', padding: '0', margin: '0', borderRadius: '100px', background: 'var(--color-surface)', border: '1.5px solid var(--color-border)', color: 'var(--color-text-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '14.5px', fontWeight: 600, boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}
               >
                 <ArrowLeft size={16} />
                 Back
@@ -174,8 +174,8 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                 className="btn"
                 style={{ 
                   width: '100%', 
-                  background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)', 
-                  color: 'white', 
+                  background: 'var(--color-border-hover)', 
+                  color: 'var(--color-text-title)', 
                   minHeight: '48px', 
                   height: '48px',
                   maxHeight: '48px',

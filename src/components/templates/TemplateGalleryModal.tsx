@@ -108,29 +108,29 @@ export const TemplateGalleryModal: React.FC<TemplateGalleryModalProps> = ({ isOp
         boxShadow: '0 24px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1)'
       }}>
         {/* Header */}
-        <div style={{ padding: '24px 32px', borderBottom: '1px solid #E2E8F0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#FFFFFF' }}>
+        <div style={{ padding: '24px 32px', borderBottom: '1px solid var(--color-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--color-surface)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <div style={{ background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)', color: 'white', padding: '10px', borderRadius: '12px', display: 'flex', boxShadow: '0 4px 12px rgba(15, 23, 42, 0.15)' }}>
+            <div style={{ background: 'var(--color-border-hover)', color: 'var(--color-text-title)', padding: '10px', borderRadius: '12px', display: 'flex', boxShadow: 'var(--shadow-sm)' }}>
               <Sparkles size={24} />
             </div>
             <div>
-              <h2 style={{ fontSize: '22px', fontWeight: 800, color: '#0F172A', margin: 0, letterSpacing: '-0.5px' }}>
+              <h2 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--color-text-title)', margin: 0, letterSpacing: '-0.5px' }}>
                 Template Gallery
               </h2>
-              <p style={{ color: '#64748B', margin: '4px 0 0 0', fontSize: '14px', fontWeight: 500 }}>Choose a professional layout tailored for your industry.</p>
+              <p style={{ color: 'var(--color-text-secondary)', margin: '4px 0 0 0', fontSize: '14px', fontWeight: 500 }}>Choose a professional layout tailored for your industry.</p>
             </div>
           </div>
-          <button onClick={onClose} className="btn btn-ghost" style={{ padding: '10px', color: '#64748B', borderRadius: '50%', background: '#F8FAFC', border: '1px solid #E2E8F0', transition: 'all 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.background = '#F1F5F9'} onMouseLeave={(e) => e.currentTarget.style.background = '#F8FAFC'}>
+          <button onClick={onClose} className="btn btn-ghost" style={{ padding: '10px', color: 'var(--color-text-secondary)', borderRadius: '50%', background: 'var(--color-background)', border: '1px solid var(--color-border)', transition: 'all 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.background = 'var(--color-surface-hover)'} onMouseLeave={(e) => e.currentTarget.style.background = 'var(--color-background)'}>
             <X size={20} />
           </button>
         </div>
 
         <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
           {/* Main Grid */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', backgroundColor: '#F8FAFC' }}>
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', backgroundColor: 'var(--color-background)' }}>
             <div style={{ padding: '32px 32px 16px 32px' }}>
               <div style={{ position: 'relative' }}>
-                <Search size={20} style={{ position: 'absolute', left: '20px', top: '50%', transform: 'translateY(-50%)', color: '#94A3B8' }} />
+                <Search size={20} style={{ position: 'absolute', left: '20px', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-text-tertiary)' }} />
                 <input 
                   type="text" 
                   placeholder="Search industries, templates, or keywords..."
@@ -139,23 +139,23 @@ export const TemplateGalleryModal: React.FC<TemplateGalleryModalProps> = ({ isOp
                   style={{ 
                     width: '100%', 
                     padding: '16px 20px 16px 52px', 
-                    backgroundColor: '#FFFFFF',
-                    border: '1px solid #E2E8F0',
+                    backgroundColor: 'var(--color-surface)',
+                    border: '1px solid var(--color-border)',
                     borderRadius: '16px',
                     fontSize: '15px',
-                    color: '#0F172A',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
+                    color: 'var(--color-text-title)',
+                    boxShadow: 'var(--shadow-sm)',
                     outline: 'none',
                     transition: 'all 0.2s ease',
                     boxSizing: 'border-box'
                   }}
                   onFocus={(e) => {
-                    e.currentTarget.style.borderColor = '#3B82F6';
-                    e.currentTarget.style.boxShadow = '0 0 0 4px rgba(59, 130, 246, 0.1)';
+                    e.currentTarget.style.borderColor = 'var(--color-primary)';
+                    e.currentTarget.style.boxShadow = '0 0 0 4px var(--color-focus-ring)';
                   }}
                   onBlur={(e) => {
-                    e.currentTarget.style.borderColor = '#E2E8F0';
-                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.02)';
+                    e.currentTarget.style.borderColor = 'var(--color-border)';
+                    e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
                   }}
                 />
               </div>
@@ -179,8 +179,8 @@ export const TemplateGalleryModal: React.FC<TemplateGalleryModalProps> = ({ isOp
                         padding: '24px', 
                         cursor: 'pointer', 
                         border: '2px solid',
-                        borderColor: isHovered ? template.themeColor : '#FFFFFF',
-                        backgroundColor: '#FFFFFF',
+                        borderColor: isHovered ? template.themeColor : 'var(--color-surface)',
+                        backgroundColor: 'var(--color-surface)',
                         borderRadius: '20px',
                         display: 'flex', flexDirection: 'column', gap: '16px',
                         boxShadow: isHovered ? `0 12px 24px ${template.themeColor}20` : '0 4px 12px rgba(0,0,0,0.03)',
@@ -203,8 +203,8 @@ export const TemplateGalleryModal: React.FC<TemplateGalleryModalProps> = ({ isOp
                           onClick={(e) => toggleFavorite(e, template.id)}
                           style={{ 
                             padding: '8px', 
-                            color: isFav ? '#F59E0B' : '#CBD5E1',
-                            background: isFav ? '#FEF3C7' : 'transparent',
+                            color: isFav ? '#F59E0B' : 'var(--color-text-tertiary)',
+                            background: isFav ? 'rgba(245, 158, 11, 0.15)' : 'transparent',
                             borderRadius: '50%',
                             border: 'none',
                             cursor: 'pointer',
@@ -216,16 +216,16 @@ export const TemplateGalleryModal: React.FC<TemplateGalleryModalProps> = ({ isOp
                       </div>
                       
                       <div>
-                        <h3 style={{ margin: '0 0 6px 0', fontSize: '18px', fontWeight: 700, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '8px', letterSpacing: '-0.3px' }}>
+                        <h3 style={{ margin: '0 0 6px 0', fontSize: '18px', fontWeight: 700, color: 'var(--color-text-title)', display: 'flex', alignItems: 'center', gap: '8px', letterSpacing: '-0.3px' }}>
                           {template.name}
-                          {isRecent && <span style={{ fontSize: '10px', backgroundColor: '#EEF4FF', color: '#3B82F6', padding: '2px 8px', borderRadius: '12px', fontWeight: 700, letterSpacing: '0.5px' }}>RECENT</span>}
+                          {isRecent && <span style={{ fontSize: '10px', backgroundColor: 'var(--color-info-light)', color: 'var(--color-info)', padding: '2px 8px', borderRadius: '12px', fontWeight: 700, letterSpacing: '0.5px' }}>RECENT</span>}
                         </h3>
-                        <p style={{ margin: 0, fontSize: '14px', color: '#64748B', lineHeight: 1.5 }}>{template.description}</p>
+                        <p style={{ margin: 0, fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: 1.5 }}>{template.description}</p>
                       </div>
                       
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid #F1F5F9' }}>
-                        <div style={{ width: '18px', height: '18px', borderRadius: '50%', backgroundColor: template.themeColor, border: '2px solid #FFF', boxShadow: '0 0 0 1px #E2E8F0' }} />
-                        <span style={{ fontSize: '13px', color: '#64748B', fontWeight: 500 }}>Accent: {template.themeColor}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid var(--color-border)' }}>
+                        <div style={{ width: '18px', height: '18px', borderRadius: '50%', backgroundColor: template.themeColor, border: '2px solid var(--color-surface)', boxShadow: '0 0 0 1px var(--color-border)' }} />
+                        <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)', fontWeight: 500 }}>Accent: {template.themeColor}</span>
                       </div>
                     </div>
                   );
@@ -284,7 +284,7 @@ export const TemplateGalleryModal: React.FC<TemplateGalleryModalProps> = ({ isOp
         {selectedTemplate && hasExistingData && (
           <div style={{
             position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+            backgroundColor: 'var(--color-surface)',
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
             zIndex: 10
           }}>
@@ -296,8 +296,8 @@ export const TemplateGalleryModal: React.FC<TemplateGalleryModalProps> = ({ isOp
               }}>
                 {React.createElement(IconMap[selectedTemplate.icon] || LayoutTemplate, { size: 32 })}
               </div>
-              <h2 style={{ fontSize: '24px', fontWeight: 700, margin: '0 0 12px 0', color: 'var(--text-primary)' }}>Apply {selectedTemplate.name} Template</h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 1.5, marginBottom: '32px' }}>
+              <h2 style={{ fontSize: '24px', fontWeight: 700, margin: '0 0 12px 0', color: 'var(--color-text-title)' }}>Apply {selectedTemplate.name} Template</h2>
+              <p style={{ color: 'var(--color-text-secondary)', fontSize: '15px', lineHeight: 1.5, marginBottom: '32px' }}>
                 Your invoice already has content. How would you like to apply this template?
               </p>
               
@@ -306,26 +306,26 @@ export const TemplateGalleryModal: React.FC<TemplateGalleryModalProps> = ({ isOp
                   onClick={() => setApplyMode('style-only')}
                   style={{ 
                     padding: '20px', borderRadius: '12px', border: '2px solid',
-                    borderColor: applyMode === 'style-only' ? 'var(--brand-color)' : 'var(--border-color)',
-                    backgroundColor: applyMode === 'style-only' ? '#EEF4FF' : '#FFFFFF',
+                    borderColor: applyMode === 'style-only' ? 'var(--color-primary)' : 'var(--color-border)',
+                    backgroundColor: applyMode === 'style-only' ? 'var(--color-info-light)' : 'var(--color-surface)',
                     textAlign: 'left', cursor: 'pointer', transition: 'all 0.2s ease'
                   }}
                 >
-                  <div style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '16px', marginBottom: '4px' }}>Apply Styling Only</div>
-                  <div style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Update the theme color to {selectedTemplate.themeColor}. Keep all my current notes, terms, and line items.</div>
+                  <div style={{ fontWeight: 600, color: 'var(--color-text-title)', fontSize: '16px', marginBottom: '4px' }}>Apply Styling Only</div>
+                  <div style={{ color: 'var(--color-text-secondary)', fontSize: '14px' }}>Update the theme color to {selectedTemplate.themeColor}. Keep all my current notes, terms, and line items.</div>
                 </button>
                 
                 <button 
                   onClick={() => setApplyMode('replace-content')}
                   style={{ 
                     padding: '20px', borderRadius: '12px', border: '2px solid',
-                    borderColor: applyMode === 'replace-content' ? 'var(--brand-color)' : 'var(--border-color)',
-                    backgroundColor: applyMode === 'replace-content' ? '#EEF4FF' : '#FFFFFF',
+                    borderColor: applyMode === 'replace-content' ? 'var(--color-primary)' : 'var(--color-border)',
+                    backgroundColor: applyMode === 'replace-content' ? 'var(--color-info-light)' : 'var(--color-surface)',
                     textAlign: 'left', cursor: 'pointer', transition: 'all 0.2s ease'
                   }}
                 >
-                  <div style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '16px', marginBottom: '4px' }}>Replace Content & Styling</div>
-                  <div style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>Update the theme color and replace my current notes, terms, and items with the template defaults.</div>
+                  <div style={{ fontWeight: 600, color: 'var(--color-text-title)', fontSize: '16px', marginBottom: '4px' }}>Replace Content & Styling</div>
+                  <div style={{ color: 'var(--color-text-secondary)', fontSize: '14px' }}>Update the theme color and replace my current notes, terms, and items with the template defaults.</div>
                 </button>
               </div>
               

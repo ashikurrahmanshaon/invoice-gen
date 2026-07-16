@@ -40,7 +40,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
         left: '24px',
         right: '24px',
         height: '1px',
-        background: '#E2E8F0',
+        background: 'var(--color-border)',
         zIndex: 1,
       }} />
 
@@ -57,7 +57,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
       }}>
         <div style={{
           height: '100%',
-          background: '#00A65A',
+          background: 'var(--color-primary)',
           width: `${Math.max(0, (currentStage - 1) / (stages.length - 1)) * 100}%`,
           transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
         }} />
@@ -67,18 +67,18 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
         const isActive = stage.num === currentStage;
         const isCompleted = stage.num < currentStage;
         
-        let bg = '#FFFFFF';
-        let border = '1px solid #E2E8F0';
-        let textColor = '#94A3B8';
+        let bg = 'var(--color-surface)';
+        let border = '1px solid var(--color-border)';
+        let textColor = 'var(--color-text-tertiary)';
 
         if (isActive) {
-          bg = '#00A65A';
-          border = '1px solid #00A65A';
+          bg = 'var(--color-primary)';
+          border = '1px solid var(--color-primary)';
           textColor = '#FFFFFF';
         } else if (isCompleted) {
-          bg = '#F0FDF4'; // light green bg
-          border = '1px solid #00A65A';
-          textColor = '#00A65A';
+          bg = 'var(--color-success-light)'; // Subdued green bg
+          border = '1px solid var(--color-primary)';
+          textColor = 'var(--color-primary)';
         }
 
         const circleSize = isMobile ? '32px' : '36px';
@@ -127,18 +127,18 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
             
             {/* The Label */}
             {!isMobile && (
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', background: '#FFFFFF', padding: '0 4px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', background: 'var(--color-background)', padding: '0 4px' }}>
                 <span style={{
                   fontSize: '13px',
                   fontWeight: 600,
-                  color: isActive ? '#00A65A' : '#334155',
+                  color: isActive ? 'var(--color-primary)' : 'var(--color-text-main)',
                   lineHeight: '1.2'
                 }}>
                   {stage.label}
                 </span>
                 <span style={{
                   fontSize: '11px',
-                  color: '#94A3B8',
+                  color: 'var(--color-text-tertiary)',
                   lineHeight: '1.2'
                 }}>
                   {stage.subtitle}

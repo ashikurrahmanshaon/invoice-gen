@@ -65,44 +65,44 @@ textarea {
 .input-label {
   font-size: 13px;
   font-weight: 500;
-  color: #475569;
+  color: var(--color-text-secondary);
 }
 
 .input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
-  background: #FFFFFF;
-  border: 1px solid #1E293B; /* Crisp 1px dark border */
+  background: var(--color-surface);
+  border: 1px solid var(--color-text-main); /* Crisp 1px dark border */
   border-radius: 8px; /* Sharper pro corners */
   transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
   height: 40px; /* Sleeker height */
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
+  box-shadow: var(--shadow-sm);
 }
 
 .input-wrapper:hover {
-  border-color: #000000;
-  background: #FFFFFF;
+  border-color: var(--color-primary);
+  background: var(--color-surface);
   box-shadow: none;
 }
 
 .input-wrapper:focus-within {
-  border-color: #000000;
-  background: #FFFFFF;
+  border-color: var(--color-primary);
+  background: var(--color-surface);
   box-shadow: none;
 }
 
 .input-wrapper:focus-within .input-icon {
-  color: #000000;
+  color: var(--color-primary);
 }
 
 .input-wrapper.has-error {
   border-color: var(--color-error);
-  background: #FFF5F5;
+  background: var(--color-error-light);
 }
 
 .input-wrapper.has-error:focus-within {
-  box-shadow: 0 0 0 3.5px rgba(239, 68, 68, 0.14);
+  box-shadow: 0 0 0 3.5px var(--color-error-border);
 }
 
 .input-icon {
@@ -154,7 +154,7 @@ input:disabled, textarea:disabled, select:disabled {
 }
 
 input::placeholder, textarea::placeholder {
-  color: #94A3B8; /* Keep placeholders readable but muted */
+  color: var(--color-text-tertiary); /* Keep placeholders readable but muted */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -252,9 +252,17 @@ a {
 .segmented-control {
   display: flex;
   gap: 2px;
-  background-color: #F1F5F9;
+  background-color: var(--color-background);
   padding: 3px;
   border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.sidebar-section {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
   border: 1px solid var(--color-border);
 }
 
@@ -271,7 +279,7 @@ a {
 }
 
 .segmented-nav-btn:not(.active):hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--color-border);
 }
 
 .segmented-nav-btn.active {
@@ -427,7 +435,7 @@ a {
 .footer-social-link:hover {
   color: var(--color-primary);
   border-color: var(--color-primary);
-  background: var(--color-primary-light, #E6F0FF);
+  background: var(--color-primary-light);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 102, 255, 0.15);
 }
@@ -448,8 +456,8 @@ a {
 }
 
 .trustpilot-badge:hover {
-  border-color: #00B67A;
-  box-shadow: 0 4px 16px rgba(0, 182, 122, 0.12);
+  border-color: var(--color-success);
+  box-shadow: 0 4px 16px var(--color-success-shadow);
   transform: translateY(-1px);
 }
 
@@ -544,20 +552,27 @@ a {
 
 .btn:focus-visible, .btn-icon:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3.5px rgba(0, 166, 90, 0.22);
+  box-shadow: 0 0 0 3.5px var(--color-focus-ring);
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
-  color: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 8px rgba(0, 166, 90, 0.25);
+  background: var(--color-primary);
+  color: #FFFFFF; /* Primary buttons should usually stay white text */
 }
 
-.btn-primary:hover:not(:disabled) {
-  background-color: var(--color-primary-hover);
-  box-shadow: 0 4px 16px rgba(0, 166, 90, 0.35);
-  transform: translateY(-1px);
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  background: var(--color-surface);
+  color: var(--color-text-main);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-hover);
 }
 
 .btn-danger {
@@ -606,7 +621,7 @@ a {
 }
 
 .btn-outline {
-  background-color: #FFFFFF;
+  background-color: var(--color-surface);
   border: 1.5px solid var(--color-border);
   color: var(--color-text-main);
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
@@ -614,7 +629,7 @@ a {
 
 .btn-outline:hover:not(:disabled) {
   background-color: var(--color-background);
-  border-color: #93C5FD;
+  border-color: var(--color-primary-light);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
   transform: translateY(-1px);
 }
@@ -626,7 +641,7 @@ a {
 }
 
 .btn-ghost:hover:not(:disabled) {
-  background-color: rgba(12, 68, 124, 0.05);
+  background-color: var(--color-primary-faint);
 }
 
 .btn-ghost.text-secondary {
@@ -634,7 +649,7 @@ a {
 }
 
 .btn-ghost.text-secondary:hover:not(:disabled) {
-  background-color: #F1F5F9;
+  background-color: var(--color-background);
   color: var(--color-text-main);
 }
 
@@ -648,11 +663,12 @@ a {
 
 /* Cards — flat, hairline border only */
 .card {
-  background: var(--color-surface);
-  border-radius: var(--radius-lg); /* 12px */
-  border: 1px solid var(--color-border);
-  box-shadow: none;
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
   padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
 }
 
 .card:hover {

@@ -70,43 +70,10 @@ export const generateInvoicePDF = async (data: InvoiceData) => {
     return;
   }
 
-  const blob = doc.output('blob');
-
-  // Beautiful native mobile experience using Web Share API
-  if (navigator.share && navigator.canShare) {
-    const file = new File([blob], filename, { type: 'application/pdf' });
-    if (navigator.canShare({ files: [file] })) {
-      try {
-        await navigator.share({
-          files: [file],
-          title: filename,
-        });
-        return; // Successfully shared!
-      } catch (err: any) {
-        // If the user cancelled the share, do not attempt to download again, just exit quietly.
-        if (err.name === 'AbortError') {
-          return;
-        }
-        console.warn("Share failed, falling back to download", err);
-      }
-    }
-  }
-
-  // Fallback to standard download for desktop and unsupported mobile browsers
+  // Standard jsPDF save function handles cross-browser compatibility, including mobile
   try {
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(() => {
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }, 200);
-  } catch (e) {
-    console.warn("Fallback to jsPDF save due to:", e);
     doc.save(filename);
+  } catch (e) {
+    console.error("PDF download failed:", e);
   }
 };
