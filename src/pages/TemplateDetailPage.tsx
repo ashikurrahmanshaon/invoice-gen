@@ -17,40 +17,44 @@ export const TemplateDetailPage: React.FC = () => {
         canonicalUrl={`https://invoice-gen.net/templates/${id}`}
       />
       
-      <div style={{ textAlign: 'center', padding: '60px 0 40px' }}>
-        <h1 style={{ fontSize: '48px', fontWeight: 800, color: 'var(--color-text-title)', marginBottom: '16px', letterSpacing: '-0.02em' }}>
-          {titleString} Invoice Template
-        </h1>
-        <p style={{ fontSize: '20px', color: 'var(--color-text-main)', maxWidth: '600px', margin: '0 auto', marginBottom: '32px' }}>
-          A minimal, professional invoice template designed specifically for {titleString.toLowerCase()}s. Customize it with your brand and download it instantly.
-        </p>
-        <Link to="/" style={{ display: 'inline-block', background: 'var(--color-primary)', color: '#FFFFFF', padding: '16px 32px', borderRadius: '8px', fontSize: '18px', fontWeight: 600, textDecoration: 'none' }}>
-          Use This Template Now
-        </Link>
-      </div>
+      <div className="workspace-layout">
+        <div className="workspace-main" style={{ maxWidth: '860px', margin: '0 auto' }}>
+          <div className="card" style={{ padding: '40px' }}>
+            <div style={{ marginBottom: '32px' }}>
+              <h1 style={{ fontSize: '32px', fontWeight: 800, color: 'var(--color-text-title)', marginBottom: '16px', letterSpacing: '-0.02em' }}>
+                {titleString} Invoice Template
+              </h1>
+              <p style={{ fontSize: '18px', color: 'var(--color-text-secondary)', lineHeight: 1.6, marginBottom: '24px' }}>
+                A minimal, professional invoice template designed specifically for {titleString.toLowerCase()}s. Customize it with your brand and download it instantly.
+              </p>
+              <Link to="/" className="btn btn-primary" style={{ display: 'inline-flex', padding: '0 32px' }}>
+                Use This Template Now
+              </Link>
+            </div>
 
-      <div style={{ margin: '40px auto', maxWidth: '800px', background: 'var(--color-surface)', borderRadius: '12px', border: '1px solid var(--color-border)', padding: '40px', boxShadow: 'var(--shadow-sm)' }}>
-        <div style={{ background: 'var(--color-background)', border: '1px dashed var(--color-border)', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-text-secondary)' }}>
-          [ Template Preview Rendering... ]
-        </div>
-      </div>
+            <div style={{ margin: '32px 0', background: 'var(--color-background)', borderRadius: '12px', border: '1px dashed var(--color-border)', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-text-secondary)' }}>
+              [ Template Preview Rendering... ]
+            </div>
 
-      <div style={{ marginTop: '80px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
-        <div>
-          <h3 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--color-text-title)', marginBottom: '16px' }}>What to include in a {titleString.toLowerCase()} invoice?</h3>
-          <ul style={{ color: 'var(--color-text-main)', lineHeight: '1.7', paddingLeft: '20px' }}>
-            <li>Your full business name and contact details</li>
-            <li>The client's name and address</li>
-            <li>A unique invoice number and date of issue</li>
-            <li>Itemized list of {titleString.toLowerCase()} services provided</li>
-            <li>Clear payment terms and due dates</li>
-          </ul>
-        </div>
-        <div>
-          <h3 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--color-text-title)', marginBottom: '16px' }}>Why use this template?</h3>
-          <p style={{ color: 'var(--color-text-main)', lineHeight: '1.7' }}>
-            Our {titleString.toLowerCase()} template is optimized to help you look professional and get paid faster. It automatically calculates taxes, supports multiple currencies, and can be downloaded as a high-quality PDF in one click. No account required.
-          </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
+              <div>
+                <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-text-title)', marginBottom: '16px' }}>What to include in a {titleString.toLowerCase()} invoice?</h3>
+                <ul style={{ color: 'var(--color-text-secondary)', lineHeight: '1.7', paddingLeft: '20px' }}>
+                  <li>Your full business name and contact details</li>
+                  <li>The client's name and address</li>
+                  <li>A unique invoice number and date of issue</li>
+                  <li>Itemized list of {titleString.toLowerCase()} services provided</li>
+                  <li>Clear payment terms and due dates</li>
+                </ul>
+              </div>
+              <div>
+                <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-text-title)', marginBottom: '16px' }}>Why use this template?</h3>
+                <p style={{ color: 'var(--color-text-secondary)', lineHeight: '1.7' }}>
+                  Our {titleString.toLowerCase()} template is optimized to help you look professional and get paid faster. It automatically calculates taxes, supports multiple currencies, and can be downloaded as a high-quality PDF in one click. No account required.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </LandingLayout>
