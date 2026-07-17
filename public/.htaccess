@@ -2,6 +2,9 @@
   RewriteEngine On
   RewriteBase /
   
+  # Exclude specific static files from SPA routing
+  RewriteRule ^(sitemap\.xml|robots\.txt|favicon\.ico|manifest\.json)$ - [L]
+  
   # Serve physical files or directories if they exist
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
