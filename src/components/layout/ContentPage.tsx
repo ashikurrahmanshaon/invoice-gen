@@ -19,8 +19,8 @@ export const ContentPage: React.FC<ContentPageProps> = ({ title, description, ur
       />
       
       <div className="workspace-layout">
-        <div className="workspace-main" style={{ maxWidth: '860px', margin: '0 auto' }}>
-          <div className="card" style={{ padding: '40px' }}>
+        <div className="workspace-main" style={{ width: '100%' }}>
+          <div className="card" style={{ padding: '24px 32px' }}>
             <div style={{ marginBottom: '32px' }}>
               <h1 style={{ 
                 fontSize: '32px', 
@@ -33,7 +33,7 @@ export const ContentPage: React.FC<ContentPageProps> = ({ title, description, ur
               </h1>
               {description && (
                 <p style={{ 
-                  fontSize: '18px', 
+                  fontSize: '16px', 
                   color: 'var(--color-text-secondary)', 
                   lineHeight: 1.6
                 }}>
@@ -42,7 +42,7 @@ export const ContentPage: React.FC<ContentPageProps> = ({ title, description, ur
               )}
             </div>
 
-            <div className="blog-article">
+            <div className="content-body" style={{ fontSize: '15px', lineHeight: 1.6, color: 'var(--color-text-main)' }}>
               {children}
             </div>
           </div>

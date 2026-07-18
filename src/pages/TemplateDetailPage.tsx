@@ -18,16 +18,28 @@ export const TemplateDetailPage: React.FC = () => {
       />
       
       <div className="workspace-layout">
-        <div className="workspace-main" style={{ maxWidth: '860px', margin: '0 auto' }}>
-          <div className="card" style={{ padding: '40px' }}>
+        <div className="workspace-main" style={{ width: '100%' }}>
+          <div className="card" style={{ padding: '24px 32px' }}>
             <div style={{ marginBottom: '32px' }}>
               <h1 style={{ fontSize: '32px', fontWeight: 800, color: 'var(--color-text-title)', marginBottom: '16px', letterSpacing: '-0.02em' }}>
                 {titleString} Invoice Template
               </h1>
-              <p style={{ fontSize: '18px', color: 'var(--color-text-secondary)', lineHeight: 1.6, marginBottom: '24px' }}>
+              <p style={{ fontSize: '16px', color: 'var(--color-text-secondary)', lineHeight: 1.6, marginBottom: '24px' }}>
                 A minimal, professional invoice template designed specifically for {titleString.toLowerCase()}s. Customize it with your brand and download it instantly.
               </p>
-              <Link to="/" className="btn btn-primary" style={{ display: 'inline-flex', padding: '0 32px' }}>
+              <Link to="/" className="btn" style={{ 
+                display: 'inline-flex', 
+                padding: '0 32px',
+                background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
+                color: 'white',
+                fontWeight: 600,
+                fontSize: '14px',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '100px',
+                border: 'none',
+                boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)'
+              }}>
                 Use This Template Now
               </Link>
             </div>

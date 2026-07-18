@@ -13,12 +13,12 @@ export const TemplateGalleryPage: React.FC = () => {
       />
       
       <div className="workspace-layout">
-        <div className="workspace-main" style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <div className="card" style={{ padding: '40px', marginBottom: '40px', textAlign: 'center' }}>
+        <div className="workspace-main" style={{ width: '100%' }}>
+          <div className="card" style={{ padding: '24px 32px', marginBottom: '40px', textAlign: 'center' }}>
             <h1 style={{ fontSize: '32px', fontWeight: 800, color: 'var(--color-text-title)', marginBottom: '16px', letterSpacing: '-0.02em' }}>
               Professional Invoice Templates
             </h1>
-            <p style={{ fontSize: '18px', color: 'var(--color-text-main)', maxWidth: '600px', margin: '0 auto' }}>
+            <p style={{ fontSize: '16px', color: 'var(--color-text-main)', maxWidth: '600px', margin: '0 auto' }}>
               Choose a professional template, customize it with your brand, and download it instantly as a PDF. 100% free.
             </p>
           </div>
