@@ -1,0 +1,126 @@
+{
+  "slug": "recurring-invoice",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Recurring Invoices: How to Automate Your Billing",
+    "description": "Stop chasing payments every month. Learn how to set up recurring invoices, manage retainers, and automate your cash flow for subscription services.",
+    "canonicalUrl": "https://invoice-gen.net/blog/recurring-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/recurring-invoice.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Recurring Invoices: Automate Your Billing",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Recurring Invoices", "url": "/blog/recurring-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Recurring Invoices: Automate Your Billing",
+      "subtitle": "Stop wasting hours every month generating the same invoices from scratch. Learn how to implement recurring billing to stabilize your cash flow and get paid automatically.",
+      "ctaText": "Create an Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "5 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "The Power of Predictable Revenue",
+      "text": "If you provide ongoing services—like weekly landscaping, monthly consulting retainers, or annual software maintenance—manually creating invoices is a massive waste of administrative time. A recurring invoice is exactly what it sounds like: an invoice that is automatically generated and sent to a client at regular intervals."
+    },
+    {
+      "id": "timeline-1",
+      "type": "timeline",
+      "events": [
+        { "date": "Jan 1", "title": "Contract Signed", "description": "Client agrees to a $1,000/month SEO retainer." },
+        { "date": "Jan 2", "title": "Auto-Billing Set Up", "description": "You configure a recurring invoice for the 1st of every month." },
+        { "date": "Feb 1", "title": "Invoice Auto-Sent", "description": "System generates Invoice #102 and emails it to the client automatically." },
+        { "date": "Feb 2", "title": "Auto-Charge (Optional)", "description": "If the client saved their credit card on file, the system auto-charges the card and sends a receipt." }
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Get Explicit Authorization",
+          "description": "Before setting up automatic credit card charges, you must have the client sign an authorization form agreeing to the recurring monthly amount."
+        },
+        {
+          "title": "Specify the Billing Period",
+          "description": "Even if the amount is identical, the invoice must state what period it covers (e.g., 'Retainer Services for March 2026')."
+        },
+        {
+          "title": "Use Sequential Numbering",
+          "description": "Ensure your invoicing software automatically increments the invoice number (INV-001, INV-002) for each recurring generation to satisfy accounting rules."
+        }
+      ]
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "Set your recurring invoices to send 7 days before the due date. E.g., If payment is due on the 1st of the month, have the system email the invoice on the 24th of the previous month so their accounting team has time to process it."
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "What if the amount changes every month?",
+          "description": "If your hours fluctuate wildly, true automated recurring invoicing won't work. However, you can create a 'recurring draft' template that auto-generates on the 1st, allowing you to just plug in the final hours and hit send."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Consulting Invoice Template", "url": "/templates/consulting" },
+        { "title": "Payment Terms Explained", "url": "/blog/payment-terms-explained" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Need to generate this month's invoice?",
+      "subtext": "Use our free generator to quickly draft your monthly billing document.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

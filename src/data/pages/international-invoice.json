@@ -1,0 +1,137 @@
+{
+  "slug": "international-invoice",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "International Invoices: How to Bill Overseas Clients Legally",
+    "description": "Learn how to format international invoices for cross-border services and goods. Covers currency conversion, VAT, and international wire transfer details.",
+    "canonicalUrl": "https://invoice-gen.net/blog/international-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/international-invoice.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "International Invoice Guide",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        },
+        "reviewedBy": {
+          "@type": "Person",
+          "name": "John Smith",
+          "url": "https://invoice-gen.net/authors/john-smith"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "International Invoice", "url": "/blog/international-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "How to Write an International Invoice",
+      "subtitle": "Billing overseas clients requires more than just changing the currency symbol. Learn how to format your international invoices to ensure compliance and prompt payment.",
+      "ctaText": "Create International Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "6 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp",
+      "reviewerId": "john-smith"
+    },
+    {
+      "id": "warning-1",
+      "type": "warning",
+      "message": "This guide provides general educational information regarding international billing and tax compliance. It does not constitute formal legal or tax advice. Cross-border tax treaties are complex. Always consult an international tax attorney."
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "The Challenge of Cross-Border Billing",
+      "text": "When you invoice a client in your own country, both parties share the same currency, tax laws, and banking systems. When you bill internationally, you introduce currency fluctuations, complex banking codes (SWIFT/IBAN), and foreign tax liabilities (like VAT or Withholding Tax). An improperly formatted international invoice will result in delayed wire transfers or, worse, double taxation."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "State exactly which currency the invoice is in (e.g., 'USD' instead of just '$', as '$' could mean Canadian or Australian Dollars).",
+        "You must include your bank's SWIFT/BIC code and your IBAN for international wire transfers.",
+        "Check if 'Reverse Charge' VAT rules apply to your B2B service exports.",
+        "Include both countries in the billing and sender addresses."
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Establish the Currency",
+          "description": "Agree on the currency beforehand. If you bill in a foreign currency, you accept the exchange rate risk. If you bill in your home currency, the client bears the risk."
+        },
+        {
+          "title": "Add International Banking Details",
+          "description": "A standard routing number is useless internationally. Provide your SWIFT/BIC code, IBAN (or account number), and the exact physical address of your bank's branch."
+        },
+        {
+          "title": "Handle Cross-Border Taxes",
+          "description": "If you are exporting services (e.g., a US freelancer designing a website for a UK company), you generally do not charge US Sales Tax or UK VAT. Add a note: 'Export of Services - Subject to Reverse Charge' if applicable."
+        }
+      ]
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "International wire transfers often incur hidden intermediary bank fees (ranging from $15 to $50). Add a note to your invoice stating: 'Client is responsible for all international wire transfer fees. The final amount received must match the invoice total.'"
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "What is the difference between an International Invoice and a Commercial Invoice?",
+          "description": "A Commercial Invoice is strictly for shipping physical goods through customs. An 'International Invoice' is a broader term that also covers billing for digital services (like consulting) across borders, which does not require customs clearance."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Commercial Invoice Guide", "url": "/blog/commercial-invoice" },
+        { "title": "VAT Invoice Guide", "url": "/blog/vat-invoice-guide" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to bill globally?",
+      "subtext": "Our free invoice generator supports over 150 global currencies and custom tax labels.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

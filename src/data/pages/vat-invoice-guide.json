@@ -1,0 +1,160 @@
+{
+  "slug": "vat-invoice-guide",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "VAT Invoices: The Complete Guide for Small Businesses",
+    "description": "Learn what a VAT invoice is, when you are legally required to issue one, and the strict requirements for formatting it correctly for tax authorities.",
+    "canonicalUrl": "https://invoice-gen.net/blog/vat-invoice-guide",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/vat-invoice.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "VAT Invoices: The Complete Guide",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        },
+        "reviewedBy": {
+          "@type": "Person",
+          "name": "John Smith",
+          "url": "https://invoice-gen.net/authors/john-smith"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "VAT Invoices Guide", "url": "/blog/vat-invoice-guide" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "VAT Invoices: The Complete Compliance Guide",
+      "subtitle": "Operating in the UK, EU, or Australia? Learn exactly what a VAT invoice is, when you are legally required to issue one, and the strict formatting rules you must follow.",
+      "ctaText": "Create a VAT Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "7 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp",
+      "reviewerId": "john-smith"
+    },
+    {
+      "id": "warning-1",
+      "type": "warning",
+      "message": "This guide provides general educational information regarding Value Added Tax (VAT). It does not constitute formal tax advice. Always consult with a registered accountant in your specific jurisdiction."
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Why VAT Invoices Are Strictly Regulated",
+      "text": "A VAT (Value Added Tax) invoice is not just a polite request for payment—it is a critical legal document. Unlike standard US sales tax, VAT is a consumption tax placed on a product whenever value is added at each stage of the supply chain. Because businesses use VAT invoices to reclaim the tax they paid on their own purchases (input tax) from the government, tax authorities heavily regulate exactly what must be printed on the invoice to prevent fraud."
+    },
+    {
+      "id": "definition-1",
+      "type": "definition",
+      "term": "VAT Registration Threshold",
+      "definition": "The legal turnover limit (e.g., £90,000 in the UK) at which a business MUST register for VAT, begin charging it to customers, and issuing valid VAT invoices."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "You CANNOT issue a VAT invoice if you are not officially registered for VAT.",
+        "A standard VAT invoice must include both your VAT number and the customer's VAT number (if B2B).",
+        "It must include a unique, sequential invoice number with no gaps in the sequence.",
+        "You usually must issue the VAT invoice within 30 days of the date of supply."
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Use a Unique Sequential Number",
+          "description": "Tax authorities require an unbroken sequence of numbers (e.g., 1001, 1002, 1003). If you delete an invoice, you must keep it on record as voided."
+        },
+        {
+          "title": "Display Both Addresses and VAT Numbers",
+          "description": "Clearly state your registered business address and your VAT Registration Number. For B2B sales (especially cross-border in the EU), you must also include the buyer's VAT number."
+        },
+        {
+          "title": "State the Time of Supply (Tax Point)",
+          "description": "Include the Date of Issue AND the 'Time of Supply' (the date the goods/services were provided), as this determines which tax period the transaction belongs to."
+        },
+        {
+          "title": "Break Down the Tax Precisely",
+          "description": "For every line item, state the unit price excluding VAT, the quantity, the VAT rate applied (e.g., 20%), and the total amount of VAT charged."
+        }
+      ]
+    },
+    {
+      "id": "mistakes-1",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Charging VAT when not registered.",
+          "solution": "This is a criminal offense in many jurisdictions. If you are not registered, simply issue a standard commercial invoice with zero tax and do not mention the word 'VAT'."
+        },
+        {
+          "mistake": "Using random invoice numbers.",
+          "solution": "If your invoice numbers jump randomly (e.g., from 105 to 942), it triggers immediate suspicion during an audit that you are hiding cash sales."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "What is a simplified VAT invoice?",
+          "description": "For retail sales under a certain threshold (e.g., under £250 in the UK), you can issue a simplified invoice that doesn't require the customer's details or a strict line-by-line tax breakdown."
+        },
+        {
+          "question": "Can I issue a VAT invoice in a foreign currency?",
+          "description": "Yes, but you must usually also show the total amount of VAT due converted into your home currency, using a legally recognized exchange rate for the time of supply."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Sales Tax on Invoices Guide", "url": "/blog/sales-tax-invoice-guide" },
+        { "title": "Proforma Invoices Explained", "url": "/invoice-types/proforma-invoice" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Generate flawless VAT invoices",
+      "subtext": "Our free invoice generator supports global currencies and custom tax fields perfect for VAT compliance.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

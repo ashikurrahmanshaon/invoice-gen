@@ -1,0 +1,126 @@
+{
+  "slug": "partial-invoice",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Partial Invoices: How to Request Deposits and Progress Payments",
+    "description": "Learn how to use partial invoices to secure upfront deposits, bill for project milestones, and protect your cash flow on long-term projects.",
+    "canonicalUrl": "https://invoice-gen.net/blog/partial-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/partial-invoice.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Partial Invoices: How to Request Deposits",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Partial Invoice", "url": "/blog/partial-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Partial Invoices: Securing Deposits & Progress Payments",
+      "subtitle": "Never fund a client's project out of your own pocket. Learn how to use partial invoices to collect upfront deposits and milestone payments safely.",
+      "ctaText": "Create a Partial Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "6 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Protecting Your Cash Flow",
+      "text": "For massive projects—like building a house, designing a website, or consulting over six months—waiting until the very end to send a single invoice is a recipe for bankruptcy. A partial invoice (also known as a deposit invoice or progress bill) allows you to break a massive contract down into smaller, manageable chunks that you bill for along the way."
+    },
+    {
+      "id": "timeline-1",
+      "type": "timeline",
+      "events": [
+        { "date": "Milestone 1", "title": "The Deposit", "description": "You issue a Partial Invoice for 30% of the total quote upfront before beginning any work." },
+        { "date": "Milestone 2", "title": "Progress Payment", "description": "Halfway through the project, you issue a second Partial Invoice for the next 30%." },
+        { "date": "Milestone 3", "title": "The Final Invoice", "description": "Upon project completion, you issue the Final Invoice for the remaining 40%, referencing the previous payments." }
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Reference the Total Project Cost",
+          "description": "Always remind the client of the big picture. State 'Total Project Quote: $10,000' at the top of the invoice."
+        },
+        {
+          "title": "Bill the Specific Fraction",
+          "description": "Add a line item that clearly explains the math: '50% Upfront Deposit for Web Design Services - $5,000'."
+        },
+        {
+          "title": "Provide a Receipt",
+          "description": "Once the partial invoice is paid, send a receipt so the client has proof they've paid off that specific milestone."
+        }
+      ]
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "For large material-heavy jobs (like construction), always ensure your first partial invoice covers 100% of the raw material costs. Only finance your labor, never finance physical goods."
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Does a partial invoice need its own invoice number?",
+          "description": "Yes. Every time you demand money, it must be on a document with a unique, sequential invoice number for your tax records. Do not just resend the original estimate with a note."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Final Invoice Guide", "url": "/blog/final-invoice" },
+        { "title": "Construction Invoice Template", "url": "/templates/construction" },
+        { "title": "Free Receipt Maker", "url": "/tools/receipt-maker" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Need a deposit to start working?",
+      "subtext": "Change the title of our free generator to 'Deposit Invoice' and secure your cash flow today.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

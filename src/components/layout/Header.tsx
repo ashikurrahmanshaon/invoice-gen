@@ -23,6 +23,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 export const Header: React.FC<HeaderProps> = ({ 
   onViewChange,
   onOpenHelp,
+  saveStatus,
   isMobileView
 }) => {
   const { t } = useTranslation();
@@ -76,6 +77,13 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Center: Navigation Links */}
           <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            {saveStatus && saveStatus !== 'idle' && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600, color: saveStatus === 'success' ? '#00A65A' : 'var(--color-text-secondary)', marginRight: '16px', opacity: 1, animation: saveStatus === 'success' ? 'fadeOut 3s forwards' : 'none' }}>
+                <style>{`@keyframes fadeOut { 0% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; } }`}</style>
+                {saveStatus === 'saving' && <span style={{ opacity: 0.6 }}>Saving...</span>}
+                {saveStatus === 'success' && <span>✓ Draft Saved</span>}
+              </div>
+            )}
             <button 
               onClick={() => onViewChange ? onViewChange('history') : navigate('/')} 
               style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'transparent', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 600, padding: '8px 14px', borderRadius: '8px', transition: 'all 0.2s ease' }}

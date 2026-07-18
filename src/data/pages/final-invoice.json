@@ -1,0 +1,126 @@
+{
+  "slug": "final-invoice",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "What is a Final Invoice? How to Close Out Large Projects",
+    "description": "Learn how to write a final invoice that summarizes all previous deposits, partial payments, and change orders to close out a contract cleanly.",
+    "canonicalUrl": "https://invoice-gen.net/blog/final-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/final-invoice.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "What is a Final Invoice?",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Final Invoice", "url": "/blog/final-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "What is a Final Invoice?",
+      "subtitle": "The project is finally done. Learn how to draft a final invoice that cleanly accounts for all past deposits and change orders so you can get paid your final balance.",
+      "ctaText": "Generate Final Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "5 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Tying Up Loose Ends",
+      "text": "When a long-term project completes, simply sending an invoice for the remaining balance often leads to confusion and payment delays. The client's accounting department needs a clear, unified history of the entire project. A Final Invoice serves as the ultimate summary document: it lists the total project cost, subtracts the partial deposits already paid, adds any mid-project change orders, and calculates the exact final balance due to close the contract."
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "State the Total Project Value",
+          "description": "Begin the invoice by listing the total, original quoted amount for the entire project as line item #1."
+        },
+        {
+          "title": "List Approved Change Orders",
+          "description": "If the client requested extra work outside the original quote, list these as separate, positive line items."
+        },
+        {
+          "title": "Subtract Previous Payments",
+          "description": "Add a negative line item (e.g., '-$3,000') labeled 'Less Initial Deposit Paid on [Date]' to deduct what they have already paid."
+        },
+        {
+          "title": "Calculate the Final Balance Due",
+          "description": "The math should perfectly equal the final amount they owe you to close the account."
+        }
+      ]
+    },
+    {
+      "id": "mistakes-1",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Sending a final invoice before getting sign-off.",
+          "solution": "Never issue the final invoice until the client has explicitly signed off on the project deliverables. If you invoice them while they still have revisions, they will hold the invoice hostage."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Is a final invoice a receipt?",
+          "description": "No. The final invoice is a demand for the final payment. Once they pay it, you should issue a Receipt showing the balance is finally $0.00."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Partial Invoice Guide", "url": "/blog/partial-invoice" },
+        { "title": "Quote vs Estimate vs Invoice", "url": "/blog/quote-vs-estimate-vs-invoice" },
+        { "title": "Free Receipt Maker", "url": "/tools/receipt-maker" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to close the project?",
+      "subtext": "Change the title of our free generator to 'Final Invoice' and collect your last payment.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

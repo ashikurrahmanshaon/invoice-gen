@@ -7,6 +7,8 @@ import { StageIndicator } from '../layout/StageIndicator';
 
 // Import Shared Unified Components
 import { BusinessSection } from '../invoice/BusinessSection';
+import { InvoiceDetailsSection } from '../invoice/InvoiceDetailsSection';
+import { PODetailsSection } from '../generator/PODetailsSection';
 import { ClientSection } from '../invoice/ClientSection';
 import { ItemsSection } from '../invoice/ItemsSection';
 import { TotalsSection } from '../invoice/TotalsSection';
@@ -29,15 +31,17 @@ interface MobileWizardProps {
   setTaxRate: (rate: number | string) => void;
   setTaxLabel: (label: string) => void;
   setShipping: (amount: number | string) => void;
-  setAmountPaid: (amount: number | string) => void;
+  setAmountPaid: (amount: string) => void;
   onDownloadPDF: () => void;
   onOpenFullPreview: () => void;
+  isGenerating?: boolean;
+  documentType?: 'invoice' | 'purchase_order';
 }
 
 export const MobileWizard: React.FC<MobileWizardProps> = ({
   currentStage, setStage, data, updateBusiness, updateClient, clientHook, selectedSavedClientId, setSelectedSavedClientId, updateDetails,
   updateOtherFields, addItem, removeItem, updateItem,
-  setDiscount, setTaxRate, setTaxLabel, setShipping, setAmountPaid, onDownloadPDF, onOpenFullPreview
+  setDiscount, setTaxRate, setTaxLabel, setShipping, setAmountPaid, onDownloadPDF, onOpenFullPreview, isGenerating, documentType = 'invoice'
 }) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -57,8 +61,12 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             <BusinessSection 
               data={data}
               updateBusiness={updateBusiness}
-              updateDetails={updateDetails}
             />
+            {documentType === 'invoice' ? (
+              <InvoiceDetailsSection data={data} updateDetails={updateDetails} />
+            ) : (
+              <PODetailsSection data={data as any} updateDetails={updateDetails} />
+            )}
           </div>
         </div>
       )}
@@ -100,14 +108,14 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
         <div className="flex-col gap-5" style={{ width: '100%' }}>
 
           <div className="mobile-card" style={{ padding: 'var(--space-4)' }}>
-            <TotalsSection
+            <TotalsSection 
               data={data}
               updateOtherFields={updateOtherFields}
               setDiscount={setDiscount}
               setTaxRate={setTaxRate}
               setTaxLabel={setTaxLabel}
               setShipping={setShipping}
-              setAmountPaid={setAmountPaid}
+              setAmountPaid={setAmountPaid as any}
             />
           </div>
         </div>
@@ -171,6 +179,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             <div style={{ width: '100%', marginTop: '8px' }}>
               <button 
                 onClick={onDownloadPDF}
+                disabled={isGenerating}
                 className="btn"
                 style={{ 
                   width: '100%', 
@@ -190,11 +199,19 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                   gap: '8px',
                   fontSize: '14.5px',
                   fontWeight: 600,
-                  boxShadow: '0 4px 14px rgba(15, 23, 42, 0.25)'
+                  boxShadow: '0 4px 14px rgba(15, 23, 42, 0.25)',
+                  opacity: isGenerating ? 0.7 : 1,
+                  cursor: isGenerating ? 'not-allowed' : 'pointer'
                 }}
               >
-                <Download size={18} />
-                Download PDF
+                {isGenerating ? (
+                  <div style={{ width: '18px', height: '18px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: 'white', borderRadius: '50%', animation: 'spin 1s linear infinite' }}>
+                    <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+                  </div>
+                ) : (
+                  <Download size={18} />
+                )}
+                {isGenerating ? 'Generating PDF...' : 'Download PDF'}
               </button>
             </div>
           )}

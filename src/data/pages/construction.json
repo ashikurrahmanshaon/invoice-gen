@@ -1,0 +1,155 @@
+{
+  "slug": "construction",
+  "category": "Invoice Templates",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Free Construction Invoice Template | Download & Send Instantly",
+    "description": "Create professional construction invoices. Perfect for general contractors and builders to track milestones, labor, materials, and change orders.",
+    "canonicalUrl": "https://invoice-gen.net/templates/construction",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/templates/construction.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Free Construction Invoice Template",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Invoice Templates", "url": "/templates" },
+        { "label": "Construction Invoice Template", "url": "/templates/construction" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Construction Invoice Template",
+      "subtitle": "Stop struggling with confusing spreadsheets. Use our free construction invoice template to bill for materials, subcontractors, and labor with complete clarity.",
+      "ctaText": "Create Construction Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "5 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "The Complexity of Construction Billing",
+      "text": "Construction projects are notorious for complex billing cycles. Between initial deposits, progress payments, subcontractor fees, and unexpected change orders, keeping your cash flow organized is a massive challenge. A specialized construction invoice provides the exact structure needed to ensure transparency with your clients and guarantee you get paid for every nail driven and hour worked."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "Always reference the original contract or estimate number.",
+        "Use progress billing (e.g., 25% Completion Milestone) for large projects.",
+        "Clearly isolate change orders from the original scope of work.",
+        "Ensure compliance with local retainage laws if applicable."
+      ]
+    },
+    {
+      "id": "feature-1",
+      "type": "featureGrid",
+      "features": [
+        {
+          "icon": "layout",
+          "title": "Progress Billing Ready",
+          "description": "Easily set up your invoice to bill for a percentage of completion rather than hourly rates."
+        },
+        {
+          "icon": "shield",
+          "title": "Change Order Transparency",
+          "description": "Add specific line items for approved change orders to prevent disputes over the final bill."
+        },
+        {
+          "icon": "zap",
+          "title": "Send from the Job Site",
+          "description": "Don't wait until you get back to the office. Generate and email a PDF invoice instantly from your phone."
+        }
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Include Contractor Licensing",
+          "description": "Display your legal business name, address, and state/local contractor license numbers prominently at the top."
+        },
+        {
+          "title": "Specify the Billing Period or Milestone",
+          "description": "Clearly state what is being billed (e.g., 'Draw 2: Framing & Roofing Completion' or 'Billing Period: Aug 1 - Aug 30')."
+        },
+        {
+          "title": "Itemize Clearly",
+          "description": "Separate your costs into logical categories: Labor, Materials, Subcontractor Fees, and Equipment Rentals."
+        },
+        {
+          "title": "Account for Retainage (If Applicable)",
+          "description": "If your commercial contract requires a 5% or 10% retainage (held back until final completion), add a negative line item to deduct this from the current payment due."
+        }
+      ]
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "Attach a 'Schedule of Values' (SOV) to your progress invoices for commercial projects. This provides the property owner with a detailed breakdown of the total contract sum into its various components, making invoice approval much faster."
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "What is progress billing in construction?",
+          "description": "Progress billing is an invoicing method where you bill for the percentage of work completed during a specific period, rather than waiting until the entire project is finished."
+        },
+        {
+          "question": "Should I include receipts for materials on a construction invoice?",
+          "description": "If you are working on a 'Time and Materials' (T&M) contract, yes, you should attach copies of material receipts. If you are working on a fixed-price contract, detailed itemization is usually sufficient without attaching raw receipts."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Contractor Invoice Template", "url": "/templates/contractor" },
+        { "title": "Plumbing Invoice Template", "url": "/templates/plumbing" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to bill your client?",
+      "subtext": "Use our free invoice generator to create a professional construction invoice in seconds.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

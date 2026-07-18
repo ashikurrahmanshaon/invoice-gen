@@ -6,11 +6,12 @@ const safeLocalStorage = {
   setItem: (k: string, v: string): void => { if (isBrowser) window.localStorage.setItem(k, v); },
   removeItem: (k: string): void => { if (isBrowser) window.localStorage.removeItem(k); }
 };
-import { STORAGE_KEY_CLIENTS } from '../types/invoice';
 
-const STORAGE_KEY_DRAFT = 'invoice_gen_data';
-const STORAGE_KEY_PROFILE = 'invoice_gen_profile';
+export const STORAGE_KEY_DRAFT = 'invoice_gen_data';
+export const STORAGE_KEY_PROFILE = 'invoice_gen_profile';
 export const STORAGE_KEY_HISTORY = 'invoice_gen_history';
+export const STORAGE_KEY_PO_HISTORY = 'po_gen_history';
+export const STORAGE_KEY_CLIENTS = 'invoice_gen_clients';
 
 export const loadProfile = (): ProfileData | null => {
   try {
@@ -24,14 +25,14 @@ export const loadProfile = (): ProfileData | null => {
   return null;
 };
 
-export const loadDraft = (): InvoiceDraftData | null => {
+export const loadDraft = (draftKey: string = STORAGE_KEY_DRAFT): InvoiceDraftData | null => {
   try {
-    const serializedData = safeLocalStorage.getItem(STORAGE_KEY_DRAFT);
+    const serializedData = safeLocalStorage.getItem(draftKey);
     if (serializedData) {
       return JSON.parse(serializedData) as InvoiceDraftData;
     }
   } catch (error) {
-    console.error('Failed to load draft from local storage', error);
+    console.error(`Failed to load draft from local storage using key ${draftKey}`, error);
   }
   return null;
 };
@@ -66,7 +67,7 @@ const isProfileEqual = (p1: ProfileData, p2: ProfileData | null) => {
   return JSON.stringify(p1) === JSON.stringify(p2);
 };
 
-export const saveToStorage = (data: InvoiceData): { draftSuccess: boolean; profileSuccess: boolean } => {
+export const saveToStorage = (data: InvoiceData | any, draftKey: string = STORAGE_KEY_DRAFT): { draftSuccess: boolean; profileSuccess: boolean } => {
   const { business, ...draftData } = data;
   const newProfile: ProfileData = {
     business,
@@ -78,10 +79,10 @@ export const saveToStorage = (data: InvoiceData): { draftSuccess: boolean; profi
 
   // Save Draft
   try {
-    safeLocalStorage.setItem(STORAGE_KEY_DRAFT, JSON.stringify(draftData));
+    safeLocalStorage.setItem(draftKey, JSON.stringify(draftData));
     draftSuccess = true;
   } catch (error) {
-    console.error('Failed to save draft to local storage', error);
+    console.error(`Failed to save draft to local storage using key ${draftKey}`, error);
   }
 
   // Save Profile (only if changed or if profile doesn't exist)
@@ -98,11 +99,11 @@ export const saveToStorage = (data: InvoiceData): { draftSuccess: boolean; profi
   return { draftSuccess, profileSuccess };
 };
 
-export const clearDraftStorage = (): void => {
+export const clearDraftStorage = (draftKey: string = STORAGE_KEY_DRAFT): void => {
   try {
-    safeLocalStorage.removeItem(STORAGE_KEY_DRAFT);
+    safeLocalStorage.removeItem(draftKey);
   } catch (error) {
-    console.error('Failed to clear draft storage', error);
+    console.error(`Failed to clear draft storage for key ${draftKey}`, error);
   }
 };
 
@@ -116,17 +117,17 @@ export const clearAllStorage = (): void => {
   }
 };
 
-export const loadHydratedData = (defaultInvoice: InvoiceData): InvoiceData => {
+export const loadHydratedData = <T extends object>(defaultData: T, draftKey: string = STORAGE_KEY_DRAFT): T => {
   const profile = loadProfile();
   
   let draft: any = null;
   try {
-    const serializedData = safeLocalStorage.getItem(STORAGE_KEY_DRAFT);
+    const serializedData = safeLocalStorage.getItem(draftKey);
     if (serializedData) {
       draft = JSON.parse(serializedData);
     }
   } catch (e) {
-    console.error('Failed to load draft', e);
+    console.error(`Failed to load draft for key ${draftKey}`, e);
   }
 
   let finalProfile = profile;
@@ -147,28 +148,28 @@ export const loadHydratedData = (defaultInvoice: InvoiceData): InvoiceData => {
   // 2. Hydration
   if (draft) {
     return {
-      ...defaultInvoice,
+      ...defaultData,
       ...draft,
       details: {
-        ...defaultInvoice.details,
+        ...(defaultData as any).details,
         ...(draft.details || {}),
       },
-      business: finalProfile?.business || defaultInvoice.business
+      business: finalProfile?.business || (defaultData as any).business
     };
   }
 
   // 3. No active draft. Create a new one using profile defaults.
   if (finalProfile) {
     return {
-      ...defaultInvoice,
+      ...defaultData,
       business: finalProfile.business,
       details: {
-        ...defaultInvoice.details,
+        ...(defaultData as any).details,
         currency: finalProfile.currency || 'USD'
       }
     };
   }
 
   // 4. Pure default
-  return defaultInvoice;
+  return defaultData;
 };

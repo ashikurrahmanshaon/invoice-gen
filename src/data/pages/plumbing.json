@@ -1,0 +1,139 @@
+{
+  "slug": "plumbing",
+  "category": "Invoice Templates",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Free Plumbing Invoice Template | Professional & Downloadable",
+    "description": "Download our free plumbing invoice template. Easily bill for service calls, hourly labor, parts, and emergency fees. Get paid faster today.",
+    "canonicalUrl": "https://invoice-gen.net/templates/plumbing",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/templates/plumbing.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Free Plumbing Invoice Template",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Invoice Templates", "url": "/templates" },
+        { "label": "Plumbing Invoice Template", "url": "/templates/plumbing" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Plumbing Invoice Template",
+      "subtitle": "A professional invoice template designed specifically for plumbers. Easily bill for emergency call-out fees, parts, and labor.",
+      "ctaText": "Create Free Invoice Now",
+      "ctaLink": "/#generator",
+      "readTime": "4 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Why Plumbers Need specialized Invoices",
+      "text": "Plumbing jobs range from quick 30-minute leak repairs to massive week-long commercial installations. Your invoice needs the flexibility to handle flat-rate emergency call-out fees, hourly labor rates, and detailed parts lists. Using a specialized plumbing invoice ensures your clients understand exactly what they are paying for, reducing friction and helping you collect payment on the spot."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "Always list your emergency call-out fee or diagnostic fee separately.",
+        "Itemize specific parts used (e.g., '3/4 inch PVC Valve') rather than grouping them.",
+        "Include your master plumbing license number to build trust.",
+        "State your warranty or guarantee terms clearly in the notes section."
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Add Your Business and License Info",
+          "description": "Add your plumbing business name, contact info, and state/local master plumber license numbers."
+        },
+        {
+          "title": "Log the Service Address",
+          "description": "Plumbers often work for landlords or property managers. Ensure the 'Billing Address' (the landlord) and the 'Service Address' (where the work was done) are both noted."
+        },
+        {
+          "title": "Itemize Labor and Parts",
+          "description": "List labor hours and rates on one line, and specific parts (copper piping, fixtures, sealants) on subsequent lines."
+        },
+        {
+          "title": "Include Warranty Information",
+          "description": "Use the notes section at the bottom to state something like, '30-Day Guarantee on all labor and installed parts.'"
+        }
+      ]
+    },
+    {
+      "id": "mistakes-1",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Failing to document pre-existing damage.",
+          "solution": "If you arrive at a job and there is existing water damage, note it on the invoice or estimate before starting work to avoid liability disputes later."
+        },
+        {
+          "mistake": "Not offering on-the-spot payment options.",
+          "solution": "Include a link or QR code on your digital invoice that allows the customer to pay via credit card immediately before you leave the driveway."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Can I charge a flat diagnostic fee?",
+          "description": "Yes. It is standard industry practice to charge a flat 'Call-out' or 'Diagnostic' fee just to assess the problem, which can then be credited toward the final repair bill if they hire you."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Contractor Invoice Template", "url": "/templates/contractor" },
+        { "title": "Construction Invoice Template", "url": "/templates/construction" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to get paid?",
+      "subtext": "Use our free invoice generator to create a professional plumbing invoice before you leave the job site.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

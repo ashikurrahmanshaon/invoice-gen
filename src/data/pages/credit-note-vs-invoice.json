@@ -1,0 +1,134 @@
+{
+  "slug": "credit-note-vs-invoice",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Credit Note vs Invoice: How to Fix Billing Mistakes",
+    "description": "Learn what a credit note (credit memo) is and how it differs from an invoice. Discover the legally compliant way to correct overbilling mistakes.",
+    "canonicalUrl": "https://invoice-gen.net/blog/credit-note-vs-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/credit-note.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Credit Note vs Invoice",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Credit Note vs Invoice", "url": "/blog/credit-note-vs-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Credit Note vs. Invoice",
+      "subtitle": "Mistakes happen. If you accidentally overcharge a client, you cannot simply delete the invoice. Learn how to use Credit Notes to fix billing errors legally.",
+      "ctaText": "Generate a Document",
+      "ctaLink": "/#generator",
+      "readTime": "5 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "The Opposite of an Invoice",
+      "text": "An invoice asks a client to pay you money. A credit note (or credit memo) does the exact opposite: it acknowledges that you owe the client money, or that they owe you less than originally stated. In professional accounting, once an invoice is finalized and sent, it becomes a permanent record. You cannot just delete it. If the amount was wrong, you must issue a credit note to legally cancel out the incorrect amount."
+    },
+    {
+      "id": "definition-1",
+      "type": "definition",
+      "term": "Credit Note",
+      "definition": "A commercial document issued by a seller to a buyer stating that a certain amount has been credited to the buyer's account, effectively lowering their invoice balance."
+    },
+    {
+      "id": "comparison-1",
+      "type": "comparisonTable",
+      "title": "Credit Note vs Invoice",
+      "headers": ["Feature", "Invoice", "Credit Note"],
+      "rows": [
+        ["Financial Impact", "Increases the amount the buyer owes", "Decreases the amount the buyer owes"],
+        ["When to use", "When you sell a product or service", "When goods are returned, or you overcharged"],
+        ["Tax Implication", "Increases your taxable revenue", "Decreases your taxable revenue"],
+        ["Value display", "Positive numbers (e.g., $100)", "Negative numbers (e.g., -$100)"]
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Identify the Original Invoice",
+          "description": "Every credit note must explicitly reference the original invoice number it is correcting. (e.g., 'Credit applied to Invoice #104')."
+        },
+        {
+          "title": "Format as a Negative Amount",
+          "description": "The line items on a credit note should reflect the exact items being returned or discounted, resulting in a negative total balance."
+        },
+        {
+          "title": "Reverse the Tax",
+          "description": "If you charged sales tax or VAT on the original invoice, the credit note must also reverse that exact tax amount so you don't overpay the government."
+        }
+      ]
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "If a client has already paid the incorrect invoice in full, a credit note can either be refunded directly to their bank account, or kept on file to offset the cost of their next future invoice."
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Is a credit note the same as a refund?",
+          "description": "Not exactly. A refund is the actual physical transfer of cash back to the buyer. A credit note is the accounting document that justifies why that cash was transferred, or why the client's next bill will be cheaper."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Invoice vs Receipt", "url": "/blog/invoice-vs-receipt" },
+        { "title": "Purchase Order vs Invoice", "url": "/blog/purchase-order-vs-invoice" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Need to issue a credit note?",
+      "subtext": "You can use our free generator. Just change the title to 'Credit Note' and enter negative quantities for your line items.",
+      "buttonText": "Start Generating",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

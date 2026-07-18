@@ -1,0 +1,131 @@
+{
+  "slug": "commercial-invoice",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "What is a Commercial Invoice? A Guide to International Shipping",
+    "description": "Learn what a commercial invoice is, why customs requires it for international shipping, and how to fill it out correctly to avoid border delays.",
+    "canonicalUrl": "https://invoice-gen.net/blog/commercial-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/commercial-invoice.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "What is a Commercial Invoice?",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Commercial Invoice", "url": "/blog/commercial-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "What is a Commercial Invoice?",
+      "subtitle": "If you are shipping goods across international borders, a standard invoice isn't enough. Learn how to create a commercial invoice that sails through customs.",
+      "ctaText": "Generate a Commercial Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "6 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "The Passport for Your Products",
+      "text": "A commercial invoice is a specialized legal document used in foreign trade. Unlike a standard invoice designed purely for getting paid, a commercial invoice acts as a customs declaration. Border agents use it to determine the true value of the imported goods, assess import duties, and calculate taxes. If your commercial invoice is missing key information, your shipment will be impounded at the border indefinitely."
+    },
+    {
+      "id": "definition-1",
+      "type": "definition",
+      "term": "HS Code (Harmonized System Code)",
+      "definition": "A standardized numerical method of classifying traded products used by customs authorities worldwide to identify products and apply exact tariffs."
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Include Exporter and Importer Details",
+          "description": "List the full legal name, address, and Tax ID (or VAT number) of both the seller (exporter) and the buyer (importer)."
+        },
+        {
+          "title": "Add the Country of Origin",
+          "description": "State exactly where the goods were manufactured—not just where they were shipped from. This determines tariff rates."
+        },
+        {
+          "title": "Itemize with HS Codes",
+          "description": "Describe every item in detail (e.g., 'Men's Cotton T-Shirts' instead of 'Apparel') and include the 6-digit HS classification code for each."
+        },
+        {
+          "title": "Declare the True Value",
+          "description": "State the exact purchase price in the agreed currency. Never declare a false, lower value to avoid customs duties, as this is illegal smuggling."
+        }
+      ]
+    },
+    {
+      "id": "mistakes-1",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Using a Proforma Invoice instead of a Commercial Invoice.",
+          "solution": "While a Proforma is used to get initial approval before shipping, Customs requires the final Commercial Invoice to process the actual shipment."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Do I need a commercial invoice for digital products?",
+          "description": "No. Commercial invoices are only required for physical goods crossing international borders that require customs clearance. Digital goods like software downloads do not go through customs."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "What is a Proforma Invoice?", "url": "/invoice-types/proforma-invoice" },
+        { "title": "International Invoice Guide", "url": "/blog/international-invoice" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to ship internationally?",
+      "subtext": "Change the title of our free generator to 'Commercial Invoice' and add your HS codes to the description lines.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

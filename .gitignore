@@ -32,3 +32,40 @@ dist-ssr
 .temp/
 tmp/
 *.tmp
+
+# Test/debug screenshots and PDFs
+*.png
+!public/**/*.png
+!src/**/*.png
+*.pdf
+bundle-analysis.html
+
+# Lighthouse / analytics reports
+*.report.html
+lh_*.json
+lighthouse-report.json
+analytics_reports/
+
+# Temp scripts and test files
+temp*.cjs
+test*.cjs
+test*.js
+test*.html
+drafts.cjs
+create_images.cjs
+fetch_live.cjs
+smoke_test.cjs
+verify.cjs
+verify_logo.js
+write_image.*
+local.html
+live.css
+live_index.html
+final_growth_audit_report.md
+publish_growth_content.cjs
+scratch/
+
+# One-time scaffolding scripts (already ran, output committed)
+scripts/addEstimatePDF.cjs
+scripts/fixPDF.cjs
+scripts/genEstimateGenerator.cjs

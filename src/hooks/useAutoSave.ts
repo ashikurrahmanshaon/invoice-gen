@@ -4,7 +4,7 @@ import { saveToStorage } from '../utils/storage';
 
 export type SaveStatus = 'idle' | 'saving' | 'success' | 'error_draft' | 'error_profile';
 
-export const useAutoSave = (data: InvoiceData) => {
+export const useAutoSave = (data: InvoiceData | any, draftKey?: string) => {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
   
@@ -19,7 +19,7 @@ export const useAutoSave = (data: InvoiceData) => {
     setSaveStatus('saving');
     // Implementing debounce for auto save to prevent aggressive writing
     timerRef.current = setTimeout(() => {
-      const { draftSuccess, profileSuccess } = saveToStorage(data);
+      const { draftSuccess, profileSuccess } = saveToStorage(data, draftKey);
       if (draftSuccess && profileSuccess) {
         lastSavedDataRef.current = stringifiedData;
       }
@@ -38,7 +38,7 @@ export const useAutoSave = (data: InvoiceData) => {
         clearTimeout(timerRef.current);
       }
     };
-  }, [data]);
+  }, [data, draftKey]);
 
   const cancelPendingSave = () => {
     if (timerRef.current) {

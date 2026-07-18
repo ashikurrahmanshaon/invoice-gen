@@ -6,18 +6,23 @@ import { ClientActions } from './ClientActions';
 import type { useClients } from '../../hooks/useClients';
 import { Modal } from '../ui/Modal';
 import { Input } from '../ui/Input';
+import type { PurchaseOrderData } from '../../types/purchaseOrder';
 
 interface ClientSectionProps {
-  data: InvoiceData;
-  updateClient: (updates: Partial<InvoiceData['client']>) => void;
+  data: InvoiceData | PurchaseOrderData;
+  updateClient: (updates: any) => void;
   clientHook: ReturnType<typeof useClients>;
   selectedSavedClientId: string | null;
   setSelectedSavedClientId: (id: string | null) => void;
+  documentType?: 'invoice' | 'purchase_order';
 }
 
 const ClientSectionComponent: React.FC<ClientSectionProps> = ({ 
-  data, updateClient, clientHook, selectedSavedClientId, setSelectedSavedClientId 
+  data, updateClient, clientHook, selectedSavedClientId, setSelectedSavedClientId, documentType = 'invoice'
 }) => {
+  const isPO = documentType === 'purchase_order';
+  const roleName = isPO ? 'Vendor' : 'Client';
+  const contactData = isPO ? (data as PurchaseOrderData).vendor : (data as InvoiceData).client;
   const [clientToDelete, setClientToDelete] = useState<SavedClient | null>(null);
 
   const handleLoadClient = (client: ClientDetails) => {
@@ -56,7 +61,7 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
     <div className="flex-col gap-6" style={{ width: '100%', marginBottom: '16px' }}>
       
       {/* Section Label */}
-      <div className="section-label">Client Info</div>
+      <div className="section-label">{roleName} Info</div>
 
       <div style={{ width: '100%' }}>
         <ClientPicker 
@@ -69,19 +74,20 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
           <div className="grid-2">
             <Input 
               id="client-name-input"
-              label="Client's business name"
+              label={`${roleName}'s business name`}
               type="text" 
               placeholder="E.g. Global Trade LLC"
-              value={data.client.name}
+              value={contactData.name}
               onChange={(e) => updateClient({ name: e.target.value })}
               leftIcon={<Building2 size={16} />}
             />
             <Input 
               id="client-email-input"
-              label="Client's email"
+              label={`${roleName}'s email`}
               type="email" 
-              placeholder="client@email.com"
-              value={data.client.email}
+              inputMode="email"
+              placeholder={`${roleName.toLowerCase()}@email.com`}
+              value={contactData.email}
               onChange={(e) => updateClient({ email: e.target.value })}
               leftIcon={<Mail size={16} />}
             />
@@ -90,10 +96,11 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
           <div className="grid-2">
             <Input 
               id="client-phone-input"
-              label="Phone Number"
+              label={`${roleName}'s phone`}
               type="tel" 
-              placeholder="+1 987 654 321"
-              value={data.client.phone || ''}
+              inputMode="tel"
+              placeholder="+1 234 567 8900"
+              value={contactData.phone || ''}
               onChange={(e) => updateClient({ phone: e.target.value })}
               leftIcon={<Phone size={16} />}
             />
@@ -101,26 +108,27 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
               id="client-taxid-input"
               label="Tax ID (optional)"
               type="text" 
-              placeholder="E.g. XY9876543"
-              value={data.client.taxId || ''}
+              placeholder="E.g. AB1234567"
+              value={contactData.taxId || ''}
               onChange={(e) => updateClient({ taxId: e.target.value })}
               leftIcon={<FileText size={16} />}
             />
           </div>
 
+          {/* Full Width Address */}
           <Input 
-            id="client-address1-input"
+            id="client-address-input"
             label="Address"
             type="text" 
-            placeholder="456 Client Ave, City, Country"
-            value={data.client.address1 || ''}
+            placeholder={`123 ${roleName} Rd, City, Country`}
+            value={contactData.address1 || ''}
             onChange={(e) => updateClient({ address1: e.target.value })}
             leftIcon={<MapPin size={16} />}
           />
         </div>
         
         <ClientActions 
-          clientDetails={data.client}
+          clientDetails={contactData} 
           clientHook={clientHook}
           selectedSavedClientId={selectedSavedClientId}
           setSelectedSavedClientId={setSelectedSavedClientId}
@@ -145,8 +153,13 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
 export const ClientSection = React.memo(
   ClientSectionComponent,
   (prevProps, nextProps) => {
-    return prevProps.data.client === nextProps.data.client &&
-           prevProps.selectedSavedClientId === nextProps.selectedSavedClientId &&
-           prevProps.clientHook.clients === nextProps.clientHook.clients;
+    return (
+      (prevProps.documentType === 'purchase_order' 
+        ? (prevProps.data as PurchaseOrderData).vendor === (nextProps.data as PurchaseOrderData).vendor 
+        : (prevProps.data as InvoiceData).client === (nextProps.data as InvoiceData).client) &&
+      prevProps.clientHook.clients === nextProps.clientHook.clients &&
+      prevProps.selectedSavedClientId === nextProps.selectedSavedClientId &&
+      prevProps.documentType === nextProps.documentType
+    );
   }
 );

@@ -1,0 +1,161 @@
+{
+  "slug": "how-to-write-an-invoice",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-18T00:00:00Z",
+  "meta": {
+    "title": "How to Write an Invoice: A Step-by-Step Guide",
+    "description": "Learn exactly how to write a professional invoice that gets paid on time. Follow our 5-step guide covering legal requirements, payment terms, and best practices.",
+    "canonicalUrl": "https://invoice-gen.net/blog/how-to-write-an-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/how-to-write-an-invoice.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "How to Write an Invoice: A Step-by-Step Guide",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        },
+        "reviewedBy": {
+          "@type": "Person",
+          "name": "John Smith",
+          "url": "https://invoice-gen.net/authors/john-smith"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "How to Write an Invoice", "url": "/blog/how-to-write-an-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "How to Write an Invoice: A Step-by-Step Guide",
+      "subtitle": "Everything you need to know about creating legally compliant, professional invoices that ensure you get paid on time.",
+      "ctaText": "Use Free Invoice Generator",
+      "ctaLink": "/#generator",
+      "readTime": "8 min",
+      "lastUpdated": "July 18, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp",
+      "reviewerId": "john-smith"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Why Professional Invoicing Matters",
+      "text": "Writing an invoice might seem like a simple administrative task, but it is actually one of the most critical steps in your business's cash flow cycle. An incomplete or confusing invoice is the number one cause of late payments. By structuring your invoice correctly, you eliminate friction for your client's accounting department and protect yourself legally."
+    },
+    {
+      "id": "timeline-1",
+      "type": "timeline",
+      "events": [
+        { "date": "Day 1", "title": "Service Completed", "description": "Ensure all project deliverables are approved by the client." },
+        { "date": "Day 2", "title": "Invoice Generated", "description": "Draft the invoice, double-checking PO numbers and hours." },
+        { "date": "Day 3", "title": "Invoice Sent", "description": "Email the PDF directly to the Accounts Payable department." }
+      ]
+    },
+    {
+      "id": "steps-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Add Your Business Header",
+          "description": "At the very top, clearly print your company name, logo, physical address, and contact information. If you operate globally, ensure your country is listed."
+        },
+        {
+          "title": "Include the Client's Details",
+          "description": "Use the exact legal entity name of your client. Include the specific contact person (or 'Accounts Payable') and their address."
+        },
+        {
+          "title": "Assign an Invoice Number and Dates",
+          "description": "Include a unique, sequential invoice number (e.g., INV-1002). Crucially, include both the 'Issue Date' and the specific 'Due Date' (e.g., Due: Aug 15, 2026)."
+        },
+        {
+          "title": "Itemize Your Services or Products",
+          "description": "Create a table with columns for Description, Quantity (or Hours), Rate, and Line Total. Be highly specific in your descriptions to avoid disputes."
+        },
+        {
+          "title": "Calculate Totals and Taxes",
+          "description": "Sum the line items to a Subtotal. Apply any necessary Sales Tax, VAT, or discounts on separate lines, then display a bold, clear Grand Total."
+        },
+        {
+          "title": "Add Payment Terms and Instructions",
+          "description": "At the bottom, specify how you want to be paid (Bank Transfer, PayPal, Stripe). List your banking details clearly, along with your late fee policy."
+        }
+      ]
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "Never write 'Due upon receipt'. Studies show that establishing a concrete due date (like Net 15 or Net 30) actually results in faster payments because accounting software can schedule it properly."
+    },
+    {
+      "id": "mistakes-1",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Forgetting the Purchase Order (PO) Number.",
+          "solution": "Large companies require a PO number to process payments. Always ask your client for a PO number before you begin work and print it clearly on the invoice."
+        },
+        {
+          "mistake": "Sending editable Word/Excel documents.",
+          "solution": "Always export your invoice as an uneditable PDF to prevent accidental modifications and formatting errors."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Can I write an invoice by hand?",
+          "description": "While technically legal in many places, handwritten invoices look unprofessional and are easily lost. Always use digital invoices or an invoice generator."
+        },
+        {
+          "question": "How long do I have to keep copies of my invoices?",
+          "description": "In the US, the IRS requires you to keep financial records for up to 7 years. In the UK, HMRC requires records for 6 years. Always store digital backups."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Payment Terms Explained", "url": "/blog/payment-terms-explained" },
+        { "title": "Freelance Invoice Template", "url": "/templates/freelance" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to write your invoice?",
+      "subtext": "Skip the formatting headaches. Use our free tool to generate a beautiful invoice in under a minute.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 18, 2026"
+    }
+  ]
+}

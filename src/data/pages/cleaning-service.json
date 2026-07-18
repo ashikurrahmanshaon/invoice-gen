@@ -1,0 +1,129 @@
+{
+  "slug": "cleaning-service",
+  "category": "Invoice Templates",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Free Cleaning Service Invoice Template | Download Now",
+    "description": "Download our free cleaning service invoice template. Perfect for residential maids, commercial cleaners, and janitorial businesses to bill clients professionally.",
+    "canonicalUrl": "https://invoice-gen.net/templates/cleaning-service",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/templates/cleaning-service.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Free Cleaning Service Invoice Template",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Invoice Templates", "url": "/templates" },
+        { "label": "Cleaning Service Invoice", "url": "/templates/cleaning-service" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Cleaning Service Invoice Template",
+      "subtitle": "A specialized invoice template for housekeepers, commercial cleaners, and janitorial services. Look professional and get paid faster.",
+      "ctaText": "Create Free Invoice Now",
+      "ctaLink": "/#generator",
+      "readTime": "4 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Professionalize Your Cleaning Business",
+      "text": "Whether you are cleaning residential homes, managing commercial office spaces, or doing deep move-out cleans, providing a professional invoice builds trust. Many commercial clients require a formal invoice before they can cut a check from their accounting department. Our cleaning service invoice makes it easy to bill for recurring weekly services, one-off deep cleans, and specialized supplies."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "Include both the billing address (e.g., property management) and the specific service address.",
+        "Itemize specific tasks (e.g., 'Carpet Steam Cleaning') separate from standard hourly labor.",
+        "Add convenient digital payment options for busy homeowners.",
+        "Schedule invoices to be sent consistently (e.g., end of month) for recurring commercial contracts."
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Enter the Service Date",
+          "description": "Crucial for recurring services. Always list the exact dates the cleaning took place so the client knows what billing cycle this covers."
+        },
+        {
+          "title": "Detail the Services Performed",
+          "description": "Don't just write 'Cleaning'. Write 'Deep Move-Out Clean - 4 Bedrooms, 2 Baths' or 'Weekly Commercial Office Cleaning'."
+        },
+        {
+          "title": "Add Supply Fees (If Applicable)",
+          "description": "If your contract dictates that the client pays for specialized chemical supplies or equipment rentals, list these on a separate line."
+        },
+        {
+          "title": "Provide Clear Payment Instructions",
+          "description": "Make it easy for homeowners to pay you instantly by including your Zelle, Venmo, or credit card payment links in the notes section."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Should I invoice before or after cleaning?",
+          "description": "For one-off residential jobs, it is standard to invoice immediately after the cleaning is completed. For recurring commercial contracts, it is standard to invoice at the end of the month (Net 30) for all services rendered that month."
+        },
+        {
+          "question": "Do cleaning services charge sales tax?",
+          "description": "This varies by state. In some states (like Texas and New York), certain cleaning and janitorial services are subject to sales tax. Always check your local Department of Revenue guidelines."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Contractor Invoice Template", "url": "/templates/contractor" },
+        { "title": "How to Create an Invoice", "url": "/blog/how-to-write-an-invoice" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to get paid for your hard work?",
+      "subtext": "Use our free invoice generator to create a professional cleaning service invoice in seconds.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

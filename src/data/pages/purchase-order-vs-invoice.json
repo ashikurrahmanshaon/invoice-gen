@@ -1,0 +1,126 @@
+{
+  "slug": "purchase-order-vs-invoice",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Purchase Order vs. Invoice: What's the Difference?",
+    "description": "Understand the critical differences between a Purchase Order (PO) and an Invoice. Learn how B2B companies use them together to manage procurement.",
+    "canonicalUrl": "https://invoice-gen.net/blog/purchase-order-vs-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/po-vs-invoice.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Purchase Order vs. Invoice: What's the Difference?",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "PO vs Invoice", "url": "/blog/purchase-order-vs-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Purchase Order vs. Invoice",
+      "subtitle": "They are the two most important documents in B2B transactions. One initiates the purchase, and the other finalizes the payment. Learn how they work together.",
+      "ctaText": "Create an Invoice Now",
+      "ctaLink": "/#generator",
+      "readTime": "5 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "The Core Difference: Who Sends What?",
+      "text": "The easiest way to differentiate a Purchase Order (PO) from an Invoice is by looking at who created it. The BUYER creates the Purchase Order to officially request goods. The SELLER creates the Invoice to officially demand payment for those goods. They are two halves of the exact same transaction, acting as a system of checks and balances for corporate accounting."
+    },
+    {
+      "id": "comparison-1",
+      "type": "comparisonTable",
+      "title": "PO vs Invoice at a Glance",
+      "headers": ["Feature", "Purchase Order (PO)", "Invoice"],
+      "rows": [
+        ["Created By", "The Buyer", "The Seller"],
+        ["Sent To", "The Seller", "The Buyer"],
+        ["Timing", "Sent BEFORE the transaction occurs", "Sent AFTER goods/services are delivered"],
+        ["Purpose", "To authorize a purchase and lock in prices", "To request payment and collect money"],
+        ["Document Action", "Creates an open order in procurement", "Closes the order in Accounts Payable"]
+      ]
+    },
+    {
+      "id": "timeline-1",
+      "type": "timeline",
+      "events": [
+        { "date": "Step 1", "title": "The Need Arises", "description": "A company realizes they need 50 new laptops for their staff." },
+        { "date": "Step 2", "title": "PO Created", "description": "The company's procurement department generates PO #9872 and sends it to their electronics supplier." },
+        { "date": "Step 3", "title": "Order Fulfilled", "description": "The supplier receives the PO, accepts the terms, and ships the 50 laptops." },
+        { "date": "Step 4", "title": "Invoice Sent", "description": "The supplier sends Invoice #102, which clearly references PO #9872." },
+        { "date": "Step 5", "title": "Payment Made", "description": "The buyer's accounting team matches the Invoice to the PO. Because they match, they pay the bill." }
+      ]
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "If a corporate client provides you with a PO number, you MUST print that exact number on your final invoice. Many enterprise Accounts Payable departments will automatically reject and refuse to pay an invoice that lacks a matching PO number."
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Is a Purchase Order legally binding?",
+          "description": "Yes. Once a seller accepts a purchase order, it becomes a legally binding contract between both parties."
+        },
+        {
+          "question": "Do small businesses need to use Purchase Orders?",
+          "description": "Not always. POs add administrative overhead. They are usually only necessary for mid-to-large businesses that need strict internal approval processes before spending company money."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Invoice vs Bill", "url": "/blog/invoice-vs-bill" },
+        { "title": "How to Write an Invoice", "url": "/blog/how-to-write-an-invoice" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to fulfill a Purchase Order?",
+      "subtext": "Use our free generator to create an invoice. Don't forget to add the client's PO Number in the notes section!",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

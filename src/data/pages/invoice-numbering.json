@@ -1,0 +1,131 @@
+{
+  "slug": "invoice-numbering",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Invoice Numbering Systems: Best Practices for Small Businesses",
+    "description": "Learn how to format your invoice numbers to track payments perfectly, avoid audits, and look like a massive enterprise.",
+    "canonicalUrl": "https://invoice-gen.net/blog/invoice-numbering",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/invoice-numbering.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Invoice Numbering Systems Guide",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Invoice Numbering", "url": "/blog/invoice-numbering" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Invoice Numbering Systems",
+      "subtitle": "Stop guessing your invoice numbers. Learn how to build a sequential numbering system that protects your business from tax audits and looks highly professional.",
+      "ctaText": "Generate an Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "4 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Why Invoice Numbers Matter",
+      "text": "An invoice number is a unique, sequential code assigned to every invoice you issue. While it seems like a minor administrative detail, it is actually the backbone of your accounting system. Tax authorities (like the IRS or HMRC) demand an unbroken sequence of invoices to prove you aren't hiding cash sales. If your numbers jump randomly, it triggers an immediate red flag for an audit."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "Never use 'Invoice #1'. Start at 'Invoice #1001' to look established.",
+        "Your numbering system MUST be sequential with no missing numbers.",
+        "Prefixes (like 'INV-' or '2026-') make tracking easier.",
+        "Never delete a generated invoice; mark it as 'Void' to preserve the sequence."
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "The Simple Sequential Method",
+          "description": "The easiest method. Just pick a high starting number (e.g., 1000) and count up by one. Example: 1001, 1002, 1003."
+        },
+        {
+          "title": "The Year-Based Method",
+          "description": "Start the number with the current year to easily track annual revenue. Example: 2026-001, 2026-002. Reset back to 001 on January 1st."
+        },
+        {
+          "title": "The Client-Based Method",
+          "description": "Add a prefix based on the client's name for easy sorting. Example: APPLE-001, GOOG-001. Only recommended if you have very few, large enterprise clients."
+        }
+      ]
+    },
+    {
+      "id": "mistakes-1",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Skipping numbers accidentally.",
+          "solution": "Use an automated invoice generator. Humans make mistakes when typing numbers manually into Excel. A good generator will automatically increment the number for you."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Can I have letters in my invoice number?",
+          "description": "Yes. Alphanumeric combinations (like 'INV-2026-05') are perfectly legal and often preferred for organizational purposes."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "How to Write an Invoice", "url": "/blog/how-to-write-an-invoice" },
+        { "title": "Tax Invoice Requirements", "url": "/blog/tax-invoice" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Let our system do the math",
+      "subtext": "Our free invoice generator allows you to set any starting number you want.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "slug": "invoice-vs-bill",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Invoice vs. Bill: What's the Difference?",
+    "description": "Invoice and Bill are often used interchangeably, but they mean different things depending on who you are. Learn the accounting difference between the two.",
+    "canonicalUrl": "https://invoice-gen.net/blog/invoice-vs-bill",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/invoice-vs-bill.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Invoice vs. Bill: What's the Difference?",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Invoice vs Bill", "url": "/blog/invoice-vs-bill" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Invoice vs. Bill: What's the Difference?",
+      "subtitle": "They describe the exact same document, but the word you use depends entirely on which side of the transaction you are on.",
+      "ctaText": "Create an Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "4 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Two Sides of the Same Coin",
+      "text": "Unlike 'Invoice vs. Receipt' (which are two entirely different documents), an 'Invoice' and a 'Bill' are actually the exact same piece of paper. The only difference is perspective. When you send a request for payment to a customer, you are sending an invoice. When your customer receives that document, they look at it and call it a bill."
+    },
+    {
+      "id": "comparison-1",
+      "type": "comparisonTable",
+      "title": "Perspective Matters",
+      "headers": ["Perspective", "Term Used", "Accounting Status"],
+      "rows": [
+        ["The Seller (You)", "Invoice", "Accounts Receivable (Money coming in)"],
+        ["The Buyer (Client)", "Bill", "Accounts Payable (Money going out)"]
+      ]
+    },
+    {
+      "id": "definition-1",
+      "type": "definition",
+      "term": "Accounts Receivable",
+      "definition": "Money owed to a company by its debtors. When you SEND an invoice, you log it in Accounts Receivable."
+    },
+    {
+      "id": "definition-2",
+      "type": "definition",
+      "term": "Accounts Payable",
+      "definition": "Money owed by a company to its creditors. When you RECEIVE a bill, you log it in Accounts Payable."
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "Think of a restaurant. The waiter brings you the 'bill' because you are the buyer who has to pay. The restaurant's accounting department logs that same meal as an 'invoice' sent to table 4."
+    },
+    {
+      "id": "myth-1",
+      "type": "mythVsFact",
+      "myth": "Bills require immediate payment, but invoices offer credit terms (like Net 30).",
+      "fact": "This is a common misconception. While consumer bills (like a restaurant check) are often due immediately, B2B bills (which are just received invoices) frequently have Net 30 or Net 60 payment terms."
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Should I title my document 'Invoice' or 'Bill'?",
+          "description": "Always title it 'Invoice'. As the seller requesting payment, you are generating an invoice. It is up to the customer to receive it and process it internally as a bill."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Invoice vs Receipt", "url": "/blog/invoice-vs-receipt" },
+        { "title": "How to Write an Invoice", "url": "/blog/how-to-write-an-invoice" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to send an invoice (so they can pay the bill)?",
+      "subtext": "Our free invoice generator creates professional documents your clients will be happy to pay.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

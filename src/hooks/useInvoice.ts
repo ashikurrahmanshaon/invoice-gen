@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import type { InvoiceData, LineItem } from '../types/invoice';
-import { calculateTotals } from '../utils/calculations';
+import { calculateTotals, normalizeDecimalString } from '../utils/calculations';
 import { loadHydratedData, clearDraftStorage, clearAllStorage } from '../utils/storage';
 import { generateInvoiceNumber } from '../utils/invoiceNumber';
 
@@ -68,21 +68,7 @@ export const defaultInvoice: InvoiceData = {
   signatureUrl: null
 };
 
-const normalizeDecimalString = (val: any): string => {
-  if (val === null || val === undefined) return '';
-  if (typeof val === 'string') {
-    const trimmed = val.trim();
-    if (trimmed === '' || trimmed === '.') return trimmed;
-    const num = Number(trimmed);
-    if (Number.isNaN(num) || !Number.isFinite(num)) return '';
-    return trimmed;
-  }
-  if (typeof val === 'number') {
-    if (Number.isNaN(val) || !Number.isFinite(val)) return '';
-    return val === 0 ? '' : String(val);
-  }
-  return '';
-};
+
 
 import type { Settings } from '../types/settings';
 
@@ -196,7 +182,7 @@ export const useInvoice = (initialSettings?: Settings) => {
       totals.taxLabel,
       totals.shipping,
       totals.amountPaid
-    );
+    ) as any;
 
     return hydrated;
   });

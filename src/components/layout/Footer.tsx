@@ -141,7 +141,7 @@ export const Footer: React.FC = () => {
             <div className="footer-links">
               <a href="/tools/receipt-maker/">{t('footer.receiptMaker', 'Receipt Maker')}</a>
               <a href="/tools/estimate-maker/">{t('footer.estimateMaker', 'Estimate Maker')}</a>
-              <a href="/tools/purchase-order/">{t('footer.purchaseOrder', 'Purchase Order')}</a>
+              <a href="/purchase-order-generator">{t('footer.purchaseOrder', 'Purchase Order')}</a>
               <a href="/tools/paystub-generator/">{t('footer.payStub', 'Pay Stub Generator')}</a>
             </div>
           </details>

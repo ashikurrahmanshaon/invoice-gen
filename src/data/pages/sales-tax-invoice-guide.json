@@ -1,0 +1,160 @@
+{
+  "slug": "sales-tax-invoice-guide",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Sales Tax on Invoices: The Complete Small Business Guide",
+    "description": "Learn how and when to charge sales tax on your invoices. Covers nexus rules, service taxability, and how to legally format tax on your invoice.",
+    "canonicalUrl": "https://invoice-gen.net/blog/sales-tax-invoice-guide",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/sales-tax.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Sales Tax on Invoices: The Complete Guide",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        },
+        "reviewedBy": {
+          "@type": "Person",
+          "name": "John Smith",
+          "url": "https://invoice-gen.net/authors/john-smith"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Sales Tax on Invoices", "url": "/blog/sales-tax-invoice-guide" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Sales Tax on Invoices: The Complete Guide",
+      "subtitle": "Navigating sales tax can be a nightmare for small businesses. Learn exactly when you need to charge sales tax, how to calculate it, and how to format it legally on your invoices.",
+      "ctaText": "Use Free Invoice Generator",
+      "ctaLink": "/#generator",
+      "readTime": "8 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp",
+      "reviewerId": "john-smith"
+    },
+    {
+      "id": "warning-1",
+      "type": "warning",
+      "message": "This guide provides general educational information regarding U.S. sales tax. It does not constitute formal legal or tax advice. Always consult with a registered CPA or tax attorney in your specific state."
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Understanding Sales Tax Compliance",
+      "text": "Unlike VAT in Europe, which is governed centrally, sales tax in the United States is governed at the state and local level. There are over 11,000 different tax jurisdictions in the US. Getting your invoice tax calculations wrong doesn't just annoy your customers—it can trigger devastating audits and severe financial penalties from the Department of Revenue."
+    },
+    {
+      "id": "definition-1",
+      "type": "definition",
+      "term": "Economic Nexus",
+      "definition": "The threshold of sales revenue or transaction volume in a specific state that requires an out-of-state business to register and collect sales tax in that state (typically $100,000 or 200 transactions)."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "You must collect sales tax if you have a 'nexus' (physical or economic presence) in the buyer's state.",
+        "Physical goods are almost always taxable; services are only taxable in certain states.",
+        "Sales tax must be explicitly broken out as a separate line item on the invoice.",
+        "You cannot legally collect sales tax unless you hold a valid permit in that state."
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Determine Your Nexus",
+          "description": "Do you have a physical office, employees, or inventory in the state? If yes, you have physical nexus. Do you sell more than $100,000 a year to another state? You likely have economic nexus."
+        },
+        {
+          "title": "Check Taxability",
+          "description": "Are you selling a product or a service? For example, SaaS (Software as a Service) is taxable in New York but exempt in California."
+        },
+        {
+          "title": "Register for a Tax Permit",
+          "description": "Before you put a single penny of sales tax on an invoice, you must apply for a sales tax permit with that state's Department of Revenue."
+        },
+        {
+          "title": "Format the Invoice Properly",
+          "description": "Your invoice must show the Subtotal of the goods/services, explicitly state the Tax Rate applied (e.g., 8.25%), show the calculated Tax Amount on its own line, and then show the final Grand Total."
+        }
+      ]
+    },
+    {
+      "id": "mistakes-1",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Collecting tax without a permit.",
+          "solution": "It is illegal to collect 'sales tax' on an invoice if you are not registered with the state to remit it. This is considered tax fraud."
+        },
+        {
+          "mistake": "Baking the tax into the price without labeling it.",
+          "solution": "In most jurisdictions, it is illegal to absorb the sales tax or combine it into a single line item without explicitly stating 'Tax Included in Price'."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Do freelancers need to charge sales tax?",
+          "description": "It depends on the state and the service. Graphic design deliverables might be taxable in Texas if delivered on a physical hard drive, but exempt if delivered via email."
+        },
+        {
+          "question": "What happens if I don't charge sales tax when I should have?",
+          "description": "If you are audited, the state will hold you (the seller) personally liable for the uncollected tax, plus interest and severe penalties, coming directly out of your profit margin."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "How to Write an Invoice", "url": "/blog/how-to-write-an-invoice" },
+        { "title": "Freelance Invoice Template", "url": "/templates/freelance" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Make tax calculations easy",
+      "subtext": "Our free invoice generator automatically calculates your percentage-based tax on the subtotal for perfect accuracy.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

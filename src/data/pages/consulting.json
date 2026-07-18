@@ -1,0 +1,155 @@
+{
+  "slug": "consulting",
+  "category": "Invoice Templates",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Free Consulting Invoice Template | Professional & Downloadable",
+    "description": "Download our free consulting invoice template. Perfect for business consultants, marketers, and IT professionals to bill for retainers and hourly services.",
+    "canonicalUrl": "https://invoice-gen.net/templates/consulting",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/templates/consulting.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Free Consulting Invoice Template",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Invoice Templates", "url": "/templates" },
+        { "label": "Consulting Invoice Template", "url": "/templates/consulting" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Consulting Invoice Template",
+      "subtitle": "A professional invoice template designed specifically for consultants. Easily bill for hourly advice, monthly retainers, or flat-rate strategy projects.",
+      "ctaText": "Create Free Invoice Now",
+      "ctaLink": "/#generator",
+      "readTime": "5 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Why Consultants Need specialized Invoices",
+      "text": "As a consultant, you are selling your expertise and time. Your invoice must reflect the premium nature of your services. Unlike retail businesses that sell physical goods, consultants often juggle complex billing structures like upfront retainers, performance bonuses, or hourly strategy sessions. A specialized consulting invoice ensures these intangible services are clearly documented and professionally presented."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "Include highly detailed descriptions of the strategic value delivered.",
+        "Use a clean, minimalist design that reflects your professional brand.",
+        "Clearly indicate if the invoice is drawing down from a pre-paid retainer.",
+        "Set strict payment terms (e.g., Net 15) to maintain healthy cash flow."
+      ]
+    },
+    {
+      "id": "feature-1",
+      "type": "featureGrid",
+      "features": [
+        {
+          "icon": "clock",
+          "title": "Retainer Management",
+          "description": "Easily show the total retainer amount, the hours billed against it, and the remaining balance."
+        },
+        {
+          "icon": "shield",
+          "title": "Clean, Corporate Design",
+          "description": "A polished layout that looks perfectly at home in the inbox of an enterprise CFO or Accounts Payable department."
+        },
+        {
+          "icon": "zap",
+          "title": "Expense Reimbursements",
+          "description": "Add separate line items for travel, flights, and software costs incurred during the consulting engagement."
+        }
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Detail the Scope of Work",
+          "description": "Don't just write 'Consulting'. Write 'Q3 Marketing Strategy Development and 3 Executive Workshops'."
+        },
+        {
+          "title": "Apply Retainers (If Applicable)",
+          "description": "If the client paid a $5,000 retainer upfront, list your total services for the month, and add a negative line item labeled 'Less Retainer Applied' to show the net amount due."
+        },
+        {
+          "title": "List Reimbursable Expenses",
+          "description": "If your contract allows you to bill for travel, list these expenses below your service fees and attach digital receipts if requested."
+        },
+        {
+          "title": "Set Clear Payment Terms",
+          "description": "Corporate clients often default to Net 60 or Net 90. If your contract states Net 30, print it clearly on the invoice to enforce your terms."
+        }
+      ]
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "If you are consulting on a long-term project, schedule your invoices to be sent on the same day every month (e.g., the 1st or the 15th). Consistency trains your client's accounting department to expect and process your invoices promptly."
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "How do I invoice for a consulting retainer?",
+          "description": "You can either invoice the full retainer amount upfront before work begins (Payment in Advance), or you can invoice at the end of the month detailing the hours worked against the pre-paid retainer balance."
+        },
+        {
+          "question": "Should I charge tax on consulting services?",
+          "description": "In many US states, professional services (like consulting) are exempt from sales tax, but this varies wildly by jurisdiction and country (e.g., VAT in Europe applies to services). Always consult a local tax professional."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Freelance Invoice Template", "url": "/templates/freelance" },
+        { "title": "Payment Terms Explained", "url": "/blog/payment-terms-explained" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to bill your client?",
+      "subtext": "Use our free invoice generator to create a professional consulting invoice in seconds.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

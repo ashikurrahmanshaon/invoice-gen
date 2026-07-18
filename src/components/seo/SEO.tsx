@@ -9,6 +9,7 @@ export interface SEOProps {
   ogImage?: string;
   twitterCard?: 'summary_large_image' | 'summary';
   schema?: Record<string, any> | Record<string, any>[];
+  keywords?: string[];
   noindex?: boolean;
 }
 
@@ -20,6 +21,7 @@ export const SEO: React.FC<SEOProps> = ({
   ogImage = 'https://invoice-gen.net/og-image.webp',
   twitterCard = 'summary_large_image',
   schema,
+  keywords = [],
   noindex = false
 }) => {
   const fullTitle = title.includes('Invoice-Gen.net') ? title : `${title} | Invoice-Gen.net`;
@@ -28,6 +30,9 @@ export const SEO: React.FC<SEOProps> = ({
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {keywords && keywords.length > 0 && (
+        <meta name="keywords" content={keywords.join(', ')} />
+      )}
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       
       {noindex && <meta name="robots" content="noindex, nofollow" />}

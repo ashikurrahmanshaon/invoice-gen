@@ -1,0 +1,131 @@
+{
+  "slug": "quote-vs-estimate-vs-invoice",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Quote vs Estimate vs Invoice: Which One Should You Use?",
+    "description": "Don't confuse your clients. Learn the legal and practical differences between a quote, an estimate, and an invoice, and when to use each in your sales process.",
+    "canonicalUrl": "https://invoice-gen.net/blog/quote-vs-estimate-vs-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/quote-vs-estimate.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Quote vs Estimate vs Invoice",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Quote vs Estimate vs Invoice", "url": "/blog/quote-vs-estimate-vs-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Quote vs Estimate vs Invoice",
+      "subtitle": "Navigating the sales cycle requires sending the right document at the right time. Learn exactly when to issue an estimate, lock in a quote, and finally send an invoice.",
+      "ctaText": "Generate an Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "6 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "The Evolution of a Sale",
+      "text": "The sales process is an evolution from an educated guess to a legally binding demand for payment. If you send an invoice when a client was expecting an estimate, you risk appearing aggressive and losing the deal. If you send an estimate when you should have sent a quote, you leave yourself open to legal disputes over final pricing. Understanding this progression is vital for healthy client relationships."
+    },
+    {
+      "id": "comparison-1",
+      "type": "comparisonTable",
+      "title": "The Three Stages of Billing",
+      "headers": ["Document", "When to Send", "Is it Legally Binding?", "Price Flexibility"],
+      "rows": [
+        ["Estimate", "Before work begins (Discovery phase)", "No", "Highly flexible (an educated guess)"],
+        ["Quote", "Before work begins (Agreement phase)", "Yes (Once accepted)", "Fixed price (cannot change without a new agreement)"],
+        ["Invoice", "After work is completed (or at milestones)", "Yes (Demand for payment)", "Final price based on the accepted quote"]
+      ]
+    },
+    {
+      "id": "definition-1",
+      "type": "definition",
+      "term": "Estimate",
+      "definition": "An educated guess of how much a job will cost based on initial information. It is subject to change as the scope of work becomes clearer."
+    },
+    {
+      "id": "definition-2",
+      "type": "definition",
+      "term": "Quote",
+      "definition": "A formal, fixed price offer for a specific scope of work. Once the client accepts a quote, the price cannot legally change unless the scope changes."
+    },
+    {
+      "id": "timeline-1",
+      "type": "timeline",
+      "events": [
+        { "date": "Stage 1: The Estimate", "title": "Rough Guess", "description": "Client asks 'roughly how much?' You provide an Estimate based on past similar projects." },
+        { "date": "Stage 2: The Quote", "title": "Fixed Offer", "description": "You visit the site, measure the exact dimensions, and provide a fixed Quote valid for 30 days." },
+        { "date": "Stage 3: The Work", "title": "Execution", "description": "The client accepts the Quote. You perform the work exactly as described." },
+        { "date": "Stage 4: The Invoice", "title": "Payment Demand", "description": "Work is done. You issue an Invoice matching the Quote to collect your money." }
+      ]
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "Always put an expiration date on your Quotes (e.g., 'Valid for 30 Days'). Material costs fluctuate, and you don't want to be legally bound to a price you quoted six months ago."
+    },
+    {
+      "id": "mistakes-1",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Treating a quote like an estimate.",
+          "solution": "If you issue a 'Quote' for $1,000, but the job ends up taking longer, you cannot simply invoice the client for $1,500. A quote is fixed. If you want flexibility, issue an Estimate."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Invoice vs Receipt", "url": "/blog/invoice-vs-receipt" },
+        { "title": "Proforma Invoice Explained", "url": "/invoice-types/proforma-invoice" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to send a document?",
+      "subtext": "You can change the title of our free generator to 'Quote', 'Estimate', or 'Invoice' with a single click.",
+      "buttonText": "Start Generating",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

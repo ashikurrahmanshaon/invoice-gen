@@ -1,0 +1,148 @@
+{
+  "slug": "tax-invoice",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "What is a Tax Invoice? Rules, Requirements, & Examples",
+    "description": "Learn the legal definition of a Tax Invoice, when you are required to issue one, and the strict requirements for formatting it for government tax authorities.",
+    "canonicalUrl": "https://invoice-gen.net/blog/tax-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/tax-invoice.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "What is a Tax Invoice?",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        },
+        "reviewedBy": {
+          "@type": "Person",
+          "name": "John Smith",
+          "url": "https://invoice-gen.net/authors/john-smith"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Tax Invoice", "url": "/blog/tax-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "What is a Tax Invoice?",
+      "subtitle": "A tax invoice isn't just a bill—it's a legally required document for reclaiming taxes. Learn how to generate compliant tax invoices in countries with VAT or GST.",
+      "ctaText": "Generate a Tax Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "6 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp",
+      "reviewerId": "john-smith"
+    },
+    {
+      "id": "warning-1",
+      "type": "warning",
+      "message": "This guide provides general educational information regarding international tax invoices. It does not constitute formal tax advice. Always consult with a registered accountant in your jurisdiction."
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Standard Invoices vs. Tax Invoices",
+      "text": "In countries that use a Value Added Tax (VAT) or Goods and Services Tax (GST) system—such as the UK, Australia, India, and most of Europe—a standard invoice is legally insufficient for B2B transactions. If a business wants to claim 'input tax credits' (getting a refund from the government for the tax they paid on your services), they must hold a valid, heavily regulated 'Tax Invoice' issued by you."
+    },
+    {
+      "id": "comparison-1",
+      "type": "comparisonTable",
+      "title": "Standard Invoice vs. Tax Invoice",
+      "headers": ["Feature", "Standard Invoice", "Tax Invoice"],
+      "rows": [
+        ["Used By", "Non-tax-registered businesses (or in the USA)", "VAT/GST registered businesses"],
+        ["Tax ID Required", "Optional", "Mandatory (Supplier's and often Buyer's)"],
+        ["Tax Breakdown", "Can be a lump sum at the bottom", "Must be calculated line-by-line"],
+        ["Legal Status", "Commercial request for payment", "Primary evidence for government tax claims"]
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Title the Document Clearly",
+          "description": "The document must explicitly have the words 'Tax Invoice' written at the top. Just writing 'Invoice' can cause it to be rejected by auditors."
+        },
+        {
+          "title": "Include Your Tax Registration Number",
+          "description": "Display your government-issued GST, VAT, or ABN number prominently near your business address."
+        },
+        {
+          "title": "Identify the Buyer's Details",
+          "description": "For transactions over a certain amount (e.g., $1,000 in Australia), you must include the buyer's identity or ABN/VAT number."
+        },
+        {
+          "title": "Show Tax for Each Line Item",
+          "description": "You must clearly indicate the exact amount of tax charged for each individual product or service line, not just a combined total at the bottom."
+        }
+      ]
+    },
+    {
+      "id": "mistakes-1",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Issuing a Tax Invoice when you aren't registered.",
+          "solution": "If your revenue is below the mandatory tax registration threshold and you haven't voluntarily registered for VAT/GST, you cannot legally issue a 'Tax Invoice' or collect those taxes."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Do businesses in the USA use Tax Invoices?",
+          "description": "No. The USA uses a state-level Sales Tax system, not a federal VAT/GST system. US businesses issue standard commercial invoices with a sales tax line item, but they do not use the legal framework of a 'Tax Invoice'."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "VAT Invoice Guide", "url": "/blog/vat-invoice-guide" },
+        { "title": "Sales Tax on Invoices", "url": "/blog/sales-tax-invoice-guide" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to generate a compliant document?",
+      "subtext": "Change the title of our free invoice generator to 'Tax Invoice' and input your Tax ID.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

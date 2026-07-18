@@ -1,0 +1,112 @@
+{
+  "slug": "pdf-invoice",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Why You Must Always Send PDF Invoices (Never Word or Excel)",
+    "description": "Learn why sending editable Word or Excel invoices is a massive security risk, and why PDF is the only acceptable format for professional billing.",
+    "canonicalUrl": "https://invoice-gen.net/blog/pdf-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/pdf-invoice.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Why You Must Send PDF Invoices",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "PDF Invoices", "url": "/blog/pdf-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Why PDF is the Only Acceptable Invoice Format",
+      "subtitle": "Stop sending Microsoft Word and Excel files to your clients. Learn why the PDF format is critical for security, professionalism, and accounting compliance.",
+      "ctaText": "Generate a Secure PDF",
+      "ctaLink": "/#generator",
+      "readTime": "3 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "The Danger of Editable Documents",
+      "text": "An invoice is a legally binding financial document. If you email a client an invoice in a Microsoft Word (.docx) or Excel (.xlsx) format, you are sending them a document that they can easily alter. An unethical client could accidentally or maliciously change the line item totals, modify the due date, or delete late fee clauses before saving it to their records. A PDF (Portable Document Format) 'flattens' your invoice into a read-only document, protecting you from fraud."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "PDFs are universally readable on any device (Mac, PC, iPhone, Android) without needing special software.",
+        "PDFs lock your formatting in place. A Word document might look completely broken on the client's screen if they don't have your fonts installed.",
+        "PDFs are significantly harder to tamper with, ensuring the amount you billed is the amount on record."
+      ]
+    },
+    {
+      "id": "mistakes-1",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Sending a link to a live Google Doc.",
+          "solution": "Never send a Google Doc link as an invoice. Even if you set it to 'View Only', the client cannot easily download it into their accounting software. Always File > Download > PDF Document."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Can I use an online invoice generator to make a PDF?",
+          "description": "Yes! The best way to create a PDF invoice is to use a web-based generator. You fill out the fields, and the software instantly renders a perfectly formatted, compressed PDF ready for emailing."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Electronic Invoices Explained", "url": "/blog/electronic-invoice" },
+        { "title": "How to Write an Invoice", "url": "/blog/how-to-write-an-invoice" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Generate a flawless PDF instantly",
+      "subtext": "Our free invoice generator creates highly-optimized, secure PDF files with a single click. No watermarks.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

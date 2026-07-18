@@ -1,0 +1,116 @@
+{
+  "slug": "invoice-due-date",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Invoice Due Dates Explained: When Should You Expect Payment?",
+    "description": "Learn how to choose the right invoice due date to speed up cash flow. Covers Net 15, Net 30, and why 'Due Upon Receipt' is often a mistake.",
+    "canonicalUrl": "https://invoice-gen.net/blog/invoice-due-date",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/invoice-due-date.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Invoice Due Dates Explained",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Invoice Due Date", "url": "/blog/invoice-due-date" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Invoice Due Dates Explained",
+      "subtitle": "Setting the wrong due date is the number one reason invoices get paid late. Learn how to strategically choose a date that gets you paid faster.",
+      "ctaText": "Set a Due Date",
+      "ctaLink": "/#generator",
+      "readTime": "4 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "The Psychology of Due Dates",
+      "text": "An invoice due date isn't just a suggestion; it is the exact day an invoice becomes legally past due. Many small business owners use vague terms like 'Due Upon Receipt', assuming it means they will get paid immediately. In reality, accounting departments treat vague dates as low priority. Giving a specific calendar date creates urgency and a hard deadline."
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "Never just write 'Net 30'. Write 'Net 30: Due by August 15th, 2026'. Removing the math from the client's hands ensures they cannot claim they miscalculated the due date."
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Understand the Baseline",
+          "description": "If you don't list a due date, local laws usually default to 30 days after the invoice is received. Don't rely on defaults; state it explicitly."
+        },
+        {
+          "title": "Avoid 'Due Upon Receipt'",
+          "description": "While it sounds fast, it is impossible for corporate accounting departments to process payments instantly. Ask for Net 7 or Net 15 instead to give them a realistic but tight deadline."
+        },
+        {
+          "title": "Use Concrete Calendar Dates",
+          "description": "Our software allows you to pick the exact calendar date (e.g., Oct 12). This is the clearest, most undeniable way to set a deadline."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "What happens the day after the due date?",
+          "description": "The invoice officially enters 'past due' status. If you have a late fee policy stated in your contract, this is the exact day you are legally allowed to begin applying those fees."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Payment Terms Explained", "url": "/blog/payment-terms-explained" },
+        { "title": "Late Payment Fees Guide", "url": "/blog/late-payment-fees-guide" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to get paid?",
+      "subtext": "Our free invoice generator includes a calendar picker so you can set a crystal clear due date.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "slug": "debt-collection-guide",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Debt Collection & Invoice Recovery: What to do When Clients Don't Pay",
+    "description": "A step-by-step guide to recovering unpaid invoices. Learn how to escalate from polite reminders to collection agencies and small claims court legally.",
+    "canonicalUrl": "https://invoice-gen.net/blog/debt-collection-guide",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/debt-collection.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Debt Collection & Invoice Recovery",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        },
+        "reviewedBy": {
+          "@type": "Person",
+          "name": "John Smith",
+          "url": "https://invoice-gen.net/authors/john-smith"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Debt Collection Guide", "url": "/blog/debt-collection-guide" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Debt Collection: How to Recover Unpaid Invoices",
+      "subtitle": "It is the worst part of running a business. When a client ignores your invoice for months, here is the exact escalation path to recover your money legally.",
+      "ctaText": "Set Better Payment Terms",
+      "ctaLink": "/#generator",
+      "readTime": "8 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp",
+      "reviewerId": "john-smith"
+    },
+    {
+      "id": "warning-1",
+      "type": "warning",
+      "message": "This guide provides general educational information regarding commercial debt collection. It does not constitute formal legal advice. Debt collection is heavily regulated by the Fair Debt Collection Practices Act (FDCPA) and state laws. Consult a business attorney before taking legal action."
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "The Escalation Ladder",
+      "text": "Every small business eventually deals with a client who simply won't pay. The secret to successful debt recovery is controlled escalation. You must transition from 'customer service mode' to 'legal enforcement mode' strategically. Jumping straight to a lawsuit over a $500 invoice will cost you more than the debt is worth, but waiting too long severely decreases your chances of ever seeing the money."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "Never assume malice initially; 80% of late payments are due to lost emails or administrative errors.",
+        "A formal 'Letter Before Action' on attorney letterhead has a massive success rate in forcing payment.",
+        "Collection agencies typically take 20% to 50% of the recovered debt as their fee.",
+        "Small Claims Court is effective but requires you to invest your own time and effort to collect the judgment."
+      ]
+    },
+    {
+      "id": "timeline-1",
+      "type": "timeline",
+      "events": [
+        { "date": "Day 1-14 Late", "title": "The Friendly Reminders", "description": "Send a polite email weekly. Assume they simply forgot. Ask if they need the invoice resent." },
+        { "date": "Day 30 Late", "title": "The Firm Demand", "description": "Stop working immediately. Issue a formal demand letter via certified mail applying agreed late fees." },
+        { "date": "Day 60 Late", "title": "The Final Warning", "description": "Send a 'Letter Before Action' stating that if payment is not received in 7 days, the debt will be sent to collections or court." },
+        { "date": "Day 90 Late", "title": "Legal Action", "description": "Hand the debt to a third-party collection agency, or file a lawsuit in Small Claims Court." }
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Stop All Future Work",
+          "description": "Never throw good time after bad money. If a client is 30 days late, pause all ongoing projects, shut off software access, or stop deliveries immediately."
+        },
+        {
+          "title": "Send a Formal Demand Letter",
+          "description": "Send a physical letter via Certified Mail with a Return Receipt. This proves legally that they received your demand for payment, which is crucial evidence for court."
+        },
+        {
+          "title": "Hire a Collection Agency",
+          "description": "If the debt is over $1,000, consider a B2B collection agency. They work on contingency (they only get paid if they recover the money). Their aggressive tactics often break the silence."
+        },
+        {
+          "title": "Small Claims Court",
+          "description": "If the debt is below your state's maximum (usually $5,000 to $10,000), you can sue without a lawyer. However, winning a judgment doesn't magically put money in your bank—you still have to enforce it (e.g., wage garnishment or property liens)."
+        }
+      ]
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "Sometimes, accepting a partial payment is better than going to court. If a client owes $5,000 but is facing bankruptcy, offering to settle the debt immediately for $3,500 might be the only way you see any cash."
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Can I write off unpaid invoices on my taxes?",
+          "description": "If you use Accrual Accounting (where you paid taxes on the invoice when you sent it), yes, you can write off the 'bad debt'. If you use Cash Accounting (where you only pay taxes on money actually received), no, because you never reported the income in the first place."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Late Payment Fees Guide", "url": "/blog/late-payment-fees-guide" },
+        { "title": "Payment Terms Explained", "url": "/blog/payment-terms-explained" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Protect yourself before work begins",
+      "subtext": "Always state your late fee and collection policies clearly on your initial invoice.",
+      "buttonText": "Create an Invoice",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

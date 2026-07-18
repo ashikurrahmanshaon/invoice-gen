@@ -1,0 +1,44 @@
+{
+  "slug": "privacy-policy",
+  "category": "Legal",
+  "status": "Production Ready",
+  "publishedDate": "2026-01-01T00:00:00Z",
+  "lastUpdatedDate": "2026-07-01T00:00:00Z",
+  "nextReviewDate": "2026-12-31T00:00:00Z",
+  "authorId": "jane-doe",
+  "reviewerId": "john-smith",
+  "trustBadges": ["Verified", "Trusted Source"],
+  "meta": {
+    "title": "Privacy Policy | Trust Center",
+    "description": "Learn how Invoice-Gen protects your data, ensures privacy, and complies with international data protection standards.",
+    "canonicalUrl": "https://invoice-gen.net/trust/privacy"
+  },
+  "blocks": [
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "title": "Privacy Policy",
+      "text": "At Invoice-Gen, your privacy is our priority. We are committed to protecting your personal and financial information."
+    }
+  ],
+  "versionHistory": [
+    {
+      "version": "1.1",
+      "publishedDate": "2026-07-01T00:00:00Z",
+      "updatedDate": "2026-07-01T00:00:00Z",
+      "changeSummary": "Updated GDPR compliance section.",
+      "reviewerId": "john-smith",
+      "reasonForUpdate": "Annual legal review"
+    }
+  ],
+  "citations": [
+    {
+      "sourceName": "GDPR Official Documentation",
+      "url": "https://gdpr.eu",
+      "category": "Official Documentation",
+      "publicationDate": "2018-05-25",
+      "lastChecked": "2026-07-01",
+      "qualityScore": "Very High"
+    }
+  ]
+}

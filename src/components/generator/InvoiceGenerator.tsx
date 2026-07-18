@@ -1,7 +1,8 @@
 import { useState, Suspense, useEffect } from 'react';
-import { Eye, Download, Share2, Send, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Eye, Download, ShieldCheck, Lock, ArrowRight, ArrowLeft } from 'lucide-react';
 import { StageIndicator } from '../layout/StageIndicator';
 import { BusinessSection } from '../invoice/BusinessSection';
+import { InvoiceDetailsSection } from '../invoice/InvoiceDetailsSection';
 import { ClientSection } from '../invoice/ClientSection';
 import { ItemsSection } from '../invoice/ItemsSection';
 import { TotalsSection } from '../invoice/TotalsSection';
@@ -61,6 +62,7 @@ export function InvoiceGenerator() {
   const [resetHistoryAlso, setResetHistoryAlso] = useState(false);
   const [historyRecordToDelete, setHistoryRecordToDelete] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [toastMessage, setToastMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
 
   const [isMobileView, setIsMobileView] = useState(false);
 
@@ -102,10 +104,33 @@ export function InvoiceGenerator() {
   } = useInvoice(settings);
 
   const handleDownload = async () => {
+    if (data.items.length === 0) {
+      setToastMessage({ text: 'Please add at least one invoice item.', type: 'error' });
+      setTimeout(() => setToastMessage(null), 4000);
+      return;
+    }
+    const invalidQty = data.items.find(item => Number(item.quantity) <= 0);
+    if (invalidQty) {
+      setToastMessage({ text: 'Quantity must be greater than 0.', type: 'error' });
+      setTimeout(() => setToastMessage(null), 4000);
+      return;
+    }
+    const invalidPrice = data.items.find(item => Number(item.rate) <= 0);
+    if (invalidPrice) {
+      setToastMessage({ text: 'Price must be greater than 0.', type: 'error' });
+      setTimeout(() => setToastMessage(null), 4000);
+      return;
+    }
+    
     try {
       setIsGenerating(true);
       trackEvent('download_pdf', { source: 'homepage' });
       await generateInvoicePDF(data);
+      setToastMessage({ text: 'Invoice PDF generated successfully.', type: 'success' });
+      setTimeout(() => setToastMessage(null), 4000);
+    } catch (_err) {
+      setToastMessage({ text: 'An error occurred while generating PDF.', type: 'error' });
+      setTimeout(() => setToastMessage(null), 4000);
     } finally {
       setIsGenerating(false);
     }
@@ -114,7 +139,6 @@ export function InvoiceGenerator() {
   const historyHook = useHistory();
 
   // Enable Auto-save
-  // const { saveStatus, cancelPendingSave } = useAutoSave(data);
   const { cancelPendingSave } = useAutoSave(data);
 
   const executePendingAction = () => {
@@ -247,96 +271,127 @@ export function InvoiceGenerator() {
 
 
 
-  // const loadDemoData = () => {
-  //   const demoData = {
-  //     business: {
-  //       name: 'DesignCraft Studio LLC',
-  //       email: 'billing@designcraft.co',
-  //       logoUrl: null,
-  //       phone: '+1 (555) 019-2834',
-  //       website: 'designcraft.co',
-  //       taxId: 'US-99882211',
-  //       address: '100 Pine Street',
-  //       address1: '100 Pine Street',
-  //       address2: 'Suite 2400',
-  //       city: 'San Francisco',
-  //       state: 'CA',
-  //       postalCode: '94111',
-  //       country: 'United States'
-  //     },
-  //     client: {
-  //       name: 'Acme Enterprises Inc.',
-  //       email: 'procurement@acme.com',
-  //       address: "500 Technology Way\nSuite 100\nSeattle, WA 98101",
-  //       phone: '+1 (555) 014-9988',
-  //       taxId: 'US-11223344'
-  //     },
-  //     details: {
-  //       invoiceNumber: 'INV-2026-042',
-  //       issueDate: new Date().toISOString().split('T')[0],
-  //       dueDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-  //       currency: 'USD'
-  //     },
-  //     items: [
-  //       {
-  //         id: 'demo-item-1',
-  //         name: 'Premium UI/UX Design System Retainer',
-  //         description: 'Design, asset guidelines, and component specifications for Web & Mobile applications.',
-  //         rate: '150',
-  //         quantity: '40'
-  //       },
-  //       {
-  //         id: 'demo-item-2',
-  //         name: 'Front-End Component Auditing & Review',
-  //         description: 'Code quality audit, accessibility compliance review, and performance optimizations.',
-  //         rate: '125',
-  //         quantity: '12'
-  //       }
-  //     ],
-  //     totals: {
-  //       subtotal: 7500,
-  //       discountRate: 10,
-  //       discountType: 'percent' as const,
-  //       discountValue: '10',
-  //       taxLabel: 'Tax',
-  //       taxRate: '8.5',
-  //       shipping: '',
-  //       amountPaid: '2000',
-  //       discountAmount: 750,
-  //       taxAmount: 573.75,
-  //       total: 7323.75,
-  //       balanceDue: 5323.75
-  //     },
-  //     notes: 'Thank you for choosing DesignCraft Studio. We appreciate your partnership!',
-  //     terms: 'Payment is due within 14 days of invoice date. Late payments are subject to a 1.5% fee per month.',
-  //     paymentInstructions: "Direct bank transfer routing details:\nBank: SVB Private\nRouting: 021000021\nAccount: 9988776655",
-  //     signatureUrl: null
-  //   };
-  //   loadInvoiceFromHistory(null as any, demoData);
-  // };
+  const loadDemoData = () => {
+    const demoData = {
+      business: {
+        name: 'Acme Design Studio',
+        email: 'hello@acmedesign.com',
+        logoUrl: null,
+        phone: '(415) 555-0198',
+        website: 'acmedesign.com',
+        taxId: 'US-99882211',
+        address: "123 Creative Blvd\nSan Francisco, CA 94107",
+        address1: '',
+        address2: '',
+        city: '',
+        state: '',
+        postalCode: '',
+        country: ''
+      },
+      client: {
+        name: 'John Smith',
+        email: 'john.smith@abccompany.com',
+        address: "ABC Company\n456 Business Pkwy\nNew York, NY 10001",
+        phone: '+1 (555) 014-9988',
+        taxId: 'US-11223344'
+      },
+      details: {
+        invoiceNumber: 'INV-2026-042',
+        issueDate: new Date().toISOString().split('T')[0],
+        dueDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+        currency: 'USD'
+      },
+      items: [
+        {
+          id: 'demo-item-1',
+          name: 'Website Design',
+          description: 'Homepage and core inner pages.',
+          rate: '2500',
+          quantity: '1'
+        },
+        {
+          id: 'demo-item-2',
+          name: 'Logo Design',
+          description: 'Brand identity package.',
+          rate: '1500',
+          quantity: '1'
+        },
+        {
+          id: 'demo-item-3',
+          name: 'Hosting',
+          description: '1 year premium hosting.',
+          rate: '25',
+          quantity: '12'
+        }
+      ],
+      totals: {
+        subtotal: 4300,
+        discountRate: 0,
+        discountType: 'percent' as const,
+        discountValue: '0',
+        taxLabel: 'Tax',
+        taxRate: '8.5',
+        shipping: '',
+        amountPaid: '',
+        discountAmount: 0,
+        taxAmount: 365.5,
+        total: 4665.5,
+        balanceDue: 4665.5
+      },
+      notes: 'Thank you for choosing Acme Design Studio. We appreciate your partnership!',
+      terms: 'Payment is due within 14 days of invoice date. Late payments are subject to a 1.5% fee per month.',
+      paymentInstructions: "Direct bank transfer routing details:\nBank: SVB Private\nRouting: 021000021\nAccount: 9988776655",
+      signatureUrl: null
+    };
+    loadInvoiceFromHistory(null as any, demoData);
+  };
 
   return (
     <div className="invoice-generator">
       {/* Toast Notifications */}
-      {/* <div style={{ position: 'fixed', top: '80px', right: '20px', zIndex: 1000, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-        {showSaveToast && (
-          <div style={{ padding: '12px 16px', background: 'var(--success)', color: 'white', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
-            Invoice saved to history
+      <div style={{ position: 'fixed', top: '80px', right: '20px', zIndex: 1000, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        {toastMessage && (
+          <div style={{ padding: '12px 16px', background: toastMessage.type === 'error' ? 'var(--color-error, #EF4444)' : '#00A65A', color: 'white', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '8px' }} role="alert">
+            {toastMessage.type === 'success' && <span>✓</span>}
+            {toastMessage.text}
           </div>
         )}
-        {showDuplicateErrorToast && (
-          <div style={{ padding: '12px 16px', background: 'var(--error)', color: 'white', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
-            Error: Invoice number already exists in history.
-          </div>
-        )}
-        {showQuotaErrorToast && (
-          <div style={{ padding: '12px 16px', background: 'var(--error)', color: 'white', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
-            Error: Storage quota exceeded. Please delete some old invoices.
-          </div>
-        )}
-      </div> */}
+      </div>
 
       <main className="container" id="generator" style={{ minWidth: 0 }}>
+        {activeView === 'editor' && (
+          <div style={{
+            background: 'var(--color-surface)',
+            borderBottom: '1px solid var(--color-border)',
+            padding: '12px 24px',
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '24px',
+            fontSize: '13px',
+            color: 'var(--color-text-secondary)',
+            fontWeight: 500,
+            marginBottom: '24px',
+            borderRadius: '8px',
+            flexWrap: 'wrap'
+          }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#00C853' }}>✓</span> Free Forever</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#00C853' }}>✓</span> No Registration</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#00C853' }}>✓</span> No Watermarks</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#00C853' }}>✓</span> Secure Local Processing</span>
+          </div>
+        )}
+        
+        {activeView === 'editor' && (!data.business.name && !data.client.name && data.items.length === 0) && (
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
+            <button 
+              className="btn hover-lift" 
+              onClick={loadDemoData}
+              style={{ background: 'transparent', color: '#3B82F6', border: '1px dashed #3B82F6', padding: '10px 24px', borderRadius: '8px', fontSize: '14px', fontWeight: 600 }}
+            >
+              Load Sample Invoice
+            </button>
+          </div>
+        )}
         {activeView === 'settings' ? (
           <Suspense fallback={<div className="loading-state">Loading settings...</div>}>
             <SettingsDashboard />
@@ -364,7 +419,8 @@ export function InvoiceGenerator() {
                   setTaxLabel={setTaxLabel}
                   setShipping={setShipping}
                   setAmountPaid={setAmountPaid}
-                  onDownloadPDF={() => { trackEvent('download_pdf', { source: 'mobile' }); generateInvoicePDF(data); }}
+                  onDownloadPDF={handleDownload}
+                  isGenerating={isGenerating}
                   onOpenFullPreview={() => { trackEvent('preview_invoice', { source: 'mobile' }); setIsPreviewOpen(true); }}
                 />
               </div>
@@ -390,9 +446,10 @@ export function InvoiceGenerator() {
                     <div style={{ padding: '24px 32px' }}>
                       <div className="flex-col">
                         {currentStage === 1 && (
-                          <div id="section-1">
-                            <BusinessSection data={data} updateBusiness={updateBusiness} updateDetails={updateDetails} />
-                          </div>
+                            <div id="section-1">
+                              <BusinessSection data={data} updateBusiness={updateBusiness} />
+                              <InvoiceDetailsSection data={data} updateDetails={updateDetails} />
+                            </div>
                         )}
                         
                         <Suspense fallback={null}>
@@ -537,62 +594,31 @@ export function InvoiceGenerator() {
                                   borderRadius: '100px',
                                   border: 'none',
                                   boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)',
-                                  cursor: 'pointer',
-                                  transition: 'all 0.2s ease',
+                                  opacity: isGenerating ? 0.7 : 1,
+                                  cursor: isGenerating ? 'not-allowed' : 'pointer',
+                                  transition: 'all 0.2s ease'
                                 }}
-                                onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.9'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
                               >
-                                <Download size={16} /> <span className="hide-on-mobile">{isGenerating ? 'Wait...' : 'Download'}</span>
+                                {isGenerating ? (
+                                  <div style={{ width: '16px', height: '16px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: 'white', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
+                                ) : (
+                                  <Download size={16} />
+                                )}
+                                <span className="hide-on-mobile">{isGenerating ? 'Generating...' : 'Download PDF'}</span>
                               </button>
                               <button 
-                                style={{
-                                  height: '48px',
-                                  padding: '0 20px',
-                                  background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
-                                  color: 'white',
-                                  fontWeight: 600,
-                                  fontSize: '14px',
-                                  display: 'flex',
-                                  justifyContent: 'center',
-                                  alignItems: 'center',
-                                  gap: '8px',
-                                  borderRadius: '100px',
-                                  border: 'none',
-                                  boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)',
-                                  cursor: 'pointer',
-                                  transition: 'all 0.2s ease',
-                                }}
-                                onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.9'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                                onClick={loadDemoData}
+                                className="btn btn-secondary"
+                                style={{ height: '48px', padding: '0 20px', borderRadius: '100px', fontWeight: 600, fontSize: '14px' }}
                               >
-                                <Share2 size={16} /> <span className="hide-on-mobile">Share</span>
-                              </button>
-                              <button 
-                                style={{
-                                  height: '48px',
-                                  padding: '0 20px',
-                                  background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
-                                  color: 'white',
-                                  fontWeight: 600,
-                                  fontSize: '14px',
-                                  display: 'flex',
-                                  justifyContent: 'center',
-                                  alignItems: 'center',
-                                  gap: '8px',
-                                  borderRadius: '100px',
-                                  border: 'none',
-                                  boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)',
-                                  cursor: 'pointer',
-                                  transition: 'all 0.2s ease',
-                                }}
-                                onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.9'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
-                              >
-                                <Send size={16} /> <span className="hide-on-mobile">Send</span>
+                                Load Sample
                               </button>
                             </div>
                           )}
+                        </div>
+                        <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'center', gap: '24px', opacity: 0.6 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}><ShieldCheck size={14}/> 100% Private</div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}><Lock size={14}/> Secure</div>
                         </div>
                         </div>
                     </div>
@@ -610,7 +636,6 @@ export function InvoiceGenerator() {
                 onDuplicate={handleDuplicateHistoryRecord}
                 onDelete={(id) => setHistoryRecordToDelete(id)}
                 onUpdateStatus={historyHook.updateStatus}
-                // onNewInvoice={handleNewInvoice}
               />
             </Suspense>
           </div>
@@ -625,7 +650,8 @@ export function InvoiceGenerator() {
             isOpen={isPreviewOpen} 
             data={data} 
             onClose={() => setIsPreviewOpen(false)} 
-            onDownloadPDF={() => generateInvoicePDF(data)}
+            onDownloadPDF={handleDownload}
+            isGenerating={isGenerating}
           />
         )}
       </Suspense>
@@ -687,16 +713,6 @@ export function InvoiceGenerator() {
       <HelpGuideModal 
         isOpen={isHelpGuideOpen}
         onClose={() => setIsHelpGuideOpen(false)}
-      />
-
-      <FullPreviewModal
-        isOpen={isPreviewOpen}
-        onClose={() => setIsPreviewOpen(false)}
-        data={data}
-        onDownloadPDF={() => {
-          trackEvent('download_pdf', { source: 'preview_modal' });
-          generateInvoicePDF(data);
-        }}
       />
 
       {/* Hidden container for PDF generation (captures layout perfectly regardless of language/fonts) */}

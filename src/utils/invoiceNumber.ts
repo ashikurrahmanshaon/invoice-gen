@@ -1,16 +1,13 @@
+import { generateSequenceNumber } from './sequenceGenerator';
+import { STORAGE_KEY_HISTORY } from './storage';
+
+export const STORAGE_KEY_SEQUENCE = 'invoice_gen_sequence';
+
 export const generateInvoiceNumber = (exclude?: string): string => {
-  const date = new Date();
-  const year = date.getFullYear();
-  
-  let randomNum = Math.floor(1000 + Math.random() * 9000);
-  let newNumber = `INV-${year}-${randomNum}`;
-  
-  if (exclude) {
-    while (newNumber === exclude) {
-      randomNum = Math.floor(1000 + Math.random() * 9000);
-      newNumber = `INV-${year}-${randomNum}`;
-    }
-  }
-  
-  return newNumber;
+  return generateSequenceNumber({
+    prefix: 'INV',
+    sequenceKey: STORAGE_KEY_SEQUENCE,
+    historyKey: STORAGE_KEY_HISTORY,
+    historyPath: (record) => record.data?.details?.invoiceNumber
+  }, exclude);
 };

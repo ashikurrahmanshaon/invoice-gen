@@ -1,0 +1,137 @@
+{
+  "slug": "invoice-vs-receipt",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Invoice vs. Receipt: What's the Difference?",
+    "description": "Understand the exact legal and accounting differences between an invoice and a receipt. Learn when to issue each document to your clients.",
+    "canonicalUrl": "https://invoice-gen.net/blog/invoice-vs-receipt",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/invoice-vs-receipt.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Invoice vs. Receipt: What's the Difference?",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Invoice vs Receipt", "url": "/blog/invoice-vs-receipt" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Invoice vs. Receipt: What's the Difference?",
+      "subtitle": "They are not interchangeable. Issuing the wrong document at the wrong time can ruin your cash flow and create accounting nightmares.",
+      "ctaText": "Generate an Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "5 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Two Different Documents for Two Different Stages",
+      "text": "The simplest way to remember the difference is timing: an invoice comes BEFORE payment, and a receipt comes AFTER payment. An invoice is a polite but legally binding request for money owed. A receipt is a confirmation that the money has been successfully collected. Using these terms interchangeably confuses clients and makes bookkeeping much harder than it needs to be."
+    },
+    {
+      "id": "comparison-1",
+      "type": "comparisonTable",
+      "title": "Key Differences at a Glance",
+      "headers": ["Feature", "Invoice", "Receipt"],
+      "rows": [
+        ["Timing", "Issued BEFORE payment", "Issued AFTER payment"],
+        ["Primary Purpose", "To request payment (demand for money)", "To prove payment (proof of purchase)"],
+        ["Accounting Use", "Tracks Accounts Receivable", "Tracks Revenue / Cash Flow"],
+        ["Required Elements", "Due date, Payment terms", "Payment method used, Zero balance"]
+      ]
+    },
+    {
+      "id": "definition-1",
+      "type": "definition",
+      "term": "Invoice",
+      "definition": "A commercial document issued by a seller to a buyer, relating to a sale transaction and indicating the products, quantities, and agreed prices for products or services that the seller had provided."
+    },
+    {
+      "id": "definition-2",
+      "type": "definition",
+      "term": "Receipt",
+      "definition": "A written acknowledgment that a specified article, sum of money, or shipment of merchandise has been received. It proves ownership."
+    },
+    {
+      "id": "timeline-1",
+      "type": "timeline",
+      "events": [
+        { "date": "Step 1", "title": "Goods Delivered", "description": "You finish the consulting project or deliver the physical product." },
+        { "date": "Step 2", "title": "Invoice Issued", "description": "You send an Invoice requesting payment with 'Net 30' terms." },
+        { "date": "Step 3", "title": "Payment Received", "description": "The client pays the invoice via bank transfer." },
+        { "date": "Step 4", "title": "Receipt Issued", "description": "You send a Receipt confirming the balance is now $0.00." }
+      ]
+    },
+    {
+      "id": "myth-1",
+      "type": "mythVsFact",
+      "myth": "If a customer pays cash on the spot, I still need to generate an invoice first.",
+      "fact": "If the transaction is immediate (like buying coffee), you skip the invoice entirely and only issue a receipt. Invoices are strictly for delayed payments (credit)."
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Can an invoice also be a receipt?",
+          "description": "Yes! If a client pays their invoice, you can stamp the original invoice as 'PAID' or update the digital balance to $0.00. This single document now acts as both the original request and the final receipt."
+        },
+        {
+          "question": "Do I legally have to provide a receipt?",
+          "description": "In most jurisdictions (including the US and UK), consumers have the legal right to request a receipt for any transaction, and businesses are legally obligated to provide one."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "How to Write an Invoice", "url": "/blog/how-to-write-an-invoice" },
+        { "title": "Free Receipt Maker", "url": "/tools/receipt-maker" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to send the right document?",
+      "subtext": "Our free tool lets you toggle the title between 'Invoice' and 'Receipt' instantly.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

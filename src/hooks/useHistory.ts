@@ -4,12 +4,12 @@ import { STORAGE_KEY_HISTORY } from '../utils/storage';
 
 const generateId = () => crypto.randomUUID();
 
-export const useHistory = () => {
+export const useHistory = (storageKey: string = STORAGE_KEY_HISTORY) => {
   const [history, setHistory] = useState<SavedInvoice[]>([]);
 
   const loadHistory = useCallback(() => {
     try {
-      const serialized = localStorage.getItem(STORAGE_KEY_HISTORY);
+      const serialized = localStorage.getItem(storageKey);
       if (serialized) {
         const parsed = JSON.parse(serialized);
         if (Array.isArray(parsed)) {
@@ -46,24 +46,28 @@ export const useHistory = () => {
       console.error('Failed to load history from local storage', error);
     }
     setHistory([]);
-  }, []);
+  }, [storageKey]);
 
   useEffect(() => {
     loadHistory();
   }, [loadHistory]);
 
-  const checkDuplicateNumber = useCallback((invoiceNumber: string, excludeId: string | null): boolean => {
+  const checkDuplicateNumber = useCallback((number: string, excludeId: string | null): boolean => {
     return history.some(
-      (inv) => inv?.data?.details?.invoiceNumber === invoiceNumber && inv?.id !== excludeId
+      (inv) => {
+        const invNumber = inv?.data?.details?.invoiceNumber || (inv?.data?.details as any)?.poNumber;
+        return invNumber === number && inv?.id !== excludeId;
+      }
     );
   }, [history]);
 
   const saveToHistory = useCallback((
-    data: InvoiceData,
+    data: InvoiceData | any,
     status: InvoiceStatus,
     existingId: string | null
   ): { success: boolean; error?: string; id?: string | null } => {
-    if (checkDuplicateNumber(data.details.invoiceNumber, existingId)) {
+    const documentNumber = data.details.invoiceNumber || data.details.poNumber;
+    if (checkDuplicateNumber(documentNumber, existingId)) {
       return { success: false, error: 'duplicate_number' };
     }
 
@@ -105,7 +109,7 @@ export const useHistory = () => {
         });
       }
 
-      localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(newHistory));
+      localStorage.setItem(storageKey, JSON.stringify(newHistory));
       
       // Reload to ensure sorting is applied
       loadHistory();
@@ -118,7 +122,7 @@ export const useHistory = () => {
       }
       return { success: false, error: 'unknown_error' };
     }
-  }, [history, loadHistory, checkDuplicateNumber]);
+  }, [history, loadHistory, checkDuplicateNumber, storageKey]);
 
   const updateStatus = useCallback((id: string, status: InvoiceStatus): boolean => {
     try {
@@ -130,7 +134,7 @@ export const useHistory = () => {
           updatedAt: Date.now(),
           status,
         };
-        localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(newHistory));
+        localStorage.setItem(storageKey, JSON.stringify(newHistory));
         loadHistory();
         return true;
       }
@@ -139,25 +143,35 @@ export const useHistory = () => {
       console.error('Failed to update status', error);
       return false;
     }
-  }, [history, loadHistory]);
+  }, [history, loadHistory, storageKey]);
 
   const deleteFromHistory = useCallback((id: string): boolean => {
     try {
       const newHistory = history.filter((inv) => inv.id !== id);
-      localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(newHistory));
+      localStorage.setItem(storageKey, JSON.stringify(newHistory));
       setHistory(newHistory);
       return true;
     } catch (error) {
       console.error('Failed to delete from history', error);
       return false;
     }
-  }, [history]);
+  }, [history, storageKey]);
+
+  const clearAllHistory = useCallback(() => {
+    setHistory([]);
+    try {
+      localStorage.removeItem(storageKey);
+    } catch (error) {
+      console.error('Failed to clear history', error);
+    }
+  }, [storageKey]);
 
   return {
     history,
     saveToHistory,
     updateStatus,
     deleteFromHistory,
-    refreshHistory: loadHistory
+    refreshHistory: loadHistory,
+    clearAllHistory
   };
 };

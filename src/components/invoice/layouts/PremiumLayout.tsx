@@ -70,19 +70,19 @@ export const PremiumLayout = React.memo(({ data }: { data: InvoiceData }) => {
               marginBottom: '8px',
               lineHeight: 1
             }}>
-              {t('invoice_title', 'INVOICE')}
+              {data.documentLabels?.title || t('invoice_title', 'INVOICE')}
             </div>
             <div style={{ fontSize: '14px', color: mutedTextColor, fontWeight: 500, marginBottom: '24px' }}>
-              #{data.details.invoiceNumber}
+              {data.documentLabels?.numberPrefix ? `${data.documentLabels.numberPrefix} ${data.details.invoiceNumber}` : `#${data.details.invoiceNumber}`}
             </div>
 
             <div style={{ display: 'inline-grid', gridTemplateColumns: 'auto auto', gap: '12px 24px', textAlign: 'right', fontSize: '13px' }}>
-              <div style={{ color: mutedTextColor, fontWeight: 500 }}>{t('issue_date_label', 'Issue Date')}</div>
+              <div style={{ color: mutedTextColor, fontWeight: 500 }}>{data.documentLabels?.date || t('issue_date_label', 'Issue Date')}</div>
               <div style={{ fontWeight: 600 }}>{formatDate(data.details.issueDate)}</div>
               
               {data.details.dueDate && (
                 <>
-                  <div style={{ color: mutedTextColor, fontWeight: 500 }}>{t('due_date_label', 'Due Date')}</div>
+                  <div style={{ color: mutedTextColor, fontWeight: 500 }}>{data.documentLabels?.dueDate || t('due_date_label', 'Due Date')}</div>
                   <div style={{ fontWeight: 600 }}>{formatDate(data.details.dueDate)}</div>
                 </>
               )}
@@ -96,7 +96,7 @@ export const PremiumLayout = React.memo(({ data }: { data: InvoiceData }) => {
         {/* Bill To */}
         <div style={{ marginBottom: '48px' }}>
           <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.5px', color: mutedTextColor, fontWeight: 600, marginBottom: '12px' }}>
-            {t('bill_to_label', 'Billed To')}
+            {data.documentLabels?.billTo || t('bill_to_label', 'Billed To')}
           </div>
           <div style={{ fontSize: '16px', fontWeight: 700, marginBottom: '8px', color: '#0F172A' }}>
             {data.client.name || '\u00A0'}

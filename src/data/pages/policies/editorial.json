@@ -1,0 +1,32 @@
+{
+  "slug": "editorial-policy",
+  "category": "Static Company Pages",
+  "status": "Production Ready",
+  "publishedDate": "2026-01-01T00:00:00Z",
+  "lastUpdatedDate": "2026-07-01T00:00:00Z",
+  "nextReviewDate": "2026-12-31T00:00:00Z",
+  "authorId": "jane-doe",
+  "trustBadges": ["Verified", "Trusted Source"],
+  "meta": {
+    "title": "Editorial Policy | Policies",
+    "description": "Our strict editorial guidelines ensure that every piece of content published on Invoice-Gen is accurate, trustworthy, and expert-reviewed.",
+    "canonicalUrl": "https://invoice-gen.net/policies/editorial"
+  },
+  "blocks": [
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "title": "Editorial Policy",
+      "text": "Every guide, tool, and article on Invoice-Gen is subject to our rigorous editorial standards."
+    }
+  ],
+  "versionHistory": [
+    {
+      "version": "1.0",
+      "publishedDate": "2026-01-01T00:00:00Z",
+      "updatedDate": "2026-01-01T00:00:00Z",
+      "changeSummary": "Initial publication.",
+      "reasonForUpdate": "N/A"
+    }
+  ]
+}

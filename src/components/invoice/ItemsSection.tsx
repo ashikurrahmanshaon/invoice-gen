@@ -156,30 +156,47 @@ const ItemsSectionComponent: React.FC<ItemsSectionProps> = ({
 
           {/* Body Rows */}
           <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px' }}>
-            {items.map((item) => (
-              <ItemRow 
-                key={item.id}
-                item={item}
-                currency={currency}
-                symbol={symbol}
-                updateItem={updateItem}
-                removeItem={removeItem}
-              />
-            ))}
+            {items.length === 0 ? (
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 24px', textAlign: 'center', backgroundColor: 'rgba(0,0,0,0.01)', borderRadius: '12px', marginTop: '16px', border: '1px dashed var(--color-border)' }}>
+                <p style={{ color: 'var(--color-text-secondary)', fontSize: '14px', marginBottom: '16px', maxWidth: '300px', lineHeight: 1.5 }}>
+                  No items added yet. Add your services or products to this invoice.
+                </p>
+                <button 
+                  className="btn btn-primary hover-lift"
+                  style={{ fontWeight: 600, padding: '8px 24px', borderRadius: '8px', boxShadow: '0 4px 12px rgba(59, 130, 246, 0.2)' }}
+                  onClick={addItem}
+                >
+                  + Add First Item
+                </button>
+              </div>
+            ) : (
+              items.map((item) => (
+                <ItemRow 
+                  key={item.id}
+                  item={item}
+                  currency={currency}
+                  symbol={symbol}
+                  updateItem={updateItem}
+                  removeItem={removeItem}
+                />
+              ))
+            )}
           </div>
         </div>
       </div>
       
       {/* Add Line Item Button */}
-      <div style={{ display: 'flex', padding: '0 16px' }}>
-        <button 
-          className="btn btn-ghost"
-          style={{ color: '#2563EB', fontWeight: 600, paddingLeft: 0, background: 'transparent' }}
-          onClick={addItem}
-        >
-          + Add item
-        </button>
-      </div>
+      {items.length > 0 && (
+        <div style={{ display: 'flex', padding: '0 16px' }}>
+          <button 
+            className="btn btn-ghost hover-lift"
+            style={{ color: '#2563EB', fontWeight: 600, paddingLeft: 0, background: 'transparent' }}
+            onClick={addItem}
+          >
+            + Add item
+          </button>
+        </div>
+      )}
     </div>
   );
 };

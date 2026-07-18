@@ -77,6 +77,16 @@ export interface InvoiceData {
   terms: string;
   paymentInstructions: string;
   signatureUrl: string | null;
+  documentLabels?: {
+    title?: string;
+    numberPrefix?: string;
+    date?: string;
+    dueDate?: string;
+    billTo?: string;
+    from?: string;
+  };
+  documentTitle?: string;
+  documentSubTitle?: string;
 }
 
 export type InvoiceDraftData = Omit<InvoiceData, 'business'>;

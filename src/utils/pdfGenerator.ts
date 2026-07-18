@@ -62,7 +62,7 @@ export const generateInvoicePDF = async (data: InvoiceData) => {
 
   // For automated subagent testing and screenshots
   const blobUrl = doc.output('bloburl').toString();
-  console.log("__PDF_BLOB_URL__:", blobUrl);
+
   (window as any).__PDF_BLOB_URL__ = blobUrl;
 
   if (window.location.search.includes('preview=true') || (window as any).__TESTING_PREVIEW__) {
@@ -77,3 +77,55 @@ export const generateInvoicePDF = async (data: InvoiceData) => {
     console.error("PDF download failed:", e);
   }
 };
+
+export const generatePOPDF = async (data: any) => {
+  const filename = `PO-${data.details.poNumber || 'draft'}.pdf`;
+  const doc = await buildInvoicePDF(data);
+  const blobUrl = doc.output('bloburl').toString();
+
+  (window as any).__PDF_BLOB_URL__ = blobUrl;
+  if (window.location.search.includes('preview=true') || (window as any).__TESTING_PREVIEW__) {
+    window.location.href = blobUrl;
+    return;
+  }
+  try {
+    doc.save(filename);
+  } catch (e) {
+    console.error("PDF download failed:", e);
+  }
+};
+
+export const generateQuotePDF = async (data: any) => {
+  const filename = `Quote-${data.details.quoteNumber || 'draft'}.pdf`;
+  const doc = await buildInvoicePDF(data);
+  const blobUrl = doc.output('bloburl').toString();
+
+  (window as any).__PDF_BLOB_URL__ = blobUrl;
+  if (window.location.search.includes('preview=true') || (window as any).__TESTING_PREVIEW__) {
+    window.location.href = blobUrl;
+    return;
+  }
+  try {
+    doc.save(filename);
+  } catch (e) {
+    console.error("PDF download failed:", e);
+  }
+};
+
+export const generateEstimatePDF = async (data: any) => {
+  const filename = `Estimate-${data.details.estimateNumber || 'draft'}.pdf`;
+  const doc = await buildInvoicePDF(data);
+  const blobUrl = doc.output('bloburl').toString();
+
+  (window as any).__PDF_BLOB_URL__ = blobUrl;
+  if (window.location.search.includes('preview=true') || (window as any).__TESTING_PREVIEW__) {
+    window.location.href = blobUrl;
+    return;
+  }
+  try {
+    doc.save(filename);
+  } catch (e) {
+    console.error("PDF download failed:", e);
+  }
+};
+

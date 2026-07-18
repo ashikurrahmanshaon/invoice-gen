@@ -1,0 +1,176 @@
+{
+  "slug": "contractor",
+  "category": "Invoice Templates",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "Free Contractor Invoice Template | Professional & Downloadable",
+    "description": "Download our free contractor invoice template. Perfect for independent contractors to bill for labor, materials, and track project milestones. Get paid faster.",
+    "canonicalUrl": "https://invoice-gen.net/templates/contractor",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/templates/contractor.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Free Contractor Invoice Template",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Invoice Templates", "url": "/templates" },
+        { "label": "Contractor Invoice Template", "url": "/templates/contractor" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Contractor Invoice Template",
+      "subtitle": "A professional invoice template designed specifically for independent contractors. Easily bill for labor, separate material costs, and look professional.",
+      "ctaText": "Create Free Invoice Now",
+      "ctaLink": "/#generator",
+      "readTime": "5 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Why Contractors Need specialized Invoices",
+      "text": "Contracting work often involves a mix of hourly labor, flat-rate project fees, and reimbursable material expenses. A standard retail invoice doesn't provide the necessary structure to clearly itemize these different cost centers. Using a dedicated contractor invoice reduces client confusion, minimizes payment disputes, and ensures you aren't left out-of-pocket for project materials."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "Always separate labor costs from material costs.",
+        "Include reference numbers to any signed Statements of Work (SOW) or initial estimates.",
+        "Ensure your payment terms align with your contractor agreement (e.g., Net 15 or Net 30).",
+        "Attach receipts for any reimbursable expenses if billing at cost."
+      ]
+    },
+    {
+      "id": "feature-1",
+      "type": "featureGrid",
+      "features": [
+        {
+          "icon": "shield",
+          "title": "Material & Labor Splits",
+          "description": "Clearly define what the client is paying for to prevent scope disputes and justify your total project cost."
+        },
+        {
+          "icon": "layout",
+          "title": "Milestone Billing Ready",
+          "description": "Perfect for billing 30% upfront, 30% midway, and 40% upon completion."
+        },
+        {
+          "icon": "zap",
+          "title": "Mobile Friendly",
+          "description": "Generate an invoice right from the job site on your phone and email the PDF instantly."
+        }
+      ]
+    },
+    {
+      "id": "comparison-1",
+      "type": "comparisonTable",
+      "title": "Contractor Invoice vs. Standard Invoice",
+      "headers": ["Feature", "Contractor Invoice", "Standard Retail Invoice"],
+      "rows": [
+        ["Line Item Structure", "Splits Labor & Materials clearly", "Basic Product / Quantity"],
+        ["Project References", "Includes SOW or Estimate IDs", "Usually absent"],
+        ["Tax Handling", "May have complex labor vs material tax rates", "Flat sales tax"],
+        ["Payment Terms", "Net 15 / Net 30 / Milestones", "Due upon receipt"]
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Add Your DBA and License Info",
+          "description": "Add your contractor business name and, if applicable in your state/region, your contractor license number to establish trust."
+        },
+        {
+          "title": "Reference the Original Estimate",
+          "description": "Add a note linking this invoice back to the original approved estimate or contract number. This speeds up approval from the client."
+        },
+        {
+          "title": "Itemize Labor and Materials",
+          "description": "Do not lump everything together. List 'Drywall Materials - $500' separate from 'Installation Labor - 10 Hours at $75/hr'."
+        },
+        {
+          "title": "State Your Payment Terms",
+          "description": "Clearly state when the payment is due (e.g., Net 30) and list all accepted payment methods (Bank Transfer, Check, etc.)."
+        }
+      ]
+    },
+    {
+      "id": "mistakes-1",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Hiding material markups without transparency.",
+          "solution": "If you mark up materials, it's often best practice to agree on the markup percentage in the initial contract rather than hiding it in a lump-sum invoice."
+        },
+        {
+          "mistake": "Forgetting to invoice for change orders.",
+          "solution": "If the client requested additional work mid-project, list those specific 'Change Orders' as separate line items so they understand why the total differs from the estimate."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Can I use an invoice generator for contractor work?",
+          "description": "Yes. A professional invoice generator allows you to add custom line items for both hourly labor and flat-rate materials, making it perfect for contractors."
+        },
+        {
+          "question": "Should contractors charge sales tax on labor?",
+          "description": "This depends entirely on your local state or country laws. In some jurisdictions, materials are taxable but labor is not. Always consult a local tax professional."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Construction Invoice Template", "url": "/templates/construction" },
+        { "title": "How to Write an Invoice", "url": "/blog/how-to-write-an-invoice" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to bill your client?",
+      "subtext": "Use our free invoice generator to create a professional contractor invoice in seconds.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

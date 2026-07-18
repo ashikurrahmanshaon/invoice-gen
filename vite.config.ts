@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import viteCompression from 'vite-plugin-compression';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 function cacheControlPlugin() {
   return {
@@ -24,6 +26,8 @@ export default defineConfig({
   plugins: [
     react(), 
     cacheControlPlugin(),
+    (viteCompression as any)({ algorithm: 'gzip', ext: '.gz' }),
+    (viteCompression as any)({ algorithm: 'brotliCompress', ext: '.br' }),
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
@@ -47,27 +51,31 @@ export default defineConfig({
             src: "favicon.svg",
             type: "image/svg+xml",
             sizes: "any"
-          },
-          {
-            src: "android-chrome-192x192.png",
-            sizes: "192x192",
-            type: "image/png"
-          },
-          {
-            src: "android-chrome-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "any maskable"
           }
         ]
       }
-    })
+    }),
+    visualizer({ filename: 'bundle-analysis.html', gzipSize: true, open: false })
   ],
   build: {
     cssTarget: 'safari14',
     chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
+        manualChunks(id) {
+          if (id.includes('jspdf') || id.includes('react-pdf') || id.includes('html-to-image')) {
+            return 'vendor-pdf';
+          }
+          if (id.includes('react/') || id.includes('react-dom') || id.includes('react-router')) {
+            return 'vendor-react';
+          }
+          if (id.includes('i18next')) {
+            return 'vendor-i18n';
+          }
+          if (id.includes('lucide-react')) {
+            return 'vendor-ui';
+          }
+        },
         assetFileNames: (assetInfo) => {
           let name = assetInfo.name || '';
           if (name.endsWith('.mjs')) {

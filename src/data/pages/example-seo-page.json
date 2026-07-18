@@ -1,0 +1,156 @@
+{
+  "slug": "how-to-create-an-invoice",
+  "category": "Invoice Guides",
+  "status": "Review Required",
+  "lastUpdatedDate": "2026-07-15T00:00:00Z",
+  "meta": {
+    "title": "How to Create an Invoice: Step-by-Step Guide",
+    "description": "Learn exactly how to create a professional invoice in 5 easy steps. Get paid faster with our comprehensive invoicing guide, tips, and free templates.",
+    "canonicalUrl": "https://invoice-gen.net/how-to-create-an-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/how-to-create-an-invoice.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "How to Create an Invoice",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "timeline-1",
+      "type": "timeline",
+      "events": [
+        { "date": "Day 1", "title": "Service Completed", "description": "Finish the work for the client." },
+        { "date": "Day 2", "title": "Invoice Sent", "description": "Send the invoice via email." },
+        { "date": "Day 15", "title": "Follow-up", "description": "Send a polite reminder if unpaid." }
+      ]
+    },
+    {
+      "id": "checklist-1",
+      "type": "checklist",
+      "title": "Pre-Send Checklist",
+      "items": [
+        { "text": "Invoice number is sequential", "checked": true },
+        { "text": "Due date is clearly visible", "checked": true },
+        { "text": "Payment terms are attached", "checked": false }
+      ]
+    },
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Guides", "url": "/guides" },
+        { "label": "How to Create an Invoice", "url": "/how-to-create-an-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "How to Create an Invoice: Step-by-Step Guide",
+      "subtitle": "Learn everything you need to know about creating professional invoices that get paid on time.",
+      "ctaText": "Create Free Invoice Now",
+      "ctaLink": "/#generator",
+      "readTime": "5 min",
+      "lastUpdated": "August 12, 2026"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Why Professional Invoicing Matters",
+      "text": "Creating an invoice is more than just asking for money. It's a legally binding document that represents your business brand, sets clear payment expectations, and ensures healthy cash flow. In this guide, we'll walk you through the essential components of a professional invoice and how to create one quickly."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "An invoice is a commercial document issued by a seller to a buyer.",
+        "Always include your business details, client details, and an invoice number.",
+        "Clearly state the payment terms and due date to avoid delays.",
+        "Using an invoice generator can save you hours of manual work."
+      ]
+    },
+    {
+      "id": "steps-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Add Your Business Information",
+          "description": "Start by adding your company name, logo, address, and contact information at the top of the invoice."
+        },
+        {
+          "title": "Include Client Details",
+          "description": "Add the client's name, company, address, and contact details so it's clear who is being billed."
+        },
+        {
+          "title": "Assign an Invoice Number",
+          "description": "Use a unique, sequential invoice number for accounting and tracking purposes."
+        },
+        {
+          "title": "Itemize Your Services",
+          "description": "List each service or product provided, along with the quantity, rate, and total amount."
+        },
+        {
+          "title": "Set Payment Terms",
+          "description": "Clearly define when the payment is due (e.g., Net 30) and what payment methods you accept."
+        }
+      ]
+    },
+    {
+      "id": "mistakes-1",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Forgetting to add a due date.",
+          "solution": "Always specify an exact due date (e.g., 'Due by Aug 30, 2026') rather than vague terms like 'due upon receipt'."
+        },
+        {
+          "mistake": "Unclear item descriptions.",
+          "solution": "Provide detailed descriptions for your services so the client knows exactly what they are paying for."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Can I create an invoice in Microsoft Word?",
+          "description": "Yes, you can use Word templates, but using a dedicated invoice generator is much faster and reduces errors."
+        },
+        {
+          "question": "Do I need to charge tax?",
+          "description": "This depends on your local laws and the type of goods/services you provide. Always consult a tax professional."
+        }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to get paid?",
+      "subtext": "Use our free invoice generator to create a professional invoice in seconds.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is an accounting expert with over 10 years of experience helping small businesses manage their finances."
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "August 12, 2026"
+    }
+  ]
+}

@@ -3,16 +3,24 @@ import { createPortal } from 'react-dom';
 import { X, Download, MessageCircle, Mail, MessageSquare, Image as ImageIcon, Share2 } from 'lucide-react';
 import { toJpeg } from 'html-to-image';
 import type { InvoiceData } from '../../types/invoice';
+import type { PurchaseOrderData } from '../../types/purchaseOrder';
+import type { QuoteData } from '../../types/quote';
+import type { EstimateData } from '../../types/estimate';
 import { InvoiceA4Preview } from './InvoiceA4Preview';
+import { POA4Preview } from './POA4Preview';
+import { QuoteA4Preview } from '../quote/QuoteA4Preview';
+import { EstimateA4Preview } from '../estimate/EstimateA4Preview';
 
 interface FullPreviewModalProps {
   isOpen: boolean;
   onClose: () => void;
-  data: InvoiceData;
+  data: InvoiceData | PurchaseOrderData | QuoteData | EstimateData;
   onDownloadPDF: () => void;
+  isGenerating?: boolean;
+  documentType?: 'invoice' | 'purchase_order' | 'quote' | 'estimate';
 }
 
-export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onClose, data, onDownloadPDF }) => {
+export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onClose, data, onDownloadPDF, documentType = 'invoice' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const shareMenuRef = useRef<HTMLDivElement>(null);
   
@@ -70,11 +78,11 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
 
   const handleShare = async (platform: 'system' | 'whatsapp' | 'email' | 'messenger') => {
     setShowShareMenu(false);
-    const text = `Invoice ${data.details.invoiceNumber || ''} for ${data.totals.total} ${data.details.currency} from ${data.business.name || 'our business'}`;
+    const text = `Document ${((data.details as any).invoiceNumber || (data.details as any).poNumber || (data.details as any).quoteNumber || (data.details as any).estimateNumber) || ''} for ${((data as any).totals?.total || (data as any).total || 0)} from ${((data as any).business?.name || (data as any).vendor?.name || 'our business')}`;
     
     if (platform === 'system' && navigator.share) {
       try {
-        await navigator.share({ title: 'Invoice', text });
+        await navigator.share({ title: 'Document', text });
         return;
       } catch (err) {
         console.log('Native share failed or was cancelled', err);
@@ -82,7 +90,7 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
     } else if (platform === 'whatsapp') {
       window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
     } else if (platform === 'email') {
-      window.open(`mailto:?subject=${encodeURIComponent('Invoice from ' + (data.business.name || 'Us'))}&body=${encodeURIComponent(text + '\n\nPlease find attached or linked invoice.')}`, '_blank');
+      window.open(`mailto:?subject=${encodeURIComponent('Document from ' + ((data as any).business?.name || (data as any).vendor?.name || 'Us'))}&body=${encodeURIComponent(text + '\n\nPlease find attached or linked document.')}`, '_blank');
     } else if (platform === 'messenger') {
       alert('To share via Messenger on desktop, please download the PDF or JPG and attach it.');
     }
@@ -99,6 +107,11 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
     paperEl.style.transformOrigin = 'top left';
     
     try {
+      const isPO = (documentType === 'purchase_order');
+      const isQuote = documentType === 'quote';
+      const isEstimate = documentType === 'estimate';
+      const docNum = (data.details as any).invoiceNumber || (data.details as any).poNumber || (data.details as any).quoteNumber || (data.details as any).estimateNumber;
+
       await new Promise(r => setTimeout(r, 50));
       const dataUrl = await toJpeg(paperEl, { 
         quality: 1, 
@@ -108,7 +121,7 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
         pixelRatio: 1 
       });
       const link = document.createElement('a');
-      link.download = `Invoice-${data.details.invoiceNumber || 'draft'}.jpg`;
+      link.download = `${isPO ? 'PO' : isQuote ? 'Quote' : isEstimate ? 'Estimate' : 'Invoice'}-${docNum || 'draft'}.jpg`;
       link.href = dataUrl;
       link.click();
     } catch (err) {
@@ -193,8 +206,8 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
           inset: 0,
           width: '100vw',
           height: '100dvh',
-          backgroundColor: 'rgba(15, 23, 42, 0.25)', // Smooth, softer transparency
-          backdropFilter: 'blur(6px)', // Smoother, lighter blur
+          backgroundColor: 'rgba(15, 23, 42, 0.25)',
+          backdropFilter: 'blur(6px)',
           WebkitBackdropFilter: 'blur(6px)',
           display: 'flex',
           flexDirection: 'column',
@@ -231,7 +244,7 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
               <X size={18} /> Back to Edit
             </button>
             <div style={{ width: '1px', height: '20px', backgroundColor: 'rgba(255, 255, 255, 0.15)' }} />
-            <span style={{ fontSize: '14px', fontWeight: 600, color: '#E2E8F0', letterSpacing: '0.2px' }}>Preview Mode</span>
+            <span style={{ fontSize: '12px', color: '#64748B', fontWeight: 500, letterSpacing: '0.5px' }}>{(((data.details as any).invoiceNumber) || ((data.details as any).poNumber) || ((data.details as any).quoteNumber) || ((data.details as any).estimateNumber))}</span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -315,7 +328,15 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
                 to { opacity: 1; transform: translateY(0) scale(${scale}); }
               }
             `}</style>
-            <InvoiceA4Preview data={data} scale={1} />
+            {documentType === 'purchase_order' ? (
+              <POA4Preview data={data as PurchaseOrderData} scale={1} />
+            ) : documentType === 'quote' ? (
+              <QuoteA4Preview data={data as unknown as QuoteData} scale={1} />
+            ) : documentType === 'estimate' ? (
+              <EstimateA4Preview data={data as unknown as EstimateData} scale={1} />
+            ) : (
+              <InvoiceA4Preview data={data as InvoiceData} scale={1} />
+            )}
           </div>
         </div>
       </div>

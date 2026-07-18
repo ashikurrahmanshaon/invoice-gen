@@ -1,0 +1,162 @@
+{
+  "slug": "receipt-maker",
+  "category": "Free Tools",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-18T00:00:00Z",
+  "meta": {
+    "title": "Free Online Receipt Maker | Generate PDF Receipts Instantly",
+    "description": "Create professional, custom receipts for your business in seconds. Free online receipt generator with instant PDF download. No sign-up required.",
+    "canonicalUrl": "https://invoice-gen.net/tools/receipt-maker",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/tools/receipt-maker.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Free Receipt Maker",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "WebBrowser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "Article",
+        "headline": "Free Online Receipt Maker",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Free Tools", "url": "/tools" },
+        { "label": "Receipt Maker", "url": "/tools/receipt-maker" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Free Online Receipt Maker",
+      "subtitle": "Instantly generate professional, branded PDF receipts for your customers. No sign-up required, 100% free forever.",
+      "ctaText": "Make a Receipt Now",
+      "ctaLink": "/#generator",
+      "readTime": "4 min",
+      "lastUpdated": "July 18, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Why Use a Digital Receipt Maker?",
+      "text": "Providing a receipt is more than just good customer service—it is often a legal requirement. Receipts act as proof of purchase for your customers, allowing them to claim business expenses or validate warranties. Instead of buying expensive carbon-copy booklets, a digital receipt maker allows you to instantly generate an organized, branded PDF that you can email directly to your client."
+    },
+    {
+      "id": "feature-1",
+      "type": "featureGrid",
+      "features": [
+        {
+          "icon": "zap",
+          "title": "Instant PDF Generation",
+          "description": "Just enter your details and click download. You get a perfect, uneditable PDF instantly."
+        },
+        {
+          "icon": "shield",
+          "title": "Tax Compliant",
+          "description": "Includes standard fields for sales tax, VAT, and business registration numbers."
+        },
+        {
+          "icon": "layout",
+          "title": "Fully Customizable",
+          "description": "Add your logo, choose your currency, and itemize your services down to the penny."
+        }
+      ]
+    },
+    {
+      "id": "comparison-1",
+      "type": "comparisonTable",
+      "title": "Receipt vs. Invoice",
+      "headers": ["Feature", "Receipt", "Invoice"],
+      "rows": [
+        ["Timing", "Issued AFTER payment is received", "Issued BEFORE payment is received"],
+        ["Purpose", "Acts as proof of payment", "Acts as a demand for payment"],
+        ["Accounting", "Proves revenue collected", "Logs accounts receivable"],
+        ["Required Fields", "Payment method used, Zero balance due", "Payment terms, Due date"]
+      ]
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Change Title to 'Receipt'",
+          "description": "Our generator defaults to 'Invoice'. Simply click the title and type 'Receipt' to convert the document format."
+        },
+        {
+          "title": "Enter the Payment Details",
+          "description": "Record exactly what was paid for, the total amount, and any taxes applied."
+        },
+        {
+          "title": "Mark as Paid",
+          "description": "Ensure the 'Balance Due' reflects $0.00. You can also add a note indicating the payment method used (e.g., 'Paid via Visa ending in 1234')."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Is this receipt maker really free?",
+          "description": "Yes! Our receipt and invoice generator is completely free. We don't limit the number of receipts you can create, and there are no watermarks."
+        },
+        {
+          "question": "Can I save my receipt as a PDF?",
+          "description": "Absolutely. Once you finish filling out the details, click the 'Download PDF' button to instantly save a highly optimized file."
+        },
+        {
+          "question": "Do I need to sign a digital receipt?",
+          "description": "Generally, no. As long as the receipt contains your business details, the date, amount, and items purchased, a physical or digital signature is rarely legally required for standard transactions."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "Invoice vs Receipt: Key Differences", "url": "/blog/invoice-vs-receipt-difference" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Create your first receipt",
+      "subtext": "Fast, free, and perfectly formatted. Generate your receipt now.",
+      "buttonText": "Open Receipt Maker",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 18, 2026"
+    }
+  ]
+}

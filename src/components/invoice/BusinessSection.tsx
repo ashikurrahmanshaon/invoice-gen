@@ -1,19 +1,15 @@
 import React from 'react';
-import { UploadCloud, Trash2, Edit2, Building2, Mail, Phone, FileText, MapPin, Hash, Calendar } from 'lucide-react';
+import { UploadCloud, Trash2, Edit2, Building2, Mail, Phone, FileText, MapPin } from 'lucide-react';
 import type { InvoiceData } from '../../types/invoice';
 import { processImageFile } from '../../utils/image';
 import { Input } from '../ui/Input';
-import { CurrencyPicker } from '../ui/CurrencyPicker';
-import { useSettings } from '../../contexts/SettingsContext';
 
 interface BusinessSectionProps {
-  data: InvoiceData;
-  updateBusiness: (updates: Partial<InvoiceData['business']>) => void;
-  updateDetails: (updates: Partial<InvoiceData['details']>) => void;
+  data: InvoiceData | any; // Use any to allow PurchaseOrderData to be passed here
+  updateBusiness: (updates: any) => void;
 }
 
-const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, updateBusiness, updateDetails }) => {
-  const { settings, updateNestedSetting } = useSettings();
+const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, updateBusiness }) => {
 
   const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -138,6 +134,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
             id="business-email-input"
             label="Email"
             type="email" 
+            inputMode="email"
             placeholder="biz@email.com"
             value={data.business.email}
             onChange={(e) => updateBusiness({ email: e.target.value })}
@@ -150,6 +147,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
             id="business-phone-input"
             label="Phone Number"
             type="tel" 
+            inputMode="tel"
             placeholder="+1 234 567 890"
             value={data.business.phone || ''}
             onChange={(e) => updateBusiness({ phone: e.target.value })}
@@ -178,50 +176,6 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
       />
 
     </div>
-      {/* Invoice Specific Details (Required but not in visual mockup) */}
-      <div style={{ marginTop: '32px', paddingTop: '32px', borderTop: '1px solid #F1F5F9' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-          <div style={{ padding: '8px', background: '#F8FAFC', color: '#64748B', borderRadius: '10px', display: 'flex' }}>
-            <FileText size={18} />
-          </div>
-          <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#334155', margin: 0 }}>Invoice Settings</h3>
-        </div>
-        <div className="grid-4">
-          <Input 
-            id="invoice-number-input"
-            label="Invoice Number *"
-            type="text" 
-            placeholder="INV-001"
-            value={data.details.invoiceNumber}
-            onChange={(e) => updateDetails({ invoiceNumber: e.target.value })}
-            leftIcon={<Hash size={16} />}
-          />
-          <Input 
-            id="invoice-issue-date-input"
-            label="Issue Date"
-            type="date" 
-            value={data.details.issueDate}
-            onChange={(e) => updateDetails({ issueDate: e.target.value })}
-            leftIcon={<Calendar size={16} />}
-          />
-          <Input 
-            id="invoice-due-date-input"
-            label="Due Date"
-            type="date" 
-            value={data.details.dueDate}
-            onChange={(e) => updateDetails({ dueDate: e.target.value })}
-            leftIcon={<Calendar size={16} />}
-          />
-          <CurrencyPicker 
-            label="Currency"
-            value={data.details.currency || settings.localization.currency}
-            onChange={(c) => {
-              updateDetails({ currency: c });
-              updateNestedSetting('localization', { currency: c });
-            }}
-          />
-        </div>
-      </div>
     </div>
   );
 };
@@ -230,6 +184,6 @@ export const BusinessSection = React.memo(
   BusinessSectionComponent,
   (prevProps, nextProps) => {
     return prevProps.data.business === nextProps.data.business &&
-           prevProps.data.details === nextProps.data.details;
+           prevProps.data.buyer === nextProps.data.buyer;
   }
 );

@@ -38,6 +38,22 @@ export const roundCurrency = (value: number): number => {
   return Math.round(value * 100) / 100;
 };
 
+export const normalizeDecimalString = (val: any): string => {
+  if (val === null || val === undefined) return '';
+  if (typeof val === 'string') {
+    const trimmed = val.trim();
+    if (trimmed === '' || trimmed === '.') return trimmed;
+    const num = Number(trimmed);
+    if (Number.isNaN(num) || !Number.isFinite(num)) return '';
+    return trimmed;
+  }
+  if (typeof val === 'number') {
+    if (Number.isNaN(val) || !Number.isFinite(val)) return '';
+    return val === 0 ? '' : String(val);
+  }
+  return '';
+};
+
 /**
  * Calculates a single line item amount safely and rounded to 2 decimal places.
  */

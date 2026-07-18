@@ -1,0 +1,215 @@
+{
+  "invoice-generator": {
+    "slug": "invoice-generator",
+    "primaryKeyword": "invoice generator",
+    "secondaryKeywords": [
+      "free invoice generator",
+      "online invoice maker",
+      "invoice creator"
+    ],
+    "longTailKeywords": [
+      "how to make an invoice online for free",
+      "create a professional invoice pdf"
+    ],
+    "semanticKeywords": [
+      "billing software",
+      "payment terms",
+      "due date",
+      "tax calculator"
+    ],
+    "entityKeywords": [
+      "Invoice",
+      "Receipt",
+      "SaaS",
+      "Billing"
+    ],
+    "questionKeywords": [
+      "What is the best free invoice generator?",
+      "How do I make my own invoice?"
+    ],
+    "commercialKeywords": [
+      "invoice software",
+      "buy invoice app",
+      "best invoice tool"
+    ],
+    "searchIntent": "tool",
+    "priority": "critical",
+    "businessValue": "high",
+    "topicalAuthorityScore": 100,
+    "internalLinkPriority": 100,
+    "contentBrief": {
+      "targetAudience": "Freelancers, small business owners, contractors",
+      "searchIntent": "tool",
+      "wordCountTarget": 1500,
+      "requiredSections": [
+        "Hero/Tool Interface",
+        "How it Works",
+        "Benefits",
+        "FAQ"
+      ],
+      "faqSuggestions": [
+        "Is this invoice generator really free?",
+        "Can I download my invoice as a PDF?",
+        "Do you save my data?"
+      ],
+      "ctaType": "generate_invoice",
+      "internalLinkTargets": [
+        "/freelance",
+        "/how-to-create-professional-invoice",
+        "/templates"
+      ]
+    },
+    "serpIntelligence": {
+      "featuredSnippetOpportunity": false,
+      "peopleAlsoAsk": true,
+      "imagePack": false,
+      "videoOpportunity": true,
+      "aiOverviewPlaceholder": true
+    },
+    "localization": {
+      "language": "en",
+      "locale": "en-US",
+      "country": "US",
+      "region": "global",
+      "currency": "USD"
+    }
+  },
+  "freelance": {
+    "slug": "freelance",
+    "primaryKeyword": "freelance invoice template",
+    "secondaryKeywords": [
+      "invoice for freelancers",
+      "independent contractor invoice"
+    ],
+    "longTailKeywords": [
+      "how to write an invoice for freelance work",
+      "freelance invoice template free download"
+    ],
+    "semanticKeywords": [
+      "hourly rate",
+      "services rendered",
+      "project milestone"
+    ],
+    "entityKeywords": [
+      "Freelancer",
+      "Independent Contractor",
+      "Gig Economy"
+    ],
+    "questionKeywords": [
+      "How do I invoice as a freelancer?",
+      "What should a freelancer put on an invoice?"
+    ],
+    "commercialKeywords": [
+      "freelance billing software",
+      "freelance invoice app"
+    ],
+    "searchIntent": "template",
+    "priority": "high",
+    "businessValue": "medium",
+    "topicalAuthorityScore": 85,
+    "internalLinkPriority": 80,
+    "contentBrief": {
+      "targetAudience": "Freelancers, independent contractors, consultants",
+      "searchIntent": "template",
+      "wordCountTarget": 1200,
+      "requiredSections": [
+        "Template Download Links",
+        "How to Use the Template",
+        "Best Practices for Freelance Invoicing",
+        "FAQ"
+      ],
+      "faqSuggestions": [
+        "What is the best way to invoice clients as a freelancer?",
+        "Do freelancers need to charge tax on invoices?"
+      ],
+      "ctaType": "download_template",
+      "internalLinkTargets": [
+        "/invoice-generator",
+        "/how-to-create-professional-invoice"
+      ]
+    },
+    "serpIntelligence": {
+      "featuredSnippetOpportunity": true,
+      "peopleAlsoAsk": true,
+      "imagePack": true,
+      "videoOpportunity": false,
+      "aiOverviewPlaceholder": true
+    },
+    "localization": {
+      "language": "en",
+      "locale": "en-US",
+      "country": "US",
+      "region": "global",
+      "currency": "USD"
+    }
+  },
+  "how-to-create-professional-invoice": {
+    "slug": "how-to-create-professional-invoice",
+    "primaryKeyword": "how to create a professional invoice",
+    "secondaryKeywords": [
+      "how to make an invoice",
+      "writing a professional invoice"
+    ],
+    "longTailKeywords": [
+      "step by step guide to creating an invoice",
+      "what to include in a professional invoice"
+    ],
+    "semanticKeywords": [
+      "invoice number",
+      "itemized list",
+      "payment instructions",
+      "net 30"
+    ],
+    "entityKeywords": [
+      "Professional",
+      "Business Management",
+      "Accounting"
+    ],
+    "questionKeywords": [
+      "What makes an invoice professional?",
+      "How do you structure an invoice?"
+    ],
+    "commercialKeywords": [],
+    "searchIntent": "informational",
+    "priority": "high",
+    "businessValue": "medium",
+    "topicalAuthorityScore": 90,
+    "internalLinkPriority": 95,
+    "contentBrief": {
+      "targetAudience": "Small business owners, new freelancers, entrepreneurs",
+      "searchIntent": "informational",
+      "wordCountTarget": 2000,
+      "requiredSections": [
+        "Introduction",
+        "Essential Elements of an Invoice",
+        "Step-by-Step Guide",
+        "Common Mistakes to Avoid",
+        "Conclusion"
+      ],
+      "faqSuggestions": [
+        "Can I create an invoice in Word or Excel?",
+        "What happens if I make a mistake on an invoice?"
+      ],
+      "ctaType": "use_invoice_generator",
+      "internalLinkTargets": [
+        "/invoice-generator",
+        "/templates",
+        "/freelance"
+      ]
+    },
+    "serpIntelligence": {
+      "featuredSnippetOpportunity": true,
+      "peopleAlsoAsk": true,
+      "imagePack": true,
+      "videoOpportunity": true,
+      "aiOverviewPlaceholder": true
+    },
+    "localization": {
+      "language": "en",
+      "locale": "en-US",
+      "country": "US",
+      "region": "global",
+      "currency": "USD"
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "slug": "electronic-invoice",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-19T00:00:00Z",
+  "meta": {
+    "title": "What is an e-Invoice? The Future of Electronic Billing",
+    "description": "Learn what an electronic invoice (e-invoice) is, how it differs from a PDF, and why governments worldwide are making them mandatory.",
+    "canonicalUrl": "https://invoice-gen.net/blog/electronic-invoice",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/einvoice.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "What is an e-Invoice?",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Electronic Invoice", "url": "/blog/electronic-invoice" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "What is an e-Invoice?",
+      "subtitle": "Governments worldwide are mandating a shift from PDFs to structured electronic invoices. Learn what an e-invoice actually is and how to prepare.",
+      "ctaText": "Generate a Standard PDF Invoice",
+      "ctaLink": "/#generator",
+      "readTime": "5 min",
+      "lastUpdated": "July 19, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp"
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "A PDF is NOT an e-Invoice",
+      "text": "There is a massive misconception in the business world: emailing a PDF to a client is not an 'e-invoice'. A PDF is just a digital picture of a piece of paper. A true e-invoice (Electronic Invoice) is a structured data file (usually XML or EDI format) that is transmitted directly from the seller's accounting software into the buyer's accounting software, often passing through a government tax portal for automatic auditing."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "A true e-invoice contains structured data (XML) meant to be read by computers, not humans.",
+        "Over 60 countries (including Italy, Poland, and India) have already made e-invoicing mandatory for B2B transactions to prevent tax fraud.",
+        "E-invoicing eliminates manual data entry, reducing accounting errors by over 90%."
+      ]
+    },
+    {
+      "id": "comparison-1",
+      "type": "comparisonTable",
+      "title": "PDF Invoice vs. e-Invoice",
+      "headers": ["Feature", "PDF Invoice", "True e-Invoice"],
+      "rows": [
+        ["Format", "Visual (PDF, Word)", "Structured Data (XML, UBL)"],
+        ["Processing", "Requires human reading or OCR", "Instant machine-to-machine transfer"],
+        ["Tax Auditing", "Manual audit required", "Real-time automatic reporting to the government"],
+        ["Global Mandates", "Being phased out in the EU", "Becoming legally mandatory globally"]
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Do small businesses in the US need to use e-invoices?",
+          "description": "Currently, no. The US has not mandated e-invoicing for B2B transactions (unlike the EU). A standard PDF invoice is perfectly legal and standard for small businesses in the US, UK, and Canada."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "PDF Invoice Guide", "url": "/blog/pdf-invoice" },
+        { "title": "VAT Invoice Guide", "url": "/blog/vat-invoice-guide" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Not ready for XML?",
+      "subtext": "If you don't live in a mandated country, a standard PDF is still the best option. Use our free generator to create one instantly.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 19, 2026"
+    }
+  ]
+}

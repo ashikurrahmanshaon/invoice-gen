@@ -7,6 +7,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Base static routes
 const staticRoutes = [
   '/',
+  '/purchase-order-generator',
+  '/quote-generator',
+  '/estimate-generator',
   '/templates',
   '/blog',
   '/compare',
@@ -20,35 +23,39 @@ const staticRoutes = [
 
 // Dynamically generate routes from JSON data
 const root = path.resolve(__dirname, '..');
-const blogs = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/seoContent.json'), 'utf8'));
-const templates = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/templates.json'), 'utf8'));
-const comparisons = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/comparisons.json'), 'utf8'));
+const pagesDir = path.resolve(root, 'src/data/pages');
 
-// Premium SEO Pages Data
-const invoiceTypes = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/invoiceTypes.json'), 'utf8'));
-const toolsData = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/tools.json'), 'utf8'));
-const resourcesData = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/resources.json'), 'utf8'));
-const companyData = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/company.json'), 'utf8'));
-
-const blogRoutes = blogs.map(b => `/blog/${b.slug}`);
-const templateRoutes = templates.map(t => `/templates/${t.slug}`);
-const compareRoutes = comparisons.map(c => `/compare/${c.slug}`);
-
-// Premium SEO Page Routes
-const invoiceTypeRoutes = invoiceTypes.map(i => `/invoice-types/${i.slug}`);
-const toolsRoutes = toolsData.map(t => `/tools/${t.slug}`);
-const resourcesRoutes = resourcesData.map(r => `/resources/${r.slug}`);
-const companyRoutes = companyData.map(c => `/${c.slug}`);
+let dynamicRoutes = [];
+if (fs.existsSync(pagesDir)) {
+  const files = fs.readdirSync(pagesDir).filter(f => f.endsWith('.json'));
+  for (const file of files) {
+    try {
+      const data = JSON.parse(fs.readFileSync(path.resolve(pagesDir, file), 'utf8'));
+      if (data.slug) {
+        // Map category to route prefix based on logic in App.tsx
+        let route = `/${data.slug}`; // Fallback
+        if (data.category === 'Invoice Guides' || data.category === 'Blog Articles') {
+          route = `/blog/${data.slug}`;
+        } else if (data.category === 'Invoice Templates') {
+          route = `/templates/${data.slug}`;
+        } else if (data.category === 'Invoice Types') {
+          route = `/invoice-types/${data.slug}`;
+        } else if (data.category === 'Free Tools') {
+          route = `/tools/${data.slug}`;
+        } else if (data.category === 'Resources') {
+          route = `/resources/${data.slug}`;
+        }
+        dynamicRoutes.push(route);
+      }
+    } catch (e) {
+      console.warn(`Could not parse ${file}`);
+    }
+  }
+}
 
 const routes = [
   ...staticRoutes, 
-  ...blogRoutes, 
-  ...templateRoutes, 
-  ...compareRoutes,
-  ...invoiceTypeRoutes,
-  ...toolsRoutes,
-  ...resourcesRoutes,
-  ...companyRoutes
+  ...dynamicRoutes
 ];
 
 async function build() {

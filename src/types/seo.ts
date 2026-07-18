@@ -1,4 +1,4 @@
-export type SearchIntent = 'informational' | 'navigational' | 'transactional' | 'commercial_investigation';
+export type SearchIntent = 'informational' | 'navigational' | 'transactional' | 'commercial' | 'comparison' | 'local' | 'brand' | 'tool' | 'template';
 export type DifficultyLevel = 'low' | 'medium' | 'high';
 export type PriorityLevel = 'low' | 'medium' | 'high' | 'critical';
 export type ContentStatus = 'planned' | 'drafting' | 'published' | 'needs_update';

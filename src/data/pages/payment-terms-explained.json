@@ -1,0 +1,158 @@
+{
+  "slug": "payment-terms-explained",
+  "category": "Invoice Guides",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-18T00:00:00Z",
+  "meta": {
+    "title": "Invoice Payment Terms Explained: Net 30, Net 60, & More",
+    "description": "Confused by Net 30, Net 60, or EOM? Discover what invoice payment terms mean, which ones to use, and how to negotiate better terms with your clients.",
+    "canonicalUrl": "https://invoice-gen.net/blog/payment-terms-explained",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/payment-terms-explained.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Invoice Payment Terms Explained",
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://invoice-gen.net/authors/jane-doe"
+        },
+        "reviewedBy": {
+          "@type": "Person",
+          "name": "John Smith",
+          "url": "https://invoice-gen.net/authors/john-smith"
+        }
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-1",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Payment Terms Explained", "url": "/blog/payment-terms-explained" }
+      ]
+    },
+    {
+      "id": "hero-1",
+      "type": "hero",
+      "title": "Payment Terms Explained: Net 30, EOM, and Beyond",
+      "subtitle": "Choosing the right payment terms can make or break your cash flow. Learn the definitions, the pros and cons, and standard industry practices.",
+      "ctaText": "Set Up Invoice Terms Now",
+      "ctaLink": "/#generator",
+      "readTime": "6 min",
+      "lastUpdated": "July 18, 2026"
+    },
+    {
+      "id": "author-1",
+      "type": "author",
+      "authorName": "Jane Doe",
+      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
+      "avatarUrl": "/avatars/jane-doe.webp",
+      "reviewerId": "john-smith"
+    },
+    {
+      "id": "definition-1",
+      "type": "definition",
+      "term": "Net 30",
+      "definition": "A standard payment term indicating that the net (total) amount of the invoice is due in full 30 days after the invoice issue date."
+    },
+    {
+      "id": "intro-1",
+      "type": "introduction",
+      "heading": "Why Payment Terms Are Crucial",
+      "text": "Payment terms dictate exactly when you expect to receive money from your client. Without explicit payment terms, clients may default to their own internal billing cycles (which could be 60 or 90 days). Setting strict terms helps you forecast revenue, manage cash flow, and establish a professional boundary with corporate accounting departments."
+    },
+    {
+      "id": "summary-1",
+      "type": "quickSummary",
+      "summaryItems": [
+        "Net 30 is the most common B2B standard globally.",
+        "PIA (Payment in Advance) provides the most security for sellers.",
+        "EOM (End of Month) means payment is due at the end of the current calendar month.",
+        "Early payment discounts (like 2/10 Net 30) can drastically speed up cash flow."
+      ]
+    },
+    {
+      "id": "comparison-1",
+      "type": "comparisonTable",
+      "title": "Common Invoice Payment Terms",
+      "headers": ["Term", "Definition", "Best Used For"],
+      "rows": [
+        ["PIA", "Payment in Advance", "Custom orders, new clients, high-risk projects"],
+        ["Due upon receipt", "Payment expected immediately", "Freelancers, direct-to-consumer services"],
+        ["Net 15 / 30 / 60", "Due 15, 30, or 60 days from invoice date", "Standard B2B transactions, established clients"],
+        ["EOM", "End of Month", "Retainers, bulk monthly shipments"]
+      ]
+    },
+    {
+      "id": "expert-tip-1",
+      "type": "expertTip",
+      "tip": "Consider offering '2/10 Net 30'. This means the client gets a 2% discount if they pay within 10 days; otherwise, the full amount is due in 30 days. It's a powerful psychological incentive."
+    },
+    {
+      "id": "step-1",
+      "type": "stepByStepGuide",
+      "steps": [
+        {
+          "title": "Assess Client Risk",
+          "description": "For new clients with unproven credit, request 50% PIA (Payment in Advance) and Net 15 for the balance."
+        },
+        {
+          "title": "Agree in Writing First",
+          "description": "Never surprise a client with payment terms on the invoice. These should be established during contract or SOW negotiations."
+        },
+        {
+          "title": "Print Clearly on the Invoice",
+          "description": "Write both the term ('Net 30') and the exact calendar date ('Due by Aug 30, 2026') to remove all ambiguity."
+        },
+        {
+          "title": "Enforce Late Fees",
+          "description": "State your late fee policy clearly (e.g., 1.5% per month) beneath the payment terms, and actually enforce it if terms are breached."
+        }
+      ]
+    },
+    {
+      "id": "faq-1",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "Can I legally charge a late fee?",
+          "description": "Yes, provided the late fee was agreed upon in the initial contract or clearly stated on the invoice before the transaction took place. Check local laws for maximum allowable interest rates."
+        },
+        {
+          "question": "What does COD mean?",
+          "description": "Cash on Delivery (or Collect on Delivery). Payment must be made simultaneously with the delivery of the goods or services."
+        }
+      ]
+    },
+    {
+      "id": "related-1",
+      "type": "relatedResources",
+      "resources": [
+        { "title": "How to Write an Invoice", "url": "/blog/how-to-write-an-invoice" },
+        { "title": "What is a Proforma Invoice?", "url": "/invoice-types/proforma-invoice" }
+      ]
+    },
+    {
+      "id": "cta-1",
+      "type": "cta",
+      "heading": "Ready to set your terms?",
+      "subtext": "Our free invoice generator allows you to customize payment terms instantly.",
+      "buttonText": "Start Invoicing",
+      "buttonLink": "/#generator"
+    },
+    {
+      "id": "last-updated-1",
+      "type": "lastUpdated",
+      "date": "July 18, 2026"
+    }
+  ]
+}
