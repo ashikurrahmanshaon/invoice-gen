@@ -9,9 +9,14 @@ const TermsPage = lazy(() => import('./pages/LegalPages').then(module => ({ defa
 const TrustPage = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.TrustPage })));
 const ContactPage = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.ContactPage })));
 const BlogHomePage = lazy(() => import('./pages/ContentDirectoryPages').then(module => ({ default: module.BlogHomePage })));
+const BlogDetailPage = lazy(() => import('./pages/BlogDetailPage'));
 const CompareHomePage = lazy(() => import('./pages/ContentDirectoryPages').then(module => ({ default: module.CompareHomePage })));
+const CompareDetailPage = lazy(() => import('./pages/CompareDetailPage'));
 const TemplateGalleryPage = lazy(() => import('./pages/TemplateGalleryPage').then(module => ({ default: module.TemplateGalleryPage })));
 const TemplateDetailPage = lazy(() => import('./pages/TemplateDetailPage').then(module => ({ default: module.TemplateDetailPage })));
+
+// Premium SEO Pages
+const PremiumSEOPage = lazy(() => import('./pages/PremiumSEOPage'));
 
 declare global {
   interface Window {
@@ -34,13 +39,6 @@ function GTMRouteTracker() {
   return null;
 }
 
-function StaticPageReloader() {
-  useEffect(() => {
-    window.location.reload();
-  }, []);
-  return null;
-}
-
 export default function App() {
   return (
     <Suspense fallback={null}>
@@ -53,20 +51,27 @@ export default function App() {
         
         {/* Phase 6 & 7: Content & Comparison */}
         <Route path="/blog" element={<BlogHomePage />} />
-        <Route path="/blog/*" element={<StaticPageReloader />} />
+        <Route path="/blog/:slug" element={<BlogDetailPage />} />
         
         {/* Templates */}
         <Route path="/templates" element={<TemplateGalleryPage />} />
         <Route path="/templates/:id" element={<TemplateDetailPage />} />
 
         <Route path="/compare" element={<CompareHomePage />} />
-        <Route path="/compare/*" element={<StaticPageReloader />} />
+        <Route path="/compare/:id" element={<CompareDetailPage />} />
         
         {/* Phase 9: E-E-A-T / Trust Pages */}
         <Route path="/about" element={<AboutPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms" element={<TermsPage />} />
+        <Route path="/trust-center" element={<PremiumSEOPage category="company" />} />
         <Route path="/trust" element={<TrustPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+
+        {/* Premium SEO Landing Pages */}
+        <Route path="/resources/:slug" element={<PremiumSEOPage category="resources" />} />
+        <Route path="/invoice-types/:slug" element={<PremiumSEOPage category="invoice-types" />} />
+        <Route path="/tools/:slug" element={<PremiumSEOPage category="tools" />} />
         <Route path="/contact" element={<ContactPage />} />
         
         {/* Fallback to home for anything else */}

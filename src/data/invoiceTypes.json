@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "freelance",
+    "category": "invoice-types",
+    "title": "Freelance Invoice Template & Generator | Invoice-Gen.net",
+    "metaDescription": "Create a professional freelance invoice in seconds. Discover what to include, how to get paid faster, and best practices for independent contractors.",
+    "hero": {
+      "title": "Freelance Invoice Generator",
+      "subtitle": "Stop wasting time on manual billing. Generate beautiful, professional freelance invoices instantly. Designed specifically for independent contractors and freelancers to ensure you get paid on time, every time.",
+      "ctaText": "Create Freelance Invoice"
+    },
+    "intro": {
+      "heading": "Why Freelancers Need a Specialized Invoice",
+      "text": "As a freelancer, your invoice is often the final touchpoint with your client. A professional, clear, and legally compliant invoice not only ensures you get paid promptly but also reinforces your brand image. Generic invoices often lack the necessary fields for hourly tracking, milestone billing, or specific project deliverables, leading to confusion and delayed payments. Our specialized freelance invoice structure removes the friction from getting paid."
+    },
+    "featureCards": [
+      {
+        "icon": "clock",
+        "title": "Hourly & Flat-Rate Billing",
+        "description": "Easily toggle between hourly tracking and fixed project milestones. Perfect for developers, designers, and consultants who use mixed billing models."
+      },
+      {
+        "icon": "shield",
+        "title": "Legally Compliant",
+        "description": "Includes all required fields for tax compliance globally, including VAT/Tax IDs, precise issuance dates, and standardized payment terms."
+      },
+      {
+        "icon": "zap",
+        "title": "Instant PDF Export",
+        "description": "Generate a highly optimized, universally compatible PDF instantly. No formatting issues across different operating systems or devices."
+      }
+    ],
+    "benefits": [
+      {
+        "title": "Accelerate Your Payment Cycle",
+        "description": "Clear itemization and prominent payment terms eliminate client confusion. Freelancers who use structured invoices see a 30% reduction in late payments. By specifying exact due dates (like Net 15 or Net 30) and providing direct payment instructions, you remove the guesswork for accounting departments."
+      },
+      {
+        "title": "Maintain Brand Professionalism",
+        "description": "A polished invoice reflects the quality of your work. The clean typography, generous whitespace, and structured data hierarchy show clients that you are a serious professional, increasing the likelihood of repeat business and referrals."
+      }
+    ],
+    "stepByStep": [
+      {
+        "title": "Enter Your Business Details",
+        "description": "Start by adding your name or DBA, address, and contact information. Ensure your email is professional. If applicable, add your Tax ID or VAT number to comply with local freelance regulations."
+      },
+      {
+        "title": "Specify the Client's Information",
+        "description": "Include the correct billing contact. For larger companies, this is often the Accounts Payable department rather than your direct project manager. Always include their physical address and email."
+      },
+      {
+        "title": "Itemize Your Freelance Work",
+        "description": "Be highly specific. Instead of writing 'Design Work', write 'UI/UX Design for Homepage - 15 Hours at $75/hr'. Clear descriptions prevent scope disputes and help clients immediately recognize the value delivered."
+      },
+      {
+        "title": "Set Clear Payment Terms",
+        "description": "Clearly state when the payment is due. 'Net 15' means payment is expected within 15 days of the invoice date. Add a polite note detailing your accepted payment methods, such as direct bank transfer or PayPal."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Should a freelance invoice include an invoice number?",
+        "a": "Yes, absolutely. A unique, sequential invoice number (e.g., INV-001) is required for both your internal bookkeeping and your client's accounting department. It makes referencing specific payments much easier."
+      },
+      {
+        "q": "What happens if a client pays my freelance invoice late?",
+        "a": "You should clearly state your late fee policy in the payment terms before starting work. A common practice is charging a 1.5% to 2% late fee per month on overdue balances. Send a polite reminder a few days before the due date."
+      },
+      {
+        "q": "Do I need to charge tax as a freelancer?",
+        "a": "This depends entirely on your local jurisdiction and your total annual revenue. In many regions, once you cross a specific earning threshold, you must register for and collect VAT or Sales Tax. Always consult a local tax professional."
+      }
+    ],
+    "relatedPages": [
+      {
+        "title": "How to Create a Professional Invoice",
+        "url": "/resources/create-invoice-guide"
+      },
+      {
+        "title": "Freelancer Payment Terms Explained",
+        "url": "/resources/payment-terms"
+      }
+    ]
+  }
+]

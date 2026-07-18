@@ -109,7 +109,7 @@ export const Footer: React.FC = () => {
             <div className="footer-links">
               <a href="/">{t('footer.invoiceGenerator', 'Invoice Generator')}</a>
               <a href="/templates/">{t('footer.templates', 'Templates')}</a>
-              <a href="/trust/">{t('footer.trustCenter', 'Trust Center')}</a>
+              <a href="/trust-center/">{t('footer.trustCenter', 'Trust Center')}</a>
             </div>
           </details>
 
@@ -117,10 +117,10 @@ export const Footer: React.FC = () => {
           <details open={isDesktop} className="footer-col">
             <summary className="footer-summary">{t('footer.resources', 'Resources')}</summary>
             <div className="footer-links">
-              <a href="/blog/how-to-create-professional-invoice/">{t('footer.createGuide', 'Create Invoice Guide')}</a>
-              <a href="/blog/what-to-include-in-invoice/">{t('footer.whatToInclude', 'What to Include')}</a>
-              <a href="/blog/invoice-vs-receipt-difference/">{t('footer.invoiceVsReceipt', 'Invoice vs Receipt')}</a>
-              <a href="/blog/best-payment-terms-freelancers/">{t('footer.paymentTerms', 'Payment Terms')}</a>
+              <a href="/resources/create-invoice-guide/">{t('footer.createGuide', 'Create Invoice Guide')}</a>
+              <a href="/resources/what-to-include/">{t('footer.whatToInclude', 'What to Include')}</a>
+              <a href="/resources/invoice-vs-receipt/">{t('footer.invoiceVsReceipt', 'Invoice vs Receipt')}</a>
+              <a href="/resources/payment-terms/">{t('footer.paymentTerms', 'Payment Terms')}</a>
             </div>
           </details>
 
@@ -128,10 +128,10 @@ export const Footer: React.FC = () => {
           <details open={isDesktop} className="footer-col">
             <summary className="footer-summary">{t('footer.invoiceTypes', 'Invoice Types')}</summary>
             <div className="footer-links">
-              <a href="/freelance-invoice-template/">{t('footer.freelance', 'Freelance Invoice')}</a>
-              <a href="/contractor-invoice-template/">{t('footer.contractor', 'Contractor Invoice')}</a>
-              <a href="/proforma-invoice-template/">{t('footer.proforma', 'Proforma Invoice')}</a>
-              <a href="/commercial-invoice-template/">{t('footer.commercial', 'Commercial Invoice')}</a>
+              <a href="/invoice-types/freelance/">{t('footer.freelance', 'Freelance Invoice')}</a>
+              <a href="/invoice-types/contractor/">{t('footer.contractor', 'Contractor Invoice')}</a>
+              <a href="/invoice-types/proforma/">{t('footer.proforma', 'Proforma Invoice')}</a>
+              <a href="/invoice-types/commercial/">{t('footer.commercial', 'Commercial Invoice')}</a>
             </div>
           </details>
 
@@ -139,10 +139,10 @@ export const Footer: React.FC = () => {
           <details open={isDesktop} className="footer-col">
             <summary className="footer-summary">{t('footer.freeTools', 'Free Tools')}</summary>
             <div className="footer-links">
-              <a href="/receipt-maker/">{t('footer.receiptMaker', 'Receipt Maker')}</a>
-              <a href="/estimate-maker/">{t('footer.estimateMaker', 'Estimate Maker')}</a>
-              <a href="/purchase-order-generator/">{t('footer.purchaseOrder', 'Purchase Order')}</a>
-              <a href="/pay-stub-generator/">{t('footer.payStub', 'Pay Stub Generator')}</a>
+              <a href="/tools/receipt-maker/">{t('footer.receiptMaker', 'Receipt Maker')}</a>
+              <a href="/tools/estimate-maker/">{t('footer.estimateMaker', 'Estimate Maker')}</a>
+              <a href="/tools/purchase-order/">{t('footer.purchaseOrder', 'Purchase Order')}</a>
+              <a href="/tools/paystub-generator/">{t('footer.payStub', 'Pay Stub Generator')}</a>
             </div>
           </details>
 

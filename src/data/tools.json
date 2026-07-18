@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "receipt-maker",
+    "category": "tools",
+    "title": "Free Online Receipt Maker | Invoice-Gen.net",
+    "metaDescription": "Generate professional receipts instantly with our free online receipt maker. Send customized, legally compliant payment receipts directly to your clients.",
+    "hero": {
+      "title": "Free Online Receipt Maker",
+      "subtitle": "Provide instant proof of payment to your clients. Generate highly professional, fully customizable PDF receipts in seconds. No signup required.",
+      "ctaText": "Make a Receipt Now"
+    },
+    "intro": {
+      "heading": "The Importance of a Professional Receipt",
+      "text": "While an invoice requests payment, a receipt acknowledges that payment has been successfully received. Providing a professional receipt is a critical component of excellent customer service. It offers peace of mind to your clients and serves as an essential document for their expense tracking and tax deductions. Our receipt maker ensures that every transaction ends on a high note with a beautifully formatted document."
+    },
+    "featureCards": [
+      {
+        "icon": "check-circle",
+        "title": "Instant Acknowledgment",
+        "description": "Generate proof of payment in under 30 seconds. Perfect for quick retail transactions, freelance payouts, or contractor deposits."
+      },
+      {
+        "icon": "file-text",
+        "title": "Tax-Ready Formatting",
+        "description": "Includes standard required fields such as transaction dates, payment methods, and zero-balance indicators for audit compliance."
+      },
+      {
+        "icon": "download",
+        "title": "One-Click Export",
+        "description": "Download your receipt as a lightweight, secure PDF that can be instantly emailed or printed for your client's records."
+      }
+    ],
+    "benefits": [
+      {
+        "title": "Builds Immediate Client Trust",
+        "description": "Sending a swift, professional receipt confirms that the transaction was successful and that you are an organized, reliable business. This small administrative step drastically reduces follow-up emails asking 'Did you receive my transfer?' and boosts your professional reputation."
+      },
+      {
+        "title": "Simplifies Year-End Accounting",
+        "description": "Keeping a digital trail of generated receipts helps you match incoming deposits with issued invoices. When tax season arrives, having standardized, clearly formatted receipts prevents discrepancies between your bank statements and your accounting software."
+      }
+    ],
+    "stepByStep": [
+      {
+        "title": "Add Company and Client Info",
+        "description": "Ensure your business name, address, and the client's information are accurate. This proves exactly who made the payment and who received it."
+      },
+      {
+        "title": "Detail the Goods or Services",
+        "description": "Briefly itemize what was paid for. You can often mirror the exact line items from the original invoice."
+      },
+      {
+        "title": "Record the Payment Method",
+        "description": "Clearly state how the payment was made (e.g., Credit Card ending in 1234, Bank Transfer, Cash, or Check #9876). Include the date the funds cleared."
+      },
+      {
+        "title": "Mark the Balance as Zero",
+        "description": "The most important part of a receipt is indicating that the amount due has been settled. Show the total amount paid and leave the 'Amount Due' at $0.00."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is the difference between an invoice and a receipt?",
+        "a": "An invoice is a bill sent before payment is made to request funds. A receipt is proof of payment provided after the funds have been successfully transferred and settled."
+      },
+      {
+        "q": "Can I use the invoice generator to make a receipt?",
+        "a": "Yes! You can use our generator by simply changing the document title from 'INVOICE' to 'RECEIPT' and ensuring the 'Amount Due' is set to zero while recording the 'Amount Paid'."
+      },
+      {
+        "q": "Does a receipt need a signature?",
+        "a": "For most digital business transactions, a physical or digital signature is not legally required on a receipt, though it can add a layer of formality for cash transactions."
+      }
+    ],
+    "relatedPages": [
+      {
+        "title": "Invoice vs Receipt: Key Differences",
+        "url": "/resources/invoice-vs-receipt"
+      },
+      {
+        "title": "Estimate Maker",
+        "url": "/tools/estimate-maker"
+      }
+    ]
+  }
+]

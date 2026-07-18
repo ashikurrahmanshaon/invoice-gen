@@ -1,0 +1,41 @@
+{
+  "freelance": {
+    "primaryTopic": "Freelancing",
+    "secondaryTopics": ["Invoicing", "Self-Employed", "Billing"],
+    "parentTopic": "invoice-types",
+    "relatedTools": ["receipt-maker"],
+    "relatedResources": ["create-invoice-guide", "payment-terms"]
+  },
+  "receipt-maker": {
+    "primaryTopic": "Receipts",
+    "secondaryTopics": ["Free Tools", "Billing", "Generators"],
+    "parentTopic": "tools",
+    "relatedTools": ["estimate-maker"],
+    "relatedResources": ["invoice-vs-receipt"],
+    "relatedTemplates": ["freelance"]
+  },
+  "create-invoice-guide": {
+    "primaryTopic": "Invoicing",
+    "secondaryTopics": ["Getting Started", "Professional Billing", "Best Practices"],
+    "parentTopic": "resources",
+    "relatedTools": ["receipt-maker"],
+    "relatedResources": ["payment-terms", "what-to-include"],
+    "relatedTemplates": ["freelance", "contractor"]
+  },
+  "payment-terms": {
+    "primaryTopic": "Payment Terms",
+    "secondaryTopics": ["Net 30", "Getting Paid", "Billing"],
+    "parentTopic": "resources",
+    "relatedTools": [],
+    "relatedResources": ["create-invoice-guide"],
+    "relatedTemplates": ["freelance"]
+  },
+  "trust-center": {
+    "primaryTopic": "Security",
+    "secondaryTopics": ["Privacy", "Data Protection", "Company"],
+    "parentTopic": "company",
+    "relatedTools": [],
+    "relatedResources": [],
+    "relatedTemplates": []
+  }
+}

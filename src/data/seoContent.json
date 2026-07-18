@@ -1,0 +1,732 @@
+[
+  {
+    "slug": "best-payment-terms-freelancers",
+    "title": "Best Payment Terms for Freelancers",
+    "date": "July 11, 2026",
+    "sections": [
+      {
+        "h2": "1. Net 15: The Freelancer Standard",
+        "p": "Net 15 means your client has 15 calendar days from the invoice date to complete the payment. This is the recommended default for freelance projects. It provides a tight timeline that prevents long payment cycles."
+      },
+      {
+        "h2": "2. Net 30: The Corporate Default",
+        "p": "Net 30 gives your client 30 calendar days to complete the payment. This is the default requirement for larger corporate accounting departments. While common, freelancers should negotiate Net 15 where possible to prevent cash flow dry spells."
+      },
+      {
+        "h2": "3. 50% Upfront Retainer",
+        "p": "For projects over $1,000, you should require a 50% upfront retainer before beginning work. This covers your initial labor hours and commits the client to the project. The final 50% is due upon completion or project exit."
+      },
+      {
+        "h2": "Early Payment Discounts",
+        "p": "To incentivize rapid payouts, you can offer a small percentage discount (e.g. 2% 10 Net 30), which gives the client a 2% discount if they settle their balance within 10 days."
+      },
+      {
+        "h2": "Frequently Asked Questions",
+        "p": ""
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "charging-late-fees-terms-and-best-practices",
+    "title": "Charging Late Fees: Terms and Best Practices",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. Legally Declaring Late Fees",
+        "p": "You cannot charge late fees unless they were agreed to in writing in your initial contract. Outline late fee percentages clearly."
+      },
+      {
+        "h2": "2. Standard Late Fee Calculations",
+        "p": "The standard late fee is 1.5% to 2% monthly interest, or a flat fee (e.g. $25 per week late)."
+      },
+      {
+        "h2": "3. Enforcing and Waiving Fees",
+        "p": "Use late fees as leverage. You can offer to waive the late fee if they submit the base invoice balance immediately."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "choosing-the-best-payment-terms-for-freelancers",
+    "title": "Choosing the Best Invoicing Payment Terms",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. What are Payment Terms?",
+        "p": "Payment terms define when your client must pay. They are typically indicated using code abbreviations like Net 15, Net 30, or COD (Cash on Delivery)."
+      },
+      {
+        "h2": "2. Net 15 vs. Net 30",
+        "p": "Net 15 means payment is due within 15 days; Net 30 allows 30 days. For freelancers, Net 15 is standard to prevent long unpaid gaps."
+      },
+      {
+        "h2": "3. Implementing Upfront Deposits",
+        "p": "For large contracts, always charge a 50% upfront deposit. This protects your cash flow and ensures the client has skin in the game."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "common-invoice-mistakes-avoid",
+    "title": "Common Invoice Mistakes to Avoid",
+    "date": "July 11, 2026",
+    "sections": [
+      {
+        "h2": "1. Unitemized Services",
+        "p": "Writing a single bulk line item like \"Marketing Work - $3,500\" leads to corporate client confusion. Accounting compliance managers need a clear list of hours or specific project milestones to approve transfers. Detail your items precisely."
+      },
+      {
+        "h2": "2. Vague Payment Terms",
+        "p": "Using terms like \"Payable on receipt\" is often ignored. Choose standard net terms (e.g. Net 15) and specify the exact due date on the layout (e.g., \"Due Date: July 26, 2026\") to set clear boundaries."
+      },
+      {
+        "h2": "3. Missing Payment Routing Details",
+        "p": "Do not assume the client knows how to pay you. If they have to search for your ACH routing numbers or digital payment emails, they will put your bill aside. List all details clearly in the notes."
+      },
+      {
+        "h2": "4. Formatting as Editable Files",
+        "p": "Never send billing in Word or Excel formats. They can suffer from page alignment shifts on different devices, or be edited accidentally. Always export your final invoice as a secure PDF."
+      },
+      {
+        "h2": "Frequently Asked Questions",
+        "p": ""
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "essential-fields-to-include-on-invoice",
+    "title": "Essential Fields to Include on Your Invoices",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. Detailed Contact Coordinates",
+        "p": "Ensure both your billing details and the client's corporate name match official tax filings. Include email address, active phone number, and physical mailing coordinates."
+      },
+      {
+        "h2": "2. The Critical Dates",
+        "p": "Show the invoice issue date and the exact due date. Do not write vague terms like \"Pay within 2 weeks.\" State \"Due Date: July 27, 2026\" to eliminate timeline confusion."
+      },
+      {
+        "h2": "3. Line Item Formatting",
+        "p": "For each row in your items grid, state the service name, brief description, quantity/hours, unit price, and total line amount."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "friendly-late-payment-reminder-email-templates",
+    "title": "Late Payment Reminder Email Templates for Freelancers",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. Day-After Reminder Template",
+        "p": "\"Hi [Name], just a friendly reminder that invoice [Num] for [Project] was due yesterday. Let me know if you have any payment questions.\""
+      },
+      {
+        "h2": "2. One-Week Late Template",
+        "p": "\"Hi [Name], our invoice [Num] is now one week past due. Could you please confirm when payment will be processed? Updated copy attached.\""
+      },
+      {
+        "h2": "3. 30-Day Late Urgent Template",
+        "p": "\"Hi [Name], invoice [Num] is now 30 days overdue. Please submit payment today to avoid late fees. All active project timelines are on hold.\""
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "handling-down-payments-and-deposits",
+    "title": "How to Handle Down Payments and Upfront Deposits",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. The Safety of Upfront Deposits",
+        "p": "For new clients or large projects, demanding a down payment is essential. This guarantees that you can allocate dedicated schedule blocks without risk."
+      },
+      {
+        "h2": "2. Structuring Deposit Invoices",
+        "p": "Label the invoice clearly as \"Deposit Invoice: 50% Upfront.\" Once paid, issue a second invoice at project completion showing the deposit deducted."
+      },
+      {
+        "h2": "3. Standard Deposit Ratios",
+        "p": "Standard ratios are: (a) 50% deposit / 50% completion. (b) 33% deposit / 33% mid-point / 34% completion for long contracts."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "hourly-vs-fixed-price-invoices",
+    "title": "Hourly vs Fixed Price Invoices: Which is Best?",
+    "date": "July 11, 2026",
+    "sections": [
+      {
+        "h2": "1. The Hourly Billing Model",
+        "p": "Hourly billing is ideal for projects with undefined scope. You invoice for the exact hours worked. Features include:\n- Pros: Guarantees payment for all hours worked. Prevents scope creep losses.\n- Cons: Limits your earning capacity based on physical hours. Requires meticulous time tracking.\n- Invoice Structure: List dates, total hours logged, and your hourly rate clearly (e.g. \"React development - 8 hours @ $70/hr\")."
+      },
+      {
+        "h2": "2. The Fixed Price Model",
+        "p": "Fixed pricing works best when the project deliverables are clearly defined. You charge a set fee for the output, regardless of hours. Features include:\n- Pros: Rewards efficiency. Allows you to scale revenue as your speed increases.\n- Cons: Risk of unpaid hours if scope creep occurs without adjustments.\n- Invoice Structure: List specific project milestones (e.g. \"Milestone 1: Branding Deliverables Complete\")."
+      },
+      {
+        "h2": "Which Should You Choose?",
+        "p": "We recommend a hybrid approach. For new clients with undefined project scopes, bill hourly. Once a project's parameters are established, transition to milestone-based fixed pricing to maximize profit margins."
+      },
+      {
+        "h2": "Frequently Asked Questions",
+        "p": ""
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "how-to-create-professional-invoice",
+    "title": "How to Create a Professional Invoice: Step-by-Step Guide",
+    "date": "July 11, 2026",
+    "sections": [
+      {
+        "h2": "1. Choose a Standard Layout Structure",
+        "p": "Whether you design your invoice layout from scratch or utilize an automated tool, a professional structure should contain standard coordinates. Standard layout elements include:\n- Header Section: Your business name, contact information, and professional logo clearly displayed at the top.\n- Client Details: The name, company name, address, and email of the client responsible for settling the payment.\n- Invoice Identifiers: The unique invoice tracking number, date of issue, and payment due date."
+      },
+      {
+        "h2": "2. Itemize Your Deliverables Precisely",
+        "p": "Vague entries on an invoice are the number one cause of payment processing delays. To prevent audit queries from client billing managers, itemize all charges with specific task markers:\n- Hourly Tasks: List the dates, hourly rates, and total hours logged (e.g. \"Front-end Coding - 12 hours @ $75/hr\").\n- Flat Project Milestones: Specify the exact project phase or output delivered (e.g. \"Milestone 1: Figma Homepage Mockup Delivery\").\n- Reimbursable Fees: Detail any external material or software subscription fees purchased on the client's behalf."
+      },
+      {
+        "h2": "3. Establish Payment Terms clearly",
+        "p": "Your payment terms dictate when you get paid. Standard configurations include Net 15 or Net 30 terms. State your chosen guidelines at the bottom of the sheet, along with accepted payment methods (such as direct ACH bank routing or digital transfer accounts)."
+      },
+      {
+        "h2": "4. Review and Export securely",
+        "p": "Before sending, review all arithmetic calculations, tax additions, and contact coordinates. Once verified, always export your billing sheets as an immutable PDF rather than an editable Word document. This prevents formatting errors and unauthorized adjustments."
+      },
+      {
+        "h2": "Frequently Asked Questions",
+        "p": ""
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "how-to-create-your-first-invoice",
+    "title": "How to Create Your First Invoice (Step-by-Step)",
+    "date": "Published: July 13, 2026",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "slug": "how-to-follow-up-on-unpaid-invoices",
+    "title": "How to Follow Up on Unpaid Invoices Professionally",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. Establish a Polite Follow-Up Schedule",
+        "p": "Send polite follow-ups: (a) 1 day after the due date. (b) 7 days late. (c) 14 days late. (d) Call at 30 days late."
+      },
+      {
+        "h2": "2. Keeping the Tone Professional",
+        "p": "Assume it was an oversight. Write: \"Just checking in to ensure our invoice [Number] was received. Let me know if you need another copy.\""
+      },
+      {
+        "h2": "3. Stop Work Immediately",
+        "p": "If an invoice is late, pause all active work until it is resolved. Notify the client politely that scheduling holds are active."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "how-to-get-paid-faster-invoices",
+    "title": "How to Get Paid Faster with Better Invoices",
+    "date": "July 11, 2026",
+    "sections": [
+      {
+        "h2": "1. Send Invoices Immediately",
+        "p": "Do not wait for the end of the month to send invoices. The closer the billing is to the completion of the work, the higher the likelihood of a rapid payout. Deliver bills while the value is top-of-mind."
+      },
+      {
+        "h2": "2. Use Pre-defined Net Terms",
+        "p": "State your payment timelines clearly. Use Net 15 or Net 30 terms and display the exact payment due date on the page (e.g. \"Due Date: July 26, 2026\") rather than writing vague terms like \"Payable on Receipt\"."
+      },
+      {
+        "h2": "3. Simplify Bank Routing Info",
+        "p": "Make it easy for clients to pay. List your direct bank details (ACH / routing numbers) or digital wallet links clearly in the notes section to prevent administrative bottlenecks."
+      },
+      {
+        "h2": "4. Automated Follow-Ups",
+        "p": "If an invoice is unpaid, follow up politely on the morning of day 16 or 31. Maintaining a consistent follow-up schedule shows your client that your payment terms are firm."
+      },
+      {
+        "h2": "Frequently Asked Questions",
+        "p": ""
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "how-to-invoice-as-consultant",
+    "title": "How to Invoice Clients as a Consultant",
+    "date": "July 11, 2026",
+    "sections": [
+      {
+        "h2": "1. Select Your Billing Model",
+        "p": "Consulting projects operate under three primary payment structures:\n- Monthly Retainer: A fixed fee billed at the beginning of the service cycle (e.g. \"Monthly Advisory Retainer - July\").\n- Hourly Consulting Sprints: Itemize dates and the exact hours logged (e.g., \"6 Hours Strategic Mapping Workshop\").\n- Deliverable-Based Milestones: Invoicing upon completion of specific objectives (e.g. \"Technical SEO Audit PDF Delivery\")."
+      },
+      {
+        "h2": "2. Document Reimbursable Expenses",
+        "p": "If your advisory contract includes coverage for travel, materials, or software licensing, list these as distinct, tax-free lines. Keep matching digital receipts ready to attach separately."
+      },
+      {
+        "h2": "3. Establish Corporate Payment Cycles",
+        "p": "Corporate accounting default is typically Net 30. State this term clearly in the footer, along with your direct bank routing details (ACH or wire coordinates) to avoid delay."
+      },
+      {
+        "h2": "Frequently Asked Questions",
+        "p": ""
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "how-to-invoice-clients-internationally",
+    "title": "How to Invoice Clients Internationally: A Practical Guide",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. Specify the Currency Clearly",
+        "p": "When billing international clients, specify the target currency (e.g. USD, EUR, GBP) using standard three-letter ISO codes next to all amounts."
+      },
+      {
+        "h2": "2. Provide Global Banking Details",
+        "p": "Include complete global wire details: IBAN, BIC/SWIFT code, bank name, bank address, and routing coordinates."
+      },
+      {
+        "h2": "3. Handling Exchange Rates",
+        "p": "Agree on exchange rate terms in your contract. Typically, the client pays the equivalent rate in your home currency on the day the invoice is issued."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "how-to-invoice-for-hourly-work",
+    "title": "How to Invoice for Hourly Work and Consulting Hours",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. Track Your Hours Rigorously",
+        "p": "When billing hourly, use a time-tracker app to capture work increments down to the minute. Log detailed notes for each session."
+      },
+      {
+        "h2": "2. Format Hourly Line Items",
+        "p": "In your invoice grid, specify the task name, date, hours worked, hourly rate, and the total line cost."
+      },
+      {
+        "h2": "3. Attach Time Sheets",
+        "p": "Attach your detailed time log sheet to the back of the invoice to reassure the client of the billing's accuracy."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "how-to-invoice-for-mileage-reimbursement",
+    "title": "How to Invoice for Mileage and Expense Reimbursements",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. Expense Invoicing Basics",
+        "p": "When a client agrees to reimburse you for project expenses (travel, software, assets), list them as separate line items on your invoice."
+      },
+      {
+        "h2": "2. Billing for Mileage",
+        "p": "Use the standard IRS mileage rate (or regional equivalents). List total miles driven, the approved rate per mile, and attach route maps."
+      },
+      {
+        "h2": "3. Attaching Receipts",
+        "p": "Attach clear photos of all expense receipts to the invoice. This is critical for client auditing and your tax record documentation."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "how-to-request-milestone-payments",
+    "title": "How to Request and Invoice Milestone Payments",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. What is Milestone Billing?",
+        "p": "Milestone billing involves dividing a large project into smaller, deliverable-based payment blocks (e.g., Wireframes, Beta Version, Final Code Release)."
+      },
+      {
+        "h2": "2. Benefits of Milestone Invoicing",
+        "p": "It keeps cash flowing and ensures that work doesn't proceed if a client falls behind on payments."
+      },
+      {
+        "h2": "3. Invoicing for Milestone Approval",
+        "p": "When a milestone is reached, get written client approval before issuing the milestone invoice."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "how-to-write-a-professional-invoice",
+    "title": "How to Write a Professional Invoice: Step-by-Step Guide",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. Why a Professional Invoice Matters",
+        "p": "Your invoice is the final touchpoint of a client transaction. If it is messy, vague, or missing key parameters, your payment will be delayed. Standardizing on clear, professional billing fields establishes trust and coordinates clean business records."
+      },
+      {
+        "h2": "2. Six Core Fields You Must Include",
+        "p": "Every commercial invoice must clearly display: (1) A header with your legal business name, contact info, and logo. (2) Your client's corporate billing address and billing contact. (3) A unique, sequential invoice number. (4) The invoice date and due date. (5) Clear, itemized line items with descriptions. (6) Balance due totals and bank transfer payment instructions."
+      },
+      {
+        "h2": "3. Standardizing Invoicing Workflows",
+        "p": "Never send editable Word files. Export your billing to a clean PDF format. This ensures formatting remains identical across devices and prevents tampering."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "how-to-write-freelance-invoice",
+    "title": "How to Write a Freelance Invoice",
+    "date": "July 11, 2026",
+    "sections": [
+      {
+        "h2": "1. List Your Contact Coordinates",
+        "p": "Your header section represents your professional brand. Include the following details clearly:\n- Freelancer Profile: Your full name, business or trading name, address, phone number, and email.\n- Client Profile: The client's corporate name, key accounts contact person, and company address."
+      },
+      {
+        "h2": "2. Generate an Invoice Reference Block",
+        "p": "This tracking metadata block ensures corporate accounts can register your request. Include:\n- Invoice ID: A unique tracking reference (e.g. INV-001) that increments sequentially.\n- Dates: The date the invoice is created (Issue Date) and the deadline for payment (Due Date)."
+      },
+      {
+        "h2": "3. Format Itemized Service Lines",
+        "p": "Break down the services you provided. For each line, list the description, quantity or hours, unit price, and total (e.g., \"Content Writing - 3 Articles @ $150/each - $450\"). Add taxes and discounts at the bottom to calculate the final Balance Due."
+      },
+      {
+        "h2": "Frequently Asked Questions",
+        "p": ""
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "invoice-date-vs-due-date-difference",
+    "title": "Invoice Date vs Due Date: Understanding the Difference",
+    "date": "",
+    "sections": [
+      {
+        "h2": "What is an Invoice Date?",
+        "p": "The Invoice Date (sometimes called the Issue Date or Billing Date) is the exact date that the invoice is officially created and billed to the client.\nThis date is crucial for several reasons:\n- It starts the clock on payment terms: If your payment terms are \"Net 30\" (meaning payment is due in 30 days), those 30 days almost always start counting from the Invoice Date.\n- Tax and accounting periods: For businesses using accrual accounting, revenue is recognized on the Invoice Date, regardless of when the cash is actually received. This dictates which month, quarter, or year the revenue belongs to for tax purposes.\n- Legal record: It provides a concrete timeline of when a payment was officially requested.\nBest Practice: Always set the Invoice Date to the day you actually send the invoice to the client. Do not backdate invoices, as this unfairly shortens the client's payment window."
+      },
+      {
+        "h2": "What is a Due Date?",
+        "p": "The Due Date is the exact date by which the client must pay the invoice in full. Once this date passes, the invoice becomes \"overdue,\" and you may be entitled to charge late fees (if stipulated in your contract).\nThe Due Date is usually calculated based on the Invoice Date and your agreed-upon payment terms. For example:\n- If the Invoice Date is July 1st, and terms are Due on Receipt, the Due Date is July 1st.\n- If the Invoice Date is July 1st, and terms are Net 15, the Due Date is July 16th.\n- If the Invoice Date is July 1st, and terms are Net 30, the Due Date is July 31st.\nFor more information on choosing the right terms, read our guide on the best payment terms for freelancers."
+      },
+      {
+        "h2": "Why You Need Both Dates on Your Invoice",
+        "p": "You might wonder: \"If I have Net 30 terms listed on the invoice, do I really need to write out the specific Due Date?\"\nYes, absolutely. Here is why:\nPhrases like \"Net 30\" are standard business jargon, but not every client understands them. Even worse, clients might interpret the 30-day countdown differently. Do the 30 days start on the Invoice Date? Or the date they opened the email? Or the date they approved the work?\nWriting out a specific, concrete Due Date (e.g., \"Due Date: August 14, 2026\") removes all ambiguity. The client knows exactly when the money must be in your account.\nStudies consistently show that invoices with a specific, hard Due Date get paid faster than those that just list \"Net 30\" or \"Due in 14 days.\" A specific date creates a sense of urgency.\nIf an invoice is unpaid, following up is much easier when you can reference a hard date. It is much more professional to say, \"This invoice was due on August 14th,\" rather than, \"It's been roughly 30 days since I sent this.\"\nNeed help following up? Check out our late payment reminder email templates."
+      },
+      {
+        "h2": "The Supply Date vs Invoice Date",
+        "p": "In some regions (like the UK for VAT purposes), you may also need to be aware of the Supply Date (or Tax Point). This is the date the goods were delivered or the service was completed.\nWhile the Supply Date and the Invoice Date are often the same, they can be different. For example, you might finish a consulting project on Friday (Supply Date) but not generate and send the invoice until Monday (Invoice Date). Ensure you check your local tax regulations to see if the Supply Date needs to be explicitly listed on your invoices."
+      },
+      {
+        "h2": "How to Set Dates Easily",
+        "p": "Calculating due dates manually leaves room for error. When you use Invoice-Gen.net, the Invoice Date defaults to today, and you can simply select your payment terms (like Net 15 or Net 30) from a dropdown. The system will automatically calculate and display the exact, concrete Due Date on your final PDF invoice."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "invoice-number-best-practices",
+    "title": "Invoice Number Best Practices for Small Businesses in 2026",
+    "date": "",
+    "sections": [
+      {
+        "h2": "Why Are Invoice Numbers Important?",
+        "p": "Invoice numbers serve as the backbone of your billing and accounting systems. Here is why you cannot ignore them:\n- Easy tracking and referencing: When a client has a question or makes a payment, referencing a unique invoice number (e.g., \"INV-1042\") is much faster than searching by date or amount.\n- Tax compliance: Many tax authorities (like the IRS in the US, HMRC in the UK, and the CRA in Canada) require businesses to use sequential invoice numbers. This creates an audit trail that proves you aren't hiding income.\n- Preventing duplicate payments: A unique identifier ensures a client doesn't accidentally pay the same invoice twice.\n- Professionalism: Sending an invoice without a number, or with a messy format like \"Invoice 1,\" looks amateurish and may cause clients to question your organization."
+      },
+      {
+        "h2": "Common Invoice Number Formats",
+        "p": "There is no single \"correct\" way to format an invoice number, but it must be unique and sequential. Here are the most popular methods used by modern businesses:\nThis is the most straightforward approach. You simply start at a specific number and increase by one for each new invoice.\n- Example: 1001, 1002, 1003\nPro Tip: Never start at \"1\" or \"001\". It tells your clients that they are your very first customer, which might undermine your perceived experience. Start at 1001 or 10001 instead.\nThis method incorporates the date into the invoice number. It makes it instantly obvious when the invoice was created.\n- Format: YYYYMMDD-Sequence\n- Example: 20260714-001, 20260714-002\nThis is excellent for high-volume businesses that issue multiple invoices per day.\nIf you work on large projects or have recurring clients, you can include a client code or project code.\n- Format: ClientCode-Sequence\n- Example: GOOG-1001, AMZN-1002\nThis helps you quickly identify which client an invoice belongs to just by glancing at the number.\nCombining letters and numbers is a great way to add context to your invoices. You can prefix invoices with \"INV\" or an abbreviation of your business name.\n- Example: INV-2026-1042"
+      },
+      {
+        "h2": "Best Practices for Invoice Numbering",
+        "p": "To keep your accounting clean and error-free, follow these golden rules:\nNever skip numbers. If you issue invoice 1042, the next one must be 1043. Missing numbers can trigger red flags during a tax audit, as auditors might suspect you deleted an invoice to hide revenue.\nPick a numbering format and stick with it. Don't switch from INV-1001 to 2026-1002 in the middle of the year. If you must change your system, wait until the start of a new financial year.\nAvoid excessively long numbers. INV-1042 is much easier for a client to type into a bank transfer reference field than INVOICE-2026-07-14-CLIENT-1042.\nManually tracking invoice numbers in a spreadsheet is a recipe for disaster. It's incredibly easy to accidentally reuse a number. Instead, use an automated tool like Invoice-Gen.net, which automatically generates and increments your invoice numbers for you."
+      },
+      {
+        "h2": "How to Fix an Invoice Number Mistake",
+        "p": "If you accidentally skip a number or issue a duplicate, don't panic, but do not just delete the invoice. Instead:\nFor more tips on avoiding errors, check out our guide on common invoice mistakes."
+      },
+      {
+        "h2": "Start Numbering Invoices the Right Way",
+        "p": "The easiest way to guarantee perfect invoice numbering is to use software that handles it for you. With Invoice-Gen.net, your invoice numbers are automatically tracked and incremented. You can customize the prefix and starting number, and the system ensures you never create a duplicate."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "invoice-vs-receipt-difference",
+    "title": "Invoice vs Receipt: What's the Difference?",
+    "date": "July 11, 2026",
+    "sections": [
+      {
+        "h2": "1. The Invoice: Requesting Payment",
+        "p": "An invoice is issued before the payment is completed. It acts as an official request for payment and sets the transactional terms. Key characteristics of an invoice include:\n- Timing: Sent to the client once a milestone is completed or services are rendered, but prior to receiving funds.\n- Contents: Outlines payment terms (e.g. Net 15), payment methods, and an itemized breakdown of services.\n- Purpose: Used by both parties to record accounts receivable (for you) and accounts payable (for the client)."
+      },
+      {
+        "h2": "2. The Receipt: Confirming Payment",
+        "p": "A receipt is issued after the payment is completed. It acts as proof that the transaction occurred. Key characteristics of a receipt include:\n- Timing: Sent immediately after funds are received.\n- Contents: Shows the amount paid, payment method used, transaction date, and the remaining balance (which should be zero).\n- Purpose: Serves as proof of purchase for tax deductions and audit protection."
+      },
+      {
+        "h2": "How They Work Together",
+        "p": "In a standard business cycle, the invoice comes first. It defines the payment request. Once your client processes the payment and you receive the funds, you send them a receipt. Maintaining both documents is essential for tax compliance and audit protection."
+      },
+      {
+        "h2": "Frequently Asked Questions",
+        "p": ""
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "invoice-vs-receipt-key-differences",
+    "title": "Invoice vs. Receipt: Key Differences Explained",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. What is an Invoice?",
+        "p": "An invoice is a request for payment sent by a service provider to a client. It details the services provided, rates, and terms, indicating that a payment obligation exists."
+      },
+      {
+        "h2": "2. What is a Receipt?",
+        "p": "A receipt is proof of payment issued after the invoice balance has been settled. It details the amount paid, payment method, and confirms that the outstanding balance is now zero."
+      },
+      {
+        "h2": "3. Accounting Implications",
+        "p": "Invoices help track accounts receivable (money owed to you), while receipts track actual cash flow and are used for tax write-off logs."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "invoicing-for-creative-licenses-and-royalties",
+    "title": "Invoicing for Creative Licenses, Assets, and Royalties",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. Separating Services from Licenses",
+        "p": "If you are a designer, photographer, or voice artist, separate your labor creation fee from the asset licensing fee on the invoice."
+      },
+      {
+        "h2": "2. Defining Usage Parameters",
+        "p": "Specify usage limits on the invoice: target platforms, regional runs, and license duration (e.g., \"1-Year Digital Broadcast Use\")."
+      },
+      {
+        "h2": "3. Royalty Milestone Billing",
+        "p": "For sales-based royalties, list the calculation period, units sold, royalty percentage, and the resulting invoice total."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "legal-options-when-client-refuses-to-pay",
+    "title": "Legal Options When a Client Refuses to Pay Your Invoice",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. Send a Formal Demand Letter",
+        "p": "Before taking legal action, mail a certified demand letter stating the outstanding amount, terms, and the deadline before escalation."
+      },
+      {
+        "h2": "2. Small Claims Court",
+        "p": "For small balances, you can file a case in small claims court without hiring a lawyer. It is a cost-effective way to get a judgment."
+      },
+      {
+        "h2": "3. Hiring a Collection Agency",
+        "p": "If a client is unresponsive, you can sell the debt to a collection agency, though they typically take a percentage of the recovered funds."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "what-is-a-credit-note-and-how-to-issue",
+    "title": "What is a Credit Note and How to Issue One?",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. What is a Credit Note?",
+        "p": "A credit note (or credit memo) is a legal document issued to reduce the amount owed on a previously sent invoice."
+      },
+      {
+        "h2": "2. Common Reasons to Issue Credit",
+        "p": "Issue credit notes for billing errors, overcharges, product returns, or goodwill discounts on disputed work."
+      },
+      {
+        "h2": "3. Accounting Compliance",
+        "p": "Do not delete or alter sent invoices. Issue a corresponding credit note to keep your accounting audits clean and compliant."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "what-is-a-debit-note-differences-explained",
+    "title": "What is a Debit Note? Differences Explained",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. What is a Debit Note?",
+        "p": "A debit note is a document issued by a seller to increase the amount owed on a previously sent invoice."
+      },
+      {
+        "h2": "2. Common Reasons to Issue Debit Notes",
+        "p": "Use debit notes for undercharged fees, scope extensions, or added material costs on active projects."
+      },
+      {
+        "h2": "3. Keep Accounting Audit Trails Clean",
+        "p": "Like credit notes, debit notes adjust existing invoices without altering the original document, preserving your financial audit trail."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "what-is-a-proforma-invoice",
+    "title": "What is a Proforma Invoice and When Do You Need One?",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. Definition of a Proforma Invoice",
+        "p": "A proforma invoice is a preliminary bill sent before goods or services are delivered. It estimates cost, shipping, and customs details."
+      },
+      {
+        "h2": "2. Proforma vs. Commercial Invoice",
+        "p": "Unlike a commercial invoice, a proforma is not a formal payment request and is not logged in accounts receivable. It is used to get importing approval or advance deposits."
+      },
+      {
+        "h2": "3. When to Use Proforma",
+        "p": "Use a proforma invoice for international trade, customs declarations, or when the client requires a budget invoice for purchase order approval."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "what-is-an-invoice-beginners-guide",
+    "title": "What Is an Invoice? A Complete Beginner's Guide for 2026",
+    "date": "Published: July 13, 2026",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "slug": "what-is-net-30-and-how-to-use-it",
+    "title": "What is Net 30 and How to Use It in Billing",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. Net 30 Term Definition",
+        "p": "Net 30 means the client must settle the invoice within 30 calendar days from the invoice date. This is common in enterprise client billing."
+      },
+      {
+        "h2": "2. Impact on Small Businesses",
+        "p": "Net 30 can strain freelance cash flow. Make sure you have enough cash reserves to cover your expenses during the 30-day waiting period."
+      },
+      {
+        "h2": "3. Incentives for Early Payment",
+        "p": "Offer a discount (e.g., 2% 10 Net 30) where the client gets a 2% discount if they pay within 10 days instead of 30."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "what-to-include-in-invoice",
+    "title": "What Should Be Included in an Invoice?",
+    "date": "July 11, 2026",
+    "sections": [
+      {
+        "h2": "The Essential Invoicing Checklist",
+        "p": "Every commercial invoice you compile should feature the following exact information blocks:\n- Business Header: The legal name, business address, telephone coordinates, and contact email of the vendor.\n- Recipient Details: The complete name, corporate title, and contact coordinates of the client.\n- Unique Invoice Number: A sequential tracking reference (e.g. INV-2026-004) to keep records audit-ready.\n- Issue & Due Dates: The exact day the invoice is delivered and the target date for receipt of payment."
+      },
+      {
+        "h2": "Line-Item Breakdown Rules",
+        "p": "A professional sheet separates every service or material charge clearly. Break down details as follows:\n- Service Descriptions: Specific details describing the service rendered (e.g., \"Website Design - Homepage Wireframes\").\n- Unit Rates: The hourly rates, per-word fees, or flat rates assigned to each task.\n- Taxes & Subtotals: Clean calculations showing the subtotal, applicable sales taxes, discounts, and final balance due."
+      },
+      {
+        "h2": "Payment Notes and Routing Details",
+        "p": "Always specify the exact payment methods you support. Include bank routing numbers (ACH), swift coordinates, or mobile payment references in the Notes section to eliminate client confusion."
+      },
+      {
+        "h2": "Frequently Asked Questions",
+        "p": ""
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "when-to-send-invoice",
+    "title": "When Should You Send an Invoice?",
+    "date": "July 11, 2026",
+    "sections": [
+      {
+        "h2": "1. The Retainer Model: Send First",
+        "p": "If you operate under a monthly recurring retainer contract, send the invoice on the first day of the billing cycle. Most corporate clients require upfront settlement before services begin."
+      },
+      {
+        "h2": "2. Project Milestones: Send Upon Completion",
+        "p": "For project-based contracts, send the invoice immediately after a defined milestone is delivered and approved. Do not wait for the end of the month to send these requests."
+      },
+      {
+        "h2": "3. Hourly Billings: Send Weekly or Bi-weekly",
+        "p": "If you bill hourly, establish a regular cycle. Sending invoices bi-weekly prevents outstanding balances from growing too large and ensures consistent cash flow updates."
+      },
+      {
+        "h2": "Standardize on Tuesdays",
+        "p": "Studies show that invoices sent on Tuesdays have a higher rate of on-time payment. Avoid sending invoices late on Friday afternoons, as they often get buried in weekend email backlogs."
+      },
+      {
+        "h2": "Frequently Asked Questions",
+        "p": ""
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "when-to-use-a-commercial-invoice",
+    "title": "When to Use a Commercial Invoice for Global Trade",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. What is a Commercial Invoice?",
+        "p": "A commercial invoice is a custom document used for importing and exporting goods. Customs agents use it to calculate duties and taxes."
+      },
+      {
+        "h2": "2. Required Customs Fields",
+        "p": "You must list: country of origin, product descriptions, HS (Harmonized System) tariff codes, and shipping weight/dimensions."
+      },
+      {
+        "h2": "3. Regulatory Compliance",
+        "p": "Failing to attach a commercial invoice can result in customs seizures, delays, and penalties. Ensure all package values are logged accurately."
+      }
+    ],
+    "faq": []
+  },
+  {
+    "slug": "writing-an-invoice-under-a-retainer",
+    "title": "How to Write an Invoice for Retainer Agreements",
+    "date": "July 12, 2026",
+    "sections": [
+      {
+        "h2": "1. What is a Retainer?",
+        "p": "A retainer is an advance payment made by a client to secure a freelancer's availability for a specific number of monthly hours."
+      },
+      {
+        "h2": "2. Invoicing Upfront vs. Post-Work",
+        "p": "Retainers are typically billed upfront at the start of the month (e.g. invoiced on the 1st, due upon receipt) to secure resource reserves."
+      },
+      {
+        "h2": "3. Reconciling Rollover Hours",
+        "p": "Clearly state if unused hours roll over to the next month or expire. Most freelancers write contracts where hours expire to ensure predictable schedules."
+      }
+    ],
+    "faq": []
+  }
+]

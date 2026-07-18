@@ -1,74 +1,102 @@
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { AppLayout } from '../components/layout/AppLayout';
+import { Container } from '../components/layout/Container';
+import { Card } from '../components/ui/Card';
+import { CTA } from '../components/ui/CTA';
 import { SEO } from '../components/seo/SEO';
-import { LandingLayout } from '../components/layout/LandingLayout';
+import templates from '../data/templates.json';
 
-export const TemplateDetailPage: React.FC = () => {
+export const TemplateDetailPage = () => {
   const { id } = useParams<{ id: string }>();
+  const template = templates.find(t => t.slug === id);
   
-  // Basic capitalization for title
-  const titleString = id ? id.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : 'Invoice';
+  if (!template) {
+    return (
+      <AppLayout>
+        <Container>
+          <div style={{ padding: '100px 0', textAlign: 'center' }}>
+            <h1>Template Not Found</h1>
+            <p>The template you are looking for does not exist.</p>
+          </div>
+        </Container>
+      </AppLayout>
+    );
+  }
+
+  const cleanText = (text: string) => text.replace(/<[^>]*>?/gm, '');
 
   return (
-    <LandingLayout>
+    <AppLayout>
       <SEO 
-        title={`Free ${titleString} Invoice Template | Download PDF`}
-        description={`Create a professional ${titleString.toLowerCase()} invoice in seconds. Download this free template as a PDF or customize it online. No signup required.`}
-        canonicalUrl={`https://invoice-gen.net/templates/${id}`}
+        title={`${template.title} | Invoice-Gen.net`}
+        description={cleanText(template.subtitle)}
+        canonicalUrl={`https://invoice-gen.net/templates/${template.slug}/`}
       />
       
-      <div className="workspace-layout">
-        <div className="workspace-main" style={{ width: '100%' }}>
-          <div className="card" style={{ padding: '24px 32px' }}>
-            <div style={{ marginBottom: '32px' }}>
-              <h1 style={{ fontSize: '32px', fontWeight: 800, color: 'var(--color-text-title)', marginBottom: '16px', letterSpacing: '-0.02em' }}>
-                {titleString} Invoice Template
-              </h1>
-              <p style={{ fontSize: '16px', color: 'var(--color-text-secondary)', lineHeight: 1.6, marginBottom: '24px' }}>
-                A minimal, professional invoice template designed specifically for {titleString.toLowerCase()}s. Customize it with your brand and download it instantly.
-              </p>
-              <Link to="/" className="btn" style={{ 
-                display: 'inline-flex', 
-                padding: '0 32px',
-                background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
-                color: 'white',
-                fontWeight: 600,
-                fontSize: '14px',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: '100px',
-                border: 'none',
-                boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)'
-              }}>
-                Use This Template Now
-              </Link>
-            </div>
+      <Container>
+        <Card>
+          <div className="hero" style={{ textAlign: 'center', marginBottom: '64px' }}>
+            <h1 style={{ fontSize: '40px', fontWeight: 800, letterSpacing: '-0.03em', marginBottom: '16px', color: '#0F172A', lineHeight: 1.15 }}>
+              {template.title}
+            </h1>
+            <p className="subtitle" style={{ fontSize: '18px', color: '#334155', marginBottom: '32px', lineHeight: 1.8, letterSpacing: '-0.01em' }}>
+              {cleanText(template.subtitle)}
+            </p>
+          </div>
 
-            <div style={{ margin: '32px 0', background: 'var(--color-background)', borderRadius: '12px', border: '1px dashed var(--color-border)', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-text-secondary)' }}>
-              [ Template Preview Rendering... ]
-            </div>
+          <article>
+            <p style={{ color: '#334155', fontSize: '18px', marginBottom: '24px', lineHeight: 1.8 }}>
+              If you are a professional working as one of the following: <strong>{template.roleText}</strong>, then having a specialized invoice template is critical to getting paid on time.
+            </p>
+            
+            <h2 style={{ fontSize: '30px', fontWeight: 700, marginTop: '56px', marginBottom: '24px', borderBottom: '1px solid var(--color-border)', paddingBottom: '8px', color: '#0F172A', letterSpacing: '-0.02em' }}>
+              What to Include on Your Invoice
+            </h2>
+            <p style={{ color: '#334155', fontSize: '18px', marginBottom: '24px', lineHeight: 1.8 }}>
+              Ensure your invoice includes all necessary details to avoid payment delays:
+            </p>
+            <ul style={{ marginLeft: '24px', marginBottom: '20px', color: 'var(--color-text-secondary)', lineHeight: 1.8 }}>
+              {template.nicheList.map((item, index) => (
+                <li key={index} style={{ marginBottom: '8px' }}>{item}</li>
+              ))}
+            </ul>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
-              <div>
-                <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-text-title)', marginBottom: '16px' }}>What to include in a {titleString.toLowerCase()} invoice?</h3>
-                <ul style={{ color: 'var(--color-text-secondary)', lineHeight: '1.7', paddingLeft: '20px' }}>
-                  <li>Your full business name and contact details</li>
-                  <li>The client's name and address</li>
-                  <li>A unique invoice number and date of issue</li>
-                  <li>Itemized list of {titleString.toLowerCase()} services provided</li>
-                  <li>Clear payment terms and due dates</li>
-                </ul>
-              </div>
-              <div>
-                <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-text-title)', marginBottom: '16px' }}>Why use this template?</h3>
-                <p style={{ color: 'var(--color-text-secondary)', lineHeight: '1.7' }}>
-                  Our {titleString.toLowerCase()} template is optimized to help you look professional and get paid faster. It automatically calculates taxes, supports multiple currencies, and can be downloaded as a high-quality PDF in one click. No account required.
-                </p>
-              </div>
-            </div>
+            <h2 style={{ fontSize: '30px', fontWeight: 700, marginTop: '56px', marginBottom: '24px', borderBottom: '1px solid var(--color-border)', paddingBottom: '8px', color: '#0F172A', letterSpacing: '-0.02em' }}>
+              Pro Tips for Getting Paid Faster
+            </h2>
+            <ul style={{ marginLeft: '24px', marginBottom: '20px', color: 'var(--color-text-secondary)', lineHeight: 1.8 }}>
+              {template.nicheTips.map((item, index) => (
+                <li key={index} style={{ marginBottom: '8px' }}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </Card>
+
+        <div className="related-templates" style={{ marginTop: '64px' }}>
+          <h3 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '24px' }}>Other Popular Templates</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            {templates.filter(t => t.slug !== id).slice(0, 4).map(t => (
+              <a 
+                key={t.slug}
+                href={`/templates/${t.slug}/`} 
+                style={{
+                  padding: '16px',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: '8px',
+                  textDecoration: 'none',
+                  color: 'var(--color-text-main)',
+                  fontWeight: 500,
+                  display: 'block'
+                }}
+              >
+                {t.title}
+              </a>
+            ))}
           </div>
         </div>
-      </div>
-    </LandingLayout>
+
+        <CTA />
+      </Container>
+    </AppLayout>
   );
 };

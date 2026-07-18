@@ -11,6 +11,7 @@
     "analytics": "node scripts/analytics/index.cjs"
   },
   "dependencies": {
+    "cheerio": "^1.2.0",
     "countries-and-timezones": "^3.9.0",
     "country-to-currency": "^3.0.1",
     "currency-codes": "^2.2.0",

@@ -1,0 +1,322 @@
+[
+  {
+    "slug": "translator",
+    "title": "Free Translator Invoice Template",
+    "subtitle": "Generate professional translator invoices with word count billing, language pairings, and multi-currency options.",
+    "roleText": "independent translators, localization specialists, and proofreaders",
+    "nicheList": [
+      "Document Translation: Billing per word or hourly proofreading rates.",
+      "Localization Specialists: Adjusting app string layouts and content pairing.",
+      "Simultaneous Interpreters: Invoicing for event sessions, half-day, or full-day rates."
+    ],
+    "nicheTips": [
+      "Specify Language Pairings: List source and target language columns clearly.",
+      "Show Word Counts: Include exact word counts next to unit prices to make rates transparent.",
+      "List CAT Tool Deductions: Clearly detail matches or fuzzy-match rate scales."
+    ]
+  },
+  {
+    "slug": "editor-proofreader",
+    "title": "Free Editor & Proofreader Invoice Template",
+    "subtitle": "Professional billing for manuscript editors, academic proofreaders, and content polishers.",
+    "roleText": "manuscript editors, technical proofreaders, and copyeditors",
+    "nicheList": [
+      "Developmental Editing: Structuring story outline stages and chapter flow feedback.",
+      "Proofreading: Fixing grammar, typos, and formatting errors.",
+      "Academic Editing: Checking citations, bibliography structures, and style guides."
+    ],
+    "nicheTips": [
+      "Itemize Page or Word Counts: Specify if billing is per page, per word, or hourly.",
+      "Note Revision Limits: State clearly how many post-edit revision rounds are included.",
+      "Cite Style Guide: Note the style guide utilized (APA, Chicago, MLA) for client clarity."
+    ]
+  },
+  {
+    "slug": "voiceover-artist",
+    "title": "Free Voiceover Artist Invoice Template",
+    "subtitle": "Streamlined invoicing for voice actors, audio narrators, and audio book creators.",
+    "roleText": "voice actors, commercial announcers, and audiobook narrators",
+    "nicheList": [
+      "Commercial Voiceover: Invoicing for regional, national, or digital broadcast runs.",
+      "Audiobook Narration: Billing per finished hour (PFH) or royalty share setups.",
+      "E-Learning Narrators: Providing training script reads and presentation voiceovers."
+    ],
+    "nicheTips": [
+      "Detail Broadcast Usage Rights: List buyout durations and regional run limits.",
+      "Define Pick-Up Rates: Outline fees for correction reads versus script edits.",
+      "Audio Specs: Mention delivery formats (WAV, MP3, sample rates) on the description."
+    ]
+  },
+  {
+    "slug": "event-planner",
+    "title": "Free Event Planner Invoice Template",
+    "subtitle": "Professional billing for wedding planners, corporate event coordinators, and party hosts.",
+    "roleText": "wedding coordinators, corporate event managers, and logistics planners",
+    "nicheList": [
+      "Day-of Coordination: Managing vendor deliveries and itinerary stages.",
+      "Full-Service Planning: Handling venue contracts, styling choices, and budget metrics.",
+      "Corporate Gatherings: Invoicing for seminars, conferences, and stakeholder dinners."
+    ],
+    "nicheTips": [
+      "Outline Payment Milestones: Set upfront deposits and day-of final balance terms.",
+      "List Reimbursable Costs: Separate vendor management hours from direct product purchases.",
+      "Add Guest Count Limits: State if fees adjust based on final attendee quantities."
+    ]
+  },
+  {
+    "slug": "business-coach",
+    "title": "Free Business Coach Invoice Template",
+    "subtitle": "Clean invoicing templates for executive coaches, startup mentors, and career guides.",
+    "roleText": "executive coaches, leadership mentors, and career growth advisors",
+    "nicheList": [
+      "Executive Coaching: Weekly leadership assessments and strategy sessions.",
+      "Startup Mentoring: Product roadmap reviews and pitch deck guidance.",
+      "Group Workshops: Invoicing for team strategy days or corporate retreats."
+    ],
+    "nicheTips": [
+      "Standardize Retainers: Set upfront monthly retainer billing due on the 1st.",
+      "Define Session Policies: State cancellation limits (e.g., 24-hour notice) clearly.",
+      "Track Included Materials: Note if tools or workbooks are included in the package."
+    ]
+  },
+  {
+    "slug": "project-manager",
+    "title": "Free Project Manager Invoice Template",
+    "subtitle": "Professional PM invoicing templates for agile coordinators, construction managers, and Scrum masters.",
+    "roleText": "freelance project managers, Scrum masters, and delivery coordinators",
+    "nicheList": [
+      "Agile Coordination: Organizing sprint pipelines and Scrum ceremonies.",
+      "Construction PM: Coordinating sub-contractors, site permits, and resource timelines.",
+      "Digital Delivery: Overseeing design handoffs and code deployment sprint stages."
+    ],
+    "nicheTips": [
+      "State Billing Period: List the specific weeks or sprint numbers in the description.",
+      "List Key Deliverables: Note main milestones hit (e.g., Sprint 4 Completed).",
+      "Detail Expenses: Itemize travel, SaaS subscription costs, or tool integrations."
+    ]
+  },
+  {
+    "slug": "it-support",
+    "title": "Free IT Support Invoice Template",
+    "subtitle": "Easy invoicing templates for network engineers, tech consultants, and systems administrators.",
+    "roleText": "systems administrators, IT consultants, and computer repair technicians",
+    "nicheList": [
+      "Network Setup: Invoicing for router installs, security firewalls, and server racks.",
+      "Managed IT Services: Monthly support hours and remote system updates.",
+      "Device Troubleshooting: Invoicing hardware swap-outs and data recovery runs."
+    ],
+    "nicheTips": [
+      "List Hourly Increments: Show hours worked, network ports configured, or devices fixed.",
+      "Detail Third-Party Software: Separate software license charges from service fees.",
+      "Define SLA Response: Mention emergency call-out premiums if applicable."
+    ]
+  },
+  {
+    "slug": "data-analyst",
+    "title": "Free Data Analyst Invoice Template",
+    "subtitle": "Elegant data analyst invoicing templates for BI developers, dashboard designers, and SQL query writers.",
+    "roleText": "data analysts, business intelligence consultants, and database query builders",
+    "nicheList": [
+      "Dashboard Creation: Building visual PowerBI, Tableau, or Looker reports.",
+      "Database Optimization: Tuning SQL queries and index layouts for performance.",
+      "Predictive Modeling: Structuring data cleanup pipelines and forecasting models."
+    ],
+    "nicheTips": [
+      "Itemize Pipelines Created: Detail distinct connectors, feeds, or dashboards built.",
+      "Specify Data Formats: State the source systems accessed (BigQuery, Redshift, Snowflake).",
+      "Add NDA Notes: Reassure the client of data confidentiality in the notes area."
+    ]
+  },
+  {
+    "slug": "architect",
+    "title": "Free Architect Invoice Template",
+    "subtitle": "Professional billing templates for architectural designers, draftspersons, and building consultants.",
+    "roleText": "architects, blueprint draftspersons, and building engineers",
+    "nicheList": [
+      "Schematic Design: Invoicing initial site reviews, floorplans, and layout elevations.",
+      "Permit Drawings: Creating technical code drawings for local municipal boards.",
+      "Construction Overseer: On-site compliance checks and builder status reviews."
+    ],
+    "nicheTips": [
+      "Bill by Project Stage: Use standard architectural stages (SD, DD, CD, CA).",
+      "Separate Square Footage: Clearly state square footage ranges and per-meter fees.",
+      "Itemize Printing/Courier: Show architectural blueprint printing fees separately."
+    ]
+  },
+  {
+    "slug": "interior-designer",
+    "title": "Free Interior Designer Invoice Template",
+    "subtitle": "Streamlined invoicing templates for space planners, home stagers, and decor decorators.",
+    "roleText": "interior designers, space layout consultants, and staging professionals",
+    "nicheList": [
+      "Room Layout Design: Providing 3D CAD renders and material boards.",
+      "Furniture Procurement: Managing client decor orders, deliveries, and installs.",
+      "Home Staging: Staging properties for real estate sales and photoshoots."
+    ],
+    "nicheTips": [
+      "Detail Markup Rules: List furniture procurement markups and designer discounts.",
+      "Separate Design vs Purchase: Keep design fee hours separate from direct product purchase bills.",
+      "Specify Room Names: Detail line items by room (e.g., Living Room Decor)."
+    ]
+  },
+  {
+    "slug": "handyman",
+    "title": "Free Handyman Invoice Template",
+    "subtitle": "Easy handyman billing templates for local repairers, assembly services, and home maintenance.",
+    "roleText": "handymen, assembly workers, and home repair technicians",
+    "nicheList": [
+      "Furniture Assembly: Putting together flatpack desks, shelving, and beds.",
+      "Small Home Repairs: Patching drywall, fixing hinges, and hanging doors.",
+      "Fixture Installs: Mounting televisions, hanging mirrors, and swapping faucets."
+    ],
+    "nicheTips": [
+      "Separate Labor from Parts: List parts purchased (drywall anchors, paint) separately.",
+      "Note Minimum Fees: List call-out or minimum hours charges.",
+      "Job Safety: Reassure customers that licensing and insurance coverage are active."
+    ]
+  },
+  {
+    "slug": "plumber",
+    "title": "Free Plumber Invoice Template",
+    "subtitle": "Professional plumbing billing templates for local drain clearers, piping repairers, and water heaters.",
+    "roleText": "plumbing technicians, pipe repairers, and drainage specialists",
+    "nicheList": [
+      "Emergency Leak Repairs: Swapping broken copper pipes or shut-off valves.",
+      "Drain Clearing: Rooter snaking and high-pressure jetting of sewer mains.",
+      "Appliance Swaps: Installing new water heaters, garbage disposals, and toilet units."
+    ],
+    "nicheTips": [
+      "Specify Materials: List pipe lengths, seals, and valves used.",
+      "Emergency Charges: Show standard call-out fees separate from hourly rates.",
+      "Provide Warranty Info: State terms for labor and part guarantees in the terms section."
+    ]
+  },
+  {
+    "slug": "electrician",
+    "title": "Free Electrician Invoice Template",
+    "subtitle": "Streamlined billing templates for licensed electricians, panel upgraders, and fixture installers.",
+    "roleText": "licensed electricians, panel installers, and commercial wiremen",
+    "nicheList": [
+      "Panel Upgrades: Swapping out legacy fuse boxes for 200A breaker panels.",
+      "Rewiring Services: Installing Romex lines, outlets, and GFCIs.",
+      "Lighting Installs: Hanging ceiling fans, recessed cans, and outdoor floods."
+    ],
+    "nicheTips": [
+      "List Certification Number: Always write your active electrical license number.",
+      "Itemize Permit Costs: Show local municipal inspection permits separately.",
+      "Detail Safety Checks: Document that compliance tests passed."
+    ]
+  },
+  {
+    "slug": "hvac-technician",
+    "title": "Free HVAC Technician Invoice Template",
+    "subtitle": "Professional invoice templates for AC repairers, furnace installers, and duct cleaners.",
+    "roleText": "HVAC repair techs, AC installers, and furnace system technicians",
+    "nicheList": [
+      "AC Maintenance: Charging system coolants and swapping air filters.",
+      "Furnace Installs: Setting up energy-efficient heat pump systems.",
+      "Duct Cleaning: Removing debris from home supply vents and registers."
+    ],
+    "nicheTips": [
+      "List System Model Numbers: Write down the furnace/AC brand and model worked on.",
+      "Specify Coolant Quantities: List exact pounds of R410A or R22 coolant added.",
+      "Note Filter Specs: Detail sizing of replacement filters."
+    ]
+  },
+  {
+    "slug": "painter-contractor",
+    "title": "Free Painting Contractor Invoice Template",
+    "subtitle": "Elegant billing templates for house painters, dry-wall finishers, and commercial paint crews.",
+    "roleText": "house painters, deck stainers, and commercial paint contractors",
+    "nicheList": [
+      "Exterior Painting: Scraping, priming, and painting siding and trim.",
+      "Interior Painting: Masking, painting walls, ceilings, and baseboard trims.",
+      "Deck Staining: Pressure washing and sealing outdoor wood decks."
+    ],
+    "nicheTips": [
+      "List Paint Brand/Color: Write the exact paint brand, sheen, and color code used.",
+      "State Prep Work Hours: Separate masking and priming labor from final coat hours.",
+      "Gallons Used: Itemize number of gallons supplied to the job."
+    ]
+  },
+  {
+    "slug": "carpenter",
+    "title": "Free Carpenter Invoice Template",
+    "subtitle": "Streamlined carpenter billing templates for trim installers, deck builders, and furniture makers.",
+    "roleText": "trim carpenters, framers, and custom cabinet makers",
+    "nicheList": [
+      "Trim Installation: Hanging crown molding, baseboards, and door casings.",
+      "Custom Cabinetry: Building bespoke kitchen pantries and bookshelf units.",
+      "Deck Framing: Constructing load-bearing joists and posts."
+    ],
+    "nicheTips": [
+      "Detail Wood Species: Note material grades (e.g., Select Pine, Walnut, Oak).",
+      "List Fasteners & Hardware: Itemize premium hinges, pulls, or specialty screws.",
+      "Milestones: Detail deposits for material purchases before starting."
+    ]
+  },
+  {
+    "slug": "roofer",
+    "title": "Free Roofer Invoice Template",
+    "subtitle": "Professional roofing invoice templates for shingle installers, leak patchers, and gutter crews.",
+    "roleText": "roofing contractors, shingle repairers, and gutter installers",
+    "nicheList": [
+      "Full Roof Replacement: Tearing off legacy shingles and installing architectural felt.",
+      "Leak Repairs: Fixing flashing around chimneys, vents, and valleys.",
+      "Gutter Installation: Setting up seamless aluminum gutters and leaf guards."
+    ],
+    "nicheTips": [
+      "Squares Replaced: List quantity of roofing squares (100 sq ft) supplied.",
+      "Shingle Details: Specify shingle brand, warranty, and color choice.",
+      "Debris Disposal: List dumpster rental or yard cleanup fees as separate line items."
+    ]
+  },
+  {
+    "slug": "landscaping",
+    "title": "Free Landscaping Invoice Template",
+    "subtitle": "Elegant billing templates for sod installers, garden designers, and hardscaping crews.",
+    "roleText": "landscape contractors, garden designers, and sod installers",
+    "nicheList": [
+      "Lawn Installation: Grading soil, laying sod rolls, and seeding grass.",
+      "Hardscaping Services: Installing paver patios, retaining walls, and pathways.",
+      "Irrigation Systems: Laying drip lines and configuring sprinkler controllers."
+    ],
+    "nicheTips": [
+      "Itemize Plant Material: List trees, shrubs, and mulch quantities individually.",
+      "Specify Machine Rentals: Separate excavator or bobcat rental hours.",
+      "Detail Seasonality: Note seasonal cleanup dates (Fall/Spring)."
+    ]
+  },
+  {
+    "slug": "gardener",
+    "title": "Free Gardener Invoice Template",
+    "subtitle": "Easy invoicing templates for local weeding, lawn mowing, and yard cleanup.",
+    "roleText": "gardeners, lawn care workers, and weeding services",
+    "nicheList": [
+      "Lawn Mowing: Invoicing for weekly mowing, trimming, and blowing driveways.",
+      "Flowerbed Maintenance: Weeding, pruning roses, and applying topsoil.",
+      "Hedge Trimming: Shaping privacy hedges and shrub borders."
+    ],
+    "nicheTips": [
+      "Define Visit Cadence: State the specific visit dates (e.g., Weekly Mowing June 4, 11, 18).",
+      "Green Waste Fees: List municipal composting dump fees separately.",
+      "Supply List: Itemize granular fertilizer, seeds, or organic insecticides."
+    ]
+  },
+  {
+    "slug": "pet-sitter",
+    "title": "Free Pet Sitter Invoice Template",
+    "subtitle": "Clean invoicing templates for dog walkers, cat sitters, and overnight pet hosts.",
+    "roleText": "dog sitters, cat boarding hosts, and pet care technicians",
+    "nicheList": [
+      "Overnight Pet Sitting: House sitting and caring for pets in-home.",
+      "Dog Walking: Providing scheduled 30-minute or hourly exercise runs.",
+      "Drop-In Feeding Visits: Replenishing food, water, and cleaning litterboxes."
+    ],
+    "nicheTips": [
+      "Detail Number of Pets: State client pet names clearly on description lines.",
+      "Holiday Premiums: Separate holiday surge fees from standard rates.",
+      "Track Mileage: Add transport costs if picking up or dropping off pets."
+    ]
+  }
+]

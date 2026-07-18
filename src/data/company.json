@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "trust-center",
+    "category": "company",
+    "title": "Trust & Security Center | Invoice-Gen.net",
+    "metaDescription": "Learn how Invoice-Gen.net protects your business data. 100% local browser processing, zero cloud storage, and robust privacy protocols for peace of mind.",
+    "hero": {
+      "title": "Security & Trust Center",
+      "subtitle": "Your financial data is your business. Not ours. Discover how our unique architecture guarantees absolute privacy by processing everything directly on your device.",
+      "ctaText": "Try Our Secure Generator"
+    },
+    "intro": {
+      "heading": "Privacy by Design",
+      "text": "Unlike traditional SaaS invoice platforms that upload your sensitive client data, revenue figures, and personal information to remote servers, Invoice-Gen.net operates fundamentally differently. Our application runs 100% locally within your web browser. This means that when you type a client's address or enter an invoice amount, that data never leaves your device. We cannot see, store, or sell your business data because we simply do not have access to it."
+    },
+    "featureCards": [
+      {
+        "icon": "shield",
+        "title": "Zero Cloud Storage",
+        "description": "Your generated invoices and client details are stored in your browser's local storage (IndexedDB), not on our servers."
+      },
+      {
+        "icon": "lock",
+        "title": "Client-Side Processing",
+        "description": "The PDF generation happens directly using your device's CPU and memory via highly optimized WebAssembly and JavaScript modules."
+      },
+      {
+        "icon": "eye-off",
+        "title": "No Tracking of Financials",
+        "description": "We do not run analytics on your invoice amounts, line items, or client lists. Your revenue metrics remain strictly confidential."
+      }
+    ],
+    "benefits": [
+      {
+        "title": "Immune to Server Data Breaches",
+        "description": "Because we do not host a central database of our users' invoices, there is no honey-pot of financial data for malicious actors to breach. Even if our web servers were compromised, your data remains safe because it never existed on our servers in the first place."
+      },
+      {
+        "title": "Compliance Made Simple",
+        "description": "If you handle highly sensitive information (such as in healthcare or legal professions), our local-only architecture helps you remain compliant with strict data protection regulations like GDPR, HIPAA, and CCPA, as third-party data transfer is completely eliminated."
+      }
+    ],
+    "stepByStep": [
+      {
+        "title": "1. You Load the Application",
+        "description": "When you visit Invoice-Gen.net, our secure servers deliver the HTML, CSS, and JavaScript files necessary to run the application to your browser."
+      },
+      {
+        "title": "2. You Input Data",
+        "description": "As you type in your client details and line items, this information is held temporarily in your browser's active memory (RAM)."
+      },
+      {
+        "title": "3. The PDF is Generated Locally",
+        "description": "When you click 'Download', our client-side scripts compile the PDF document right there on your machine. No data is sent back to our servers for compilation."
+      },
+      {
+        "title": "4. Data is Saved Locally",
+        "description": "If you choose to save the invoice or client to your history, it is written to your browser's local IndexedDB storage, completely isolated from the internet."
+      }
+    ],
+    "faq": [
+      {
+        "q": "If data is stored locally, how do I back it up?",
+        "a": "Because data lives on your device, we highly recommend exporting your invoice history periodically or ensuring you save the generated PDFs to a secure cloud drive like Google Drive or Dropbox."
+      },
+      {
+        "q": "Can you recover my invoices if I clear my browser cache?",
+        "a": "No. If you clear your browser's site data (specifically IndexedDB and LocalStorage), your saved invoice history will be permanently deleted. We cannot recover it as we have no remote copy."
+      }
+    ],
+    "relatedPages": [
+      {
+        "title": "Privacy Policy",
+        "url": "/privacy"
+      },
+      {
+        "title": "Terms of Service",
+        "url": "/terms"
+      }
+    ]
+  }
+]

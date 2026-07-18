@@ -4,27 +4,10 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Routes to pre-render
-const routes = [
+// Base static routes
+const staticRoutes = [
   '/',
   '/templates',
-  '/templates/freelance',
-  '/templates/freelancer',
-  '/templates/consultant',
-  '/templates/agency',
-  '/templates/contractor',
-  '/templates/construction',
-  '/templates/software',
-  '/templates/software-agency',
-  '/templates/medical',
-  '/templates/graphic-designer',
-  '/templates/seo-consultant',
-  '/templates/digital-marketing',
-  '/templates/video-editor',
-  '/templates/content-creator',
-  '/templates/copywriter',
-  '/templates/marketing',
-  '/templates/creator',
   '/blog',
   '/compare',
   '/about',
@@ -35,9 +18,41 @@ const routes = [
   '/editorial-policy'
 ];
 
+// Dynamically generate routes from JSON data
+const root = path.resolve(__dirname, '..');
+const blogs = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/seoContent.json'), 'utf8'));
+const templates = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/templates.json'), 'utf8'));
+const comparisons = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/comparisons.json'), 'utf8'));
+
+// Premium SEO Pages Data
+const invoiceTypes = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/invoiceTypes.json'), 'utf8'));
+const toolsData = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/tools.json'), 'utf8'));
+const resourcesData = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/resources.json'), 'utf8'));
+const companyData = JSON.parse(fs.readFileSync(path.resolve(root, 'src/data/company.json'), 'utf8'));
+
+const blogRoutes = blogs.map(b => `/blog/${b.slug}`);
+const templateRoutes = templates.map(t => `/templates/${t.slug}`);
+const compareRoutes = comparisons.map(c => `/compare/${c.slug}`);
+
+// Premium SEO Page Routes
+const invoiceTypeRoutes = invoiceTypes.map(i => `/invoice-types/${i.slug}`);
+const toolsRoutes = toolsData.map(t => `/tools/${t.slug}`);
+const resourcesRoutes = resourcesData.map(r => `/resources/${r.slug}`);
+const companyRoutes = companyData.map(c => `/${c.slug}`);
+
+const routes = [
+  ...staticRoutes, 
+  ...blogRoutes, 
+  ...templateRoutes, 
+  ...compareRoutes,
+  ...invoiceTypeRoutes,
+  ...toolsRoutes,
+  ...resourcesRoutes,
+  ...companyRoutes
+];
+
 async function build() {
-  
-  const root = path.resolve(__dirname, '..');
+
   
   // Create Vite dev server to use its ssrLoadModule
   const { createServer } = await import('vite');

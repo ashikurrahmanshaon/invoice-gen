@@ -1,0 +1,166 @@
+[
+  {
+    "slug": "create-invoice-guide",
+    "category": "resources",
+    "title": "How to Create a Professional Invoice: Step-by-Step Guide",
+    "metaDescription": "Learn how to write and format a professional invoice. Step-by-step instructions on styling headers, detailing terms, and calculating totals.",
+    "hero": {
+      "title": "How to Create a Professional Invoice",
+      "subtitle": "A complete, step-by-step guide to writing clean, professional invoices for your business. Learn the exact structure that guarantees faster payments and fewer client disputes.",
+      "ctaText": "Create an Invoice Now"
+    },
+    "intro": {
+      "heading": "The Anatomy of a Perfect Invoice",
+      "text": "A professional invoice is more than a simple request for payment. It serves as an official record of services rendered, a legal basis for accounting compliance, and a key touchpoint representing your brand’s reputation. Sending a clean, accurate invoice helps build trust and speeds up payment cycles. In this guide, we will break down the exact components required to craft a flawless billing document."
+    },
+    "featureCards": [
+      {
+        "icon": "layout",
+        "title": "Standardized Layout",
+        "description": "Learn where to position your logo, contact coordinates, and billing details to match client expectations."
+      },
+      {
+        "icon": "list",
+        "title": "Precise Itemization",
+        "description": "Discover how to describe your deliverables so clearly that accounting departments process them without questions."
+      },
+      {
+        "icon": "credit-card",
+        "title": "Clear Payment Terms",
+        "description": "Understand how to leverage Net 15, Net 30, and late fees to encourage incredibly prompt payments."
+      }
+    ],
+    "benefits": [
+      {
+        "title": "Reduce Payment Delays by 40%",
+        "description": "Invoices that are formatted correctly and contain all the required information are processed significantly faster by corporate accounts payable departments. Missing a PO number or failing to provide a clear due date is the number one reason invoices are held up."
+      },
+      {
+        "title": "Elevate Your Brand Perception",
+        "description": "Your invoice is a reflection of your business quality. A beautifully designed document reinforces the value of the service you provided, making clients feel secure in their investment and more likely to hire you again."
+      }
+    ],
+    "stepByStep": [
+      {
+        "title": "1. Establish the Header",
+        "description": "Your business name, contact information, and professional logo should be clearly displayed at the top. This immediately establishes authority and origin."
+      },
+      {
+        "title": "2. Identify the Client",
+        "description": "Add the exact name, company name, address, and email of the client responsible for settling the payment. Ensure you are billing the correct legal entity."
+      },
+      {
+        "title": "3. Add Tracking Identifiers",
+        "description": "Include a unique invoice tracking number (e.g., INV-2026-001), the date of issue, and the specific payment due date."
+      },
+      {
+        "title": "4. Itemize Deliverables Precisely",
+        "description": "Vague entries cause delays. Specify the dates, hourly rates, total hours logged, or the exact project milestone completed. Include any reimbursable expenses clearly."
+      },
+      {
+        "title": "5. State Your Terms",
+        "description": "Dictate when you get paid. State your chosen guidelines (like Net 30) at the bottom, along with accepted payment methods (such as direct ACH bank routing or digital transfer accounts)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Can I just use Microsoft Word for my invoices?",
+        "a": "While possible, Word documents can be easily edited or misformatted when opened on different computers. It is always recommended to use a dedicated invoice generator and export as an immutable PDF."
+      },
+      {
+        "q": "What happens if I forget to include an invoice number?",
+        "a": "Your client's accounting software may reject the invoice, as unique identifiers are required for tax audits and ledger tracking. Always include a sequential number."
+      }
+    ],
+    "relatedPages": [
+      {
+        "title": "What to Include in an Invoice",
+        "url": "/resources/what-to-include"
+      },
+      {
+        "title": "Freelance Invoice Template",
+        "url": "/invoice-types/freelance"
+      }
+    ]
+  },
+  {
+    "slug": "payment-terms",
+    "category": "resources",
+    "title": "Invoice Payment Terms Explained: Net 30, Net 15 & More",
+    "metaDescription": "Understand standard invoice payment terms. Learn the difference between Net 30, Net 15, and Due on Receipt to optimize your cash flow and get paid faster.",
+    "hero": {
+      "title": "Invoice Payment Terms Explained",
+      "subtitle": "Stop wondering when you will get paid. Learn how to strategically use Net 15, Net 30, and Late Fees to take control of your business cash flow.",
+      "ctaText": "Set Your Payment Terms"
+    },
+    "intro": {
+      "heading": "The Key to Predictable Cash Flow",
+      "text": "Payment terms are the conditions under which a seller will complete a sale. They outline exactly when the payment is expected, the methods accepted, and any penalties for late payments. Many freelancers and small businesses use vague language like 'Please pay soon', which leads to unpredictable cash flow and awkward follow-up emails. By adopting standardized payment terms like 'Net 30', you establish clear, legally binding boundaries with your clients."
+    },
+    "featureCards": [
+      {
+        "icon": "calendar",
+        "title": "Standardized Timeframes",
+        "description": "Using industry-standard terms like Net 15 or Net 30 ensures that corporate accounting departments know exactly how to schedule your payout."
+      },
+      {
+        "icon": "trending-up",
+        "title": "Better Cash Flow",
+        "description": "Shorter terms (like Net 7 or Due on Receipt) can dramatically improve your operating cash flow and reduce outstanding receivables."
+      },
+      {
+        "icon": "alert-circle",
+        "title": "Late Fee Enforcement",
+        "description": "Clear terms give you the contractual backing to enforce late fees if a client misses a deadline, protecting you against delinquent accounts."
+      }
+    ],
+    "benefits": [
+      {
+        "title": "Sets Professional Expectations",
+        "description": "When you establish clear terms upfront, you are communicating that you run a serious, organized business. Clients respect structured boundaries, and it removes the emotion from asking for overdue payments."
+      },
+      {
+        "title": "Reduces Administrative Overhead",
+        "description": "With clear terms, you spend less time chasing clients. If an invoice is Net 15, you know exactly when to send a polite follow-up on day 16, streamlining your entire accounts receivable process."
+      }
+    ],
+    "stepByStep": [
+      {
+        "title": "Net 30",
+        "description": "The industry standard for B2B transactions. 'Net 30' means the client has exactly 30 calendar days from the date the invoice is issued to settle the balance."
+      },
+      {
+        "title": "Net 15 / Net 7",
+        "description": "Accelerated payment terms common for freelancers and agile agencies. It gives the client 15 or 7 days to pay, which is highly beneficial for the vendor's cash flow."
+      },
+      {
+        "title": "Due on Receipt",
+        "description": "Payment is expected immediately upon delivery of the invoice. This is common for one-off retail transactions or immediate services, but can cause friction in large corporate environments."
+      },
+      {
+        "title": "1/10 Net 30",
+        "description": "An early payment discount term. It means the client gets a 1% discount if they pay within 10 days; otherwise, the full amount is due in 30 days."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Should I use Due on Receipt or Net 30?",
+        "a": "If you are dealing with a large corporation, Net 30 is often required by their internal AP processes. For small businesses or individual clients, Due on Receipt or Net 7 is perfectly acceptable."
+      },
+      {
+        "q": "How much can I charge for a late fee?",
+        "a": "A standard late fee is 1.5% to 2% per month on the overdue balance. However, this must be explicitly stated in the payment terms before the project begins."
+      }
+    ],
+    "relatedPages": [
+      {
+        "title": "How to Create a Professional Invoice",
+        "url": "/resources/create-invoice-guide"
+      },
+      {
+        "title": "Contractor Invoice Template",
+        "url": "/invoice-types/contractor"
+      }
+    ]
+  }
+]
