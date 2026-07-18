@@ -1,6 +1,5 @@
 import React from 'react';
 import { ContentPage } from '../components/layout/ContentPage';
-import { Link } from 'react-router-dom';
 
 export const BlogHomePage: React.FC = () => (
   <ContentPage title="Invoicing Guides & Resources" description="Expert resources and guides on invoicing, freelancing, and small business management." urlPath="/blog">
