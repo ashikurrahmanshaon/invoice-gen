@@ -10,6 +10,8 @@ const TrustPage = lazy(() => import('./pages/LegalPages').then(module => ({ defa
 const ContactPage = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.ContactPage })));
 const BlogHomePage = lazy(() => import('./pages/ContentDirectoryPages').then(module => ({ default: module.BlogHomePage })));
 const CompareHomePage = lazy(() => import('./pages/ContentDirectoryPages').then(module => ({ default: module.CompareHomePage })));
+const TemplateGalleryPage = lazy(() => import('./pages/TemplateGalleryPage').then(module => ({ default: module.TemplateGalleryPage })));
+const TemplateDetailPage = lazy(() => import('./pages/TemplateDetailPage').then(module => ({ default: module.TemplateDetailPage })));
 
 declare global {
   interface Window {
@@ -32,6 +34,13 @@ function GTMRouteTracker() {
   return null;
 }
 
+function StaticPageReloader() {
+  useEffect(() => {
+    window.location.reload();
+  }, []);
+  return null;
+}
+
 export default function App() {
   return (
     <Suspense fallback={null}>
@@ -44,7 +53,14 @@ export default function App() {
         
         {/* Phase 6 & 7: Content & Comparison */}
         <Route path="/blog" element={<BlogHomePage />} />
+        <Route path="/blog/*" element={<StaticPageReloader />} />
+        
+        {/* Templates */}
+        <Route path="/templates" element={<TemplateGalleryPage />} />
+        <Route path="/templates/:id" element={<TemplateDetailPage />} />
+
         <Route path="/compare" element={<CompareHomePage />} />
+        <Route path="/compare/*" element={<StaticPageReloader />} />
         
         {/* Phase 9: E-E-A-T / Trust Pages */}
         <Route path="/about" element={<AboutPage />} />
