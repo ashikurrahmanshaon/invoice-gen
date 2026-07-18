@@ -1,45 +1,47 @@
-import topicGraph from '../data/topicGraph.json';
+import entityGraphData from '../data/seoEntityGraph.json';
+import type { SEOEntityNode } from '../types/seo';
 
-// We need a lookup table for actual page titles since the graph only has slugs.
-// In a real app with hundreds of pages, this might be aggregated at build time.
+const entityGraph = entityGraphData as Record<string, SEOEntityNode>;
+
+// Pre-computed fallback list of valid pages to ensure we can resolve titles if they aren't in the graph yet
 import invoiceTypes from '../data/invoiceTypes.json';
 import tools from '../data/tools.json';
 import resources from '../data/resources.json';
-
-// Temporary aggregate to find page titles
 const allPages = [...invoiceTypes, ...tools, ...resources];
 
-interface TopicNode {
-  primaryTopic: string;
-  secondaryTopics: string[];
-  parentTopic: string;
-  relatedTools: string[];
-  relatedResources: string[];
-  relatedTemplates?: string[];
-}
-
 export function getRelatedPagesForSlug(slug: string, limit: number = 4) {
-  const graph = topicGraph as Record<string, TopicNode>;
-  const node = graph[slug];
-
-  if (!node) return [];
+  const node = entityGraph[slug];
+  
+  if (!node) {
+    // Fallback logic for pages not yet in the entity graph
+    return [];
+  }
 
   const relatedSlugs = new Set<string>();
 
-  // Add explicitly defined related pages
-  if (node.relatedTools) node.relatedTools.forEach(s => relatedSlugs.add(s));
-  if (node.relatedResources) node.relatedResources.forEach(s => relatedSlugs.add(s));
-  if (node.relatedTemplates) node.relatedTemplates.forEach(s => relatedSlugs.add(s));
+  // 1. Exact Relationship Edges (Highest Priority)
+  if (node.parentPage) relatedSlugs.add(node.parentPage);
+  if (node.childPages) node.childPages.forEach(s => relatedSlugs.add(s));
+  if (node.relatedPages) node.relatedPages.forEach(s => relatedSlugs.add(s));
 
-  // If we need more, find pages with matching secondary topics
+  // 2. Entity Overlap (Semantic Similarity)
   if (relatedSlugs.size < limit) {
-    for (const [otherSlug, otherNode] of Object.entries(graph)) {
+    for (const [otherSlug, otherNode] of Object.entries(entityGraph)) {
       if (otherSlug === slug) continue;
       
-      const hasTopicOverlap = otherNode.secondaryTopics.some(t => node.secondaryTopics.includes(t)) ||
-                              otherNode.primaryTopic === node.primaryTopic;
+      const isSamePrimaryEntity = otherNode.primaryEntity === node.primaryEntity;
+      const sharesSecondaryEntities = otherNode.secondaryEntities.some(e => node.secondaryEntities.includes(e));
+      const sharesRelatedEntities = otherNode.relatedEntities.some(e => node.relatedEntities.includes(e));
+      const isSameCategory = otherNode.category === node.category;
                               
-      if (hasTopicOverlap) {
+      // Basic scoring algorithm for topical proximity
+      let score = 0;
+      if (isSamePrimaryEntity) score += 3;
+      if (sharesSecondaryEntities) score += 2;
+      if (sharesRelatedEntities) score += 1;
+      if (isSameCategory) score += 1;
+
+      if (score >= 2) {
         relatedSlugs.add(otherSlug);
       }
       
@@ -50,10 +52,18 @@ export function getRelatedPagesForSlug(slug: string, limit: number = 4) {
   // Resolve slugs to actual titles and URLs
   const results = Array.from(relatedSlugs)
     .map(relatedSlug => {
+      // First try to resolve from the new entity graph title if it existed (we'd need title in entity node)
+      // Since title isn't in Entity Node, we look it up in the raw data files
       const pageData = allPages.find(p => p.slug === relatedSlug);
-      if (!pageData) return null;
+      
+      if (!pageData) {
+        // As a fallback for pages defined in the graph but not yet created in content JSONs
+        return {
+          title: relatedSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+          url: `/${entityGraph[relatedSlug]?.category || 'resources'}/${relatedSlug}/`
+        };
+      }
 
-      // Determine category (this is simplistic, but works for the current architecture)
       let category = 'resources';
       if (invoiceTypes.some(p => p.slug === relatedSlug)) category = 'invoice-types';
       if (tools.some(p => p.slug === relatedSlug)) category = 'tools';
