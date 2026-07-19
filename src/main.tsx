@@ -6,19 +6,31 @@ import App from './App.tsx';
 import './styles/globals.css';
 import './utils/i18n';
 import { SettingsProvider } from './contexts/SettingsContext';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import { initSentry, Sentry } from './config/sentry';
+
+// Initialize error monitoring before anything else
+initSentry();
+
+// Track unhandled promise rejections (PDF generation, fetch failures, etc.)
+window.addEventListener('unhandledrejection', (event) => {
+  Sentry.captureException(event.reason || new Error('Unhandled promise rejection'));
+});
 
 const container = document.getElementById('root');
 if (container) {
   const isPrerendered = container.hasChildNodes();
   const app = (
     <React.StrictMode>
-      <HelmetProvider>
-        <SettingsProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </SettingsProvider>
-      </HelmetProvider>
+      <ErrorBoundary>
+        <HelmetProvider>
+          <SettingsProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </SettingsProvider>
+        </HelmetProvider>
+      </ErrorBoundary>
     </React.StrictMode>
   );
 

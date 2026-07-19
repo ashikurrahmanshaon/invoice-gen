@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { SaveStatus } from '../../hooks/useAutoSave';
-import { Clock, BookOpen, LogIn, UserPlus } from 'lucide-react';
+import { Clock, BookOpen, FileText, ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
+
 interface HeaderProps {
   onNewInvoice?: () => void;
   onResetEverything?: () => void;
@@ -18,7 +20,6 @@ interface HeaderProps {
   currentStage?: number;
   isMobileView?: boolean;
 }
-import { useNavigate, useLocation } from 'react-router-dom';
 
 export const Header: React.FC<HeaderProps> = ({ 
   onViewChange,
@@ -29,6 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
+  const [showToolsMenu, setShowToolsMenu] = useState(false);
 
   const handleLogoClick = () => {
     if (location.pathname === '/') {
@@ -42,6 +44,7 @@ export const Header: React.FC<HeaderProps> = ({
     }
   };
 
+  const isToolPage = ['/', '/purchase-order-generator', '/quote-generator', '/estimate-generator'].includes(location.pathname);
 
   return (
     <>
@@ -84,56 +87,88 @@ export const Header: React.FC<HeaderProps> = ({
                 {saveStatus === 'success' && <span>✓ Draft Saved</span>}
               </div>
             )}
-            <button 
-              onClick={() => onViewChange ? onViewChange('history') : navigate('/')} 
-              style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'transparent', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 600, padding: '8px 14px', borderRadius: '8px', transition: 'all 0.2s ease' }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.backgroundColor = 'transparent'; }}
+
+            {/* Tools Dropdown */}
+            <div 
+              style={{ position: 'relative' }}
+              onMouseEnter={() => setShowToolsMenu(true)}
+              onMouseLeave={() => setShowToolsMenu(false)}
             >
-              <Clock size={16} />
-              {t('header.history', 'History')}
-            </button>
-            <button 
-              onClick={() => onOpenHelp ? onOpenHelp() : null} 
-              style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'transparent', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 600, padding: '8px 14px', borderRadius: '8px', transition: 'all 0.2s ease' }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.backgroundColor = 'transparent'; }}
-            >
-              <BookOpen size={16} />
-              {t('header.guides', 'Guides')}
-            </button>
+              <button 
+                style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'transparent', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 600, padding: '8px 14px', borderRadius: '8px', transition: 'all 0.2s ease' }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.backgroundColor = 'transparent'; }}
+              >
+                <FileText size={16} />
+                Tools
+                <ChevronDown size={14} />
+              </button>
+              {showToolsMenu && (
+                <div style={{
+                  position: 'absolute', top: '100%', left: 0, minWidth: '220px',
+                  background: 'white', border: '1px solid rgba(0,0,0,0.08)', borderRadius: '12px',
+                  boxShadow: '0 8px 30px rgba(0,0,0,0.12)', padding: '8px', zIndex: 1001
+                }}>
+                  <Link to="/" style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', color: location.pathname === '/' ? 'var(--color-primary)' : 'var(--color-text-main)', fontWeight: location.pathname === '/' ? 600 : 500, fontSize: '14px', textDecoration: 'none', transition: 'background 0.15s' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+                  >Invoice Generator</Link>
+                  <Link to="/purchase-order-generator" style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', color: location.pathname === '/purchase-order-generator' ? 'var(--color-primary)' : 'var(--color-text-main)', fontWeight: location.pathname === '/purchase-order-generator' ? 600 : 500, fontSize: '14px', textDecoration: 'none', transition: 'background 0.15s' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+                  >Purchase Order Generator</Link>
+                  <Link to="/quote-generator" style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', color: location.pathname === '/quote-generator' ? 'var(--color-primary)' : 'var(--color-text-main)', fontWeight: location.pathname === '/quote-generator' ? 600 : 500, fontSize: '14px', textDecoration: 'none', transition: 'background 0.15s' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+                  >Quote Generator</Link>
+                  <Link to="/estimate-generator" style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', color: location.pathname === '/estimate-generator' ? 'var(--color-primary)' : 'var(--color-text-main)', fontWeight: location.pathname === '/estimate-generator' ? 600 : 500, fontSize: '14px', textDecoration: 'none', transition: 'background 0.15s' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+                  >Estimate Generator</Link>
+                </div>
+              )}
+            </div>
+
+            {isToolPage && (
+              <>
+                <button 
+                  onClick={() => onViewChange ? onViewChange('history') : navigate('/')} 
+                  style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'transparent', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 600, padding: '8px 14px', borderRadius: '8px', transition: 'all 0.2s ease' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.backgroundColor = 'transparent'; }}
+                >
+                  <Clock size={16} />
+                  {t('header.history', 'History')}
+                </button>
+                <button 
+                  onClick={() => onOpenHelp ? onOpenHelp() : null} 
+                  style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'transparent', border: 'none', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 600, padding: '8px 14px', borderRadius: '8px', transition: 'all 0.2s ease' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.backgroundColor = 'transparent'; }}
+                >
+                  <BookOpen size={16} />
+                  {t('header.guides', 'Guides')}
+                </button>
+              </>
+            )}
           </div>
 
-          {/* Right: Actions */}
-          <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <button style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)', borderRadius: '8px', fontSize: '14.5px', color: 'var(--color-text-secondary)', cursor: 'pointer', fontWeight: 600, padding: '8px 18px', transition: 'all 0.2s ease' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; e.currentTarget.style.background = 'rgba(0,0,0,0.06)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
-                >
-                  <LogIn size={16} />
-                  {t('header.signIn', 'Sign In')}
-                </button>
-              </div>
-              
-              <button style={{ 
-                display: 'flex', alignItems: 'center', gap: '6px',
-                background: '#00A65A', 
-                color: 'white', 
-                border: 'none', 
-                borderRadius: '6px', 
-                padding: '9px 20px', 
-                fontSize: '15px', 
-                fontWeight: 600,
-                cursor: 'pointer',
-                transition: 'all 0.2s ease'
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = '#009650'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = '#00A65A'; }}
-              >
-                <UserPlus size={16} />
-                {t('header.signUp', 'Sign Up')}
-              </button>
+          {/* Right: Blog link (no auth buttons) */}
+          <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <Link to="/blog" 
+              style={{ fontSize: '14.5px', color: 'var(--color-text-secondary)', fontWeight: 600, textDecoration: 'none', padding: '8px 14px', borderRadius: '8px', transition: 'all 0.2s ease' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.backgroundColor = 'transparent'; }}
+            >
+              Blog
+            </Link>
+            <Link to="/templates"
+              style={{ fontSize: '14.5px', color: 'var(--color-text-secondary)', fontWeight: 600, textDecoration: 'none', padding: '8px 14px', borderRadius: '8px', transition: 'all 0.2s ease' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.04)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; e.currentTarget.style.backgroundColor = 'transparent'; }}
+            >
+              Templates
+            </Link>
           </div>
         </div>
       </header>
