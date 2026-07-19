@@ -52,8 +52,9 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({ onComplete }) => {
             </div>
             
             <div className="form-group">
-              <label>Business Name</label>
+              <label htmlFor="wizard-business-name">Business Name</label>
               <input 
+                id="wizard-business-name"
                 type="text" 
                 className="input" 
                 placeholder="Acme Corp" 
@@ -66,8 +67,9 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({ onComplete }) => {
               />
             </div>
             <div className="form-group">
-              <label>Email Address (Optional)</label>
+              <label htmlFor="wizard-email">Email Address (Optional)</label>
               <input 
+                id="wizard-email"
                 type="email" 
                 className="input" 
                 placeholder="billing@acme.com" 
@@ -79,8 +81,9 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({ onComplete }) => {
               />
             </div>
             <div className="form-group">
-              <label>Country</label>
+              <label htmlFor="wizard-country">Country</label>
               <input 
+                id="wizard-country"
                 type="text" 
                 className="input" 
                 placeholder="United States" 

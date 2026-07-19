@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useId } from 'react';
 import { ChevronDown, Search, Check } from 'lucide-react';
 import { createPortal } from 'react-dom';
 
@@ -36,6 +36,12 @@ export const Select: React.FC<SelectProps> = ({
   const [search, setSearch] = useState('');
   const [highlightedIndex, setHighlightedIndex] = useState(0);
   
+  const generatedId = useId();
+  const selectId = generatedId;
+  const errorId = `${selectId}-error`;
+  const labelId = `${selectId}-label`;
+  const listboxId = `${selectId}-listbox`;
+
   const containerRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const listboxRef = useRef<HTMLDivElement>(null);
@@ -152,7 +158,7 @@ export const Select: React.FC<SelectProps> = ({
 
   return (
     <div className={`input-container ${className}`} ref={containerRef}>
-      {label && <label className="input-label" onClick={() => setIsOpen(true)}>{label}</label>}
+      {label && <label id={labelId} className="input-label" onClick={() => setIsOpen(true)}>{label}</label>}
       
       <div 
         className={`input-wrapper ${error ? 'has-error' : ''} ${isOpen ? 'focused' : ''}`}
@@ -164,6 +170,14 @@ export const Select: React.FC<SelectProps> = ({
         onClick={() => setIsOpen(!isOpen)}
         tabIndex={0}
         onKeyDown={handleKeyDown}
+        role="combobox"
+        aria-controls={listboxId}
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        aria-labelledby={label ? labelId : undefined}
+        aria-invalid={!!error}
+        aria-describedby={error ? errorId : undefined}
+        aria-label={!label ? placeholder : undefined}
       >
         <div className="input-element" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', overflow: 'hidden' }}>
@@ -181,7 +195,7 @@ export const Select: React.FC<SelectProps> = ({
         </div>
       </div>
       
-      {error && <div className="input-error">{error}</div>}
+      {error && <div id={errorId} className="input-error" role="alert" aria-live="assertive">{error}</div>}
 
       {isOpen && createPortal(
         <div style={dropdownStyle} ref={dropdownRef}>
@@ -218,6 +232,8 @@ export const Select: React.FC<SelectProps> = ({
             
             <div 
               ref={listboxRef}
+              id={listboxId}
+              role="listbox"
               style={{ overflowY: 'auto', flex: 1, padding: 'var(--space-1)' }}
             >
               {filteredOptions.length === 0 ? (
@@ -231,6 +247,8 @@ export const Select: React.FC<SelectProps> = ({
                   return (
                     <div
                       key={option.value}
+                      role="option"
+                      aria-selected={isSelected}
                       onClick={(e) => {
                         e.stopPropagation();
                         onChange(option.value);
