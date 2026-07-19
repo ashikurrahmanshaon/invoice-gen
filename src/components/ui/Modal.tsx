@@ -22,13 +22,48 @@ export const Modal: React.FC<ModalProps> = ({
   cancelText = 'Cancel', 
   type = 'info' 
 }) => {
+  const previousFocus = React.useRef<HTMLElement | null>(null);
+  const modalRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (isOpen) {
+      previousFocus.current = document.activeElement as HTMLElement;
+      // Focus first element
+      setTimeout(() => {
+        const focusable = modalRef.current?.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const first = focusable?.[0] as HTMLElement;
+        if (first) first.focus();
+      }, 10);
+    } else if (previousFocus.current) {
+      previousFocus.current.focus();
+    }
+  }, [isOpen]);
+
   React.useEffect(() => {
     if (!isOpen) return;
-    const handleEscape = (e: KeyboardEvent) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (!focusable.length) return;
+        const first = focusable[0] as HTMLElement;
+        const last = focusable[focusable.length - 1] as HTMLElement;
+        
+        if (e.shiftKey) {
+          if (document.activeElement === first || document.activeElement === document.body) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
     };
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
@@ -45,7 +80,7 @@ export const Modal: React.FC<ModalProps> = ({
       justifyContent: 'center',
       zIndex: 9999
     }}>
-      <div className="card animate-scale-up" style={{
+      <div ref={modalRef} className="card animate-scale-up" role="dialog" aria-modal="true" aria-labelledby="modal-title" style={{
         width: '90%',
         maxWidth: '400px',
         margin: 'auto',
@@ -74,7 +109,7 @@ export const Modal: React.FC<ModalProps> = ({
             )}
           </div>
           <div style={{ width: '100%' }}>
-            <h3 className="font-bold text-lg" style={{ marginBottom: 'var(--space-2)' }}>{title}</h3>
+            <h3 id="modal-title" className="font-bold text-lg" style={{ marginBottom: 'var(--space-2)' }}>{title}</h3>
             <p className="text-secondary text-sm" style={{ marginBottom: 'var(--space-6)', lineHeight: 1.5 }}>
               {message}
             </p>

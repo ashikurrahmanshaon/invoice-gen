@@ -44,6 +44,13 @@ export const Header: React.FC<HeaderProps> = ({
     }
   };
 
+  const handleLogoKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleLogoClick();
+    }
+  };
+
   const isToolPage = ['/', '/purchase-order-generator', '/quote-generator', '/estimate-generator'].includes(location.pathname);
 
   return (
@@ -52,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: isMobileView ? 'center' : 'space-between', width: '100%', maxWidth: '1360px', margin: '0 auto', padding: '0 8px' }}>
           
           {/* Left: Logo & Wordmark */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={handleLogoClick} aria-label="Go to Homepage" role="button" tabIndex={0}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={handleLogoClick} onKeyDown={handleLogoKeyDown} aria-label="Go to Homepage" role="button" tabIndex={0}>
             {/* Premium Custom SVG Logo */}
             <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 4px 6px rgba(0, 166, 90, 0.2))' }} role="img" aria-label="Invoice-Gen.net Logo">
               <defs>

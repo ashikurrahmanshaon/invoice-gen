@@ -23,6 +23,7 @@ interface FullPreviewModalProps {
 export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onClose, data, onDownloadPDF, documentType = 'invoice' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const shareMenuRef = useRef<HTMLDivElement>(null);
+  const previousFocus = useRef<HTMLElement | null>(null);
   
   // Calculate perfect fit scale
   const [scale, setScale] = useState(0.8);
@@ -31,9 +32,35 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
   // Handle ESC and Click Outside
   useEffect(() => {
     if (isOpen) {
+      previousFocus.current = document.activeElement as HTMLElement;
       document.body.style.overflow = 'hidden';
+      
+      setTimeout(() => {
+        const focusable = containerRef.current?.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const first = focusable?.[0] as HTMLElement;
+        if (first) first.focus();
+      }, 10);
+
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') onClose();
+        if (e.key === 'Tab' && containerRef.current) {
+          const focusable = containerRef.current.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          if (!focusable.length) return;
+          const first = focusable[0] as HTMLElement;
+          const last = focusable[focusable.length - 1] as HTMLElement;
+          
+          if (e.shiftKey) {
+            if (document.activeElement === first || document.activeElement === document.body) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        }
       };
       const handleClickOutside = (e: MouseEvent) => {
         if (showShareMenu && shareMenuRef.current && !shareMenuRef.current.contains(e.target as Node)) {
@@ -47,6 +74,8 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
         document.removeEventListener('keydown', handleKeyDown);
         document.removeEventListener('mousedown', handleClickOutside);
       };
+    } else if (previousFocus.current) {
+      previousFocus.current.focus();
     }
   }, [isOpen, onClose, showShareMenu]);
 
