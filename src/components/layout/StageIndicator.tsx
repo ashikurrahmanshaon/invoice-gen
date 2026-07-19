@@ -36,10 +36,10 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
       {/* Universal Background Line */}
       <div style={{
         position: 'absolute',
-        top: isMobile ? '16px' : '18px',
+        top: isMobile ? '20px' : '24px',
         left: '24px',
         right: '24px',
-        height: '1px',
+        height: '2px',
         background: 'var(--color-border)',
         zIndex: 1,
       }} />
@@ -47,10 +47,10 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
       {/* Universal Active Line */}
       <div style={{
         position: 'absolute',
-        top: isMobile ? '16px' : '18px',
+        top: isMobile ? '20px' : '24px',
         left: '24px',
         right: '24px',
-        height: '1px',
+        height: '2px',
         background: 'transparent',
         zIndex: 2,
         pointerEvents: 'none'
@@ -81,7 +81,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
           textColor = 'var(--color-primary)';
         }
 
-        const circleSize = isMobile ? '32px' : '36px';
+        const circleSize = isMobile ? '40px' : '48px';
 
         return (
           <div 
@@ -93,14 +93,14 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
             aria-label={`Go to ${stage.label} step`}
             style={{
               display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
-              gap: '10px',
+              gap: '12px',
               cursor: onStageChange ? 'pointer' : 'default',
               position: 'relative',
               zIndex: 3,
               background: 'transparent',
               flex: 1,
-              justifyContent: 'center'
             }}
           >
             {/* The Circle */}
@@ -116,35 +116,26 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
               transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
               flexShrink: 0,
               animation: isActive ? 'jump-happy 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards' : 'none',
-              boxShadow: isActive ? '0 4px 12px rgba(0, 166, 90, 0.35)' : 'none'
+              boxShadow: isActive ? '0 0 0 8px var(--color-primary-faint), 0 4px 20px rgba(0, 166, 90, 0.2)' : 'none'
             }}>
               {isCompleted ? (
-                <Check size={isMobile ? 16 : 18} color={textColor} strokeWidth={3} />
+                <Check size={isMobile ? 18 : 22} color={textColor} strokeWidth={3} />
               ) : (
-                <stage.icon size={isMobile ? 14 : 16} color={textColor} />
+                <stage.icon size={isMobile ? 18 : 20} color={textColor} />
               )}
             </div>
             
-            {/* The Label */}
-            {!isMobile && (
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', background: '#ffffff', padding: '0 8px' }}>
-                <span style={{
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  color: isActive ? 'var(--color-primary)' : 'var(--color-text-main)',
-                  lineHeight: '1.2'
-                }}>
-                  {stage.label}
-                </span>
-                <span style={{
-                  fontSize: '11px',
-                  color: 'var(--color-text-tertiary)',
-                  lineHeight: '1.2'
-                }}>
-                  {stage.subtitle}
-                </span>
-              </div>
-            )}
+            {/* The Label (Always display, but size adjusts for mobile) */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+              <span style={{
+                fontSize: isMobile ? '11px' : '13px',
+                fontWeight: 600,
+                color: isActive ? 'var(--color-primary)' : 'var(--color-text-main)',
+                lineHeight: '1.2'
+              }}>
+                {stage.label}
+              </span>
+            </div>
 
           </div>
         );

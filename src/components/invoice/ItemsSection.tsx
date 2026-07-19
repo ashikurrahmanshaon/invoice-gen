@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trash2 } from 'lucide-react';
+import { Trash2, ShoppingBag } from 'lucide-react';
 import type { LineItem } from '../../types/invoice';
 import { formatCurrency } from '../../utils/currency';
 import { isValidDecimalInput, calculateLineAmount } from '../../utils/calculations';
@@ -128,8 +128,16 @@ const ItemsSectionComponent: React.FC<ItemsSectionProps> = ({
   return (
     <div data-testid="items-section" className="flex-col gap-6" style={{ width: '100%', paddingBottom: '32px', borderBottom: '1px solid var(--color-border)' }}>
       
-      {/* Section Label */}
-      <div className="section-label">Line Items</div>
+      {/* Section Header */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', marginBottom: '40px' }}>
+        <div style={{ padding: '16px', background: 'var(--color-primary-light)', color: 'var(--color-primary)', borderRadius: '16px', display: 'flex' }}>
+          <ShoppingBag size={28} />
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-text-title)', margin: 0, letterSpacing: '-0.5px' }}>Line Items</h2>
+          <span style={{ fontSize: '15px', color: 'var(--color-text-secondary)', marginTop: '4px' }}>Add products or services</span>
+        </div>
+      </div>
 
       {/* Grid Table Container */}
       <div style={{ width: '100%' }} className="items-section-wrapper">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Building2, Mail, Phone, FileText, MapPin } from 'lucide-react';
+import { User, Building2, Mail, Phone, FileText, MapPin } from 'lucide-react';
 import type { InvoiceData, ClientDetails, SavedClient } from '../../types/invoice';
 import { ClientPicker } from './ClientPicker';
 import { ClientActions } from './ClientActions';
@@ -60,8 +60,16 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
   return (
     <div className="flex-col gap-6" style={{ width: '100%', marginBottom: '16px' }}>
       
-      {/* Section Label */}
-      <div className="section-label">{roleName} Info</div>
+      {/* Section Header */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', marginBottom: '40px' }}>
+        <div style={{ padding: '16px', background: 'var(--color-primary-light)', color: 'var(--color-primary)', borderRadius: '16px', display: 'flex' }}>
+          <User size={28} />
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-text-title)', margin: 0, letterSpacing: '-0.5px' }}>{roleName} Details</h2>
+          <span style={{ fontSize: '15px', color: 'var(--color-text-secondary)', marginTop: '4px' }}>Who is this {documentType === 'invoice' ? 'invoice' : 'document'} for?</span>
+        </div>
+      </div>
 
       <div style={{ width: '100%' }}>
         <ClientPicker 

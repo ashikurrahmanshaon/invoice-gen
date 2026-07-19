@@ -1,4 +1,5 @@
 import React, { forwardRef, useEffect, useRef, useId } from 'react';
+import { AlertCircle } from 'lucide-react';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   label?: string;
@@ -48,7 +49,12 @@ export const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputPro
 
           {rightIcon && <div className="input-icon right">{rightIcon}</div>}
         </div>
-        {error && <div id={errorId} className="input-error" role="alert" aria-live="assertive">{error}</div>}
+        {error && (
+          <div id={errorId} className="input-error" role="alert" aria-live="assertive" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <AlertCircle size={14} aria-hidden="true" />
+            <span>{error}</span>
+          </div>
+        )}
       </div>
     );
   }

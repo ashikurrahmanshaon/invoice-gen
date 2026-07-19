@@ -31,91 +31,91 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
       marginBottom: '32px'
     }}>
       
-      {/* Section Header & Logo */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{ padding: '8px', background: '#F8FAFC', color: '#64748B', borderRadius: '10px', display: 'flex' }}>
-            <Building2 size={18} />
-          </div>
-          <h2 style={{ fontSize: '16px', fontWeight: 600, color: '#334155', margin: 0 }}>Business Details</h2>
+      {/* Section Header */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', marginBottom: '40px' }}>
+        <div style={{ padding: '16px', background: 'var(--color-primary-light)', color: 'var(--color-primary)', borderRadius: '16px', display: 'flex' }}>
+          <Building2 size={28} />
         </div>
-        
-        {/* Logo Upload placed beautifully next to title */}
-        <div>
-          {data.business.logoUrl ? (
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-text-title)', margin: 0, letterSpacing: '-0.5px' }}>Business Details</h2>
+          <span style={{ fontSize: '15px', color: 'var(--color-text-secondary)', marginTop: '4px' }}>Your company information and logo</span>
+        </div>
+      </div>
+      
+      {/* Logo Upload */}
+      <div style={{ marginBottom: '32px' }}>
+        {data.business.logoUrl ? (
+          <div style={{
+            width: '100%',
+            height: '200px',
+            position: 'relative',
+            borderRadius: '16px',
+            border: '1px solid var(--color-border)',
+            background: 'var(--color-surface)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            overflow: 'hidden',
+          }}>
+            <img src={data.business.logoUrl} alt="Logo" loading="lazy" style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
             <div style={{
-              width: '64px',
-              height: '64px',
-              position: 'relative',
-              borderRadius: '16px',
-              border: '1px solid #E2E8F0',
-              background: '#FFFFFF',
+              position: 'absolute',
+              top: 0, left: 0, right: 0, bottom: 0,
+              background: 'rgba(0, 0, 0, 0.4)',
+              opacity: 0,
+              transition: 'opacity 0.2s',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              overflow: 'hidden',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
-            }}>
-              <img src={data.business.logoUrl} alt="Logo" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-              <div style={{
-                position: 'absolute',
-                top: 0, left: 0, right: 0, bottom: 0,
-                background: 'rgba(0, 0, 0, 0.4)',
-                opacity: 0,
-                transition: 'opacity 0.2s',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px'
-              }} className="logo-hover-overlay">
-                <label htmlFor="business-logo-edit-input" style={{ cursor: 'pointer' }}>
-                  <Edit2 size={14} color="white" />
-                  <input id="business-logo-edit-input" aria-label="Change business logo" type="file" accept="image/*" onChange={handleLogoUpload} style={{ display: 'none' }} />
-                </label>
-                <button aria-label="Delete logo" onClick={() => updateBusiness({ logoUrl: null })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-                  <Trash2 size={14} color="white" />
-                </button>
-              </div>
-              <style>{`.logo-hover-overlay:hover { opacity: 1 !important; }`}</style>
+              gap: '12px'
+            }} className="logo-hover-overlay">
+              <label htmlFor="business-logo-edit-input" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', background: 'white', color: 'black', padding: '8px 16px', borderRadius: '8px', fontSize: '14px', fontWeight: 500 }}>
+                <Edit2 size={16} /> Change Logo
+                <input id="business-logo-edit-input" aria-label="Change business logo" type="file" accept="image/png, image/jpeg, image/svg+xml" onChange={handleLogoUpload} style={{ display: 'none' }} />
+              </label>
+              <button aria-label="Delete logo" onClick={() => updateBusiness({ logoUrl: null })} style={{ background: '#DC2626', color: 'white', border: 'none', cursor: 'pointer', padding: '8px 16px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 500 }}>
+                <Trash2 size={16} /> Remove
+              </button>
             </div>
-          ) : (
-            <label htmlFor="business-logo-upload-input" style={{
-              width: '64px',
-              height: '64px',
-              border: '2px dashed #CBD5E1',
-              borderRadius: '16px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '4px',
-              cursor: 'pointer',
-              background: '#F8FAFC',
-              color: '#64748B',
-              transition: 'all 0.2s ease',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.02)'
-            }}
-            onMouseOver={(e) => { 
-              e.currentTarget.style.borderColor = '#00A65A'; 
-              e.currentTarget.style.backgroundColor = '#E8F8F0'; 
-              e.currentTarget.style.color = '#00A65A';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 16px rgba(0, 166, 90, 0.1)';
-            }}
-            onMouseOut={(e) => { 
-              e.currentTarget.style.borderColor = '#CBD5E1'; 
-              e.currentTarget.style.backgroundColor = '#F8FAFC'; 
-              e.currentTarget.style.color = '#64748B';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.02)';
-            }}
-            >
-              <UploadCloud size={20} />
-              <span style={{ fontSize: '10px', fontWeight: 600 }}>Logo</span>
-              <input id="business-logo-upload-input" aria-label="Upload business logo" type="file" accept="image/*" onChange={handleLogoUpload} style={{ display: 'none' }} />
-            </label>
-          )}
-        </div>
+            <style>{`.logo-hover-overlay:hover { opacity: 1 !important; }`}</style>
+          </div>
+        ) : (
+          <label htmlFor="business-logo-upload-input" style={{
+            width: '100%',
+            height: '200px',
+            border: '2px dashed var(--color-border)',
+            borderRadius: '16px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '12px',
+            cursor: 'pointer',
+            background: 'var(--color-background)',
+            color: 'var(--color-text-secondary)',
+            transition: 'all 0.2s ease',
+          }}
+          onMouseOver={(e) => { 
+            e.currentTarget.style.borderColor = 'var(--color-primary)'; 
+            e.currentTarget.style.backgroundColor = 'var(--color-primary-light)'; 
+            e.currentTarget.style.color = 'var(--color-primary)';
+          }}
+          onMouseOut={(e) => { 
+            e.currentTarget.style.borderColor = 'var(--color-border)'; 
+            e.currentTarget.style.backgroundColor = 'var(--color-background)'; 
+            e.currentTarget.style.color = 'var(--color-text-secondary)';
+          }}
+          >
+            <div style={{ background: 'white', padding: '16px', borderRadius: '50%', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
+              <UploadCloud size={32} />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+              <span style={{ fontSize: '16px', fontWeight: 600 }}>Click or drag & drop logo</span>
+              <span style={{ fontSize: '14px', color: 'var(--color-text-tertiary)' }}>Supports PNG, JPG, or SVG (Max 5MB)</span>
+            </div>
+            <input id="business-logo-upload-input" aria-label="Upload business logo" type="file" accept="image/png, image/jpeg, image/svg+xml" onChange={handleLogoUpload} style={{ display: 'none' }} />
+          </label>
+        )}
       </div>
 
       {/* Main Container */}

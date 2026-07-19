@@ -26,16 +26,16 @@ button {
 
 input, select {
   font-family: var(--font-family);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   color: var(--color-text-main);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md); /* 8px */
-  padding: 0 12px;
+  border-radius: var(--radius-md); /* 12px */
+  padding: 0 16px;
   width: 100%;
   background: var(--color-surface);
   transition: all var(--transition-fast);
-  height: 44px;
-  min-height: 44px;
+  height: 54px;
+  min-height: 54px;
 }
 
 input:hover:not(:disabled), select:hover:not(:disabled), textarea:hover:not(:disabled) {
@@ -73,11 +73,11 @@ textarea {
   display: flex;
   align-items: center;
   background: var(--color-surface);
-  border: 1px solid var(--color-text-main); /* Crisp 1px dark border */
-  border-radius: 8px; /* Sharper pro corners */
+  border: 1px solid var(--color-border); 
+  border-radius: var(--radius-md); 
   transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
-  height: 40px; /* Sleeker height */
-  box-shadow: var(--shadow-sm);
+  height: 54px; 
+  box-shadow: none;
 }
 
 .input-wrapper:hover {
@@ -89,7 +89,7 @@ textarea {
 .input-wrapper:focus-within {
   border-color: var(--color-primary);
   background: var(--color-surface);
-  box-shadow: none;
+  box-shadow: var(--shadow-focus);
 }
 
 .input-wrapper:focus-within .input-icon {
@@ -112,16 +112,16 @@ textarea {
   transition: color 180ms ease;
 }
 
-.input-icon.left { padding-left: 12px; }
-.input-icon.right { padding-right: 12px; }
+.input-icon.left { padding-left: 16px; }
+.input-icon.right { padding-right: 16px; }
 
 .input-element {
   width: 100%;
   border: none;
   background: transparent;
   outline: none;
-  padding: 0 12px;
-  font-size: 14px; /* Smaller font */
+  padding: 0 16px;
+  font-size: 15px; /* Larger font */
   color: var(--color-text-main);
   font-family: var(--font-family);
   height: 100%;
@@ -129,7 +129,7 @@ textarea {
 
 .input-wrapper.is-multiline {
   height: auto !important; /* Force auto height to prevent clipping */
-  min-height: 40px;
+  min-height: 54px;
   align-items: flex-start; /* Prevent vertical centering from pushing textarea over the label */
 }
 
@@ -174,7 +174,7 @@ a {
 
 /* Layout Utilities */
 .container {
-  max-width: 1360px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 0 var(--space-6);
   width: 100%;
@@ -518,15 +518,15 @@ a {
   height: 36px;
   padding: 0 var(--space-4);
   font-size: var(--text-xs);
-  border-radius: 99px; /* iOS pill shape */
+  border-radius: var(--radius-md); 
 }
 
 .btn-lg {
-  min-height: 52px;
-  height: 52px;
+  min-height: 54px;
+  height: 54px;
   padding: 0 var(--space-8);
   font-size: var(--text-base);
-  border-radius: 99px; /* iOS pill shape */
+  border-radius: 99px; 
 }
 
 .btn-icon {
@@ -676,10 +676,10 @@ a {
 .card {
   background: var(--color-card);
   border-radius: var(--radius-lg);
-  padding: var(--space-6);
+  padding: 32px;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-fast);
+  transition: box-shadow var(--transition-slow);
 }
 
 .card:hover {
@@ -719,7 +719,7 @@ a {
 
 .workspace-main {
   width: 100%;
-  max-width: 900px;
+  max-width: 1320px;
   min-width: 0;
 }
 

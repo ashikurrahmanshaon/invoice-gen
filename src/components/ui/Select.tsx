@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useId } from 'react';
-import { ChevronDown, Search, Check } from 'lucide-react';
+import { ChevronDown, Search, Check, AlertCircle } from 'lucide-react';
 import { createPortal } from 'react-dom';
 
 export interface SelectOption {
@@ -195,7 +195,12 @@ export const Select: React.FC<SelectProps> = ({
         </div>
       </div>
       
-      {error && <div id={errorId} className="input-error" role="alert" aria-live="assertive">{error}</div>}
+      {error && (
+        <div id={errorId} className="input-error" role="alert" aria-live="assertive" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <AlertCircle size={14} aria-hidden="true" />
+          <span>{error}</span>
+        </div>
+      )}
 
       {isOpen && createPortal(
         <div style={dropdownStyle} ref={dropdownRef}>

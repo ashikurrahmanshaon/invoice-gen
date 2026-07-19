@@ -292,27 +292,7 @@ export function QuoteGenerator() {
       </div>
 
       <main className="container" id="generator" style={{ minWidth: 0 }}>
-        {activeView === 'editor' && (
-          <div style={{
-            background: 'var(--color-surface)',
-            borderBottom: '1px solid var(--color-border)',
-            padding: '12px 24px',
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '24px',
-            fontSize: '13px',
-            color: 'var(--color-text-secondary)',
-            fontWeight: 500,
-            marginBottom: '24px',
-            borderRadius: '8px',
-            flexWrap: 'wrap'
-          }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#00C853' }}>✓</span> Free Forever</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#00C853' }}>✓</span> No Registration</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#00C853' }}>✓</span> No Watermarks</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#00C853' }}>✓</span> Secure Local Processing</span>
-          </div>
-        )}
+
         
         {activeView === 'editor' && (!data.business.name && !data.client.name && data.items.length === 0) && (
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>

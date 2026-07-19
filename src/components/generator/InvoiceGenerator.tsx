@@ -1,5 +1,5 @@
 import { useState, Suspense, useEffect } from 'react';
-import { Eye, Download, ShieldCheck, Lock, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Download, ArrowRight, ArrowLeft, ShieldCheck } from 'lucide-react';
 import { StageIndicator } from '../layout/StageIndicator';
 import { BusinessSection } from '../invoice/BusinessSection';
 import { InvoiceDetailsSection } from '../invoice/InvoiceDetailsSection';
@@ -359,27 +359,7 @@ export function InvoiceGenerator() {
       </div>
 
       <main className="container" id="generator" style={{ minWidth: 0 }}>
-        {activeView === 'editor' && (
-          <div style={{
-            background: 'var(--color-surface)',
-            borderBottom: '1px solid var(--color-border)',
-            padding: '12px 24px',
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '24px',
-            fontSize: '13px',
-            color: 'var(--color-text-secondary)',
-            fontWeight: 500,
-            marginBottom: '24px',
-            borderRadius: '8px',
-            flexWrap: 'wrap'
-          }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#00C853' }}>✓</span> Free Forever</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#00C853' }}>✓</span> No Registration</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#00C853' }}>✓</span> No Watermarks</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ color: '#00C853' }}>✓</span> Secure Local Processing</span>
-          </div>
-        )}
+
         
         {activeView === 'editor' && (!data.business.name && !data.client.name && data.items.length === 0) && (
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
@@ -443,7 +423,37 @@ export function InvoiceGenerator() {
                     }}>
                       <StageIndicator currentStage={currentStage} onStageChange={handleStageChange} isMobile={false} />
                     </div>
-                    <div style={{ padding: '24px 32px' }}>
+                    <div style={{ padding: '40px 48px' }}>
+                      {/* Summary Card */}
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '24px 32px',
+                        background: 'var(--color-surface)',
+                        border: '1px solid var(--color-border)',
+                        borderRadius: '20px',
+                        marginBottom: '40px',
+                        boxShadow: 'var(--shadow-sm)'
+                      }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                          <span style={{ fontSize: '13px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Invoice Number</span>
+                          <span style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-text-main)' }}>{data.details.invoiceNumber || 'Draft'}</span>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                          <span style={{ fontSize: '13px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Progress</span>
+                          <span style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-text-main)' }}>Step {currentStage} of 4</span>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                          <span style={{ fontSize: '13px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Currency</span>
+                          <span style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-text-main)' }}>{data.details.currency}</span>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                          <span style={{ fontSize: '13px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Status</span>
+                          <span style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-success)' }}>Draft Saved</span>
+                        </div>
+                      </div>
+
                       <div className="flex-col">
                         {currentStage === 1 && (
                             <div id="section-1">
@@ -497,98 +507,87 @@ export function InvoiceGenerator() {
                         <div style={{ 
                           margin: '32px -32px -24px -32px', 
                           padding: '24px 32px', 
-                          background: 'var(--color-background)', 
+                          background: 'rgba(255, 255, 255, 0.85)', 
+                          backdropFilter: 'blur(16px)',
                           borderTop: '1px solid var(--color-border)', 
-                          borderBottomLeftRadius: '12px', 
-                          borderBottomRightRadius: '12px',
+                          borderBottomLeftRadius: '20px', 
+                          borderBottomRightRadius: '20px',
                           display: 'flex', 
-                          gap: '16px', 
-                          justifyContent: currentStage > 1 ? 'space-between' : 'flex-end',
-                          alignItems: 'center'
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          position: 'sticky',
+                          bottom: 0,
+                          zIndex: 100
                         }}>
-                          {currentStage > 1 && (
-                            <button 
-                              className="btn" 
-                              onClick={() => handleStageChange(currentStage - 1)}
-                              style={{ 
-                                minWidth: '120px',
-                                height: '48px',
-                                borderRadius: '100px',
-                                background: 'var(--color-surface)',
-                                border: '1.5px solid var(--color-border)',
-                                color: 'var(--color-text-main)',
-                                fontWeight: 600,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                gap: '8px',
-                                boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
-                              }}
-                            >
-                              <ArrowLeft size={16} />
-                              Back
-                            </button>
-                          )}
-                          {currentStage < 4 ? (
-                            <button 
-                              className="btn" 
-                              onClick={() => handleStageChange(currentStage + 1)}
-                              style={{ 
-                                minWidth: '140px',
-                                height: '48px',
-                                borderRadius: '100px',
-                                background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
-                                color: 'white',
-                                border: 'none',
-                                fontWeight: 600,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                gap: '8px',
-                                boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)'
-                              }}
-                            >
-                              Continue
-                              <ArrowRight size={16} />
-                            </button>
-                          ) : (
-                            <div style={{ display: 'flex', gap: '8px' }}>
+                          {/* Left: Draft Saved */}
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-success)', fontWeight: 600, fontSize: '14px' }}>
+                            <ShieldCheck size={18} /> Draft Saved
+                          </div>
+
+                          {/* Center: Reset */}
+                          <button 
+                            onClick={() => setShowResetModal(true)}
+                            className="btn btn-ghost text-secondary hover-lift"
+                            style={{ height: '48px', padding: '0 24px', fontWeight: 600 }}
+                          >
+                            Reset Form
+                          </button>
+
+                          {/* Right: Actions */}
+                          <div style={{ display: 'flex', gap: '12px' }}>
+                            {currentStage > 1 && (
                               <button 
-                                onClick={() => setIsPreviewOpen(true)}
-                                style={{
+                                className="btn hover-lift" 
+                                onClick={() => handleStageChange(currentStage - 1)}
+                                style={{ 
                                   height: '48px',
-                                  padding: '0 20px',
-                                  background: 'var(--color-border-hover)',
-                                  color: 'var(--color-text-title)',
+                                  padding: '0 24px',
+                                  borderRadius: '100px',
+                                  background: 'var(--color-surface)',
+                                  border: '1.5px solid var(--color-border)',
+                                  color: 'var(--color-text-main)',
                                   fontWeight: 600,
-                                  fontSize: '14px',
                                   display: 'flex',
-                                  justifyContent: 'center',
+                                  alignItems: 'center',
+                                  gap: '8px'
+                                }}
+                              >
+                                <ArrowLeft size={16} /> Back
+                              </button>
+                            )}
+                            
+                            {currentStage < 4 ? (
+                              <button 
+                                className="btn hover-lift" 
+                                onClick={() => handleStageChange(currentStage + 1)}
+                                style={{ 
+                                  height: '48px',
+                                  padding: '0 32px',
+                                  borderRadius: '100px',
+                                  background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
+                                  color: 'white',
+                                  border: 'none',
+                                  fontWeight: 600,
+                                  display: 'flex',
                                   alignItems: 'center',
                                   gap: '8px',
-                                  borderRadius: '100px',
-                                  border: 'none',
-                                  boxShadow: '0 4px 14px rgba(15, 23, 42, 0.25)',
-                                  cursor: 'pointer',
-                                  transition: 'all 0.2s ease',
+                                  boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)'
                                 }}
-                                onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.9'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
                               >
-                                <Eye size={16} /> <span className="hide-on-mobile">Preview</span>
+                                Continue <ArrowRight size={16} />
                               </button>
+                            ) : (
                               <button 
                                 onClick={handleDownload}
                                 disabled={isGenerating}
+                                className="btn hover-lift"
                                 style={{
                                   height: '48px',
-                                  padding: '0 20px',
+                                  padding: '0 32px',
                                   background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
                                   color: 'white',
                                   fontWeight: 600,
-                                  fontSize: '14px',
                                   display: 'flex',
-                                  justifyContent: 'center',
                                   alignItems: 'center',
                                   gap: '8px',
                                   borderRadius: '100px',
@@ -596,7 +595,6 @@ export function InvoiceGenerator() {
                                   boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)',
                                   opacity: isGenerating ? 0.7 : 1,
                                   cursor: isGenerating ? 'not-allowed' : 'pointer',
-                                  transition: 'all 0.2s ease'
                                 }}
                               >
                                 {isGenerating ? (
@@ -604,21 +602,10 @@ export function InvoiceGenerator() {
                                 ) : (
                                   <Download size={16} />
                                 )}
-                                <span className="hide-on-mobile">{isGenerating ? 'Generating...' : 'Download PDF'}</span>
+                                {isGenerating ? 'Generating...' : 'Download PDF'}
                               </button>
-                              <button 
-                                onClick={loadDemoData}
-                                className="btn btn-secondary"
-                                style={{ height: '48px', padding: '0 20px', borderRadius: '100px', fontWeight: 600, fontSize: '14px' }}
-                              >
-                                Load Sample
-                              </button>
-                            </div>
-                          )}
-                        </div>
-                        <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'center', gap: '24px', opacity: 0.6 }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}><ShieldCheck size={14}/> 100% Private</div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}><Lock size={14}/> Secure</div>
+                            )}
+                          </div>
                         </div>
                         </div>
                     </div>

@@ -64,19 +64,19 @@
   
   /* Radii — flat design */
   --radius-sm: 6px;
-  --radius-md: 8px;   /* Inputs & buttons */
-  --radius-lg: 12px;  /* Cards & sections */
-  --radius-xl: 12px;  /* Same as lg for consistency */
+  --radius-md: 12px;   /* Inputs & buttons */
+  --radius-lg: 20px;  /* Cards & sections */
+  --radius-xl: 20px;  /* Same as lg for consistency */
   --radius-full: 9999px;
 
   /* Shadows — minimal, no decorative shadows */
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
+  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.05);
   --shadow-modal: 0 8px 32px rgba(0, 0, 0, 0.12);
-  --shadow-focus: none;
-  --shadow-focus-error: none;
-  --color-focus-ring: rgba(0, 166, 90, 0.22);
+  --shadow-focus: 0 0 0 3px rgba(0, 166, 90, 0.15);
+  --shadow-focus-error: 0 0 0 3px rgba(220, 38, 38, 0.15);
+  --color-focus-ring: rgba(0, 166, 90, 0.15);
   
   /* Transitions */
   --transition-fast: 100ms cubic-bezier(0.16, 1, 0.3, 1);

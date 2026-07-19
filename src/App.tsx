@@ -1,5 +1,6 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { AuthPlaceholder } from './pages/AuthPlaceholder';
 
 import HomePage from './pages/HomePage';
 const PurchaseOrderPage = lazy(() => import('./pages/PurchaseOrderPage'));
@@ -84,6 +85,10 @@ export default function App() {
           <Route path="/content-preview" element={<ContentPreviewPage />} />
         )}
         
+        {/* Authentication Placeholders */}
+        <Route path="/login" element={<AuthPlaceholder type="login" />} />
+        <Route path="/signup" element={<AuthPlaceholder type="signup" />} />
+
         {/* Fallback to home for anything else */}
         <Route path="*" element={<HomePage />} />
       </Routes>
