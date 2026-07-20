@@ -120,7 +120,7 @@ export const CoffeeShopLayout: React.FC<CoffeeShopLayoutProps> = ({ data, isComp
               </tr>
             </thead>
             <tbody>
-              {data.items.map((item, index) => (
+              {data.items.map((item) => (
                 <tr key={item.id} style={{ borderBottom: '1px solid #F3EAE3' }}>
                   <td style={{ padding: '16px 8px' }}>
                     <div style={{ fontWeight: 600, color: '#43302B', fontSize: '15px' }}>{item.name || 'Item'}</div>

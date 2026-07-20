@@ -18,7 +18,8 @@ type EventName =
   | 'complete_invoice'
   | 'copy_invoice'
   | 'print_invoice'
-  | 'funnel_step';
+  | 'funnel_step'
+  | 'download_image';
 
 interface EventParams {
   [key: string]: string | number | boolean | undefined;

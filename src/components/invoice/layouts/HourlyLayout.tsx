@@ -125,7 +125,7 @@ export const HourlyLayout: React.FC<HourlyLayoutProps> = ({ data, isCompact = fa
               </tr>
             </thead>
             <tbody>
-              {data.items.map((item, index) => (
+              {data.items.map((item) => (
                 <tr key={item.id} style={{ borderBottom: '1px solid #F1F5F9' }}>
                   <td style={{ padding: '16px 8px' }}>
                     <div style={{ fontWeight: 600, color: '#0F172A', fontSize: '14px' }}>{item.name || 'Service'}</div>

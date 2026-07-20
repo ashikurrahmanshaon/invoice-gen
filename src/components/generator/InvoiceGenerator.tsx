@@ -1,5 +1,5 @@
 import { useState, Suspense, useEffect } from 'react';
-import { Download, ArrowRight, ArrowLeft, ShieldCheck, Copy, CheckCircle, RotateCcw, Eye, Image as ImageIcon } from 'lucide-react';
+import { Download, ArrowRight, ArrowLeft, ShieldCheck, RotateCcw, Eye, Image as ImageIcon } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { StageIndicator } from '../layout/StageIndicator';
 import { BusinessSection } from '../invoice/BusinessSection';

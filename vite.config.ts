@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 import viteCompression from 'vite-plugin-compression';
-import { visualizer } from 'rollup-plugin-visualizer';
 
 function cacheControlPlugin() {
   return {
@@ -54,8 +53,7 @@ export default defineConfig({
           }
         ]
       }
-    }),
-    visualizer({ filename: 'bundle-analysis.html', gzipSize: true, open: false })
+    })
   ],
   build: {
     cssTarget: 'safari14',
