@@ -73,23 +73,23 @@ textarea {
   display: flex;
   align-items: center;
   background: var(--color-surface);
-  border: 1px solid var(--color-border); 
+  border: 1.5px solid var(--color-border); 
   border-radius: var(--radius-md); 
-  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   height: 54px; 
-  box-shadow: none;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
 }
 
 .input-wrapper:hover {
-  border-color: var(--color-primary);
-  background: var(--color-surface);
-  box-shadow: none;
+  border-color: #CBD5E1;
+  background: #F8FAFC;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
 }
 
 .input-wrapper:focus-within {
   border-color: var(--color-primary);
   background: var(--color-surface);
-  box-shadow: var(--shadow-focus);
+  box-shadow: 0 0 0 4px var(--color-primary-faint), 0 2px 6px rgba(0, 166, 90, 0.15);
 }
 
 .input-wrapper:focus-within .input-icon {
@@ -674,16 +674,17 @@ a {
 
 /* Cards — flat, hairline border only */
 .card {
-  background: var(--color-card);
-  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border-radius: 16px;
   padding: 32px;
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition-slow);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.02);
+  transition: box-shadow var(--transition-slow), transform var(--transition-slow);
 }
 
 .card:hover {
-  box-shadow: none;
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.03);
+  transform: translateY(-2px);
 }
 
 .step-badge {
@@ -714,7 +715,7 @@ a {
 .workspace-layout {
   display: flex;
   justify-content: center;
-  padding: 12px 0 24px 0;
+  padding: 8px 0 16px 0;
 }
 
 .workspace-main {

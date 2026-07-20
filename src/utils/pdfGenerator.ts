@@ -129,3 +129,24 @@ export const generateEstimatePDF = async (data: any) => {
   }
 };
 
+export const generateInvoiceImage = async (data: any) => {
+  const element = document.getElementById('pdf-render-container');
+  if (!element) throw new Error('Invoice capture area not found in DOM.');
+  
+  await new Promise(resolve => setTimeout(resolve, 100));
+
+  const dataUrl = await toPng(element, { 
+    quality: 1.0,
+    pixelRatio: 3, 
+    backgroundColor: '#ffffff',
+    style: {
+      transform: 'scale(1)',
+      transformOrigin: 'top left'
+    }
+  });
+
+  const link = document.createElement('a');
+  link.download = `Invoice-${data.details?.invoiceNumber || 'draft'}.png`;
+  link.href = dataUrl;
+  link.click();
+};

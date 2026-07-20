@@ -2,6 +2,8 @@ import React from 'react';
 import type { InvoiceData } from '../../types/invoice';
 import i18next from 'i18next';
 import { PremiumLayout } from './layouts/PremiumLayout';
+import { HourlyLayout } from './layouts/HourlyLayout';
+import { CoffeeShopLayout } from './layouts/CoffeeShopLayout';
 
 interface InvoiceA4PreviewProps {
   data: InvoiceData;
@@ -25,11 +27,10 @@ export const InvoiceA4Preview: React.FC<InvoiceA4PreviewProps> = ({ data, scale 
       <div 
         style={{
           width: `${BASE_WIDTH}px`,
-          height: `${BASE_WIDTH * A4_ASPECT_RATIO}px`,
-          overflow: 'hidden',
+          minHeight: `${BASE_WIDTH * A4_ASPECT_RATIO}px`,
           backgroundColor: '#FFFFFF',
           boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-          padding: '64px',
+          
           transform: `scale(${scale})`,
           transformOrigin: 'top left',
           boxSizing: 'border-box',
@@ -41,7 +42,13 @@ export const InvoiceA4Preview: React.FC<InvoiceA4PreviewProps> = ({ data, scale 
           position: 'relative',
         }}
       >
-        <PremiumLayout data={data} />
+        {data.details.layoutId === 'hourly' ? (
+          <HourlyLayout data={data} isCompact={false} />
+        ) : data.details.layoutId === 'coffee-shop' ? (
+          <CoffeeShopLayout data={data} isCompact={false} />
+        ) : (
+          <PremiumLayout data={data} />
+        )}
       </div>
     </div>
   );

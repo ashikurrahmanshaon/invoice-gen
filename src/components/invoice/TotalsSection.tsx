@@ -230,7 +230,7 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
             </div>
 
             <div style={{
-              background: 'var(--color-border-hover)',
+              background: '#0F172A',
               borderRadius: '12px',
               minHeight: '56px',
               display: 'flex',
@@ -238,10 +238,10 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
               justifyContent: 'space-between',
               padding: '0 20px',
               marginTop: '8px',
-              boxShadow: 'var(--shadow-sm)'
+              boxShadow: '0 4px 12px rgba(15, 23, 42, 0.15)'
             }}>
-              <span style={{ color: 'var(--color-text-secondary)', fontWeight: 500, fontSize: '14px' }}>Balance Due</span>
-              <span style={{ color: 'var(--color-text-title)', fontWeight: 700, fontSize: '22px', letterSpacing: '-0.5px' }}>
+              <span style={{ color: '#94A3B8', fontWeight: 600, fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Balance Due</span>
+              <span style={{ color: '#FFFFFF', fontWeight: 700, fontSize: '22px', letterSpacing: '-0.5px' }}>
                 {formatCurrency(totals.balanceDue, currency)}
               </span>
             </div>

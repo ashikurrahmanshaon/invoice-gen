@@ -20,7 +20,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingBottom: isMobile ? '16px' : '24px',
+      paddingBottom: isMobile ? '12px' : '16px',
       width: '100%',
       position: 'relative'
     }}>
@@ -36,29 +36,31 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
       {/* Universal Background Line */}
       <div style={{
         position: 'absolute',
-        top: isMobile ? '20px' : '24px',
+        top: isMobile ? '16px' : '18px',
         left: '24px',
         right: '24px',
-        height: '2px',
-        background: 'var(--color-border)',
+        height: '2.5px',
+        background: '#E2E8F0', // Soft solid line instead of dashed
+        borderRadius: '2px',
         zIndex: 1,
       }} />
 
       {/* Universal Active Line */}
       <div style={{
         position: 'absolute',
-        top: isMobile ? '20px' : '24px',
+        top: isMobile ? '16px' : '18px',
         left: '24px',
         right: '24px',
-        height: '2px',
+        height: '2.5px',
         background: 'transparent',
+        borderRadius: '2px',
         zIndex: 2,
         pointerEvents: 'none'
       }}>
         <div style={{
           height: '100%',
           background: 'var(--color-primary)',
-          width: `${Math.max(0, (currentStage - 1) / (stages.length - 1)) * 100}%`,
+          width: `${Math.min(100, (currentStage / (stages.length - 1)) * 100)}%`,
           transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
         }} />
       </div>
@@ -67,21 +69,24 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
         const isActive = stage.num === currentStage;
         const isCompleted = stage.num < currentStage;
         
-        let bg = 'var(--color-surface)';
-        let border = '1px solid var(--color-border)';
-        let textColor = 'var(--color-text-tertiary)';
+        let bg = '#F8FAFC';
+        let border = '2px solid #E2E8F0';
+        let textColor = '#94A3B8';
+        let shadow = '0 2px 4px rgba(0,0,0,0.02)';
 
         if (isActive) {
-          bg = 'var(--color-primary)';
-          border = '1px solid var(--color-primary)';
-          textColor = '#FFFFFF';
-        } else if (isCompleted) {
-          bg = 'var(--color-success-light)'; // Subdued green bg
-          border = '1px solid var(--color-primary)';
+          bg = '#FFFFFF';
+          border = '3px solid var(--color-primary)';
           textColor = 'var(--color-primary)';
+          shadow = '0 0 0 6px rgba(0, 166, 90, 0.15), 0 8px 20px rgba(0, 166, 90, 0.3)';
+        } else if (isCompleted) {
+          bg = 'var(--color-primary)';
+          border = '2px solid var(--color-primary)';
+          textColor = '#FFFFFF';
+          shadow = '0 4px 12px rgba(0, 166, 90, 0.2)';
         }
 
-        const circleSize = isMobile ? '40px' : '48px';
+        const circleSize = isMobile ? '32px' : '40px';
 
         return (
           <div 
@@ -95,7 +100,7 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              gap: '12px',
+              gap: '8px',
               cursor: onStageChange ? 'pointer' : 'default',
               position: 'relative',
               zIndex: 3,
@@ -115,13 +120,13 @@ export const StageIndicator = React.memo<StageIndicatorProps>(({ currentStage, o
               justifyContent: 'center',
               transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
               flexShrink: 0,
-              animation: isActive ? 'jump-happy 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards' : 'none',
-              boxShadow: isActive ? '0 0 0 8px var(--color-primary-faint), 0 4px 20px rgba(0, 166, 90, 0.2)' : 'none'
+              animation: isActive ? 'jump-happy 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards' : 'none',
+              boxShadow: shadow
             }}>
               {isCompleted ? (
-                <Check size={isMobile ? 18 : 22} color={textColor} strokeWidth={3} />
+                <Check size={isMobile ? 14 : 16} color={textColor} strokeWidth={3} />
               ) : (
-                <stage.icon size={isMobile ? 18 : 20} color={textColor} />
+                <stage.icon size={isMobile ? 14 : 16} color={textColor} />
               )}
             </div>
             

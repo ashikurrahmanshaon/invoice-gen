@@ -10,7 +10,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <div className="app-layout" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header />
-      <main style={{ flex: 1, width: '100%' }}>
+      <main style={{ flex: 1, width: '100%', paddingTop: '64px' }}>
         {children}
       </main>
       <Footer />

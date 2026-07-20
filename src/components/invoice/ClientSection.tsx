@@ -61,13 +61,13 @@ const ClientSectionComponent: React.FC<ClientSectionProps> = ({
     <div className="flex-col gap-6" style={{ width: '100%', marginBottom: '16px' }}>
       
       {/* Section Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', marginBottom: '40px' }}>
-        <div style={{ padding: '16px', background: 'var(--color-primary-light)', color: 'var(--color-primary)', borderRadius: '16px', display: 'flex' }}>
-          <User size={28} />
+      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
+        <div style={{ padding: '10px', background: 'var(--color-primary-light)', color: 'var(--color-primary)', borderRadius: '12px', display: 'flex' }}>
+          <User size={20} />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-text-title)', margin: 0, letterSpacing: '-0.5px' }}>{roleName} Details</h2>
-          <span style={{ fontSize: '15px', color: 'var(--color-text-secondary)', marginTop: '4px' }}>Who is this {documentType === 'invoice' ? 'invoice' : 'document'} for?</span>
+          <h2 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-text-title)', margin: 0, letterSpacing: '-0.3px' }}>{roleName} Details</h2>
+          <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginTop: '2px' }}>Who is this {documentType === 'invoice' ? 'invoice' : 'document'} for?</span>
         </div>
       </div>
 

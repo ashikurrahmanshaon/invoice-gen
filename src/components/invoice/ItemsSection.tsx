@@ -11,6 +11,9 @@ interface ItemsSectionProps {
   addItem: () => void;
   removeItem: (id: string) => void;
   updateItem: (id: string, updates: Partial<LineItem>) => void;
+  itemNameLabel?: string;
+  quantityLabel?: string;
+  rateLabel?: string;
 }
 
 interface ItemRowProps {
@@ -113,7 +116,10 @@ const ItemRow = React.memo(({ item, currency, symbol, updateItem, removeItem }: 
 });
 
 const ItemsSectionComponent: React.FC<ItemsSectionProps> = ({ 
-  items, currency, addItem, removeItem, updateItem 
+  items, currency, addItem, removeItem, updateItem,
+  itemNameLabel = 'Item name',
+  quantityLabel = 'Quantity',
+  rateLabel = 'Rate'
 }) => {
   const getCurrencySymbol = (code: string) => {
     switch (code) {
@@ -129,13 +135,13 @@ const ItemsSectionComponent: React.FC<ItemsSectionProps> = ({
     <div data-testid="items-section" className="flex-col gap-6" style={{ width: '100%', paddingBottom: '32px', borderBottom: '1px solid var(--color-border)' }}>
       
       {/* Section Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', marginBottom: '40px' }}>
-        <div style={{ padding: '16px', background: 'var(--color-primary-light)', color: 'var(--color-primary)', borderRadius: '16px', display: 'flex' }}>
-          <ShoppingBag size={28} />
+      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
+        <div style={{ padding: '10px', background: 'var(--color-primary-light)', color: 'var(--color-primary)', borderRadius: '12px', display: 'flex' }}>
+          <ShoppingBag size={20} />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-text-title)', margin: 0, letterSpacing: '-0.5px' }}>Line Items</h2>
-          <span style={{ fontSize: '15px', color: 'var(--color-text-secondary)', marginTop: '4px' }}>Add products or services</span>
+          <h2 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-text-title)', margin: 0, letterSpacing: '-0.3px' }}>Line Items</h2>
+          <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginTop: '2px' }}>Add products or services</span>
         </div>
       </div>
 
@@ -155,9 +161,9 @@ const ItemsSectionComponent: React.FC<ItemsSectionProps> = ({
             letterSpacing: '0.06em',
             fontWeight: 500
           }}>
-            <div>Item name</div>
-            <div style={{ textAlign: 'center' }}>Quantity</div>
-            <div>Rate</div>
+            <div>{itemNameLabel}</div>
+            <div style={{ textAlign: 'center' }}>{quantityLabel}</div>
+            <div>{rateLabel}</div>
             <div style={{ textAlign: 'right' }}>Total</div>
             <div></div>
           </div>

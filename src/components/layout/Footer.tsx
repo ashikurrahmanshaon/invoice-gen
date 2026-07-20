@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
   }, []);
 
   return (
-    <footer id="main-footer" className="app-footer">
+    <footer id="main-footer" className="app-footer desktop-only">
       <div className="container flex-col" style={{ gap: '48px' }}>
         
         {/* Main Footer Content */}
@@ -95,7 +95,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Column 1: Product — only links to real, working routes */}
-          <details open={isDesktop} className="footer-col">
+          <details open={isDesktop} className="footer-col desktop-only">
             <summary className="footer-summary">{t('footer.product', 'Product')}</summary>
             <div className="footer-links">
               <Link to="/">{t('footer.invoiceGenerator', 'Invoice Generator')}</Link>
@@ -107,7 +107,7 @@ export const Footer: React.FC = () => {
           </details>
 
           {/* Column 2: Resources — links to real content pages */}
-          <details open={isDesktop} className="footer-col">
+          <details open={isDesktop} className="footer-col desktop-only">
             <summary className="footer-summary">{t('footer.resources', 'Resources')}</summary>
             <div className="footer-links">
               <Link to="/blog/how-to-create-an-invoice">How to Create an Invoice</Link>
@@ -119,7 +119,7 @@ export const Footer: React.FC = () => {
           </details>
 
           {/* Column 3: Guides (SEO) — links to real content pages */}
-          <details open={isDesktop} className="footer-col">
+          <details open={isDesktop} className="footer-col desktop-only">
             <summary className="footer-summary">{t('footer.invoiceTypes', 'Invoice Guides')}</summary>
             <div className="footer-links">
               <Link to="/invoice-types/proforma-invoice">Proforma Invoice</Link>
@@ -131,7 +131,7 @@ export const Footer: React.FC = () => {
           </details>
 
           {/* Column 4: Templates — links to real template pages */}
-          <details open={isDesktop} className="footer-col">
+          <details open={isDesktop} className="footer-col desktop-only">
             <summary className="footer-summary">{t('footer.freeTools', 'Templates')}</summary>
             <div className="footer-links">
               <Link to="/templates/freelance">Freelance</Link>
@@ -143,7 +143,7 @@ export const Footer: React.FC = () => {
           </details>
 
           {/* Column 5: Company */}
-          <details open={isDesktop} className="footer-col">
+          <details open={isDesktop} className="footer-col desktop-only">
             <summary className="footer-summary">{t('footer.company', 'Company')}</summary>
             <div className="footer-links">
               <Link to="/about">{t('footer.about', 'About')}</Link>

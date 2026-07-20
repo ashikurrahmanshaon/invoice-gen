@@ -1,5 +1,6 @@
 import { useState, Suspense, useEffect } from 'react';
-import { Download, ArrowRight, ArrowLeft, ShieldCheck } from 'lucide-react';
+import { Download, ArrowRight, ArrowLeft, ShieldCheck, Copy, CheckCircle, RotateCcw, Eye, Image as ImageIcon } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 import { StageIndicator } from '../layout/StageIndicator';
 import { BusinessSection } from '../invoice/BusinessSection';
 import { InvoiceDetailsSection } from '../invoice/InvoiceDetailsSection';
@@ -17,7 +18,7 @@ import { InvoiceA4Preview } from '../invoice/InvoiceA4Preview';
 import { HelpGuideModal } from '../help/HelpGuideModal';
 import { SettingsDashboard } from '../settings/SettingsDashboard';
 import { Modal } from '../ui/Modal';
-import { generateInvoicePDF } from '../../utils/pdfGenerator';
+import { generateInvoicePDF, generateInvoiceImage } from '../../utils/pdfGenerator';
 import { generateInvoiceNumber } from '../../utils/invoiceNumber';
 import type { SavedInvoice, InvoiceData } from '../../types/invoice';
 import { trackEvent, trackFunnelStep } from '../../utils/analytics';
@@ -25,6 +26,7 @@ import { useSettings } from '../../contexts/SettingsContext';
 
 export function InvoiceGenerator() {
   const [currentStage, setCurrentStage] = useState(1);
+  const [searchParams] = useSearchParams();
 
   // Track funnel steps
   const handleStageChange = (stage: number) => {
@@ -103,6 +105,31 @@ export function InvoiceGenerator() {
     loadInvoiceFromHistory
   } = useInvoice(settings);
 
+  // Initialize from template URL param
+  useEffect(() => {
+    const templateParam = searchParams.get('template');
+    if (templateParam && !isDirty) {
+      updateDetails({ layoutId: templateParam });
+    }
+  }, [searchParams, isDirty]); // Using isDirty to only set on fresh load
+
+  let itemNameLabel = 'Item name';
+  let quantityLabel = 'Quantity';
+  let rateLabel = 'Rate';
+
+  if (data.details.layoutId === 'hourly') {
+    itemNameLabel = 'Service';
+    quantityLabel = 'Hours';
+    rateLabel = 'Rate/Hr';
+  } else if (data.details.layoutId === 'coffee-shop') {
+    itemNameLabel = 'Order Item';
+  } else if (data.details.layoutId === 'restaurant') {
+    itemNameLabel = 'Menu Item';
+  } else if (data.details.layoutId === 'software') {
+    itemNameLabel = 'Task / Feature';
+    quantityLabel = 'Sprint/Hrs';
+  }
+
   const handleDownload = async () => {
     if (data.items.length === 0) {
       setToastMessage({ text: 'Please add at least one invoice item.', type: 'error' });
@@ -130,6 +157,21 @@ export function InvoiceGenerator() {
       setTimeout(() => setToastMessage(null), 4000);
     } catch (_err) {
       setToastMessage({ text: 'An error occurred while generating PDF.', type: 'error' });
+      setTimeout(() => setToastMessage(null), 4000);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  const handleDownloadImage = async () => {
+    try {
+      setIsGenerating(true);
+      trackEvent('download_image', { source: 'homepage' });
+      await generateInvoiceImage(data);
+      setToastMessage({ text: 'Invoice Image generated successfully.', type: 'success' });
+      setTimeout(() => setToastMessage(null), 4000);
+    } catch (_err) {
+      setToastMessage({ text: 'An error occurred while generating Image.', type: 'error' });
       setTimeout(() => setToastMessage(null), 4000);
     } finally {
       setIsGenerating(false);
@@ -400,6 +442,7 @@ export function InvoiceGenerator() {
                   setShipping={setShipping}
                   setAmountPaid={setAmountPaid}
                   onDownloadPDF={handleDownload}
+                  onDownloadImage={handleDownloadImage}
                   isGenerating={isGenerating}
                   onOpenFullPreview={() => { trackEvent('preview_invoice', { source: 'mobile' }); setIsPreviewOpen(true); }}
                 />
@@ -413,46 +456,18 @@ export function InvoiceGenerator() {
                   <div className="card" style={{ padding: '0' }}>
                     <div style={{
                       position: 'sticky',
-                      top: '68px',
+                      top: '64px',
                       zIndex: 20,
                       background: 'var(--color-surface)',
                       borderTopLeftRadius: '12px',
                       borderTopRightRadius: '12px',
                       borderBottom: '1px solid var(--color-border)',
-                      padding: '24px 32px 0'
+                      padding: '16px 32px 0'
                     }}>
                       <StageIndicator currentStage={currentStage} onStageChange={handleStageChange} isMobile={false} />
                     </div>
-                    <div style={{ padding: '40px 48px' }}>
-                      {/* Summary Card */}
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: '24px 32px',
-                        background: 'var(--color-surface)',
-                        border: '1px solid var(--color-border)',
-                        borderRadius: '20px',
-                        marginBottom: '40px',
-                        boxShadow: 'var(--shadow-sm)'
-                      }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                          <span style={{ fontSize: '13px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Invoice Number</span>
-                          <span style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-text-main)' }}>{data.details.invoiceNumber || 'Draft'}</span>
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                          <span style={{ fontSize: '13px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Progress</span>
-                          <span style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-text-main)' }}>Step {currentStage} of 4</span>
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                          <span style={{ fontSize: '13px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Currency</span>
-                          <span style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-text-main)' }}>{data.details.currency}</span>
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                          <span style={{ fontSize: '13px', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Status</span>
-                          <span style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-success)' }}>Draft Saved</span>
-                        </div>
-                      </div>
+                    <div style={{ padding: '24px 32px' }}>
+
 
                       <div className="flex-col">
                         {currentStage === 1 && (
@@ -483,6 +498,9 @@ export function InvoiceGenerator() {
                                 addItem={addItem} 
                                 removeItem={removeItem} 
                                 updateItem={updateItem} 
+                                itemNameLabel={itemNameLabel}
+                                quantityLabel={quantityLabel}
+                                rateLabel={rateLabel}
                               />
                             </div>
                           )}
@@ -505,9 +523,9 @@ export function InvoiceGenerator() {
 
                         {/* Navigation Buttons (Sticky Footer Band) */}
                         <div style={{ 
-                          margin: '32px -32px -24px -32px', 
-                          padding: '24px 32px', 
-                          background: 'rgba(255, 255, 255, 0.85)', 
+                          margin: '24px -32px -24px -32px', 
+                          padding: '16px 32px', 
+                          background: 'rgba(255, 255, 255, 0.92)', 
                           backdropFilter: 'blur(16px)',
                           borderTop: '1px solid var(--color-border)', 
                           borderBottomLeftRadius: '20px', 
@@ -520,17 +538,18 @@ export function InvoiceGenerator() {
                           zIndex: 100
                         }}>
                           {/* Left: Draft Saved */}
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-success)', fontWeight: 600, fontSize: '14px' }}>
-                            <ShieldCheck size={18} /> Draft Saved
+                          <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <span style={{ color: 'var(--color-success)', fontWeight: 600, fontSize: '14px', display: 'flex', alignItems: 'center', gap: '6px' }}><ShieldCheck size={16} /> Draft Saved</span>
+                            <span style={{ fontSize: '12px', color: 'var(--color-text-tertiary)', marginLeft: '22px' }}>just now</span>
                           </div>
 
                           {/* Center: Reset */}
                           <button 
                             onClick={() => setShowResetModal(true)}
                             className="btn btn-ghost text-secondary hover-lift"
-                            style={{ height: '48px', padding: '0 24px', fontWeight: 600 }}
+                            style={{ height: '40px', padding: '0 20px', fontWeight: 600, fontSize: '14px', display: 'flex', alignItems: 'center', gap: '6px' }}
                           >
-                            Reset Form
+                            <RotateCcw size={14} /> Reset Form
                           </button>
 
                           {/* Right: Actions */}
@@ -540,16 +559,17 @@ export function InvoiceGenerator() {
                                 className="btn hover-lift" 
                                 onClick={() => handleStageChange(currentStage - 1)}
                                 style={{ 
-                                  height: '48px',
-                                  padding: '0 24px',
+                                  height: '40px',
+                                  padding: '0 20px',
                                   borderRadius: '100px',
                                   background: 'var(--color-surface)',
                                   border: '1.5px solid var(--color-border)',
                                   color: 'var(--color-text-main)',
                                   fontWeight: 600,
+                                  fontSize: '14px',
                                   display: 'flex',
                                   alignItems: 'center',
-                                  gap: '8px'
+                                  gap: '6px'
                                 }}
                               >
                                 <ArrowLeft size={16} /> Back
@@ -561,49 +581,73 @@ export function InvoiceGenerator() {
                                 className="btn hover-lift" 
                                 onClick={() => handleStageChange(currentStage + 1)}
                                 style={{ 
-                                  height: '48px',
-                                  padding: '0 32px',
+                                  height: '40px',
+                                  padding: '0 28px',
                                   borderRadius: '100px',
-                                  background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
+                                  background: 'var(--color-primary)',
                                   color: 'white',
                                   border: 'none',
                                   fontWeight: 600,
+                                  fontSize: '14px',
                                   display: 'flex',
                                   alignItems: 'center',
-                                  gap: '8px',
+                                  gap: '6px',
                                   boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)'
                                 }}
                               >
                                 Continue <ArrowRight size={16} />
                               </button>
                             ) : (
-                              <button 
-                                onClick={handleDownload}
-                                disabled={isGenerating}
-                                className="btn hover-lift"
-                                style={{
-                                  height: '48px',
-                                  padding: '0 32px',
-                                  background: 'linear-gradient(135deg, #00C853 0%, #00A65A 100%)',
-                                  color: 'white',
-                                  fontWeight: 600,
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  gap: '8px',
-                                  borderRadius: '100px',
-                                  border: 'none',
-                                  boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)',
-                                  opacity: isGenerating ? 0.7 : 1,
-                                  cursor: isGenerating ? 'not-allowed' : 'pointer',
-                                }}
-                              >
-                                {isGenerating ? (
-                                  <div style={{ width: '16px', height: '16px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: 'white', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
-                                ) : (
-                                  <Download size={16} />
-                                )}
-                                {isGenerating ? 'Generating...' : 'Download PDF'}
-                              </button>
+                              <div style={{ display: 'flex', gap: '8px' }}>
+                                <button 
+                                  onClick={() => setIsPreviewOpen(true)}
+                                  className="btn hover-lift"
+                                  style={{
+                                    height: '48px', padding: '0 20px', background: 'var(--color-surface)', color: 'var(--color-text-main)', border: '1.5px solid var(--color-border)', borderRadius: '100px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px'
+                                  }}
+                                >
+                                  <Eye size={18} /> Preview
+                                </button>
+                                <button 
+                                  onClick={handleDownloadImage}
+                                  disabled={isGenerating}
+                                  className="btn hover-lift"
+                                  style={{
+                                    height: '48px', padding: '0 20px', background: '#0F172A', color: 'white', border: 'none', borderRadius: '100px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px', opacity: isGenerating ? 0.7 : 1
+                                  }}
+                                >
+                                  <ImageIcon size={18} /> Image
+                                </button>
+                                <button 
+                                  onClick={handleDownload}
+                                  disabled={isGenerating}
+                                  className="btn hover-lift"
+                                  style={{
+                                    height: '48px',
+                                    padding: '0 24px',
+                                    background: 'var(--color-primary)',
+                                    color: 'white',
+                                    fontWeight: 600,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '8px',
+                                    borderRadius: '100px',
+                                    border: 'none',
+                                    boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)',
+                                    opacity: isGenerating ? 0.7 : 1,
+                                    cursor: isGenerating ? 'not-allowed' : 'pointer',
+                                  }}
+                                >
+                                  {isGenerating ? (
+                                    <div style={{ width: '18px', height: '18px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: 'white', borderRadius: '50%', animation: 'spin 1s linear infinite' }}>
+                                      <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+                                    </div>
+                                  ) : (
+                                    <Download size={18} />
+                                  )}
+                                  {isGenerating ? 'Generating...' : 'PDF'}
+                                </button>
+                              </div>
                             )}
                           </div>
                         </div>
@@ -700,6 +744,14 @@ export function InvoiceGenerator() {
       <HelpGuideModal 
         isOpen={isHelpGuideOpen}
         onClose={() => setIsHelpGuideOpen(false)}
+      />
+
+      <FullPreviewModal
+        isOpen={isPreviewOpen}
+        onClose={() => setIsPreviewOpen(false)}
+        data={data}
+        onDownloadPDF={handleDownload}
+        isGenerating={isGenerating}
       />
 
       {/* Hidden container for PDF generation (captures layout perfectly regardless of language/fonts) */}

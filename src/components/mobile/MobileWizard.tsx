@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import type { InvoiceData, LineItem } from '../../types/invoice';
-import { ArrowLeft, ArrowRight, Download, Eye } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Download, Eye, Image as ImageIcon } from 'lucide-react';
 import type { useClients } from '../../hooks/useClients';
 import { StageIndicator } from '../layout/StageIndicator';
 
@@ -33,6 +33,7 @@ interface MobileWizardProps {
   setShipping: (amount: number | string) => void;
   setAmountPaid: (amount: string) => void;
   onDownloadPDF: () => void;
+  onDownloadImage?: () => void;
   onOpenFullPreview: () => void;
   isGenerating?: boolean;
   documentType?: 'invoice' | 'purchase_order';
@@ -41,7 +42,7 @@ interface MobileWizardProps {
 export const MobileWizard: React.FC<MobileWizardProps> = ({
   currentStage, setStage, data, updateBusiness, updateClient, clientHook, selectedSavedClientId, setSelectedSavedClientId, updateDetails,
   updateOtherFields, addItem, removeItem, updateItem,
-  setDiscount, setTaxRate, setTaxLabel, setShipping, setAmountPaid, onDownloadPDF, onOpenFullPreview, isGenerating, documentType = 'invoice'
+  setDiscount, setTaxRate, setTaxLabel, setShipping, setAmountPaid, onDownloadPDF, onDownloadImage, onOpenFullPreview, isGenerating, documentType = 'invoice'
 }) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -174,17 +175,50 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
             )}
           </div>
 
-          {/* Download Button */}
+          {/* Download Buttons */}
           {currentStage === 4 && (
-            <div style={{ width: '100%', marginTop: '8px' }}>
+            <div style={{ width: '100%', marginTop: '8px', display: 'flex', gap: '8px' }}>
+              {onDownloadImage && (
+                <button 
+                  onClick={onDownloadImage}
+                  disabled={isGenerating}
+                  className="btn"
+                  style={{ 
+                    flex: 1, 
+                    background: '#0F172A', 
+                    color: '#FFFFFF', 
+                    minHeight: '48px', 
+                    height: '48px',
+                    maxHeight: '48px',
+                    boxSizing: 'border-box',
+                    padding: '0',
+                    margin: '0',
+                    borderRadius: '100px',
+                    border: 'none',
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    gap: '8px',
+                    fontSize: '14.5px',
+                    fontWeight: 600,
+                    boxShadow: '0 4px 14px rgba(15, 23, 42, 0.25)',
+                    opacity: isGenerating ? 0.7 : 1,
+                    cursor: isGenerating ? 'not-allowed' : 'pointer'
+                  }}
+                >
+                  <ImageIcon size={18} />
+                  Image
+                </button>
+              )}
               <button 
                 onClick={onDownloadPDF}
                 disabled={isGenerating}
                 className="btn"
                 style={{ 
-                  width: '100%', 
-                  background: 'var(--color-border-hover)', 
-                  color: 'var(--color-text-title)', 
+                  flex: onDownloadImage ? 1 : 'none',
+                  width: onDownloadImage ? 'auto' : '100%', 
+                  background: 'var(--color-primary)', 
+                  color: '#FFFFFF', 
                   minHeight: '48px', 
                   height: '48px',
                   maxHeight: '48px',
@@ -199,7 +233,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                   gap: '8px',
                   fontSize: '14.5px',
                   fontWeight: 600,
-                  boxShadow: '0 4px 14px rgba(15, 23, 42, 0.25)',
+                  boxShadow: '0 4px 14px rgba(0, 166, 90, 0.25)',
                   opacity: isGenerating ? 0.7 : 1,
                   cursor: isGenerating ? 'not-allowed' : 'pointer'
                 }}
@@ -211,7 +245,7 @@ export const MobileWizard: React.FC<MobileWizardProps> = ({
                 ) : (
                   <Download size={18} />
                 )}
-                {isGenerating ? 'Generating PDF...' : 'Download PDF'}
+                {isGenerating ? 'Wait...' : 'PDF'}
               </button>
             </div>
           )}

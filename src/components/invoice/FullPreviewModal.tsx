@@ -235,9 +235,9 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
           inset: 0,
           width: '100vw',
           height: '100dvh',
-          backgroundColor: 'rgba(15, 23, 42, 0.25)',
-          backdropFilter: 'blur(6px)',
-          WebkitBackdropFilter: 'blur(6px)',
+          backgroundColor: 'rgba(15, 23, 42, 0.4)',
+          backdropFilter: 'blur(2px)',
+          WebkitBackdropFilter: 'blur(2px)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -257,12 +257,10 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
           justifyContent: 'space-between',
           alignItems: 'center',
           padding: '12px 12px 12px 24px',
-          backgroundColor: 'rgba(15, 23, 42, 0.75)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          borderRadius: '99px',
+          backgroundColor: '#0F172A',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+          borderRadius: '12px',
           color: 'white',
           zIndex: 20,
           width: 'calc(100% - 48px)',
@@ -278,15 +276,15 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <div style={{ position: 'relative' }} ref={shareMenuRef}>
-              <button className="btn hover-lift" style={{ background: 'transparent', color: '#CBD5E1', border: 'none', padding: '0 16px', height: '36px', borderRadius: '99px', fontSize: '13px', fontWeight: 600 }} onClick={() => setShowShareMenu(!showShareMenu)} onMouseEnter={(e) => e.currentTarget.style.background='rgba(255,255,255,0.05)'} onMouseLeave={(e) => e.currentTarget.style.background='transparent'}>
+              <button className="btn hover-lift" style={{ background: 'transparent', color: '#CBD5E1', border: '1px solid rgba(255,255,255,0.1)', padding: '0 16px', height: '36px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center' }} onClick={() => setShowShareMenu(!showShareMenu)} onMouseEnter={(e) => e.currentTarget.style.background='rgba(255,255,255,0.05)'} onMouseLeave={(e) => e.currentTarget.style.background='transparent'}>
                 <Share2 size={16} style={{ marginRight: '6px' }} /> Share
               </button>
               {showShareMenu && <ShareMenu />}
             </div>
-            <button className="btn hover-lift" style={{ background: 'transparent', color: '#CBD5E1', border: 'none', padding: '0 16px', height: '36px', borderRadius: '99px', fontSize: '13px', fontWeight: 600 }} onClick={handleDownloadJPG} onMouseEnter={(e) => e.currentTarget.style.background='rgba(255,255,255,0.05)'} onMouseLeave={(e) => e.currentTarget.style.background='transparent'}>
-              <ImageIcon size={16} style={{ marginRight: '6px' }} /> JPG
+            <button className="btn hover-lift" style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', border: 'none', padding: '0 16px', height: '36px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center' }} onClick={handleDownloadJPG} onMouseEnter={(e) => e.currentTarget.style.background='rgba(255,255,255,0.15)'} onMouseLeave={(e) => e.currentTarget.style.background='rgba(255,255,255,0.1)'}>
+              <ImageIcon size={16} style={{ marginRight: '6px' }} /> Download Image
             </button>
-            <button className="btn btn-primary hover-lift" onClick={onDownloadPDF} style={{ padding: '0 20px', height: '36px', borderRadius: '99px', fontSize: '13px', fontWeight: 700, boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)' }}>
+            <button className="btn btn-primary hover-lift" onClick={onDownloadPDF} style={{ padding: '0 20px', height: '36px', borderRadius: '8px', fontSize: '13px', fontWeight: 700, display: 'flex', alignItems: 'center' }}>
               <Download size={16} style={{ marginRight: '6px' }} /> Download PDF
             </button>
           </div>
@@ -299,7 +297,7 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
           left: '24px',
           zIndex: 20
         }}>
-          <button onClick={onClose} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'rgba(15, 23, 42, 0.75)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', backdropFilter: 'blur(20px)' }}>
+          <button onClick={onClose} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#0F172A', border: '1px solid rgba(255,255,255,0.1)', color: 'white' }}>
             <X size={20} />
           </button>
         </div>
@@ -318,7 +316,7 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
         }}>
           <div style={{ display: 'flex', gap: '12px', width: '100%' }}>
             <div style={{ position: 'relative', flex: 1 }} ref={shareMenuRef}>
-              <button className="btn" style={{ width: '100%', background: 'rgba(15, 23, 42, 0.8)', color: 'white', border: '1px solid rgba(255,255,255,0.2)', height: '52px', borderRadius: '16px', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(20px)' }} onClick={() => setShowShareMenu(!showShareMenu)}>
+              <button className="btn" style={{ width: '100%', background: '#0F172A', color: 'white', border: '1px solid rgba(255,255,255,0.2)', height: '52px', borderRadius: '12px', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => setShowShareMenu(!showShareMenu)}>
                 <Share2 size={20} />
               </button>
               {showShareMenu && <ShareMenu isMobile />}

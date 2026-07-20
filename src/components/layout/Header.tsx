@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { SaveStatus } from '../../hooks/useAutoSave';
-import { ChevronDown, Menu, X, Sun, Moon } from 'lucide-react';
+import { ChevronDown, Menu, X, Sun, Moon, Wrench, LayoutTemplate, BookOpen, PenTool, Tag, FileText, ShoppingCart, FileCheck, Calculator, Download } from 'lucide-react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 interface HeaderProps {
@@ -22,7 +22,8 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ 
   onViewChange,
-  saveStatus
+  saveStatus,
+  onDownloadPDF
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -70,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({
       <style>{`
         .hover-bg { transition: background 0.15s; }
         .hover-bg:hover { background: rgba(0,0,0,0.04); }
-        .mobile-drawer-link { display: block; padding: 12px 16px; border-radius: 8px; color: var(--color-text-main); font-weight: 500; font-size: 16px; text-decoration: none; }
+        .mobile-drawer-link { display: flex; alignItems: center; gap: 10px; padding: 12px 16px; border-radius: 8px; color: var(--color-text-main); font-weight: 500; font-size: 15px; text-decoration: none; align-items: center; }
         .mobile-drawer-link:hover { background: rgba(0,0,0,0.04); }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .nav-active-indicator {
@@ -86,13 +87,17 @@ export const Header: React.FC<HeaderProps> = ({
       `}</style>
       <header 
         style={{ 
-          position: 'sticky', 
+          position: 'fixed', 
           top: 0, 
+          left: 0,
+          right: 0,
+          width: '100%',
           zIndex: 1000, 
-          background: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.7)', 
+          background: isScrolled ? 'rgba(255, 255, 255, 0.97)' : 'rgba(255, 255, 255, 0.85)', 
           backdropFilter: 'blur(24px)', 
-          borderBottom: isScrolled ? '1px solid rgba(0,0,0,0.04)' : '1px solid transparent',
-          height: '80px', 
+          borderBottom: isScrolled ? '1px solid rgba(0,0,0,0.06)' : '1px solid transparent',
+          boxShadow: isScrolled ? '0 1px 3px rgba(0,0,0,0.04)' : 'none',
+          height: isScrolled ? '56px' : '64px', 
           display: 'flex', 
           alignItems: 'center', 
           transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)' 
@@ -100,8 +105,9 @@ export const Header: React.FC<HeaderProps> = ({
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1360px', margin: '0 auto', padding: '0 24px' }}>
           
-          {/* Mobile: Hamburger & Logo */}
-          <div className="mobile-only" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {/* Mobile-Only Header Layout */}
+          <div className="mobile-only" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', position: 'relative' }}>
+            {/* Hamburger (Left) */}
             <button 
               onClick={() => setIsMobileMenuOpen(true)}
               style={{ background: 'transparent', border: 'none', padding: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: '-8px' }}
@@ -109,25 +115,44 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Menu size={24} color="var(--color-text-main)" />
             </button>
-            <button style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', background: 'transparent', border: 'none', padding: 0 }} onClick={handleLogoClick} aria-label="Go to Homepage">
-              <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 4px 6px rgba(0, 166, 90, 0.2))' }} aria-hidden="true">
+            
+            {/* Centered Logo & Text */}
+            <button style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', background: 'transparent', border: 'none', padding: 0, position: 'absolute', left: '50%', transform: 'translateX(-50%)' }} onClick={handleLogoClick} aria-label="Go to Homepage">
+              <svg width="24" height="28" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 4px 6px rgba(0, 166, 90, 0.2))' }} aria-hidden="true">
                 <defs>
-                  <linearGradient id="docGradient" x1="0" y1="0" x2="32" y2="36" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="docGradientMobile" x1="0" y1="0" x2="32" y2="36" gradientUnits="userSpaceOnUse">
                     <stop stopColor="#00E676" />
                     <stop offset="1" stopColor="#00A65A" />
                   </linearGradient>
-                  <linearGradient id="foldGradient" x1="16" y1="0" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="foldGradientMobile" x1="16" y1="0" x2="32" y2="10" gradientUnits="userSpaceOnUse">
                     <stop stopColor="#00C853" />
                     <stop offset="1" stopColor="#007936" />
                   </linearGradient>
                 </defs>
-                <path d="M14 0H28C30.2091 0 32 1.79086 32 4V32C32 34.2091 30.2091 36 28 36H4C1.79086 36 0 34.2091 0 32V10L14 0Z" fill="url(#docGradient)"/>
-                <path d="M0 10H10C12.2091 10 14 8.20914 14 6V0L0 10Z" fill="url(#foldGradient)"/>
+                <path d="M14 0H28C30.2091 0 32 1.79086 32 4V32C32 34.2091 30.2091 36 28 36H4C1.79086 36 0 34.2091 0 32V10L14 0Z" fill="url(#docGradientMobile)"/>
+                <path d="M0 10H10C12.2091 10 14 8.20914 14 6V0L0 10Z" fill="url(#foldGradientMobile)"/>
                 <rect x="2" y="16" width="16" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
                 <rect x="2" y="22" width="22" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
                 <rect x="2" y="28" width="16" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
               </svg>
+              <div style={{ display: 'flex', alignItems: 'baseline', fontFamily: 'Inter, sans-serif' }}>
+                <span style={{ fontSize: '18px', fontWeight: 800, color: 'var(--color-text-title)', letterSpacing: '-0.5px' }}>Invoice<span style={{ color: 'var(--color-primary)' }}>-Gen</span></span>
+                <span style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text-secondary)' }}>.net</span>
+              </div>
             </button>
+            
+            {/* Download PDF Button (Right) */}
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              {onDownloadPDF && (
+                <button
+                  onClick={onDownloadPDF}
+                  style={{ background: 'var(--color-primary)', border: 'none', color: 'white', width: '36px', height: '36px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(0, 166, 90, 0.2)', cursor: 'pointer', marginRight: '-8px' }}
+                  aria-label="Download PDF"
+                >
+                  <Download size={18} />
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Desktop: Logo */}
@@ -135,27 +160,27 @@ export const Header: React.FC<HeaderProps> = ({
             <button style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', background: 'transparent', border: 'none', padding: 0 }} onClick={handleLogoClick} aria-label="Go to Homepage">
               <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 4px 6px rgba(0, 166, 90, 0.2))' }} aria-hidden="true">
                 <defs>
-                  <linearGradient id="docGradient" x1="0" y1="0" x2="32" y2="36" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="docGradientDesktop" x1="0" y1="0" x2="32" y2="36" gradientUnits="userSpaceOnUse">
                     <stop stopColor="#00E676" />
                     <stop offset="1" stopColor="#00A65A" />
                   </linearGradient>
-                  <linearGradient id="foldGradient" x1="16" y1="0" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="foldGradientDesktop" x1="16" y1="0" x2="32" y2="10" gradientUnits="userSpaceOnUse">
                     <stop stopColor="#00C853" />
                     <stop offset="1" stopColor="#007936" />
                   </linearGradient>
                 </defs>
-                <path d="M14 0H28C30.2091 0 32 1.79086 32 4V32C32 34.2091 30.2091 36 28 36H4C1.79086 36 0 34.2091 0 32V10L14 0Z" fill="url(#docGradient)"/>
-                <path d="M0 10H10C12.2091 10 14 8.20914 14 6V0L0 10Z" fill="url(#foldGradient)"/>
+                <path d="M14 0H28C30.2091 0 32 1.79086 32 4V32C32 34.2091 30.2091 36 28 36H4C1.79086 36 0 34.2091 0 32V10L14 0Z" fill="url(#docGradientDesktop)"/>
+                <path d="M0 10H10C12.2091 10 14 8.20914 14 6V0L0 10Z" fill="url(#foldGradientDesktop)"/>
                 <rect x="2" y="16" width="16" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
                 <rect x="2" y="22" width="22" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
                 <rect x="2" y="28" width="16" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
               </svg>
               <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '6px' }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', fontFamily: 'Inter, sans-serif' }}>
-                  <span style={{ fontSize: '20px', fontWeight: 800, color: 'var(--color-text-title)', letterSpacing: '-0.5px' }}>Invoice<span style={{ color: 'var(--color-primary)' }}>-Gen</span></span>
-                  <span style={{ fontSize: '15px', fontWeight: 500, color: 'var(--color-text-secondary)' }}>.net</span>
+                  <span style={{ fontSize: '18px', fontWeight: 800, color: 'var(--color-text-title)', letterSpacing: '-0.5px' }}>Invoice<span style={{ color: 'var(--color-primary)' }}>-Gen</span></span>
+                  <span style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text-secondary)' }}>.net</span>
                 </div>
-                <span style={{ fontSize: '10px', fontWeight: 400, color: '#94a3b8', letterSpacing: '0.2px', marginTop: '-4px' }}>Professional Invoice Generator</span>
+                <span style={{ fontSize: '10px', fontWeight: 400, color: '#94a3b8', letterSpacing: '0.2px', marginTop: '-3px' }}>Professional Invoice Generator</span>
               </div>
             </button>
           </div>
@@ -168,12 +193,12 @@ export const Header: React.FC<HeaderProps> = ({
               onMouseLeave={() => setShowToolsMenu(false)}
             >
               <button 
-                style={{ ...navLinkStyle, display: 'flex', alignItems: 'center', gap: '4px', background: 'transparent', border: 'none', cursor: 'pointer' }}
+                style={{ ...navLinkStyle, display: 'flex', alignItems: 'center', gap: '6px', background: 'transparent', border: 'none', cursor: 'pointer' }}
                 onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
               >
-                Tools
-                <ChevronDown size={14} style={{ transform: showToolsMenu ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease' }} />
+                <Wrench size={16} /> Tools
+                <ChevronDown size={14} style={{ transform: showToolsMenu ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease', marginLeft: '-2px' }} />
                 {(location.pathname === '/' || location.pathname === '/purchase-order-generator' || location.pathname === '/quote-generator' || location.pathname === '/estimate-generator') && <div className="nav-active-indicator" />}
               </button>
               
@@ -192,26 +217,26 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
             </div>
 
-            <Link to="/templates" style={location.pathname.startsWith('/templates') ? activeNavLinkStyle : navLinkStyle} onMouseEnter={(e) => { if(!location.pathname.startsWith('/templates')) e.currentTarget.style.color = 'var(--color-text-main)' }} onMouseLeave={(e) => { if(!location.pathname.startsWith('/templates')) e.currentTarget.style.color = 'var(--color-text-secondary)' }}>
-              Templates
+            <Link to="/templates" style={{ ...(location.pathname.startsWith('/templates') ? activeNavLinkStyle : navLinkStyle), display: 'flex', alignItems: 'center', gap: '6px' }} onMouseEnter={(e) => { if(!location.pathname.startsWith('/templates')) e.currentTarget.style.color = 'var(--color-text-main)' }} onMouseLeave={(e) => { if(!location.pathname.startsWith('/templates')) e.currentTarget.style.color = 'var(--color-text-secondary)' }}>
+              <LayoutTemplate size={16} /> Templates
               {location.pathname.startsWith('/templates') && <div className="nav-active-indicator" />}
             </Link>
-            <Link to="/guides" style={location.pathname.startsWith('/guides') ? activeNavLinkStyle : navLinkStyle} onMouseEnter={(e) => { if(!location.pathname.startsWith('/guides')) e.currentTarget.style.color = 'var(--color-text-main)' }} onMouseLeave={(e) => { if(!location.pathname.startsWith('/guides')) e.currentTarget.style.color = 'var(--color-text-secondary)' }}>
-              Guides
+            <Link to="/guides" style={{ ...(location.pathname.startsWith('/guides') ? activeNavLinkStyle : navLinkStyle), display: 'flex', alignItems: 'center', gap: '6px' }} onMouseEnter={(e) => { if(!location.pathname.startsWith('/guides')) e.currentTarget.style.color = 'var(--color-text-main)' }} onMouseLeave={(e) => { if(!location.pathname.startsWith('/guides')) e.currentTarget.style.color = 'var(--color-text-secondary)' }}>
+              <BookOpen size={16} /> Guides
               {location.pathname.startsWith('/guides') && <div className="nav-active-indicator" />}
             </Link>
-            <Link to="/blog" style={location.pathname.startsWith('/blog') ? activeNavLinkStyle : navLinkStyle} onMouseEnter={(e) => { if(!location.pathname.startsWith('/blog')) e.currentTarget.style.color = 'var(--color-text-main)' }} onMouseLeave={(e) => { if(!location.pathname.startsWith('/blog')) e.currentTarget.style.color = 'var(--color-text-secondary)' }}>
-              Blog
+            <Link to="/blog" style={{ ...(location.pathname.startsWith('/blog') ? activeNavLinkStyle : navLinkStyle), display: 'flex', alignItems: 'center', gap: '6px' }} onMouseEnter={(e) => { if(!location.pathname.startsWith('/blog')) e.currentTarget.style.color = 'var(--color-text-main)' }} onMouseLeave={(e) => { if(!location.pathname.startsWith('/blog')) e.currentTarget.style.color = 'var(--color-text-secondary)' }}>
+              <PenTool size={16} /> Blog
               {location.pathname.startsWith('/blog') && <div className="nav-active-indicator" />}
             </Link>
-            <Link to="/pricing" style={location.pathname.startsWith('/pricing') ? activeNavLinkStyle : navLinkStyle} onMouseEnter={(e) => { if(!location.pathname.startsWith('/pricing')) e.currentTarget.style.color = 'var(--color-text-main)' }} onMouseLeave={(e) => { if(!location.pathname.startsWith('/pricing')) e.currentTarget.style.color = 'var(--color-text-secondary)' }}>
-              Pricing
+            <Link to="/pricing" style={{ ...(location.pathname.startsWith('/pricing') ? activeNavLinkStyle : navLinkStyle), display: 'flex', alignItems: 'center', gap: '6px' }} onMouseEnter={(e) => { if(!location.pathname.startsWith('/pricing')) e.currentTarget.style.color = 'var(--color-text-main)' }} onMouseLeave={(e) => { if(!location.pathname.startsWith('/pricing')) e.currentTarget.style.color = 'var(--color-text-secondary)' }}>
+              <Tag size={16} /> Pricing
               {location.pathname.startsWith('/pricing') && <div className="nav-active-indicator" />}
             </Link>
           </div>
 
           {/* Desktop & Mobile: Right Actions */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             
             {/* Auto Save Status (Desktop Only) */}
             {saveStatus && saveStatus !== 'idle' && (
@@ -235,8 +260,8 @@ export const Header: React.FC<HeaderProps> = ({
             
             <div className="desktop-only" style={{ width: '1px', height: '24px', backgroundColor: 'var(--color-border)' }}></div>
 
-            <Link to="/login" className="desktop-only" style={{ fontSize: '14.5px', fontWeight: 600, color: 'var(--color-text-main)', textDecoration: 'none', padding: '8px 12px', borderRadius: '6px', transition: 'background 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }} onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}>Log in</Link>
-            <Link to="/signup" className="btn btn-primary" style={{ height: '36px', padding: '0 16px', fontSize: '14.5px' }}>Sign up</Link>
+            <Link to="/login" className="desktop-only" style={{ height: '36px', minHeight: '36px', fontSize: '14px', fontWeight: 600, color: 'var(--color-text-main)', textDecoration: 'none', padding: '0 16px', borderRadius: '6px', border: '1px solid var(--color-border)', transition: 'background 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', boxSizing: 'border-box' }} onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }} onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}>Log in</Link>
+            <Link to="/signup" className="btn btn-primary" style={{ height: '36px', minHeight: '36px', padding: '0 16px', fontSize: '14px', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxSizing: 'border-box' }}>Sign up</Link>
           </div>
         </div>
       </header>
@@ -253,7 +278,29 @@ export const Header: React.FC<HeaderProps> = ({
         }}
       >
         <div style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--color-border)' }}>
-          <span style={{ fontSize: '18px', fontWeight: 800, color: 'var(--color-text-title)' }}>Invoice-Gen</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <svg width="24" height="27" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 4px 6px rgba(0, 166, 90, 0.2))' }} aria-hidden="true">
+              <defs>
+                <linearGradient id="docGradientDrawer" x1="0" y1="0" x2="32" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#00E676" />
+                  <stop offset="1" stopColor="#00A65A" />
+                </linearGradient>
+                <linearGradient id="foldGradientDrawer" x1="16" y1="0" x2="32" y2="10" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#00C853" />
+                  <stop offset="1" stopColor="#007936" />
+                </linearGradient>
+              </defs>
+              <path d="M14 0H28C30.2091 0 32 1.79086 32 4V32C32 34.2091 30.2091 36 28 36H4C1.79086 36 0 34.2091 0 32V10L14 0Z" fill="url(#docGradientDrawer)"/>
+              <path d="M0 10H10C12.2091 10 14 8.20914 14 6V0L0 10Z" fill="url(#foldGradientDrawer)"/>
+              <rect x="2" y="16" width="16" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
+              <rect x="2" y="22" width="22" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
+              <rect x="2" y="28" width="16" height="2.5" rx="1.25" fill="#ffffff" opacity="0.9"/>
+            </svg>
+            <div style={{ display: 'flex', alignItems: 'baseline', fontFamily: 'Inter, sans-serif' }}>
+              <span style={{ fontSize: '18px', fontWeight: 800, color: 'var(--color-text-title)', letterSpacing: '-0.5px' }}>Invoice<span style={{ color: 'var(--color-primary)' }}>-Gen</span></span>
+              <span style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-text-secondary)' }}>.net</span>
+            </div>
+          </div>
           <button onClick={() => setIsMobileMenuOpen(false)} style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '4px', display: 'flex' }} aria-label="Close Menu">
             <X size={24} color="var(--color-text-main)" />
           </button>
@@ -261,15 +308,15 @@ export const Header: React.FC<HeaderProps> = ({
         
         <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '8px', flex: 1, overflowY: 'auto' }}>
           <div style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-tertiary)', letterSpacing: '0.5px', marginBottom: '8px', marginTop: '8px' }}>Tools</div>
-          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="mobile-drawer-link">Invoice Generator</Link>
-          <Link to="/purchase-order-generator" onClick={() => setIsMobileMenuOpen(false)} className="mobile-drawer-link">Purchase Order</Link>
-          <Link to="/quote-generator" onClick={() => setIsMobileMenuOpen(false)} className="mobile-drawer-link">Quote Generator</Link>
-          <Link to="/estimate-generator" onClick={() => setIsMobileMenuOpen(false)} className="mobile-drawer-link">Estimate Generator</Link>
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="mobile-drawer-link"><FileText size={18} color="var(--color-text-secondary)" /> Invoice Generator</Link>
+          <Link to="/purchase-order-generator" onClick={() => setIsMobileMenuOpen(false)} className="mobile-drawer-link"><ShoppingCart size={18} color="var(--color-text-secondary)" /> Purchase Order</Link>
+          <Link to="/quote-generator" onClick={() => setIsMobileMenuOpen(false)} className="mobile-drawer-link"><FileCheck size={18} color="var(--color-text-secondary)" /> Quote Generator</Link>
+          <Link to="/estimate-generator" onClick={() => setIsMobileMenuOpen(false)} className="mobile-drawer-link"><Calculator size={18} color="var(--color-text-secondary)" /> Estimate Generator</Link>
           
           <div style={{ height: '1px', background: 'var(--color-border)', margin: '16px 0' }}></div>
           
-          <Link to="/templates" onClick={() => setIsMobileMenuOpen(false)} className="mobile-drawer-link">Templates</Link>
-          <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="mobile-drawer-link">Guides & Blog</Link>
+          <Link to="/templates" onClick={() => setIsMobileMenuOpen(false)} className="mobile-drawer-link"><LayoutTemplate size={18} color="var(--color-text-secondary)" /> Templates</Link>
+          <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className="mobile-drawer-link"><BookOpen size={18} color="var(--color-text-secondary)" /> Guides & Blog</Link>
         </div>
 
         <div style={{ padding: '24px', borderTop: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column', gap: '12px' }}>

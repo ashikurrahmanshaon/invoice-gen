@@ -14,9 +14,9 @@ export const InvoiceDetailsSection: React.FC<InvoiceDetailsSectionProps> = React
   const { settings, updateNestedSetting } = useSettings();
 
   return (
-    <div style={{ marginTop: '32px', paddingTop: '32px', borderTop: '1px solid #F1F5F9' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-        <div style={{ padding: '8px', background: '#F8FAFC', color: '#64748B', borderRadius: '10px', display: 'flex' }}>
+    <div style={{ marginTop: '24px', paddingTop: '24px', borderTop: '1px solid #F1F5F9' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+        <div style={{ padding: '8px', background: 'rgba(0, 166, 90, 0.1)', color: '#00A65A', borderRadius: '10px', display: 'flex' }}>
           <FileText size={18} />
         </div>
         <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#334155', margin: 0 }}>Invoice Settings</h3>
