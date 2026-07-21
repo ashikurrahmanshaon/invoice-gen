@@ -122,7 +122,7 @@ export function EstimateGenerator() {
       await generateEstimatePDF(data as any);
       setToastMessage({ text: 'Invoice PDF generated successfully.', type: 'success' });
       setTimeout(() => setToastMessage(null), 4000);
-    } catch (_err) {
+    } catch {
       setToastMessage({ text: 'An error occurred while generating PDF.', type: 'error' });
       setTimeout(() => setToastMessage(null), 4000);
     } finally {
@@ -566,6 +566,7 @@ export function EstimateGenerator() {
             onClose={() => setIsPreviewOpen(false)} 
             onDownloadPDF={handleDownload}
             isGenerating={isGenerating}
+            documentType="estimate"
           />
         )}
       </Suspense>

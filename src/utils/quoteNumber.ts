@@ -8,7 +8,7 @@ export const generateQuoteNumber = (): string => {
     if (stored) {
       sequence = parseInt(stored, 10);
     }
-  } catch (_e) {
+  } catch {
     // Ignore localStorage errors
   }
 
@@ -18,7 +18,7 @@ export const generateQuoteNumber = (): string => {
   // Increment for next time
   try {
     localStorage.setItem('quote_sequence', (sequence + 1).toString());
-  } catch (_e) {
+  } catch {
     // Ignore localStorage errors
   }
   
@@ -28,7 +28,7 @@ export const generateQuoteNumber = (): string => {
 export const resetQuoteSequence = () => {
   try {
     localStorage.removeItem('quote_sequence');
-  } catch (_e) {
+  } catch {
     // Ignore
   }
 };

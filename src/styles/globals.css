@@ -929,3 +929,171 @@ a {
   box-shadow: 0 12px 32px rgba(0, 102, 255, 0.12);
   border-color: #93C5FD !important;
 }
+
+/* ── Loading Skeletons ── */
+.skeleton {
+  background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-text {
+  height: 14px;
+  width: 100%;
+  border-radius: 6px;
+}
+
+.skeleton-text.short { width: 60%; }
+.skeleton-text.medium { width: 80%; }
+
+.skeleton-card {
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.skeleton-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.skeleton-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeleton-block {
+  height: 54px;
+  border-radius: var(--radius-md);
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── Success Animation ── */
+@keyframes success-check-pop {
+  0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes success-ring {
+  0% { transform: scale(0.8); opacity: 0; box-shadow: 0 0 0 0 rgba(0, 166, 90, 0.5); }
+  50% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 12px rgba(0, 166, 90, 0); }
+  100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(0, 166, 90, 0); }
+}
+
+.success-checkmark {
+  animation: success-check-pop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.success-ring {
+  animation: success-ring 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Toast slide-in/out ── */
+@keyframes toast-slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toast-slide-out {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+.toast-enter {
+  animation: toast-slide-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Keyboard Shortcut Badge ── */
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-family: var(--font-family);
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 1px 0 var(--color-border);
+}
+
+/* ── Draft Recovery Banner ── */
+.draft-recovery-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 1px solid #FDE68A;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #92400E;
+  font-weight: 500;
+}
+
+.draft-recovery-banner button {
+  font-size: 13px;
+  font-weight: 700;
+  color: #D97706;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Hover card animation (for template gallery, content cards) ── */
+.hover-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-primary-light);
+}
+
+/* ── Guide card ── */
+.guide-card {
+  background: var(--color-surface);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+}
+
+.guide-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-primary-light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; background: #F1F5F9; }
+  .success-checkmark, .success-ring, .toast-enter { animation: none; }
+  .hover-card:hover, .guide-card:hover { transform: none; }
+}

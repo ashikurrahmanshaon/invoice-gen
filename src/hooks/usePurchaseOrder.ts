@@ -310,7 +310,7 @@ export const usePurchaseOrder = (initialSettings?: Settings) => {
     try {
       localStorage.removeItem(STORAGE_KEY_PO_ACTIVE_HISTORY_ID);
       localStorage.removeItem(STORAGE_KEY_PO_ORIGINAL_SNAPSHOT);
-    } catch(_e){}
+    } catch{}
     setLoadedHistoryId(null);
     setOriginalSnapshot(null);
 
@@ -328,7 +328,7 @@ export const usePurchaseOrder = (initialSettings?: Settings) => {
     try {
       localStorage.removeItem(STORAGE_KEY_PO_ACTIVE_HISTORY_ID);
       localStorage.removeItem(STORAGE_KEY_PO_ORIGINAL_SNAPSHOT);
-    } catch(_e){}
+    } catch{}
     
     setData(prev => {
       const newData = {
@@ -359,7 +359,7 @@ export const usePurchaseOrder = (initialSettings?: Settings) => {
     try {
       localStorage.removeItem(STORAGE_KEY_PO_ACTIVE_HISTORY_ID);
       localStorage.removeItem(STORAGE_KEY_PO_ORIGINAL_SNAPSHOT);
-    } catch(_e){}
+    } catch{}
     setLoadedHistoryId(null);
     setOriginalSnapshot(null);
   }, []);

@@ -195,18 +195,25 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
             padding: '24px',
             display: 'flex',
             flexDirection: 'column',
-            gap: '16px',
+            gap: '14px',
             width: '100%',
             boxShadow: '0 1px 3px rgba(0,0,0,0.02)'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: 'var(--color-text-secondary)', fontWeight: 500 }}>
-              <span>Subtotal</span>
+              <span>Subtotal <span style={{ fontSize: '12px', color: 'var(--color-text-tertiary)', fontWeight: 400 }}>({data.items.filter(i => i.name || Number(i.rate) > 0).length} item{data.items.filter(i => i.name || Number(i.rate) > 0).length !== 1 ? 's' : ''})</span></span>
               <span style={{ color: 'var(--color-text-title)', fontWeight: 600 }}>{formatCurrency(totals.subtotal, currency)}</span>
             </div>
             {totals.discountAmount > 0 && (
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
-                <span>Discount</span>
-                <span style={{ color: 'var(--color-text-title)', fontWeight: 600 }}>-{formatCurrency(totals.discountAmount, currency)}</span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  Discount
+                  {totals.discountType === 'percent' && Number(totals.discountValue) > 0 && (
+                    <span style={{ fontSize: '11px', background: '#DCFCE7', color: '#16A34A', padding: '1px 6px', borderRadius: '4px', fontWeight: 600 }}>
+                      {totals.discountValue}% off
+                    </span>
+                  )}
+                </span>
+                <span style={{ color: '#16A34A', fontWeight: 600 }}>-{formatCurrency(totals.discountAmount, currency)}</span>
               </div>
             )}
             {totals.taxAmount > 0 && (
@@ -228,6 +235,13 @@ const TotalsSectionComponent: React.FC<TotalsSectionProps> = ({
               <span>Total</span>
               <span style={{ fontWeight: 700 }}>{formatCurrency(totals.total, currency)}</span>
             </div>
+
+            {Number(totals.amountPaid) > 0 && (
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', color: 'var(--color-text-secondary)' }}>
+                <span>Amount Paid</span>
+                <span style={{ color: '#16A34A', fontWeight: 600 }}>-{formatCurrency(Number(totals.amountPaid), currency)}</span>
+              </div>
+            )}
 
             <div style={{
               background: '#0F172A',

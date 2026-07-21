@@ -41,7 +41,7 @@ export const BrandKitSection: React.FC = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
           {brand.logoUrl ? (
             <div style={{ position: 'relative', width: '160px', height: '160px', borderRadius: '16px', border: '2px solid var(--color-border)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--color-surface)' }}>
-              <img src={brand.logoUrl} alt="Logo" loading="lazy" width="160" height="160" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+              <img src={brand.logoUrl} alt="Logo" loading="lazy" decoding="async" width="160" height="160" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
               <button 
                 aria-label="Remove logo"
                 onClick={() => updateNestedSetting('brandKit', { logoUrl: null })}

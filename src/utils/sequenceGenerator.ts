@@ -56,7 +56,7 @@ export const generateSequenceNumber = (options: SequenceOptions, exclude?: strin
   // Save the sequence so next time it's faster
   try {
     localStorage.setItem(options.sequenceKey, nextNum.toString());
-  } catch (_e) {}
+  } catch {}
 
   return newNumber;
 };

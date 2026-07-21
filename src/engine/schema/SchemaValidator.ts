@@ -20,7 +20,7 @@ export class SchemaValidator {
     // Check JSON Syntax safety (is it serializable?)
     try {
       JSON.stringify(graph);
-    } catch (e) {
+    } catch {
       errors.push("Graph is not valid JSON serializable.");
     }
 

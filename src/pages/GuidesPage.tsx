@@ -1,8 +1,47 @@
 
-import { FileText, Wand2, Download, CheckCircle, ArrowRight } from 'lucide-react';
+import { FileText, Wand2, Download, CheckCircle, ArrowRight, Clock, BookOpen, Receipt, Calculator } from 'lucide-react';
 import { LandingLayout } from '../components/layout/LandingLayout';
 import { SEO } from '../components/seo/SEO';
 import { Link } from 'react-router-dom';
+
+const RELATED_GUIDES = [
+  {
+    title: 'How to Write a Professional Invoice',
+    description: 'Step-by-step guide to creating invoices that get paid on time.',
+    readTime: '5 min',
+    icon: Receipt,
+    link: '/blog/how-to-write-a-professional-invoice',
+    color: '#3B82F6',
+    bgColor: '#EFF6FF'
+  },
+  {
+    title: 'Understanding Tax on Invoices',
+    description: 'Learn about tax rates, VAT, GST, and how to add them correctly.',
+    readTime: '4 min',
+    icon: Calculator,
+    link: '/blog/understanding-tax-on-invoices',
+    color: '#8B5CF6',
+    bgColor: '#F5F3FF'
+  },
+  {
+    title: 'Invoice vs Receipt: Key Differences',
+    description: 'Know when to use an invoice versus a receipt for your business.',
+    readTime: '3 min',
+    icon: FileText,
+    link: '/blog/invoice-vs-receipt',
+    color: '#10B981',
+    bgColor: '#ECFDF5'
+  },
+  {
+    title: 'Best Invoicing Practices for Freelancers',
+    description: 'Essential tips to streamline your freelance billing workflow.',
+    readTime: '6 min',
+    icon: BookOpen,
+    link: '/blog/invoicing-best-practices-freelancers',
+    color: '#F59E0B',
+    bgColor: '#FFFBEB'
+  }
+];
 
 export default function GuidesPage() {
   const steps = [
@@ -52,6 +91,9 @@ export default function GuidesPage() {
           <p style={{ fontSize: '16px', color: 'var(--color-text-secondary)', maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}>
             No sign-up required, no complex software to learn. Just enter your details and download a beautiful PDF in seconds.
           </p>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginTop: '16px', fontSize: '13px', color: 'var(--color-text-tertiary)' }}>
+            <Clock size={14} /> 2 min read
+          </div>
         </div>
 
         {/* Visual Steps */}
@@ -91,6 +133,52 @@ export default function GuidesPage() {
               </div>
             );
           })}
+        </div>
+
+        {/* Related Guides Section */}
+        <div style={{ marginBottom: '80px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+            <h2 style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-text-title)', marginBottom: '12px', letterSpacing: '-0.02em' }}>
+              Related Guides
+            </h2>
+            <p style={{ fontSize: '15px', color: 'var(--color-text-secondary)', maxWidth: '500px', margin: '0 auto' }}>
+              Dive deeper into invoicing with these helpful resources.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
+            {RELATED_GUIDES.map((guide) => {
+              const GuideIcon = guide.icon;
+              return (
+                <Link
+                  key={guide.title}
+                  to={guide.link}
+                  className="guide-card"
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: guide.bgColor, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <GuideIcon size={20} color={guide.color} />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <h3 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-title)', margin: 0, lineHeight: 1.3 }}>
+                        {guide.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <p style={{ fontSize: '13px', color: 'var(--color-text-secondary)', margin: 0, lineHeight: 1.5 }}>
+                    {guide.description}
+                  </p>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
+                    <span style={{ fontSize: '12px', color: 'var(--color-text-tertiary)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <Clock size={12} /> {guide.readTime}
+                    </span>
+                    <span style={{ fontSize: '13px', color: 'var(--color-primary)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      Read <ArrowRight size={14} />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
 
         {/* CTA Section */}

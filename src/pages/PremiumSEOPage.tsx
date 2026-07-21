@@ -53,7 +53,7 @@ export default function PremiumSEOPage() {
       />
       
       <Container>
-        <div style={{ padding: '40px 0' }}>
+        <div style={{ maxWidth: '860px', margin: '0 auto', padding: '60px 20px 100px 20px' }}>
           <ContentEngine blocks={pageData.blocks} />
         </div>
       </Container>

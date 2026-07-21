@@ -1,5 +1,5 @@
 import { useState, Suspense, useEffect } from 'react';
-import { Download, ArrowRight, ArrowLeft, ShieldCheck, RotateCcw, Eye, Image as ImageIcon } from 'lucide-react';
+import { Download, ArrowRight, ArrowLeft, ShieldCheck, RotateCcw, Eye, Image as ImageIcon, CheckCircle, RefreshCw } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { StageIndicator } from '../layout/StageIndicator';
 import { BusinessSection } from '../invoice/BusinessSection';
@@ -65,6 +65,8 @@ export function InvoiceGenerator() {
   const [historyRecordToDelete, setHistoryRecordToDelete] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [toastMessage, setToastMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
+  const [showSuccessAnim, setShowSuccessAnim] = useState(false);
+  const [hasDraftRecovery, setHasDraftRecovery] = useState(false);
 
   const [isMobileView, setIsMobileView] = useState(false);
 
@@ -74,10 +76,52 @@ export function InvoiceGenerator() {
       const handleResize = () => {
         setIsMobileView(window.innerWidth <= 1024);
       };
+      const handleKeyDown = (e: KeyboardEvent) => {
+        // Ctrl/Cmd+Enter → Preview
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+          e.preventDefault();
+          setIsPreviewOpen(true);
+        }
+        // Escape → Close modals
+        if (e.key === 'Escape') {
+          setIsPreviewOpen(false);
+          setShowResetModal(false);
+        }
+        // Ctrl/Cmd+P → Download PDF (prevent browser print)
+        if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+          e.preventDefault();
+          handleDownload();
+        }
+        // Ctrl/Cmd+ArrowRight → Next stage
+        if ((e.ctrlKey || e.metaKey) && e.key === 'ArrowRight' && currentStage < 4) {
+          e.preventDefault();
+          handleStageChange(currentStage + 1);
+        }
+        // Ctrl/Cmd+ArrowLeft → Previous stage
+        if ((e.ctrlKey || e.metaKey) && e.key === 'ArrowLeft' && currentStage > 1) {
+          e.preventDefault();
+          handleStageChange(currentStage - 1);
+        }
+      };
+      // Check for recovered draft
+      try {
+        const draftStr = localStorage.getItem('invoice_gen_draft');
+        if (draftStr) {
+          const draft = JSON.parse(draftStr);
+          if (draft?.business?.name || draft?.client?.name || (draft?.items && draft.items.length > 1)) {
+            setHasDraftRecovery(true);
+          }
+        }
+      } catch { /* ignore parse errors */ }
       window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentStage]);
 
   const { settings } = useSettings();
 
@@ -91,6 +135,9 @@ export function InvoiceGenerator() {
     updateOtherFields,
     addItem, 
     updateItem, 
+    duplicateItem,
+    moveItemUp,
+    moveItemDown,
     removeItem, 
     setDiscount,
     setTaxRate,
@@ -111,6 +158,7 @@ export function InvoiceGenerator() {
     if (templateParam && !isDirty) {
       updateDetails({ layoutId: templateParam });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams, isDirty]); // Using isDirty to only set on fresh load
 
   let itemNameLabel = 'Item name';
@@ -153,9 +201,10 @@ export function InvoiceGenerator() {
       setIsGenerating(true);
       trackEvent('download_pdf', { source: 'homepage' });
       await generateInvoicePDF(data);
-      setToastMessage({ text: 'Invoice PDF generated successfully.', type: 'success' });
-      setTimeout(() => setToastMessage(null), 4000);
-    } catch (_err) {
+      setShowSuccessAnim(true);
+      setToastMessage({ text: 'Invoice PDF generated successfully!', type: 'success' });
+      setTimeout(() => { setToastMessage(null); setShowSuccessAnim(false); }, 4000);
+    } catch {
       setToastMessage({ text: 'An error occurred while generating PDF.', type: 'error' });
       setTimeout(() => setToastMessage(null), 4000);
     } finally {
@@ -168,9 +217,10 @@ export function InvoiceGenerator() {
       setIsGenerating(true);
       trackEvent('download_image', { source: 'homepage' });
       await generateInvoiceImage(data);
-      setToastMessage({ text: 'Invoice Image generated successfully.', type: 'success' });
-      setTimeout(() => setToastMessage(null), 4000);
-    } catch (_err) {
+      setShowSuccessAnim(true);
+      setToastMessage({ text: 'Invoice image generated successfully!', type: 'success' });
+      setTimeout(() => { setToastMessage(null); setShowSuccessAnim(false); }, 4000);
+    } catch {
       setToastMessage({ text: 'An error occurred while generating Image.', type: 'error' });
       setTimeout(() => setToastMessage(null), 4000);
     } finally {
@@ -181,7 +231,7 @@ export function InvoiceGenerator() {
   const historyHook = useHistory();
 
   // Enable Auto-save
-  const { cancelPendingSave } = useAutoSave(data);
+  const { cancelPendingSave, saveStatus } = useAutoSave(data);
 
   const executePendingAction = () => {
     if (pendingAction) pendingAction();
@@ -393,8 +443,14 @@ export function InvoiceGenerator() {
       {/* Toast Notifications */}
       <div style={{ position: 'fixed', top: '80px', right: '20px', zIndex: 1000, display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {toastMessage && (
-          <div style={{ padding: '12px 16px', background: toastMessage.type === 'error' ? 'var(--color-error, #EF4444)' : '#00A65A', color: 'white', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '8px' }} role="alert">
-            {toastMessage.type === 'success' && <span>✓</span>}
+          <div className="toast-enter" style={{ padding: '12px 20px', background: toastMessage.type === 'error' ? 'var(--color-error, #EF4444)' : '#00A65A', color: 'white', borderRadius: '12px', boxShadow: '0 8px 24px rgba(0,0,0,0.15)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px' }} role="alert">
+            {toastMessage.type === 'success' && showSuccessAnim ? (
+              <div className="success-ring" style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <CheckCircle size={16} className="success-checkmark" />
+              </div>
+            ) : toastMessage.type === 'success' ? (
+              <CheckCircle size={16} />
+            ) : null}
             {toastMessage.text}
           </div>
         )}
@@ -403,6 +459,15 @@ export function InvoiceGenerator() {
       <main className="container" id="generator" style={{ minWidth: 0 }}>
 
         
+        {/* Draft Recovery Banner */}
+        {activeView === 'editor' && hasDraftRecovery && (!data.business.name && !data.client.name && data.items.length <= 1) && (
+          <div className="draft-recovery-banner animate-slide-up">
+            <RefreshCw size={16} style={{ color: '#D97706', flexShrink: 0 }} />
+            <span>A previously saved draft was recovered automatically.</span>
+            <button onClick={() => setHasDraftRecovery(false)}>Dismiss</button>
+          </div>
+        )}
+
         {activeView === 'editor' && (!data.business.name && !data.client.name && data.items.length === 0) && (
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
             <button 
@@ -415,7 +480,7 @@ export function InvoiceGenerator() {
           </div>
         )}
         {activeView === 'settings' ? (
-          <Suspense fallback={<div className="loading-state">Loading settings...</div>}>
+          <Suspense fallback={<div className="skeleton-card" style={{ maxWidth: '800px', margin: '0 auto' }}><div className="skeleton-row"><div className="skeleton skeleton-circle"></div><div style={{ flex: 1 }}><div className="skeleton skeleton-text medium" style={{ marginBottom: '8px' }}></div><div className="skeleton skeleton-text short"></div></div></div><div className="skeleton skeleton-block" style={{ marginBottom: '12px' }}></div><div className="skeleton skeleton-block" style={{ marginBottom: '12px' }}></div><div className="skeleton skeleton-block"></div></div>}>
             <SettingsDashboard />
           </Suspense>
         ) : activeView === 'editor' ? (
@@ -497,6 +562,9 @@ export function InvoiceGenerator() {
                                 currency={data.details.currency} 
                                 addItem={addItem} 
                                 removeItem={removeItem} 
+                                duplicateItem={duplicateItem}
+                                moveItemUp={moveItemUp}
+                                moveItemDown={moveItemDown}
                                 updateItem={updateItem} 
                                 itemNameLabel={itemNameLabel}
                                 quantityLabel={quantityLabel}
@@ -539,8 +607,12 @@ export function InvoiceGenerator() {
                         }}>
                           {/* Left: Draft Saved */}
                           <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <span style={{ color: 'var(--color-success)', fontWeight: 600, fontSize: '14px', display: 'flex', alignItems: 'center', gap: '6px' }}><ShieldCheck size={16} /> Draft Saved</span>
-                            <span style={{ fontSize: '12px', color: 'var(--color-text-tertiary)', marginLeft: '22px' }}>just now</span>
+                            <span style={{ color: saveStatus === 'error_draft' ? 'var(--color-error)' : 'var(--color-success)', fontWeight: 600, fontSize: '14px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                              <ShieldCheck size={16} /> {saveStatus === 'saving' ? 'Saving...' : saveStatus === 'error_draft' ? 'Save Failed' : 'Draft Saved'}
+                            </span>
+                            <span style={{ fontSize: '12px', color: 'var(--color-text-tertiary)', marginLeft: '22px' }}>
+                              {saveStatus === 'saving' ? '' : 'just now'}
+                            </span>
                           </div>
 
                           {/* Center: Reset */}
@@ -605,6 +677,7 @@ export function InvoiceGenerator() {
                                   style={{
                                     height: '48px', padding: '0 20px', background: 'var(--color-surface)', color: 'var(--color-text-main)', border: '1.5px solid var(--color-border)', borderRadius: '100px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px'
                                   }}
+                                  title="Preview (Ctrl+Enter)"
                                 >
                                   <Eye size={18} /> Preview
                                 </button>
@@ -637,6 +710,7 @@ export function InvoiceGenerator() {
                                     opacity: isGenerating ? 0.7 : 1,
                                     cursor: isGenerating ? 'not-allowed' : 'pointer',
                                   }}
+                                  title="Download PDF (Ctrl+P)"
                                 >
                                   {isGenerating ? (
                                     <div style={{ width: '18px', height: '18px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: 'white', borderRadius: '50%', animation: 'spin 1s linear infinite' }}>
@@ -660,7 +734,7 @@ export function InvoiceGenerator() {
           </div>
         ) : (
           <div style={{ marginTop: '24px' }}>
-            <Suspense fallback={<div className="loading-state">Loading history...</div>}>
+              <Suspense fallback={<div className="skeleton-card"><div className="skeleton-row"><div className="skeleton skeleton-circle"></div><div style={{ flex: 1 }}><div className="skeleton skeleton-text medium" style={{ marginBottom: '8px' }}></div><div className="skeleton skeleton-text short"></div></div></div><div className="skeleton skeleton-row"><div className="skeleton skeleton-circle"></div><div style={{ flex: 1 }}><div className="skeleton skeleton-text" style={{ marginBottom: '8px' }}></div><div className="skeleton skeleton-text short"></div></div></div></div>}>
               <HistoryDashboard 
                 history={historyHook.history}
                 onEdit={handleEditHistoryRecord}

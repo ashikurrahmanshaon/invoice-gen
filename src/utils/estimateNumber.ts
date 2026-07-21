@@ -10,7 +10,7 @@ export const generateEstimateNumber = (): string => {
     if (stored) {
       sequence = parseInt(stored, 10);
     }
-  } catch (_e) {
+  } catch {
     // Ignore localStorage errors
   }
 
@@ -20,7 +20,7 @@ export const generateEstimateNumber = (): string => {
   // Increment for next time
   try {
     localStorage.setItem('estimate_sequence', (sequence + 1).toString());
-  } catch (_e) {
+  } catch {
     // Ignore localStorage errors
   }
   
@@ -30,7 +30,7 @@ export const generateEstimateNumber = (): string => {
 export const resetEstimateSequence = () => {
   try {
     localStorage.removeItem('estimate_sequence');
-  } catch (_e) {
+  } catch {
     // Ignore
   }
 };

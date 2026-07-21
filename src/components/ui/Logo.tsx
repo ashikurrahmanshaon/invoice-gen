@@ -17,6 +17,10 @@ export const Logo: React.FC<LogoProps> = ({ size = 32, hideText = false, monochr
         <img 
           src="/logo-icon.png" 
           alt="Logo" 
+          width={size}
+          height={size}
+          decoding="async"
+          fetchPriority="high"
           style={{ 
             height: size, 
             width: size, 
@@ -33,6 +37,10 @@ export const Logo: React.FC<LogoProps> = ({ size = 32, hideText = false, monochr
     <img 
       src="/logo-full.png" 
       alt="Invoice-Gen.net" 
+      width={typeof size === 'number' ? size * 4 : undefined} // Approximation for width based on standard height ratio
+      height={size}
+      decoding="async"
+      fetchPriority="high"
       style={{ 
         height: size, 
         objectFit: 'contain',

@@ -121,7 +121,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
           <div className="logo-preview-area">
              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                <div style={{ width: '60px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'white', borderRadius: '4px' }}>
-                 <img src={data.business.logoUrl} alt="Logo" loading="lazy" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+                 <img src={data.business.logoUrl} alt="Logo" loading="lazy" decoding="async" width="60" height="40" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
                </div>
                <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-text-title)' }}>Company Logo</span>
              </div>

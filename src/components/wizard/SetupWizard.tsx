@@ -138,7 +138,7 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({ onComplete }) => {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
               {settings.brandKit.logoUrl ? (
                 <div style={{ position: 'relative', width: '160px', height: '160px', borderRadius: '16px', border: '2px solid var(--color-border)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--color-surface)' }}>
-                  <img src={settings.brandKit.logoUrl} alt="Logo" loading="lazy" width="160" height="160" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+                  <img src={settings.brandKit.logoUrl} alt="Logo" loading="lazy" decoding="async" width="160" height="160" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
                   <button 
                     aria-label="Remove logo"
                     onClick={() => updateNestedSetting('brandKit', { logoUrl: null })}

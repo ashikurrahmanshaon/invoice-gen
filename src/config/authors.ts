@@ -27,7 +27,33 @@ export const authors: Record<string, AuthorProfile> = {
     },
     articlesWritten: ["/how-to-create-an-invoice", "/invoice-types"],
     reviewedArticles: [],
-    avatarUrl: "/avatars/jane-doe.webp"
+    avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80"
+  },
+  "alex-rivera": {
+    id: "alex-rivera",
+    name: "Alex Rivera",
+    bio: "Alex is a freelance operations consultant helping independent professionals optimize client contracts and cash flow.",
+    expertise: ["Freelancing", "Client Contracts", "Payment Terms"],
+    experience: "8+ Years Consulting",
+    socialProfiles: {
+      linkedin: "https://linkedin.com/in/alexrivera"
+    },
+    articlesWritten: ["/payment-terms-explained"],
+    reviewedArticles: [],
+    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80"
+  },
+  "elena-rostova": {
+    id: "elena-rostova",
+    name: "Elena Rostova",
+    bio: "Elena is a senior tax strategy specialist focusing on sole proprietorships and LLC tax optimizations.",
+    expertise: ["Taxes", "Deductions", "Compliance"],
+    experience: "12+ Years Tax Planning",
+    socialProfiles: {
+      linkedin: "https://linkedin.com/in/elenarostova"
+    },
+    articlesWritten: ["/tax-invoice"],
+    reviewedArticles: [],
+    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80"
   }
 };
 
@@ -43,6 +69,6 @@ export const reviewers: Record<string, AuthorProfile> = {
     },
     articlesWritten: [],
     reviewedArticles: ["/how-to-create-an-invoice"],
-    avatarUrl: "/avatars/john-smith.webp"
+    avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80"
   }
 };

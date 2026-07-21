@@ -2,7 +2,7 @@ import React from 'react';
 import { ContentPage } from '../components/layout/ContentPage';
 import { LandingLayout } from '../components/layout/LandingLayout';
 import { SEO } from '../components/seo/SEO';
-import { ArrowRight, Clock, Tag, BookOpen } from 'lucide-react';
+import { ArrowRight, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const BlogHomePage: React.FC = () => {
@@ -13,7 +13,13 @@ export const BlogHomePage: React.FC = () => {
       url: '/blog/how-to-write-an-invoice',
       category: 'Guides',
       readTime: '5 min read',
-      gradient: 'linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%)'
+      date: 'Jul 18, 2026',
+      image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80',
+      author: {
+        name: 'Jane Doe',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80',
+        role: 'CPA & Financial Advisor'
+      }
     },
     {
       title: 'Best Payment Terms for Freelancers',
@@ -21,15 +27,27 @@ export const BlogHomePage: React.FC = () => {
       url: '/blog/payment-terms-explained',
       category: 'Freelancing',
       readTime: '7 min read',
-      gradient: 'linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)'
+      date: 'Jul 15, 2026',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+      author: {
+        name: 'Alex Rivera',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80',
+        role: 'Freelance Consultant'
+      }
     },
     {
-      title: 'How to Handle Late Payments gracefully',
+      title: 'How to Handle Late Payments Gracefully',
       excerpt: 'Struggling with unpaid invoices? Here is a step-by-step guide to following up without ruining client relationships.',
       url: '/blog/late-payment-fees-guide',
       category: 'Business',
       readTime: '6 min read',
-      gradient: 'linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)'
+      date: 'Jul 10, 2026',
+      image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80',
+      author: {
+        name: 'John Smith, Esq.',
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80',
+        role: 'Business Attorney'
+      }
     },
     {
       title: 'Tax Deductions Every Freelancer Should Know',
@@ -37,15 +55,27 @@ export const BlogHomePage: React.FC = () => {
       url: '/blog/tax-invoice',
       category: 'Taxes',
       readTime: '8 min read',
-      gradient: 'linear-gradient(120deg, #fccb90 0%, #d57eeb 100%)'
+      date: 'Jul 04, 2026',
+      image: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=80',
+      author: {
+        name: 'Elena Rostova',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
+        role: 'Tax Specialist'
+      }
     },
     {
-      title: 'Invoice vs. Receipt: Whats the Difference?',
+      title: 'Invoice vs. Receipt: What\'s the Difference?',
       excerpt: 'A comprehensive look at the legal and practical differences between these two essential financial documents.',
       url: '/blog/invoice-vs-receipt',
       category: 'Accounting',
       readTime: '4 min read',
-      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+      date: 'Jun 28, 2026',
+      image: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80',
+      author: {
+        name: 'Jane Doe',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80',
+        role: 'CPA & Financial Advisor'
+      }
     },
     {
       title: 'The Guide to Recurring Invoices',
@@ -53,7 +83,13 @@ export const BlogHomePage: React.FC = () => {
       url: '/blog/recurring-invoice',
       category: 'Resources',
       readTime: '10 min read',
-      gradient: 'linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%)'
+      date: 'Jun 20, 2026',
+      image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
+      author: {
+        name: 'David Chen',
+        avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=120&q=80',
+        role: 'Productivity Lead'
+      }
     }
   ];
 
@@ -69,14 +105,11 @@ export const BlogHomePage: React.FC = () => {
         
         {/* Blog Hero */}
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: 'var(--color-primary-faint)', color: 'var(--color-primary)', borderRadius: '100px', fontWeight: 600, fontSize: '13px', marginBottom: '24px' }}>
-            <BookOpen size={16} /> Latest Resources
-          </div>
           <h1 style={{ fontSize: '42px', fontWeight: 900, color: 'var(--color-text-title)', marginBottom: '20px', letterSpacing: '-0.02em' }}>
-            Business Guides & <span style={{ color: 'var(--color-primary)' }}>Insights</span>
+            Invoicing & Business <span style={{ color: 'var(--color-primary)' }}>Insights</span>
           </h1>
-          <p style={{ fontSize: '16px', color: 'var(--color-text-secondary)', maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}>
-            Everything you need to know about invoicing, getting paid faster, and running your freelance business successfully.
+          <p style={{ fontSize: '16px', color: 'var(--color-text-secondary)', maxWidth: '640px', margin: '0 auto', lineHeight: '1.6' }}>
+            Expert guides, practical strategies, and best practices to help you optimize invoicing, accelerate cash flow, and grow your business.
           </p>
         </div>
 
@@ -90,31 +123,119 @@ export const BlogHomePage: React.FC = () => {
               overflow: 'hidden',
               textDecoration: 'none',
               border: '1px solid var(--color-border)',
-              transition: 'all 0.3s ease',
+              transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
               boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
             }}>
               
-              {/* Thumbnail / Gradient Area */}
-              <div style={{ width: '100%', height: '180px', background: article.gradient, position: 'relative' }}>
-                <div style={{ position: 'absolute', top: '16px', left: '16px', background: 'rgba(255,255,255,0.9)', color: '#0F172A', padding: '4px 12px', borderRadius: '100px', fontSize: '12px', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px', backdropFilter: 'blur(4px)' }}>
-                  <Tag size={12} /> {article.category}
+              {/* Photo Thumbnail Wrapper */}
+              <div style={{ width: '100%', height: '210px', overflow: 'hidden', position: 'relative', background: '#F1F5F9' }}>
+                <img 
+                  src={article.image} 
+                  alt={article.title}
+                  className="blog-card-img"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                  }}
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="210"
+                />
+                <div style={{ 
+                  position: 'absolute', 
+                  top: '16px', 
+                  left: '16px', 
+                  background: 'rgba(15, 23, 42, 0.75)', 
+                  color: '#FFFFFF', 
+                  padding: '5px 14px', 
+                  borderRadius: '100px', 
+                  fontSize: '12px', 
+                  fontWeight: 600, 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '6px', 
+                  backdropFilter: 'blur(8px)',
+                  letterSpacing: '0.02em',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.15)'
+                }}>
+                  <Tag size={12} style={{ opacity: 0.9 }} /> {article.category}
                 </div>
               </div>
               
               {/* Content Area */}
               <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-text-title)', marginBottom: '12px', lineHeight: 1.4 }}>
+                <h3 className="blog-card-title" style={{ 
+                  fontSize: '20px', 
+                  fontWeight: 700, 
+                  color: 'var(--color-text-title)', 
+                  marginBottom: '12px', 
+                  lineHeight: 1.4,
+                  transition: 'color 0.2s ease'
+                }}>
                   {article.title}
                 </h3>
-                <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '24px', lineHeight: 1.6, flex: 1 }}>
+                <p style={{ 
+                  fontSize: '14px', 
+                  color: 'var(--color-text-secondary)', 
+                  marginBottom: '24px', 
+                  lineHeight: 1.6, 
+                  flex: 1 
+                }}>
                   {article.excerpt}
                 </p>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--color-border)', paddingTop: '16px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--color-text-tertiary)', fontSize: '13px', fontWeight: 500 }}>
-                    <Clock size={14} /> {article.readTime}
+
+                {/* Author & Footer Info */}
+                <div style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'space-between', 
+                  borderTop: '1px solid var(--color-border)', 
+                  paddingTop: '16px',
+                  marginTop: 'auto'
+                }}>
+                  {/* Author Meta */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <img 
+                      src={article.author.avatar} 
+                      alt={article.author.name}
+                      style={{ 
+                        width: '34px', 
+                        height: '34px', 
+                        borderRadius: '50%', 
+                        objectFit: 'cover',
+                        border: '2px solid var(--color-border)' 
+                      }} 
+                      loading="lazy"
+                      decoding="async"
+                      width="34"
+                      height="34"
+                    />
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                      <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-title)', lineHeight: 1.2 }}>
+                        {article.author.name}
+                      </span>
+                      <span style={{ fontSize: '11px', color: 'var(--color-text-tertiary)' }}>
+                        {article.date} · {article.readTime}
+                      </span>
+                    </div>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--color-primary)', fontSize: '14px', fontWeight: 600 }}>
-                    Read <ArrowRight size={16} />
+
+                  {/* Read More Arrow */}
+                  <div className="blog-card-arrow" style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    width: '34px',
+                    height: '34px',
+                    borderRadius: '50%',
+                    background: 'var(--color-primary-faint)',
+                    color: 'var(--color-primary)', 
+                    transition: 'all 0.25s ease'
+                  }}>
+                    <ArrowRight size={16} />
                   </div>
                 </div>
               </div>
@@ -124,9 +245,20 @@ export const BlogHomePage: React.FC = () => {
 
         <style>{`
           .blog-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08) !important;
+            transform: translateY(-6px);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.09) !important;
             border-color: var(--color-border-hover) !important;
+          }
+          .blog-card:hover .blog-card-img {
+            transform: scale(1.06);
+          }
+          .blog-card:hover .blog-card-title {
+            color: var(--color-primary) !important;
+          }
+          .blog-card:hover .blog-card-arrow {
+            background: var(--color-primary) !important;
+            color: #FFFFFF !important;
+            transform: translateX(3px);
           }
         `}</style>
 

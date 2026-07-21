@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Download, MessageCircle, Mail, MessageSquare, Image as ImageIcon, Share2 } from 'lucide-react';
+import { X, Download, MessageCircle, Mail, MessageSquare, Image as ImageIcon, Share2, Printer, CheckCircle2 } from 'lucide-react';
 import { toJpeg } from 'html-to-image';
 import type { InvoiceData } from '../../types/invoice';
 import type { PurchaseOrderData } from '../../types/purchaseOrder';
@@ -28,6 +28,23 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
   // Calculate perfect fit scale
   const [scale, setScale] = useState(0.8);
   const [showShareMenu, setShowShareMenu] = useState(false);
+  const [downloadSuccess, setDownloadSuccess] = useState(false);
+
+  const handlePrint = () => {
+    window.print();
+  };
+
+  const handleTriggerPDF = () => {
+    onDownloadPDF();
+    setDownloadSuccess(true);
+    setTimeout(() => setDownloadSuccess(false), 4000);
+  };
+
+  const handleTriggerJPG = () => {
+    handleDownloadJPG();
+    setDownloadSuccess(true);
+    setTimeout(() => setDownloadSuccess(false), 4000);
+  };
 
   // Handle ESC and Click Outside
   useEffect(() => {
@@ -276,19 +293,46 @@ export const FullPreviewModal: React.FC<FullPreviewModalProps> = ({ isOpen, onCl
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <div style={{ position: 'relative' }} ref={shareMenuRef}>
-              <button className="btn hover-lift" style={{ background: 'transparent', color: '#CBD5E1', border: '1px solid rgba(255,255,255,0.1)', padding: '0 16px', height: '36px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center' }} onClick={() => setShowShareMenu(!showShareMenu)} onMouseEnter={(e) => e.currentTarget.style.background='rgba(255,255,255,0.05)'} onMouseLeave={(e) => e.currentTarget.style.background='transparent'}>
-                <Share2 size={16} style={{ marginRight: '6px' }} /> Share
+              <button className="btn hover-lift" style={{ background: 'transparent', color: '#CBD5E1', border: '1px solid rgba(255,255,255,0.1)', padding: '0 14px', height: '36px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center' }} onClick={() => setShowShareMenu(!showShareMenu)}>
+                <Share2 size={15} style={{ marginRight: '6px' }} /> Share
               </button>
               {showShareMenu && <ShareMenu />}
             </div>
-            <button className="btn hover-lift" style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', border: 'none', padding: '0 16px', height: '36px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center' }} onClick={handleDownloadJPG} onMouseEnter={(e) => e.currentTarget.style.background='rgba(255,255,255,0.15)'} onMouseLeave={(e) => e.currentTarget.style.background='rgba(255,255,255,0.1)'}>
-              <ImageIcon size={16} style={{ marginRight: '6px' }} /> Download Image
+            <button className="btn hover-lift" style={{ background: 'rgba(255,255,255,0.08)', color: '#FFF', border: 'none', padding: '0 14px', height: '36px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center' }} onClick={handlePrint} title="Print Document">
+              <Printer size={15} style={{ marginRight: '6px' }} /> Print
             </button>
-            <button className="btn btn-primary hover-lift" onClick={onDownloadPDF} style={{ padding: '0 20px', height: '36px', borderRadius: '8px', fontSize: '13px', fontWeight: 700, display: 'flex', alignItems: 'center' }}>
-              <Download size={16} style={{ marginRight: '6px' }} /> Download PDF
+            <button className="btn hover-lift" style={{ background: 'rgba(255,255,255,0.12)', color: '#FFF', border: 'none', padding: '0 14px', height: '36px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center' }} onClick={handleTriggerJPG}>
+              <ImageIcon size={15} style={{ marginRight: '6px' }} /> Image
+            </button>
+            <button className="btn btn-primary hover-lift" onClick={handleTriggerPDF} style={{ padding: '0 18px', height: '36px', borderRadius: '8px', fontSize: '13px', fontWeight: 700, display: 'flex', alignItems: 'center' }}>
+              <Download size={15} style={{ marginRight: '6px' }} /> Download PDF
             </button>
           </div>
         </div>
+
+        {/* Download Success Banner */}
+        {downloadSuccess && (
+          <div style={{
+            position: 'absolute',
+            top: '84px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: '#10B981',
+            color: 'white',
+            padding: '10px 24px',
+            borderRadius: '100px',
+            boxShadow: '0 10px 25px rgba(16, 185, 129, 0.4)',
+            fontSize: '14px',
+            fontWeight: 700,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            zIndex: 30,
+            animation: 'fadeInDown 0.3s ease'
+          }}>
+            <CheckCircle2 size={18} /> Document generated successfully!
+          </div>
+        )}
 
         {/* Mobile Minimal Close Button */}
         <div className="mobile-only" style={{

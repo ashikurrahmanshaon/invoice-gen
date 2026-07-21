@@ -129,7 +129,7 @@ export function PurchaseOrderGenerator() {
       await generatePOPDF(data as any);
       setToastMessage({ text: 'Invoice PDF generated successfully.', type: 'success' });
       setTimeout(() => setToastMessage(null), 4000);
-    } catch (_err) {
+    } catch {
       setToastMessage({ text: 'An error occurred while generating PDF.', type: 'error' });
       setTimeout(() => setToastMessage(null), 4000);
     } finally {
@@ -634,6 +634,7 @@ export function PurchaseOrderGenerator() {
             onClose={() => setIsPreviewOpen(false)} 
             onDownloadPDF={handleDownload}
             isGenerating={isGenerating}
+            documentType="purchase_order"
           />
         )}
       </Suspense>

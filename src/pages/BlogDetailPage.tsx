@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AppLayout } from '../components/layout/AppLayout';
 import { Container } from '../components/layout/Container';
 import { Card } from '../components/ui/Card';
 import { CTA } from '../components/ui/CTA';
 import { SEO } from '../components/seo/SEO';
+import { Clock, Share2, ArrowRight } from 'lucide-react';
 import blogsData from '../data/seoContent.json';
 
 interface Blog {
@@ -18,6 +20,7 @@ const blogs: Blog[] = blogsData as Blog[];
 
 export default function BlogDetailPage() {
   const { slug } = useParams();
+  const [copied, setCopied] = useState(false);
   
   const targetSlug = slug ? slug.trim().toLowerCase() : '';
   const blog = blogs.find(b => b.slug.trim().toLowerCase() === targetSlug);
@@ -60,6 +63,32 @@ export default function BlogDetailPage() {
             </div>
           </div>
 
+          {/* Meta bar: reading time + share */}
+          {(() => {
+            const wordCount = blog.sections.reduce((acc, s) => acc + s.p.split(/\s+/).length + s.h2.split(/\s+/).length, 0);
+            const readTime = Math.max(1, Math.round(wordCount / 200));
+            return (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '16px', flexWrap: 'wrap' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'var(--color-text-tertiary)', fontWeight: 500 }}>
+                  <Clock size={14} /> {readTime} min read
+                </span>
+                <span style={{ color: 'var(--color-border)' }}>•</span>
+                <button
+                  onClick={() => {
+                    if (typeof navigator !== 'undefined') {
+                      navigator.clipboard.writeText(window.location.href);
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 2500);
+                    }
+                  }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'none', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 600, color: 'var(--color-primary)', padding: 0 }}
+                >
+                  <Share2 size={14} /> {copied ? 'Link Copied!' : 'Share Article'}
+                </button>
+              </div>
+            );
+          })()}
+
           <div className="article-content">
             {blog.sections.map((s, i) => (
               <div key={i}>
@@ -94,22 +123,22 @@ export default function BlogDetailPage() {
 
         <div className="related-content" style={{ marginTop: '64px' }}>
           <h3 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '24px' }}>Related Articles</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px' }}>
             {blogs.filter(b => b.slug !== slug).slice(0, 4).map(b => (
               <a 
                 key={b.slug}
                 href={`/blog/${b.slug}/`} 
-                style={{
-                  padding: '16px',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: '8px',
-                  textDecoration: 'none',
-                  color: 'var(--color-text-main)',
-                  fontWeight: 500,
-                  display: 'block'
-                }}
+                className="guide-card"
               >
-                {b.title}
+                <h4 style={{ fontSize: '15px', fontWeight: 600, color: 'var(--color-text-title)', margin: 0, lineHeight: 1.4 }}>
+                  {b.title}
+                </h4>
+                <p style={{ fontSize: '13px', color: 'var(--color-text-secondary)', margin: 0, lineHeight: 1.5 }}>
+                  {b.sections[0]?.p?.substring(0, 100)}...
+                </p>
+                <span style={{ fontSize: '13px', color: 'var(--color-primary)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px', marginTop: 'auto' }}>
+                  Read more <ArrowRight size={14} />
+                </span>
               </a>
             ))}
           </div>

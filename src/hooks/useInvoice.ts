@@ -291,6 +291,38 @@ export const useInvoice = (initialSettings?: Settings) => {
     });
   }, []);
 
+  const moveItemUp = useCallback((id: string) => {
+    setData(prev => {
+      const index = prev.items.findIndex(i => i.id === id);
+      if (index <= 0) return prev;
+      const newItems = [...prev.items];
+      const temp = newItems[index];
+      newItems[index] = newItems[index - 1];
+      newItems[index - 1] = temp;
+      return {
+        ...prev,
+        items: newItems,
+        totals: calculateTotals(newItems, prev.totals.discountValue, prev.totals.discountType, prev.totals.taxRate, prev.totals.taxLabel, prev.totals.shipping, prev.totals.amountPaid)
+      };
+    });
+  }, []);
+
+  const moveItemDown = useCallback((id: string) => {
+    setData(prev => {
+      const index = prev.items.findIndex(i => i.id === id);
+      if (index < 0 || index >= prev.items.length - 1) return prev;
+      const newItems = [...prev.items];
+      const temp = newItems[index];
+      newItems[index] = newItems[index + 1];
+      newItems[index + 1] = temp;
+      return {
+        ...prev,
+        items: newItems,
+        totals: calculateTotals(newItems, prev.totals.discountValue, prev.totals.discountType, prev.totals.taxRate, prev.totals.taxLabel, prev.totals.shipping, prev.totals.amountPaid)
+      };
+    });
+  }, []);
+
   const removeItem = useCallback((id: string) => {
     setData(prev => {
       let newItems = prev.items.filter(i => i.id !== id);
@@ -453,6 +485,8 @@ export const useInvoice = (initialSettings?: Settings) => {
     addItem,
     updateItem,
     duplicateItem,
+    moveItemUp,
+    moveItemDown,
     removeItem,
     setItems,
     setDiscount,

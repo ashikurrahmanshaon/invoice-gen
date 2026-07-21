@@ -47,7 +47,7 @@ if (fs.existsSync(pagesDir)) {
         }
         dynamicRoutes.push(route);
       }
-    } catch (e) {
+    } catch {
       console.warn(`Could not parse ${file}`);
     }
   }
