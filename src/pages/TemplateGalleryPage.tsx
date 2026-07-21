@@ -93,16 +93,49 @@ export const TemplateGalleryPage: React.FC = () => {
             align-items: flex-start;
           }
           .template-sidebar {
-            width: 340px;
+            width: 300px;
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
           }
           .template-detail {
             flex: 1;
             position: sticky;
             top: 100px;
+          }
+          .template-tab {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            position: relative;
+          }
+          .template-tab:hover {
+            background: var(--color-surface);
+            border-color: var(--color-border);
+          }
+          .template-tab.active {
+            background: var(--color-surface);
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+          }
+          .preview-container {
+            background-size: 24px 24px;
+            background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
+          }
+          .invoice-graphic {
+            animation: float 6s ease-in-out infinite;
+          }
+          @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
           }
           @media (max-width: 900px) {
             .template-layout-container {
@@ -117,16 +150,13 @@ export const TemplateGalleryPage: React.FC = () => {
           }
         `}</style>
 
-        <div className="workspace-main" style={{ width: '100%', maxWidth: '1280px', margin: '0 auto', padding: '120px 24px 0 24px' }}>
+        <div className="workspace-main" style={{ width: '100%', maxWidth: '1100px', margin: '0 auto', padding: '40px 24px 0 24px' }}>
           
           {/* Header */}
-          <div style={{ padding: '40px 0 48px 0', textAlign: 'center' }}>
-            <h1 style={{ fontSize: '40px', fontWeight: 800, color: 'var(--color-text-title)', marginBottom: '16px', letterSpacing: '-0.03em' }}>
+          <div style={{ padding: '0 0 40px 0', textAlign: 'center' }}>
+            <h1 style={{ fontSize: '40px', fontWeight: 900, background: 'linear-gradient(135deg, var(--color-text-title) 0%, #475569 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', margin: 0, letterSpacing: '-0.02em' }}>
               Professional Invoice Templates
             </h1>
-            <p style={{ fontSize: '18px', color: 'var(--color-text-main)', maxWidth: '650px', margin: '0 auto', lineHeight: '1.6' }}>
-              Choose a template optimized for your industry. Customize it instantly, add your branding, and download it as a PDF for free.
-            </p>
           </div>
 
           {/* Master-Detail Layout */}
@@ -142,46 +172,36 @@ export const TemplateGalleryPage: React.FC = () => {
                   <button
                     key={template.id}
                     onClick={() => setActiveId(template.id)}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      padding: '16px 20px',
-                      background: isActive ? 'var(--color-primary-faint)' : 'var(--color-surface)',
-                      border: `1px solid ${isActive ? 'var(--color-primary)' : 'var(--color-border)'}`,
-                      borderRadius: '16px',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s',
-                      textAlign: 'left',
-                      boxShadow: isActive ? '0 4px 12px rgba(0, 166, 90, 0.1)' : '0 2px 4px rgba(0,0,0,0.02)'
-                    }}
+                    className={`template-tab ${isActive ? 'active' : ''}`}
                   >
                     <div style={{ 
-                      width: '48px', height: '48px', 
-                      borderRadius: '12px', 
-                      background: isActive ? 'var(--color-primary)' : '#F1F5F9',
+                      width: '40px', height: '40px', 
+                      borderRadius: '8px', 
+                      background: isActive ? 'var(--color-primary-faint)' : '#F8FAFC',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      marginRight: '16px',
-                      color: isActive ? '#FFFFFF' : '#64748B',
-                      transition: 'all 0.2s'
+                      marginRight: '12px',
+                      color: isActive ? 'var(--color-primary)' : '#64748B',
+                      transition: 'all 0.2s',
+                      zIndex: 1
                     }}>
-                      <Icon size={24} />
+                      <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
                     </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                        <span style={{ fontWeight: isActive ? 700 : 600, color: isActive ? 'var(--color-primary)' : 'var(--color-text-title)', fontSize: '16px' }}>
+                    <div style={{ flex: 1, zIndex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2px' }}>
+                        <span style={{ fontWeight: isActive ? 700 : 600, color: isActive ? 'var(--color-text-title)' : 'var(--color-text-main)', fontSize: '14px' }}>
                           {template.title}
                         </span>
                         {template.popular && (
-                          <span style={{ fontSize: '10px', background: '#FEF3C7', color: '#D97706', padding: '3px 8px', borderRadius: '100px', fontWeight: 700, letterSpacing: '0.5px' }}>
+                          <span style={{ fontSize: '9px', background: '#FDE68A', color: '#92400E', padding: '2px 6px', borderRadius: '100px', fontWeight: 700, letterSpacing: '0.5px' }}>
                             HOT
                           </span>
                         )}
                       </div>
-                      <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontWeight: 500 }}>
                         {template.features[0]} • {template.features[1]}
                       </div>
                     </div>
-                    <ChevronRight size={20} color={isActive ? 'var(--color-primary)' : '#CBD5E1'} style={{ transform: isActive ? 'translateX(4px)' : 'none', transition: 'transform 0.2s' }} />
+                    <ChevronRight size={16} color={isActive ? 'var(--color-primary)' : '#CBD5E1'} style={{ transform: isActive ? 'translateX(4px)' : 'none', transition: 'transform 0.2s', zIndex: 1 }} />
                   </button>
                 );
               })}
@@ -192,34 +212,43 @@ export const TemplateGalleryPage: React.FC = () => {
               <div style={{ 
                 background: 'var(--color-surface)',
                 border: '1px solid var(--color-border)',
-                borderRadius: '24px',
-                padding: '40px',
-                boxShadow: '0 20px 40px -20px rgba(0,0,0,0.05)',
+                borderRadius: '20px',
+                padding: '28px',
+                boxShadow: '0 8px 24px -10px rgba(0,0,0,0.05)',
+                position: 'relative',
+                overflow: 'hidden'
               }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}>
-                  <div style={{ flex: '1 1 400px' }}>
-                    <h2 style={{ fontSize: '32px', fontWeight: 800, color: 'var(--color-text-title)', margin: '0 0 12px 0', letterSpacing: '-0.02em' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '28px', flexWrap: 'wrap', gap: '16px', position: 'relative', zIndex: 1 }}>
+                  <div style={{ flex: '1 1 350px' }}>
+                    <h2 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--color-text-title)', margin: '0 0 6px 0', letterSpacing: '-0.01em', display: 'flex', alignItems: 'center', gap: '10px' }}>
                       {activeTemplate.title} Invoice
                     </h2>
-                    <p style={{ fontSize: '16px', color: 'var(--color-text-secondary)', margin: 0, maxWidth: '500px', lineHeight: '1.6' }}>
+                    <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', margin: 0, maxWidth: '500px', lineHeight: '1.6', fontWeight: 400 }}>
                       {activeTemplate.description}
                     </p>
                   </div>
                   <button 
                     onClick={handleUseTemplate}
                     className="btn btn-primary"
-                    style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '16px 32px', fontSize: '16px', borderRadius: '12px', flexShrink: 0, border: 'none', cursor: 'pointer' }}
+                    style={{ 
+                      display: 'flex', alignItems: 'center', gap: '6px', 
+                      padding: '10px 20px', fontSize: '14px', fontWeight: 600,
+                      borderRadius: '10px', flexShrink: 0, border: 'none', cursor: 'pointer',
+                      transition: 'all 0.2s'
+                    }}
+                    onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-1px)'}
+                    onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                   >
-                    Use This Template <ChevronRight size={18} />
+                    Use This Template <ChevronRight size={16} strokeWidth={2.5} />
                   </button>
                 </div>
 
                 {/* Features List */}
-                <div style={{ display: 'flex', gap: '24px', marginBottom: '40px', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', gap: '16px', marginBottom: '28px', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
                   {activeTemplate.features.map((feature, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-text-main)', fontSize: '15px', fontWeight: 600 }}>
-                      <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'var(--color-success-light)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <Check size={14} color="var(--color-success)" strokeWidth={3} />
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--color-text-main)', fontSize: '13px', fontWeight: 500 }}>
+                      <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'var(--color-success-light)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Check size={12} color="var(--color-success)" strokeWidth={3} />
                       </div>
                       {feature}
                     </div>
@@ -227,55 +256,68 @@ export const TemplateGalleryPage: React.FC = () => {
                 </div>
 
                 {/* Large Preview Box */}
-                <div style={{
+                <div className="preview-container" style={{
                   width: '100%',
-                  height: '600px',
-                  background: activeTemplate.previewColor,
-                  borderRadius: '20px',
+                  height: '280px',
+                  backgroundColor: activeTemplate.previewColor,
+                  borderRadius: '12px',
                   border: '1px solid var(--color-border)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   overflow: 'hidden',
-                  position: 'relative'
+                  position: 'relative',
                 }}>
                   {/* Simulated Invoice Graphic */}
-                  <div style={{ 
-                    width: '65%', height: '85%', 
+                  <div className="invoice-graphic" style={{ 
+                    width: '60%', height: '85%', 
                     background: 'white', 
-                    boxShadow: '0 30px 60px rgba(0,0,0,0.12)', 
+                    boxShadow: '0 30px 60px -12px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.02)', 
                     borderRadius: '8px',
-                    padding: '48px',
+                    padding: '24px',
                     display: 'flex',
                     flexDirection: 'column'
                   }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '48px' }}>
-                      <div style={{ width: '100px', height: '40px', background: '#E2E8F0', borderRadius: '6px' }}></div>
-                      <div style={{ width: '140px', height: '24px', background: '#F1F5F9', borderRadius: '4px' }}></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px' }}>
+                      <div style={{ width: '70px', height: '24px', background: 'var(--color-border)', borderRadius: '4px' }}></div>
+                      <div style={{ width: '100px', height: '16px', background: '#F1F5F9', borderRadius: '4px' }}></div>
                     </div>
-                    <div style={{ width: '240px', height: '60px', background: '#F8FAFC', borderRadius: '6px', marginBottom: '48px' }}></div>
+                    <div style={{ width: '220px', height: '48px', background: '#F8FAFC', borderRadius: '8px', marginBottom: '40px' }}></div>
                     <div style={{ flex: 1, borderTop: '2px solid #F1F5F9', paddingTop: '24px' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-                        <div style={{ width: '40%', height: '20px', background: '#E2E8F0', borderRadius: '4px' }}></div>
-                        <div style={{ width: '20%', height: '20px', background: '#F1F5F9', borderRadius: '4px' }}></div>
+                        <div style={{ width: '35%', height: '16px', background: 'var(--color-border)', borderRadius: '4px' }}></div>
+                        <div style={{ width: '20%', height: '16px', background: '#F1F5F9', borderRadius: '4px' }}></div>
                       </div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-                        <div style={{ width: '60%', height: '20px', background: '#E2E8F0', borderRadius: '4px' }}></div>
-                        <div style={{ width: '20%', height: '20px', background: '#F1F5F9', borderRadius: '4px' }}></div>
+                        <div style={{ width: '50%', height: '16px', background: 'var(--color-border)', borderRadius: '4px' }}></div>
+                        <div style={{ width: '20%', height: '16px', background: '#F1F5F9', borderRadius: '4px' }}></div>
                       </div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-                        <div style={{ width: '50%', height: '20px', background: '#E2E8F0', borderRadius: '4px' }}></div>
-                        <div style={{ width: '20%', height: '20px', background: '#F1F5F9', borderRadius: '4px' }}></div>
+                        <div style={{ width: '45%', height: '16px', background: 'var(--color-border)', borderRadius: '4px' }}></div>
+                        <div style={{ width: '20%', height: '16px', background: '#F1F5F9', borderRadius: '4px' }}></div>
                       </div>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '24px', borderTop: '2px solid #F1F5F9', paddingTop: '24px' }}>
-                       <div style={{ width: '180px', height: '32px', background: '#E2E8F0', borderRadius: '6px' }}></div>
+                       <div style={{ width: '160px', height: '28px', background: 'var(--color-border)', borderRadius: '6px' }}></div>
                     </div>
                   </div>
                   
                   {/* Floating Badge */}
-                  <div style={{ position: 'absolute', bottom: '32px', right: '32px', background: 'white', padding: '14px 24px', borderRadius: '100px', boxShadow: '0 12px 30px rgba(0,0,0,0.15)', display: 'flex', alignItems: 'center', gap: '10px', fontWeight: 600, fontSize: '15px', color: 'var(--color-text-title)' }}>
-                    <Star size={18} fill="#F59E0B" color="#F59E0B" /> Optimized for {activeTemplate.title}
+                  <div style={{ 
+                    position: 'absolute', bottom: '32px', right: '32px', 
+                    background: 'rgba(255, 255, 255, 0.95)', 
+                    backdropFilter: 'blur(12px)',
+                    padding: '16px 28px', 
+                    borderRadius: '100px', 
+                    boxShadow: '0 20px 40px -8px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.6)', 
+                    display: 'flex', alignItems: 'center', gap: '12px', 
+                    fontWeight: 700, fontSize: '15px', color: 'var(--color-text-title)',
+                    zIndex: 2
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', borderRadius: '50%', background: '#FEF3C7' }}>
+                      <Star size={16} fill="#D97706" color="#D97706" />
+                    </div>
+                    Optimized for {activeTemplate.title}
                   </div>
                 </div>
                 

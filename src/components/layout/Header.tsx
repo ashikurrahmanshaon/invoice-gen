@@ -74,15 +74,47 @@ export const Header: React.FC<HeaderProps> = ({
         .mobile-drawer-link { display: flex; alignItems: center; gap: 10px; padding: 12px 16px; border-radius: 8px; color: var(--color-text-main); font-weight: 500; font-size: 15px; text-decoration: none; align-items: center; }
         .mobile-drawer-link:hover { background: rgba(0,0,0,0.04); }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .nav-active-indicator {
-          position: absolute;
-          bottom: -4px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 24px;
-          height: 3px;
-          background: var(--color-primary);
-          border-radius: 4px;
+        .nav-link-modern {
+          font-size: 15px;
+          color: var(--color-text-secondary);
+          font-weight: 500;
+          text-decoration: none;
+          padding: 8px 16px;
+          border-radius: 99px;
+          transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .nav-link-modern:hover {
+          background: rgba(0,0,0,0.04);
+          color: var(--color-text-main);
+        }
+        .nav-link-modern.active {
+          color: var(--color-text-main);
+          font-weight: 600;
+          background: rgba(0,0,0,0.02);
+        }
+        .theme-toggle-btn {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: transparent;
+          border: none;
+          color: var(--color-text-secondary);
+          cursor: pointer;
+          transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .theme-toggle-btn:hover {
+          background: rgba(0,0,0,0.04);
+          color: var(--color-text-main);
+          transform: scale(1.05);
+        }
+        .theme-toggle-btn:active {
+          transform: scale(0.95);
         }
       `}</style>
       <header 
@@ -103,7 +135,7 @@ export const Header: React.FC<HeaderProps> = ({
           transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)' 
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1360px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
           
           {/* Mobile-Only Header Layout */}
           <div className="mobile-only" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', position: 'relative' }}>
@@ -185,55 +217,46 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </div>
 
-          {/* Desktop: Center Links */}
-          <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '32px', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-            <div 
-              style={{ position: 'relative' }}
-              onMouseEnter={() => setShowToolsMenu(true)}
-              onMouseLeave={() => setShowToolsMenu(false)}
-            >
-              <button 
-                style={{ ...navLinkStyle, display: 'flex', alignItems: 'center', gap: '6px', background: 'transparent', border: 'none', cursor: 'pointer' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-text-main)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--color-text-secondary)'; }}
+          {/* Desktop: Navigation Links */}
+          <nav className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '8px', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
+              <div 
+                style={{ position: 'relative' }}
+                onMouseEnter={() => setShowToolsMenu(true)}
+                onMouseLeave={() => setShowToolsMenu(false)}
               >
-                <Wrench size={16} /> Tools
-                <ChevronDown size={14} style={{ transform: showToolsMenu ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease', marginLeft: '-2px' }} />
-                {(location.pathname === '/' || location.pathname === '/purchase-order-generator' || location.pathname === '/quote-generator' || location.pathname === '/estimate-generator') && <div className="nav-active-indicator" />}
-              </button>
-              
-              <div style={{
-                position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', minWidth: '240px',
-                background: 'white', border: '1px solid rgba(0,0,0,0.08)', borderRadius: '12px',
-                boxShadow: '0 12px 40px rgba(0,0,0,0.12)', padding: '8px', zIndex: 1001,
-                opacity: showToolsMenu ? 1 : 0, visibility: showToolsMenu ? 'visible' : 'hidden',
-                transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-                marginTop: showToolsMenu ? '4px' : '10px'
-              }}>
-                <Link to="/" className="hover-bg" style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', color: 'var(--color-text-main)', fontWeight: location.pathname === '/' ? 600 : 500, fontSize: '14px', textDecoration: 'none' }}>Invoice Generator</Link>
-                <Link to="/purchase-order-generator" className="hover-bg" style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', color: 'var(--color-text-main)', fontWeight: location.pathname === '/purchase-order-generator' ? 600 : 500, fontSize: '14px', textDecoration: 'none' }}>Purchase Order Generator</Link>
-                <Link to="/quote-generator" className="hover-bg" style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', color: 'var(--color-text-main)', fontWeight: location.pathname === '/quote-generator' ? 600 : 500, fontSize: '14px', textDecoration: 'none' }}>Quote Generator</Link>
-                <Link to="/estimate-generator" className="hover-bg" style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', color: 'var(--color-text-main)', fontWeight: location.pathname === '/estimate-generator' ? 600 : 500, fontSize: '14px', textDecoration: 'none' }}>Estimate Generator</Link>
+                <button 
+                  className={`nav-link-modern ${(location.pathname === '/' || location.pathname === '/purchase-order-generator' || location.pathname === '/quote-generator' || location.pathname === '/estimate-generator') ? 'active' : ''}`}
+                  style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
+                >
+                  Tools
+                  <ChevronDown size={14} style={{ transform: showToolsMenu ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease', marginLeft: '-2px', opacity: 0.6 }} />
+                </button>
+                
+                <div style={{
+                  position: 'absolute', top: '100%', left: '0', minWidth: '240px',
+                  background: 'white', border: '1px solid rgba(0,0,0,0.08)', borderRadius: '12px',
+                  boxShadow: '0 12px 40px rgba(0,0,0,0.12)', padding: '8px', zIndex: 1001,
+                  opacity: showToolsMenu ? 1 : 0, visibility: showToolsMenu ? 'visible' : 'hidden',
+                  transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                  marginTop: showToolsMenu ? '4px' : '10px'
+                }}>
+                  <Link to="/" className="hover-bg" style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', color: 'var(--color-text-main)', fontWeight: location.pathname === '/' ? 600 : 500, fontSize: '14px', textDecoration: 'none' }}>Invoice Generator</Link>
+                  <Link to="/purchase-order-generator" className="hover-bg" style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', color: 'var(--color-text-main)', fontWeight: location.pathname === '/purchase-order-generator' ? 600 : 500, fontSize: '14px', textDecoration: 'none' }}>Purchase Order Generator</Link>
+                  <Link to="/quote-generator" className="hover-bg" style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', color: 'var(--color-text-main)', fontWeight: location.pathname === '/quote-generator' ? 600 : 500, fontSize: '14px', textDecoration: 'none' }}>Quote Generator</Link>
+                  <Link to="/estimate-generator" className="hover-bg" style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', color: 'var(--color-text-main)', fontWeight: location.pathname === '/estimate-generator' ? 600 : 500, fontSize: '14px', textDecoration: 'none' }}>Estimate Generator</Link>
+                </div>
               </div>
-            </div>
 
-            <Link to="/templates" style={{ ...(location.pathname.startsWith('/templates') ? activeNavLinkStyle : navLinkStyle), display: 'flex', alignItems: 'center', gap: '6px' }} onMouseEnter={(e) => { if(!location.pathname.startsWith('/templates')) e.currentTarget.style.color = 'var(--color-text-main)' }} onMouseLeave={(e) => { if(!location.pathname.startsWith('/templates')) e.currentTarget.style.color = 'var(--color-text-secondary)' }}>
-              <LayoutTemplate size={16} /> Templates
-              {location.pathname.startsWith('/templates') && <div className="nav-active-indicator" />}
-            </Link>
-            <Link to="/guides" style={{ ...(location.pathname.startsWith('/guides') ? activeNavLinkStyle : navLinkStyle), display: 'flex', alignItems: 'center', gap: '6px' }} onMouseEnter={(e) => { if(!location.pathname.startsWith('/guides')) e.currentTarget.style.color = 'var(--color-text-main)' }} onMouseLeave={(e) => { if(!location.pathname.startsWith('/guides')) e.currentTarget.style.color = 'var(--color-text-secondary)' }}>
-              <BookOpen size={16} /> Guides
-              {location.pathname.startsWith('/guides') && <div className="nav-active-indicator" />}
-            </Link>
-            <Link to="/blog" style={{ ...(location.pathname.startsWith('/blog') ? activeNavLinkStyle : navLinkStyle), display: 'flex', alignItems: 'center', gap: '6px' }} onMouseEnter={(e) => { if(!location.pathname.startsWith('/blog')) e.currentTarget.style.color = 'var(--color-text-main)' }} onMouseLeave={(e) => { if(!location.pathname.startsWith('/blog')) e.currentTarget.style.color = 'var(--color-text-secondary)' }}>
-              <PenTool size={16} /> Blog
-              {location.pathname.startsWith('/blog') && <div className="nav-active-indicator" />}
-            </Link>
-            <Link to="/pricing" style={{ ...(location.pathname.startsWith('/pricing') ? activeNavLinkStyle : navLinkStyle), display: 'flex', alignItems: 'center', gap: '6px' }} onMouseEnter={(e) => { if(!location.pathname.startsWith('/pricing')) e.currentTarget.style.color = 'var(--color-text-main)' }} onMouseLeave={(e) => { if(!location.pathname.startsWith('/pricing')) e.currentTarget.style.color = 'var(--color-text-secondary)' }}>
-              <Tag size={16} /> Pricing
-              {location.pathname.startsWith('/pricing') && <div className="nav-active-indicator" />}
-            </Link>
-          </div>
+              <Link to="/templates" className={`nav-link-modern ${location.pathname.startsWith('/templates') ? 'active' : ''}`}>
+                Templates
+              </Link>
+              <Link to="/guides" className={`nav-link-modern ${location.pathname.startsWith('/guides') ? 'active' : ''}`}>
+                Guides
+              </Link>
+              <Link to="/blog" className={`nav-link-modern ${location.pathname.startsWith('/blog') ? 'active' : ''}`}>
+                Blog
+              </Link>
+            </nav>
 
           {/* Desktop & Mobile: Right Actions */}
           <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -248,14 +271,14 @@ export const Header: React.FC<HeaderProps> = ({
             )}
 
             <button 
-              className="desktop-only"
+              className="desktop-only theme-toggle-btn"
               onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-              style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-text-secondary)', transition: 'color 0.2s' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-text-main)'}
-              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
               aria-label="Toggle Theme"
+              title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
             >
-              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+              <div style={{ display: 'flex', transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)', transform: theme === 'light' ? 'rotate(0deg)' : 'rotate(180deg)' }}>
+                {theme === 'light' ? <Sun size={18} /> : <Moon size={18} />}
+              </div>
             </button>
             
             <div className="desktop-only" style={{ width: '1px', height: '24px', backgroundColor: 'var(--color-border)' }}></div>

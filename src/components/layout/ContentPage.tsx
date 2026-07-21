@@ -18,9 +18,9 @@ export const ContentPage: React.FC<ContentPageProps> = ({ title, description, ur
         canonicalUrl={`https://invoice-gen.net${urlPath}`}
       />
       
-      <div className="workspace-layout">
-        <div className="workspace-main" style={{ width: '100%' }}>
-          <div className="card" style={{ padding: '24px 32px' }}>
+      <div className="workspace-layout" style={{ paddingTop: '100px', paddingBottom: '80px' }}>
+        <div className="workspace-main" style={{ width: '100%', maxWidth: '1000px', margin: '0 auto' }}>
+          <div className="card" style={{ padding: '40px' }}>
             <div style={{ marginBottom: '32px' }}>
               <h1 style={{ 
                 fontSize: '32px', 

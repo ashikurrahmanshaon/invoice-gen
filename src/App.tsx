@@ -16,6 +16,7 @@ const BlogHomePage = lazy(() => import('./pages/ContentDirectoryPages').then(mod
 const CompareHomePage = lazy(() => import('./pages/ContentDirectoryPages').then(module => ({ default: module.CompareHomePage })));
 const CompareDetailPage = lazy(() => import('./pages/CompareDetailPage'));
 const TemplateGalleryPage = lazy(() => import('./pages/TemplateGalleryPage').then(module => ({ default: module.TemplateGalleryPage })));
+const GuidesPage = lazy(() => import('./pages/GuidesPage'));
 
 const ContentPreviewPage = lazy(() => import('./pages/ContentPreviewPage'));
 
@@ -57,6 +58,7 @@ export default function App() {
         <Route path="/tools" element={<HomePage />} />
         
         {/* Phase 6 & 7: Content & Comparison */}
+        <Route path="/guides" element={<GuidesPage />} />
         <Route path="/blog" element={<BlogHomePage />} />
         <Route path="/blog/:slug" element={<PremiumSEOPage />} />
         
