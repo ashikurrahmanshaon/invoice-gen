@@ -28,7 +28,7 @@ export default function CompareDetailPage() {
       <SEO 
         title={`${compare.title} | Invoice-Gen.net`}
         description={compare.description || ''}
-        canonicalUrl={`https://invoice-gen.net/compare/${compare.slug}/`}
+        canonicalUrl={`https://invoice-gen.net/compare/${compare.slug}`}
       />
       
       <Container>

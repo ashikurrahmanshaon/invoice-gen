@@ -125,7 +125,11 @@ export function PurchaseOrderGenerator() {
     
     try {
       setIsGenerating(true);
-      trackEvent('download_pdf', { source: 'homepage' });
+      trackEvent('generate_purchase_order_pdf', { 
+        document_type: 'purchase_order', 
+        template: (data.details as any).layoutId || 'default', 
+        currency: data.details.currency 
+      });
       await generatePOPDF(data as any);
       setToastMessage({ text: 'Invoice PDF generated successfully.', type: 'success' });
       setTimeout(() => setToastMessage(null), 4000);

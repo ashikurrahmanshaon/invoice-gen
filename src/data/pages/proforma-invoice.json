@@ -2,37 +2,84 @@
   "slug": "proforma-invoice",
   "category": "Invoice Types",
   "status": "Production Ready",
-  "lastUpdatedDate": "2026-07-18T00:00:00Z",
+  "lastUpdatedDate": "2026-07-22T00:00:00Z",
   "meta": {
-    "title": "What is a Proforma Invoice? Definitions, Uses, and Examples",
-    "description": "Learn what a proforma invoice is, when to use one, and how it differs from a commercial invoice. Includes free examples and a step-by-step guide.",
+    "title": "Proforma Invoice Explained: When & How to Use It",
+    "description": "Learn exactly what a proforma invoice is, when to send one, and how it differs from a commercial invoice. Includes examples and best practices for small businesses.",
     "canonicalUrl": "https://invoice-gen.net/invoice-types/proforma-invoice",
     "robots": "index, follow",
     "openGraph": {
       "type": "article",
-      "image": "https://invoice-gen.net/og/invoice-types/proforma.webp"
+      "image": "https://invoice-gen.net/og/invoice-types/proforma-invoice.webp"
     },
     "twitterCard": "summary_large_image",
     "schema": [
       {
         "@type": "Article",
-        "headline": "What is a Proforma Invoice?",
+        "headline": "Proforma Invoice Explained: When & How to Use It",
         "author": {
-          "@type": "Person",
-          "name": "Jane Doe",
-          "url": "https://invoice-gen.net/authors/jane-doe"
-        },
-        "reviewedBy": {
-          "@type": "Person",
-          "name": "John Smith",
-          "url": "https://invoice-gen.net/authors/john-smith"
+          "@type": "Organization",
+          "name": "Invoice-Gen Editorial Team",
+          "url": "https://invoice-gen.net"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is a proforma invoice legally binding?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, a proforma invoice is not legally binding. It is a good-faith estimate of the final cost and terms of a transaction, but it does not represent a legal demand for payment or a completed sale."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use a proforma invoice for tax purposes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. You cannot use a proforma invoice to reclaim VAT, GST, or file taxes. Tax authorities require a finalized commercial invoice that proves the transaction actually occurred."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is a proforma invoice different from a quote?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "While both are issued before a sale, a quote is usually sent during the negotiation phase to win business. A proforma invoice is sent after the buyer has agreed to the purchase but before the final goods or services are delivered."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://invoice-gen.net"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Invoice Types",
+            "item": "https://invoice-gen.net/invoice-types"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Proforma Invoice",
+            "item": "https://invoice-gen.net/invoice-types/proforma-invoice"
+          }
+        ]
       }
     ]
   },
   "blocks": [
     {
-      "id": "breadcrumb-1",
+      "id": "breadcrumb-4",
       "type": "breadcrumb",
       "crumbs": [
         { "label": "Home", "url": "/" },
@@ -41,119 +88,139 @@
       ]
     },
     {
-      "id": "hero-1",
+      "id": "hero-4",
       "type": "hero",
-      "title": "What is a Proforma Invoice?",
-      "subtitle": "Everything you need to know about proforma invoices: what they are, when to use them, and how they differ from standard commercial invoices.",
+      "title": "Proforma Invoice Explained: The Complete Guide",
+      "subtitle": "Discover what a proforma invoice is, when to issue one, and how it protects your business during large transactions or international shipments.",
       "ctaText": "Create a Proforma Invoice",
-      "ctaLink": "/#generator",
-      "readTime": "7 min",
-      "lastUpdated": "July 18, 2026"
+      "ctaLink": "/invoice-generator",
+      "readTime": "12 min",
+      "lastUpdated": "July 22, 2026"
     },
     {
-      "id": "author-1",
+      "id": "author-4",
       "type": "author",
-      "authorName": "Jane Doe",
-      "authorBio": "Jane is a certified CPA with over 15 years of experience in small business accounting.",
-      "avatarUrl": "/avatars/jane-doe.webp",
-      "reviewerId": "john-smith"
+      "authorName": "Invoice-Gen Editorial Team",
+      "authorBio": "Invoice-Gen Editorial Team creates practical invoicing, billing, accounting, and small business resources based on industry best practices for freelancers, agencies, contractors, consultants, and businesses worldwide."
     },
     {
-      "id": "definition-1",
-      "type": "definition",
-      "term": "Proforma Invoice",
-      "definition": "A preliminary bill of sale sent to buyers in advance of a shipment or delivery of goods. It describes the purchased items, shipping weight, and transport charges, acting as a 'good faith' agreement between the buyer and seller."
-    },
-    {
-      "id": "intro-1",
-      "type": "introduction",
-      "heading": "The Purpose of a Proforma Invoice",
-      "text": "Unlike a standard commercial invoice, a proforma invoice is not a demand for payment. Instead, it is an estimated invoice sent to a buyer before the goods are shipped or the services are rendered. It allows the buyer to understand the total cost, clear items through customs, or secure an internal purchase order before the final commercial invoice is issued."
-    },
-    {
-      "id": "summary-1",
+      "id": "quick-summary-4",
       "type": "quickSummary",
       "summaryItems": [
-        "It is not a legally binding demand for payment.",
-        "It cannot be used for accounting or tax reclamation (like VAT).",
-        "It is heavily used in international trade for customs declarations.",
-        "It provides an accurate estimate of costs before final delivery."
+        "A proforma invoice is a preliminary bill sent to a buyer before a shipment or service is completed.",
+        "It provides a good-faith estimate of the final total, including shipping and taxes.",
+        "It is NOT legally binding and cannot be used for accounting or tax filing.",
+        "It is commonly used to secure upfront financing, clear international customs, or collect a deposit.",
+        "Once the transaction is complete, it must be replaced by a final Commercial Invoice."
       ]
     },
     {
-      "id": "comparison-1",
+      "id": "intro-proforma",
+      "type": "introduction",
+      "heading": "What Exactly is a Proforma Invoice?",
+      "text": "The term 'proforma' comes from Latin, meaning 'as a matter of form' or 'for the sake of form'. In the business world, a proforma invoice is essentially a 'draft' invoice. It looks identical to a standard invoice, containing line items, prices, shipping costs, and taxes, but it is issued before the transaction is actually completed.\n\nWhy would you send an invoice before the work is done? Because large transactions require preparation. If you are importing $50,000 worth of electronics, customs agents need to know the declared value of the goods before they arrive at the border. If a freelance agency is starting a massive 6-month project, they might need the client's accounting department to authorize the total budget in advance. The proforma invoice acts as this preliminary, formal declaration of intent."
+    },
+    {
+      "id": "def-proforma-block",
+      "type": "definition",
+      "term": "Proforma Invoice",
+      "definition": "A preliminary bill of sale sent to a buyer in advance of a shipment or delivery of goods. It describes the purchased items, total payable amount, and other transaction details, serving as a good-faith estimate rather than a finalized, legally binding demand for payment."
+    },
+    {
+      "id": "when-to-use",
+      "type": "introduction",
+      "heading": "When Should You Issue a Proforma Invoice?",
+      "text": "Unlike a standard commercial invoice—which is sent to demand final payment—the proforma invoice has specialized uses. You should issue one in the following scenarios:\n\n1. International Shipping: When shipping goods across borders, customs officials require a document detailing the weight, packaging, and value of the items to calculate duties and taxes. A proforma invoice provides this information before the goods leave your warehouse.\n2. Securing Financing: If your buyer needs to secure a business loan or a Letter of Credit from their bank to pay for your services, the bank will demand proof of the intended transaction. A proforma invoice satisfies this requirement.\n3. Requesting Deposits: If you are a freelancer or contractor who requires a 30% upfront deposit before beginning work, sending a final invoice for work that hasn't happened yet can confuse accounting systems. Sending a proforma invoice allows the client to process the deposit smoothly.\n4. Internal Purchasing Approval: Large corporations often require their department heads to get budget approval before signing a contract. A proforma invoice gives them the exact figures they need to submit to their finance department."
+    },
+    {
+      "id": "comparison-proforma-commercial",
       "type": "comparisonTable",
-      "title": "Proforma Invoice vs. Commercial Invoice",
       "headers": ["Feature", "Proforma Invoice", "Commercial Invoice"],
       "rows": [
-        ["Timing", "Sent before goods are shipped", "Sent after goods are shipped"],
-        ["Legal Status", "Not legally binding for payment", "Legally binding demand for payment"],
-        ["Accounting Use", "Cannot be used for tax/VAT", "Used for tax and bookkeeping"],
-        ["Changes", "Subject to change", "Final and fixed"]
+        ["Timing", "Sent BEFORE fulfillment", "Sent AFTER fulfillment"],
+        ["Accounting Status", "Does not create Accounts Receivable", "Creates Accounts Receivable"],
+        ["Tax Filing", "Cannot be used to reclaim VAT/GST", "Required for tax filing and audits"],
+        ["Flexibility", "Totals can change if scope/shipping changes", "Totals are locked and final"],
+        ["Legal Status", "Not a legally binding demand for payment", "A legally binding demand for payment"]
       ]
     },
     {
-      "id": "myth-1",
-      "type": "mythVsFact",
-      "myth": "A proforma invoice is the same as a quotation.",
-      "fact": "While similar, a quotation is an initial offer of price. A proforma invoice is issued closer to the time of sale when terms are mostly agreed upon, acting as a final check before production or shipping begins."
-    },
-    {
-      "id": "step-1",
-      "type": "stepByStepGuide",
-      "steps": [
+      "id": "best-practices-4",
+      "type": "bestPractices",
+      "practices": [
         {
-          "title": "Clearly Label It as 'Proforma'",
-          "description": "The document must explicitly state 'Proforma Invoice' at the top to prevent accounting mix-ups."
+          "title": "Always Label it Clearly",
+          "description": "Never just write 'Invoice' at the top. The document must explicitly state 'PROFORMA INVOICE' in large text so the buyer's accounting department doesn't accidentally log it as a finalized bill."
         },
         {
-          "title": "Include Expiration Dates",
-          "description": "Because prices for shipping or materials fluctuate, always include a 'Valid Until' date."
+          "title": "Use a Unique Numbering System",
+          "description": "Do not mix your proforma invoices with your regular invoice sequence. If your standard invoices are INV-001, make your proforma invoices PF-001 to keep your ledger clean."
         },
         {
-          "title": "List All Expected Costs",
-          "description": "Include goods, estimated shipping, handling fees, and any relevant cross-border duties."
+          "title": "Include Validity Dates",
+          "description": "Since proforma invoices are estimates, include an expiration date (e.g., 'Prices valid for 30 days') to protect yourself against sudden spikes in material or shipping costs."
         }
       ]
     },
     {
-      "id": "faq-1",
+      "id": "mistakes-4",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Recording a proforma invoice as revenue.",
+          "solution": "Never enter a proforma invoice into your Accounts Receivable. It is not finalized revenue. Wait until you issue the true Commercial Invoice."
+        },
+        {
+          "mistake": "Failing to issue a final invoice.",
+          "solution": "Even if the client pays 100% of the proforma invoice upfront, you MUST issue a final, official 'Paid' Commercial Invoice after delivery for tax compliance."
+        },
+        {
+          "mistake": "Using a proforma invoice for tax claims.",
+          "solution": "If a client asks to use your proforma invoice to claim a tax deduction or VAT refund, remind them that this is illegal. Provide them with the final commercial invoice."
+        }
+      ]
+    },
+    {
+      "id": "expert-tip-4",
+      "type": "expertTip",
+      "tip": "When converting a Proforma Invoice to a final Commercial Invoice, always ensure the final document explicitly references the original Proforma Invoice number. This creates a clean, easily auditable paper trail for both your accountant and the client.",
+      "expertName": "Invoice-Gen Editorial Team"
+    },
+    {
+      "id": "how-to-create",
+      "type": "introduction",
+      "heading": "How to Create a Proforma Invoice",
+      "text": "Creating a proforma invoice is identical to creating a standard invoice, with a few critical distinctions. You can use any professional invoice generator to draft one.\n\nEnsure your document includes the following:\n- A clear 'PROFORMA INVOICE' header.\n- Your business details (Name, Address, Tax ID).\n- The buyer's details.\n- Issue date and Expiration date.\n- Itemized list of goods or services, including quantities and unit prices.\n- Estimated shipping costs (if applicable).\n- Estimated taxes (VAT, GST, Sales Tax).\n- The total amount due.\n- Your payment terms and bank details (if you are requesting an upfront deposit)."
+    },
+    {
+      "id": "faq-4",
       "type": "faq",
       "questions": [
         {
-          "question": "Can I pay a proforma invoice?",
-          "description": "Technically, yes, if the seller requires payment upfront. However, the seller must issue a final commercial invoice or tax receipt once the goods are delivered for your accounting records."
+          "question": "Is a proforma invoice legally binding?",
+          "answer": "No, a proforma invoice is not legally binding. It is a good-faith estimate of the final cost and terms of a transaction, but it does not represent a legal demand for payment or a completed sale."
         },
         {
-          "question": "Does a proforma invoice need an invoice number?",
-          "description": "It should have a unique reference number, but it should not be logged in your sequential accounting ledger as accounts receivable until it becomes a commercial invoice."
+          "question": "Can I use a proforma invoice for tax purposes?",
+          "answer": "No. You cannot use a proforma invoice to reclaim VAT, GST, or file taxes. Tax authorities require a finalized commercial invoice that proves the transaction actually occurred."
         },
         {
-          "question": "Are proforma invoices legally binding?",
-          "description": "No. A proforma invoice is a good faith estimate. It does not create a legal obligation for the buyer to pay until the actual commercial invoice is issued and goods are delivered."
+          "question": "How is a proforma invoice different from a quote?",
+          "answer": "While both are issued before a sale, a quote is usually sent during the negotiation phase to win business. A proforma invoice is sent after the buyer has agreed to the purchase but before the final goods or services are delivered."
+        },
+        {
+          "question": "Should a proforma invoice have an invoice number?",
+          "answer": "Yes, but it should use a different sequencing system than your standard commercial invoices to prevent gaps and errors in your accounting ledger."
         }
       ]
     },
     {
-      "id": "related-1",
-      "type": "relatedResources",
-      "resources": [
-        { "title": "Invoice vs Receipt: Key Differences", "url": "/blog/invoice-vs-receipt" },
-        { "title": "What is a Commercial Invoice?", "url": "/blog/what-is-a-commercial-invoice" }
-      ]
-    },
-    {
-      "id": "cta-1",
+      "id": "cta-4",
       "type": "cta",
-      "heading": "Ready to send a Proforma Invoice?",
-      "subtext": "Change the title of our free invoice generator to 'Proforma Invoice' and send it in seconds.",
-      "buttonText": "Start Invoicing",
-      "buttonLink": "/#generator"
-    },
-    {
-      "id": "last-updated-1",
-      "type": "lastUpdated",
-      "date": "July 18, 2026"
+      "heading": "Draft a Proforma Invoice in Seconds",
+      "subtext": "Need to secure a deposit or clear international customs? Use our free generator to create a professional proforma invoice and download it as a PDF instantly.",
+      "buttonText": "Generate Proforma Invoice",
+      "buttonLink": "/invoice-generator"
     }
   ]
 }

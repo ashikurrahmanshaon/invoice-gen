@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SEO } from '../components/seo/SEO';
+import { trackEvent } from '../utils/analytics';
 import { LandingLayout } from '../components/layout/LandingLayout';
 import { Link, useNavigate } from 'react-router-dom';
 import { Check, Star, ChevronRight, Briefcase, Coffee, Utensils, Clock, Building, Code, Lock, X, Eye, Sparkles } from 'lucide-react';
@@ -90,6 +91,7 @@ export const TemplateGalleryPage: React.FC = () => {
 
   const handleUseTemplate = (e: React.MouseEvent) => {
     e.preventDefault();
+    trackEvent('template_selected', { template_name: activeTemplate.title, category: activeTemplate.category });
     if (activeTemplate.id === 'standard') {
       navigate('/app');
     } else {

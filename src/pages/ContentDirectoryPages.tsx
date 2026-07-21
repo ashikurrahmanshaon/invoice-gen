@@ -4,6 +4,7 @@ import { LandingLayout } from '../components/layout/LandingLayout';
 import { SEO } from '../components/seo/SEO';
 import { ArrowRight, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { editorialTeam } from '../config/authors';
 
 export const BlogHomePage: React.FC = () => {
   const articles = [
@@ -16,9 +17,9 @@ export const BlogHomePage: React.FC = () => {
       date: 'Jul 18, 2026',
       image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80',
       author: {
-        name: 'Jane Doe',
-        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80',
-        role: 'CPA & Financial Advisor'
+        name: editorialTeam.name,
+        avatar: editorialTeam.avatarUrl,
+        role: editorialTeam.experience
       }
     },
     {
@@ -30,9 +31,9 @@ export const BlogHomePage: React.FC = () => {
       date: 'Jul 15, 2026',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
       author: {
-        name: 'Alex Rivera',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80',
-        role: 'Freelance Consultant'
+        name: editorialTeam.name,
+        avatar: editorialTeam.avatarUrl,
+        role: editorialTeam.experience
       }
     },
     {
@@ -44,9 +45,9 @@ export const BlogHomePage: React.FC = () => {
       date: 'Jul 10, 2026',
       image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80',
       author: {
-        name: 'John Smith, Esq.',
-        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80',
-        role: 'Business Attorney'
+        name: editorialTeam.name,
+        avatar: editorialTeam.avatarUrl,
+        role: editorialTeam.experience
       }
     },
     {
@@ -58,9 +59,9 @@ export const BlogHomePage: React.FC = () => {
       date: 'Jul 04, 2026',
       image: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=80',
       author: {
-        name: 'Elena Rostova',
-        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
-        role: 'Tax Specialist'
+        name: editorialTeam.name,
+        avatar: editorialTeam.avatarUrl,
+        role: editorialTeam.experience
       }
     },
     {
@@ -72,9 +73,9 @@ export const BlogHomePage: React.FC = () => {
       date: 'Jun 28, 2026',
       image: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80',
       author: {
-        name: 'Jane Doe',
-        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80',
-        role: 'CPA & Financial Advisor'
+        name: editorialTeam.name,
+        avatar: editorialTeam.avatarUrl,
+        role: editorialTeam.experience
       }
     },
     {
@@ -86,9 +87,9 @@ export const BlogHomePage: React.FC = () => {
       date: 'Jun 20, 2026',
       image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
       author: {
-        name: 'David Chen',
-        avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=120&q=80',
-        role: 'Productivity Lead'
+        name: editorialTeam.name,
+        avatar: editorialTeam.avatarUrl,
+        role: editorialTeam.experience
       }
     }
   ];

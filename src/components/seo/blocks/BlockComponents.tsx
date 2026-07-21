@@ -1,9 +1,7 @@
 import React, { memo, useState } from 'react';
 import * as Types from '../../../types/content';
-import { authors, reviewers } from '../../../config/authors';
+import { authors, reviewers, editorialTeam } from '../../../config/authors';
 import { ArrowRight, Clock, Calendar, ShieldCheck, HelpCircle, BookOpen, AlertTriangle, Info, Quote, Share2 } from 'lucide-react';
-
-const DEFAULT_AVATAR = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80';
 
 export const HeroBlock: React.FC<Types.HeroBlock> = memo(({ title, subtitle, ctaText, ctaLink, readTime, lastUpdated }) => {
   const [copied, setCopied] = useState(false);
@@ -253,13 +251,22 @@ export const CTABlock: React.FC<Types.CTABlock> = memo(({ heading, subtext, butt
 
 export const AuthorBlock: React.FC<Types.AuthorBlockType> = memo(({ authorName, authorBio, authorImage }) => {
   const [imgError, setImgError] = useState(false);
-  const displayAvatar = (imgError || !authorImage || authorImage.includes('/avatars/')) ? DEFAULT_AVATAR : authorImage;
+  
+  // Always resolve to the centralized Editorial Team to override legacy placeholders
+  const isLegacyAuthor = !authorName || ['Jane Doe', 'Alex Rivera', 'David Chen', 'Elena Rostova', 'John Smith, Esq.'].includes(authorName);
+  
+  const displayAvatar = (!isLegacyAuthor && authorImage && !imgError && !authorImage.includes('/avatars/')) 
+    ? authorImage 
+    : editorialTeam.avatarUrl;
+
+  const displayName = isLegacyAuthor ? editorialTeam.name : authorName;
+  const displayBio = isLegacyAuthor ? editorialTeam.bio : authorBio;
 
   return (
     <div style={{ display: 'flex', gap: '20px', padding: '24px 28px', backgroundColor: '#F8FAFC', borderRadius: '20px', marginBottom: '48px', border: '1px solid #E2E8F0', alignItems: 'center', flexWrap: 'wrap' }}>
       <img 
         src={displayAvatar} 
-        alt={authorName} 
+        alt={displayName} 
         onError={() => setImgError(true)}
         loading="lazy"
         decoding="async"
@@ -269,15 +276,16 @@ export const AuthorBlock: React.FC<Types.AuthorBlockType> = memo(({ authorName, 
       />
       <div style={{ flex: 1, minWidth: '220px' }}>
         <div style={{ fontSize: '11px', fontWeight: 700, color: '#0ea5e9', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2px' }}>Written By</div>
-        <strong style={{ fontSize: '18px', color: '#0F172A', display: 'block', marginBottom: '6px' }}>{authorName}</strong>
-        <p style={{ color: '#475569', margin: 0, lineHeight: 1.5, fontSize: '14px' }}>{authorBio}</p>
+        <strong style={{ fontSize: '18px', color: '#0F172A', display: 'block', marginBottom: '6px' }}>{displayName}</strong>
+        <p style={{ color: '#475569', margin: 0, lineHeight: 1.5, fontSize: '14px' }}>{displayBio}</p>
       </div>
     </div>
   );
 });
 
 export const EEATAuthorReviewerBlock: React.FC<{ authorId?: string; reviewerId?: string }> = memo(({ authorId, reviewerId }) => {
-  const author = authorId ? authors[authorId] : null;
+  // Always resolves to editorialTeam due to proxy in authors.ts
+  const author = authorId ? authors[authorId] || editorialTeam : editorialTeam;
   const reviewer = reviewerId ? reviewers[reviewerId] : null;
   const [authorImgError, setAuthorImgError] = useState(false);
   const [reviewerImgError, setReviewerImgError] = useState(false);
@@ -287,7 +295,7 @@ export const EEATAuthorReviewerBlock: React.FC<{ authorId?: string; reviewerId?:
       {author && (
         <div style={{ display: 'flex', gap: '20px', padding: '24px 28px', backgroundColor: '#F8FAFC', borderRadius: '20px', border: '1px solid #E2E8F0', flexWrap: 'wrap', alignItems: 'flex-start' }}>
           <img 
-            src={(authorImgError || !author.avatarUrl || author.avatarUrl.includes('/avatars/')) ? DEFAULT_AVATAR : author.avatarUrl} 
+            src={(authorImgError || !author.avatarUrl || author.avatarUrl.includes('/avatars/')) ? editorialTeam.avatarUrl : author.avatarUrl} 
             alt={author.name} 
             onError={() => setAuthorImgError(true)}
             loading="lazy"

@@ -118,7 +118,11 @@ export function EstimateGenerator() {
     
     try {
       setIsGenerating(true);
-      trackEvent('download_pdf', { source: 'homepage' });
+      trackEvent('generate_estimate_pdf', { 
+        document_type: 'estimate', 
+        template: (data.details as any).layoutId || 'default', 
+        currency: data.details.currency 
+      });
       await generateEstimatePDF(data as any);
       setToastMessage({ text: 'Invoice PDF generated successfully.', type: 'success' });
       setTimeout(() => setToastMessage(null), 4000);

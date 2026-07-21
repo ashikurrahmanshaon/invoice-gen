@@ -2,6 +2,7 @@ import React from 'react';
 import { useSettings } from '../../../contexts/SettingsContext';
 import { UploadCloud, X } from 'lucide-react';
 import { processImageFile } from '../../../utils/image';
+import { trackEvent } from '../../../utils/analytics';
 
 export const BrandKitSection: React.FC = () => {
   const { settings, updateNestedSetting } = useSettings();
@@ -13,6 +14,7 @@ export const BrandKitSection: React.FC = () => {
       try {
         const logoUrl = await processImageFile(file);
         updateNestedSetting('brandKit', { logoUrl });
+        trackEvent('brand_logo_uploaded');
       } catch (error) {
         console.error('Error processing logo:', error);
       }

@@ -1,0 +1,205 @@
+{
+  "slug": "construction-invoice-guide",
+  "category": "Blog Articles",
+  "status": "Production Ready",
+  "lastUpdatedDate": "2026-07-22T00:00:00Z",
+  "meta": {
+    "title": "Construction Invoice Guide: Progress Billing, Retainage & More",
+    "description": "The definitive guide to construction invoicing. Learn how to handle progress billing, change orders, retainage, and material markup to protect your cash flow.",
+    "canonicalUrl": "https://invoice-gen.net/blog/construction-invoice-guide",
+    "robots": "index, follow",
+    "openGraph": {
+      "type": "article",
+      "image": "https://invoice-gen.net/og/blog/construction-invoice-guide.webp"
+    },
+    "twitterCard": "summary_large_image",
+    "schema": [
+      {
+        "@type": "Article",
+        "headline": "Construction Invoice Guide: Progress Billing, Retainage & More",
+        "author": {
+          "@type": "Organization",
+          "name": "Invoice-Gen Editorial Team",
+          "url": "https://invoice-gen.net"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is progress billing in construction?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Progress billing is an invoicing method where you bill the client incrementally as the project progresses, rather than asking for the full amount upfront or waiting until the entire project is completed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is retainage on a construction invoice?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Retainage (or retention) is a portion of the agreed-upon contract price (usually 5% to 10%) deliberately withheld by the client until the project is completely finished and approved. It acts as an insurance policy for the client against unfinished work."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How should I invoice for change orders?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Change orders should be billed separately or listed as distinctly numbered line items on your progress invoice. Never blend change order costs with the original project scope, as this leads to disputes and delayed payments."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://invoice-gen.net"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://invoice-gen.net/blog"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Construction Invoice Guide",
+            "item": "https://invoice-gen.net/blog/construction-invoice-guide"
+          }
+        ]
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "id": "breadcrumb-9",
+      "type": "breadcrumb",
+      "crumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Blog", "url": "/blog" },
+        { "label": "Construction Invoice Guide", "url": "/blog/construction-invoice-guide" }
+      ]
+    },
+    {
+      "id": "hero-9",
+      "type": "hero",
+      "title": "The Complete Construction Invoicing Guide",
+      "subtitle": "Stop bleeding cash on job sites. Master progress billing, change orders, retainage, and subcontractor fees to keep your construction business profitable.",
+      "ctaText": "Create Construction Invoice",
+      "ctaLink": "/invoice-generator",
+      "readTime": "16 min",
+      "lastUpdated": "July 22, 2026"
+    },
+    {
+      "id": "author-9",
+      "type": "author",
+      "authorName": "Invoice-Gen Editorial Team",
+      "authorBio": "Invoice-Gen Editorial Team creates practical invoicing, billing, accounting, and small business resources based on industry best practices for freelancers, agencies, contractors, consultants, and businesses worldwide."
+    },
+    {
+      "id": "quick-summary-9",
+      "type": "quickSummary",
+      "summaryItems": [
+        "Construction invoicing is complex, often requiring milestone or progress billing over several months.",
+        "Always separate Materials from Labor to ensure accurate tax accounting and transparent markup.",
+        "Account for Retainage (usually 5-10%) withheld by the client until project completion.",
+        "Handle Change Orders meticulously. If the scope changes, issue an estimate, get approval, and bill it separately.",
+        "Prioritize clear, itemized invoices to prevent client disputes and mechanic's liens."
+      ]
+    },
+    {
+      "id": "intro-construction",
+      "type": "introduction",
+      "heading": "Why Construction Invoicing is High-Stakes",
+      "text": "Unlike a simple retail transaction or a quick freelance gig, construction projects are messy, unpredictable, and expensive. When you are managing a $150,000 commercial remodel, you cannot afford to wait six months to get paid. You have to buy lumber today, pay subcontractors tomorrow, and cover permits by Friday.\n\nBecause of the immense capital required to float a construction project, proper invoicing is not just an administrative task—it is a survival mechanism. If your invoices are vague, the client or their bank will delay payment. If you fail to formally invoice for an oral 'change order' requested by the homeowner on site, you will end up eating the cost of the materials.\n\nIn this comprehensive guide, we will explore the nuances of progress billing, how to properly handle retainage without destroying your cash flow, and how to format your invoices so that general contractors, banks, and homeowners pay them immediately."
+    },
+    {
+      "id": "comparison-construction-billing",
+      "type": "comparisonTable",
+      "headers": ["Billing Method", "How it Works", "Best Used For"],
+      "rows": [
+        ["Progress Billing", "Invoicing a percentage of the total project as milestones are hit.", "Large commercial jobs or multi-month residential builds."],
+        ["Time and Materials (T&M)", "Billing for the exact hours worked plus the cost of materials (with markup).", "Repairs, maintenance, or projects with highly uncertain scopes."],
+        ["Fixed Price (Lump Sum)", "A single total price agreed upon upfront, often paid in chunks (e.g., 50/50).", "Small, predictable jobs like pouring a standard driveway."]
+      ]
+    },
+    {
+      "id": "step-by-step-9",
+      "type": "checklist",
+      "title": "Critical Elements of a Construction Invoice",
+      "items": [
+        { "text": "Project Name, Site Address, and Client details.", "checked": true },
+        { "text": "Original Contract Amount and clearly noted Original Scope.", "checked": true },
+        { "text": "Itemized Labor Costs (hours worked or percentage completed).", "checked": true },
+        { "text": "Itemized Material Costs (lumber, concrete, hardware).", "checked": true },
+        { "text": "Change Orders listed as distinct, numbered additions to the original contract.", "checked": true },
+        { "text": "Retainage explicitly deducted from the subtotal (if applicable).", "checked": true },
+        { "text": "Total Amount Previously Billed vs. Amount Due This Period.", "checked": true },
+        { "text": "Notice of Intent to Lien or lien waiver language (depending on local laws).", "checked": true }
+      ]
+    },
+    {
+      "id": "intro-progress-billing",
+      "type": "introduction",
+      "heading": "Mastering Progress Billing",
+      "text": "Progress billing is the lifeblood of a construction firm. Instead of a single invoice, you submit 'pay applications' (often using the AIA G702/G703 format in the US) at regular intervals, usually monthly.\n\nFor example, if you are building a $200,000 house and you complete the foundation and framing in Month 1, you determine that the project is 25% complete. You generate an invoice for $50,000. \n\nHowever, progress billing requires meticulous record-keeping. You must track the 'Schedule of Values'—a detailed breakdown of every component of the job (e.g., Plumbing: $15,000, Electrical: $20,000). Your invoice must show exactly what percentage of the Electrical work has been completed to justify the amount billed this period."
+    },
+    {
+      "id": "mistakes-9",
+      "type": "commonMistakes",
+      "mistakes": [
+        {
+          "mistake": "Failing to document Change Orders.",
+          "solution": "The homeowner asks you to upgrade the kitchen countertops from quartz to marble while you are on site. You say 'Sure!' but forget to issue a formal Change Order. When the final invoice arrives, they refuse to pay the extra $3,000. Always use an estimate generator to get written approval before proceeding."
+        },
+        {
+          "mistake": "Blending materials and labor into a single line item.",
+          "solution": "Writing 'Bathroom Remodel: $15,000' is a recipe for a tax audit and an angry client. Itemize the tile, the vanity, the plumbing fixtures, and the labor hours separately."
+        },
+        {
+          "mistake": "Ignoring Retainage laws.",
+          "solution": "If a commercial client withholds 10% retainage, you must track this in your Accounts Receivable. Do not write it off as a loss. Once the certificate of substantial completion is signed, immediately invoice for the full retainage pool."
+        }
+      ]
+    },
+    {
+      "id": "expert-tip-9",
+      "type": "expertTip",
+      "tip": "When billing for materials, always add your markup (usually 15% to 20%) directly to the unit price of the item before listing it on the invoice. Do not list 'Materials: $1,000' and then a separate line for 'Contractor Material Markup: $200'. Clients hate paying explicit markups, but they accept marked-up retail prices.",
+      "expertName": "Invoice-Gen Editorial Team"
+    },
+    {
+      "id": "faq-9",
+      "type": "faq",
+      "questions": [
+        {
+          "question": "What is progress billing in construction?",
+          "answer": "Progress billing is an invoicing method where you bill the client incrementally as the project progresses, rather than asking for the full amount upfront or waiting until the entire project is completed."
+        },
+        {
+          "question": "What is retainage on a construction invoice?",
+          "answer": "Retainage (or retention) is a portion of the agreed-upon contract price (usually 5% to 10%) deliberately withheld by the client until the project is completely finished and approved. It acts as an insurance policy for the client against unfinished work."
+        },
+        {
+          "question": "How should I invoice for change orders?",
+          "answer": "Change orders should be billed separately or listed as distinctly numbered line items on your progress invoice. Never blend change order costs with the original project scope, as this leads to disputes and delayed payments."
+        }
+      ]
+    },
+    {
+      "id": "cta-9",
+      "type": "cta",
+      "heading": "Generate Clear Construction Invoices",
+      "subtext": "Keep your cash flow positive. Use our robust invoice generator to cleanly separate your labor, materials, change orders, and retainage.",
+      "buttonText": "Create Your Invoice",
+      "buttonLink": "/invoice-generator"
+    }
+  ]
+}

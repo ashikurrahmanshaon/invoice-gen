@@ -2,6 +2,7 @@ import React from 'react';
 import { UploadCloud, Trash2, Edit2, Building2, Mail, Phone, FileText, MapPin } from 'lucide-react';
 import type { InvoiceData } from '../../types/invoice';
 import { processImageFile } from '../../utils/image';
+import { trackEvent } from '../../utils/analytics';
 import { Input } from '../ui/Input';
 
 interface BusinessSectionProps {
@@ -17,6 +18,7 @@ const BusinessSectionComponent: React.FC<BusinessSectionProps> = ({ data, update
       try {
         const logoUrl = await processImageFile(file);
         updateBusiness({ logoUrl });
+        trackEvent('brand_logo_uploaded');
       } catch (error) {
         console.error('Error processing logo:', error);
       }

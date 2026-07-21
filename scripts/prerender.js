@@ -7,6 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Base static routes
 const staticRoutes = [
   '/',
+  '/invoice-generator',
   '/purchase-order-generator',
   '/quote-generator',
   '/estimate-generator',

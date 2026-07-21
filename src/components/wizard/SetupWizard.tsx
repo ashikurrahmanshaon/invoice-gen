@@ -5,6 +5,7 @@ import { CurrencyPicker } from '../ui/CurrencyPicker';
 import { LanguagePicker } from '../ui/LanguagePicker';
 import { UploadCloud, CheckCircle, ChevronRight, Globe, Image as ImageIcon, Building2, X } from 'lucide-react';
 import { Logo as AppLogo } from '../ui/Logo';
+import { trackEvent } from '../../utils/analytics';
 
 interface SetupWizardProps {
   onComplete: () => void;
@@ -32,6 +33,7 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({ onComplete }) => {
       try {
         const logoUrl = await processImageFile(file);
         updateNestedSetting('brandKit', { logoUrl });
+        trackEvent('brand_logo_uploaded');
       } catch (error) {
         console.error('Error processing logo:', error);
       }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { AppLayout } from '../components/layout/AppLayout';
 import { Container } from '../components/layout/Container';
@@ -7,6 +7,7 @@ import { CTA } from '../components/ui/CTA';
 import { SEO } from '../components/seo/SEO';
 import { Clock, Share2, ArrowRight } from 'lucide-react';
 import blogsData from '../data/seoContent.json';
+import { trackEvent } from '../utils/analytics';
 
 interface Blog {
   slug: string;
@@ -31,6 +32,12 @@ export default function BlogDetailPage() {
     console.log('Matched article:', blog ? blog.title : 'None');
   }
 
+  useEffect(() => {
+    if (blog) {
+      trackEvent('blog_opened', { article_slug: blog.slug });
+    }
+  }, [blog]);
+
   if (!blog) {
     return (
       <AppLayout>
@@ -49,7 +56,7 @@ export default function BlogDetailPage() {
       <SEO 
         title={`${blog.title} | Invoice-Gen.net`}
         description={blog.sections[0]?.p || ''}
-        canonicalUrl={`https://invoice-gen.net/blog/${blog.slug}/`}
+        canonicalUrl={`https://invoice-gen.net/blog/${blog.slug}`}
       />
       
       <Container>
@@ -78,6 +85,7 @@ export default function BlogDetailPage() {
                     if (typeof navigator !== 'undefined') {
                       navigator.clipboard.writeText(window.location.href);
                       setCopied(true);
+                      trackEvent('share_link', { article_slug: blog.slug });
                       setTimeout(() => setCopied(false), 2500);
                     }
                   }}

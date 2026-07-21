@@ -30,7 +30,7 @@ export const TemplateDetailPage = () => {
       <SEO 
         title={`${template.title} | Invoice-Gen.net`}
         description={cleanText(template.subtitle)}
-        canonicalUrl={`https://invoice-gen.net/templates/${template.slug}/`}
+        canonicalUrl={`https://invoice-gen.net/templates/${template.slug}`}
       />
       
       <Container>

@@ -51,6 +51,7 @@ export default function App() {
       <Routes>
         {/* Phase 1: Main Product */}
         <Route path="/" element={<HomePage />} />
+        <Route path="/invoice-generator" element={<HomePage canonicalUrl="https://invoice-gen.net/invoice-generator" />} />
         <Route path="/purchase-order-generator" element={<PurchaseOrderPage />} />
         <Route path="/quote-generator" element={<QuotePage />} />
         <Route path="/estimate-generator" element={<EstimatePage />} />

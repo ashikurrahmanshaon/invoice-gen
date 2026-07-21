@@ -199,7 +199,11 @@ export function InvoiceGenerator() {
     
     try {
       setIsGenerating(true);
-      trackEvent('download_pdf', { source: 'homepage' });
+      trackEvent('generate_invoice_pdf', { 
+        document_type: 'invoice', 
+        template: data.details.layoutId || 'default', 
+        currency: data.details.currency 
+      });
       await generateInvoicePDF(data);
       setShowSuccessAnim(true);
       setToastMessage({ text: 'Invoice PDF generated successfully!', type: 'success' });

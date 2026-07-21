@@ -19,7 +19,16 @@ type EventName =
   | 'copy_invoice'
   | 'print_invoice'
   | 'funnel_step'
-  | 'download_image';
+  | 'generate_invoice_pdf'
+  | 'generate_quote_pdf'
+  | 'generate_estimate_pdf'
+  | 'generate_purchase_order_pdf'
+  | 'download_image'
+  | 'template_selected'
+  | 'brand_logo_uploaded'
+  | 'guide_opened'
+  | 'blog_opened'
+  | 'share_link';
 
 interface EventParams {
   [key: string]: string | number | boolean | undefined;
