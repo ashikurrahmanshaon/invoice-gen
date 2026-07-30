@@ -71,7 +71,7 @@ export default function PremiumSEOPage() {
           "name": "Invoice-Gen",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://invoice-gen.net/logo.svg"
+            "url": "https://invoice-gen.net/logo-primary.svg"
           }
         };
       }

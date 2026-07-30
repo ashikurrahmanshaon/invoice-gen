@@ -25,7 +25,7 @@ export const editorialTeam: AuthorProfile = {
   },
   articlesWritten: [],
   reviewedArticles: [],
-  avatarUrl: "/logo.svg" // Using the official site logo
+  avatarUrl: "/logo-icon.svg" // Using the official site logo icon
 };
 
 // Proxy to ensure ANY requested author ID returns the editorial team for backwards compatibility
